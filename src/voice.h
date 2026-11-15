@@ -9,6 +9,7 @@ void tick();                                   // every mod tick, before msg::ti
 // The newest start of a voice with this cue, as a count of voice starts (1 for the first; 0: none of the last 16
 // starts had it). A later start has a higher number.
 uint64_t started(int cue);
+uint64_t start_count();                       // voice starts so far, of any cue
 bool playing();
 // The setting VoiceEndSound's cue from the game's system cue sheet, through USoundApp::PlayComSE (none for "Next"
 // or off).

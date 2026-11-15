@@ -169,7 +169,8 @@ static std::string g_ffwd_line, g_ffwd_text;
 // The windows that go on by themselves in battle (the navigator's support lines, the party's remarks: BMD_BtlSupport*)
 // and the party's voiced chatter in the field (MsgAssist, BMD_FldSupport_DungeonTalk_*) talk over what matters: they go
 // to the log unspoken (the player's calls, 2026-11-01 for battle, 2026-11-06 for the field: "Thebel, floor 4" and "Junpei,
-// HP 1 of 106" were cut off). A field line the game does not voice is still read. The Reaper's warning is voiced too: the user is content with the voice.
+// HP 1 of 106" were cut off). A field line the game does not voice is still read, and so is one whose declared voice
+// never begins (AssistHold). The Reaper's warning is voiced too: the user is content with the voice.
 static bool g_hush = false;
 // Whether the game will voice a page: its BMD data (FCurrentBmdPage +0x20) opens with message functions, FE then a byte
 // F0 | (1 + argument count), the function (table << 5 | index) and two bytes per argument; a voiced page has table 3
@@ -191,7 +192,35 @@ static int declared_cue(void* page, bool any = false) {
 }
 static bool declares_voice(void* page, bool any = false) { return declared_cue(page, any) != 0; }
 
+// A field chatter line (MsgAssist) that declares a voice is held, not hushed outright: the game does not always play
+// the voice it declares. On the Overhead Bridge (field 302, 2026-11-15) Junpei's "Alright, bring on the big one!" and
+// Yukari's "Hey, don't get too excited..." declared one, no voice player started, and only the window's sound was
+// heard. The line is read unless a voice starts within kAssistWaitMs of the page; never over other speech.
+static constexpr uint64_t kAssistWaitMs = 700;
+struct AssistHold { std::string line; uint64_t shown = 0, starts = 0; bool active = false; };
+static AssistHold g_assist;
+static bool g_hold_assist = false;   // the page being said is such a line (read_window)
+static void assist_say() {
+  speech::speak(g_assist.line, false);
+  log::writef("msg: chatter declared a voice and none began: read");
+  g_assist.active = false;
+}
+static void assist_tick() {
+  if (!g_assist.active) return;
+  if (voice::start_count() > g_assist.starts) {
+    log::writef("msg: chatter voiced ({} ms after the page): {}", GetTickCount64() - g_assist.shown, g_assist.line);
+    g_assist.active = false;
+  } else if (GetTickCount64() - g_assist.shown >= kAssistWaitMs) {
+    assist_say();
+  }
+}
+
 static void say_dialogue(const std::string& line, const std::string& who, const std::string& kind, void* page, bool cue) {
+  if (g_hold_assist && !g_hush) {
+    if (g_assist.active) assist_say();   // the one before had no voice either
+    g_assist = AssistHold{line, GetTickCount64(), voice::start_count(), true};
+    return;
+  }
   if (g_hush) return;
   g_wait_page = nullptr;   // the page before moved on
   if (page && page == g_carried_page) { g_voiced_page = page; g_voiced_done = g_carried_done; }
@@ -294,7 +323,8 @@ static bool read_window(Tick& tk, Seen& s, UObject* item, UObject* sel) {
   if (!own_pace) cur.blocking = true;
   // Hushed lines still reach the log. Cutscene subtitles are read only if the player turned them on.
   bool subtitle = ic == "MsgSubtitles" || ic == "MsgMindSubtitles";
-  g_hush = (ic == "MsgAssist" && declares_voice(page, true)) || (own_pace && tk.in_battle) || (subtitle && !settings::on(settings::Subtitles));
+  g_hush = (own_pace && tk.in_battle) || (subtitle && !settings::on(settings::Subtitles));
+  g_hold_assist = ic == "MsgAssist" && declares_voice(page, true);   // read unless its voice begins (AssistHold)
   bool cue = cur.blocking && cur.kind != "System" && cur.kind != "Tutorial";
   if (who.empty() && cur.kind == "Mind") who = strings::kThinking;   // a thought bubble with no speaker line
   cur.speaker = who;
@@ -474,6 +504,7 @@ static void end_cue_tick(const Tick& tk, uint32_t autov) {
 void tick() {
   pad_press_tick();
   pending_tick();
+  assist_tick();
   UObject* m = manager();
   if (!m) return;
   g_ffwd = world::scene_fast();
@@ -493,7 +524,7 @@ void tick() {
     WeakObj::Key key = WeakObj::of(proc).key();
     auto seen = g_seen.find(key);
     Seen s = seen != g_seen.end() ? seen->second : Seen{};
-    g_hush = false;
+    g_hush = false; g_hold_assist = false;
     bool has_text = item && is_live(item) && read_window(tk, s, item, sel);
     // The window closed (its proc's state +0x30 at 7 closing / 8 closed, or no item): what it said is forgotten. A
     // fresh page with no text yet (state 1, a frame or two) keeps it.
@@ -678,6 +709,13 @@ bool install() {
     });
     return *out;
   }, "?page=0x.. dump a page's line and token records");
+  dev::route("/msg/history", [](const dev::Request&, int&) {
+    return dev::on_game([] {
+      std::string s;
+      for (auto& l : g_history) { s += l; s += '\n'; }
+      return s.empty() ? std::string("nothing\n") : s;
+    });
+  }, "the mod's message log (spoken and hushed pages, choices)");
   return a != 0;
 }
 }  // namespace p3a::msg
