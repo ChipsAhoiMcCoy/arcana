@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Main_110_260_C",
+ "title": "A Shadow in the car",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "The three move down the car."
+  },
+  {
+   "at": 3.55,
+   "text": "A spindly, masked Shadow crouches ahead."
+  },
+  {
+   "at": 17.55,
+   "text": "Two Shadows close in from behind."
+  }
+ ]
+}

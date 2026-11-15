@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_230_C",
+ "title": "Waiting at the station",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "The three wait by the station steps."
+  },
+  {
+   "at": 7.4,
+   "text": "Mitsuru rides up on a motorcycle and pulls off her helmet."
+  }
+ ]
+}

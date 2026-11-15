@@ -1,0 +1,2 @@
+#scene LS_Event_Main_110_220_C
+0.600	1.157	00.mp3	The others hurry in.

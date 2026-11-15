@@ -1,0 +1,3 @@
+#scene LS_Event_Main_110_290_C
+6.700	1.923	00.mp3	The car jolts. All three stagger.
+14.820	2.039	01.mp3	Pale, masked Shadows burst out ahead.

@@ -1,0 +1,4 @@
+#scene LS_Event_Main_110_260_C
+0.300	1.416	00.mp3	The three move down the car.
+3.550	2.139	01.mp3	A spindly, masked Shadow crouches ahead.
+17.550	1.856	02.mp3	Two Shadows close in from behind.

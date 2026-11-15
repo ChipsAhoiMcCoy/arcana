@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_250_C",
+ "title": "Inside the monorail",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "They walk down the car."
+  },
+  {
+   "at": 2.3,
+   "text": "A red coffin on a seat."
+  }
+ ]
+}

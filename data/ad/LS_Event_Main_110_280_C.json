@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_280_C",
+ "title": "Junpei surrounded",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Shadows surround Junpei."
+  },
+  {
+   "at": 3.55,
+   "text": "The hero and Yukari run to him."
+  }
+ ]
+}

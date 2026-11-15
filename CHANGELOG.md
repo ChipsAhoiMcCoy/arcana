@@ -33,6 +33,9 @@
 ### Wall tones
 - The wall tones play only while you move (the stick, the keys or the auto-walk, even pushing into a wall), in either camera mode, and are quiet while you stand still.
 
+### Audio description in story scenes (new)
+- Story scenes played in the game's 3D engine, not only the animated movies, can now be described, in the same narrator voice, between the lines and never over them. The descriptions follow the scene's own clock, wait while a line is on screen, and stay quiet while you fast-forward. The first scenes described are the May full moon's monorail operation, such as Yukari climbing the ladder at the stopped monorail.
+
 ### Fixes
 - Pressing any button on a controller stops what is being said, as a key does with a screen reader: confirming an item no longer leaves its description reading on (the Beef Bowl CD). With SAPI or OneCore instead of a screen reader, any key but Shift, Ctrl and Alt does the same.
 - Party chatter in the field whose voice is only a short reaction (a grunt or a laugh, not the words) is read again. On the monorail's Overhead Bridge, Junpei's "Alright, bring on the big one!" and Yukari's "Hey, don't get too excited and do something stupid" were silent. Chatter the game voices in full is still left to its voice.

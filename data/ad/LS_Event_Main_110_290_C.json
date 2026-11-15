@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_290_C",
+ "title": "The monorail starts moving",
+ "cues": [
+  {
+   "at": 6.7,
+   "text": "The car jolts. All three stagger."
+  },
+  {
+   "at": 14.82,
+   "text": "Pale, masked Shadows burst out ahead."
+  }
+ ]
+}

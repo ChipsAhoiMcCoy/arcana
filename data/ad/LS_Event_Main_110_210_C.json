@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_210_C",
+ "title": "Mitsuru's scan",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "Mitsuru works at a scanner in the command room."
+  },
+  {
+   "at": 3.04,
+   "text": "Akihiko walks in."
+  }
+ ]
+}

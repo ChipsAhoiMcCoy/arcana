@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_110_270_C",
+ "title": "Shadows block the way",
+ "cues": [
+  {"at": 3.85,  "text": "Shadows drop into the car behind Yukari."},
+  {"at": 7.4,   "text": "More Shadows block the way."}
+ ]
+}
