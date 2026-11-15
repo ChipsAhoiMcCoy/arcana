@@ -1,0 +1,4 @@
+#scene LS_Event_Main_200_090_C
+0.600	2.319	00.mp3	Junpei joins the team at a long table.
+24.680	1.010	01.mp3	Junpei smiles.
+26.700	1.168	02.mp3	Yukari smiles.

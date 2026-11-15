@@ -1,0 +1,4 @@
+#scene LS_Event_Main_200_120_C
+0.100	3.922	00.mp3	Ryoji stands alone on a bridge. Aigis walks up behind him.
+5.300	1.579	01.mp3	Ryoji turns to face her.
+17.700	1.257	02.mp3	Aigis takes a stance.

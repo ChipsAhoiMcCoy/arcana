@@ -1,0 +1,8 @@
+#scene LS_Event_Main_200_040_C
+0.050	2.086	00.mp3	Chidori stands outside Tartarus.
+2.950	1.642	01.mp3	Junpei runs up behind her.
+6.600	1.815	02.mp3	Chidori turns to face Junpei.
+11.500	1.020	03.mp3	A hatchet flies.
+14.850	1.925	04.mp3	The others run up, weapons ready.
+19.000	1.655	05.mp3	She lifts an Evoker to her head.
+21.170	1.498	06.mp3	Glass shards burst around her.

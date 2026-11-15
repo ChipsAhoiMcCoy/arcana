@@ -1,0 +1,5 @@
+#scene LS_Event_Main_200_010_C
+4.550	1.488	00.mp3	Takaya walks in with Jin.
+15.850	1.846	01.mp3	An Evoker lies on her blanket.
+18.000	1.357	02.mp3	Takaya and Jin leave.
+21.170	1.294	03.mp3	Chidori keeps drawing.

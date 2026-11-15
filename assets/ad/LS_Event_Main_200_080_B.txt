@@ -1,0 +1,13 @@
+#scene LS_Event_Main_200_080_B
+2.050	2.580	00.mp3	Junpei lays Chidori down and bows over her.
+5.100	2.390	01.mp3	He stands. Chidori lies still on the paving.
+9.750	1.533	02.mp3	Junpei fires his Evoker.
+11.500	4.673	03.mp3	His red Persona floats beside Chidori's, a white figure with blade-like wings.
+16.400	4.403	04.mp3	They merge into one: a red body, a white mask, and huge golden wings.
+23.600	1.657	05.mp3	Now it towers behind Junpei.
+28.200	1.384	06.mp3	Fire streaks toward Jin.
+30.400	1.302	07.mp3	Jin drops to one knee.
+40.300	1.349	08.mp3	Smoke billows over them.
+50.500	2.768	09.mp3	Junpei pushes himself up and stands, head bowed.
+53.850	1.556	10.mp3	He kneels beside Chidori.
+57.200	1.067	11.mp3	The others look on.

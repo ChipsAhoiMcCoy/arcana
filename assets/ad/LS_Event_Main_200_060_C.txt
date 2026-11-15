@@ -1,0 +1,4 @@
+#scene LS_Event_Main_200_060_C
+0.030	2.296	00.mp3	Chidori sits by Junpei's hospital bed.
+8.200	2.117	01.mp3	Chidori rises and leans over him.
+16.050	1.968	02.mp3	She holds his hand in both of hers.

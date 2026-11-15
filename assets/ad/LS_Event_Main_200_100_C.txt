@@ -1,0 +1,10 @@
+#scene LS_Event_Main_200_100_C
+3.300	4.429	00.mp3	In the dorm lounge, Ryoji turns and walks past the hero toward the door.
+8.600	1.067	01.mp3	Aigis walks in.
+19.500	1.703	02.mp3	Aigis turns to face Junpei.
+26.600	1.385	03.mp3	The others get up to leave.
+28.600	2.327	04.mp3	Later, only Aigis and the hero remain.
+32.700	1.157	05.mp3	Aigis looks down.
+36.300	2.117	06.mp3	Aigis turns and walks out of the lounge.
+38.800	1.866	07.mp3	She walks down a dorm hallway alone.
+42.400	1.952	08.mp3	Her hand on her chest, she walks on.
