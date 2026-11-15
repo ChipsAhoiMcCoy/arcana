@@ -53,6 +53,8 @@ struct Walk {
   int body_replans = 0;
   bool body_tried = false;    // a navmesh walk blocked on the way asked the body for a way once
   bool use = false;           // press Space at the target once its prompt is up (walk_to's use)
+  ULONGLONG native_at = 0;    // direct movement began to be tried on this walk (while it is not known to work)
+  ULONGLONG touch_at = 0;     // the hero came to a stop with his body in the target's box (see tick)
 };
 static Walk g_w;
 static bool g_walking = false;
@@ -83,6 +85,27 @@ static void hold(uint32_t a, uint32_t b) {
   g_held[0] = a; g_held[1] = b;
 }
 static void release() { hold(0, 0); }
+
+// ---- steering ----
+// The walk moves the hero by asking his pawn to go along a world direction each frame (AddMovementInput), the way the
+// stick does after the game turns it by the camera: any angle, so the path is followed on its line rather than by
+// the nearest of eight key directions, and no camera stands between (the hero's room, whose fixed camera faces 108
+// degrees off north, ran every key walk into the walls, 2026-11-14). Whether the game takes it is seen on the first
+// walk; if it does not, the walk steers with the movement keys as before, for the rest of the session.
+enum class Drive { Auto, Native, Keys };
+static Drive g_drive = Drive::Auto;   // dev: /nav?drive=
+static int g_native = 0;              // direct movement: 0 not seen yet, 1 the hero moves by it, -1 ignored
+static bool native_on() { return g_drive == Drive::Native || (g_drive == Drive::Auto && g_native >= 0); }
+static bool body_clear(const FVector& a, const FVector& b, const FVector& me, float radius, float half);
+static void hero_body(float& radius, float& half);
+
+static void steer_keys(const FVector& me, const FVector& wp) {
+  // 8-way chord toward the waypoint, by the way the movement keys walk (world::move_yaw).
+  float b = world::camera_bearing(me, wp);
+  int sector = ((int)std::lround(b / 45.0f) % 8 + 8) % 8;
+  static const uint32_t chords[8][2] = {{'W', 0}, {'W', 'D'}, {'D', 0}, {'S', 'D'}, {'S', 0}, {'S', 'A'}, {'A', 0}, {'W', 'A'}};
+  hold(chords[sector][0], chords[sector][1]);
+}
 
 void stop(bool announce) {
   bool was = g_walking;
@@ -141,6 +164,19 @@ using world::trigger_box;
 // Height too: a door upstairs is right above a spot downstairs (the dorm's "Your Room", 2026-10-27). The hero's
 // location is about 90 cm above the floor; allow a step's worth more.
 static bool inside(const Box& b, const FVector& p, float margin) { return core::box_holds(b, world::vec3(p), margin, 150.0f); }
+
+// Where to head for the last of the way into a trigger box: its nearest point, 15 cm in from its side, not its centre.
+// A box that stands in the wall (the radiator in the hero's room, 2026-11-14) has its centre behind the wall: heading
+// there pressed the hero straight into it, 2 cm short of the box. Heading for its nearest point, he slides along the
+// wall into it. Already over it (only the height is off): its centre.
+static FVector box_aim(const Box& b, const FVector& me) {
+  Box in = b;
+  in.extent.x = std::max(0.0f, b.extent.x - 15.0f);
+  in.extent.y = std::max(0.0f, b.extent.y - 15.0f);
+  core::Vec3 p = core::box_nearest(in, world::vec3(me));
+  FVector at{p.x, p.y, me.z};
+  return flat(at, me) < 5.0f ? world::fvec(b.center) : at;
+}
 
 // ---- the ways in to a target that stands inside something solid ----
 // A teleporter's trigger is a 64 cm box in the middle of the device, between two walls and four corner pillars: the
@@ -238,7 +274,7 @@ constexpr float kBodyReach = 2500.0f;   // the furthest a walk plans with the bo
 static bool body_plan(const Goal& g, const FVector& me, std::vector<FVector>& out, std::string* report = nullptr, bool past_people = false) {
   float radius, half;
   hero_body(radius, half);
-  float yaw = world::camera_yaw() * 3.14159265f / 180.0f;
+  float yaw = world::move_yaw() * 3.14159265f / 180.0f;   // the legs follow the keys' eight directions
   FVector c = centre(g);
   float reach = flat(me, c) + 800.0f;
   float z = me.z + 10.0f, h = std::max(radius + 1.0f, half - 30.0f);
@@ -312,7 +348,9 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
   if (!refresh_path(me)) { speech::speak(strings::kNoPath, true); return; }
   g_walking = true;
   restart_progress(me, GetTickCount64());
-  // Nothing said on starting (the player's call, 2026-10-29): only arriving, stopping or getting stuck is spoken.
+  // Said on starting, so the player knows the walk has begun (the user's call, 2026-11-14; nothing was said from
+  // 2026-10-29). Arriving has no word of its own: the target's prompt says it.
+  speech::speak(strings::kAutoPathing, true);
 }
 
 // ---- round what the path runs into ----
@@ -399,12 +437,86 @@ static void face(ue::UObject* t, const FVector& me) {
   ue::call(hero, sp);
 }
 
+// Toward the waypoint this frame: directly, or by the keys where the game does not take that.
+static void steer(const FVector& me, const FVector& wp, ULONGLONG now) {
+  if (native_on()) {
+    float dx = wp.x - me.x, dy = wp.y - me.y, d = std::hypot(dx, dy);
+    release();   // no keys while steering directly (a fallback's chord let go)
+    if (d > 1.0f) world::add_move_input(FVector{dx / d, dy / d, 0.0f}, 1.0f);
+    if (g_native == 0 && g_drive == Drive::Auto && d > 1.0f) {
+      // Taken: the hero moves along the direction asked. Not taken: still, with nothing in his way that direction
+      // for 600 ms (a wall in the way decides nothing: the keys would not move him either).
+      if (!g_w.native_at) g_w.native_at = now;
+      FVector v{};
+      float speed = world::player_velocity(v) ? std::hypot(v.x, v.y) : 0.0f;
+      if (speed > 30.0f && (v.x * dx + v.y * dy) / (speed * d) > 0.5f) {
+        g_native = 1;
+        log::write("nav: the game takes direct movement: the walk steers at any angle");
+      } else if (now - g_w.native_at > 600) {
+        float radius, half;
+        hero_body(radius, half);
+        float k = std::min(d, 60.0f) / d;
+        if (body_clear(me, FVector{me.x + dx * k, me.y + dy * k, me.z}, me, radius, half)) {
+          g_native = -1;
+          log::write("nav: the game ignores direct movement: the walk steers with the movement keys");
+        } else {
+          g_w.native_at = now;   // blocked: look again
+        }
+      }
+    }
+    if (native_on()) return;
+  }
+  steer_keys(me, wp);
+}
+
 // The next waypoint not yet reached (the path's first point is our own projected position).
 static bool next_waypoint(const FVector& me, FVector& out) {
   while (g_w.path.size() > 1 && flat(g_w.path.front(), me) < kWaypointReached) g_w.path.erase(g_w.path.begin());
   if (g_w.path.empty()) return false;
   out = g_w.path.front();
   return true;
+}
+
+// ---- dev: how the game moves the hero (direct movement experiments) ----
+// /nav?sample=ms logs his movement state every 100 ms for that long; /nav?push=yaw&ms=[&force=1][&speed=cm/s]
+// asks his pawn to move along world yaw every frame for that long, then logs how far he went.
+static ULONGLONG g_sample_until = 0, g_sample_next = 0;
+static ULONGLONG g_push_until = 0;
+static float g_push_yaw = 0, g_push_speed = 0;
+static bool g_push_force = false;
+static FVector g_push_from{};
+static void dev_tick(ULONGLONG now) {
+  ue::UObject* hero = world::player();
+  if (!hero) return;
+  ue::UObject* cmc = ue::get<ue::UObject*>(hero, "CharacterMovement");
+  if (g_push_until) {
+    FVector me{};
+    world::player_location(me);
+    if (now >= g_push_until) {
+      g_push_until = 0;
+      log::writef("nav dev: push done, moved {:.0f} cm (from ({:.0f}, {:.0f}) to ({:.0f}, {:.0f}))", flat(g_push_from, me), g_push_from.x, g_push_from.y, me.x, me.y);
+    } else {
+      float r = g_push_yaw * 3.14159265f / 180.0f;
+      if (g_push_speed > 0 && cmc) if (float* m = ue::field<float>(cmc, "MaxWalkSpeed")) *m = g_push_speed;
+      ue::Params a(ue::find_function(ue::class_of(hero), "AddMovementInput"));
+      a.set<FVector>("WorldDirection", FVector{std::cos(r), std::sin(r), 0.0f});
+      a.set<float>("ScaleValue", 1.0f);
+      a.set<bool>("bForce", g_push_force);
+      ue::call(hero, a);
+    }
+  }
+  if (g_sample_until && now >= g_sample_next) {
+    if (now >= g_sample_until) { g_sample_until = 0; return; }
+    g_sample_next = now + 100;
+    FVector me{};
+    world::player_location(me);
+    auto v3 = [](ue::UObject* o, const char* n) { ue::FVector v = o ? ue::get<ue::FVector>(o, n) : ue::FVector{}; return std::format("({:.0f},{:.0f})", v.x, v.y); };
+    ue::Params ig(ue::find_function(ue::class_of(hero), "IsMoveInputIgnored"));
+    ue::call(hero, ig);
+    log::writef("nav dev: at ({:.0f}, {:.0f}) vel {} accel {} maxwalk {:.0f} ctlin {} lastin {} ignored {} held {:c}{:c}", me.x, me.y, v3(cmc, "Velocity"), v3(cmc, "Acceleration"),
+                cmc ? ue::get<float>(cmc, "MaxWalkSpeed") : -1.0f, v3(hero, "ControlInputVector"), v3(hero, "LastControlInputVector"), ig.ret<bool>(),
+                g_held[0] ? (char)g_held[0] : '-', g_held[1] ? (char)g_held[1] : '-');
+  }
 }
 
 void tick() {
@@ -418,6 +530,7 @@ void tick() {
   bool fighting = watch::get(battle) != nullptr;
   bool in_field = located && !blocking && !fighting;
   ULONGLONG now = GetTickCount64();
+  dev_tick(now);
   static const int gui = watch::want("BtlGuiStateManager");
   ue::UObject* g = watch::get(gui);
   bool battle_input = fighting && g && ue::get<uint8_t>(g, "nowState") != 0;
@@ -464,6 +577,21 @@ void tick() {
     Box box;
     bool has_box = trigger_box(t, box);
     bool arrived = has_box ? inside(box, me, -5.0f) : flat(goal, me) < kArrive;
+    // A box mostly inside the wall (the radiator and the mirror in the hero's room, 2026-11-14): the wall stops his
+    // middle 2 to 5 cm short of it, though his body is in it. Stopped there for a moment is arriving: turned to it, the
+    // game's prompt comes up (pressed still against the wall, he never turned, and the walk said "Stuck").
+    if (!arrived && has_box) {
+      float radius, half;
+      hero_body(radius, half);
+      FVector v{};
+      bool still = world::player_velocity(v) && std::hypot(v.x, v.y) < 60.0f;
+      if (inside(box, me, radius) && still) {
+        if (!g_w.touch_at) g_w.touch_at = now;
+        arrived = now - g_w.touch_at >= 250;
+      } else {
+        g_w.touch_at = 0;
+      }
+    }
     // A body plan ends beside a trigger inside the thing (the bookshelf's): its prompt coming up there is arriving, not
     // something to push on against.
     if (!arrived && g_w.body && g_w.path.size() <= 1 && poi::prompt() == g_w.name) { stop(false); arrived_at(); return; }
@@ -524,7 +652,7 @@ void tick() {
         core::Vec2 w = core::follow(core::Vec2{g_w.path[0].x, g_w.path[0].y}, core::Vec2{g_w.path[1].x, g_w.path[1].y}, core::Vec2{me.x, me.y}, 35.0f);
         wp = FVector{w.x, w.y, me.z};
       } else {
-        wp = has_box ? world::fvec(box.center) : goal;   // the plan's end is in the trigger: on into it
+        wp = has_box ? box_aim(box, me) : goal;   // the plan's end is in the trigger: on into it
       }
     } else if (!next_waypoint(me, wp)) { log::write("nav: stopped, no path"); stop(true); return; }
     if (g_w.body) {
@@ -539,7 +667,7 @@ void tick() {
       wp = FVector{w.x, w.y, me.z};
     } else if (g_w.path.size() == 1 && flat(wp, me) < kWaypointReached + 30.0f && has_box) {
       // The navmesh path ends where the floor ends (beside the bed); from its last point head straight for the box.
-      wp = world::fvec(box.center);
+      wp = box_aim(box, me);
     }
     // Somebody in the way is stepped round before the hero walks into them.
     FVector on_path = wp;
@@ -548,11 +676,7 @@ void tick() {
       log::writef("nav: someone in the way at ({:.0f}, {:.0f}), round via ({:.0f}, {:.0f})", me.x, me.y, g_w.side.x, g_w.side.y);
     }
     if (g_w.side_on) wp = g_w.side;
-    // 8-way chord toward the waypoint, camera-relative (the game's own movement is camera-relative too).
-    float b = world::camera_bearing(me, wp);
-    int sector = ((int)std::lround(b / 45.0f) % 8 + 8) % 8;
-    static const uint32_t chords[8][2] = {{'W', 0}, {'W', 'D'}, {'D', 0}, {'S', 'D'}, {'S', 0}, {'S', 'A'}, {'A', 0}, {'W', 'A'}};
-    hold(chords[sector][0], chords[sector][1]);
+    steer(me, wp, now);
     if (now - g_w.progress_at > 1500) {
       if (flat(me, g_w.progress_pos) < 40.0f) {
         // Blocked by the thing itself (a chest's collision) while its prompt is already up: that is arriving.
@@ -622,8 +746,10 @@ void tick() {
 }
 
 std::string status() {
-  return std::format("nav walking={} target='{}' path={} held={:c}{:c}\n", g_walking, g_w.name, g_w.path.size(),
-                     g_held[0] ? (char)g_held[0] : '-', g_held[1] ? (char)g_held[1] : '-');
+  static const char* drives[] = {"auto", "native", "keys"};
+  return std::format("nav walking={} target='{}' path={} held={:c}{:c} drive={} native={} steering={}\n", g_walking, g_w.name, g_w.path.size(),
+                     g_held[0] ? (char)g_held[0] : '-', g_held[1] ? (char)g_held[1] : '-', drives[(int)g_drive],
+                     g_native == 1 ? "taken" : g_native < 0 ? "ignored" : "not seen yet", native_on() ? "direct" : "keys");
 }
 
 // The mod is going (a hot reload): the walk's keys are let go. Left held, the game ran the hero on with nobody
@@ -690,6 +816,28 @@ void install() {
         walk_to(WeakObj::of(o), n.empty() ? ue::name_of(o) : n, use); });
     }
     if (dev::has(r, "stop")) hooks::run_on_game_thread([] { stop(true); });
+    if (dev::has(r, "sample")) {
+      ULONGLONG ms = (ULONGLONG)dev::arg_int(r, "sample", 2000);
+      hooks::run_on_game_thread([ms] { g_sample_until = GetTickCount64() + ms; g_sample_next = 0; });
+    }
+    if (dev::has(r, "push")) {
+      float yaw = (float)dev::arg_num(r, "push", 0), speed = (float)dev::arg_num(r, "speed", 0);
+      ULONGLONG ms = (ULONGLONG)dev::arg_int(r, "ms", 1000);
+      bool force = dev::arg(r, "force") == "1";
+      hooks::run_on_game_thread([yaw, speed, ms, force] {
+        g_push_yaw = yaw; g_push_speed = speed; g_push_force = force;
+        world::player_location(g_push_from);
+        g_push_until = GetTickCount64() + ms;
+      });
+    }
+    if (dev::has(r, "drive")) {
+      // How the walk steers: auto (directly once the game is seen to take it, else keys), native, keys.
+      std::string d = dev::arg(r, "drive");
+      hooks::run_on_game_thread([d] {
+        g_drive = d == "native" ? Drive::Native : d == "keys" ? Drive::Keys : Drive::Auto;
+        if (g_drive == Drive::Auto) g_native = 0;
+      });
+    }
     if (dev::has(r, "map")) {
       // Where the hero's body fits, as a character map round him (`map` = half width in cm, `cell` cm): . fits,
       // # blocked, p a person, @ the hero. North (+x) is up, +y to the right.
@@ -750,7 +898,8 @@ void install() {
         hero_body(radius, half);
         std::vector<ue::UObject*> people;
         FVector c = centre(g);
-        std::string s = std::format("target ({:.0f}, {:.0f}, {:.0f}) box={} hero ({:.0f}, {:.0f}) body {:.1f} x {:.1f}\nstraight in from here: {}\n", c.x, c.y, c.z,
+        std::string s = g.has_box ? std::format("box extent ({:.0f}, {:.0f}, {:.0f}) yaw {:.0f}\n", g.box.extent.x, g.box.extent.y, g.box.extent.z, g.box.yaw) : std::string();
+        s += std::format("target ({:.0f}, {:.0f}, {:.0f}) box={} hero ({:.0f}, {:.0f}) body {:.1f} x {:.1f}\nstraight in from here: {}\n", c.x, c.y, c.z,
                                     g.has_box, me.x, me.y, radius, half, sweep_reaches(g, me, me, radius, half, people) ? "clear" : "blocked");
         LARGE_INTEGER a, z, f;
         QueryPerformanceCounter(&a);
@@ -762,6 +911,6 @@ void install() {
       return *out;
     }
     return status();
-  }, "?walk=objindex [&use=1: press Space there] | ?stop=1 the auto-walk | ?plan=objindex the ways in to a target | ?body=objindex the way between the furniture");
+  }, "?walk=objindex [&use=1: press Space there] | ?stop=1 the auto-walk | ?drive=auto|native|keys how it steers | ?plan=objindex the ways in to a target | ?body=objindex the way between the furniture");
 }
 }  // namespace p3a::nav

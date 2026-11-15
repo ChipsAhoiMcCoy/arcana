@@ -12,6 +12,7 @@
 #include "core/strings.h"
 #include "core/text_clean.h"
 #include "msg.h"
+#include "nav.h"
 #include "party.h"
 #include "screens/util.h"
 #include "seh.h"
@@ -134,6 +135,12 @@ void prompt_tick() {
   std::string& last = g_prompt;
   static WeakObj prompt_of;   // the point of interest that prompt belongs to; none for a party member's
   std::string label = misc_check_label();
+  // During an auto-walk the prompts of things passed on the way are not said: they came up for whatever the hero
+  // brushed past, and read as if the walk had got there (the user's call, 2026-11-14). The walk still sees them
+  // (nav reads prompt() for its target's). When it ends, the prompt up then is said as usual: the target's on arrival.
+  static bool walked = false;
+  if (nav::walking()) { last = label; prompt_of = {}; walked = true; return; }
+  if (walked) { walked = false; last.clear(); prompt_of = {}; }
   if (label == last) return;
   if (label.empty()) {
     // The prompt hides and shows again while the hero closes in on the thing or person (Mitsuru's was said five times

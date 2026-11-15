@@ -472,6 +472,7 @@ inline constexpr const char* kNoPath = "No path";
 inline constexpr const char* kNoPathInRoom = "No path, though it is in this room";
 inline constexpr const char* kStuck = "Stuck, stopping";
 inline constexpr const char* kStopped = "Stopped";
+inline constexpr const char* kAutoPathing = "Auto-pathing";
 inline constexpr const char* kNotInField = "Not in the field";
 inline constexpr const char* kObjective = "Objective";
 inline constexpr const char* kNoObjective = "No objective shown yet";

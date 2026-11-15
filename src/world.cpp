@@ -27,6 +27,10 @@ static float listener_yaw() { return g_north_on ? g_north_yaw : g_cam_yaw; }
 void set_north(bool on, float yaw) { g_north_on = on; g_north_yaw = yaw; }
 bool north_up() { return g_north_on; }
 float camera_yaw() { return g_cam_yaw; }
+// The top-down mode holds the game's walking direction to north (topdown.cpp hold_walk) whatever camera shows the
+// field: the movement keys go by that, not by the view. The hero's room has a fixed camera at yaw 108 with north at 0,
+// and the auto-walk steered 108 degrees off into the walls (2026-11-14).
+float move_yaw() { return g_north_on ? g_north_yaw : g_cam_yaw; }
 
 // The field player: one BP_FldPlayer_C per mode (DAILY, DUNGEON, ENCOUNT) exists at once; the inactive ones are
 // parked far below the map (z = -3200 measured at Iwatodai Station, 2026-10-27).
@@ -91,6 +95,32 @@ bool player_velocity(FVector& out) {
   if (!call(p, v)) return false;
   out = v.ret<FVector>();
   return true;
+}
+
+// The hero's running speed, cm/s: FldCharSpeed{Walk, Run, Dash, Assault} on his field component (Daily: Walk 260,
+// Run 625, measured in the dorm 2026-11-14). The game's own movement sets CharacterMovement.MaxWalkSpeed from it each
+// frame its input is held, and back to 0 when it is not: input from anyone else, with the speed left at 0, moves
+// nobody (the first try at direct movement, "ignored", 2026-11-14).
+static float run_speed(UObject* p) {
+  for (const char* comp : {"FldPlayerDailyComp", "FldPlayerDungeonComp"}) {
+    UObject* c = get<UObject*>(p, comp);
+    if (float* s = c ? field<float>(c, "SpeedData") : nullptr)
+      if (s[1] > 0.0f) return s[1];   // Run
+  }
+  return 625.0f;
+}
+
+bool add_move_input(const FVector& dir, float scale) {
+  UObject* p = player();
+  if (!p) return false;
+  UFunction* fn = find_function(class_of(p), "AddMovementInput");
+  if (!fn) return false;
+  if (UObject* cmc = get<UObject*>(p, "CharacterMovement"))
+    if (float* m = field<float>(cmc, "MaxWalkSpeed")) *m = run_speed(p) * std::clamp(scale, 0.0f, 1.0f);
+  Params a(fn);
+  a.set<FVector>("WorldDirection", dir);
+  a.set<float>("ScaleValue", scale);
+  return call(p, a);
 }
 
 bool player_input(FVector& out) {
@@ -326,7 +356,7 @@ bool capsule_of(UObject* actor, float& radius, float& half_height) {
 // Bearing of `to` from `from` in degrees, from the listener's facing (north in the top-down mode, else the camera's):
 // 0 ahead, 90 right, 180 behind, -90 left.
 float bearing(const FVector& from, const FVector& to) { return core::bearing(vec3(from), vec3(to), listener_yaw()); }
-float camera_bearing(const FVector& from, const FVector& to) { return core::bearing(vec3(from), vec3(to), g_cam_yaw); }
+float camera_bearing(const FVector& from, const FVector& to) { return core::bearing(vec3(from), vec3(to), move_yaw()); }
 
 // The hero's location is the capsule's middle and most targets (navmesh points, hit boxes) sit near the floor: see
 // core::listener_spot for how height is counted.

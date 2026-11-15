@@ -202,7 +202,7 @@ Points of interest come in categories, each listed nearest first, empty ones ski
 
 A point is read with its name, distance, clock direction (12 o'clock is where pushing forward walks; in top-down mode, the compass) and position: "Iwatodai Station, 6 meters, 2 o'clock, 1 of 3". The category is said first when you change it or open the controller layer. Only the part of the map you are in is listed, on your floor; past a closed door is listed once you go through. Tartarus lists its whole floor.
 
-Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
+Auto-walk says "Auto-pathing" as it sets off. On the way, prompts for things you pass are not read; the one up when the walk ends is, so arriving reads the target's as usual. Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
 
 With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone, repeating at its distance's rhythm from where it is, however far, while the mod's other sounds go quiet. This lasts about 3 seconds (or while you hold the triggers) and ends once you walk.
 

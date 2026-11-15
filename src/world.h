@@ -27,6 +27,9 @@ bool player_velocity(FVector& out);   // the hero's velocity (AActor::GetVelocit
 // Where the player is asking the hero to go (APawn::GetLastMovementInputVector, world space, length 0..1): the stick,
 // the keys and the auto-walk alike, even while a wall stops the hero dead.
 bool player_input(FVector& out);
+// Ask the hero to move along a world direction this frame (APawn::AddMovementInput), as the stick does but in any
+// direction and with no camera between: the auto-walk's way to steer. Called every frame it should move.
+bool add_move_input(const FVector& dir, float scale = 1.0f);
 // Unit vectors on the ground plane for a listener-relative direction: 0 ahead, 1 right, 2 behind, 3 left (north,
 // east, south, west in the top-down mode).
 FVector dir_vector(int dir);
@@ -57,9 +60,11 @@ bool project_to_nav(const ue::FVector& p, float extent, ue::FVector& out);   // 
 std::vector<ue::FVector> find_path(const ue::FVector& from, const ue::FVector& to, bool* partial = nullptr);
 // Degrees from the listener's facing (north in the top-down mode, else the camera's), 0 ahead, 90 right.
 float bearing(const ue::FVector& from, const ue::FVector& to);
-// Degrees from the camera's facing whatever the mode: where the game's own movement keys go (the auto-walk).
+// Degrees from where the game's own movement keys face (the auto-walk): north while the top-down mode holds the walk
+// to it, else the camera's facing.
 float camera_bearing(const ue::FVector& from, const ue::FVector& to);
 float camera_yaw();
+float move_yaw();   // the yaw the movement keys walk by (W along it): see camera_bearing
 // The top-down mode (topdown.cpp): while on, sounds, bearings and dir_vector face `yaw` (north), not the camera.
 void set_north(bool on, float yaw);
 bool north_up();

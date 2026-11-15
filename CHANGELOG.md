@@ -8,7 +8,14 @@
 - Settings and logs are now in `%LOCALAPPDATA%\Arcana`, and the log is `arcana.log`. The old `%LOCALAPPDATA%\P3RAccess` folder, with your settings, is moved there the first time the game starts.
 - The download is now `arcana-<version>.zip`, from https://github.com/ChipsAhoiMcCoy/arcana.
 
+### Auto-walk
+- It says "Auto-pathing" when it sets off.
+- It moves the hero straight along its way at any angle, as a stick held exactly that way would, instead of the nearest of the eight directions the movement keys give: it keeps to narrow ways between furniture, takes the shortest line, and no camera angle can turn it off course. If the game does not take this, the walk goes back to the movement keys by itself.
+- Things set into the wall, whose spot the hero can only reach the edge of (the radiator and the mirror in your room), are arrived at: the walk said "Stuck" a step away from them.
+- Prompts for things passed on the way are no longer read, so they are not taken for arriving. The prompt up when the walk ends is read as before.
+
 ### Fixes
+- In the top-down mode the auto-walk no longer runs into the walls where the game's camera does not face north (your room in the dorm): it steered by the camera while the hero walks by the compass, and said "Stopped" or "Stuck" short of the desk, bed and closet.
 - A mail is no longer read again after you answer its reply choice (the part-time job's mail was read a second time as the loading began). An item notice or a "Stats up!" panel with a message window over it is not read again either when the window closes.
 - Back on that mail after its reply choice, when the game leaves you on it (turning down a hangout), its sender and title are said: it was silent.
 - The "Stats up!" panel ends with "Next", or the sound chosen in the Voice end sound setting, once A or Cross continues.
