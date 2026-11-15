@@ -1,0 +1,6 @@
+#scene LS_Event_Main_120_200_C
+0.500	2.843	00.mp3	The hero lies face down on a rough, rippled floor.
+4.600	1.958	01.mp3	He pushes himself up onto one knee.
+9.200	1.157	02.mp3	He gets to his feet.
+14.400	2.513	03.mp3	A boy in striped pajamas forms from shadow.
+21.900	2.291	04.mp3	The boy dissolves into shadow and is gone.

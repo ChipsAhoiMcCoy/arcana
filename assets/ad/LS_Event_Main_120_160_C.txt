@@ -1,0 +1,3 @@
+#scene LS_Event_Main_120_160_C
+2.200	1.619	00.mp3	Both point at the board on the wall.
+6.800	1.094	01.mp3	The hero nods.

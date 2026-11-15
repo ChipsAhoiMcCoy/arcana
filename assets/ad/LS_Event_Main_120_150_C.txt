@@ -1,0 +1,10 @@
+#scene LS_Event_Main_120_150_C
+0.100	2.021	00.mp3	The hero and Yukari walk into a hall.
+3.300	1.154	01.mp3	Yukari freezes.
+5.600	1.843	02.mp3	They run and hide behind a pillar.
+8.500	2.208	03.mp3	A flashlight beam sweeps across the floor.
+11.400	1.059	04.mp3	The beam moves on.
+12.900	1.540	05.mp3	The hero turns to Yukari.
+20.500	1.427	06.mp3	Yukari checks her phone.
+22.300	1.025	07.mp3	She puts it away.
+23.900	1.094	08.mp3	The hero nods.
