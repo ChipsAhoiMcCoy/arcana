@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_400_020_C
+0.050	1.116	00.mp3	A hospital room.
+2.400	1.297	01.mp3	The hero sits on a bed.
+13.400	2.252	02.mp3	Ikutsuki turns and steps out of the room.

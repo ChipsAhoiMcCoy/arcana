@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_320_010_C
+0.050	0.929	00.mp3	The school gate.
+2.770	1.274	01.mp3	Junpei and the hero.
+4.550	1.164	02.mp3	They walk on together.

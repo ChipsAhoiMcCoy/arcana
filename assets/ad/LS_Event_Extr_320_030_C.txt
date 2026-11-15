@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_320_030_C
+0.050	3.188	00.mp3	The classroom. The hero sits at his desk near two girls.

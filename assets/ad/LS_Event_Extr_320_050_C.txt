@@ -1,0 +1,6 @@
+#scene LS_Event_Extr_320_050_C
+0.050	0.929	00.mp3	The school gate.
+2.650	2.663	01.mp3	Yukari stops by the hero. He turns to her.
+5.680	1.004	02.mp3	Ryoji arrives.
+12.200	1.283	03.mp3	Yukari turns away.
+13.800	0.913	04.mp3	She walks off.

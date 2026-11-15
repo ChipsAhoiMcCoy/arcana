@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Extr_400_025_C",
+ "title": "The Shadow on the bridge",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A giant Shadow."
+  },
+  {
+   "at": 4.4,
+   "text": "The battle begins."
+  }
+ ]
+}

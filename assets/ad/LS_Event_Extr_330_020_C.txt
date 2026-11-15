@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_330_020_C
+0.050	0.774	00.mp3	A classroom.

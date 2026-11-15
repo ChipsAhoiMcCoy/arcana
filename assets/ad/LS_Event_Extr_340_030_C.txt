@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_340_030_C
+0.050	0.979	00.mp3	A school hallway.
+4.100	1.498	01.mp3	Students crowd before a wall.
+5.900	1.628	02.mp3	The hero edges in among them.

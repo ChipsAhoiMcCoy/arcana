@@ -1,0 +1,5 @@
+#scene LS_Event_Extr_400_070_C
+1.750	2.293	00.mp3	A man in a dark suit walks up to the hero.
+5.600	1.422	01.mp3	The hero scratches his head.
+9.400	1.127	02.mp3	The man walks away.
+12.900	2.540	03.mp3	Across the plaza, he waits by a staircase.

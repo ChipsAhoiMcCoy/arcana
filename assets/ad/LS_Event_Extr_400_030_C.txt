@@ -1,0 +1,6 @@
+#scene LS_Event_Extr_400_030_C
+6.780	2.301	00.mp3	The hero joins Aigis and Koromaru.
+9.550	1.240	01.mp3	Aigis turns to him.
+13.400	1.451	02.mp3	Koromaru turns to the hero.
+16.400	1.094	03.mp3	The hero nods.
+20.050	3.102	04.mp3	The hero crouches beside Koromaru, who pants happily.

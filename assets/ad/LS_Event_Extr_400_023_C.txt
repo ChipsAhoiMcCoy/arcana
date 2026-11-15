@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_400_023_C
+1.700	1.621	00.mp3	A clock: 11:59.

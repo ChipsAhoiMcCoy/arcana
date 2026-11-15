@@ -1,0 +1,3 @@
+#scene LS_Event_Extr_400_025_C
+0.000	1.016	00.mp3	A giant Shadow.
+4.400	1.096	01.mp3	The battle begins.

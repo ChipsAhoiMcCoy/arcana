@@ -1,0 +1,5 @@
+#scene LS_Event_Extr_400_010_C
+0.000	1.184	00.mp3	The hero walks in.
+2.000	2.011	01.mp3	Ikutsuki, Junpei and Yukari.
+21.050	2.646	02.mp3	Akihiko and Fuuka come over to the sofas.
+29.550	1.022	03.mp3	Everyone sweats.

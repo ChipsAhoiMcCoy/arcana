@@ -1,0 +1,3 @@
+#scene LS_Event_Extr_400_060_C
+0.000	2.187	00.mp3	Takaya looks out at a suspension bridge.
+15.900	0.938	01.mp3	Jin smiles.

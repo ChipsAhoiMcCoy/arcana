@@ -1,0 +1,9 @@
+#scene LS_Event_Extr_400_037_C
+2.520	1.533	00.mp3	Takaya faces the hero.
+8.850	1.403	01.mp3	Takaya opens a hand.
+13.700	1.600	02.mp3	Takaya rests a hand on his hip.
+26.900	2.599	03.mp3	Takaya walks over to stand at the hero's shoulder.
+30.300	2.509	04.mp3	He leans in close, gesturing with one hand.
+34.800	1.656	05.mp3	Takaya turns and walks away.
+36.900	1.597	06.mp3	The hero takes out his phone.
+41.520	1.426	07.mp3	He nods to Koromaru.
