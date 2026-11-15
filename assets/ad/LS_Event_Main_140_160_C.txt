@@ -1,0 +1,3 @@
+#scene LS_Event_Main_140_160_C
+0.400	2.704	00.mp3	Palm trees line a beach beside a wooden boardwalk.
+4.500	3.431	01.mp3	Akihiko, the hero and Junpei walk up in swimsuits.
