@@ -1,0 +1,11 @@
+#scene LS_Event_Main_200_250_C
+0.300	3.399	00.mp3	The hero's room. Ryoji stands by the window, eyes closed.
+3.900	2.316	01.mp3	He opens his eyes and turns to the hero.
+8.700	1.056	02.mp3	They sit on the bed.
+15.000	2.028	03.mp3	The hero gestures toward Ryoji.
+49.400	2.650	04.mp3	Ryoji stands and walks to the middle of the room.
+54.000	1.236	05.mp3	He turns to the hero.
+55.700	2.689	06.mp3	A blue glow bursts from his chest and engulfs him.
+58.700	2.497	07.mp3	A winged, masked figure floats in his place.
+98.400	3.546	08.mp3	The figure bursts into sparks, and Ryoji stands there again.
+103.200	1.524	09.mp3	Ryoji touches his chin.

@@ -1,0 +1,6 @@
+#scene LS_Event_Main_200_220_C
+0.100	1.575	00.mp3	The hero stands in his room.
+2.050	1.996	01.mp3	He turns, hands in his pockets.
+7.200	1.158	02.mp3	He crosses the room.
+8.600	1.427	03.mp3	Yukari is at his door.
+11.050	1.058	04.mp3	Yukari waves.

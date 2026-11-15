@@ -1,0 +1,5 @@
+#scene LS_Event_Main_200_260_C
+0.200	1.981	00.mp3	Ryoji and the hero join the others.
+19.500	3.112	01.mp3	Ryoji walks to the doorway, then turns back to the group.
+26.600	1.510	02.mp3	Ryoji walks out the door.
+31.700	0.992	03.mp3	Everyone nods.

@@ -1,0 +1,12 @@
+#scene LS_Event_Main_200_230_B
+0.050	0.956	00.mp3	The dorm lounge.
+7.500	1.293	01.mp3	She faces the hero.
+22.500	0.964	02.mp3	Aigis stands.
+40.550	1.334	03.mp3	Aigis sits down again.
+44.250	1.418	04.mp3	Aigis closes her eyes.
+46.100	0.958	05.mp3	A white flash.
+47.400	2.779	06.mp3	Her Persona, Palladion, floats in empty space.
+50.550	1.130	07.mp3	It fades to white.
+52.000	4.518	08.mp3	A new Persona appears: a masked woman with a lance and a huge round shield.
+57.900	1.515	09.mp3	Rays burst out behind her.
+60.300	2.553	10.mp3	Back in the lounge, Aigis sits with the others.

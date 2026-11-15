@@ -1,0 +1,26 @@
+{
+ "movie": "LS_Event_Main_200_180_B",
+ "title": "The group argues over Ryoji",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The dorm lounge."
+  },
+  {
+   "at": 22.05,
+   "text": "Junpei is on his feet, arms flung wide."
+  },
+  {
+   "at": 32.7,
+   "text": "Yukari faces Junpei."
+  },
+  {
+   "at": 42.4,
+   "text": "Junpei stands alone in the middle of the room."
+  },
+  {
+   "at": 47.05,
+   "text": "The others stay seated."
+  }
+ ]
+}

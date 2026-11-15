@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Main_200_190_C",
+ "title": "Mitsuru visits Yukari",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Yukari sits on her bed."
+  },
+  {
+   "at": 4.9,
+   "text": "Mitsuru steps into the room."
+  },
+  {
+   "at": 6.6,
+   "text": "Yukari turns to face her."
+  },
+  {
+   "at": 14.45,
+   "text": "Later, they sit on the bed."
+  }
+ ]
+}

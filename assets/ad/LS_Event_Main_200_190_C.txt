@@ -1,0 +1,5 @@
+#scene LS_Event_Main_200_190_C
+0.050	1.466	00.mp3	Yukari sits on her bed.
+4.900	1.487	01.mp3	Mitsuru steps into the room.
+6.600	1.541	02.mp3	Yukari turns to face her.
+14.450	1.409	03.mp3	Later, they sit on the bed.
