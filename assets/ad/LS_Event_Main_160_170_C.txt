@@ -1,0 +1,3 @@
+#scene LS_Event_Main_160_170_C
+0.100	1.772	00.mp3	Junpei walks along a sidewalk.
+2.600	1.268	01.mp3	He stops and turns.

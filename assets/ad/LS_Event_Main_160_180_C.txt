@@ -1,0 +1,7 @@
+#scene LS_Event_Main_160_180_C
+0.050	1.762	00.mp3	The team surrounds Fuuka's Persona.
+5.400	1.012	01.mp3	Ken hurries in.
+12.000	2.079	02.mp3	Fuuka's Persona bursts into sparks.
+17.100	1.755	03.mp3	Everyone turns and files out.
+19.900	2.208	04.mp3	Shinjiro stays behind with the hero.
+26.550	1.805	05.mp3	Shinjiro walks past the hero.

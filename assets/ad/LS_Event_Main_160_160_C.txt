@@ -1,0 +1,5 @@
+#scene LS_Event_Main_160_160_C
+0.000	1.329	00.mp3	Chidori sits sketching.
+20.750	1.224	01.mp3	Chidori stands up.
+27.600	1.772	02.mp3	Chidori walks off past Junpei.
+31.600	1.431	03.mp3	Junpei pumps his fist.

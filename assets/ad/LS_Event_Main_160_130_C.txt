@@ -1,0 +1,3 @@
+#scene LS_Event_Main_160_130_C
+0.100	2.269	00.mp3	In class, the hero takes out his phone.
+4.200	1.230	01.mp3	He puts the phone away.

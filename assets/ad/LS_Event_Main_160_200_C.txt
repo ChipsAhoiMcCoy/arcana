@@ -1,0 +1,4 @@
+#scene LS_Event_Main_160_200_C
+0.050	1.826	00.mp3	Junpei falls flat on his face.
+4.550	1.195	01.mp3	Chidori looks down.
+10.250	1.339	02.mp3	Junpei hangs his head.

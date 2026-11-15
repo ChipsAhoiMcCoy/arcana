@@ -1,0 +1,6 @@
+#scene LS_Event_Main_160_240_C
+0.100	1.762	00.mp3	Junpei kneels before Chidori.
+15.750	2.178	01.mp3	Chidori raises an Evoker to her head.
+23.720	1.641	02.mp3	Akihiko grabs the Evoker.
+30.350	1.147	03.mp3	Aigis steps over.
+31.750	1.641	04.mp3	Aigis holds Chidori still.

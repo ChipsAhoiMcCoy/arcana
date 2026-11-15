@@ -1,0 +1,2 @@
+#scene LS_Event_Main_160_140_C
+5.000	2.923	00.mp3	Akihiko heads out the gate. The hero follows.
