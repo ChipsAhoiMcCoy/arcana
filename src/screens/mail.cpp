@@ -132,17 +132,30 @@ class MailScreen : public MenuScreen {
   // An open mail is read whole when it opens; its keys (reply, next, scroll) are the game's.
   bool holds_keys() override { UObject* d = draw_.get(); return d && !flag(d, "bIsStartMailAnim"); }
   std::string title() override { return strings::kMail; }
-  // Back from the thought and reply choice over an open mail: it was read already (and the game may be closing it).
+  // Back from the thought and reply choice over an open mail: it was read already, so not again whole. The game may
+  // be closing it (the part-time job's mail as the trip's loading begins); if it is still open a moment later, the
+  // player is left on it (turning down a hangout, 2026-11-14): its sender and title say where they are.
+  ULONGLONG back_at_ = 0;
+  static constexpr ULONGLONG kBackWaitMs = 400;
   void on_enter() override {
+    back_at_ = 0;
     if (!screens::returning()) { reading_ = false; said_.clear(); }
+    else if (reading_) back_at_ = GetTickCount64();
     screens::set_keys(strings::kMailKeys);
   }
-  void on_leave() override { if (!active()) { reading_ = false; said_.clear(); } }   // closed, not covered
+  void on_leave() override { back_at_ = 0; if (!active()) { reading_ = false; said_.clear(); } }   // closed, not covered
   void on_tick() override {
     UObject* d = draw_.get();
     auto* si = field<int32_t>(d, "SelectedIndex");
     if (!si) return;
     bool reading = flag(d, "bIsStartMailAnim");
+    if (back_at_ && !reading) back_at_ = 0;   // back on the list: the list's own entry says it
+    if (back_at_ && GetTickCount64() - back_at_ >= kBackWaitMs) {
+      back_at_ = 0;
+      Mail m = mail(d, *si);
+      std::string s = m.sender.empty() ? m.title : m.sender + ". " + m.title;
+      if (!s.empty()) say(s, true);
+    }
     if (reading && !reading_) {
       Mail m = mail(d, *si);
       // Not laid out yet: wait for it while the list flips to the mail (bIsFlipToMainAnim, cleared by the flip's

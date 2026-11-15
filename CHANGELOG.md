@@ -10,6 +10,8 @@
 
 ### Fixes
 - A mail is no longer read again after you answer its reply choice (the part-time job's mail was read a second time as the loading began). An item notice or a "Stats up!" panel with a message window over it is not read again either when the window closes.
+- Back on that mail after its reply choice, when the game leaves you on it (turning down a hangout), its sender and title are said: it was silent.
+- The "Stats up!" panel ends with "Next", or the sound chosen in the Voice end sound setting, once A or Cross continues.
 
 ## 0.2.0
 

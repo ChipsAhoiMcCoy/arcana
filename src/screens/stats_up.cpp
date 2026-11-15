@@ -5,8 +5,10 @@
 #include "screens/screen.h"
 #include "screens/util.h"
 #include "core/strings.h"
+#include "settings.h"
 #include "speech.h"
 #include "stats.h"
+#include "voice.h"
 #include <format>
 
 namespace p3a::screens {
@@ -37,15 +39,28 @@ class StatsUpScreen : public Screen {
   // names it, the entry does not again. The key that closes the panel is the screen's key help (F1), not part of
   // either line.
   // The panel is made for one showing: the same one entered again (back from a window over it) was said already.
+  // Once read, the panel takes OK (state 6, as active() asks): the setting VoiceEndSound's cue says so, as at the
+  // end of a voiced line. "Next" is queued behind the reading; a sound waits for the reading to finish.
   WeakObj spoken_;
+  bool cue_due_ = false, cue_spoke_ = false;
   void enter() override {
     screens::set_keys(strings::kSpaceContinues);
     WeakObj d = WeakObj::of(draw_.get());
     if (d == spoken_) return;
     spoken_ = d;
     speech::speak(line(false), true);
+    int end = settings::get(settings::VoiceEndSound);
+    if (end == settings::EndNext) speech::speak(strings::kNext, false);
+    cue_due_ = end != settings::EndNext && end != settings::EndOff;
+    cue_spoke_ = false;
   }
-  void leave() override { if (!active()) stats::up_shown(); }   // closed (not covered): its rise has been shown
+  void tick() override {
+    if (!cue_due_) return;
+    int sp = speech::speaking();
+    if (sp == 1) cue_spoke_ = true;
+    if (sp == -1 || (cue_spoke_ && sp == 0)) { voice::play_end_sound(); cue_due_ = false; }
+  }
+  void leave() override { cue_due_ = false; if (!active()) stats::up_shown(); }   // closed (not covered): its rise has been shown
   std::string describe() override { return line(true); }
 };
 
