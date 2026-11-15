@@ -33,6 +33,11 @@ bool g_press_armed = false;
 std::optional<ui::ControlId> g_press_on;   // the focus when it was pressed
 void armed_press();
 uint64_t g_frame = 0;
+// A press the game answers on its own (a confirm, a cancel, a bumper or trigger switching the category, page or member):
+// until its landing (or this frame) the graph is rebuilt every frame, so the new list is read the frame the game shows
+// it, not on the next idle rebuild (~100 ms; the items' category switch lagged behind the bumper, 2026-11-14).
+uint64_t g_eager_until = 0;
+constexpr uint64_t kEagerFrames = 45;   // ~0.75 s at 60 fps: the game's own switch animations land well within it
 std::optional<ui::ControlId> g_move_from;   // the focus before the player's key: a landing on it again is an edge
 void move_sound();
 
@@ -123,6 +128,7 @@ void player_moved() {
 void armed_press() {
   g_press_armed = true;
   g_press_on = nav().focused_id();
+  g_eager_until = g_frame + kEagerFrames;
 }
 
 // A direction or the confirm, from the keyboard or the pad: whether the menu took it (false: it is the game's).
@@ -137,7 +143,17 @@ bool nav_press(std::string_view action) {
   return activatable() && n.on_action(Activate);
 }
 
+bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached);
+// A key the menu leaves to the game while it has focus (Q / E switching the category, a page key, the game's Tab) is
+// a press the game answers with a new list or line: armed like a confirm, its landing interrupts and comes at once.
 bool on_key(uint32_t vk, int mods, bool repeat) {
+  bool reached = false;
+  bool taken = on_key_inner(vk, mods, repeat, reached);
+  if (reached && !taken && !repeat && g_active) armed_press();
+  return taken;
+}
+
+bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
   // Ctrl+Up / Ctrl+Down: the details of what is in focus (a battle's units, a menu row that has some). Elsewhere the
   // keys stay the game's.
   if (mods == keys::Ctrl && (vk == VK_UP || vk == VK_DOWN) && battle_details::in_focus()) {
@@ -172,6 +188,7 @@ bool on_key(uint32_t vk, int mods, bool repeat) {
   struct HeldEnd { ~HeldEnd() { g_held_repeat = false; } } held_end;
   g_device = 0;
   player_moved();
+  reached = true;
   if (mods == keys::None && (vk == VK_RETURN || vk == VK_SPACE || vk == VK_ESCAPE || vk == VK_BACK)) armed_press();
   using namespace ui::ui_actions;
   auto& n = nav();
@@ -277,6 +294,13 @@ void pad_tick(bool on) {
     g_pad_next = t + 450;
   }
   if (b_pressed || (pressed & XINPUT_GAMEPAD_A)) armed_press();   // after pad_button: a move clears it
+  // Any other new press of the pad's (LB / RB, a trigger, X, Y: input.cpp counts them) reached the game, which answers
+  // it with a new list (the items' categories): armed like the confirm, so the landing interrupts and comes at once.
+  static uint64_t pad_seen = 0;
+  uint64_t pc = input::pad_count();
+  bool other = pc != pad_seen && !fresh && !pressed && !b_pressed && !input::layer_open();
+  pad_seen = pc;
+  if (other) armed_press();
   if (pressed) return;
   g_pad_held = now;
   uint16_t dirs = now & (kPadMask & ~XINPUT_GAMEPAD_A);
@@ -608,6 +632,7 @@ void MenuScreen::tick() {
   bool keys = true;
   guarded([&] { keys = holds_keys(); });
   if (!keys) return;   // something of the game's is over the menu: no reads, no driving
+  if (g_press_armed && g_frame < g_eager_until) nav().invalidate();
   nav().ensure_focus();
   MenuHost::sync(*this);
 }
