@@ -124,12 +124,16 @@ std::string field_busy() {
   UObject* sub = watch::get(sub_id);
   if (!sub) return "no field manager";
   if (auto ev = field<UObject*>(sub, "mFieldEventActor_"); ev && *ev) return "a field event is running";
-  if (auto pc = field<UObject*>(sub, "mPlayerComp_"); !pc || !*pc) return "the hero is not placed";
-  if (!ue::known_build()) return "";   // the state's vtable is this build's
+  bool placed = false;
+  if (auto pc = field<UObject*>(sub, "mPlayerComp_"); pc && *pc) placed = true;
+  if (!ue::known_build()) return placed ? "" : "the hero is not placed";   // the state's vtable is this build's
   uintptr_t vt = 0;
   if (!guarded([&] { if (auto st = *(uint8_t**)((uint8_t*)sub + 0x48)) vt = *(uintptr_t*)st; })) return "the field state is unreadable";
   uintptr_t rva = vt ? vt - scan::exe_base() : 0;
+  // Idle with no hero: no field is loaded (an event played bare ended where it began, 2026-11-15); a field change is
+  // what a script does next there. Otherwise a missing hero is the change still under way.
   if (rva == 0x42b7548) return "";
+  if (!placed) return "the hero is not placed";
   // 0x42b76c8 / 0x42b7718 (FUN_1411b4bf0 / FUN_1411b4590): the area's init script runs (a floor's arrival message waits
   // for a press there: Fuuka's on Tartarus 50, 2026-11-12).
   if (rva == 0x42b76c8 || rva == 0x42b7718) return "its init script is running";
