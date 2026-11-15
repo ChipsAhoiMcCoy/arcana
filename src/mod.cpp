@@ -154,6 +154,7 @@ void init(bool speech_ok) {
 void shutdown() {
   if (!g_ue_up) return;
   hooks::set_tick_callback(nullptr);
+  msg::save_history();   // after the last tick: the game thread no longer adds to it
   topdown::shutdown();
   audio::shutdown();
   watch::remove();

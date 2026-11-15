@@ -130,6 +130,10 @@ static void wait_for_key(void* page, bool after_speech) { g_wait_page = page; g_
 // The page whose voice began (cleared by the next page), and whether that voice has ended since (Current::voice_done).
 static void* g_voiced_page = nullptr;
 static bool g_voiced_done = false;
+// A hot reload's carry-over (save_history / load_history): the page whose voice had begun before the unload and whether
+// it had ended. The first reading after the load is that page again, and keeps that state once (the log's skip).
+static void* g_carried_page = nullptr;
+static bool g_carried_done = false;
 // The speaker is named only when the speaker changes: Junpei's second line in a row is read without "Junpei:". A line
 // with no speaker (narration, a notice) ends the run, and so does the end of the message session (a new conversation).
 static std::string g_last_speaker;
@@ -190,7 +194,9 @@ static bool declares_voice(void* page, bool any = false) { return declared_cue(p
 static void say_dialogue(const std::string& line, const std::string& who, const std::string& kind, void* page, bool cue) {
   if (g_hush) return;
   g_wait_page = nullptr;   // the page before moved on
-  g_voiced_page = nullptr; g_voiced_done = false;
+  if (page && page == g_carried_page) { g_voiced_page = page; g_voiced_done = g_carried_done; }
+  else { g_voiced_page = nullptr; g_voiced_done = false; }
+  g_carried_page = nullptr;
   g_ffwd_line.clear();
   if (g_ffwd && cue) {   // dialogue and thoughts only: navigator lines and subtitles are read as ever
     g_pending.active = false;
@@ -603,7 +609,54 @@ static std::string raw_dump() {
   return out;
 }
 
+// The record lives in this DLL, so a hot reload (a new copy loaded into the same game) began it empty and the game's
+// log read "from before this session" for every entry (2026-11-14). The unload writes it to a file named for the game's
+// process; the next load in that process reads it back and deletes it. A new game finds no file of its own.
+static std::wstring history_file() {
+  wchar_t tmp[MAX_PATH];
+  DWORD n = GetTempPathW(MAX_PATH, tmp);
+  return std::wstring(tmp, n) + L"arcana_log_" + std::to_wstring(GetCurrentProcessId()) + L".bin";
+}
+void save_history() {
+  std::string out = std::format("{:x}\n{}\n", (uintptr_t)g_voiced_page, g_voiced_done ? 1 : 0);
+  for (auto& l : g_history) { out += l; out += '\0'; }
+  HANDLE f = CreateFileW(history_file().c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, FILE_ATTRIBUTE_TEMPORARY, nullptr);
+  if (f == INVALID_HANDLE_VALUE) return;
+  DWORD w = 0;
+  WriteFile(f, out.data(), (DWORD)out.size(), &w, nullptr);
+  CloseHandle(f);
+  log::writef("msg: {} log records kept for the next load", g_history.size());
+}
+static void load_history() {
+  std::wstring path = history_file();
+  HANDLE f = CreateFileW(path.c_str(), GENERIC_READ, 0, nullptr, OPEN_EXISTING, 0, nullptr);
+  if (f == INVALID_HANDLE_VALUE) return;
+  std::string in;
+  LARGE_INTEGER size{};
+  if (GetFileSizeEx(f, &size) && size.QuadPart > 0 && size.QuadPart < (16 << 20)) {
+    in.resize((size_t)size.QuadPart);
+    DWORD r = 0;
+    if (!ReadFile(f, in.data(), (DWORD)in.size(), &r, nullptr)) r = 0;
+    in.resize(r);
+  }
+  CloseHandle(f);
+  DeleteFileW(path.c_str());
+  size_t a = in.find('\n'), b = a == std::string::npos ? a : in.find('\n', a + 1);
+  if (b == std::string::npos) return;
+  g_carried_page = (void*)std::strtoull(in.substr(0, a).c_str(), nullptr, 16);
+  g_carried_done = in.substr(a + 1, b - a - 1) == "1";
+  g_history.clear();
+  for (size_t i = b + 1; i < in.size();) {
+    size_t e = in.find('\0', i);
+    if (e == std::string::npos) break;
+    g_history.push_back(in.substr(i, e - i));
+    i = e + 1;
+  }
+  log::writef("msg: {} log records carried over from the last load", g_history.size());
+}
+
 bool install() {
+  load_history();
   uintptr_t b = scan::exe_base();
   uintptr_t a = scan::find_unique("4C 8B DC 55 57 41 54 49 8D AB ?? ?? ?? ?? 48 81 EC C0 01 00 00 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 85 ?? ?? ?? ?? 45 33 E4 48 89 54 24 ??");
   set_renderer((void*)a);

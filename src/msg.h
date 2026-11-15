@@ -57,4 +57,6 @@ std::string page_string(void* page);   // an FCurrentBmdPage rendered and cleane
 // Every line of dialogue and thought spoken this session and each answer chosen, oldest first (what the game's
 // log lists; game thread).
 const std::vector<std::string>& history();
+// A hot reload keeps the record: the unload writes it for the next copy of the mod in this game (install reads it).
+void save_history();
 }  // namespace p3a::msg
