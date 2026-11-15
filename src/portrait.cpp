@@ -46,12 +46,12 @@ std::vector<Found> shown_now() {
 }
 }  // namespace
 
-bool describe() {
+std::string description() {
   // Only while someone is talking: a portrait belongs to a message window (or the pause between two of one scene).
   msg::Current c = msg::current();
-  if (!c.open && !msg::session_open()) return false;
+  if (!c.open && !msg::session_open()) return "";
   std::vector<Found> found = shown_now();
-  if (found.empty()) return false;
+  if (found.empty()) return "";
   std::string said;
   for (auto& f : found) {
     std::string d = cp::describe(f.shown);
@@ -62,8 +62,7 @@ bool describe() {
     if (!said.empty()) said += " ";
     said += d;
   }
-  speech::speak(said, true);
-  return true;
+  return said;
 }
 
 void install() {

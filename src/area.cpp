@@ -8,6 +8,7 @@
 //   their sets; the dorm's Christmas tree is its own object (BP_F102_102_Christmas, shown or hidden by the game).
 #include "area.h"
 #include "flow.h"
+#include "msg.h"
 #include "core/area_text.h"
 #include "core/strings.h"
 #include "devserver.h"
@@ -92,7 +93,17 @@ static ca::Scene scene(std::vector<std::string>* levels_out = nullptr) {
 }
 
 void describe() {
-  if (portrait::describe()) return;   // talking to someone: the character, not the place
+  // Talking to someone: the character first; pressed again on the same line, the place behind them; again, the
+  // character (2026-11-14). A new line or portrait starts over with the character.
+  static std::string last_portrait;
+  std::string p = portrait::description();
+  if (!p.empty()) p += '\x1f' + msg::current().text;
+  if (!p.empty() && p != last_portrait) {
+    last_portrait = p;
+    speech::speak(p.substr(0, p.find('\x1f')), true);
+    return;
+  }
+  last_portrait.clear();
   if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
   std::string d = ca::describe(scene());
   speech::speak(d.empty() ? std::string(strings::kNoAreaDescription) + " " + poi::area_name() : d, true);
