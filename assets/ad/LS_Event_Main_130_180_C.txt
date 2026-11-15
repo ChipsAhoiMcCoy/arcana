@@ -1,0 +1,4 @@
+#scene LS_Event_Main_130_180_C
+0.300	3.504	00.mp3	The hero walks along the empty street, hands in his pockets.
+4.600	3.443	01.mp3	At a railing above, the three strangers from the alley look down.
+18.550	1.333	02.mp3	The pale man smiles.

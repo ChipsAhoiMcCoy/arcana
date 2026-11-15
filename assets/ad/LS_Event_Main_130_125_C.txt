@@ -1,0 +1,2 @@
+#scene LS_Event_Main_130_125_C
+3.800	1.094	00.mp3	The hero nods.

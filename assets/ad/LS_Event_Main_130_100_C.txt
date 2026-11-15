@@ -1,0 +1,2 @@
+#scene LS_Event_Main_130_100_C
+2.050	1.592	00.mp3	Fuuka stands at the consoles.
