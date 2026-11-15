@@ -106,3 +106,29 @@ TEST_CASE("declared_cue gives the voice function's cue") {
   CHECK(declared_cue(none, sizeof none) == 0);
   CHECK(declared_cue(nullptr, 0) == 0);
 }
+
+TEST_CASE("declared_voice_type tells a reaction from a whole voiced line") {
+  using p3a::core::declared_voice_type;
+  using p3a::core::voices_whole_line;
+  // AST_DNG_MONORAIL_10, Junpei's "Alright, bring on the big one!": type 3 (04 01), third argument 00 00, cue 2110
+  // (47 09): a voice_singleword reaction.
+  const uint8_t reaction[] = {0xFE, 0xF7, 0x61, 0x04, 0x01, 0x01, 0x01, 0x00, 0x00, 0x47, 0x09, 0x01, 0x01, 0x01, 0x01, 'A'};
+  CHECK(declared_voice_type(reaction, sizeof reaction) == p3a::core::kReactionVoice);
+  CHECK_FALSE(voices_whole_line(reaction, sizeof reaction));
+  // Tartarus chatter: type 2 (03 01), a Voice_Dungeon line.
+  const uint8_t chatter[] = {0xFE, 0xF7, 0x61, 0x03, 0x01, 0x01, 0x01, 0x02, 0x01, 0x47, 0x09, 0x01, 0x01, 0x01, 0x01, 'A'};
+  CHECK(declared_voice_type(chatter, sizeof chatter) == 2);
+  CHECK(voices_whole_line(chatter, sizeof chatter));
+  // Story dialogue: type 1 (02 01).
+  const uint8_t story[] = {0xFE, 0xF7, 0x61, 0x02, 0x01, 0x01, 0x01, 0x01, 0x01, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01, 'H', 'i'};
+  CHECK(declared_voice_type(story, sizeof story) == 1);
+  // No cue, no voice function, or another function first.
+  const uint8_t no_cue[] = {0xFE, 0xF7, 0x61, 0x04, 0x01, 0x01, 0x01, 0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 'A'};
+  CHECK(declared_voice_type(no_cue, sizeof no_cue) == -1);
+  CHECK_FALSE(voices_whole_line(no_cue, sizeof no_cue));
+  const uint8_t text[] = {'H', 'i', 0};
+  CHECK(declared_voice_type(text, sizeof text) == -1);
+  const uint8_t second[] = {0xFE, 0xF2, 0x25, 0x05, 0x01, 0xFE, 0xF7, 0x61, 0x04, 0x01, 0x01, 0x01, 0x00, 0x00, 0x02, 0x02, 0x01, 0x01, 0x01, 0x01, 'A'};
+  CHECK(declared_voice_type(second, sizeof second) == 3);
+  CHECK(declared_voice_type(nullptr, 0) == -1);
+}

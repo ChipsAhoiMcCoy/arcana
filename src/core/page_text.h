@@ -37,4 +37,15 @@ bool declares_voice(const uint8_t* data, size_t size, bool any = false);
 // The cue that voice function names (its fourth argument: first byte - 1, plus 255 times the second byte - 1), 0 when
 // the page declares no voice.
 int declared_cue(const uint8_t* data, size_t size, bool any = false);
+// The voice function's first argument (its type) when it names a cue, -1 when the page declares no voice. Read from
+// the field's support talk (BMD_FldSupport_*) against the cue sheets' durations (2026-11-15): types 1 and 2 play from
+// Voice_Dungeon (whole lines); type 3 (bytes 04 01, with a third argument stored 00 00) plays from voice_singleword,
+// a reaction of half a second to a second and a half ("Hm!", a laugh) whose cue serves unrelated sentences.
+int declared_voice_type(const uint8_t* data, size_t size);
+constexpr int kReactionVoice = 3;
+// A page whose voice speaks its whole line: it declares one, of any type but a reaction.
+inline bool voices_whole_line(const uint8_t* data, size_t size) {
+  int t = declared_voice_type(data, size);
+  return t >= 0 && t != kReactionVoice;
+}
 }  // namespace p3a::core

@@ -72,4 +72,13 @@ int declared_cue(const uint8_t* d, size_t size, bool any) {
   return 0;
 }
 bool declares_voice(const uint8_t* d, size_t size, bool any) { return declared_cue(d, size, any) != 0; }
+int declared_voice_type(const uint8_t* d, size_t size) {
+  if (declared_cue(d, size, true) == 0) return -1;
+  for (size_t i = 0; i + 4 < size && d[i] == 0xFE;) {   // the same walk: find the function declared_cue found
+    int argc = (d[i + 1] & 0x0F) - 1;
+    if (d[i + 2] == 0x61 && argc >= 4) return (d[i + 3] - 1) + (d[i + 4] - 1) * 255;
+    i += 3 + (size_t)argc * 2;
+  }
+  return -1;
+}
 }  // namespace p3a::core

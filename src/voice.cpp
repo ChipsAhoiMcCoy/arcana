@@ -78,7 +78,6 @@ uint64_t started(int cue) {
   for (size_t i = g_starts.size(); i-- > 0;) if (g_starts[i].cue == cue) return g_starts[i].n;
   return 0;
 }
-uint64_t start_count() { return g_start_count; }
 bool playing() { return g_playing; }
 
 // Cues of the system sheet (CriData/CueSheet/system, read 2026-10-29): 5 "page", 9 "message", 0 "Sys_Cursor".
