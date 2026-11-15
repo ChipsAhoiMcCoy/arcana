@@ -1,0 +1,10 @@
+#scene LS_Event_Main_140_340_C
+2.550	1.438	00.mp3	The boys stand on the beach.
+4.800	1.563	01.mp3	The girls walk up with Aigis.
+13.700	1.767	02.mp3	Junpei and Aigis have run off.
+17.450	2.738	03.mp3	Yukari laughs. She and Aigis walk off together.
+23.100	1.577	04.mp3	Fuuka and Mitsuru follow.
+25.000	2.528	05.mp3	Ikutsuki joins the hero and Akihiko.
+34.950	1.745	06.mp3	Aigis blasts Junpei with water.
+38.900	1.528	07.mp3	Junpei lands on his back.
+47.700	1.524	08.mp3	Junpei lies face down.

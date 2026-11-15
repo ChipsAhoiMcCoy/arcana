@@ -1,0 +1,4 @@
+#scene LS_Event_Main_140_280_C
+2.100	2.857	00.mp3	Junpei strolls up to the woman. The others follow.
+28.000	1.083	01.mp3	The hero bolts.
+33.100	1.664	02.mp3	The woman is left standing alone.

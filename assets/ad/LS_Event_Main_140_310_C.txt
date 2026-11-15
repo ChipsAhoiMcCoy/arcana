@@ -1,0 +1,11 @@
+#scene LS_Event_Main_140_310_C
+0.600	3.247	00.mp3	A blonde girl in a long dress stands alone by the sea.
+4.250	2.582	01.mp3	Junpei, Akihiko and the hero watch her.
+18.750	2.444	02.mp3	Junpei stretches, then walks up to the girl.
+28.050	2.231	03.mp3	Junpei freezes, then trudges back.
+32.400	3.303	04.mp3	Akihiko pats the hero's head and walks over to her.
+39.400	2.573	05.mp3	Akihiko freezes, then rejoins the others.
+46.750	1.656	06.mp3	Akihiko rubs his forehead.
+50.200	1.679	07.mp3	The hero walks over to the girl.
+53.100	1.692	08.mp3	The hero murmurs something to her.
+58.400	2.526	09.mp3	She spins around and runs off past the hero.

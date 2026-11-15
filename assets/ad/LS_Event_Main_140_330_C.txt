@@ -1,0 +1,4 @@
+#scene LS_Event_Main_140_330_C
+4.300	1.597	00.mp3	Aigis walks over to the group.
+6.800	1.052	01.mp3	The others flinch.
+25.200	1.168	02.mp3	Junpei recoils.

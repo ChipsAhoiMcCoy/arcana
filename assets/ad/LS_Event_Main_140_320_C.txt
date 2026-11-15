@@ -1,0 +1,8 @@
+#scene LS_Event_Main_140_320_C
+0.300	2.485	00.mp3	The hero walks along a forest path and stops.
+6.600	3.025	01.mp3	The blonde girl stands by a tree, then walks toward him.
+15.100	2.403	02.mp3	She steps close and hugs the hero tightly.
+18.400	1.862	03.mp3	Junpei and Akihiko run up.
+24.700	0.958	04.mp3	Fuuka follows.
+33.400	1.440	05.mp3	Mitsuru stands with Fuuka.
+38.400	1.384	06.mp3	She lets go of the hero.

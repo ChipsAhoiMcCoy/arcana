@@ -1,0 +1,2 @@
+#scene LS_Event_Main_140_290_C
+14.400	2.053	00.mp3	The hero turns and looks off to the side.
