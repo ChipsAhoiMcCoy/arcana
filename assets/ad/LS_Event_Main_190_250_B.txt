@@ -1,0 +1,13 @@
+#scene LS_Event_Main_190_250_B
+1.100	4.152	00.mp3	On a riverbank below wooden terraces, Yukari walks away from Mitsuru.
+16.850	1.411	01.mp3	Yukari slaps Mitsuru.
+20.100	2.677	02.mp3	Mitsuru holds her cheek. People stroll past.
+25.700	1.130	03.mp3	Both stand still.
+39.500	1.873	04.mp3	Yukari walks off along the path.
+41.800	1.993	05.mp3	Mitsuru stays, a hand on her hip.
+47.200	1.434	06.mp3	Mitsuru closes her eyes.
+48.850	4.274	07.mp3	Her Persona appears, an armored woman with a crown and blades for arms.
+53.400	3.478	08.mp3	It becomes a masked woman with spiked wings and a wide skirt.
+59.100	2.070	09.mp3	A long whip of bone hangs from her hand.
+61.400	2.574	10.mp3	Back on the path, sparks sink into Mitsuru's chest.
+64.200	1.839	11.mp3	She stands still as people pass.

@@ -1,0 +1,2 @@
+#scene LS_Event_Main_190_305_C
+3.520	2.600	00.mp3	In a hallway, Akihiko and the hero turn.

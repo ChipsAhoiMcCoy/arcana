@@ -1,0 +1,2 @@
+#scene LS_Event_Main_190_200_C
+1.400	1.518	00.mp3	The hero sits on his bed.

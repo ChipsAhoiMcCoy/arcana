@@ -1,0 +1,8 @@
+#scene LS_Event_Main_190_330_C
+3.100	4.408	00.mp3	Akihiko, Ryoji, Junpei and the hero sit on a bench in the lobby.
+12.950	2.060	01.mp3	Yukari, Fuuka and Aigis walk up.
+16.750	1.983	02.mp3	The girls stand before them, silent.
+19.000	3.274	03.mp3	Yukari turns and walks off. Fuuka and Aigis follow.
+29.400	1.112	04.mp3	Mitsuru walks in.
+31.000	2.189	05.mp3	She passes the bench with her eyes closed.
+35.750	1.078	06.mp3	Junpei slumps.

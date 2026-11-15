@@ -1,0 +1,7 @@
+#scene LS_Event_Main_190_290_C
+4.050	1.612	00.mp3	The boys soak in a hot spring.
+14.600	1.753	01.mp3	Suddenly, all four boys startle.
+19.250	3.436	02.mp3	Mitsuru, Yukari and Fuuka walk in wearing towels, with Aigis.
+23.340	0.970	03.mp3	The boys stand.
+33.680	1.129	04.mp3	Junpei gags him.
+42.400	1.067	05.mp3	All four freeze.

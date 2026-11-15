@@ -1,0 +1,4 @@
+#scene LS_Event_Main_190_190_C
+0.000	1.347	00.mp3	Mitsuru stands at a fence.
+25.950	2.573	01.mp3	Mitsuru walks off past Ryoji and Yukari.
+29.300	2.251	02.mp3	Yukari and Ryoji watch her leave.

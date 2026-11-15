@@ -1,0 +1,4 @@
+#scene LS_Event_Main_190_320_C
+3.050	3.888	00.mp3	Akihiko, Ryoji, Junpei and the hero sit on a lobby bench.
+12.900	2.112	01.mp3	Yukari, Fuuka and Aigis walk up.
+22.600	3.165	02.mp3	Yukari smiles, and the girls walk on past the bench.

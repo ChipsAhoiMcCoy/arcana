@@ -1,0 +1,3 @@
+#scene LS_Event_Main_190_310_C
+1.880	1.364	00.mp3	The boys face the girls.
+7.400	2.182	01.mp3	Mitsuru points at the boys. They freeze.
