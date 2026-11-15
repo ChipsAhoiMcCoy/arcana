@@ -16,11 +16,19 @@ std::string moon_mark(int age) {
 
 const char* weekday_name(int weekday) { return weekday >= 0 && weekday < 7 ? strings::kWeekdays[weekday] : ""; }
 
+static const char* ordinal_suffix(int n) {
+  if (n % 100 >= 11 && n % 100 <= 13) return "th";
+  switch (n % 10) { case 1: return "st"; case 2: return "nd"; case 3: return "rd"; default: return "th"; }
+}
+
+// "Wednesday Evening, May 8th" (the player's order, 2026-11-14), then the holiday.
 std::string date_text(int month, int day, int weekday, bool holiday, std::string_view time_of_day) {
   if (month < 1 || month > 12) return {};
-  std::string s = std::format("{} {}, {}", strings::kMonths[month], day, weekday_name(weekday));
+  std::string s = weekday_name(weekday);
+  if (!time_of_day.empty()) { if (!s.empty()) s += ' '; s += time_of_day; }
+  if (!s.empty()) s += ", ";
+  s += std::format("{} {}{}", strings::kMonths[month], day, ordinal_suffix(day));
   if (holiday) s += std::string(", ") + strings::kHoliday;
-  if (!time_of_day.empty()) { s += ", "; s += time_of_day; }
   return s;
 }
 }  // namespace p3a::core

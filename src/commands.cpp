@@ -27,9 +27,9 @@
 namespace p3a::commands {
 static void where_am_i() {
   if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
-  std::string s = poi::area_name();
-  std::string date = calendar::describe(calendar::now());
-  if (!date.empty()) s += ". " + date;
+  // The date first, then the area (the player's order, 2026-11-14).
+  std::string s = calendar::describe(calendar::now());
+  if (std::string area = poi::area_name(); !area.empty()) s += (s.empty() ? "" : ". ") + area;
   if (int m = stats::money(); m >= 0) s += std::format(". {} {}", m, strings::kYen);
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();

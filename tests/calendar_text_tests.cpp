@@ -40,16 +40,24 @@ TEST_CASE("calendar_text: weekdays from Sunday") {
   CHECK(std::string(weekday_name(-1)).empty());
 }
 
-TEST_CASE("calendar_text: a date, with its holiday and time of day when there are any") {
-  CHECK(date_text(4, 6, 1, false, "") == "April 6, Monday");
-  CHECK(date_text(4, 6, 1, false, "Late Night") == "April 6, Monday, Late Night");
-  CHECK(date_text(4, 29, 3, true, "Daytime") == "April 29, Wednesday, holiday, Daytime");
-  CHECK(date_text(12, 31, 4, true, "") == "December 31, Thursday, holiday");
-  CHECK(date_text(1, 1, 5, false, "") == "January 1, Friday");
+TEST_CASE("calendar_text: a date, weekday and time of day first, then the holiday") {
+  CHECK(date_text(5, 8, 3, false, "Evening") == "Wednesday Evening, May 8th");
+  CHECK(date_text(4, 6, 1, false, "") == "Monday, April 6th");
+  CHECK(date_text(4, 6, 1, false, "Late Night") == "Monday Late Night, April 6th");
+  CHECK(date_text(4, 29, 3, true, "Daytime") == "Wednesday Daytime, April 29th, holiday");
+  CHECK(date_text(12, 31, 4, true, "") == "Thursday, December 31st, holiday");
+  CHECK(date_text(1, 1, 5, false, "") == "Friday, January 1st");
+  CHECK(date_text(1, 2, 5, false, "") == "Friday, January 2nd");
+  CHECK(date_text(1, 3, 5, false, "") == "Friday, January 3rd");
+  CHECK(date_text(1, 11, 5, false, "") == "Friday, January 11th");
+  CHECK(date_text(1, 12, 5, false, "") == "Friday, January 12th");
+  CHECK(date_text(1, 13, 5, false, "") == "Friday, January 13th");
+  CHECK(date_text(1, 22, 5, false, "") == "Friday, January 22nd");
 }
 
-TEST_CASE("calendar_text: a weekday out of range leaves its place empty; a month out of range gives nothing") {
-  CHECK(date_text(4, 6, 9, false, "") == "April 6, ");
+TEST_CASE("calendar_text: a weekday out of range leaves it out; a month out of range gives nothing") {
+  CHECK(date_text(4, 6, 9, false, "") == "April 6th");
+  CHECK(date_text(4, 6, 9, false, "Evening") == "Evening, April 6th");
   CHECK(date_text(0, 6, 1, false, "").empty());
   CHECK(date_text(13, 6, 1, false, "").empty());
 }
