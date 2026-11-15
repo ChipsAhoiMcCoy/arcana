@@ -1,0 +1,2 @@
+#scene LS_Event_Main_210_115_C
+0.500	2.744	00.mp3	In a classroom, the hero faces two classmates.

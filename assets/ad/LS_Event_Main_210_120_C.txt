@@ -1,0 +1,8 @@
+#scene LS_Event_Main_210_120_C
+0.100	1.587	00.mp3	The hero walks onto the roof.
+3.200	1.408	01.mp3	Aigis stands at the fence.
+5.650	2.045	02.mp3	She turns, and the hero walks closer.
+10.300	1.810	03.mp3	Aigis turns back toward the fence.
+15.450	1.706	04.mp3	Aigis turns to face him again.
+17.950	2.076	05.mp3	The hero scratches the back of his head.
+22.550	2.059	06.mp3	The hero nods. Aigis smiles.

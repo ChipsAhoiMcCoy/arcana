@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_210_050_C",
+ "title": "Rooftop with Yukari and Junpei",
+ "cues": [
+  {"at": 5.70,  "text": "Yukari turns to face the rooftop fence."},
+  {"at": 35.86, "text": "All three nod."},
+  {"at": 40.53, "text": "Junpei throws up a hand and leans away."}
+ ]
+}

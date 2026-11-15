@@ -1,0 +1,6 @@
+#scene LS_Event_Main_210_080_C
+0.600	3.044	00.mp3	A classroom. The hero and Junpei sit near Yukari.
+3.900	1.112	01.mp3	Mitsuru walks in.
+8.850	1.217	02.mp3	The hero stands up.
+10.600	2.500	03.mp3	Mitsuru walks out, and the hero follows her.
+15.000	2.002	04.mp3	Junpei and Yukari stay behind.

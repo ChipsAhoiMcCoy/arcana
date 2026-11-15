@@ -1,0 +1,3 @@
+#scene LS_Event_Main_210_070_C
+1.350	1.193	00.mp3	At a ramen counter.
+8.860	3.075	01.mp3	Aigis gets up and fetches a magazine from the counter.

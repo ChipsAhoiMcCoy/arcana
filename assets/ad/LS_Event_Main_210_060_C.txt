@@ -1,0 +1,2 @@
+#scene LS_Event_Main_210_060_C
+0.100	1.786	00.mp3	Dorm lobby. Junpei walks up.

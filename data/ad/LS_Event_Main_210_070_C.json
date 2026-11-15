@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_210_070_C",
+ "title": "The magazine at Hagakure",
+ "cues": [
+  {"at": 1.35,  "text": "At a ramen counter."},
+  {"at": 8.86,  "text": "Aigis gets up and fetches a magazine from the counter."}
+ ]
+}

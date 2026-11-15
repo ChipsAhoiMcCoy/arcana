@@ -1,0 +1,5 @@
+#scene LS_Event_Main_210_090_C
+3.400	1.949	00.mp3	The hero rubs the back of his head.
+6.900	2.256	01.mp3	Mitsuru's phone buzzes. She answers it.
+10.600	1.145	02.mp3	She lowers the phone.
+18.800	1.548	03.mp3	Junpei turns and runs out.

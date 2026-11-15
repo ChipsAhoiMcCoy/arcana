@@ -1,0 +1,5 @@
+#scene LS_Event_Main_210_100_C
+4.700	3.815	00.mp3	Chidori sits up in bed. Mitsuru, Junpei and the hero walk in.
+45.300	3.182	01.mp3	The hero nods. Junpei stays by Chidori's bed.
+51.300	2.224	02.mp3	The hero and Mitsuru step out to the door.
+55.300	1.438	03.mp3	Mitsuru folds her arms.
