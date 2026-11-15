@@ -63,7 +63,7 @@ static void screen_keys() {
   }
   else if (world::player()) {
     k = std::string(strings::kFieldKeys()) + " " + (poi::tartarus_floor() > 0 ? std::string(strings::kTartarusKeys()) + " " : std::string());
-    // The mod's walk that uses its point: Shift+Enter, or on a controller RT on the top-down scan's point.
+    // The mod's walk that uses its point: Shift+Period, or on a controller RT on the top-down scan's point.
     if (!strings::pad_hints()) k += std::string(strings::kFieldWalkUseKeys) + " ";
     else if (topdown::active()) k += std::string(strings::kPadScanKeys) + " ";
     k += strings::kModKeysHint();
@@ -78,7 +78,7 @@ static void pad_layer() {
   if (!screens::current() && !msg::current().blocking && world::player()) poi::announce_list();
 }
 
-// Shift+Enter: the walk, then Space at the point once its prompt is up (Grim Dark's "walk there and use it").
+// Shift+Period: the walk, then Space at the point once its prompt is up (Grim Dark's "walk there and use it").
 static void walk_and_use() {
   if (!world::exploring()) { speech::speak(strings::kNotInField, true); return; }
   poi::Poi p;
@@ -100,6 +100,7 @@ static void walk_selected() {
   if (!poi::selected(p)) { speech::speak(strings::kNothingSelected, true); return; }
   nav::walk_to(p.obj, p.name);
 }
+
 
 void install() {
   using namespace keys;
@@ -124,7 +125,13 @@ void install() {
   // After Grim Dark's review keys: its ; (the reviewed thing again) and Enter (walk there and use it). Shift, as the
   // mod's other second keys: Ctrl is the game's (messages, attack).
   bind(VK_OEM_1, Shift, "poi.again", strings::kKeyHelpPoiAgain, selected_again);                                // Shift+;
-  bind(VK_RETURN, Shift, "nav.use", strings::kKeyHelpWalkUse, walk_and_use);                                     // Shift+Enter
+  bind(VK_OEM_COMMA, None, "poi.nearest", strings::kKeyHelpPoiNearest, [] { poi::cycle_nearest(1); }, true);      // ,
+  bind(VK_OEM_COMMA, Shift, "poi.nearest.prev", strings::kKeyHelpPoiNearestPrev, [] { poi::cycle_nearest(-1); }, true);   // Shift+,
+  // Period walks to the selection, beside Comma that chooses it; Shift+Period walks and uses it (Grim Dark's
+  // walk-there-and-use, Shift+Enter until 2026-11-14; the user's call). The game binds neither Comma nor Period
+  // (Config/DefaultInput.ini has them only in its unused pad emulation, PM_R2 / PM_R3).
+  bind(VK_OEM_PERIOD, None, "nav.walk.period", strings::kKeyHelpWalk, walk_selected);                             // .
+  bind(VK_OEM_PERIOD, Shift, "nav.use", strings::kKeyHelpWalkUse, walk_and_use);                                  // Shift+.
   // The same keys on a controller: hold both triggers, then (input.cpp keeps these buttons from the game meanwhile).
   struct PadKey { const char* name; uint16_t button; };
   const PadKey pad[] = {

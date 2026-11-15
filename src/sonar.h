@@ -26,6 +26,11 @@ void selected(const poi::Poi& p);  // the list chose this point: the focus until
 void stick(const poi::Poi* p);     // the right stick's scan points at p (null: at nothing): the focus while it is held,
                                    // whatever the settings
 void stick_off();                  // the stick let go
+// Grim Dark's route ping (its world.cpp ping_reviewed), played once from where p is whenever something is focused (the
+// list, Shift+Semicolon, the right stick), sonar on or off: review_straight.wav when the hero can see it and walk
+// straight there, review_path.wav when the walk goes round something, review_unreachable.wav when there is no way.
+// selected() and stick() play it; the focus's own sound starts once it has ended.
+void ping(const poi::Poi& p);
 // The settings menu changed `id`: the sound that shows the change (a kind's own, or one at the new volume), played
 // straight ahead. False when the option has no sound to show.
 bool preview(settings::Id id);

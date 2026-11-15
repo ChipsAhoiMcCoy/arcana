@@ -5,6 +5,7 @@
 #include "core/sonar_field.h"
 #include "core/strings.h"
 #include "devserver.h"
+#include "doors.h"
 #include "input.h"
 #include "log.h"
 #include "speech.h"
@@ -14,6 +15,7 @@
 #include <chrono>
 #include <cmath>
 #include <format>
+#include <map>
 #include <memory>
 #include <vector>
 
@@ -222,6 +224,65 @@ double now_s() {
 }
 void silence() { g_field.reset(); g_sources.clear(); g_scan_at = 0; }
 
+// ---- the route ping (Grim Dark's world.cpp: route_kind, play_route_sound) ----
+// Its rule in this game's centimetres: no complete navmesh path, or one ending away from the thing, is unreachable; a
+// path no longer than the straight line * 1.2 + 1 m to a thing in sight is straight; anything else goes round. The
+// mod's own ways of reaching things count as they do for the walk (nav.cpp): a closed door between is unreachable, the
+// body's way round a room's furniture (or to something near with no navmesh path) is a path.
+constexpr float kRouteReachCm = 300.0f;      // the path's end to the thing (poi.cpp's walkable: a thing is listed so)
+constexpr float kRouteFloorCm = 250.0f;      // the path's end to the thing in height: more, it never got to that floor
+constexpr float kRouteDirectRatio = 1.2f;    // Grim Dark's kRouteDirectRatio
+constexpr float kRouteDirectSlackCm = 100.0f;   // Grim Dark's kRouteDirectSlack (1 unit)
+constexpr float kRouteBodyCm = 2500.0f;      // nav.cpp's kBodyReach: the walk finds its own way this near
+// Grim Dark's gain for a placed cue: ref / (ref + distance), never under the floor (its ear_frame: 10 units, 0.2).
+constexpr float kPingRefM = 10.0f, kPingFloor = 0.2f;
+double g_ping_end = 0;   // when the last ping ends: the focus's own sound waits for it
+
+float flat_cm(const FVector& a, const FVector& b) { return std::hypot(a.x - b.x, a.y - b.y); }
+
+// The hero sees it: a line from his eyes to it meets nothing but the thing (people are looked past, as doors.cpp does).
+bool in_sight(ue::UObject* thing, const FVector& me, const FVector& at) {
+  FVector a{me.x, me.y, me.z + 60.0f}, b{at.x, at.y, at.z + 50.0f};
+  float len = std::sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y) + (b.z - a.z) * (b.z - a.z));
+  std::vector<ue::UObject*> people;
+  world::Hit hit = world::line(a, b, "Pawn", &people);
+  return !hit.hit || (thing && hit.actor == thing) || hit.distance > len - 100.0f;
+}
+
+const char* route_kind(const poi::Poi& p, const FVector& me) {
+  ue::UObject* t = p.obj.resolve();
+  const FVector at = t ? world::actor_location(t) : p.loc;
+  if (t) {
+    doors::Way way = doors::walk_way(t, me, at);
+    if (way == doors::Way::behind) return "unreachable";
+    if (way == doors::Way::in_room) return "path";
+  }
+  bool partial = false;
+  FVector beside{};
+  auto path = world::find_path(me, at, &partial);
+  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(me, beside, &partial);
+  const bool close_by = flat_cm(me, at) < kRouteBodyCm && std::fabs(me.z - at.z) < kRouteFloorCm;   // on this floor
+  if (path.empty() || partial) return close_by ? "path" : "unreachable";
+  const FVector& end = path.back();
+  if (flat_cm(end, at) > kRouteReachCm || std::fabs(end.z - at.z) > kRouteFloorCm) return close_by ? "path" : "unreachable";
+  float len = 0;
+  FVector prev = me;
+  for (const FVector& q : path) { len += flat_cm(prev, q); prev = q; }
+  if (len <= flat_cm(me, at) * kRouteDirectRatio + kRouteDirectSlackCm && in_sight(t, me, at)) return "straight";
+  return "path";
+}
+
+audio::Pcm ping_sound(const char* kind) {
+  static std::map<std::string, audio::Pcm> made;
+  audio::Pcm& p = made[kind];
+  if (p) return p;
+  std::vector<float> file;
+  const std::string path = audio::module_dir() + "assets\\audio\\review_" + kind + ".wav";
+  if (!audio::decode_mono(path, file) || file.empty()) { log::writef("sonar: no route ping at {}", path); return nullptr; }
+  p = std::make_shared<const std::vector<float>>(std::move(file));
+  return p;
+}
+
 // The focused thing's sound once, from where it is now.
 void sound_focus(const FVector& me) {
   if (!g_focus.has) return;
@@ -240,6 +301,8 @@ void focus_on(const poi::Poi* p) {
   }
   audio::solo(true);
   silence();
+  // Its first sound once the route ping has played (that ping is the focus's first sound, as in Grim Dark).
+  if (now_s() < g_ping_end) { g_focus_next = g_ping_end; return; }
   FVector me;
   if (world::player_location(me)) sound_focus(me);
 }
@@ -320,7 +383,22 @@ void toggle() {
   speech::speak(settings::on(settings::Sonar) ? strings::kSonarOn : strings::kSonarOff, true);
 }
 
+void ping(const poi::Poi& p) {
+  FVector me;
+  if (!world::exploring() || !world::player_location(me)) return;
+  const char* kind = route_kind(p, me);
+  audio::Pcm pcm = ping_sound(kind);
+  if (!pcm) return;
+  const Place pl = place_of(p.loc, body_of(p), me);
+  const float gain = std::max(kPingRefM / (kPingRefM + pl.dist_m), kPingFloor);
+  const double len = (double)pcm->size() / audio::sample_rate();
+  audio::play(std::move(pcm), gain, world::spot(me, pl.at), audio::Bus::Cues, 1.0f, true);
+  g_ping_end = now_s() + len;
+  log::writef("sonar: route ping {} for {} at {:.1f} m", kind, p.name, pl.dist_m);
+}
+
 void selected(const poi::Poi& p) {
+  ping(p);
   if (!settings::on(settings::Sonar) || !world::exploring()) return;
   FVector me;
   if (!world::player_location(me)) return;
@@ -332,6 +410,7 @@ void selected(const poi::Poi& p) {
 
 void stick(const poi::Poi* p) {
   if (!world::exploring()) return;
+  if (p) ping(*p);
   g_focus_stick = true;
   focus_on(p);
 }

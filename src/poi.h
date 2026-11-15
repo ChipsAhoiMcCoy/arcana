@@ -23,6 +23,10 @@ void next(int delta);
 void next_category(int delta);   // selects and speaks the new category's nearest
 void announce_list();            // the current category (or the next with something): the selection still in it, else its nearest
 bool selected(Poi& out);
+// Every point of interest of any category, nearest first: the first press selects the nearest (dir < 0: the farthest),
+// the next ones move by dir while the selection is still this list's. Said as the list says it; its category becomes
+// the list's. Out of the field or with nothing near, that is said.
+void cycle_nearest(int dir);
 bool in_selected_category(const Poi& p);   // p belongs to the category the review keys are on
 std::string hit_name(ue::UObject* hit);   // a hit actor's display name ("Bed"), or ""
 bool breakable(ue::UObject* dungeon_object);   // a FldDungeonObjectActor a strike can still break (not broken yet)

@@ -32,17 +32,8 @@ std::string describe(const Poi& p) {
 }
 
 enum class Cat { Exits, Doors, People, Shops, Things, Events, Shadows, Count };
-static const char* cat_name(Cat c) {
-  switch (c) {
-    case Cat::Exits: return strings::kCatExits;
-    case Cat::Doors: return strings::kCatDoors;
-    case Cat::People: return strings::kCatPeople;
-    case Cat::Shops: return strings::kCatShops;
-    case Cat::Things: return strings::kCatThings;
-    case Cat::Events: return strings::kCatEvents;
-    default: return strings::kCatShadows;
-  }
-}
+static_assert((int)Cat::Count == 7, "strings::kPoiType has a type per category, in order");
+static const char* cat_type(Cat c) { return strings::kPoiType[(int)c]; }
 static Cat g_cat = Cat::Exits;
 static WeakObj g_sel;
 static Poi g_sel_poi;   // what the list said about it: selected() refreshes the place
@@ -78,14 +69,17 @@ static std::vector<Poi> settle(const std::vector<Poi>& all, int delta, bool move
   return in_category(all, g_cat);
 }
 
-// "Exits: Iwatodai Station, 6 meters, 2 o'clock, 1 of 3": list[i] selected, said after its category.
+// "Iwatodai Station, Exit, 6 meters, 2 o'clock, 1 of 3": list[i] selected, its type after its name. The thing first, then
+// what kind it is, then where (the user, 2026-11-14: the category's name first was in the way).
 static void announce_at(const std::vector<Poi>& list, size_t i) {
   g_sel = list[i].obj;
   g_sel_poi = list[i];
-  // A story beat is named "Event: Jin"; after the category's own name it said "Events: Event: Jin" (Adamah, 2026-11-13).
+  // A story beat is named "Event: Jin"; with its type said it said "Event" twice (Adamah, 2026-11-13).
   Poi said = list[i];
   if (std::string head = std::string(strings::kPoiEvent) + ": "; g_cat == Cat::Events && said.name.starts_with(head)) said.name.erase(0, head.size());
-  speech::speak(std::format("{}: {}, {} {} {}", cat_name(g_cat), describe(said), i + 1, strings::kOf, list.size()), true);
+  std::string who = said.state.empty() ? said.name : said.name + ", " + said.state;
+  speech::speak(std::format("{}, {}, {}, {}, {} {} {}", who, cat_type(g_cat), core::meters(said.dist / 100.0f), clock(said.bearing),
+                            i + 1, strings::kOf, list.size()), true);
   sonar::selected(list[i]);   // its sound, from where it is
 }
 
@@ -129,6 +123,25 @@ void announce_list() {
   for (size_t i = 0; i < list.size(); ++i)
     if (list[i].obj == g_sel) { announce_at(list, i); return; }
   announce_nearest(list);
+}
+
+// Comma / Shift+Comma: every point of interest of any kind, nearest first. The first press lands on the nearest (Shift:
+// the farthest, as Grim Dark's review keys enter a list); while the selection is still Comma's, each press moves on
+// from it, wrapping. Said as the list says it, its position counted in the whole list ("Vending Machine, Object, 3
+// meters, north, 2 of 9"), and its category becomes the list's. Nothing walks: Apostrophe or Period goes there once
+// the player has heard what it is (the user, 2026-11-14: walking at once went somewhere unknown).
+static WeakObj g_comma;   // what Comma last chose
+void cycle_nearest(int dir) {
+  if (!in_field()) return;
+  auto all = scan();   // nearest first
+  if (all.empty()) { speech::speak(strings::kNothingNearbyFull, true); g_sel = {}; return; }
+  const int n = (int)all.size();
+  int cur = -1;
+  if (g_comma == g_sel) for (int i = 0; i < n; ++i) if (all[(size_t)i].obj == g_sel) cur = i;
+  const int i = cur < 0 ? (dir >= 0 ? 0 : n - 1) : ((cur + dir) % n + n) % n;
+  for (int c = 0; c < (int)Cat::Count; ++c) if (in_cat(all[(size_t)i], (Cat)c)) { g_cat = (Cat)c; break; }
+  g_comma = all[(size_t)i].obj;
+  announce_at(all, (size_t)i);
 }
 
 // The selection as it is now, from its own actor: a rescan could miss it (an Event trigger is only listed when nothing

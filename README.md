@@ -46,7 +46,10 @@ The game's own controls work as usual. The mod adds:
 - Right / Left bracket: Next (farther) / previous (nearer) point of interest in the category
 - Shift+Right / Shift+Left bracket: Next / previous category, read from its nearest
 - Apostrophe: Walk to the selected point of interest (press again, or move, to stop)
-- Shift+Enter: Walk to the selected point and use it: Space is pressed for you once its prompt (check, talk, open) comes up. Nothing is pressed where no prompt comes, as at an exit
+- Comma: Select the nearest point of interest of any category, said as the bracket keys say it with its place among all of them ("Vending Machine, Object, 3 meters, north, 1 of 9"). Press again for the next nearest, wrapping round. It does not walk: Apostrophe or Period then goes there
+- Shift+Comma: Back through the same list, toward the nearest; as the first press, the farthest
+- Period: Walk to the selected point of interest, as Apostrophe does (press again, or move, to stop)
+- Shift+Period: Walk to the selected point and use it: Space is pressed for you once its prompt (check, talk, open) comes up. Nothing is pressed where no prompt comes, as at an exit
 - Shift+Apostrophe: Party: each member's level, HP and SP
 - Semicolon: Describe the area, or while someone talks, describe them
 - Shift+Semicolon: The selected point of interest again, from where you stand, with its sound
@@ -70,7 +73,7 @@ Hold both triggers (LT and RT) for the mod's keys. You hear a tick and, in the f
 
 A single trigger reaches the game 0.15 seconds late (adjustable in the settings), so pressing both does not also dash or turn; a quick tap still works.
 
-In top-down mode (on by default), the right stick no longer turns the camera while you walk. Push it toward a direction (up is north) to snap to the nearest point of interest that way: its name and distance are said ("Iwatodai Station, 8 meters"), or "nothing", and its sound repeats alone from where it is while you hold the stick, even with the sonar off. It speaks again when another point takes over. Press RT while on a point to walk there and use it, as Shift+Enter does; that press does not dash.
+In top-down mode (on by default), the right stick no longer turns the camera while you walk. Push it toward a direction (up is north) to snap to the nearest point of interest that way: its name and distance are said ("Iwatodai Station, 8 meters"), or "nothing", and its sound repeats alone from where it is while you hold the stick, even with the sonar off. It speaks again when another point takes over. Press RT while on a point to walk there and use it, as Shift+Period does; that press does not dash.
 
 ### In menus
 
@@ -286,6 +289,7 @@ Conversations, story scenes, menus and battles keep the game's own camera and so
 
 - **Wall tones:** four looping tones for how close walls are: ahead and behind (centered, different pitches), right and left. Louder is closer; silence is open space. Each measures how far you could actually go that way, so a wall you would slide along stays quiet.
 - **Sonar:** every point of interest in range (10 m by default) repeats its own sound from where it is, faster and louder as you get closer: about once a second at 10 m, nearly twice at 5 m, nearly seven times at 1 m. A thing is heard from its part nearest you, so a long counter or wide exit sounds from beside you; inside its area, from its middle at the quickest rhythm. Sounds play whole, overlapping when fast. Exits, objects, events and Twilight Fragments use Grim Dark's sounds (its dungeon entrance, interactable, ruined shrine and loot). Doors are a hollow knock, people a whistled "yoo-hoo", shops a till's ching. Directions follow the camera (or north, in top-down mode). To keep crowds readable, at most four things sound at once, two of a kind; the selected point always has a place, and anything within 2.5 m makes the rest quieter. Things on another floor or past a closed door are left out until you can reach them. The sonar is silent in menus, conversations, story scenes and battles.
+- **Focus ping:** whenever something is focused (chosen in the list with the bracket keys or Comma, said again with Shift+Semicolon, or found with the right stick), Grim Dark's route ping plays once from where it is: one sound when you can see it and walk straight there, another when the way goes round something, and a third when there is no way from here (another floor, or behind a closed door). With the sonar on, the thing's own sound then repeats as before. The ping plays with the sonar off too.
 - **Shadow pulse:** in Tartarus, the nearest Shadow within 30 m sounds Grim Dark's enemy ping from where it is, from every 0.8 seconds at 30 m to every 0.2 seconds beside you. When one notices you an alarm sounds from it and its pulse grows urgent while it hunts you; a soft falling note means it lost you. Within 4 m you hear whether it has its back turned or is facing you.
 - **Strike reach:** while a Shadow is inside your strike's reach (the game's own hit area, counted a little short), a quick steel ring repeats in the middle of your head: attack now and it connects. When you are also behind it, a glassy upward tick plays instead: the strike gives the advantage. A breakable object rings the same way. Part of Shadow alerts.
 

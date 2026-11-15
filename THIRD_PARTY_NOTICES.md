@@ -35,6 +35,8 @@ The four sounds in `assets/audio/walltones/2`, in the player zip, are byte-for-b
 
 The five sounds in `assets/audio/sonar` and `assets/audio/signals`, in the player zip, are Grim Dark's sonar sounds (its dungeon entrance, interactable, ruined shrine, loot and enemy sounds), by Austin Hicks, under its zlib license. The door, person and shop sounds are made by the mod itself.
 
+The three sounds `assets/audio/review_straight.wav`, `review_path.wav` and `review_unreachable.wav`, in the player zip, are Grim Dark's review pings (the route ping it plays when its review cursor lands on something), byte-for-byte, by Austin Hicks, under its zlib license.
+
 ## Prism
 
 Prism is the speech library that talks to your screen reader, by Ethin Probst and contributors: https://github.com/ethindp/prism

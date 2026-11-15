@@ -293,8 +293,8 @@ inline constexpr const char* kModKeys = "Mod keys";
 inline constexpr const char* kPadLayer = "Hold both triggers, then";
 // The top-down mode's right stick, after the layer's buttons in the controller's list of mod keys and in F1's field keys.
 inline constexpr const char* kPadScanKeys = "Without the triggers, in top-down mode: the right stick finds the nearest point of interest that way; RT while it is on one walks there and uses it.";
-// F1 in the field: the walk that uses its point (Shift+Enter; RT on the right stick's point in top-down mode).
-inline constexpr const char* kFieldWalkUseKeys = "Shift+Enter walks to the selected point of interest and uses it; Shift+Semicolon says it again.";
+// F1 in the field: the walk that uses its point (Shift+Period; RT on the right stick's point in top-down mode).
+inline constexpr const char* kFieldWalkUseKeys = "Period walks to the selected point of interest, Shift+Period walks there and uses it; Comma selects the nearest one, then the next nearest, Shift+Comma goes back; Shift+Semicolon says the selected one again.";
 // The mod settings menu (settings.cpp)
 inline constexpr const char* kModSettings = "Mod settings";
 inline constexpr const char* kModSettingsClosed = "Mod settings closed";
@@ -439,13 +439,9 @@ inline constexpr const char* kPoiChestLocked = "Locked Treasure Chest";   // the
 inline constexpr const char* kPoiFragments = "Twilight Fragments";
 inline constexpr const char* kPoiFragment = "Twilight Fragment";                  // the game shows "Something Shining"
 inline constexpr const char* kPoiFragmentCrystal = "Twilight Fragment crystal";   // Tartarus: strike it for one
-inline constexpr const char* kCatExits = "Exits";
-inline constexpr const char* kCatPeople = "People";
-inline constexpr const char* kCatShops = "Shops";
-inline constexpr const char* kCatDoors = "Doors";
-inline constexpr const char* kCatThings = "Objects";
-inline constexpr const char* kCatEvents = "Events";
-inline constexpr const char* kCatShadows = "Shadows";
+// One point's type, said after its name when the list lands on it ("Vending Machine, Object, 3 meters"), in the
+// categories' order.
+inline constexpr const char* kPoiType[7] = {"Exit", "Door", "Person", "Shop", "Object", "Event", "Shadow"};
 inline constexpr const char* kShadowBackTurned = "Shadow close, back turned";
 inline constexpr const char* kShadowFacingYou = "Shadow close, facing you";
 inline constexpr const char* kNothingNearbyFull = "Nothing nearby";
@@ -716,6 +712,8 @@ inline constexpr const char* kKeyHelpPoiCatNext = "Next category of points of in
 inline constexpr const char* kKeyHelpPoiCatPrev = "Previous category";
 inline constexpr const char* kKeyHelpParty = "Party: each member's level, HP and SP";
 inline constexpr const char* kKeyHelpWalk = "Walk to the selected point of interest, or stop walking";
+inline constexpr const char* kKeyHelpPoiNearest = "Select the nearest point of interest of any kind; again, the next nearest";
+inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points of interest of any kind, toward the nearest";
 inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";
 inline constexpr const char* kKeyHelpPoiAgain = "The selected point of interest again: where it is now, and its sound";
 inline constexpr const char* kKeyHelpArea = "Describe the area: how the place around you looks, or while someone talks, how they look";

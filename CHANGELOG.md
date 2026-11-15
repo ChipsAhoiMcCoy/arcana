@@ -13,6 +13,14 @@
 - It moves the hero straight along its way at any angle, as a stick held exactly that way would, instead of the nearest of the eight directions the movement keys give: it keeps to narrow ways between furniture, takes the shortest line, and no camera angle can turn it off course. If the game does not take this, the walk goes back to the movement keys by itself.
 - Things set into the wall, whose spot the hero can only reach the edge of (the radiator and the mirror in your room), are arrived at: the walk said "Stuck" a step away from them.
 - Prompts for things passed on the way are no longer read, so they are not taken for arriving. The prompt up when the walk ends is read as before.
+- Comma selects the nearest point of interest, whatever its category, and says it as the bracket keys do; pressed again it moves to the next nearest, and Shift+Comma goes back. It does not walk: press Apostrophe or Period to go there. It has no controller button: the right stick already finds things.
+- Period walks to the selected point, as Apostrophe does, so Comma and Period sit together.
+- Walking to the selected point and using it is now Shift+Period instead of Shift+Enter.
+
+- When the list lands on a point (Comma, a new category, the controller's layer), its name comes first, then its type, then where it is: "Vending Machine, Object, 3 meters, north, 1 of 4" instead of "Objects: Vending Machine, 3 meters, north, 1 of 4".
+
+### Focus ping
+- Whenever something is focused (the list's keys, Comma, Shift+Semicolon or the right stick), Grim Dark's route ping plays once from where it is, as it does when Grim Dark's review cursor lands on something: one sound for in sight with a straight walk, one for a walk round something, one for no way there. It plays with the sonar off too; with it on, the thing's own sound follows.
 
 ### Fixes
 - In the top-down mode the auto-walk no longer runs into the walls where the game's camera does not face north (your room in the dorm): it steered by the camera while the hero walks by the compass, and said "Stopped" or "Stuck" short of the desk, bed and closet.
