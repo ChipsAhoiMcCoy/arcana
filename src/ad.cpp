@@ -17,6 +17,7 @@
 #include "log.h"
 #include "settings.h"
 #include "watch.h"
+#include "world.h"
 #include "ue/ue.h"
 #include <windows.h>
 #include <atomic>
@@ -85,6 +86,31 @@ UObject* mana_of(int watch_id) {
 UObject* playing_mana() {
   if (UObject* m = mana_of(player_id())) return m;
   return mana_of(track_player_id());
+}
+
+// A story scene played in the engine (an event): an AtlEvtLevelSequenceActor named after its LevelSequence
+// (LS_Event_Main_110_240_C) and its ULevelSequencePlayer (SequencePlayer). The sequence's own clock is the scene's:
+// GetCurrentTime is an FQualifiedFrameTime {frame int32, subframe float, rate numerator, denominator}, in the
+// sequence's display rate (30 fps). The sequence pauses itself at a message that holds it (a dialogue key with
+// bPauseSequencer, a WaitingMessage controller) until the player moves on: IsPaused then (seen live, 2026-11-15).
+int event_actor_id() { static int id = watch::want("AtlEvtLevelSequenceActor", true); return id; }
+UObject* playing_event(UObject** actor) {
+  for (UObject* a : watch::all(event_actor_id())) {
+    UObject* p = get<UObject*>(a, "SequencePlayer");
+    if (p && is_live(p) && (call_ret<bool>(p, "IsPlaying") || call_ret<bool>(p, "IsPaused"))) { if (actor) *actor = a; return p; }
+  }
+  return nullptr;
+}
+double event_seconds(UObject* player) {
+  UFunction* fn = find_function(class_of(player), "GetCurrentTime");
+  if (!fn) return 0;
+  Params p(fn);
+  if (!call(player, p)) return 0;
+  const uint8_t* r = p.at<uint8_t>("ReturnValue");
+  if (!r) return 0;
+  int32_t frame = *(const int32_t*)r, num = *(const int32_t*)(r + 8), den = *(const int32_t*)(r + 12);
+  float sub = *(const float*)(r + 4);
+  return num > 0 ? (frame + (double)sub) * den / num : 0;
 }
 
 std::string key_of(std::string name) {
@@ -178,7 +204,18 @@ void unload() {
 Clock clock() {
   Clock c;
   UObject* m = playing_mana();
-  if (!m) return c;
+  if (!m) {
+    UObject* actor = nullptr;
+    UObject* ev = playing_event(&actor);
+    // Fast-forward runs a scene at four times its pace: no description is played over it (one playing stops).
+    if (!ev || world::scene_fast()) return c;
+    c.playing = true;
+    c.event = true;
+    c.paused = call_ret<bool>(ev, "IsPaused");
+    c.movie = name_of(actor);
+    c.time = event_seconds(ev);
+    return c;
+  }
   c.playing = true;
   c.paused = call_ret<bool>(m, "IsPaused");
   if (UObject* src = call_ret<UObject*>(m, "GetSource")) {
@@ -466,14 +503,14 @@ void test_tick() {
 
 void tick() {
   test_tick();
-  UObject* m = playing_mana();
-  bool playing = m != nullptr;
+  UObject* m = playing_mana();   // null for a scene in the engine: its sound is not dipped
+  Clock c = clock();
+  bool playing = c.playing;
   if (!playing && !g_was_playing && g_sched.playing() < 0) return;   // nothing on, nothing finishing
   if (!settings::on(settings::AudioDescription)) {
     if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); }
     return;
   }
-  Clock c = playing ? clock() : Clock{};
   if (playing && (!g_was_playing || g_key != key_of(c.movie))) {
     // a movie starts (or the source changed under a running player): load its descriptions, if it has any
     stop_all();
@@ -483,9 +520,9 @@ void tick() {
     g_sched.load(s ? s->cues : std::vector<sched::Cue>{});
     g_runs.assign(g_sched.size(), Run{});
     g_seen.assign(g_sched.size(), sched::State::Pending);
-    g_base_volume = call_ret<float>(m, "GetVolume", 1.0f);
+    g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
     g_volume = g_base_volume;
-    log::writef("ad: movie {} ({}), {} descriptions", c.movie, key_of(c.movie), s ? s->cues.size() : 0);
+    log::writef("ad: {} {} ({}), {} descriptions", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0);
   }
   g_was_playing = playing;
   std::shared_ptr<Scene> s = g_scene;
@@ -515,6 +552,7 @@ void tick() {
     if (g_sched.playing() < 0) { g_scene.reset(); g_key.clear(); }
     return;
   }
+  if (!m) return;   // a scene in the engine: no movie sound to dip
   // the movie's own sound dips while a description speaks
   float target = g_base_volume * (g_cur >= 0 && !c.paused ? kDuck : 1.0f);
   if (g_volume != target) {
@@ -530,10 +568,10 @@ void register_routes() {
     return dev::on_game([] {
       Clock c = clock();
       if (!c.playing) return std::string("playing=0\n");
-      return std::format("playing=1 paused={} movie={} time={:.3f} frame={} track={}\n", c.paused ? 1 : 0, c.movie,
-                         c.time, c.frame, c.audio_track);
+      return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}\n", c.paused ? 1 : 0,
+                         c.event ? "scene" : "movie", c.movie, c.time, c.frame, c.audio_track);
     });
-  }, "the story movie clock (audio description): movie, time s, frame, pause, voice track");
+  }, "the story movie or scene clock (audio description): movie or scene, time s, frame, pause, voice track");
   dev::route("/ad/status", [](const dev::Request&, int&) {
     return dev::on_game([] {
       std::shared_ptr<Scene> s = g_scene;

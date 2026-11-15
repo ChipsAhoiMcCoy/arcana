@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_110_240_C",
+ "title": "At the stopped monorail",
+ "cues": [
+  {"at": 0.3,   "text": "A huge green moon. A monorail sits stopped on its track."},
+  {"at": 10.45, "text": "Yukari walks to a ladder on the monorail's side and climbs."},
+  {"at": 17.5,  "text": "The hero sweats."}
+ ]
+}

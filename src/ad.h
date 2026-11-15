@@ -11,6 +11,7 @@ struct Clock {
   double time = 0;     // GetTime: seconds into the movie
   int frame = -1;      // GetFrameNumber
   int audio_track = -1;   // 0 Japanese voices, 1 English
+  bool event = false;  // a scene played in the engine (its LevelSequence's clock; movie = the sequence's name)
 };
 Clock clock();
 void tick();                                   // every frame: follow the movie, play its descriptions
