@@ -45,6 +45,12 @@ enum class SignalCue {
 };
 std::vector<float> signal_cue(SignalCue cue, int rate);
 
+// The nearest Shadow's held sound (the user, 2026-11-15: one constant sound, its facing told by something other than
+// pitch): a low, rough, breathing snarl that loops seamlessly, kDroneSeconds long, with energy up to a few kHz so a
+// low-pass darkening it is plain to hear. At the cues' common loudness.
+inline constexpr double kDroneSeconds = 1.0;
+std::vector<float> drone_loop(int rate);
+
 // A cue from a sound file instead (the user, 2026-11-13: Grim Dark's sonar sounds, assets/audio/sonar and
 // assets/audio/signals): `v` decoded to mono at `rate`. The silence at its ends is cut, then it is finished like the
 // made ones: soft ends, no DC, the common loudness (peak at most kCuePeak). brief: cut to kFileBriefS first, so it

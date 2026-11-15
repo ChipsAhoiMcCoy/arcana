@@ -123,10 +123,11 @@ They work like any other menu: up and down choose (at either end a further press
 **Exploring**
 
 - Wall tones: on, off
-- Shadow alerts: on, off. In Tartarus: the Shadow pulse, the alarm when one notices you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
+- Shadow alerts: on, off. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
 - Points of interest range: 60 meters; 20, 40, 100 or 150
 - Wall tone volume: 100 percent; 0 to 100 in steps of 10
 - Top-down exploration: on, off (see below)
+- Strike assist: on, off. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
 
 **Sonar**
 
@@ -205,7 +206,7 @@ Points of interest come in categories, each listed nearest first, empty ones ski
 
 A point is read with its name, distance, clock direction (12 o'clock is where pushing forward walks; in top-down mode, the compass) and position: "Iwatodai Station, 6 meters, 2 o'clock, 1 of 3". The category is said first when you change it or open the controller layer. Only the part of the map you are in is listed, on your floor; past a closed door is listed once you go through. Tartarus lists its whole floor.
 
-Auto-walk says "Auto-pathing" as it sets off. On the way, prompts for things you pass are not read; the one up when the walk ends is, so arriving reads the target's as usual. Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
+Auto-walk sets off without a word. On the way, prompts for things you pass are not read; the one up when the walk ends is, so arriving reads the target's as usual. Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
 
 With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone, repeating at its distance's rhythm from where it is, however far, while the mod's other sounds go quiet. This lasts about 3 seconds (or while you hold the triggers) and ends once you walk.
 
@@ -290,8 +291,9 @@ Conversations, story scenes, menus and battles keep the game's own camera and so
 - **Wall tones:** four looping tones for how close walls are: ahead and behind (centered, different pitches), right and left. Louder is closer; silence is open space. They play only while you move (the stick, the keys or the auto-walk, even pushing into a wall) and are quiet while you stand still. Each measures how far you could actually go that way, so a wall you would slide along stays quiet.
 - **Sonar:** every point of interest in range (10 m by default) repeats its own sound from where it is, faster and louder as you get closer: about once a second at 10 m, nearly twice at 5 m, nearly seven times at 1 m. A thing is heard from its part nearest you, so a long counter or wide exit sounds from beside you; inside its area, from its middle at the quickest rhythm. Sounds play whole, overlapping when fast. Exits, objects, events and Twilight Fragments use Grim Dark's sounds (its dungeon entrance, interactable, ruined shrine and loot). Doors are a hollow knock, people a whistled "yoo-hoo", shops a till's ching. Directions follow the camera (or north, in top-down mode). To keep crowds readable, at most four things sound at once, two of a kind; the selected point always has a place, and anything within 2.5 m makes the rest quieter. Things on another floor or past a closed door are left out until you can reach them. The sonar is silent in menus, conversations, story scenes and battles.
 - **Focus ping:** whenever something is focused (chosen in the list with the bracket keys or Comma, said again with Shift+Semicolon, or found with the right stick), Grim Dark's route ping plays once from where it is: one sound when you can see it and walk straight there, another when the way goes round something, and a third when there is no way from here (another floor, or behind a closed door). With the sonar on, the thing's own sound then repeats as before. The ping plays with the sonar off too.
-- **Shadow pulse:** in Tartarus, the nearest Shadow within 30 m sounds Grim Dark's enemy ping from where it is, from every 0.8 seconds at 30 m to every 0.2 seconds beside you. When one notices you an alarm sounds from it and its pulse grows urgent while it hunts you; a soft falling note means it lost you. Within 4 m you hear whether it has its back turned or is facing you.
-- **Strike reach:** while a Shadow is inside your strike's reach (the game's own hit area, counted a little short), a quick steel ring repeats in the middle of your head: attack now and it connects. When you are also behind it, a glassy upward tick plays instead: the strike gives the advantage. A breakable object rings the same way. Part of Shadow alerts.
+- **Shadow sound:** in Tartarus, the nearest Shadow within 30 m snarls steadily from where it is, louder as it gets closer and higher while it hunts you. Its facing changes the sound, not its pitch: bright when it faces you, duller as it turns away, and once you are behind it (more than 90 degrees off its front, where a strike brings the advantage) muffled and wobbling. Follow the wobble to sneak up on it. The game's own sound tells you when one notices you; a soft falling note means it lost you. Within 4 m you also hear whether it has its back turned or is facing you.
+- **Strike reach:** while a Shadow is inside your strike's reach (the game's own hit area: the moment any of the Shadow's body touches it), a quick steel ring repeats in the middle of your head: attack now and it connects. When you are also behind it, a glassy upward tick plays instead: the strike gives the advantage. A breakable object rings the same way. Part of Shadow alerts.
+- **Strike assist:** in Tartarus, when you attack with a Shadow close enough that your strike would reach it if you faced it, from any side, you turn to face it as the swing starts. Your reach stays the same: it only aims. A Shadow hunting you comes first, then the nearest. Its own setting, on by default.
 
 Placed sounds stay where they are while they play, so they shift as you move. Positioning is set by the Sound placement setting. The 3D option uses Steam Audio (Valve, Apache 2.0, `phonon.dll`); without that file it falls back to stereo.
 

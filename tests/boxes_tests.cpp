@@ -1,5 +1,7 @@
 #include "doctest.h"
 #include "core/boxes.h"
+#include <cmath>
+#include <vector>
 
 using namespace p3a::core;
 
@@ -49,6 +51,52 @@ TEST_CASE("box_holds: a turned box") {
   CHECK(box_holds(eighth, Vec3{60, 60, 0}, 0, 0));
   CHECK_FALSE(box_holds(eighth, Vec3{60, -60, 0}, 0, 0));
   CHECK(box_holds(eighth, Vec3{60, -60, 0}, 80, 0));   // 85 off its line, grown to 90
+}
+
+TEST_CASE("box_meets_body: a body touching the box's sides, corners and height") {
+  // The strike's box as measured on floor 5: 90 x 60 x 50 half sizes, and a Shadow's body, 1 m round, 2 m tall.
+  Box b{Vec3{0, 0, 0}, Vec3{90, 60, 50}, 0};
+  CHECK(box_meets_body(b, Vec3{0, 0, 0}, 100, 100));          // inside
+  CHECK(box_meets_body(b, Vec3{190, 0, 0}, 100, 100));        // its edge on the box's far side
+  CHECK_FALSE(box_meets_body(b, Vec3{191, 0, 0}, 100, 100));
+  CHECK(box_meets_body(b, Vec3{0, -160, 0}, 100, 100));       // and on a long side
+  CHECK_FALSE(box_meets_body(b, Vec3{0, -161, 0}, 100, 100));
+  // Off a corner the body is round: 60 + 60 off both sides is 85 away, inside its 100; 75 + 75 is 106, outside.
+  CHECK(box_meets_body(b, Vec3{150, 120, 0}, 100, 100));
+  CHECK_FALSE(box_meets_body(b, Vec3{165, 135, 0}, 100, 100));
+  // Heights: the body's 100 above and below its middle against the box's 50.
+  CHECK(box_meets_body(b, Vec3{0, 0, 150}, 100, 100));
+  CHECK_FALSE(box_meets_body(b, Vec3{0, 0, 151}, 100, 100));
+  CHECK_FALSE(box_meets_body(b, Vec3{0, 0, -151}, 100, 100));
+}
+
+TEST_CASE("box_meets_body: a turned box") {
+  // Turned a quarter: its 90 runs along y, so a body 150 east is 90 + 60 off its narrow side.
+  Box quarter{Vec3{0, 0, 0}, Vec3{90, 60, 50}, 90};
+  CHECK(box_meets_body(quarter, Vec3{0, 190, 0}, 100, 100));
+  CHECK_FALSE(box_meets_body(quarter, Vec3{0, 191, 0}, 100, 100));
+  CHECK(box_meets_body(quarter, Vec3{160, 0, 0}, 100, 100));
+  CHECK_FALSE(box_meets_body(quarter, Vec3{161, 0, 0}, 100, 100));
+}
+
+TEST_CASE("turned_about: the strike's box swung round the hero") {
+  // The box 84 ahead of a hero at (100, 200) facing east (yaw 0).
+  Box b{Vec3{184, 200, 10}, Vec3{90, 60, 50}, 0};
+  Box north = turned_about(b, Vec3{100, 200, 0}, 90);   // turned to face +y
+  CHECK(north.center.x == doctest::Approx(100.0f).epsilon(0.001));
+  CHECK(north.center.y == doctest::Approx(284.0f));
+  CHECK(north.center.z == doctest::Approx(10.0f));        // its height kept
+  CHECK(north.yaw == doctest::Approx(90.0f));
+  CHECK(north.extent.x == doctest::Approx(90.0f));
+  Box west = turned_about(b, Vec3{100, 200, 0}, 180);
+  CHECK(west.center.x == doctest::Approx(16.0f));
+  CHECK(west.center.y == doctest::Approx(200.0f).epsilon(0.001));
+  // A Shadow 2.5 m behind the hero: out of the box as he stands, in it once he turns (2.5 m < 84 + 90 + 100).
+  Vec3 shadow{-150, 200, 0};
+  CHECK_FALSE(box_meets_body(b, shadow, 100, 100));
+  CHECK(box_meets_body(west, shadow, 100, 100));
+  // And 2.8 m behind: past the reach whichever way he faces.
+  CHECK_FALSE(box_meets_body(west, Vec3{-180, 200, 0}, 100, 100));
 }
 
 TEST_CASE("boxes_meet: unturned boxes apart, overlapping and touching") {

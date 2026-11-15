@@ -314,10 +314,11 @@ inline constexpr const char* kHelpSonarScope = "Which points the sonar plays: ev
 inline constexpr const char* kHelpSonarRange = "How far away a thing can be and still sound.";
 inline constexpr const char* kHelpSonarKind = "Whether this kind of thing sounds. Changing it plays its sound.";
 inline constexpr const char* kHelpSonarVolume = "How loud the sonar's sounds are. Changing it plays one.";
-inline constexpr const char* kHelpShadowAlerts = "In Tartarus: the Shadow's growl, the alarm when one notices you, the ring when your strike will reach, and whether a close Shadow faces you.";
+inline constexpr const char* kHelpShadowAlerts = "In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.";
 inline constexpr const char* kHelpTopDown = "While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.";
 inline constexpr const char* kHelpSpatial = "How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.";
-inline constexpr const char* kHelpBehindPitch = "Sounds whose source is behind you play lower.";
+inline constexpr const char* kHelpStrikeAssist = "In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side. Your reach stays the same.";
+inline constexpr const char* kHelpBehindPitch ="Sounds whose source is behind you play lower.";
 inline constexpr const char* kHelpPoiRange = "How far the points of interest list reaches.";
 inline constexpr const char* kHelpMasterVolume = "Every sound the mod plays. The game's own sounds follow the game's settings.";
 inline constexpr const char* kHelpSoundVolume = "The Shadow sounds and the controller layer's tick.";
@@ -341,9 +342,9 @@ inline constexpr SoundTest kSoundTests[] = {
     {"Sonar: event", "A spot that starts a fight or a scene when you walk into it, such as a Gatekeeper."},
     {"Sonar: Twilight Fragment", "A Twilight Fragment to pick up, or in Tartarus a crystal to strike for one."},
     {"A sound behind you", "The person whistle, from behind you. Lower in pitch when that setting is on."},
-    {"Shadow growl", "A Shadow is within 30 meters. It repeats faster and louder as the Shadow closes in."},
-    {"Shadow growl, hunting you", "The growl of a Shadow that has noticed you: higher, louder and faster."},
-    {"Shadow alarm", "A Shadow has just noticed you."},
+    {"Shadow, facing you", "The nearest Shadow within 30 meters snarls steadily from where it is, louder as it nears. Bright: it faces you."},
+    {"Shadow, hunting you", "The snarl of a Shadow that has noticed you: higher and louder."},
+    {"Shadow, back turned", "Muffled and wobbling: its back is to you, and a strike now brings the advantage. It grows duller as it turns away."},
     {"Shadow lost you", "A Shadow that was hunting you has lost you."},
     {"Strike reach", "A Shadow or a breakable object is within reach of your strike. In the game it repeats quickly while you stay in reach."},
     {"Strike reach, behind the Shadow", "Within reach and behind the Shadow: the strike brings the advantage."},
@@ -372,6 +373,7 @@ inline constexpr const char* kSonarOn = "Sonar on";
 inline constexpr const char* kSonarOff = "Sonar off";
 inline constexpr const char* kSetShadowAlerts = "Shadow alerts";
 inline constexpr const char* kSetTopDown = "Top-down exploration";
+inline constexpr const char* kSetStrikeAssist = "Strike assist";
 inline constexpr const char* kSetSpatial = "Sound placement";
 inline constexpr const char* kSpatialStereo = "stereo";
 inline constexpr const char* kSpatialHrtf = "3D for headphones";
@@ -468,7 +470,6 @@ inline constexpr const char* kNoPath = "No path";
 inline constexpr const char* kNoPathInRoom = "No path, though it is in this room";
 inline constexpr const char* kStuck = "Stuck, stopping";
 inline constexpr const char* kStopped = "Stopped";
-inline constexpr const char* kAutoPathing = "Auto-pathing";
 inline constexpr const char* kNotInField = "Not in the field";
 inline constexpr const char* kObjective = "Objective";
 inline constexpr const char* kNoObjective = "No objective shown yet";

@@ -7,10 +7,17 @@
 //    3.4 m and 7.3 m, running at them), and the target was the hero while it chased. Losing him (the question mark,
 //    the target let go) is UNTESTED.
 //  - UFldPlayerDungeonComp.AttackArea: an AFldCharArea whose box (AreaComp) rides in front of the hero. The strike's
-//    hit test is that box's overlapping actors, so "inside the box" is "the strike connects". Measured on floor 5
-//    (2026-11-10): centre 84 cm ahead of the hero, extent 90 x 60 x 50, so it reaches 1.7 m ahead and 0.6 m to each
-//    side, plus the Shadow's own body. The box is read live, so whatever sizes it is followed. With a
-//    long-range strike (IsUsingLongRangeAttack) the target is LockOnActor instead (UNTESTED).
+//    hit test is that box's overlapping actors (FUN_1411257b0), and the box's profile, FldPlayerAtk, overlaps the Enemy
+//    channel alone (DefaultEngine.ini): a Shadow's body (FieldEnemy, its capsule, 1 m round and 2 m tall) and a
+//    breakable's Box. So the strike connects the moment any of the Shadow's body touches the box. Measured on floor 5
+//    (2026-11-10): centre 84 cm ahead of the hero, extent 90 x 60 x 50, so with the body it reaches 2.7 m ahead and
+//    1.6 m to each side. The box is read live, so whatever sizes it is followed. With a long-range strike the target
+//    is LockOnActor instead (UNTESTED; see long_range).
+//  - UFldEnemyComp.AttackArea: the Shadow's own AFldCharArea, its box 2 x 3.8 m from 1.3 to 3.3 m in front of it
+//    (BP_FldEmNormalBase), overlapping the Player channel alone: where it can go for the hero. Only logged.
+//  - AFldOperator.EncountType: how the next battle starts (EFldOperatorEncountType: 1 the strike with the Shadow facing
+//    the hero, 2 from behind it, 3 and 4 the same with Ambush, 5 the Shadow reached him first), set once per encounter
+//    with the Shadow in EncountEnemy (FUN_1411db770). Logged, beside whether the ring had sounded for that Shadow.
 #include "shadow.h"
 #include "audio.h"
 #include "core/boxes.h"
@@ -45,13 +52,18 @@ using world::yaw_of;
 // cm: the growl. 15 m at first, and only for a Shadow within 3 m of the hero's height: it was not heard until it was
 // about to strike (the user, 2026-11-10). A Tartarus floor has raised and sunken parts, so height filters nothing now.
 constexpr float kPulseRange = 3000.0f;
+constexpr int kDroneId = 1;               // audio::hold's id for the nearest Shadow's held snarl
+constexpr int kDemoId = 2;                // and the sound test's
+// Past this far off a Shadow's front the hero is behind it: the game's own test for a strike's advantage
+// (FUN_14115f090, 90 degrees). It was 110 here, a guess, until the game's was read (2026-11-14).
+constexpr float kBackTurnedDeg = 90.0f;
 constexpr float kMindRange = 4000.0f;    // cm: how far off a Shadow's noticing is told
 constexpr ULONGLONG kReachMs = 150;      // the ring's rhythm while in reach (the ring itself lasts 0.09 s)
 
 // What a Shadow's component shows this frame: the mark over its head, and whether it holds the hero as its target.
 enum class Mark { None, Exclamation, Question };
 struct Raw { Mark mark = Mark::None; bool tracking = false; };
-struct Seen { UObject* actor; FVector at; float dist; Raw raw; };
+struct Seen { UObject* actor; FVector at; float dist; Raw raw; UObject* comp = nullptr; };
 
 std::vector<UObject*> live(std::string_view cls) { return watch::all(watch::want(cls, true)); }
 float flat(const FVector& a, const FVector& b) { return std::hypot(a.x - b.x, a.y - b.y); }
@@ -91,7 +103,7 @@ std::vector<Seen> look(const FVector& me) {
   // A holder's Actor is the Shadow's own actor (floor 5's guardian, 2026-11-10).
   for (const Holder& h : holders())
     for (Seen& s : out)
-      if (s.actor == h.actor) { guarded([&] { s.raw = raw_of(h.comp); }); break; }
+      if (s.actor == h.actor) { s.comp = h.comp; guarded([&] { s.raw = raw_of(h.comp); }); break; }
   return out;
 }
 
@@ -104,23 +116,30 @@ bool strike_box(UObject* dc, Box& b) {
   UObject* area = dc ? get<UObject*>(dc, "AttackArea") : nullptr;
   return read_box(area ? get<UObject*>(area, "AreaComp") : nullptr, b);
 }
+// The strike goes to a locked-on target, not the box. IsUsingLongRangeAttack alone does not say so: the swing's start
+// (FUN_141124420) sets it for the standing, walking and running swings too, and takes the long-range way only with a
+// LockOnActor (and, it seems, only in Episode Aigis). Read alone, it stood the ring and the strike assist down on every
+// ordinary swing (the user's log, 2026-11-15: "no strike box to aim with", the ring gone as the swing began).
+bool long_range(UObject* dc) {
+  return dc && get_bool(dc, "IsUsingLongRangeAttack") && get<UObject*>(dc, "LockOnActor") != nullptr;
+}
 // A Shadow's body as the box meets it: its capsule (radius, half height), else a slim guess.
 void body_of(UObject* shadow, float& radius, float& half_height) {
   radius = 30.0f; half_height = 60.0f;
   world::capsule_of(shadow, radius, half_height);
 }
-// The body's middle inside the box grown by part of the body. A roaming Shadow's capsule is 1 m in radius (floor 2,
-// 2026-11-10); only six tenths of it is counted, so the ring means the strike is well inside its reach, not at the
-// edge of it, and a Shadow that takes a step back is still hit.
+// The body touches the box: the game's own test, the whole body counted. A roaming Shadow's capsule is 1 m in radius
+// (floor 2, 2026-11-10). Six tenths of it were counted once, for a ring well inside the reach; it then began 40 cm
+// short of where the strike connects, and the user wants it the moment the strike would land (2026-11-14).
 bool box_holds(const Box& b, const FVector& p, float radius, float half_height) {
-  return core::box_holds(b, world::vec3(p), radius * 0.6f, half_height);
+  return core::box_meets_body(b, world::vec3(p), radius, half_height);
 }
 // The strike would connect with this Shadow now. `known` false: the game's hit area could not be read.
 bool in_reach(UObject* shadow, const FVector& at, bool& known) {
   UObject* dc = dungeon_comp();
   known = false;
   if (!dc) return false;
-  if (get_bool(dc, "IsUsingLongRangeAttack")) { known = true; return get<UObject*>(dc, "LockOnActor") == shadow; }
+  if (long_range(dc)) { known = true; return get<UObject*>(dc, "LockOnActor") == shadow; }
   Box b;
   if (!strike_box(dc, b)) return false;
   known = true;
@@ -136,7 +155,7 @@ bool in_reach(UObject* shadow, const FVector& at, bool& known) {
 bool breakable_in_reach(const FVector& me, FVector& at) {
   UObject* dc = dungeon_comp();
   Box strike;
-  if (!dc || get_bool(dc, "IsUsingLongRangeAttack") || !strike_box(dc, strike)) return false;
+  if (!dc || long_range(dc) || !strike_box(dc, strike)) return false;
   UObject* found = nullptr;
   float best = 600.0f;   // cm: nothing farther is in the box
   guarded([&] {
@@ -165,7 +184,7 @@ int close_cues(const Seen& s, const FVector& me) {
   static WeakObj told;                 // the Shadow this approach is to
   static bool said[2] = {false, false};   // "facing you", "back turned": said on this approach
   float to_me = std::atan2(me.y - s.at.y, me.x - s.at.x) * 180.0f / kPi;
-  bool back_turned = angle_diff(yaw_of(s.actor), to_me) > 110.0f;   // the hero is outside its front
+  bool back_turned = angle_diff(yaw_of(s.actor), to_me) > kBackTurnedDeg;   // the hero is outside its front
   WeakObj w = WeakObj::of(s.actor);
   if (s.dist < 400.0f) {
     if (!(w == told)) { told = w; said[0] = said[1] = false; }
@@ -216,7 +235,7 @@ void mind_cues(const std::vector<Seen>& seen, const FVector& me) {
     }
     m.last = s.raw.mark;
     if (m.hunting && !was) {
-      if (heard) audio::signal((int)SignalCue::Spotted, 1.4f, world::spot(me, s.at));
+      // No alarm of the mod's own: the game sounds one as the mark goes up (the user's call, 2026-11-15). Logged only.
       log::writef("shadow: #{} noticed the hero at {:.1f} m{}", std::get<0>(key), s.dist / 100.0f, heard ? "" : " (too far off for the cue)");
     } else if (was && !m.hunting) {
       if (heard) audio::signal((int)SignalCue::Lost, 1.1f, world::spot(me, s.at));
@@ -225,6 +244,163 @@ void mind_cues(const std::vector<Seen>& seen, const FVector& me) {
     now_known[key] = m;
   }
   g_minds.swap(now_known);
+}
+
+// ---- the log: the ring, the Shadows' attack zones and how each battle began, to tell afterwards why a fight went
+// as it did (the user heard no ring before five battles, 2026-11-14) ----
+// How far the hero stands off a Shadow's front, in degrees: under 90 the game counts it as facing him.
+float off_front(const Seen& s, const FVector& me) {
+  float to_me = std::atan2(me.y - s.at.y, me.x - s.at.x) * 180.0f / kPi;
+  return angle_diff(yaw_of(s.actor), to_me);
+}
+// The ring for the nearest Shadow as it starts, changes and stops. `ring` is close_cues' answer (-1: none).
+WeakObj g_ring_of;          // the Shadow the ring is sounding for now (none: index -1)
+WeakObj g_rang_for;         // the Shadow it last sounded for, and when it last did
+ULONGLONG g_rang_for_at = 0;
+void log_ring(const Seen* s, int ring, const FVector& me) {
+  static int cue = -1;
+  WeakObj w = s && ring >= 0 ? WeakObj::of(s->actor) : WeakObj{};
+  if (w == g_ring_of && ring == cue) {
+    if (ring >= 0) g_rang_for_at = GetTickCount64();
+    return;
+  }
+  if (cue >= 0) {
+    if (s && WeakObj::of(s->actor) == g_ring_of)
+      log::writef("shadow: #{} out of the strike's reach at {:.1f} m", g_ring_of.index, s->dist / 100.0f);
+    else log::writef("shadow: #{} out of the strike's reach", g_ring_of.index);
+  }
+  if (ring >= 0) {
+    log::writef("shadow: #{} in the strike's reach at {:.1f} m, {:.0f} deg off its front: {}", w.index, s->dist / 100.0f, off_front(*s, me),
+                ring == (int)SignalCue::Ambush ? "the behind ring" : "the ring");
+    g_rang_for = w;
+    g_rang_for_at = GetTickCount64();
+  }
+  g_ring_of = w;
+  cue = ring;
+}
+
+// The hero's body inside a Shadow's attack zone (its AttackArea's box), for the Shadows within 8 m. No sound: the log
+// only (the user's call, 2026-11-14).
+std::map<WeakObj::Key, ULONGLONG> g_in_zone;   // the Shadows whose zone holds the hero, and since when
+bool attack_zone(UObject* comp, Box& b) {
+  UObject* area = comp ? get<UObject*>(comp, "AttackArea") : nullptr;
+  return read_box(area ? get<UObject*>(area, "AreaComp") : nullptr, b);
+}
+void log_zones(const std::vector<Seen>& seen, const FVector& me) {
+  float r = 35.0f, hh = 90.0f;
+  world::capsule_of(world::player(), r, hh);
+  std::map<WeakObj::Key, ULONGLONG> now_in;
+  for (const Seen& s : seen) {
+    if (s.dist > 800.0f || !s.comp) continue;
+    Box zone;
+    bool in = false;
+    if (!guarded([&] { in = attack_zone(s.comp, zone) && core::box_meets_body(zone, world::vec3(me), r, hh); }) || !in) continue;
+    auto key = WeakObj::of(s.actor).key();
+    auto it = g_in_zone.find(key);
+    if (it != g_in_zone.end()) { now_in[key] = it->second; continue; }
+    now_in[key] = GetTickCount64();
+    log::writef("shadow: #{} the hero is in its attack zone at {:.1f} m, {:.0f} deg off its front{}", std::get<0>(key), s.dist / 100.0f,
+                off_front(s, me), hunting(s.actor) ? ", hunting" : "");
+  }
+  for (auto& [key, since] : g_in_zone)
+    if (!now_in.count(key)) log::writef("shadow: #{} the hero is out of its attack zone", std::get<0>(key));
+  g_in_zone.swap(now_in);
+}
+
+// How a battle is about to begin, as the game decided it (AFldOperator.EncountType), once per encounter.
+void log_encounter() {
+  static const int id = watch::want("FldOperator");
+  static int last_type = 0;
+  static WeakObj last_enemy;
+  UObject* op = watch::get(id);
+  int type = 0;
+  Holder h{nullptr, nullptr};
+  if (op)
+    guarded([&] {
+      if (int32_t* t = field<int32_t>(op, "EncountType")) type = *t;
+      if (Holder* e = field<Holder>(op, "EncountEnemy")) h = *e;
+    });
+  WeakObj enemy = WeakObj::of(h.actor);
+  if (type == last_type && enemy == last_enemy) return;
+  last_type = type;
+  last_enemy = enemy;
+  if (type < 1 || type > 5 || !h.actor) return;
+  static const char* kinds[] = {"", "your strike, the Shadow facing you: a normal battle", "your strike from behind: your advantage",
+                                "Ambush, the Shadow facing you: your advantage", "Ambush from behind: your advantage",
+                                "the Shadow reached you first: its attack"};
+  std::string where = "?";
+  FVector me, at{};
+  if (world::player_location(me) && guarded([&] { at = world::actor_location(h.actor); }))
+    where = std::format("{:.1f} m", std::hypot(flat(at, me), at.z - me.z) / 100.0f);
+  std::string ring = enemy == g_ring_of        ? "the ring was sounding"
+                     : enemy == g_rang_for     ? std::format("the ring last sounded {:.1f} s before", (GetTickCount64() - g_rang_for_at) / 1000.0)
+                                               : "the ring never sounded for it";
+  auto zone = g_in_zone.find(enemy.key());
+  std::string in_zone = zone != g_in_zone.end() ? std::format("the hero was in its attack zone for {:.1f} s", (GetTickCount64() - zone->second) / 1000.0)
+                                                : "the hero was not in its attack zone";
+  log::writef("shadow: battle begins with #{} at {}: {} (type {}); {}; {}", enemy.index, where, kinds[type], type, ring, in_zone);
+}
+
+// The held snarl's samples, made on first use (game thread).
+const audio::Pcm& drone_pcm() {
+  static const audio::Pcm drone = std::make_shared<const std::vector<float>>(core::drone_loop(audio::sample_rate()));
+  return drone;
+}
+
+// ---- strike assist ----
+// As a swing starts the hero turns to the Shadow his strike would reach if he faced it, on any side: the strike's
+// box swung round him to face each Shadow and put to the game's own test against its body, so the reach itself is
+// unchanged; it only aims. A Shadow hunting him first, then the nearest (the user's call, 2026-11-15). The swing takes
+// its direction from his facing as it starts (AttackForward, written on its first frame, FUN_141124420): turned while
+// the swing is asked for (NextBehavior Attack) the game aims it itself; caught on its first frame instead,
+// AttackForward is set too. Each blow of a combo is aimed again. Every swing is logged, with or without a Shadow.
+constexpr int32_t kBehaviorAttack = 7;   // FldPlayerDungeonComp.Behavior: 1 Free, 7 Attack (nav.cpp's /strike)
+void strike_assist(const std::vector<Seen>& seen, const FVector& me) {
+  UObject* dc = dungeon_comp();
+  int32_t* b = dc ? field<int32_t>(dc, "Behavior") : nullptr;
+  int32_t* nb = dc ? field<int32_t>(dc, "NextBehavior") : nullptr;
+  if (!b || !nb) return;
+  int32_t* id = field<int32_t>(dc, "AttackId");
+  const int aid = id ? *id : 0;
+  const bool swinging = *b == kBehaviorAttack, asked = *nb == kBehaviorAttack;
+  static bool armed = true;
+  static int prev_b = 0, prev_aid = -1;
+  bool fire = false;
+  if (!swinging && !asked) armed = true;
+  else if (armed) { fire = true; armed = false; }
+  else if (swinging && prev_b == kBehaviorAttack && aid != prev_aid) fire = true;   // the combo's next blow
+  prev_b = *b;
+  prev_aid = aid;
+  if (!fire) return;
+  const char* when = swinging ? "first frame" : "asked";
+  if (!settings::on(settings::StrikeAssist)) { log::writef("shadow: swing (attack {}, {}), strike assist off", aid, when); return; }
+  Box box;
+  if (long_range(dc) || !strike_box(dc, box)) {
+    log::writef("shadow: swing (attack {}, {}), no strike box to aim with (long range {}, lock-on {})", aid, when,
+                get_bool(dc, "IsUsingLongRangeAttack"), get<UObject*>(dc, "LockOnActor") != nullptr);
+    return;
+  }
+  const Seen* pick = nullptr;
+  float pick_yaw = 0.0f;
+  for (const Seen& s : seen) {
+    float yaw = std::atan2(s.at.y - me.y, s.at.x - me.x) * 180.0f / kPi;
+    float r, hh;
+    body_of(s.actor, r, hh);
+    if (!core::box_meets_body(core::turned_about(box, world::vec3(me), yaw), world::vec3(s.at), r, hh)) continue;
+    bool better = !pick || (hunting(s.actor) != hunting(pick->actor) ? hunting(s.actor) : s.dist < pick->dist);
+    if (better) { pick = &s; pick_yaw = yaw; }
+  }
+  UObject* hero = world::player();
+  if (!pick || !hero) { log::writef("shadow: swing (attack {}, {}), no Shadow in reach on any side", aid, when); return; }
+  float turned = angle_diff(yaw_of(hero), pick_yaw);
+  Params sp(find_function(class_of(hero), "K2_SetActorRotation"));
+  sp.set<FRotator>("NewRotation", FRotator{0.0f, pick_yaw, 0.0f});
+  call(hero, sp);
+  if (swinging)
+    if (FVector* fwd = field<FVector>(dc, "AttackForward"))
+      *fwd = FVector{std::cos(pick_yaw * kPi / 180.0f), std::sin(pick_yaw * kPi / 180.0f), 0.0f};
+  log::writef("shadow: swing (attack {}, {}): strike assist turned the hero {:.0f} deg to #{} at {:.1f} m, {:.0f} deg off its front{}", aid, when, turned,
+              index_of(pick->actor), pick->dist / 100.0f, off_front(*pick, me), hunting(pick->actor) ? ", hunting" : "");
 }
 }  // namespace
 
@@ -239,17 +415,22 @@ std::vector<Holder> enemy_holders() {
 }
 
 void tick() {
-  if (!settings::on(settings::ShadowAlerts) || !world::exploring()) return;
+  log_encounter();   // the battle starts as the field is left, so before the check below
+  if (!world::exploring()) return;
   FVector me;
   if (!world::player_location(me)) return;
   std::vector<Seen> seen = look(me);
+  strike_assist(seen, me);   // its own setting, and every swing logged
+  if (!settings::on(settings::ShadowAlerts)) return;
   mind_cues(seen, me);
+  log_zones(seen, me);
   const Seen* nearest = nullptr;
   for (const Seen& s : seen) if (!nearest || s.dist < nearest->dist) nearest = &s;
   const bool shadow_near = nearest && nearest->dist <= kPulseRange;
   // The strike's ring: a Shadow is in reach, else a breakable thing is. It says "you can strike now", so it comes
   // from the player (no place, both ears alike), not from the thing (the user's call, 2026-11-10).
   int ring = shadow_near ? close_cues(*nearest, me) : -1;
+  log_ring(nearest, ring, me);
   FVector ring_at{};
   if (ring < 0 && breakable_in_reach(me, ring_at)) ring = (int)SignalCue::Reach;
   ULONGLONG now = GetTickCount64();
@@ -258,24 +439,45 @@ void tick() {
     rang_at = now;
     audio::signal_here(ring, 1.2f);
   }
-  if (!shadow_near) return;
-  static ULONGLONG next = 0;
-  if (now < next) return;
+  // The nearest Shadow within 30 m: one held snarl from where it is (it was a growl repeated faster as it neared; the
+  // user asked for one constant sound, its facing told by something other than pitch, 2026-11-15). Louder as it
+  // nears; higher while it hunts the hero, lower from behind him (the Behind pitch setting), as before. Its facing:
+  // bright facing him, more muffled the further it turns away, and once his place is behind its front half (the
+  // game's own 90 degrees, where a strike brings the advantage) its loudness wobbles too.
+  const audio::Pcm& drone = drone_pcm();
+  if (!shadow_near) { audio::release_hold(kDroneId); return; }
   float closeness = 1.0f - nearest->dist / kPulseRange;
   bool hunted = hunting(nearest->actor);
   bool behind = std::cos(world::bearing(me, nearest->at) * kPi / 180.0f) < -0.2f && settings::on(settings::BehindPitch);
-  // Hunting the hero: higher, louder and nearly twice as fast.
-  audio::signal((int)SignalCue::Shadow, 1.0f + 0.8f * closeness + (hunted ? 0.3f : 0.0f), world::spot(me, nearest->at),
-                (behind ? 0.7f : 1.0f) * (hunted ? 1.3f : 1.0f));
-  // From every 0.8 s at the range's edge to every 0.2 s beside the hero: under the growl's own length up close, where
-  // one runs into the next and it is one unbroken snarl.
-  next = now + (ULONGLONG)((200 + 600 * (1.0f - closeness)) * (hunted ? 0.55f : 1.0f));
+  float off = off_front(*nearest, me);
+  audio::hold(kDroneId, drone, 0.3f + 1.0f * closeness + (hunted ? 0.2f : 0.0f), world::spot(me, nearest->at),
+              (behind ? 0.7f : 1.0f) * (hunted ? 1.3f : 1.0f), 1.0f - off / 180.0f, off > kBackTurnedDeg ? 0.75f : 0.0f);
+  // Its facing, logged as it crosses the game's line (to compare with what was heard).
+  static WeakObj facing_of;
+  static bool was_back = false;
+  WeakObj fw = WeakObj::of(nearest->actor);
+  bool back = off > kBackTurnedDeg;
+  if (!(fw == facing_of) || back != was_back) {
+    if (fw == facing_of || back)
+      log::writef("shadow: #{} {} at {:.1f} m ({:.0f} deg off its front)", fw.index, back ? "turned its back on the hero" : "turned to face the hero",
+                  nearest->dist / 100.0f, off);
+    facing_of = fw;
+    was_back = back;
+  }
   // A Shadow's first growl is logged with its distance (how early the player could have heard it).
   static WeakObj growled;
   if (WeakObj w = WeakObj::of(nearest->actor); !(w == growled)) {
     growled = w;
     log::writef("shadow: #{} first growls at {:.1f} m{}", w.index, nearest->dist / 100.0f, hunted ? ", hunting" : "");
   }
+}
+
+void demo(int which) {
+  audio::Spot ahead{};
+  ahead.dist_m = 3.0f;
+  if (which == 0) audio::hold(kDemoId, drone_pcm(), 1.0f, ahead, 1.0f, 1.0f, 0.0f, 1500);
+  else if (which == 1) audio::hold(kDemoId, drone_pcm(), 1.2f, ahead, 1.3f, 1.0f, 0.0f, 1500);
+  else audio::hold(kDemoId, drone_pcm(), 1.0f, ahead, 1.0f, 0.15f, 0.75f, 1500);
 }
 
 void install() {

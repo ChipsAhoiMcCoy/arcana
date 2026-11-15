@@ -285,7 +285,7 @@ void tick() {
   pickup_tick();
   // The field's sounds only while the player walks it: a battle between turns has no screen up, and a story scene
   // no blocking window, yet neither is the place for them.
-  if (world::exploring()) shadow::tick();
+  shadow::tick();   // it checks that the player walks the field itself, after logging how a battle begins
   prompt_tick();
   arrival_tick();
 }

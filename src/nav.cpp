@@ -348,9 +348,8 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
   if (!refresh_path(me)) { speech::speak(strings::kNoPath, true); return; }
   g_walking = true;
   restart_progress(me, GetTickCount64());
-  // Said on starting, so the player knows the walk has begun (the user's call, 2026-11-14; nothing was said from
-  // 2026-10-29). Arriving has no word of its own: the target's prompt says it.
-  speech::speak(strings::kAutoPathing, true);
+  // Nothing is said on starting: "Auto-pathing" was (2026-11-14), and was dropped as redundant (the user's call,
+  // 2026-11-15). Arriving has no word of its own either: the target's prompt says it.
 }
 
 // ---- round what the path runs into ----

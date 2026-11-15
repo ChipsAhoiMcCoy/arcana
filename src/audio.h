@@ -46,6 +46,14 @@ void set_bus_volume(Bus b, float v);
 using Pcm = std::shared_ptr<const std::vector<float>>;
 // focus: the thing the player is listening for (sonar::focus): it plays through a solo.
 void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate = 1.0f, bool focus = false);
+// A held sound from a place, on the Cues bus: `pcm` looped seamlessly for as long as the caller asks for it again
+// every frame (game thread); after 250 ms unasked, or release_hold, it fades out and ends. One per `id` (not 0):
+// asking again moves it and glides it to the new volume, tone and wobble; `rate` changes take at once. `tone` 0..1:
+// its brightness (1 as recorded; lower runs it through a low-pass, down to 350 Hz at 0: muffled). `wobble` 0..1: a
+// tremolo's depth, its loudness swelling and dipping 6 times a second. Neither changes the pitch.
+// `hold_ms`: how long it plays on unasked (the sound test holds one for its whole length in one call).
+void hold(int id, Pcm pcm, float volume, const Spot& at, float rate, float tone, float wobble, int hold_ms = 250);
+void release_hold(int id);
 // The solo: while on, only focus sounds play from places; every other placed sound (the sonar's field, a Shadow's
 // growl) fades out at once and new ones are dropped, and the wall tones go quiet. Sounds about the player (no place:
 // the layer's tick, the strike's ring) and the narrator still play. Game thread, every frame is fine.

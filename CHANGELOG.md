@@ -9,7 +9,6 @@
 - The download is now `arcana-<version>.zip`, from https://github.com/ChipsAhoiMcCoy/arcana.
 
 ### Auto-walk
-- It says "Auto-pathing" when it sets off.
 - It moves the hero straight along its way at any angle, as a stick held exactly that way would, instead of the nearest of the eight directions the movement keys give: it keeps to narrow ways between furniture, takes the shortest line, and no camera angle can turn it off course. If the game does not take this, the walk goes back to the movement keys by itself.
 - Things set into the wall, whose spot the hero can only reach the edge of (the radiator and the mirror in your room), are arrived at: the walk said "Stuck" a step away from them.
 - Prompts for things passed on the way are no longer read, so they are not taken for arriving. The prompt up when the walk ends is read as before.
@@ -18,6 +17,15 @@
 - Walking to the selected point and using it is now Shift+Period instead of Shift+Enter.
 
 - The category is said once, first, as you enter it (the bracket keys, the controller's layer, Comma landing in another category): "Objects, Vending Machine, 3 meters, north, 1 of 4". Moving through the category says each point without it: "Desk, 2 meters, east, 2 of 4".
+
+### Shadows in Tartarus
+- The nearest Shadow within 30 m snarls steadily from where it is, instead of a growl repeated faster as it nears. It is louder the closer it is and higher while it hunts you. Its facing changes the sound, not its pitch: bright when it faces you, duller as it turns away, and muffled with a wobble once you are behind it, where a strike brings the advantage. Follow the wobble to sneak up on it.
+- The mod's own alarm when a Shadow notices you is gone: the game sounds one itself.
+- "Behind" now uses the game's own rule, more than 90 degrees off the Shadow's front (it was 110): the wobble, the spoken "Shadow close, back turned" and the behind ring agree with the advantage the game gives.
+- The strike ring starts the moment any of the Shadow's body is within your strike, the game's own test (it counted a little short, 40 cm off the game's reach). It keeps ringing through your swing; it used to stop as you swung.
+- Strike assist (a new setting, on): when you attack with a Shadow close enough that your strike would reach it if you faced it, from any side, you turn to face it as the swing starts. Your reach stays the same.
+- The sound test has "Shadow, facing you", "Shadow, hunting you" and "Shadow, back turned".
+- The log records each Shadow coming into your strike's reach, you stepping into its attack zone, each swing, and how each battle began.
 
 ### Focus ping
 - Whenever something is focused (the list's keys, Comma, Shift+Semicolon or the right stick), Grim Dark's route ping plays once from where it is, as it does when Grim Dark's review cursor lands on something: one sound for in sight with a straight walk, one for a walk round something, one for no way there. It plays with the sonar off too; with it on, the thing's own sound follows.

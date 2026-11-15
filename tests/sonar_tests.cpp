@@ -259,3 +259,18 @@ TEST_CASE("file cues: the file's silence cut, clean ends, the common loudness; t
   CHECK(file_cue(std::vector<float>(1000, 0.0f), rate).empty());   // a silent file: the made sound stands in
   CHECK(file_cue({}, rate).empty());
 }
+
+TEST_CASE("drone_loop: one second, seamless, at the common level") {
+  const int rate = 48000;
+  std::vector<float> v = drone_loop(rate);
+  REQUIRE(v.size() == (size_t)rate);
+  // The step from its last sample round to its first is no bigger than the steps inside it.
+  float worst = 0;
+  for (size_t i = 1; i < v.size(); ++i) worst = std::max(worst, std::fabs(v[i] - v[i - 1]));
+  CHECK(std::fabs(v.front() - v.back()) <= worst);
+  double sum = 0, peak = 0;
+  for (float s : v) { sum += (double)s * s; peak = std::max(peak, (double)std::fabs(s)); }
+  CHECK(peak <= kCuePeak + 1e-6);
+  CHECK(std::sqrt(sum / v.size()) <= kCueLoudness + 1e-6);
+  CHECK(std::sqrt(sum / v.size()) > kCueLoudness * 0.5);
+}

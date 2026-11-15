@@ -11,6 +11,7 @@
 #include "keys.h"
 #include "log.h"
 #include "mod.h"
+#include "shadow.h"
 #include "sonar.h"
 #include "speech.h"
 #include "voice.h"
@@ -81,6 +82,8 @@ static const Def kDefs[Count] = {
   {"description_volume", strings::kSetDescriptionVolume, CatDialogue, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
+  // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
+  {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
 
@@ -169,9 +172,7 @@ static void play_test(int i) {
   switch (i) {
     case 0: case 1: case 2: case 3: case 4: case 5: case 6: sonar::demo(i); break;
     case 7: sonar::demo(2, true); break;
-    case 8: audio::signal((int)SignalCue::Shadow, 1.4f, ahead); break;
-    case 9: audio::signal((int)SignalCue::Shadow, 1.7f, ahead, 1.3f); break;
-    case 10: audio::signal((int)SignalCue::Spotted, 1.4f, ahead); break;
+    case 8: case 9: case 10: shadow::demo(i - 8); break;
     case 11: audio::signal((int)SignalCue::Lost, 1.1f, ahead); break;
     case 12: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
     case 13: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;

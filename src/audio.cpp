@@ -78,7 +78,25 @@ struct Shot {
   float duck = 1.0f;      // glides to 0 when the solo silences it (it is then cut)
   core::SpatialVoice stereo;   // Dark Vision's stereo model: its filters' and delay's state (held by value: the audio
                                // thread neither allocates nor frees)
+  // A held voice (audio::hold): loops, its volume, tone and wobble glide to what the caller last asked, and it fades
+  // out and ends once the caller stops asking for hold_ms.
+  int hold = 0;                // its id; 0: a one-shot
+  ULONGLONG held_at = 0;       // GetTickCount64 at the last hold() for it
+  ULONGLONG hold_ms = 250;     // how long it plays on unasked
+  float vol_to = 0.0f;         // the volume it glides to (vol is where it is)
+  float tone = 1.0f, tone_to = 1.0f;       // brightness 0..1 (1: as recorded)
+  float wobble = 0.0f, wobble_to = 0.0f;   // the tremolo's depth 0..1
+  float lp = 0.0f;             // the low-pass's state
+  double trem = 0.0;           // the tremolo's phase
 };
+// A held voice unasked for its hold_ms (250 by default, as the wall tones: the game stops ticking us while paused).
+constexpr double kWobbleHz = 6.0;
+// The low-pass's corner for a tone: 1 is open (no filter), 0 is 350 Hz, between them evenly in octaves.
+float tone_coef(float tone, int rate) {
+  if (tone >= 0.999f) return 1.0f;
+  double hz = 350.0 * std::pow(9000.0 / 350.0, std::clamp((double)tone, 0.0, 1.0));
+  return (float)(1.0 - std::exp(-2.0 * kPi * hz / rate));
+}
 constexpr size_t kMaxShots = 32;   // more at once is a runaway caller: further ones are dropped
 std::atomic<bool> g_solo{false};   // audio::solo
 // What the solo silences: every sound from a place except the focus. A Cues sound with no place is about the player.
@@ -181,13 +199,28 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
     float l, r; pan_gains(sh.spot.pan, l, r);
     const std::vector<float>& v = *sh.pcm;
     const float duck_to = soloing && soloed_out(sh) ? 0.0f : 1.0f;
+    if (sh.hold && GetTickCount64() - sh.held_at > sh.hold_ms) sh.vol_to = 0.0f;   // nobody holds it: fade out
+    if (sh.hold) sh.tone += (sh.tone_to - sh.tone) * 0.3f;   // per block: ~30 ms to settle
+    const float coef = sh.hold ? tone_coef(sh.tone, kRate) : 1.0f;
     for (ma_uint32 i = 0; i < frames; ++i) {
+      if (sh.hold && sh.pos >= (double)v.size()) sh.pos -= (double)v.size();   // a held voice loops
       size_t k = (size_t)sh.pos;
-      if (k + 1 >= v.size()) { sh.dead = true; break; }
+      if (!sh.hold && k + 1 >= v.size()) { sh.dead = true; break; }
+      const size_t k1 = k + 1 < v.size() ? k + 1 : 0;   // a loop's last sample runs on into its first
       sh.duck += (duck_to - sh.duck) * kGlide;
       if (duck_to == 0.0f && sh.duck < 1e-3f) { sh.dead = true; break; }   // faded out under the solo: cut
       float frac = (float)(sh.pos - (double)k);
-      float s = (v[k] + (v[k + 1] - v[k]) * frac) * sh.vol * sh.duck * bus_gain(sh.bus, i);
+      float x = v[k] + (v[k1] - v[k]) * frac;
+      if (sh.hold) {
+        sh.vol += (sh.vol_to - sh.vol) * kGlide;
+        if (sh.vol_to == 0.0f && sh.vol < 1e-4f) { sh.dead = true; break; }   // faded out: ended
+        sh.lp += coef * (x - sh.lp);
+        sh.wobble += (sh.wobble_to - sh.wobble) * kGlide;
+        x = sh.lp * (1.0f - sh.wobble * 0.5f * (1.0f - (float)std::cos(sh.trem)));
+        sh.trem += 2.0 * kPi * kWobbleHz / kRate;
+        if (sh.trem > 2.0 * kPi) sh.trem -= 2.0 * kPi;
+      }
+      float s = x * sh.vol * sh.duck * bus_gain(sh.bus, i);
       sh.pos += sh.rate;
       if (ears) g_mono[i] = s;
       else { o[i * 2] += s * l; o[i * 2 + 1] += s * r; }
@@ -348,6 +381,46 @@ static void push_shot(Pcm pcm, float volume, const Spot& at, Bus bus, float rate
   g_shots.push_back(std::move(s));
 }
 void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate, bool focus) { push_shot(std::move(pcm), volume, at, bus, rate, true, focus); }
+void hold(int id, Pcm pcm, float volume, const Spot& at, float rate, float tone, float wobble, int hold_ms) {
+  if (!g_ready || !pcm || pcm->size() < 2 || id == 0) return;
+  const ULONGLONG now = GetTickCount64();
+  volume = volume < 0 ? 0 : volume;
+  tone = std::clamp(tone, 0.0f, 1.0f);
+  wobble = std::clamp(wobble, 0.0f, 1.0f);
+  std::lock_guard lk(g_mu);
+  for (Shot& s : g_shots)
+    if (s.hold == id && !s.dead && s.pcm == pcm && s.vol_to > 0.0f) {
+      s.held_at = now;
+      s.hold_ms = (ULONGLONG)std::max(hold_ms, 0);
+      s.vol_to = volume;
+      s.spot = at;
+      s.rate = std::clamp(rate, 0.25f, 4.0f);
+      s.tone_to = tone;
+      s.wobble_to = wobble;
+      return;
+    }
+  for (Shot& s : g_shots) if (s.hold == id) s.vol_to = 0.0f;   // an older one fading out, not taken back
+  if (g_shots.size() >= kMaxShots) return;
+  Shot s;
+  s.pcm = std::move(pcm);
+  s.hold = id;
+  s.held_at = now;
+  s.hold_ms = (ULONGLONG)std::max(hold_ms, 0);
+  s.vol = 0.0f;   // it fades in
+  s.vol_to = volume > 0.0f ? volume : 1e-6f;
+  s.rate = std::clamp(rate, 0.25f, 4.0f);
+  s.bus = Bus::Cues;
+  s.spot = at;
+  s.spatial = true;
+  s.tone = s.tone_to = tone;
+  s.wobble = s.wobble_to = wobble;
+  if (g_solo && soloed_out(s)) return;
+  g_shots.push_back(std::move(s));
+}
+void release_hold(int id) {
+  std::lock_guard lk(g_mu);
+  for (Shot& s : g_shots) if (s.hold == id) s.vol_to = 0.0f;
+}
 void solo(bool on) {
   if (g_solo.exchange(on) != on) log::writef("audio: solo {}", on ? "on" : "off");
 }

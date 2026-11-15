@@ -433,6 +433,43 @@ std::vector<float> sonar_cue(SonarCue cue, int rate, bool brief) {
   return v;
 }
 
+// The drone: a buzzing 73 Hz tone (a sawtooth's harmonics to 6 kHz), its loudness rasping 17 times a second for the
+// snarl, under a breath of noise around 2.5 kHz. Every frequency is a whole number of Hz, so one second of it is
+// exactly periodic; the noise is made a little longer and its tail crossfaded into its start, so the loop has no seam.
+std::vector<float> drone_loop(int rate) {
+  const int n = frames(rate, kDroneSeconds), fade = frames(rate, 0.05);
+  std::vector<float> tone(n), breath(n + fade);
+  for (int i = 0; i < n; ++i) {
+    double t = (double)i / rate, s = 0;
+    for (int k = 1; k * 73.0 < 6000.0; ++k) s += std::sin(2.0 * kPi * k * 73.0 * t) / k;
+    double rasp = 1.0 - 0.45 * (0.5 + 0.5 * std::sin(2.0 * kPi * 17.0 * t));
+    tone[i] = (float)(0.35 * s * rasp);
+  }
+  Noise noise(0x9e3779b9u);
+  BandPass band;
+  for (float& b : breath) b = band.run(noise.next(), 2500.0, 0.9, rate);
+  std::vector<float> v(n);
+  for (int i = 0; i < n; ++i) {
+    float b = breath[i];
+    if (i < fade) {   // the start blended with what follows the end, so the end runs on into it
+      float w = (float)i / fade;
+      b = breath[i] * w + breath[n + i] * (1.0f - w);
+    }
+    v[i] = tone[i] + 0.6f * b;
+  }
+  double mean = 0;
+  for (float s : v) mean += s;
+  mean /= n;
+  for (float& s : v) s -= (float)mean;
+  // The common loudness, measured over the loop as it repeats, and the peak kept under kCuePeak.
+  double sum = 0, peak = 0;
+  for (float s : v) { sum += (double)s * s; peak = std::max(peak, (double)std::fabs(s)); }
+  double rms = std::sqrt(sum / n), g = rms > 1e-9 ? kCueLoudness / rms : 1.0;
+  if (peak * g > kCuePeak) g = kCuePeak / peak;
+  for (float& s : v) s *= (float)g;
+  return v;
+}
+
 std::vector<float> signal_cue(SignalCue cue, int rate) {
   std::vector<float> v;
   bool made = false;

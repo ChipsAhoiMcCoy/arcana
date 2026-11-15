@@ -19,6 +19,24 @@ bool box_holds(const Box& b, const Vec3& p, float grow_xy, float grow_z) {
          std::fabs(p.z - b.center.z) <= b.extent.z + grow_z;
 }
 
+Box turned_about(const Box& b, const Vec3& pivot, float yaw) {
+  float a = (yaw - b.yaw) * kPi / 180.0f, dx = b.center.x - pivot.x, dy = b.center.y - pivot.y;
+  Box t = b;
+  t.center.x = pivot.x + dx * std::cos(a) - dy * std::sin(a);
+  t.center.y = pivot.y + dx * std::sin(a) + dy * std::cos(a);
+  t.yaw = yaw;
+  return t;
+}
+
+bool box_meets_body(const Box& b, const Vec3& p, float radius, float half_height) {
+  if (std::fabs(p.z - b.center.z) > b.extent.z + half_height) return false;
+  // The body's line in the box's own frame, and how far it stands off the box's sides (0 inside).
+  float a = -b.yaw * kPi / 180.0f, dx = p.x - b.center.x, dy = p.y - b.center.y;
+  float lx = dx * std::cos(a) - dy * std::sin(a), ly = dx * std::sin(a) + dy * std::cos(a);
+  float ox = std::fmax(0.0f, std::fabs(lx) - b.extent.x), oy = std::fmax(0.0f, std::fabs(ly) - b.extent.y);
+  return ox * ox + oy * oy <= radius * radius;
+}
+
 bool boxes_meet(const Box& a, const Box& b) {
   if (std::fabs(a.center.z - b.center.z) > a.extent.z + b.extent.z) return false;
   const float ya = a.yaw * kPi / 180.0f, yb = b.yaw * kPi / 180.0f;
