@@ -1,0 +1,7 @@
+#scene LS_Event_Main_170_160_B
+15.550	1.532	00.mp3	Takaya draws a revolver.
+18.830	0.724	01.mp3	He aims.
+34.920	1.669	02.mp3	Shinjiro is shot and kneels.
+37.570	0.711	03.mp3	He kicks.
+41.380	1.635	04.mp3	Shinjiro lies on the ground.
+52.400	1.303	05.mp3	Ken closes his eyes.

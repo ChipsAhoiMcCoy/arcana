@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_170_070_C",
+ "title": "Plans for the break",
+ "cues": [
+  {"at": 4.05,  "text": "The others sit around the lounge table."},
+  {"at": 30.90, "text": "Ken gets up and leaves."}
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_170_060_C",
+ "title": "Pharos returns",
+ "cues": [
+  {"at": 0.40,  "text": "The hero sleeps in his room."},
+  {"at": 2.85,  "text": "Pharos stands by the bed."},
+  {"at": 11.30, "text": "Pharos breaks into black specks and vanishes."}
+ ]
+}

@@ -1,0 +1,2 @@
+#scene LS_Event_Main_170_120_C
+0.050	1.187	00.mp3	They charge a Shadow.

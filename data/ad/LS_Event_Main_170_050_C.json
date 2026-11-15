@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_170_050_C",
+ "title": "Chidori's flowers",
+ "cues": [
+  {"at": 1.84, "text": "A hospital room."},
+  {"at": 9.01, "text": "The wilted flowers sparkle."}
+ ]
+}

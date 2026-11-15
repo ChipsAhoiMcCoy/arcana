@@ -1,0 +1,3 @@
+#scene LS_Event_Main_170_130_C
+0.400	1.119	00.mp3	The team regroups.
+14.400	1.427	01.mp3	Akihiko runs off.

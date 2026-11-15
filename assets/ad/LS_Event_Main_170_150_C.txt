@@ -1,0 +1,5 @@
+#scene LS_Event_Main_170_150_C
+0.050	1.094	00.mp3	The team walks in.
+12.400	2.399	01.mp3	Fuuka's Persona rises and encloses her.
+24.170	0.834	02.mp3	She runs off.
+29.470	0.686	03.mp3	They run.

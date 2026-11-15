@@ -1,0 +1,4 @@
+#scene LS_Event_Main_170_090_C
+0.100	1.525	00.mp3	The hero sleeps in his bed.
+2.900	1.448	01.mp3	He wakes to find Pharos.
+8.250	1.748	02.mp3	Pharos breaks into black specks.

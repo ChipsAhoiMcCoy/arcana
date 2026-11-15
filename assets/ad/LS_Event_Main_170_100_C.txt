@@ -1,0 +1,4 @@
+#scene LS_Event_Main_170_100_C
+0.050	2.572	00.mp3	The team surrounds Fuuka inside her Persona.
+17.100	2.185	01.mp3	Junpei turns and walks out of the room.
+22.400	1.588	02.mp3	The hero and Yukari nod.

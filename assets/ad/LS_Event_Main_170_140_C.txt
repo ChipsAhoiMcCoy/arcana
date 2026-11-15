@@ -1,0 +1,4 @@
+#scene LS_Event_Main_170_140_C
+0.300	2.324	00.mp3	Ken waits in a back alley, gripping a spear.
+4.100	1.697	01.mp3	Shinjiro walks up and stops.
+19.200	1.224	02.mp3	Ken levels his spear.

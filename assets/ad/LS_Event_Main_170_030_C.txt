@@ -1,0 +1,8 @@
+#scene LS_Event_Main_170_030_C
+8.550	1.298	00.mp3	Shinjiro walks in.
+16.250	3.965	01.mp3	A red figure with fiery hair rises over Chidori and grips her.
+22.850	2.791	02.mp3	Shinjiro grabs her, and the figure bursts apart.
+31.750	1.348	03.mp3	Shinjiro walks out.
+34.900	1.720	04.mp3	Akihiko runs after him.
+38.300	2.881	05.mp3	Mitsuru leaves too. Junpei stays with Chidori.
+49.400	1.395	06.mp3	Chidori hides a smile.
