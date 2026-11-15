@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Main_110_320_C",
+ "title": "The train stops",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Yukari kneels, hands over her head. Junpei braces."
+  },
+  {
+   "at": 6.3,
+   "text": "Yukari gets slowly to her feet."
+  }
+ ]
+}

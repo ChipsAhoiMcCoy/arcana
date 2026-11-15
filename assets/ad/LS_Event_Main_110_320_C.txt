@@ -1,0 +1,3 @@
+#scene LS_Event_Main_110_320_C
+0.100	3.338	00.mp3	Yukari kneels, hands over her head. Junpei braces.
+6.300	1.843	01.mp3	Yukari gets slowly to her feet.

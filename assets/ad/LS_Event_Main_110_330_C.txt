@@ -1,0 +1,2 @@
+#scene LS_Event_Main_110_330_C
+0.000	0.920	00.mp3	The command room.

@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_110_310_B",
+ "title": "The driver's cab",
+ "cues": [
+  {"at": 0.3,   "text": "The driver's cab at the front of the train."},
+  {"at": 7.55,  "text": "The hero moves to the controls."}
+ ]
+}
