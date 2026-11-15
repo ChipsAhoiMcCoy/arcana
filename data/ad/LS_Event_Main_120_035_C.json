@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_120_035_C",
+ "title": "Summer uniform",
+ "cues": [
+  {"at": 2.35,  "text": "Short sleeves now."},
+  {"at": 4.05,  "text": "He checks his phone."}
+ ]
+}

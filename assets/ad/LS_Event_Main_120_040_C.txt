@@ -1,0 +1,4 @@
+#scene LS_Event_Main_120_040_C
+0.300	2.176	00.mp3	The team gathers around the dining table.
+10.900	1.113	01.mp3	The lights go out.
+16.000	3.601	02.mp3	Junpei, a flashlight under his chin. Then the lights come back.

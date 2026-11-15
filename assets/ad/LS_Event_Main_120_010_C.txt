@@ -1,0 +1,2 @@
+#scene LS_Event_Main_120_010_C
+13.000	1.192	00.mp3	Junpei slumps forward.

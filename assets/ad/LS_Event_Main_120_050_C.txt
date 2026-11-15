@@ -1,0 +1,4 @@
+#scene LS_Event_Main_120_050_C
+0.300	1.578	00.mp3	The hero sleeps in his room.
+2.950	1.429	01.mp3	The boy in stripes is back.
+8.600	2.342	02.mp3	The boy breaks into black specks and vanishes.

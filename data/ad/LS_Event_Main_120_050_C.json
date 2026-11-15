@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_120_050_C",
+ "title": "The boy returns",
+ "cues": [
+  {"at": 0.3,   "text": "The hero sleeps in his room."},
+  {"at": 2.95,  "text": "The boy in stripes is back."},
+  {"at": 8.6,   "text": "The boy breaks into black specks and vanishes."}
+ ]
+}

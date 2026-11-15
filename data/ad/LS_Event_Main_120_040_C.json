@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_120_040_C",
+ "title": "Junpei's ghost story",
+ "cues": [
+  {"at": 0.3,   "text": "The team gathers around the dining table."},
+  {"at": 10.9,  "text": "The lights go out."},
+  {"at": 16.0,  "text": "Junpei, a flashlight under his chin. Then the lights come back."}
+ ]
+}

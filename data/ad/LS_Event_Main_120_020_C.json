@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_120_020_C",
+ "title": "Overheard in the courtyard",
+ "cues": [
+  {"at": 0.6,   "text": "Yukari walks along a brick colonnade."},
+  {"at": 17.0,  "text": "The two girls walk off."}
+ ]
+}

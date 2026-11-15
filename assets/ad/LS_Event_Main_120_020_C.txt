@@ -1,0 +1,3 @@
+#scene LS_Event_Main_120_020_C
+0.600	2.171	00.mp3	Yukari walks along a brick colonnade.
+17.000	1.332	01.mp3	The two girls walk off.
