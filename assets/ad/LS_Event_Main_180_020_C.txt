@@ -1,0 +1,3 @@
+#scene LS_Event_Main_180_020_C
+0.600	3.116	00.mp3	The classroom. The hero and Junpei sit near Yukari.
+7.750	2.892	01.mp3	Yukari rubs her neck. Mitsuru turns and leaves.

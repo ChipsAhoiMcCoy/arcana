@@ -1,0 +1,3 @@
+#scene LS_Event_Main_180_120_C
+3.180	1.405	00.mp3	The team sits in the lounge.
+23.100	0.992	01.mp3	Everyone nods.

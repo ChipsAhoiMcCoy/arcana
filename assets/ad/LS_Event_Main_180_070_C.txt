@@ -1,0 +1,4 @@
+#scene LS_Event_Main_180_070_C
+0.300	1.853	00.mp3	The hero sleeps in his dorm room.
+2.850	1.772	01.mp3	He sits up. Pharos is there.
+13.200	1.855	02.mp3	Pharos crumbles into black flecks.

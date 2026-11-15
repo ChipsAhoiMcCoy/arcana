@@ -1,0 +1,5 @@
+#scene LS_Event_Main_180_040_C
+3.300	2.615	00.mp3	The team sits in the lounge. Aigis walks out.
+15.250	1.040	01.mp3	Aigis runs in.
+24.720	1.396	02.mp3	Yukari faces Fuuka.
+36.400	2.066	03.mp3	Akihiko walks out past the others.

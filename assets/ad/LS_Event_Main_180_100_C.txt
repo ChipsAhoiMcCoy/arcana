@@ -1,0 +1,4 @@
+#scene LS_Event_Main_180_100_C
+0.550	2.479	00.mp3	Yukari writes at a table. Mitsuru walks in.
+10.170	1.300	01.mp3	Mitsuru folds arms.
+17.900	1.478	02.mp3	Mitsuru flicks back her hair.

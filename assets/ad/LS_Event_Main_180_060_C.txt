@@ -1,0 +1,5 @@
+#scene LS_Event_Main_180_060_C
+4.250	1.502	00.mp3	Everyone sits in the lounge.
+7.750	1.881	01.mp3	Fuuka stands. Koromaru turns.
+11.500	2.561	02.mp3	Koromaru runs to the door. Ken walks in.
+15.150	1.580	03.mp3	The team stands facing Ken.

@@ -1,0 +1,3 @@
+#scene LS_Event_Main_180_130_C
+0.100	2.165	00.mp3	The command room. Fuuka scans for it.
+10.600	0.992	01.mp3	Everyone nods.
