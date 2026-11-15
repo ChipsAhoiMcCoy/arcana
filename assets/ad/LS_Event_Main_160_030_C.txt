@@ -1,0 +1,6 @@
+#scene LS_Event_Main_160_030_C
+4.700	1.732	00.mp3	Mitsuru and Akihiko wait.
+6.700	2.959	01.mp3	Koromaru walks out and sits, wearing a metal collar.
+9.900	1.128	02.mp3	Fuuka hurries over.
+21.330	1.039	03.mp3	Junpei grins.
+26.400	1.063	04.mp3	Fuuka stands up.

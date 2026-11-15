@@ -1,0 +1,11 @@
+{
+ "movie": "LS_Event_Main_160_030_C",
+ "title": "Koromaru joins",
+ "cues": [
+  {"at": 4.70, "text": "Mitsuru and Akihiko wait."},
+  {"at": 6.70, "text": "Koromaru walks out and sits, wearing a metal collar."},
+  {"at": 9.90, "text": "Fuuka hurries over."},
+  {"at": 21.33, "text": "Junpei grins."},
+  {"at": 26.40, "text": "Fuuka stands up."}
+ ]
+}

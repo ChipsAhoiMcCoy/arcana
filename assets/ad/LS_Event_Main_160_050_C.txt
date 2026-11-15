@@ -1,0 +1,7 @@
+#scene LS_Event_Main_160_050_C
+0.050	1.269	00.mp3	Outside a ramen shop.
+3.400	1.457	01.mp3	Shinjiro turns aside.
+8.800	1.444	02.mp3	Ken walks up behind them.
+12.120	1.345	03.mp3	Ken startles and runs.
+18.200	1.374	04.mp3	Shinjiro walks away.
+19.800	1.489	05.mp3	A man sits slumped near Ken.

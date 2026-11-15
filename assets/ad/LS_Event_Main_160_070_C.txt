@@ -1,0 +1,4 @@
+#scene LS_Event_Main_160_070_C
+0.000	1.192	00.mp3	Ikutsuki enters.
+3.900	1.796	01.mp3	Ken stands beside Ikutsuki.
+20.050	1.128	02.mp3	Ken looks pleased.

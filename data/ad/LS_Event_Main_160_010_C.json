@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_160_010_C",
+ "title": "Pharos and the flowers of poison",
+ "cues": [
+  {"at": 0.20, "text": "The hero sleeps in his room."},
+  {"at": 2.90, "text": "Pharos stands by the bed."},
+  {"at": 13.60, "text": "Pharos dissolves into black specks."}
+ ]
+}

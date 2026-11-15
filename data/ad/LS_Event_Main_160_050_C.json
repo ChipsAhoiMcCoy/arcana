@@ -1,0 +1,12 @@
+{
+ "movie": "LS_Event_Main_160_050_C",
+ "title": "Shinjiro outside the ramen shop",
+ "cues": [
+  {"at": 0.05,  "text": "Outside a ramen shop."},
+  {"at": 3.40,  "text": "Shinjiro turns aside."},
+  {"at": 8.80,  "text": "Ken walks up behind them."},
+  {"at": 12.12, "text": "Ken startles and runs."},
+  {"at": 18.20, "text": "Shinjiro walks away."},
+  {"at": 19.80, "text": "A man sits slumped near Ken."}
+ ]
+}

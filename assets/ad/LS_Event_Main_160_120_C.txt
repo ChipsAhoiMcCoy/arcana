@@ -1,0 +1,2 @@
+#scene LS_Event_Main_160_120_C
+9.350	1.350	00.mp3	Aigis sits by the hero.

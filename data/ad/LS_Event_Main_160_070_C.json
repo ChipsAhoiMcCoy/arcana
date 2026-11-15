@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_160_070_C",
+ "title": "Ken joins the squad",
+ "cues": [
+  {"at": 0.00,  "text": "Ikutsuki enters."},
+  {"at": 3.90,  "text": "Ken stands beside Ikutsuki."},
+  {"at": 20.05, "text": "Ken looks pleased."}
+ ]
+}

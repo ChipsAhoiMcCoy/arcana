@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_160_020_C",
+ "title": "Mitsuru at the door",
+ "cues": [
+  {"at": 2.40, "text": "The hero puts his phone away and gets up."},
+  {"at": 5.90, "text": "Mitsuru, at his door."}
+ ]
+}

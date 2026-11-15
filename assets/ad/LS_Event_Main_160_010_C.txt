@@ -1,0 +1,4 @@
+#scene LS_Event_Main_160_010_C
+0.200	1.578	00.mp3	The hero sleeps in his room.
+2.900	1.448	01.mp3	Pharos stands by the bed.
+13.600	2.022	02.mp3	Pharos dissolves into black specks.

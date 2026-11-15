@@ -1,0 +1,7 @@
+#scene LS_Event_Main_160_040_C
+1.400	1.440	00.mp3	Junpei checks his phone.
+3.400	1.943	01.mp3	He puts it away, hand on his hip.
+8.050	3.008	02.mp3	On a bench, a girl in a frilly dress sketches on a board.
+13.750	1.333	03.mp3	Junpei steps aside.
+17.600	1.580	04.mp3	Junpei walks off past her.
+20.750	1.698	05.mp3	He leaves her drawing on the bench.

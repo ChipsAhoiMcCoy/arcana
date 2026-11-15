@@ -1,0 +1,8 @@
+{
+ "movie": "LS_Event_Main_160_060_C",
+ "title": "Mitsuru at the door",
+ "cues": [
+  {"at": 2.75,  "text": "The hero stays at his desk."},
+  {"at": 8.90,  "text": "The hero nods to Mitsuru."}
+ ]
+}

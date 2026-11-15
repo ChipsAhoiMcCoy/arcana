@@ -1,0 +1,6 @@
+#scene LS_Event_Main_160_100_C
+0.100	1.862	00.mp3	Junpei walks up to a girl sketching.
+5.700	2.578	01.mp3	Junpei scratches his head. She keeps drawing.
+9.100	2.738	02.mp3	She rises, holding her sketchbook, and walks off.
+19.600	2.023	03.mp3	She turns away, hugging her sketchbook.
+24.300	1.231	04.mp3	Chidori walks away.

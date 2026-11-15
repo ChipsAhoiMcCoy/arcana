@@ -1,0 +1,6 @@
+#scene LS_Event_Main_160_080_C
+0.600	2.082	00.mp3	Junpei strolls between stone columns.
+4.800	1.208	01.mp3	Junpei stops short.
+6.400	3.677	02.mp3	A girl in a long dress draws on a bench. Junpei walks over.
+17.250	1.512	03.mp3	Junpei turns half away.
+19.900	2.231	04.mp3	Junpei walks off. She keeps drawing.

@@ -1,0 +1,12 @@
+{
+ "movie": "LS_Event_Main_160_040_C",
+ "title": "The girl on the bench",
+ "cues": [
+  {"at": 1.40, "text": "Junpei checks his phone."},
+  {"at": 3.40, "text": "He puts it away, hand on his hip."},
+  {"at": 8.05, "text": "On a bench, a girl in a frilly dress sketches on a board."},
+  {"at": 13.75, "text": "Junpei steps aside."},
+  {"at": 17.60, "text": "Junpei walks off past her."},
+  {"at": 20.75, "text": "He leaves her drawing on the bench."}
+ ]
+}

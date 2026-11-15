@@ -1,0 +1,5 @@
+#scene LS_Event_Main_160_110_C
+1.800	1.920	00.mp3	Koromaru trots over to the hero.
+7.900	1.937	01.mp3	Aigis arrives in a school uniform.
+16.400	1.585	02.mp3	The hero scratches his head.
+25.700	1.444	03.mp3	Koromaru hangs his head.
