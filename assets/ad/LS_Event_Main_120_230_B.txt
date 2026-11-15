@@ -1,0 +1,9 @@
+#scene LS_Event_Main_120_230_B
+0.050	1.089	00.mp3	The group runs in.
+3.000	1.656	01.mp3	A motorcycle lies smoking.
+5.150	2.462	02.mp3	Two Shadows stand over Yukari and Mitsuru.
+9.950	1.166	03.mp3	One holds a sword.
+14.700	1.573	04.mp3	A schoolgirl walks toward them.
+20.480	1.141	05.mp3	Fuuka runs to her.
+22.700	1.593	06.mp3	Natsuki drops to her knees.
+28.500	1.623	07.mp3	Fuuka stands before Natsuki.

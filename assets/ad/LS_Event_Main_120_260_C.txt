@@ -1,0 +1,6 @@
+#scene LS_Event_Main_120_260_C
+0.050	2.303	00.mp3	A giant purple figure shelters Fuuka.
+2.700	0.966	01.mp3	It fades away.
+7.700	2.117	02.mp3	Fuuka turns to Natsuki, who kneels.
+12.250	0.902	03.mp3	Fuuka falls.
+22.700	1.266	04.mp3	Natsuki bows low.

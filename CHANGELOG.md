@@ -34,7 +34,7 @@
 - The wall tones play only while you move (the stick, the keys or the auto-walk, even pushing into a wall), in either camera mode, and are quiet while you stand still.
 
 ### Audio description in story scenes (new)
-- Story scenes played in the game's 3D engine, not only the animated movies, can now be described, in the same narrator voice, between the lines and never over them. The descriptions follow the scene's own clock, wait while a line is on screen, and stay quiet while you fast-forward. The first scenes described are the May full moon's monorail operation, such as Yukari climbing the ladder at the stopped monorail.
+- Story scenes played in the game's 3D engine, not only the animated movies, can now be described, in the same narrator voice, between the lines and never over them. The descriptions follow the scene's own clock, wait while a line is on screen, and stay quiet while you fast-forward. Described so far: May's full moon (the monorail operation, such as Yukari climbing the ladder at the stopped monorail) and all of June (the ghost story, the night at school, finding Fuuka in Tartarus).
 
 ### Fixes
 - Pressing any button on a controller stops what is being said, as a key does with a screen reader: confirming an item no longer leaves its description reading on (the Beef Bowl CD). With SAPI or OneCore instead of a screen reader, any key but Shift, Ctrl and Alt does the same.

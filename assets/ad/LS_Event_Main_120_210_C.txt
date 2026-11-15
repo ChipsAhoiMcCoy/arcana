@@ -1,0 +1,8 @@
+#scene LS_Event_Main_120_210_C
+0.100	2.249	00.mp3	The hero walks up to Akihiko and Junpei.
+2.680	1.726	01.mp3	Twisted growths cover the walls.
+7.700	3.279	02.mp3	Junpei turns. Far behind them stands a girl in uniform.
+12.700	1.528	03.mp3	The three walk toward the girl.
+20.700	1.323	04.mp3	Fuuka sinks to her knees.
+25.700	1.578	05.mp3	Fuuka gets back to her feet.
+34.700	2.830	06.mp3	Akihiko puts an Evoker into Fuuka's hands.

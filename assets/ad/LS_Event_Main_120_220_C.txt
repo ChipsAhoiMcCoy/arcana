@@ -1,0 +1,3 @@
+#scene LS_Event_Main_120_220_C
+18.350	2.331	00.mp3	Akihiko runs off. The others follow.
+22.700	1.449	01.mp3	Junpei runs after them.
