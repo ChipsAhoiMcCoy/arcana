@@ -17,10 +17,13 @@
 - Period walks to the selected point, as Apostrophe does, so Comma and Period sit together.
 - Walking to the selected point and using it is now Shift+Period instead of Shift+Enter.
 
-- When the list lands on a point (Comma, a new category, the controller's layer), its name comes first, then its type, then where it is: "Vending Machine, Object, 3 meters, north, 1 of 4" instead of "Objects: Vending Machine, 3 meters, north, 1 of 4".
+- The category is said once, first, as you enter it (the bracket keys, the controller's layer, Comma landing in another category): "Objects, Vending Machine, 3 meters, north, 1 of 4". Moving through the category says each point without it: "Desk, 2 meters, east, 2 of 4".
 
 ### Focus ping
 - Whenever something is focused (the list's keys, Comma, Shift+Semicolon or the right stick), Grim Dark's route ping plays once from where it is, as it does when Grim Dark's review cursor lands on something: one sound for in sight with a straight walk, one for a walk round something, one for no way there. It plays with the sonar off too; with it on, the thing's own sound follows.
+
+### Wall tones
+- The wall tones play only while you move (the stick, the keys or the auto-walk, even pushing into a wall), in either camera mode, and are quiet while you stand still.
 
 ### Fixes
 - In the top-down mode the auto-walk no longer runs into the walls where the game's camera does not face north (your room in the dorm): it steered by the camera while the hero walks by the compass, and said "Stopped" or "Stuck" short of the desk, bed and closet.

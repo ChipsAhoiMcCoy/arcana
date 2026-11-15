@@ -15,8 +15,9 @@
 // In the top-down mode (topdown.cpp) the four directions are the compass, fixed, so a room had a wall within reach in
 // three or four of them all the time and turning no longer quietened them (the user, 2026-11-12). There they reach 3 m,
 // and while the player moves the hero (the movement input, so the stick, the keys and the auto-walk alike, even into a
-// wall) the direction behind the walk is left out. They used to sound only while moving, as Dark Vision's "when moving";
-// now they play all the time, standing still too, with all four directions (the user, 2026-11-13).
+// wall) the direction behind the walk is left out. In either mode the tones sound only while the player moves (pushes a
+// way, or the hero moves), as Dark Vision's "when moving"; standing still they are quiet (the user, 2026-11-14; for a
+// day, 2026-11-13, they played all the time).
 #include "walltones.h"
 #include "audio.h"
 #include "devserver.h"
@@ -183,9 +184,11 @@ void tick() {
   FVector in{}, vel{};
   g_asking = world::player_input(in) && std::hypot(in.x, in.y) > kAskingInput;
   g_moving = g_asking || (world::player_velocity(vel) && std::hypot(vel.x, vel.y) > kMovingCmS);
+  // Only while moving (the user, 2026-11-14): standing still, the tones are quiet, in either mode.
+  if (!g_moving) { silence(); return; }
   const float range = top ? kTopDownRange : g_range;
-  // Top-down: walking, the direction behind the walk is left out; standing still there is no walk, so all four play.
-  const bool leave_behind = top && g_moving;
+  // Top-down: the direction behind the walk is left out.
+  const bool leave_behind = top;
   if (leave_behind) {
     const FVector& d = g_asking ? in : vel;
     g_heading = std::atan2(d.y, d.x) * 180.0f / 3.14159265f - topdown::north_yaw();

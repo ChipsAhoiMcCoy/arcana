@@ -32,8 +32,8 @@ std::string describe(const Poi& p) {
 }
 
 enum class Cat { Exits, Doors, People, Shops, Things, Events, Shadows, Count };
-static_assert((int)Cat::Count == 7, "strings::kPoiType has a type per category, in order");
-static const char* cat_type(Cat c) { return strings::kPoiType[(int)c]; }
+static_assert((int)Cat::Count == 7, "strings::kPoiCategory has a name per category, in order");
+static const char* cat_name(Cat c) { return strings::kPoiCategory[(int)c]; }
 static Cat g_cat = Cat::Exits;
 static WeakObj g_sel;
 static Poi g_sel_poi;   // what the list said about it: selected() refreshes the place
@@ -69,23 +69,23 @@ static std::vector<Poi> settle(const std::vector<Poi>& all, int delta, bool move
   return in_category(all, g_cat);
 }
 
-// "Iwatodai Station, Exit, 6 meters, 2 o'clock, 1 of 3": list[i] selected, its type after its name. The thing first, then
-// what kind it is, then where (the user, 2026-11-14: the category's name first was in the way).
-static void announce_at(const std::vector<Poi>& list, size_t i) {
+// "Exits, Iwatodai Station, 6 meters, 2 o'clock, 1 of 3": list[i] selected. The category is said once, first, as the
+// list enters it (a bracket key, the controller's layer opening, Comma landing in another category); moving within it
+// says the thing alone (the user, 2026-11-14: the type on every point was in the way).
+static void announce_at(const std::vector<Poi>& list, size_t i, bool with_cat) {
   g_sel = list[i].obj;
   g_sel_poi = list[i];
-  // A story beat is named "Event: Jin"; with its type said it said "Event" twice (Adamah, 2026-11-13).
+  // A story beat is named "Event: Jin"; in the Events category it said "Event" twice (Adamah, 2026-11-13).
   Poi said = list[i];
   if (std::string head = std::string(strings::kPoiEvent) + ": "; g_cat == Cat::Events && said.name.starts_with(head)) said.name.erase(0, head.size());
-  std::string who = said.state.empty() ? said.name : said.name + ", " + said.state;
-  speech::speak(std::format("{}, {}, {}, {}, {} {} {}", who, cat_type(g_cat), core::meters(said.dist / 100.0f), clock(said.bearing),
-                            i + 1, strings::kOf, list.size()), true);
+  std::string text = std::format("{}, {} {} {}", describe(said), i + 1, strings::kOf, list.size());
+  speech::speak(with_cat ? std::format("{}, {}", cat_name(g_cat), text) : text, true);
   sonar::selected(list[i]);   // its sound, from where it is
 }
 
 static void announce_nearest(const std::vector<Poi>& list) {
   if (list.empty()) { speech::speak(strings::kNothingNearbyFull, true); g_sel = {}; return; }
-  announce_at(list, 0);
+  announce_at(list, 0, true);
 }
 
 // The list is of the field the player is walking: in a menu, a conversation, a battle or a scene its keys say so.
@@ -121,14 +121,14 @@ void next_category(int delta) {
 void announce_list() {
   auto list = settle(scan(), 1, false);
   for (size_t i = 0; i < list.size(); ++i)
-    if (list[i].obj == g_sel) { announce_at(list, i); return; }
+    if (list[i].obj == g_sel) { announce_at(list, i, true); return; }
   announce_nearest(list);
 }
 
 // Comma / Shift+Comma: every point of interest of any kind, nearest first. The first press lands on the nearest (Shift:
 // the farthest, as Grim Dark's review keys enter a list); while the selection is still Comma's, each press moves on
-// from it, wrapping. Said as the list says it, its position counted in the whole list ("Vending Machine, Object, 3
-// meters, north, 2 of 9"), and its category becomes the list's. Nothing walks: Apostrophe or Period goes there once
+// from it, wrapping. Said as the list says it, its position counted in the whole list ("Objects, Vending Machine, 3
+// meters, north, 2 of 9", the category only when it changes), and its category becomes the list's. Nothing walks: Apostrophe or Period goes there once
 // the player has heard what it is (the user, 2026-11-14: walking at once went somewhere unknown).
 static WeakObj g_comma;   // what Comma last chose
 void cycle_nearest(int dir) {
@@ -139,9 +139,10 @@ void cycle_nearest(int dir) {
   int cur = -1;
   if (g_comma == g_sel) for (int i = 0; i < n; ++i) if (all[(size_t)i].obj == g_sel) cur = i;
   const int i = cur < 0 ? (dir >= 0 ? 0 : n - 1) : ((cur + dir) % n + n) % n;
+  const Cat was = g_cat;
   for (int c = 0; c < (int)Cat::Count; ++c) if (in_cat(all[(size_t)i], (Cat)c)) { g_cat = (Cat)c; break; }
   g_comma = all[(size_t)i].obj;
-  announce_at(all, (size_t)i);
+  announce_at(all, (size_t)i, g_cat != was || cur < 0);   // the category when Comma enters one
 }
 
 // The selection as it is now, from its own actor: a rescan could miss it (an Event trigger is only listed when nothing

@@ -441,7 +441,7 @@ inline constexpr const char* kPoiFragment = "Twilight Fragment";                
 inline constexpr const char* kPoiFragmentCrystal = "Twilight Fragment crystal";   // Tartarus: strike it for one
 // One point's type, said after its name when the list lands on it ("Vending Machine, Object, 3 meters"), in the
 // categories' order.
-inline constexpr const char* kPoiType[7] = {"Exit", "Door", "Person", "Shop", "Object", "Event", "Shadow"};
+inline constexpr const char* kPoiCategory[7] = {"Exits", "Doors", "People", "Shops", "Objects", "Events", "Shadows"};
 inline constexpr const char* kShadowBackTurned = "Shadow close, back turned";
 inline constexpr const char* kShadowFacingYou = "Shadow close, facing you";
 inline constexpr const char* kNothingNearbyFull = "Nothing nearby";
