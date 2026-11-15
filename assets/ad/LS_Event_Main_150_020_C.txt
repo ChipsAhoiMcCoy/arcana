@@ -1,0 +1,6 @@
+#scene LS_Event_Main_150_020_C
+1.600	1.998	00.mp3	Aigis stands over the sleeping hero.
+10.200	4.229	01.mp3	The hero sits up in bed. Aigis walks to the door and faces Yukari.
+22.900	2.090	02.mp3	The hero raises a hand to Yukari.
+38.300	2.097	03.mp3	Yukari turns and walks out the door.
+43.050	1.417	04.mp3	Aigis faces the hero.

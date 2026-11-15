@@ -1,0 +1,6 @@
+#scene LS_Event_Main_150_030_C
+0.800	2.694	00.mp3	Shinjiro sits alone by some stairs in an alley.
+4.500	1.934	01.mp3	The three strangers walk up to him.
+8.750	2.502	02.mp3	The boy in green tosses Shinjiro something.
+18.500	2.736	03.mp3	Shinjiro stands and walks past the strangers.
+25.400	1.327	04.mp3	Shinjiro walks off.

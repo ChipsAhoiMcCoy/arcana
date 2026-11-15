@@ -1,0 +1,3 @@
+#scene LS_Event_Main_150_100_C
+0.050	0.974	00.mp3	The team halts.
+1.750	1.576	01.mp3	Before them, a winged tank.

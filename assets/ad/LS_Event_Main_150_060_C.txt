@@ -1,0 +1,6 @@
+#scene LS_Event_Main_150_060_C
+0.250	2.494	00.mp3	Koromaru lies bleeding by Akihiko.
+4.600	1.991	01.mp3	Fuuka runs to Koromaru and kneels.
+13.180	1.242	02.mp3	Flowers lie nearby.
+15.550	1.423	03.mp3	Yukari and Fuuka kneel.
+23.950	1.484	04.mp3	Koromaru lifts his head.

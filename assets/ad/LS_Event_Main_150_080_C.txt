@@ -1,0 +1,3 @@
+#scene LS_Event_Main_150_080_C
+0.100	1.726	00.mp3	The team sits in the command room.
+15.450	0.992	01.mp3	Everyone nods.

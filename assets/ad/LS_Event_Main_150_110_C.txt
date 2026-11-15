@@ -1,0 +1,4 @@
+#scene LS_Event_Main_150_110_C
+0.900	3.387	00.mp3	Ikutsuki sits alone at the command console. He stands.
+10.750	1.158	01.mp3	He strokes his chin.
+17.050	1.049	02.mp3	He rubs his chin.
