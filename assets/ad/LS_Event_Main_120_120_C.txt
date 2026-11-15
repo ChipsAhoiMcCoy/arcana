@@ -1,0 +1,4 @@
+#scene LS_Event_Main_120_120_C
+6.880	1.317	00.mp3	The others look startled.
+10.300	3.221	01.mp3	Akihiko and Mitsuru turn and walk out. The others stay.
+18.220	1.307	02.mp3	Junpei looks sheepish.

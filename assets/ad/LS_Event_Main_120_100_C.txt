@@ -1,0 +1,4 @@
+#scene LS_Event_Main_120_100_C
+0.000	1.399	00.mp3	A girl sits, head bowed.
+11.700	1.479	01.mp3	Junpei glares at the girl.
+25.300	2.271	02.mp3	The teacher stands and walks out of the room.

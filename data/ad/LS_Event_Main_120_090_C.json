@@ -1,0 +1,50 @@
+{
+ "movie": "LS_Event_Main_120_090_C",
+ "title": "Behind the station",
+ "cues": [
+  {
+   "at": 1.9,
+   "text": "A back alley. Delinquents hang around."
+  },
+  {
+   "at": 4.9,
+   "text": "More toughs stand by some steps."
+  },
+  {
+   "at": 7.6,
+   "text": "Yukari, Junpei and the hero walk in."
+  },
+  {
+   "at": 13.65,
+   "text": "A guy in black walks up."
+  },
+  {
+   "at": 33.15,
+   "text": "He punches Junpei in the gut."
+  },
+  {
+   "at": 36.55,
+   "text": "Yukari kneels by Junpei."
+  },
+  {
+   "at": 46.25,
+   "text": "The newcomer shoves the punk."
+  },
+  {
+   "at": 52.25,
+   "text": "The punk backs off and runs."
+  },
+  {
+   "at": 54.1,
+   "text": "Yukari helps Junpei to his feet."
+  },
+  {
+   "at": 63.0,
+   "text": "Shinjiro turns back to face them."
+  },
+  {
+   "at": 92.2,
+   "text": "Shinjiro walks away."
+  }
+ ]
+}

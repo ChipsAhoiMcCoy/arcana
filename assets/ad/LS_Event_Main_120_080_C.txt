@@ -1,0 +1,3 @@
+#scene LS_Event_Main_120_080_C
+4.100	3.161	00.mp3	Yukari turns and walks off, leaving the boys behind.
+7.700	1.772	01.mp3	The hero gestures to Junpei.
