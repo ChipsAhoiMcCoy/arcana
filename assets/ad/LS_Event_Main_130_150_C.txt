@@ -1,0 +1,4 @@
+#scene LS_Event_Main_130_150_C
+0.400	5.055	00.mp3	A hotel room with a large round bed. The hero sits on its edge, head in his hand.
+15.400	3.553	01.mp3	Yukari comes out of the bathroom in a towel and walks toward him.
+23.550	1.855	02.mp3	She jerks back, clutching her towel.

@@ -1,0 +1,9 @@
+{
+ "movie": "LS_Event_Main_130_150_C",
+ "title": "The hotel room",
+ "cues": [
+  {"at": 0.4,   "text": "A hotel room with a large round bed. The hero sits on its edge, head in his hand."},
+  {"at": 15.4,  "text": "Yukari comes out of the bathroom in a towel and walks toward him."},
+  {"at": 23.55, "text": "She jerks back, clutching her towel."}
+ ]
+}
