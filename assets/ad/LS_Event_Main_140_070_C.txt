@@ -1,0 +1,4 @@
+#scene LS_Event_Main_140_070_C
+5.500	1.834	00.mp3	Two schoolgirls stop behind him.
+9.300	3.380	01.mp3	The girls walk off. Junpei stands alone, hand on hip.
+15.700	1.248	02.mp3	He scratches his head.

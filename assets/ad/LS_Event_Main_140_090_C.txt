@@ -1,0 +1,4 @@
+#scene LS_Event_Main_140_090_C
+0.100	2.066	00.mp3	The hero sleeps under a checked blanket.
+2.900	1.448	01.mp3	He wakes to find Pharos.
+11.100	2.457	02.mp3	Pharos breaks into dark flecks and vanishes.

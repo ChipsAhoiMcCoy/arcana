@@ -1,0 +1,3 @@
+#scene LS_Event_Main_140_060_C
+0.500	1.903	00.mp3	Fuuka types on a laptop in her room.
+5.100	2.580	01.mp3	Mitsuru now stands in the room, facing Fuuka.

@@ -1,0 +1,4 @@
+#scene LS_Event_Main_140_050_C
+0.300	3.381	00.mp3	Shinjiro sits by some stairs. Akihiko walks up.
+16.600	1.964	01.mp3	Akihiko turns and walks away.
+18.900	1.943	02.mp3	Shinjiro stays seated, alone.

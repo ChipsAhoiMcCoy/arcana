@@ -1,0 +1,5 @@
+#scene LS_Event_Main_140_020_C
+6.050	1.251	00.mp3	Yukari looks down.
+14.000	1.236	01.mp3	Yukari stands up.
+19.900	1.510	02.mp3	Yukari sits back down.
+23.300	2.072	03.mp3	Yukari, Fuuka and Junpei flinch.

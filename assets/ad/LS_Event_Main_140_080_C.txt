@@ -1,0 +1,2 @@
+#scene LS_Event_Main_140_080_C
+7.350	1.466	00.mp3	Yukari sits on her bed.
