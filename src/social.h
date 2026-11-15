@@ -13,6 +13,7 @@ bool reversed(int id);                   // the link is reversed (story flag; ga
 bool ready(const Link& l);               // its points are enough for the next rank: the next hangout ranks it up
 std::string describe(const Link& l);     // "Magician (Classmate), rank 3", then ", reversed" or ", ready to rank up"
 std::string summary();                   // every established link
+std::vector<std::string> summary_parts();   // the same, the count then a link per part (spoken one utterance each)
 void tick();                             // announces new links, rank ups, points and reversals
 // The rank card is up showing this link at this rank (screens/rank_up.cpp, every tick while it is up): the card
 // speaks the change, so tick() leaves that rank to it. Returns what happened ("New Social Link") and what the card

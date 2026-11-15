@@ -22,6 +22,7 @@ ue::Params gwork(const char* fn, int index);
 bool flag(int id);                     // a story flag (GlobalWorkBpLib.GWorkFlagChkValue); false for id 0
 std::string line(const Member& m, bool level = true);   // "Yukari, level 2, HP 74 of 80, SP 61 of 65"
 std::string summary();                 // every member's line
+std::vector<std::string> summary_parts();   // the same, a line per member (spoken one utterance each)
 // Outside battle and the camp menu, a member's HP or SP changing is spoken (Auto-Recover, the entrance clock, field
 // pickups): battles and the camp's own lists speak theirs.
 void tick();

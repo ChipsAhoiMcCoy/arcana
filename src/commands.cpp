@@ -27,14 +27,14 @@
 namespace p3a::commands {
 static void where_am_i() {
   if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
-  // The date first, then the area (the player's order, 2026-11-14).
-  std::string s = calendar::describe(calendar::now());
-  if (std::string area = poi::area_name(); !area.empty()) s += (s.empty() ? "" : ". ") + area;
-  if (int m = stats::money(); m >= 0) s += std::format(". {} {}", m, strings::kYen);
+  // The date first, then the area (the player's order, 2026-11-14); each its own utterance, so the screen reader
+  // pauses between them.
+  std::vector<std::string> parts{calendar::describe(calendar::now()), poi::area_name()};
+  if (int m = stats::money(); m >= 0) parts.push_back(std::format("{} {}", m, strings::kYen));
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();
-  s += std::string(". ") + (goal.empty() ? strings::kNoObjective : std::string(strings::kObjective) + ": " + goal);
-  speech::speak(s, true);
+  parts.push_back(goal.empty() ? std::string(strings::kNoObjective) : std::string(strings::kObjective) + ": " + goal);
+  speech::speak_parts(parts, true);
 }
 
 static void review() {
@@ -113,13 +113,13 @@ void install() {
     std::string s = stats::describe();
     speech::speak(s.empty() ? strings::kNotInField : s, true);
   });
-  bind(VK_OEM_5, Shift, "social", strings::kKeyHelpSocial, [] { speech::speak(social::summary(), true); });      // Shift+backslash
+  bind(VK_OEM_5, Shift, "social", strings::kKeyHelpSocial, [] { speech::speak_parts(social::summary_parts(), true); });      // Shift+backslash
   bind(VK_OEM_5, None, "review", strings::kKeyHelpReview, review);                                               // backslash
   bind(VK_OEM_6, None, "poi.next", strings::kKeyHelpPoiNext, [] { poi::next(1); }, true);                        // ]
   bind(VK_OEM_4, None, "poi.prev", strings::kKeyHelpPoiPrev, [] { poi::next(-1); }, true);                       // [
   bind(VK_OEM_6, Shift, "poi.cat.next", strings::kKeyHelpPoiCatNext, [] { poi::next_category(1); });             // Shift+]
   bind(VK_OEM_4, Shift, "poi.cat.prev", strings::kKeyHelpPoiCatPrev, [] { poi::next_category(-1); });            // Shift+[
-  bind(VK_OEM_7, Shift, "party", strings::kKeyHelpParty, [] { speech::speak(party::summary(), true); });         // Shift+'
+  bind(VK_OEM_7, Shift, "party", strings::kKeyHelpParty, [] { speech::speak_parts(party::summary_parts(), true); });         // Shift+'
   bind(VK_OEM_7, None, "nav.walk", strings::kKeyHelpWalk, walk_selected);                                        // '
   bind(VK_OEM_1, None, "area", strings::kKeyHelpArea, area::describe);                                           // ;
   // After Grim Dark's review keys: its ; (the reviewed thing again) and Enter (walk there and use it). Shift, as the

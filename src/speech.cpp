@@ -68,6 +68,14 @@ void speak(std::string_view utf8, bool interrupt) {
   if (us > 8000) log::writef("speech: the backend took {} ms", us / 1000);
   if (e != PRISM_OK) log::writef("speech: speak failed: {}", (int)e);
 }
+void speak_parts(const std::vector<std::string>& parts, bool interrupt) {
+  bool first = true;
+  for (auto& p : parts) {
+    if (p.empty()) continue;
+    speak(p, first && interrupt);
+    first = false;
+  }
+}
 std::string timing() { return std::format("speak_max_us={}", g_speak_us_max); }
 // Dev: the backend's cost for one interrupting line, timed with a single space (the screen reader says nothing), even
 // while muted. Returns each call's microseconds.

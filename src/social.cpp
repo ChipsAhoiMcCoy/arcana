@@ -145,11 +145,17 @@ std::string describe(const Link& l) {
   return s;
 }
 
+std::vector<std::string> summary_parts() {
+  std::vector<std::string> links;
+  for (auto& l : read()) if (l.rank > 0) links.push_back(describe(l));
+  if (links.empty()) return {strings::kNoSocialLinks};
+  links.insert(links.begin(), std::format("{}: {}", strings::kSocialLinks, links.size()));
+  return links;
+}
 std::string summary() {
-  std::string s;
-  int n = 0;
-  for (auto& l : read()) if (l.rank > 0) { s += (n++ ? ". " : "") + describe(l); }
-  return n ? std::format("{}: {}. {}", strings::kSocialLinks, n, s) : strings::kNoSocialLinks;
+  std::string out;
+  for (auto& p : summary_parts()) out += (out.empty() ? "" : ". ") + p;
+  return out;
 }
 
 static std::string g_last_change;

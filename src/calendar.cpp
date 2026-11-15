@@ -62,9 +62,7 @@ void tick() {
     if (t != last_type && t == 2) {
       Now n = now();
       if (n.valid) {
-        std::string line = describe(n);
-        if (std::string m = moon_phase(n.moon); !m.empty()) line += ". " + m;
-        speech::speak(line, true);
+        speech::speak_parts({describe(n), moon_phase(n.moon)}, true);   // the moon its own utterance
         said_day = n.total; said_tz = n.time_zone;
       }
     } else if (t != last_type && t == 1) {

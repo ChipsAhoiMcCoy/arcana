@@ -9,6 +9,10 @@ namespace p3a::speech {
 bool init();            // loads prism, picks the best available backend
 void shutdown();
 void speak(std::string_view utf8, bool interrupt = true);
+// Distinct facts read as a list (a status line: the date, the area, the money): each its own utterance, so the
+// screen reader pauses between them as it does between lines; one long string runs them together (the player's ear,
+// 2026-11-14). The first interrupts when asked; empty parts are skipped.
+void speak_parts(const std::vector<std::string>& parts, bool interrupt = true);
 void stop();
 uint64_t count();       // lines spoken so far (a reader can tell whether anything else spoke since its last line)
 int speaking();         // 1 speaking, 0 quiet, -1 the backend cannot tell (or muted)

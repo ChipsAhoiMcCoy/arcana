@@ -121,10 +121,16 @@ std::string line(const Member& m, bool level) {
   return s;
 }
 
+std::vector<std::string> summary_parts() {
+  std::vector<std::string> out;
+  for (auto& m : members()) out.push_back(line(m));
+  if (out.empty()) out.push_back(strings::kNoParty);
+  return out;
+}
 std::string summary() {
   std::string out;
-  for (auto& m : members()) out += (out.empty() ? "" : ". ") + line(m);
-  return out.empty() ? std::string(strings::kNoParty) : out;
+  for (auto& p : summary_parts()) out += (out.empty() ? "" : ". ") + p;
+  return out;
 }
 
 void tick() {
