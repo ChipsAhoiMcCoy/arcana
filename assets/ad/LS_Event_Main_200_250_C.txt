@@ -3,9 +3,15 @@
 3.900	2.316	01.mp3	He opens his eyes and turns to the hero.
 8.700	1.056	02.mp3	They sit on the bed.
 15.000	2.028	03.mp3	The hero gestures toward Ryoji.
-49.400	2.650	04.mp3	Ryoji stands and walks to the middle of the room.
-54.000	1.236	05.mp3	He turns to the hero.
-55.700	2.689	06.mp3	A blue glow bursts from his chest and engulfs him.
-58.700	2.497	07.mp3	A winged, masked figure floats in his place.
-98.400	3.546	08.mp3	The figure bursts into sparks, and Ryoji stands there again.
-103.200	1.524	09.mp3	Ryoji touches his chin.
+17.450	2.317	04.mp3	Ryoji smiles and gets up from the bed.
+23.450	1.781	05.mp3	The hero sits with his head bowed.
+26.500	2.109	06.mp3	He stands and steps up to Ryoji.
+29.950	2.228	07.mp3	Ryoji nods and closes his eyes.
+32.400	1.426	08.mp3	The hero hangs his head.
+35.900	2.165	09.mp3	He raises his Evoker to his own temple.
+49.400	2.650	10.mp3	Ryoji stands and walks to the middle of the room.
+54.000	1.236	11.mp3	He turns to the hero.
+55.700	2.421	12.mp3	Energy bursts from his chest and engulfs him.
+58.700	2.497	13.mp3	A winged, masked figure floats in his place.
+98.400	3.546	14.mp3	The figure bursts into sparks, and Ryoji stands there again.
+103.200	1.524	15.mp3	Ryoji touches his chin.
