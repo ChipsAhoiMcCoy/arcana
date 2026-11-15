@@ -10,6 +10,7 @@
 #include "walltones.h"
 #include "settings.h"
 #include "commands.h"
+#include "confirm.h"
 #include "nav.h"
 #include "poi.h"
 #include "area.h"
@@ -133,6 +134,8 @@ void init(bool speech_ok) {
   gametext::install();
   calendar::install();
   stats::install();
+  if (ue::known_build()) confirm::install();   // fixed addresses: this build only
+  else log::write("confirm: not this build, off");
   social::install();
   persona::install();
   party::install();

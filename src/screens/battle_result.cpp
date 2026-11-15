@@ -1,5 +1,6 @@
 #include "screens/menu.h"
 #include "screens/util.h"
+#include "screens/next_cue.h"
 #include "screens/battle.h"
 #include "screens/battle_state.h"
 #include "screens/persona_status.h"
@@ -198,6 +199,9 @@ class BattleResultScreen : public MenuScreen {
   // one, up to the next page that is the player's to read (the hero's, a Persona's status) or the end.
   std::vector<Section> pending_;
   bool finishing_ = false;
+  // Each page's OK: the cue once the game's OK key help is up, with nothing of the page still to come (the level-ups
+  // the summary moves on to by itself) and the player not already pressing through. A Persona's status page (7) takes OK with no key help: the cue waits for the game to ask for it.
+  NextCue next_{"victory"};
   int press_state_ = -1;      // the state the last finishing press was made in
   int press_frames_ = 0;      // the game's frames since it was delivered
   // The parts the game has not shown yet: said now, the first cutting off what is being said.
@@ -277,6 +281,7 @@ class BattleResultScreen : public MenuScreen {
       forget_battle_start();
       state_ = -1; persona_ = 0; armed_ = -1; pressed_ = false; page_.clear();
       pending_.clear(); finishing_ = false; press_state_ = -1;
+      next_.disarm();
     }
   }
   void on_tick() override {
@@ -304,6 +309,8 @@ class BattleResultScreen : public MenuScreen {
       pressed_ = false;
       press_state_ = -1;
       screens::set_keys(s == 7 ? strings::kLevelUpKeys : strings::kResultKeys);
+      next_.disarm();
+      if (s >= 1 && s <= 4) next_.arm();
     }
     // The player is ahead of the game (heard the level-ups, or is done with the page): its wait is over.
     if (s == 1 && (finishing_ || (pending_.empty() && (has("allies") || has("personas"))))) end_wait(ui);
@@ -327,8 +334,11 @@ class BattleResultScreen : public MenuScreen {
         focus_quietly(status_name_id(id));
         say_status(now, was);
         persona_ = id;
+        next_.arm();
       }
     }
+    if (s == 7) next_.tick(persona_ != 0);
+    else if (s >= 1 && s <= 4) next_.tick(takes_press(ui) && !finishing_ && pending_.empty() && armed_ != s, true);
     if (armed_ == s && takes_press(ui)) {
       log::writef("result: held press taken in state {}", s);
       armed_ = -1;

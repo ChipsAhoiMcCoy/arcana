@@ -16,6 +16,7 @@
 // 10 s before the list of what to do. Their text is dialog 0 of the event's message file, read out as it starts.
 #include "screens/screen.h"
 #include "screens/util.h"
+#include "screens/next_cue.h"
 #include "bmdfile.h"
 #include "input.h"
 #include "msg.h"
@@ -38,6 +39,9 @@ class RankUpScreen : public Screen {
   social::Card card_;
   WeakObj spoken_;   // the card last read out: a message window closing re-enters it (a later card can reuse its address)
   bool what_said_ = false, card_said_ = false;
+  // Its OK: the cue once the card has turned in and the game asks for OK (next_cue.h). The poem before a new link's
+  // card does not take OK, nor the card while it turns in.
+  NextCue next_{"rank_up"};
 
   // Reads the card's rank and link (every read tells the social module the card is up).
   void read() {
@@ -166,7 +170,9 @@ class RankUpScreen : public Screen {
     skipping_ = false;
     presses_ = msg::press_count();
     read();
+    next_.arm();
   }
+  void leave() override { if (!active()) next_.disarm(); }
   void tick() override {
     int was = rank_;
     read();
@@ -178,6 +184,7 @@ class RankUpScreen : public Screen {
         screens::set_keys(strings::kGameOverKeys);
       }
       skip_tick();
+      next_.disarm();   // the game over poem: its list of what to do follows, read on its own
       return;
     }
     UObject* card = card_timeline();
@@ -192,6 +199,7 @@ class RankUpScreen : public Screen {
     } else if (was <= 0 && rank_ > 0) {
       speak_card();   // the rank arrived after the card was read
     }
+    next_.tick(card_said_ && finished(card));
   }
   std::string describe() override {
     if (mode_ == 5) return line_;

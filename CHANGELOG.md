@@ -29,7 +29,8 @@
 - In the top-down mode the auto-walk no longer runs into the walls where the game's camera does not face north (your room in the dorm): it steered by the camera while the hero walks by the compass, and said "Stopped" or "Stuck" short of the desk, bed and closet.
 - A mail is no longer read again after you answer its reply choice (the part-time job's mail was read a second time as the loading began). An item notice or a "Stats up!" panel with a message window over it is not read again either when the window closes.
 - Back on that mail after its reply choice, when the game leaves you on it (turning down a hangout), its sender and title are said: it was silent.
-- The "Stats up!" panel ends with "Next", or the sound chosen in the Voice end sound setting, once A or Cross continues.
+- "Next", or the sound chosen in the Voice end sound setting, is said once A or Cross continues, not as the screen opens while its animation still plays: on the "Stats up!" panel, an item or money notice, a Social Link's rank card, and each victory page (the summary, the level-ups, the hero's page, a Persona's status page). The mod knows it from the game itself asking for the button, or the victory screen's own OK prompt, never from a timer.
+- Two "Stats up!" panels in a row (Charm, then Courage) each read their stats: the second was silent.
 
 ## 0.2.0
 

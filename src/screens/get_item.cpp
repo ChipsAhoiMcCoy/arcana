@@ -6,6 +6,7 @@
 // event).
 #include "screens/screen.h"
 #include "screens/util.h"
+#include "screens/next_cue.h"
 #include "core/strings.h"
 #include "items.h"
 #include "log.h"
@@ -20,6 +21,7 @@ class GetItemScreen : public Screen {
   Finder draw_{"UIMiscGetItemDraw"};
   std::string line_;   // the notice up now, as read last
   std::string said_;   // the notice spoken last while this screen was current
+  NextCue next_{"get_item"};   // its OK: the cue once the notice takes it (it slides in first)
   // "Got Velvet Outfit times 10, 500 yen", or "" when the list is empty.
   std::string read() {
     uint8_t* d = (uint8_t*)draw_.get();
@@ -60,10 +62,13 @@ class GetItemScreen : public Screen {
     if (screens::returning() && line_ == said_) return;   // back from a window over it: said already
     said_ = line_;
     speech::speak(line_, true);
+    next_.arm();
   }
+  void leave() override { if (!active()) next_.disarm(); }
   // The next notice while this one is up: queued after it. An item added to the notice up now (ADD_GET_ITEM_LIST
   // while it is open appends to its list) is said alone: "Got BauerBar", not the whole list again.
   void tick() override {
+    next_.tick(true);
     if (line_ == said_) return;
     std::string added = line_;
     if (!said_.empty() && line_.size() > said_.size() + 2 && line_.starts_with(said_ + ", "))
