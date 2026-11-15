@@ -34,6 +34,7 @@
 - The wall tones play only while you move (the stick, the keys or the auto-walk, even pushing into a wall), in either camera mode, and are quiet while you stand still.
 
 ### Fixes
+- Pressing any button on a controller stops what is being said, as a key does with a screen reader: confirming an item no longer leaves its description reading on (the Beef Bowl CD). With SAPI or OneCore instead of a screen reader, any key but Shift, Ctrl and Alt does the same.
 - Party chatter in the field whose voice is only a short reaction (a grunt or a laugh, not the words) is read again. On the monorail's Overhead Bridge, Junpei's "Alright, bring on the big one!" and Yukari's "Hey, don't get too excited and do something stupid" were silent. Chatter the game voices in full is still left to its voice.
 - In the top-down mode the auto-walk no longer runs into the walls where the game's camera does not face north (your room in the dorm): it steered by the camera while the hero walks by the compass, and said "Stopped" or "Stuck" short of the desk, bed and closet.
 - A mail is no longer read again after you answer its reply choice (the part-time job's mail was read a second time as the loading began). An item notice or a "Stats up!" panel with a message window over it is not read again either when the window closes.

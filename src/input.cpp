@@ -1,4 +1,5 @@
 #include "input.h"
+#include "speech.h"
 #include "devserver.h"
 #include "hooks.h"
 #include "keys.h"
@@ -141,6 +142,9 @@ static DWORD WINAPI get_state_hook(DWORD user, XINPUT_STATE* st) {
     ++g_polls;
     g_real_connected = r == ERROR_SUCCESS;
     if (r == ERROR_SUCCESS) {
+      // A button the player presses stops the speech, as a key does with a screen reader (speech::player_pressed).
+      // Here, as the game first reads the press: before anything the press makes the mod or the game say.
+      if (st->Gamepad.wButtons & ~g_real_buttons) speech::player_pressed(false);
       g_real_buttons = st->Gamepad.wButtons;
       st->Gamepad.wButtons &= ~(g_swallow | g_end_buttons.load());
       int sides = g_end_sticks;

@@ -16,6 +16,7 @@ static PrismContext* g_ctx;
 static PrismBackend* g_backend;
 static std::mutex g_mu;
 static bool g_muted = false;
+static bool g_engine = false;   // the backend is a speech engine, not a screen reader (player_pressed)
 static uint64_t g_speak_us_max = 0;   // the slowest backend call (under g_mu)
 
 static void prism_log(void*, PrismLogLevel level, const char* source, const char* message) {
@@ -42,7 +43,9 @@ bool init() {
     g_backend = nullptr;
     return false;
   }
-  log::writef("speech: using backend '{}'{}", backend_name(), g_muted ? " (muted)" : "");
+  PrismBackendId id = prism_registry_id(g_ctx, prism_backend_name(g_backend));
+  g_engine = id == PRISM_BACKEND_SAPI || id == PRISM_BACKEND_ONE_CORE;
+  log::writef("speech: using backend '{}'{}{}", backend_name(), g_engine ? " (a speech engine: keys stop speech)" : "", g_muted ? " (muted)" : "");
   return true;
 }
 
@@ -100,6 +103,10 @@ std::vector<uint64_t> bench(int n) {
 }
 
 void stop() { std::lock_guard lk(g_mu); if (g_backend && !g_muted) prism_backend_stop(g_backend); }
+void player_pressed(bool keyboard) {
+  if (keyboard && !g_engine) return;
+  stop();
+}
 int speaking() {
   std::lock_guard lk(g_mu);
   bool on = false;

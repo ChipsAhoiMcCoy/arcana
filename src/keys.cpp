@@ -4,6 +4,7 @@
 #include "core/strings.h"
 #include "log.h"
 #include "msg.h"
+#include "speech.h"
 #include "seh.h"
 #include "ue/ue.h"
 #include <windows.h>
@@ -85,6 +86,9 @@ static bool filter(UINT msg, WPARAM w, LPARAM l) {
       g_movement[vk] = true;
     }
     bool repeat = (l & (1 << 30)) != 0;
+    // Any key but a modifier stops the speech on a speech engine, as a screen reader does by itself.
+    if (!repeat && !synthetic && vk != VK_SHIFT && vk != VK_CONTROL && vk != VK_MENU && vk != VK_LWIN && vk != VK_RWIN)
+      speech::player_pressed(true);
     // Confirm or cancel from the player: a message window's reading stops before anything the press says itself.
     if (msg == WM_KEYDOWN && !repeat && !g_modal_key && (vk == VK_RETURN || vk == VK_SPACE || vk == VK_ESCAPE || vk == VK_BACK))
       p3a::msg::player_pressed();
