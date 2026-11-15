@@ -1,0 +1,4 @@
+#scene LS_Event_Main_210_220_C
+0.300	2.975	00.mp3	Takaya staggers forward, hunched, clutching his chest.
+16.100	1.589	01.mp3	Everyone sinks to their knees.
+24.120	1.900	02.mp3	Takaya lies sprawled on his back.

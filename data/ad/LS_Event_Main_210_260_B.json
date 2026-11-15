@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Main_210_260_B",
+ "title": "Among the stars",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "A white haze clears to endless stars. Far off, the team stands together."
+  },
+  {
+   "at": 5.8,
+   "text": "The hero is not among them."
+  },
+  {
+   "at": 22.69,
+   "text": "Everyone gives a start."
+  }
+ ]
+}

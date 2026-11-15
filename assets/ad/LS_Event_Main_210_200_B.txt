@@ -1,0 +1,6 @@
+#scene LS_Event_Main_210_200_B
+1.250	2.266	00.mp3	The Nyx Avatar slumps, wings drooping.
+3.900	2.209	01.mp3	The team stares. It slowly straightens.
+6.600	4.117	02.mp3	It rises to its full height, wings opening, its long blade in hand.
+11.750	2.732	03.mp3	It whirls its wings, then hovers above the team.
+15.200	1.628	04.mp3	Its shadow falls across them.

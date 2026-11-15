@@ -1,0 +1,2 @@
+#scene LS_Event_Main_220_025_C
+2.750	3.647	00.mp3	On stage, the speaker walks off, and Mitsuru takes the podium.

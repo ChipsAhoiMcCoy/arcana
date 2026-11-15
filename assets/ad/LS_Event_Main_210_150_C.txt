@@ -1,0 +1,12 @@
+#scene LS_Event_Main_210_150_C
+7.850	2.002	00.mp3	Shadows rise from the floor around them.
+11.500	1.163	01.mp3	Jin stays kneeling.
+13.900	1.427	02.mp3	Mitsuru runs past Jin.
+16.400	1.959	03.mp3	Ken and Koromaru run after her.
+21.100	2.439	04.mp3	Junpei, Yukari and Fuuka run past him.
+26.700	2.569	05.mp3	Aigis dashes off. Akihiko follows.
+29.500	2.181	06.mp3	The hero stays, looking down at Jin.
+32.600	1.174	07.mp3	He turns and runs.
+34.000	3.171	08.mp3	Shadows, all hands and red eyes, crawl toward Jin.
+41.100	1.895	09.mp3	Jin grips the handle of his case.
+43.500	1.689	10.mp3	In a corridor, the group stops.

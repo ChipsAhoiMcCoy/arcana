@@ -1,0 +1,4 @@
+#scene LS_Event_Main_210_260_B
+0.300	4.458	00.mp3	A white haze clears to endless stars. Far off, the team stands together.
+5.800	1.500	01.mp3	The hero is not among them.
+22.690	1.313	02.mp3	Everyone gives a start.

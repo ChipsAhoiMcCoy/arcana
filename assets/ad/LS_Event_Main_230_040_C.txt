@@ -1,0 +1,4 @@
+#scene LS_Event_Main_230_040_C
+1.750	3.161	00.mp3	A teacher leaves the podium, and Mitsuru takes his place.
+11.800	2.053	01.mp3	Mitsuru steps away and leaves the stage.
+15.300	3.715	02.mp3	The hero, Junpei and Yukari sit among rows of empty seats.

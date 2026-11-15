@@ -1,0 +1,2 @@
+#scene LS_Event_Main_210_237_C
+0.000	0.808	00.mp3	Kurosawa.

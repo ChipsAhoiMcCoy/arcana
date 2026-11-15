@@ -1,0 +1,5 @@
+#scene LS_Event_Main_220_010_C
+0.100	1.278	00.mp3	Aigis stands nearby.
+4.300	1.830	01.mp3	Behind them, Aigis watches.
+17.300	1.546	02.mp3	Aigis turns and runs off.
+33.400	3.091	03.mp3	Junpei spins around. All three run toward the school.

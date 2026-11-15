@@ -1,0 +1,15 @@
+#scene LS_Event_Main_210_180_A
+0.600	4.280	00.mp3	A wide round platform, traced with glowing lines and ringed by tall pillars.
+5.100	3.419	01.mp3	Each pillar bears a bird statue. Far off, the team walks in.
+8.750	2.243	02.mp3	They look around. Ken gazes upward.
+12.100	3.338	03.mp3	Black feathers peel off the bird statues and swirl upward.
+16.900	1.363	04.mp3	Mitsuru glances back.
+21.350	2.382	05.mp3	The team spreads out, Koromaru among them.
+27.900	3.828	06.mp3	Streams of black feathers rise from every statue, higher and higher.
+35.400	3.556	07.mp3	They converge on a huge full moon and knot together at its centre.
+44.950	1.414	08.mp3	The hero stares upward.
+58.850	3.643	09.mp3	In front of the moon, the feathers churn into a dark, tangled mass.
+63.900	3.849	10.mp3	Something bursts out of it: great black wings veined with glowing blue.
+69.300	3.681	11.mp3	A slender figure, wings spread wide, grips a long golden blade.
+73.200	3.620	12.mp3	It hovers high above the team, who stand small among the pillars.
+77.250	3.988	13.mp3	Its face: a pale mask with hollow eyes and a wide, fixed smile.

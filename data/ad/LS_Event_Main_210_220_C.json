@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Main_210_220_C",
+ "title": "Takaya's last moment",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "Takaya staggers forward, hunched, clutching his chest."
+  },
+  {
+   "at": 16.1,
+   "text": "Everyone sinks to their knees."
+  },
+  {
+   "at": 24.12,
+   "text": "Takaya lies sprawled on his back."
+  }
+ ]
+}

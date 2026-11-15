@@ -1,0 +1,2 @@
+#scene LS_Event_Main_210_230_C
+0.000	0.823	00.mp3	Natsuki.

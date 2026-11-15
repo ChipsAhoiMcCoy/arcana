@@ -1,0 +1,4 @@
+#scene LS_Event_Main_210_170_C
+2.500	1.493	00.mp3	Takaya lies on his back.
+4.750	1.521	01.mp3	Aigis steps closer to him.
+13.600	1.094	02.mp3	The hero nods.

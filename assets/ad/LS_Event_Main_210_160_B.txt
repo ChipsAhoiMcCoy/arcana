@@ -1,0 +1,7 @@
+#scene LS_Event_Main_210_160_B
+0.700	2.587	00.mp3	A wide staircase rises among tall pillars.
+3.500	1.529	01.mp3	The group walks up to its foot.
+7.450	2.205	02.mp3	A figure walks along the top of the stairs.
+9.900	2.917	03.mp3	It is Takaya, bare-chested, looking down at them.
+37.400	3.509	04.mp3	Takaya walks down the stairs, a revolver tucked in his belt.
+53.500	1.618	05.mp3	The picture shatters like glass.
