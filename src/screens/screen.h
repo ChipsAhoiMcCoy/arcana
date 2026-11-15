@@ -48,6 +48,11 @@ std::string keys();   // "" when the current screen named none
 // speaks it), false when the player comes back to it from a submenu, a message window or a page read over it.
 // A screen with several menus keys each one's title by its step.
 bool title_due(const char* step = "");
+// While a screen's enter() runs: whether it was entered before in this opening (back from a message window, a submenu
+// or a page read over it). What it read on its own as it opened (a mail, a notice) is not read again: the game may be
+// closing it under the window that just went (the part-time job's mail read again as the trip's loading began,
+// 2026-11-14).
+bool returning();
 // A save is loading (from the boot, or the title or save list being up, until the hero is in the field): values the
 // trackers watch (money, stats, links) jump from the title's zeros to the save's, which is not news.
 bool loading();

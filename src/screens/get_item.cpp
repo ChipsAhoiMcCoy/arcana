@@ -55,7 +55,12 @@ class GetItemScreen : public Screen {
     }
     return true;
   }
-  void enter() override { screens::set_keys(strings::kGetItemClose); said_ = line_; speech::speak(line_, true); }
+  void enter() override {
+    screens::set_keys(strings::kGetItemClose);
+    if (screens::returning() && line_ == said_) return;   // back from a window over it: said already
+    said_ = line_;
+    speech::speak(line_, true);
+  }
   // The next notice while this one is up: queued after it. An item added to the notice up now (ADD_GET_ITEM_LIST
   // while it is open appends to its list) is said alone: "Got BauerBar", not the whole list again.
   void tick() override {

@@ -132,7 +132,12 @@ class MailScreen : public MenuScreen {
   // An open mail is read whole when it opens; its keys (reply, next, scroll) are the game's.
   bool holds_keys() override { UObject* d = draw_.get(); return d && !flag(d, "bIsStartMailAnim"); }
   std::string title() override { return strings::kMail; }
-  void on_enter() override { reading_ = false; said_.clear(); screens::set_keys(strings::kMailKeys); }
+  // Back from the thought and reply choice over an open mail: it was read already (and the game may be closing it).
+  void on_enter() override {
+    if (!screens::returning()) { reading_ = false; said_.clear(); }
+    screens::set_keys(strings::kMailKeys);
+  }
+  void on_leave() override { if (!active()) { reading_ = false; said_.clear(); } }   // closed, not covered
   void on_tick() override {
     UObject* d = draw_.get();
     auto* si = field<int32_t>(d, "SelectedIndex");

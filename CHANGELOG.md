@@ -8,6 +8,9 @@
 - Settings and logs are now in `%LOCALAPPDATA%\Arcana`, and the log is `arcana.log`. The old `%LOCALAPPDATA%\P3RAccess` folder, with your settings, is moved there the first time the game starts.
 - The download is now `arcana-<version>.zip`, from https://github.com/ChipsAhoiMcCoy/arcana.
 
+### Fixes
+- A mail is no longer read again after you answer its reply choice (the part-time job's mail was read a second time as the loading began). An item notice or a "Stats up!" panel with a message window over it is not read again either when the window closes.
+
 ## 0.2.0
 
 ### Top-down exploration (new; to be tried)

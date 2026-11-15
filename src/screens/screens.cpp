@@ -41,11 +41,21 @@ void set_keys(std::function<std::string()> keys) {
   g_hint_due = k;
 }
 std::string keys() { return g_current && g_current == g_keys_screen && g_keys ? g_keys() : std::string(); }
-// Screens whose title was spoken in this opening: coming back to one (from a submenu, a message window, a term read
-// over it) gives the focused item alone. Cleared once the screen is gone (inactive with no message window up).
+// Screens entered in this opening, with the titles spoken: coming back to one (from a submenu, a message window, a term
+// read over it) gives the focused item alone. Cleared once the screen is gone (inactive with no message window up).
 static std::map<Screen*, std::set<std::string>> g_titled;
 bool title_due(const char* step) {
   return g_current && g_titled[g_current].insert(step).second;
+}
+// Every entry goes through here: whether it is a return is known before the screen's enter() runs.
+static bool g_returning = false;
+bool returning() { return g_returning; }
+static void enter_current() {
+  if (!g_current) return;
+  g_returning = g_titled.count(g_current) > 0;
+  g_titled[g_current];   // entered in this opening, titled or not
+  guarded([&] { g_current->enter(); });
+  g_returning = false;
 }
 // A save is loading from the boot (the game fills in the last save's money, stats and links a frame or two before the
 // title appears: 21 "New Social Link" lines at startup, 2026-10-28) and whenever the title or the save list is up,
@@ -132,7 +142,7 @@ void tick() {
       if (g_current) guarded([&] { g_current->leave(); });
       log::writef("screen: {} -> {} (over a message)", g_current ? g_current->id() : "none", over ? over->id() : "none");
       g_current = over;
-      if (g_current) guarded([&] { g_current->enter(); });
+      enter_current();
     }
     if (over) { Timed t(g_perf[over].tick); if (!guarded([&] { over->tick(); })) log::writef("screens: {} faulted in tick()", over->id()); }
     end_tick();
@@ -155,13 +165,13 @@ void tick() {
     if (!own && !pressed && best == g_current && (coming || msg::window_session_open())) { end_tick(false); return; }   // no screen ran: no hint of this tick's
     was_modal = false;
     log::write(pressed ? "screens: re-enter at the player's press" : "screens: re-enter, the window's session ended");
-    if (g_current && best == g_current) guarded([&] { g_current->enter(); });
+    if (g_current && best == g_current) enter_current();
   }
   if (best != g_current) {
     if (g_current) guarded([&] { g_current->leave(); });
     log::writef("screen: {} -> {}", g_current ? g_current->id() : "none", best ? best->id() : "none");
     g_current = best;
-    if (g_current) guarded([&] { g_current->enter(); });
+    enter_current();
   }
   track_loading();
   if (g_current) {

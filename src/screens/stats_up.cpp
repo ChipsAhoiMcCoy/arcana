@@ -36,7 +36,15 @@ class StatsUpScreen : public Screen {
   // The stat that went up was said as its points changed, 2.4 s before this screen (2026-10-29): the review line
   // names it, the entry does not again. The key that closes the panel is the screen's key help (F1), not part of
   // either line.
-  void enter() override { screens::set_keys(strings::kSpaceContinues); speech::speak(line(false), true); }
+  // The panel is made for one showing: the same one entered again (back from a window over it) was said already.
+  WeakObj spoken_;
+  void enter() override {
+    screens::set_keys(strings::kSpaceContinues);
+    WeakObj d = WeakObj::of(draw_.get());
+    if (d == spoken_) return;
+    spoken_ = d;
+    speech::speak(line(false), true);
+  }
   void leave() override { if (!active()) stats::up_shown(); }   // closed (not covered): its rise has been shown
   std::string describe() override { return line(true); }
 };
