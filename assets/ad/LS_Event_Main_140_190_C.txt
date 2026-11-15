@@ -1,0 +1,3 @@
+#scene LS_Event_Main_140_190_C
+0.050	1.429	00.mp3	A man in grey walks in.
+19.700	1.609	01.mp3	Takeharu's arms are crossed.

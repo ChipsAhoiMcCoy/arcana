@@ -1,0 +1,7 @@
+#scene LS_Event_Main_140_270_C
+6.750	3.278	00.mp3	Akihiko strides over. Junpei and the hero follow.
+10.300	1.357	01.mp3	One sits, one stands.
+19.450	2.057	02.mp3	The hero answers with an open hand.
+28.300	1.094	03.mp3	The hero nods.
+39.550	2.313	04.mp3	The women are gone. The boys stand alone.
+44.250	1.527	05.mp3	Junpei scratches his head.

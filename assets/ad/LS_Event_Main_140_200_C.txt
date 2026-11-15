@@ -1,0 +1,2 @@
+#scene LS_Event_Main_140_200_C
+8.050	2.684	00.mp3	Takeharu unfolds his arms and leans forward.

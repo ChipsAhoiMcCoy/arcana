@@ -1,0 +1,5 @@
+#scene LS_Event_Main_140_260_C
+6.400	2.425	00.mp3	The boys walk over to two girls, one sitting.
+9.700	1.275	01.mp3	The hero gestures.
+37.200	0.968	02.mp3	The girls are gone.
+45.600	1.094	03.mp3	The hero nods.

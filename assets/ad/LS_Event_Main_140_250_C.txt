@@ -1,0 +1,5 @@
+#scene LS_Event_Main_140_250_C
+0.100	1.630	00.mp3	The boys walk up among palms.
+7.800	2.193	01.mp3	Junpei pulls out a letter and holds it up.
+25.360	1.281	02.mp3	Akihiko leaves.
+29.800	2.210	03.mp3	Junpei turns and trudges after him.
