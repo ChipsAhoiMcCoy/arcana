@@ -1,0 +1,4 @@
+#scene LS_Event_Main_130_040_C
+0.050	1.900	00.mp3	The hero lies asleep in his bed.
+3.000	1.719	01.mp3	He wakes and props himself up.
+12.100	2.297	02.mp3	Pharos breaks into black flecks and is gone.

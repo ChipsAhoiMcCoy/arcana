@@ -1,0 +1,4 @@
+#scene LS_Event_Main_130_030_C
+3.400	1.930	00.mp3	Fuuka comes in, holding her bag.
+8.350	1.495	01.mp3	Natsuki walks up to Fuuka.
+16.250	1.479	02.mp3	Fuuka nods to Natsuki.

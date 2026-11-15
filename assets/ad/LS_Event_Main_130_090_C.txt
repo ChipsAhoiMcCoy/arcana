@@ -1,0 +1,6 @@
+#scene LS_Event_Main_130_090_C
+0.450	2.366	00.mp3	At a ramen counter, Shinjiro eats.
+5.880	1.199	01.mp3	Akihiko sits.
+11.900	3.063	02.mp3	The cook hands Akihiko a steaming bowl. He eats.
+26.000	4.302	03.mp3	Shinjiro sets down his bowl, stands, and walks out past Akihiko.
+31.000	1.756	04.mp3	Shinjiro's bowl sits empty.

@@ -1,0 +1,3 @@
+#scene LS_Event_Main_130_050_C
+0.450	3.400	00.mp3	In class, Mitsuru walks up to the hero, Yukari and Junpei.
+6.600	2.498	01.mp3	Mitsuru turns and walks off between the desks.

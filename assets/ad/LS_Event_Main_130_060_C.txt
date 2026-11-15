@@ -1,0 +1,9 @@
+#scene LS_Event_Main_130_060_C
+2.900	1.234	00.mp3	Fuuka holds its paw.
+5.550	1.961	01.mp3	They stand by a flight of stone steps.
+8.550	2.053	02.mp3	The dog gets up and trots to the hero.
+10.850	1.808	03.mp3	The hero crouches, hand out.
+12.950	1.345	04.mp3	He pats the dog's head.
+25.600	1.288	05.mp3	The woman hurries away.
+29.500	2.145	06.mp3	Yukari goes to Koromaru and kneels.
+32.000	0.837	07.mp3	She pets him.
