@@ -1,0 +1,4 @@
+#scene LS_Event_Main_190_050_C
+0.100	2.228	00.mp3	The team sits around a low dining table.
+10.100	1.767	01.mp3	Koromaru turns around on the bench.
+21.050	1.543	02.mp3	The others nod to Mitsuru.

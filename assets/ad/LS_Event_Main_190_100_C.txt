@@ -1,0 +1,3 @@
+#scene LS_Event_Main_190_100_C
+2.550	3.368	00.mp3	Mitsuru kneels beside her father, who lies still on his back.
+8.800	1.139	01.mp3	She bows over him.

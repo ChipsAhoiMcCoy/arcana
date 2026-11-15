@@ -1,0 +1,2 @@
+#scene LS_Event_Main_190_180_C
+12.500	1.492	00.mp3	Ryoji walks to Aigis.

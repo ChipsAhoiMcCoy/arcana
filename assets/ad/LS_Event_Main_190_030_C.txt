@@ -1,0 +1,7 @@
+#scene LS_Event_Main_190_030_C
+4.700	1.084	00.mp3	Junpei walks off.
+12.160	1.911	01.mp3	Everyone lines up, Takeharu too.
+20.600	1.142	02.mp3	The camera flashes.
+21.950	3.981	03.mp3	In the photo, Koromaru leaps barking and Junpei's cap flies off.
+30.750	1.111	04.mp3	Koromaru hops.
+32.200	0.962	05.mp3	Everyone laughs.

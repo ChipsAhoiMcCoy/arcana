@@ -1,0 +1,13 @@
+{
+ "movie": "LS_Event_Main_190_010_C",
+ "title": "Pharos says goodbye",
+ "cues": [
+  {"at": 0.05, "text": "The hero sleeps."},
+  {"at": 2.20, "text": "He stirs and sits up."},
+  {"at": 4.05, "text": "Pharos stands by the window."},
+  {"at": 12.85, "text": "Pharos offers his hand."},
+  {"at": 14.55, "text": "They shake hands."},
+  {"at": 17.75, "text": "A white flash."},
+  {"at": 19.00, "text": "Pharos is gone. The hero sits alone."}
+ ]
+}

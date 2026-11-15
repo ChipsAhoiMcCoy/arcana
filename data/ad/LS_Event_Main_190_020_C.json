@@ -1,0 +1,11 @@
+{
+ "movie": "LS_Event_Main_190_020_C",
+ "title": "Takeharu's thanks",
+ "cues": [
+  {"at": 5.68, "text": "Sushi fills the table."},
+  {"at": 8.02, "text": "Takeharu, with an eyepatch, waits with two aides."},
+  {"at": 17.60, "text": "Takeharu nods, then steps over to Yukari."},
+  {"at": 25.18, "text": "Takeharu folds his arms."},
+  {"at": 31.55, "text": "Junpei beams."}
+ ]
+}

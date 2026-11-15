@@ -1,0 +1,5 @@
+#scene LS_Event_Main_190_040_C
+0.300	1.628	00.mp3	The sushi platters sit empty.
+9.600	2.597	01.mp3	Koromaru gets up and trots over to Junpei.
+15.750	1.456	02.mp3	Koromaru sits back down.
+19.380	1.774	03.mp3	A clock: 11:59.

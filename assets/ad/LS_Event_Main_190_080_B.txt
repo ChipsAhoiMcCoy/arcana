@@ -1,0 +1,6 @@
+#scene LS_Event_Main_190_080_B
+1.850	1.651	00.mp3	The team is chained to crosses.
+9.400	1.613	01.mp3	Fuuka hangs above Yukari.
+11.400	1.331	02.mp3	Mitsuru is chained too.
+13.050	1.858	03.mp3	Takeharu stands beside Aigis.
+29.350	1.623	04.mp3	Ikutsuki aims a gun at him.

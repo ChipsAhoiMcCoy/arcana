@@ -1,0 +1,10 @@
+#scene LS_Event_Main_190_150_B
+0.000	1.170	00.mp3	Yukari's bedroom.
+2.250	1.479	01.mp3	She bends over the laptop.
+4.250	1.169	02.mp3	She sits up straight.
+6.300	1.577	03.mp3	Yukari closes her eyes.
+8.900	3.508	04.mp3	Her Persona appears: a chained girl on a huge horned skull.
+12.800	0.958	05.mp3	A white flash.
+14.300	3.026	06.mp3	A horned figure with a pale mask spreads huge wings.
+17.700	1.284	07.mp3	A red orb crowns it.
+21.600	3.491	08.mp3	Back on the bed, a glowing sphere sinks into Yukari's chest.

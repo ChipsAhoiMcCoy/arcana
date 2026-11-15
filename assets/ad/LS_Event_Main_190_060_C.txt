@@ -1,0 +1,6 @@
+#scene LS_Event_Main_190_060_C
+2.100	3.327	00.mp3	A giant clock face looms over Tartarus's entrance hall.
+5.750	3.464	01.mp3	Ikutsuki and Aigis wait beneath two bull heads on the wall.
+9.450	1.373	02.mp3	The team runs up to them.
+45.900	1.224	03.mp3	Aigis steps forward.
+49.850	1.401	04.mp3	Aigis spreads her arms.

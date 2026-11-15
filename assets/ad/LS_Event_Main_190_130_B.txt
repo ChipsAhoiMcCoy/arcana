@@ -1,0 +1,3 @@
+#scene LS_Event_Main_190_130_B
+0.050	0.974	00.mp3	Yukari's room.
+1.380	1.369	01.mp3	She sits at a laptop.

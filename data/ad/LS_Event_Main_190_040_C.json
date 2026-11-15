@@ -1,0 +1,10 @@
+{
+ "movie": "LS_Event_Main_190_040_C",
+ "title": "Almost midnight",
+ "cues": [
+  {"at": 0.30, "text": "The sushi platters sit empty."},
+  {"at": 9.60, "text": "Koromaru gets up and trots over to Junpei."},
+  {"at": 15.75, "text": "Koromaru sits back down."},
+  {"at": 19.38, "text": "A clock: 11:59."}
+ ]
+}

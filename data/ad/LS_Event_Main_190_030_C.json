@@ -1,0 +1,12 @@
+{
+ "movie": "LS_Event_Main_190_030_C",
+ "title": "The group photo",
+ "cues": [
+  {"at": 4.70, "text": "Junpei walks off."},
+  {"at": 12.16, "text": "Everyone lines up, Takeharu too."},
+  {"at": 20.60, "text": "The camera flashes."},
+  {"at": 21.95, "text": "In the photo, Koromaru leaps barking and Junpei's cap flies off."},
+  {"at": 30.75, "text": "Koromaru hops."},
+  {"at": 32.20, "text": "Everyone laughs."}
+ ]
+}
