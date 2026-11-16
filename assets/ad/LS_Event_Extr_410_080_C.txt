@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_410_080_C
+2.050	1.269	00.mp3	Back in the entrance hall.

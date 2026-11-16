@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_450_050_C
+0.300	3.670	00.mp3	At a small restaurant, the hero lifts a steaming bowl to his mouth.

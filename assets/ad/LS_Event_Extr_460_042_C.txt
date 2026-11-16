@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_460_042_C
+4.700	2.173	00.mp3	Junpei turns and walks off to the right.
+8.200	1.305	01.mp3	The hero waits alone.
+9.800	1.228	02.mp3	Junpei walks back.

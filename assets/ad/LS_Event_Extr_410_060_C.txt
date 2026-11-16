@@ -1,0 +1,7 @@
+#scene LS_Event_Extr_410_060_C
+0.250	3.619	00.mp3	In Tartarus, the hero stands alone among twisted spires.
+8.400	2.609	01.mp3	Elsewhere, Yukari stands alone by a low wall.
+12.000	1.787	02.mp3	She walks forward, looking around.
+17.600	2.511	03.mp3	A Shadow with clawed hands creeps up behind her.
+21.900	1.309	04.mp3	The hero dashes off.
+25.900	1.500	05.mp3	The hero shields Yukari.

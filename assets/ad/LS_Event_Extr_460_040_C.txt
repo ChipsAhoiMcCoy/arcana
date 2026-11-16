@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_460_040_C
+0.300	2.661	00.mp3	The hero stands alone by the Be Blue V sign.

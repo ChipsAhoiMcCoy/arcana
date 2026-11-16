@@ -1,0 +1,5 @@
+#scene LS_Event_Extr_410_050_C
+5.850	1.668	00.mp3	All six wear new combat gear.
+14.200	1.450	01.mp3	Junpei carries a sword.
+22.350	1.194	02.mp3	Fuuka shuts her eyes.
+23.750	1.376	03.mp3	Her Persona engulfs her.

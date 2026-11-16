@@ -1,0 +1,3 @@
+#scene LS_Event_Extr_460_030_C
+1.200	3.478	00.mp3	At a cinema snack bar, the hero serves a line of customers.
+5.860	1.905	01.mp3	Beside him, a man in an apron.

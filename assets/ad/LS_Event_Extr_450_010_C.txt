@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_450_010_C
+0.100	3.593	00.mp3	An arcade. The hero plays a game, a young man behind him.

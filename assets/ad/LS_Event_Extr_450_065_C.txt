@@ -1,0 +1,5 @@
+#scene LS_Event_Extr_450_065_C
+0.050	0.720	00.mp3	Burgers.
+1.840	1.174	01.mp3	Piles of burgers.
+9.600	0.708	02.mp3	He slumps.
+12.050	2.223	03.mp3	He sits hunched over the tray, eyes shut.

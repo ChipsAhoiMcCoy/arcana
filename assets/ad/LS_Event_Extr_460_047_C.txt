@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_460_047_C
+4.700	1.922	00.mp3	Ken turns and walks off to the right.
+8.200	1.305	01.mp3	The hero waits alone.
+9.800	1.012	02.mp3	Ken walks back.

@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_460_044_C
+4.700	2.092	00.mp3	Mitsuru turns and walks off to the right.
+8.200	1.305	01.mp3	The hero waits alone.
+9.800	1.203	02.mp3	Mitsuru walks back.

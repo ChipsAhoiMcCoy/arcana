@@ -1,0 +1,3 @@
+#scene LS_Event_Extr_450_070_C
+0.350	3.587	00.mp3	A packed cinema. The hero sits between an old man and a woman.
+4.800	1.098	01.mp3	They watch the screen.
