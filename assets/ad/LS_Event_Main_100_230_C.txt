@@ -1,0 +1,4 @@
+#scene LS_Event_Main_100_230_C
+0.100	1.980	00.mp3	Mitsuru, Yukari and the chairman.
+9.400	1.805	01.mp3	Mitsuru turns back to the console.
+15.400	1.423	02.mp3	Yukari is on her feet.

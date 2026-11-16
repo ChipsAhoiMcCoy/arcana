@@ -1,0 +1,9 @@
+#scene LS_Event_Main_100_050_B
+0.300	2.928	00.mp3	The boy in striped pyjamas takes back the contract.
+3.750	1.296	01.mp3	He hugs it to his chest.
+13.600	2.171	02.mp3	He stretches one arm out toward the hero.
+16.000	2.263	03.mp3	He breaks apart into flecks and vanishes.
+19.000	2.245	04.mp3	The hero stands alone by the front desk.
+24.200	2.663	05.mp3	A girl with short brown hair stands by the stairs.
+28.300	2.107	06.mp3	A gun hangs in a holster on her thigh.
+32.900	2.453	07.mp3	A red-haired young woman watches from behind.

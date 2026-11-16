@@ -1,0 +1,6 @@
+#scene LS_Event_Main_100_210_B
+2.300	3.329	00.mp3	A large clock face on an ornate wall, its hands spinning.
+6.350	3.549	01.mp3	A young woman stands beside a long-nosed old man on a sofa.
+11.200	1.679	02.mp3	The hero sits across the table.
+16.500	1.646	03.mp3	A paper appears on the table.
+24.900	2.216	04.mp3	A sparkling light floats down to the hero.

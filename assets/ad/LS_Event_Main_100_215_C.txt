@@ -1,0 +1,2 @@
+#scene LS_Event_Main_100_215_C
+0.050	1.225	00.mp3	Junpei walks over.

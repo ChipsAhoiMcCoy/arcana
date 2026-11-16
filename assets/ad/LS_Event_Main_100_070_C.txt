@@ -1,0 +1,6 @@
+#scene LS_Event_Main_100_070_C
+0.700	2.192	00.mp3	Yukari leads the hero up the stairs.
+3.300	1.586	01.mp3	They walk down a long hallway.
+6.200	1.897	02.mp3	Yukari stops by the last door.
+16.050	1.746	03.mp3	Yukari walks off down the hall.
+18.300	1.395	04.mp3	She stops and looks back.

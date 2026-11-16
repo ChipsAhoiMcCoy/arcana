@@ -1,0 +1,3 @@
+#scene LS_Event_Main_100_280_C
+0.400	3.113	00.mp3	A rooftop. Yukari and the hero stand by its door.
+5.200	0.880	01.mp3	Both start.

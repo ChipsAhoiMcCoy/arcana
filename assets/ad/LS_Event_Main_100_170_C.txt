@@ -1,0 +1,3 @@
+#scene LS_Event_Main_100_170_C
+0.050	1.640	00.mp3	A screen shows the hero asleep.
+4.350	1.609	01.mp3	Yukari sits at the controls.

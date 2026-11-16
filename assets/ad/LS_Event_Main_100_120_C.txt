@@ -1,0 +1,2 @@
+#scene LS_Event_Main_100_120_C
+0.020	0.852	00.mp3	Auditorium.

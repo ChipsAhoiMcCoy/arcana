@@ -1,0 +1,3 @@
+#scene LS_Event_Main_100_150_C
+0.050	1.306	00.mp3	Mitsuru sits reading.
+5.750	2.544	01.mp3	The silver-haired young man walks past her and out.

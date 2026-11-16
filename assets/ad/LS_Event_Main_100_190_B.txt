@@ -1,0 +1,5 @@
+#scene LS_Event_Main_100_190_B
+0.100	1.727	00.mp3	Coffins stand where the people were.
+2.400	3.607	01.mp3	The man on the steps gets up and walks out among them, looking around.
+10.300	1.869	02.mp3	Black slime wells up around his feet.
+14.700	0.986	03.mp3	He sinks down.

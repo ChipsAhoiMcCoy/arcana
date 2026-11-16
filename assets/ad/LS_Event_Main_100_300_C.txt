@@ -1,0 +1,5 @@
+#scene LS_Event_Main_100_300_C
+0.500	3.412	00.mp3	Above the hero hovers a mechanical figure with a lyre.
+4.300	1.674	01.mp3	It bursts into glittering shards.
+7.100	1.938	02.mp3	Yukari sits on the ground nearby.
+12.550	1.214	03.mp3	Many-armed Shadows.

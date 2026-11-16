@@ -1,0 +1,5 @@
+#scene LS_Event_Main_100_220_C
+0.100	1.345	00.mp3	A plaza with a fountain.
+4.100	1.589	01.mp3	Junpei leads the hero in.
+6.200	1.713	02.mp3	Junpei heads for a crane game.
+9.800	1.701	03.mp3	Junpei steps up to the machine.

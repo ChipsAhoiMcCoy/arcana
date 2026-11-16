@@ -1,0 +1,5 @@
+#scene LS_Event_Main_100_130_C
+0.050	0.812	00.mp3	A classroom.
+6.400	1.264	01.mp3	Yukari walks over.
+20.500	1.053	02.mp3	Junpei gapes.
+25.950	3.167	03.mp3	Yukari turns on her heel and strides off between the desks.

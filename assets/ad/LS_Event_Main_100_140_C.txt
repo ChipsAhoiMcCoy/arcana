@@ -1,0 +1,4 @@
+#scene LS_Event_Main_100_140_C
+0.300	3.193	00.mp3	Junpei and the hero walk along a tree-lined school path.
+3.700	4.492	01.mp3	Junpei, then the hero, glance at a silver-haired young man talking with two girls.
+8.400	2.933	02.mp3	By the gate, three boys in track jackets run past.

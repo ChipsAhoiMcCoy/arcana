@@ -1,0 +1,4 @@
+#scene LS_Event_Main_100_320_C
+0.300	0.953	00.mp3	The Velvet Room.
+1.600	2.406	01.mp3	Igor at a table, Elizabeth beside him.
+5.300	1.664	02.mp3	The hero sits across from him.

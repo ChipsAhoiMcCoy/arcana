@@ -1,0 +1,5 @@
+#scene LS_Event_Main_100_155_C
+0.300	3.123	00.mp3	An arched sign spans the entrance to a busy shopping street.
+4.500	2.057	01.mp3	The hero walks in past a burger shop.
+7.400	1.996	02.mp3	Shoppers and students hurry past him.
+11.900	1.790	03.mp3	The hero walks on through the crowd.
