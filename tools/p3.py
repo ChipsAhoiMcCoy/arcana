@@ -163,12 +163,25 @@ def pids(exe=EXE_NAME):
     return [p for p in res if p not in claimed.values()] if PORT == DEFAULT_PORT else []
 
 
+def alive(pid):
+    """False for a process that has exited but is still listed: a killed game can linger in tasklist with one
+    thread for a long while (it cannot be opened and its port may stay bound), which blocked every relaunch."""
+    k32 = ctypes.windll.kernel32
+    h = k32.OpenProcess(0x1000, False, pid)   # PROCESS_QUERY_LIMITED_INFORMATION
+    if not h:
+        return k32.GetLastError() != 87       # ERROR_INVALID_PARAMETER: no such process any more
+    code = wt.DWORD()
+    ok = k32.GetExitCodeProcess(h, ctypes.byref(code))
+    k32.CloseHandle(h)
+    return not ok or code.value == 259        # STILL_ACTIVE
+
+
 def all_pids(exe=EXE_NAME):
     out = subprocess.run(["tasklist", "/FI", f"IMAGENAME eq {exe}", "/FO", "CSV", "/NH"], capture_output=True, text=True).stdout
     res = []
     for line in out.splitlines():
         parts = [p.strip('"') for p in line.split('","')]
-        if len(parts) > 1 and parts[0].lower() == exe.lower():
+        if len(parts) > 1 and parts[0].lower() == exe.lower() and alive(int(parts[1])):
             res.append(int(parts[1]))
     return res
 
