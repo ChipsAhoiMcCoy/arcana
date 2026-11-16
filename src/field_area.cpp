@@ -36,9 +36,17 @@ static void banner_tick() {
   // banner, 3 settled. Read in 2 and 3 only, once the name and the floor agree (2026-11-03, the dorm's stairs).
   // The new field's hero appears while it is still 14 with the old place's text ("Port Island Station, Paulownia
   // Mall" before "Port Island Station", 2026-11-03): until 2 the hero is between places.
+  // State 1 is not only an arrival's: the travel list (LB / M) runs 3 -> 1 -> 5 opening -> 6 open -> 7 closing -> 3
+  // with the same place (2026-11-16: read as a move, it cleared the banner and said the area on opening and closing).
+  // So 1 is between places only after the leaving states (13, 14), or on a new actor (a field loaded), until 2 or 3.
+  static WeakObj seen;
+  static bool leaving = false;
+  if (!(WeakObj::of((UObject*)a) == seen)) { seen = WeakObj::of((UObject*)a); leaving = true; }
   int st = 0;
   guarded([&] { st = *(int32_t*)(a + 0x294); });
-  g_banner_moving = st == 13 || st == 14 || st == 1;
+  if (st == 13 || st == 14) leaving = true;
+  else if (st == 2 || st == 3) leaving = false;
+  g_banner_moving = st == 13 || st == 14 || (st == 1 && leaving);
   if (g_banner_moving) { g_banner.clear(); g_banner_floor = 0; }
   if (st != 2 && st != 3) return;
   // +0xA10 set: the banner shows a floor number, +0xA14 (the dorm's 2F and 3F read 2 and 3).

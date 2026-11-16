@@ -8,6 +8,9 @@
 - The track a playlist has set is said as "current", and setting one says it again with "current".
 - Change Voice Language says the new language as you switch it. It always read English and stayed silent on a change.
 
+### Field
+- Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
+
 ### Battle
 - A physical skill's HP cost is no longer read as damage to the one using it: the skill list already says the price.
 
