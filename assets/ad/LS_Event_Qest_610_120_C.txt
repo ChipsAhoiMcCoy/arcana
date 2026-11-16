@@ -1,0 +1,6 @@
+#scene LS_Event_Qest_610_120_C
+0.600	2.860	00.mp3	Elizabeth climbs a down escalator, slipping back.
+3.800	1.252	01.mp3	She breaks into a run.
+5.400	1.927	02.mp3	She reaches the top beside the hero.
+13.700	1.858	03.mp3	Elizabeth walks off; he follows.
+15.800	2.364	04.mp3	To a fenced-off hole, ringed with sandbags.

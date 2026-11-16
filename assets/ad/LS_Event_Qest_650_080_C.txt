@@ -1,0 +1,2 @@
+#scene LS_Event_Qest_650_080_C
+0.000	0.992	00.mp3	Mr. Ono.

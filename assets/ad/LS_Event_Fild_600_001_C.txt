@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_600_001_C
+0.200	2.300	00.mp3	Yukari and the hero run in and stop short.

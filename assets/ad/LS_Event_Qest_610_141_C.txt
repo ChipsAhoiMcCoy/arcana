@@ -1,0 +1,4 @@
+#scene LS_Event_Qest_610_141_C
+0.050	0.909	00.mp3	The school store.
+2.000	1.176	01.mp3	Elizabeth goes up.
+10.350	1.744	02.mp3	Elizabeth turns back to the hero.

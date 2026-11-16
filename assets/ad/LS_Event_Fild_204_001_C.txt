@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_204_001_C
+0.050	2.701	00.mp3	The dorm lounge. Mitsuru walks up to the hero.

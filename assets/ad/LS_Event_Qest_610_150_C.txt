@@ -1,0 +1,2 @@
+#scene LS_Event_Qest_610_150_C
+1.400	2.098	00.mp3	The hero and Elizabeth at the dorm steps.

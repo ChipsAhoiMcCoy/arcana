@@ -1,0 +1,6 @@
+#scene LS_Event_Qest_610_140_C
+0.050	1.102	00.mp3	The school courtyard.
+3.000	2.839	01.mp3	Two schoolgirls stare at Elizabeth, then walk past.
+7.400	1.275	02.mp3	The hero gestures.
+10.400	1.862	03.mp3	Elizabeth hides behind the hero.
+13.600	2.297	04.mp3	They walk on, Elizabeth close at his back.

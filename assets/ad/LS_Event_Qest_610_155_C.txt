@@ -1,0 +1,5 @@
+#scene LS_Event_Qest_610_155_C
+0.300	2.694	00.mp3	The hero's room. Elizabeth stands just inside.
+4.400	1.612	01.mp3	The hero gestures, palm up.
+7.400	1.505	02.mp3	Later, they sit on his bed.
+12.050	0.961	03.mp3	Their hands meet.

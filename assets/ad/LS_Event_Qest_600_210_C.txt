@@ -1,0 +1,11 @@
+#scene LS_Event_Qest_600_210_C
+0.400	2.382	00.mp3	Two cards lie on the table before Igor.
+3.000	2.137	01.mp3	Light bursts from each card under his hand.
+6.400	3.041	02.mp3	The cards rise upright. Igor grins behind them.
+9.900	3.767	03.mp3	Igor flicks the cards into the air. Elizabeth stands beside him.
+15.900	2.484	04.mp3	The hero jerks in his chair, arms flung out.
+18.600	3.208	05.mp3	He topples over backward. Two cards tumble through the air.
+25.100	2.212	06.mp3	Igor and Elizabeth sit side by side.
+27.900	2.807	07.mp3	Elizabeth tugs at her hat brim, then glances aside.
+31.000	1.345	08.mp3	A new Persona appears.
+34.600	1.653	09.mp3	The Persona turns into a card.

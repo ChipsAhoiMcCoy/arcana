@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_216_001_C
+0.050	2.910	00.mp3	The dorm lounge. Junpei catches up with the hero.
+4.500	1.379	01.mp3	Ikutsuki walks over.

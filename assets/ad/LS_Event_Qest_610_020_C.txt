@@ -1,0 +1,2 @@
+#scene LS_Event_Qest_610_020_C
+0.050	1.587	00.mp3	Elizabeth, by a staff door.

@@ -1,0 +1,7 @@
+#scene LS_Event_Qest_610_125_C
+0.050	2.054	00.mp3	Elizabeth and the hero stroll the street.
+2.900	1.936	01.mp3	Elizabeth runs off to an alley stall.
+10.350	1.575	02.mp3	Elizabeth holds out her money.
+15.700	2.113	03.mp3	Later, the two sit eating takoyaki.
+18.350	1.922	04.mp3	Elizabeth chews, eyes closed.
+25.000	3.570	05.mp3	Later, outside Wilduck Burger. The hero holds his stomach.

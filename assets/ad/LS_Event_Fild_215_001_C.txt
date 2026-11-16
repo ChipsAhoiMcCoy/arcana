@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_215_001_C
+1.400	2.323	00.mp3	The hero stands before a box on the desk.

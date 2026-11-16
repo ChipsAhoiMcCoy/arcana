@@ -1,0 +1,4 @@
+#scene LS_Event_Qest_610_010_C
+0.150	1.575	00.mp3	The hero stands in his room.
+2.100	1.587	01.mp3	He takes out his phone and answers.
+5.400	1.764	02.mp3	He hangs up and pockets the phone.

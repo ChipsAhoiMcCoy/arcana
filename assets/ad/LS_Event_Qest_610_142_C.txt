@@ -1,0 +1,2 @@
+#scene LS_Event_Qest_610_142_C
+1.750	3.060	00.mp3	A classroom. Elizabeth walks up to the teacher's podium.

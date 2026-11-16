@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_103_002_C
+0.350	1.965	00.mp3	Elizabeth waits by a door in an alley.

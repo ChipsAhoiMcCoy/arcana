@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_900_030_C
+0.250	5.391	00.mp3	Elizabeth waits at the door. She steps aside, and the hero walks in, Elizabeth behind him.

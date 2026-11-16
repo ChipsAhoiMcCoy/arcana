@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_900_005_C
+1.100	1.807	00.mp3	The hero steps out of the blue door.

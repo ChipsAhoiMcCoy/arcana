@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_900_020_C
+0.050	2.325	00.mp3	The hero pushes open the door and steps through.
+3.200	0.963	01.mp3	A long hallway.
