@@ -232,7 +232,8 @@ std::vector<Poi> scan(float radius) {
     std::string nm = cmm ? npc_name(a) : hit_name(a);
     if (type == "AreaChange" || icon == "Goto") add(a, Kind::Exit, nm.empty() ? strings::kPoiExit : nm);
     else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop : nm);
-    else if (icon == "Speak" || icon == "Listen") add(a, Kind::Person, nm.empty() ? strings::kPoiPerson : nm);
+    // A vendor under the Speak icon (a hit named as a shop) is a shop like an NPC vendor (below).
+    else if (icon == "Speak" || icon == "Listen") add(a, !cmm && check_kind(nm) == Kind::Shop ? Kind::Shop : Kind::Person, nm.empty() ? strings::kPoiPerson : nm);
     // Tartarus' doors are ways onward under the plain Check icon: the Monad door on a floor ("Enter Door", row
     // 10009006; seen on Adamah floors 231 and 243, 2026-11-11), and in the passage "Exit Door", "Proceed Onward" and
     // the way back (10009007-10009009, 10009012; all three seen listed on Adamah floor 255, 2026-11-11).
@@ -252,7 +253,15 @@ std::vector<Poi> scan(float radius) {
     // evening, 2026-11-12) were listed as "Person" 2 m away, and the auto-walk stalled against their collision.
     auto* models = field<TArray<uint8_t>>(a, "mCharaModelList_");
     if (models && models->num == 0) continue;
-    add(a, Kind::Person, npc_name(a));
+    // A vendor is a shop: talking opens its menu. The game marks most with the Shop icon (Octopia, 2026-11-16: listed
+    // as a Person before); the rest by their script (core::npc_sells).
+    bool sells = icon_of(a) == "Shop";
+    if (!sells) {
+      UObject* lvl = outer_of(a);
+      UObject* w = lvl ? outer_of(lvl) : nullptr;   // a ULevel's outer is its UWorld, named for the level
+      sells = core::npc_sells(get<int32_t>(a, "mMajorID_", -1), get<int32_t>(a, "mMinorID_", -1), w ? name_of(w) : std::string());
+    }
+    add(a, sells ? Kind::Shop : Kind::Person, npc_name(a));
   }
   // Tartarus' breakable Shadow remains (BP_DOBJ_Broken*_C; strike them, Ctrl, for items). A broken one stays visible
   // but its Box stops colliding (NoCollision, 2026-10-27).

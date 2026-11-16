@@ -40,6 +40,11 @@ std::string icon_kind(std::string_view class_name);
 enum class CheckKind { Shop, Door, Thing };
 CheckKind check_kind(const std::string& name);
 
+// A person whose talk opens a shop: an NPC by its script's character and variant (FldNpcActor mMajorID_ /
+// mMinorID_) and the level it stands in (the event-day variant 700 sells only on New Year's, "..._Event_550").
+// Those marked with the Shop icon are shops by the icon; this covers the ones under the Speak icon too.
+bool npc_sells(int major, int minor, std::string_view level);
+
 // A Tartarus chest's name by its dungeon object type: the rare and the gold ones by the mod's words, a locked one
 // with what it costs ("..., 3 Twilight Fragments"), any other by the game's own name.
 std::string chest_name(const std::string& type, const std::string& game_name);

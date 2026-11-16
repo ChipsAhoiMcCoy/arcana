@@ -86,6 +86,15 @@ CheckKind check_kind(const std::string& name) {
   return CheckKind::Thing;
 }
 
+// The NPC scripts that open a shop (CALL_PUBLIC_SHOP, SEL_GENERIC_SHOP; surveyed from every BF_NPC flowscript,
+// 2026-11-16): 100 School Store Vendor, 101 Flower Shop Lady, 102 6HARA Clerk, 103 Octopia (all four carry the Shop
+// icon), 104 Luxury Shopkeeper, 105 Suspicious Man, 404 Fortune-Teller (a Speak icon). Their event-day variants
+// (700) say the stall is shut, except Octopia's at the shrine on New Year's (kfev550, HIT_TAKOYAKI_SHOP_NEWYEAR).
+bool npc_sells(int major, int minor, std::string_view level) {
+  if (minor == 0) return (major >= 100 && major <= 105) || major == 404;
+  return major == 103 && minor == 700 && level.ends_with("_Event_550");
+}
+
 std::string chest_name(const std::string& type, const std::string& game_name) {
   if (type == "TBoxRare") return strings::kPoiChestRare;
   if (type == "TBoxJewelry") return strings::kPoiChestGold;

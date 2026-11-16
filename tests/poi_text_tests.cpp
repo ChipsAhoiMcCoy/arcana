@@ -98,6 +98,17 @@ TEST_CASE("check_kind: shops, doors and things by the game's names") {
   CHECK(check_kind("") == CheckKind::Thing);
 }
 
+TEST_CASE("npc_sells: the vendors' scripts, not their event-day chatter") {
+  CHECK(npc_sells(103, 0, "LV_F105_102_Npc"));                        // Octopia
+  CHECK(npc_sells(104, 0, "LV_F103_111_Npc"));                        // Luxury Shopkeeper (Speak icon)
+  CHECK(npc_sells(404, 0, "LV_F103_111_Npc"));                        // Fortune-Teller
+  CHECK(npc_sells(103, 700, "LV_F106_101_Npc_KeyFree_Event_550"));    // New Year's takoyaki
+  CHECK_FALSE(npc_sells(103, 700, "LV_F105_102_Npc_KeyFree_Event_600"));
+  CHECK_FALSE(npc_sells(105, 700, "LV_F103_111_Npc_KeyFree_Event_900"));
+  CHECK_FALSE(npc_sells(413, 0, "LV_F105_102_Npc"));                  // a passer-by
+  CHECK_FALSE(npc_sells(106, 0, ""));
+}
+
 TEST_CASE("chest_name: by the dungeon object's type") {
   CHECK(chest_name("TBoxPrimField", "Treasure Chest") == "Treasure Chest");
   CHECK(chest_name("TBoxRare", "Treasure Chest") == strings::kPoiChestRare);

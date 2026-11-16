@@ -10,6 +10,7 @@
 
 ### Field
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
+- People who sell you something are listed under Shops, not People: Octopia's takoyaki stand (the New Year's one too), the Flower Shop Lady, the School Store Vendor, the 6HARA Clerk, the Luxury Shopkeeper, the Suspicious Man and the Fortune-Teller.
 
 ### Notices
 - "Next" on the Stats up panel waits until Space closes it. It was said as the panel rose, while the game still ignored the key; a press then did nothing. The same false start could give "Next" early on the victory pages.
