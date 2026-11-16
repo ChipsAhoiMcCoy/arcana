@@ -23,6 +23,7 @@
 #include "speech.h"
 #include "ue/scan.h"
 #include "ue/ue.h"
+#include "audio.h"
 #include "voice.h"
 #include "world.h"
 #include <format>
@@ -258,11 +259,22 @@ void player_pressed() {
   if (blocking) speech::stop();
 }
 
-// The controller's confirm and cancel (A 0x1000, B 0x2000) pressed for the game: not in the mod layer or menu.
+// Auto is said only when the player switched it (Shift, or X on a controller). The game switches it off by itself
+// where a scene's dialogue ends (2026-11-15, the full moon of 5/9: every "Auto off" fell at a scene's end, five of them
+// just as a scene's description began, and talked over it); that change goes to the log only.
+static bool g_auto_key = false;
+void auto_key_pressed() { g_auto_key = true; }
+
+// The controller's confirm and cancel (A 0x1000, B 0x2000) and Auto (X 0x4000) pressed for the game: not in the mod
+// layer or menu.
 static void pad_press_tick() {
   static uint16_t pad_was = 0;
-  uint16_t pad = input::real_buttons() & 0x3000;
-  if ((pad & ~pad_was) && !input::layer_open() && !input::modal()) player_pressed();
+  uint16_t pad = input::real_buttons() & 0x7000;
+  uint16_t pressed = pad & ~pad_was;
+  if (pressed && !input::layer_open() && !input::modal()) {
+    if (pressed & 0x3000) player_pressed();
+    if (pressed & 0x4000) auto_key_pressed();
+  }
   pad_was = pad;
 }
 
@@ -455,10 +467,11 @@ static void read_choices(Tick& tk, Seen& s, UObject* sel) {
 struct Toggle { uint32_t was = 0; bool window = false; };
 static Toggle g_auto_said, g_ffwd_said;
 template <class F>
-static bool announce_toggle(Toggle& t, uint32_t now, bool talking, const char* on, const char* off, F&& change) {
+static bool announce_toggle(Toggle& t, uint32_t now, bool talking, const char* on, const char* off, F&& change,
+                            bool theirs = true) {
   bool changed = now != t.was;
   if (changed) {
-    bool heard = talking && t.window;
+    bool heard = talking && t.window && theirs;
     log::writef("msg: {}{}", change(t.was, now), heard ? "" : " (no window)");
     if (heard) speech::speak(now ? on : off, false);
     t.was = now;
@@ -471,6 +484,10 @@ static bool announce_toggle(Toggle& t, uint32_t now, bool talking, const char* o
 // "Next" is speech: queued behind the reading, it goes once the voice has ended. A sound has to wait for the reading
 // too: once the backend has reported it under way and then done; a backend that cannot tell (NVDA: -1) plays it as
 // the voice ends.
+static bool narrating() {
+  audio::Narration n = audio::narration();
+  return n.active && !n.paused && !n.ended;
+}
 static void end_cue_tick(const Tick& tk, uint32_t autov) {
   if (!g_wait_page) return;
   int sp = speech::speaking();
@@ -478,7 +495,9 @@ static void end_cue_tick(const Tick& tk, uint32_t autov) {
   bool next = settings::get(settings::VoiceEndSound) == settings::EndNext;
   bool reading_done = !g_wait_speech || sp == -1 || (g_wait_spoke && sp == 0);
   if (!tk.wait_showing || tk.choosing || autov) g_wait_page = nullptr;   // a choice list waits for its answer; Auto goes on by itself
-  else if (!voice::playing() && (next || reading_done)) {
+  // Nor over a scene's description: "Next" fell on "Two Shadows close in from behind" (2026-11-15); it waits for the
+  // narrator as it waits for the voice.
+  else if (!voice::playing() && !narrating() && (next || reading_done)) {
     if (next) speech::speak(strings::kNext, false);
     else voice::play_end_sound();
     g_wait_page = nullptr;
@@ -534,8 +553,14 @@ void tick() {
   // +0x34 (0 off, 1 on; found 2026-10-29 by copying every object after each press).
   uint32_t autov = 0;
   guarded([&] { autov = *(uint32_t*)((uint8_t*)m + 0x34); });
-  announce_toggle(g_auto_said, autov, talking, strings::kAutoOn, strings::kAutoOff,
-                  [](uint32_t was, uint32_t now) { return std::format("auto {} -> {}", was, now); });
+  // A press outside a conversation (Shift dashes in the field) is not one for Auto.
+  if (!talking) g_auto_key = false;
+  bool auto_key = g_auto_key;
+  if (announce_toggle(g_auto_said, autov, talking, strings::kAutoOn, strings::kAutoOff,
+                      [auto_key](uint32_t was, uint32_t now) {
+                        return std::format("auto {} -> {}{}", was, now, auto_key ? "" : " (the game's)");
+                      }, auto_key))
+    g_auto_key = false;
   // Fast-forward said the same way; when it ends, the page it left showing is read.
   if (announce_toggle(g_ffwd_said, g_ffwd ? 1 : 0, talking, strings::kFastForwardOn, strings::kFastForwardOff,
                       [](uint32_t, uint32_t now) { return std::string(now ? "fast-forward on" : "fast-forward off"); })) {

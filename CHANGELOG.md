@@ -45,6 +45,10 @@
 - Back on that mail after its reply choice, when the game leaves you on it (turning down a hangout), its sender and title are said: it was silent.
 - "Next", or the sound chosen in the Voice end sound setting, is said once A or Cross continues, not as the screen opens while its animation still plays: on the "Stats up!" panel, an item or money notice, a Social Link's rank card, and each victory page (the summary, the level-ups, the hero's page, a Persona's status page). The mod knows it from the game itself asking for the button, or the victory screen's own OK prompt, never from a timer.
 - Two "Stats up!" panels in a row (Charm, then Courage) each read their stats: the second was silent.
+- Voiced lines in field events (Mitsuru on the radio as you arrive at the Overhead Bridge, Junpei inside the monorail) end with "Next" again. The mod read the line's voice number wrong whenever it was above 255, so it never noticed the voice begin.
+- "Auto on" and "Auto off" are said only when you switch Auto yourself (Shift, or X / Square on a controller). The game turns Auto off by itself where a scene's dialogue ends, and saying so talked over the scene's first description.
+- "Next" waits for the narrator to finish a description before it is said, instead of talking over it.
+- The morning walk at the school gate no longer says Junpei is with you: the friend who greets you there changes from day to day.
 
 ## 0.2.0
 

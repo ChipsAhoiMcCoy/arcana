@@ -65,7 +65,7 @@ int declared_cue(const uint8_t* d, size_t size, bool any) {
     if ((f & 0xF0) != 0xF0 || argc < 0) return 0;
     if (d[i + 2] == 0x61 && argc >= 4) {
       if (i + 10 >= size) return 0;
-      if (any || (d[i + 3] == 0x02 && d[i + 4] == 0x01)) return (d[i + 9] - 1) + (d[i + 10] - 1) * 255;
+      if (any || (d[i + 3] == 0x02 && d[i + 4] == 0x01)) return (d[i + 9] - 1) + (d[i + 10] - 1) * 256;   // low byte, then high byte, each stored plus one
     }
     i += 3 + (size_t)argc * 2;
   }
@@ -76,7 +76,7 @@ int declared_voice_type(const uint8_t* d, size_t size) {
   if (declared_cue(d, size, true) == 0) return -1;
   for (size_t i = 0; i + 4 < size && d[i] == 0xFE;) {   // the same walk: find the function declared_cue found
     int argc = (d[i + 1] & 0x0F) - 1;
-    if (d[i + 2] == 0x61 && argc >= 4) return (d[i + 3] - 1) + (d[i + 4] - 1) * 255;
+    if (d[i + 2] == 0x61 && argc >= 4) return (d[i + 3] - 1) + (d[i + 4] - 1) * 256;
     i += 3 + (size_t)argc * 2;
   }
   return -1;
