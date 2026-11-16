@@ -18,6 +18,9 @@
 ### Requests
 - A request's reward is read when you report it to Elizabeth ("Got ..."). The request list hid the notice. The Stats up notice is read over any menu too.
 
+### Camp menu
+- An arrow pressed while the camp menu closes says nothing. It read the next entry, which the game had already stopped listening to.
+
 ### Battle
 - A physical skill's HP cost is no longer read as damage to the one using it: the skill list already says the price.
 

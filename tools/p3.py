@@ -16,7 +16,7 @@ server on P3A_PORT (default 8793). Claude drives and observes it from here witho
   python tools/p3.py state | wait <on> <text> [secs] [--not] | batch "route" "sleep:500" "route"
   python tools/p3.py health | log [--since N] | speech [--since N] [--wait S]
   python tools/p3.py say "text"
-  python tools/p3.py keys enter wait:2 down    game keys in order, waits in seconds; prints /screen
+  python tools/p3.py keys enter wait:2 down [--hold MS]   game keys in order, each once the last is done; prints /screen
   python tools/p3.py advance [secs] [key]      play dialogue, pressing the key on each page; stops at a choice
   python tools/p3.py goto "name" [--noact]     auto-walk to a point of interest (or "#id"), then press Space
   python tools/p3.py jump --list <text> | <row or query> [--bare] [--dry] | --set key=value ...   reach any situation
@@ -795,13 +795,32 @@ def main():
         since = rest[rest.index("--since") + 1] if "--since" in rest else "0"
         print(http(f"/{cmd}?since={since}"), end="")
     elif cmd == "keys":
-        # p3.py keys enter wait:2 down down space   (a sequence of game keys with waits in seconds)
+        # p3.py keys enter wait:2 down down space [--hold MS]   (game keys in order, waits in seconds)
+        # The keys between two waits go in one request with settle=1: the mod presses each once the last has done its
+        # work (the menu takes input, the game's cursor caught up, a confirm went through), with no fixed pauses.
+        # --hold MS holds each key that much longer (walking a step in the field).
+        hold = 0
+        if "--hold" in rest:
+            i = rest.index("--hold")
+            hold = int(rest[i + 1])
+            rest = rest[:i] + rest[i + 2:]
+        def send(chunk):
+            out = http(f"/key?k={','.join(q(k) for k in chunk)}&settle=1&ms={hold}", 15 + 11 * len(chunk))
+            if out.startswith("HTTP"):
+                print(out, end="")
+                print(http("/screen"), end="")
+                sys.exit(1)
+        chunk = []
         for k in rest:
             if k.startswith("wait:"):
+                if chunk:
+                    send(chunk)
+                    chunk = []
                 time.sleep(float(k[5:]))
             else:
-                http(f"/key?k={q(k)}&ms=120")
-                time.sleep(0.35)
+                chunk.append(k)
+        if chunk:
+            send(chunk)
         print(http("/screen"), end="")
     elif cmd == "flow" and rest and rest[0] == "load":
         # p3.py flow load [slot=15]: from a fresh launch through the title menu's Load Game to that save slot.

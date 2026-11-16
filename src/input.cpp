@@ -15,6 +15,7 @@
 #include <mutex>
 #include <atomic>
 #include <map>
+#include <memory>
 #include <intrin.h>
 #include <cstdlib>
 #include <cmath>
@@ -246,6 +247,41 @@ void inject_key(uint32_t vk, unsigned hold_ms) {
 }
 // Whether an injected key is still held (its key-up not yet posted): the press has not been delivered in full.
 bool injected_held() { return !g_inject_up.empty(); }
+
+// /key?settle=1 (the dev server's threads).
+static std::atomic<SettleCheck> g_settle{nullptr};
+static std::atomic<SettleDrops> g_drops{nullptr};
+void set_settle_check(SettleCheck check, SettleDrops drops) { g_settle = check; g_drops = drops; }
+// Waits for one game frame: a job the game thread runs at the top of its next frame, asking the settle check there.
+// False: the game thread did not run it (loading, busy, frozen, unloading). The answer lives in shared state, so a job
+// that runs after its wait gave up writes nowhere dead.
+static bool game_frame(const char** why = nullptr) {
+  auto out = std::make_shared<const char*>(nullptr);
+  bool ran = hooks::run_on_game_thread([out, why] { if (SettleCheck c = g_settle.load(); c && why) *out = c(); }, 2000);
+  if (why) *why = ran ? *out : nullptr;
+  return ran;
+}
+// Frames until the settle check passes on two in a row: the menu's tick runs after the jobs of its frame, so a key
+// read in one frame shows in the menu's state (the game's cursor on its way) only in the next. Empty when settled,
+// else why not.
+static std::string settle_wait(double secs) {
+  const ULONGLONG t0 = GetTickCount64(), limit = (ULONGLONG)(secs * 1000);
+  for (int quiet = 0; quiet < 2;) {
+    const char* why = nullptr;
+    if (!game_frame(&why)) return "the game thread did not run (loading, busy or frozen)";
+    quiet = why ? 0 : quiet + 1;
+    if (why && GetTickCount64() - t0 >= limit) return std::format("{} (after {:.0f} s)", why, secs);
+  }
+  return {};
+}
+// Waits until the game window has had a key down since `before` (hooks::key_count), then one more frame: the game
+// reads the press in a frame of its own before the key-up arrives.
+static bool delivered(uint64_t before, double secs) {
+  const ULONGLONG t0 = GetTickCount64(), limit = (ULONGLONG)(secs * 1000);
+  while (hooks::key_count() <= before)
+    if (!game_frame() || GetTickCount64() - t0 >= limit) return false;
+  return game_frame();
+}
 static void inject_tick() {
   HWND w = hooks::game_window();
   ULONGLONG now = GetTickCount64();
@@ -498,10 +534,16 @@ bool install() {
     }
     return status() + "\n" + polled + (dev::has(r, "iat") ? iat_report() + callers_report() : std::string());
   }, "?press=a,down|lb+a[&ms=&gap=] ?hold=x&on=1 ?stick=x,y&ms= ?clear=1 ?connect=1 ?wait=1 ?poll=ms ?raw=1 virtual pad");
-  dev::route("/key", [](const dev::Request& r, int&) {
-    // /key?k=enter,down,a [&ms=60] keyboard messages to the game window
+  dev::route("/key", [](const dev::Request& r, int& status) {
+    // /key?k=enter,down,a [&ms=60] keyboard messages to the game window.
+    // &settle=1: no fixed pauses. Each key is pressed once the last one has done its work (settle_wait), held until
+    // the game window has it and one more frame has run (+ms), and the answer comes once the last key has done its
+    // work too. A key that cannot be sent (&timeout=s, default 10) answers 408 with the reason.
     std::string seq = dev::arg(r, "k");
-    unsigned ms = (unsigned)dev::arg_int(r, "ms", 60);
+    const bool settle = dev::arg(r, "settle", "0") == "1";
+    unsigned ms = (unsigned)dev::arg_int(r, "ms", settle ? 0 : 60);
+    const double secs = dev::arg_num(r, "timeout", 10);
+    int n = 0;
     for (size_t s = 0; s < seq.size();) {
       size_t e = seq.find(',', s); if (e == std::string::npos) e = seq.size();
       // "w+d" holds both together (diagonal walking)
@@ -512,20 +554,51 @@ bool install() {
         if (q > p) vks.push_back(parse_vk(step.substr(p, q - p)));
         p = q + 1;
       }
-      for (uint32_t vk : vks) post_key(vk, true);
-      // ?held=N: N auto-repeats, as Windows sends for a key held down.
-      for (int n = (int)dev::arg_int(r, "held", 0); n > 0; --n) {
-        Sleep(30);
-        for (uint32_t vk : vks)
-          PostMessageW(hooks::game_window(), WM_KEYDOWN, vk, 1 | (MapVirtualKeyW(vk, MAPVK_VK_TO_VSC) << 16) | (1u << 30));
+      ++n;
+      // A key the menu dropped (it took no input yet: an opening that began after the last key settled) is pressed
+      // again once it does, as a player presses again.
+      for (int tries = 1;; ++tries) {
+        if (settle) {
+          if (std::string why = settle_wait(secs); !why.empty()) {
+            status = 408;
+            return std::format("key {} ({}) not sent: {}\n", n, step, why);
+          }
+        }
+        const uint64_t before = hooks::key_count();
+        const SettleDrops drops = g_drops.load();
+        const uint64_t dropped = drops ? drops() : 0;
+        for (uint32_t vk : vks) post_key(vk, true);
+        if (settle && !vks.empty() && !delivered(before, secs)) {
+          for (uint32_t vk : vks) post_key(vk, false);
+          status = 408;
+          return std::format("key {} ({}) never reached the game window\n", n, step);
+        }
+        // ?held=N: N auto-repeats, as Windows sends for a key held down.
+        for (int h = (int)dev::arg_int(r, "held", 0); h > 0; --h) {
+          Sleep(30);
+          for (uint32_t vk : vks)
+            PostMessageW(hooks::game_window(), WM_KEYDOWN, vk, 1 | (MapVirtualKeyW(vk, MAPVK_VK_TO_VSC) << 16) | (1u << 30));
+        }
+        if (ms) Sleep(ms);
+        for (uint32_t vk : vks) post_key(vk, false);
+        if (!settle) { Sleep(ms + 30); break; }
+        if (!drops || drops() == dropped) break;
+        log::writef("dev: /key {} ({}) dropped by the menu (no input yet), pressing it again", n, step);
+        if (tries >= 5) {
+          status = 408;
+          return std::format("key {} ({}) dropped by the menu {} times\n", n, step, tries);
+        }
       }
-      Sleep(ms);
-      for (uint32_t vk : vks) post_key(vk, false);
-      Sleep(ms + 30);
       s = e + 1;
     }
+    if (settle && n) {
+      if (std::string why = settle_wait(secs); !why.empty()) {
+        status = 408;
+        return std::format("{} key(s) sent; the last has not finished: {}\n", n, why);
+      }
+    }
     return std::string("ok\n");
-  }, "?k=enter,down,a keyboard to the game window");
+  }, "?k=enter,down,a[&ms=60] keyboard to the game window; &settle=1 each key once the last has done its work (menus ready, the game's cursor caught up), no fixed pauses");
   // Dev only (the dev server is on): the modifier stubs above.
   if (GetEnvironmentVariableW(L"P3A_PORT", nullptr, 0) > 0) log::writef("input: modifier stubs {}", install_modkeys() ? "on" : "FAILED");
   dev::route("/modkey", [](const dev::Request& r, int&) {

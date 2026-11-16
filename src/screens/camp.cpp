@@ -5,6 +5,7 @@
 #include "screens/util.h"
 #include "screens/camp.h"
 #include "core/strings.h"
+#include "hooks.h"
 #include "party.h"
 
 namespace p3a::screens {
@@ -37,6 +38,21 @@ bool camp_submenu_open() {
 class CampScreen : public MenuScreen {
   Finder root_{"CmpRoot"};
   static constexpr int kCount = 9;
+  // The root's timer (+0x40) as last seen, and whether it moved in the last frame: the root adds the frame's time to it
+  // on every frame it runs (FUN_141328720), and it reads input only then. A cancel closes the camp through the camp
+  // manager, which stops running the root for the close (about 0.4 s) while it stays in state 3 (2026-11-16).
+  float timer_seen_ = -1;
+  uint64_t timer_frame_ = 0;
+  bool timer_moving_ = false;
+  bool root_running(const uint8_t* r) {
+    float t = *(const float*)(r + 0x40);
+    if (uint64_t f = hooks::frame(); f != timer_frame_) {
+      timer_moving_ = t != timer_seen_;
+      timer_seen_ = t;
+      timer_frame_ = f;
+    }
+    return timer_moving_;
+  }
   Mirror& list_ = mirror("camp", [this] {
     UObject* r = root_.get();
     int c = r ? *(int32_t*)((uint8_t*)r + 0x3c) : -1;
@@ -47,11 +63,11 @@ class CampScreen : public MenuScreen {
   // move (FUN_141328720) adds the row copy, the help line's fade (draw +0x88, +0x7BC) and the sound.
   CampScreen() {
     // The game takes input in states 1-3 (this screen is up in 2-4, active()); the list counts as ready, for moves and
-    // the confirm alike, once the root's timer (+0x40) has run a third of a second.
+    // the confirm alike, once the root's timer (+0x40) has run a third of a second, while the root runs (not closing).
     list_.ready = [this] {
       auto* r = (uint8_t*)root_.get();
       int st = r ? *(int32_t*)(r + 0x38) : 0;
-      return st >= 1 && st <= 3 && *(float*)(r + 0x40) >= 1.f / 3;
+      return st >= 1 && st <= 3 && *(float*)(r + 0x40) >= 1.f / 3 && root_running(r);
     };
     list_.set = [this](int i) {
       auto* r = (uint8_t*)root_.get();
@@ -87,6 +103,8 @@ class CampScreen : public MenuScreen {
   }
   std::string title() override { return strings::kCamp; }
   void on_enter() override { screens::set_keys(strings::kCampKeys); }
+  // Every frame, so the timer is compared with the frame before (ready is asked only now and then).
+  void on_tick() override { if (auto* r = (uint8_t*)root_.get()) root_running(r); }
   void build(ui::GraphBuilder& b) override {
     b.begin_stop("camp");
     // An entry the story has not opened yet is still selectable (the game buzzes): its lock flags, in list order

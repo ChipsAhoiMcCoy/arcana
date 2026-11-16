@@ -17,12 +17,16 @@
 #include "seh.h"
 #include "settings.h"
 #include "speech.h"
+#include "world.h"
 #include <windows.h>
 #include <xinput.h>
+#include <atomic>
 #include <format>
 
 namespace p3a::screens {
 struct MenuHost;
+// Moves and confirms a menu dropped while it took no input (/key?settle=1 presses those again).
+static std::atomic<uint64_t> g_dropped_keys{0};
 namespace {
 MenuScreen* g_active = nullptr;   // the MenuScreen being ticked (current, no message window over it)
 bool g_entry_line = false;        // the next navigator line opens the screen: it interrupts
@@ -182,7 +186,7 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
   bool nav_key = (mods == keys::None && (vk == VK_UP || vk == VK_DOWN || vk == VK_LEFT || vk == VK_RIGHT || vk == VK_HOME || vk == VK_END ||
                                          vk == VK_RETURN || vk == VK_SPACE || vk == VK_TAB || vk == VK_NEXT || vk == VK_PRIOR)) ||
                  (mods == keys::Shift && vk == VK_TAB);
-  if (nav_key && !g_active->takes_input()) return true;
+  if (nav_key && !g_active->takes_input()) { ++g_dropped_keys; return true; }
   // A held confirm is one press: repeating it activated the row again on every auto-repeat.
   if (repeat && mods == keys::None && (vk == VK_RETURN || vk == VK_SPACE)) return true;
   g_held_repeat = repeat;
@@ -434,6 +438,17 @@ struct MenuHost {
     if (!parse_slot(id, key, i)) return false;
     Mirror* m = s.mirror_of(key);
     return m && m->drives_game() && m->seen != i;
+  }
+  // Why the menu is not done with the last press (null: it is): a confirm waiting for the game's cursor, the game's
+  // cursor on its way to the focus, a list that takes no input now (an opening animation, an input lock).
+  static const char* unsettled(MenuScreen& s) {
+    if (s.pending_confirm_ >= 0) return "a confirm is waiting for the game's cursor";
+    std::string key;
+    int i = -1;
+    if (auto fid = nav().focused_id(); fid && parse_slot(*fid, key, i))
+      if (Mirror* m = s.mirror_of(key); m && m->target >= 0) return "the game's cursor is on its way to the focus";
+    if (!s.takes_input()) return "the menu takes no input now";
+    return nullptr;
   }
 };
 
@@ -689,8 +704,23 @@ std::string dump() {
   return std::format("menu {} focused={}\n{}", g_active->id(), has_focus_now() ? "yes" : "no (message window)", nav().dump());
 }
 
+// The dev server's /key?settle=1 asks this between keys (game thread): what the last press still has to do.
+static const char* keys_unsettled() {
+  if (input::injected_held()) return "a key the menu pressed for the game is still down";
+  if (input::busy()) return "the virtual pad's queue is busy";
+  if (MenuScreen* m = active()) return MenuHost::unsettled(*m);
+  // No menu has the keys and nothing else is up: the field's, which drops a key until its operator is Free with its
+  // keys enabled again (the camp closing, the end of a message). Its other states (a battle, an event) are not waited for.
+  int state = 0, key_state = 0;
+  if (!current() && !msg::current().open && world::field_operator(state, key_state) &&
+      (state == 6 || (state == 1 && key_state != 3)))
+    return "the field takes no input now";
+  return nullptr;
+}
+
 void install() {
   keys::set_menu(on_key);
+  input::set_settle_check(keys_unsettled, [] { return g_dropped_keys.load(); });
   battle_details::install();
   dev::route("/menu", [](const dev::Request&, int&) { return dev::on_game([] { return dump(); }); }, "the bespoke menu's graph and focus");
 }

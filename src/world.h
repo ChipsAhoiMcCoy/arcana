@@ -22,6 +22,11 @@ bool scene_fast();
 // story scene, no faded-out screen, no mod menu. Every sound of the field (wall tones, the sonar, the
 // Shadow cues) plays only while this holds.
 bool exploring();
+// The field operator (AFldOperator, one in the persistent level): State (Free 1, Camp 6, Battle 11, Event 12,
+// EventEnd 13) and KeyState (Disable 1, Enable 3). The field takes the player's keys only while it is Free with its keys
+// enabled: for a few frames after the camp closes it is Camp, after a message Disable, and a key then is dropped.
+// False: no operator.
+bool field_operator(int& state, int& key_state);
 bool player_location(FVector& out);
 bool player_velocity(FVector& out);   // the hero's velocity (AActor::GetVelocity), cm/s
 // Where the player is asking the hero to go (APawn::GetLastMovementInputVector, world space, length 0..1): the stick,

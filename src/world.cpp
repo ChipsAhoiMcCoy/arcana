@@ -79,6 +79,15 @@ bool exploring() {
   return value;
 }
 
+bool field_operator(int& state, int& key_state) {
+  static const int ops = watch::want("FldOperator");
+  UObject* o = watch::get(ops);
+  if (!o) return false;
+  state = get<int32_t>(o, "State", -1);
+  key_state = get<int32_t>(o, "KeyState", -1);
+  return true;
+}
+
 bool player_location(FVector& out) {
   UObject* p = player();
   if (!p) return false;

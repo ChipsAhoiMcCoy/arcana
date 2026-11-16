@@ -32,6 +32,12 @@ void post_key(uint32_t vk, bool down, bool synthetic = false);
 constexpr uint32_t kInjectedRepeat = 0x5A3;
 void inject_key(uint32_t vk, unsigned hold_ms = 40);
 bool injected_held();   // an injected key is still down (its press not yet delivered in full)
+// What /key?settle=1 asks between keys, on the game thread: null when the last press has done its work, else why not
+// (the menu host sets it: a confirm waiting, the game's cursor catching up, a menu that takes no input yet), and how
+// many presses a menu has dropped for taking no input (any thread): a /key press it dropped is pressed again.
+using SettleCheck = const char* (*)();
+using SettleDrops = uint64_t (*)();
+void set_settle_check(SettleCheck check, SettleDrops drops);
 void tick();   // game thread: announces a pad that was connected before the window existed; polls the player's pad
 uint64_t pad_ms();   // when a controller button or stick direction was last newly pressed, or 0
 uint64_t pad_count();   // how many such presses there have been
