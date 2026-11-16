@@ -206,6 +206,7 @@ class BattleScreen : public Screen {
     std::string b = text ? core::clean_text(to_utf8(*text)) : std::string();
     if (!core::has_words(b)) return;   // made, not filled yet
     banner_panel_ = WeakObj::of(p);
+    paid_ = {};   // a new action (the same member again after a 1 More pays again)
     // GetActionType (EBtlCommandType): 1 a plain attack has no banner, and a skill's banner is its own skill: any
     // other skill is a passive of the one attacked (a counter: "High Counter" came under the attacker's name,
     // 2026-11-06).
@@ -230,7 +231,20 @@ class BattleScreen : public Screen {
     if (pre == 2) speech::speak(strings::kAdvantageParty, false);
     else if (pre == 1) speech::speak(strings::kAdvantageEnemy, false);
   }
+  // A physical skill takes its HP cost from the one using it as it lands: that drop is the price the player read on
+  // the skill's row, not damage (the user's call, 2026-11-16). Only the acting unit's own drop by exactly its skill's
+  // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
+  WeakObj paid_;
+  bool paid_cost(UObject* u, UObject* action_now, int d) {
+    if (!action_now || u != action_now || d >= 0 || WeakObj::of(u) == paid_) return false;
+    if (call_ret<uint8_t>(action_now, "GetActionType") != 2) return false;
+    int cost = w_.skill_hp_cost(call_ret<int32_t>(action_now, "GetSkillID"), action_now);
+    if (cost <= 0 || -d != cost) return false;
+    paid_ = WeakObj::of(u);
+    return true;
+  }
   void watch_units(UObject* core, int st, UObject* action_now) {
+    if (st != 0 || !action_now || !(WeakObj::of(action_now) == paid_)) paid_ = {};
     say_advantage(core);
     UObject* deal = shuffle_ui();
     int picks = deal ? get<int32_t>(deal, "EnableSelectNum") : 0;
@@ -260,7 +274,8 @@ class BattleScreen : public Screen {
         auto it = units_.find(key);
         if (it != units_.end() && cur.hp != it->second.hp && cur.hp >= 0 && it->second.hp >= 0) {
           int d = cur.hp - it->second.hp;
-          if (cur.hp == 0 && cur.enemy) defeated.push_back(cur.name);
+          if (paid_cost(u, action_now, d)) {}   // the skill's own HP cost: the skill list already said it
+          else if (cur.hp == 0 && cur.enemy) defeated.push_back(cur.name);
           else if (cur.hp == 0) speech::speak(std::format("{} {}", cur.name, strings::kKnockedOut), false);
           else {
             // The player's own choice of this one unit: the number alone. Anything else names who it landed on (an

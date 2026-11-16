@@ -77,17 +77,28 @@ class BtlWords {
   // "3 SP" / "121 HP": what the skill costs this member now (GetSkillCost has already turned a physical skill's
   // share of maximum HP into HP: Aigis at 633 HP read 121 for a 19% skill).
   std::string skill_cost(int id, ue::UObject* who) {
+    int type = 0, v = cost_of(id, who, type);
+    if (!v) return {};
+    return type == 1 ? std::format("{} {}", v, strings::kHP) : std::format("{} {}", v, strings::kSP);
+  }
+  // The HP a skill takes from this member now, 0 for an SP skill or none.
+  int skill_hp_cost(int id, ue::UObject* who) {
+    int type = 0, v = cost_of(id, who, type);
+    return type == 1 ? v : 0;
+  }
+  int cost_of(int id, ue::UObject* who, int& type) {
     ue::UObject* d = db();
     ue::UFunction* f = d ? ue::find_function(ue::class_of(d), "GetSkillCost") : nullptr;
-    if (!f) return {};
+    if (!f) return 0;
     ue::Params p(f);
     p.set<int32_t>("skillId", id);
     p.set<ue::UObject*>("Action", who);
     ue::call(d, p);
     int v = p.ret<int32_t>();
-    uint8_t* type = p.at<uint8_t>("cost");
-    if (!type || *type == 0 || v <= 0) return {};
-    return *type == 1 ? std::format("{} {}", v, strings::kHP) : std::format("{} {}", v, strings::kSP);
+    uint8_t* t = p.at<uint8_t>("cost");
+    if (!t || *t == 0 || v <= 0) return 0;
+    type = *t;
+    return v;
   }
   std::string hp_sp(ue::UObject* a) {
     return std::format("{} {} {} {}, {} {} {} {}", strings::kHP, unit_int("GetUnitHP", a), strings::kOf, unit_int("GetUnitMaxHP", a),
