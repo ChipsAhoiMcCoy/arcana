@@ -112,7 +112,7 @@ class ConfigScreen : public MenuScreen {
     switch (type) {
       case 0: r.value = flag ? strings::kOn : strings::kOff; break;                        // DCPT_FLAG
       case 1: r.value = max > 0 && max != 100 ? std::format("{} {} {}", value, strings::kOf, max) : std::to_string(value); break;   // DCPT_VALUE
-      case 2: r.value = call_str(d, "GetSelLangText", value); break;                       // DCPT_LANGUAGE
+      case 2: r.value = call_str(d, "GetSelLangText", flag ? 1 : 0); break;                // DCPT_LANGUAGE: bFlag, as the draw reads it (Value stays 0)
       case 4: r.value = call_str(d, "GetBGMText", value); break;                           // DCPT_BGM: 0 "Default"
       default:
         // KEY_CONFIG: the Value is the key's code (measured 2026-10-28 against the defaults: 432 W, 442 S, 441 A,
