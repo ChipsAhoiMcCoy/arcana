@@ -16,6 +16,12 @@ namespace p3a::confirm {
 namespace {
 constexpr uintptr_t kDecideRva = 0x5393e60;   // the decide button's pad id (2 or 4)
 
+// Code that asks for every button whatever is on screen, so never a sign that a screen takes OK. The input history
+// (FUN_141085a50, called from the game instance's tick): each frame it reads all 17 buttons into a 60-frame ring,
+// whenever its buffer exists. It turns on and off with no screen (it was not asking before the stats panel, the item
+// notice or the victory screen opened, and "Next" was said there at once, before OK did anything, 2026-11-16).
+constexpr struct { uintptr_t from, to; } kPollers[] = {{0x1085a50, 0x1085b22}};
+
 // One slot per code address that asked for the decide button: written on the game thread, read there too.
 struct Slot { uintptr_t rva; uint64_t frame; uint64_t count; };
 constexpr int kSlots = 128;
@@ -28,6 +34,7 @@ inline void note(uint32_t button, void* ret) {
   if (button != *(uint32_t*)(g_base + kDecideRva)) return;
   ++g_asks;
   uintptr_t rva = (uintptr_t)ret - g_base;
+  for (auto& p : kPollers) if (rva >= p.from && rva < p.to) return;
   uint64_t f = hooks::frame();
   for (int i = 0; i < g_used; ++i)
     if (g_slots[i].rva == rva) { g_slots[i].frame = f; ++g_slots[i].count; return; }

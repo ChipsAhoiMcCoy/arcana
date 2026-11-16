@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <utility>
 #include <vector>
 
 namespace p3a::screens {
@@ -10,6 +11,8 @@ namespace p3a::screens {
 // cue also waits for the game itself to start asking for the decide button (confirm.h) from code that was not
 // already asking before the screen opened (the field, a message window under it). There is no time limit to fall
 // back on (no timers in menus, the user's call 2026-11-14): if the game gives no sign the mod can see, no cue.
+// Code asking is not always a sign: a screen whose handler asks from its first frame and drops the press until its
+// own animation is done (the stats panel) passes that state as `ready` with `game_sign_enough`.
 class NextCue {
  public:
   explicit NextCue(const char* who) : who_(who) {}
@@ -25,6 +28,7 @@ class NextCue {
   bool armed_ = false, given_ = false, sound_due_ = false;
   uint64_t armed_ms_ = 0, armed_frame_ = 0;
   std::vector<uintptr_t> before_;   // code asking for the decide button before the screen opened
+  std::vector<std::pair<uintptr_t, uint64_t>> first_;   // code asking since it opened, and the frame it began
   void give(const char* why, uintptr_t caller);
 };
 }  // namespace p3a::screens

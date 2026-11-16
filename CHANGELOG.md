@@ -11,6 +11,9 @@
 ### Field
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
 
+### Notices
+- "Next" on the Stats up panel waits until Space closes it. It was said as the panel rose, while the game still ignored the key; a press then did nothing. The same false start could give "Next" early on the victory pages.
+
 ### Requests
 - A request's reward is read when you report it to Elizabeth ("Got ..."). The request list hid the notice. The Stats up notice is read over any menu too.
 

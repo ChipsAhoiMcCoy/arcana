@@ -2,6 +2,9 @@
 // closed, its panel a UCmpHeroHumanStatusDraw (+0xD00 pHumanParamDraw_). Its state +0x294 (previous +0x298, the UI
 // actors' common task state) is 6 while it is up and takes OK, then 7, 8 and 9 as it closes (measured 2026-11-03,
 // studying at the desk). The stats and their rank names are the save data's (stats::read).
+// Its OK (state 6's handler, exe+0x13a025b): the decide or cancel button closes it only once the panel's own state
+// (UCmpHeroHumanStatusDraw +0x38) is 9; it is 5 while the panel rises (about a second; OK did nothing then,
+// 2026-11-16). With its flag +0x40B8 clear only cancel closes it (never seen: 1 each time).
 #include "screens/screen.h"
 #include "screens/util.h"
 #include "screens/next_cue.h"
@@ -40,8 +43,9 @@ class StatsUpScreen : public Screen {
   // The panel is made for one showing: the same one entered again (back from a window over it) was said already.
   // Two rises in a row (Charm, then Courage) show the panel twice, the same actor each time: once it has closed
   // (left while no longer up), the next showing is a new one (the second went unsaid, 2026-11-14).
-  // Its OK: the cue once the panel takes it (next_cue.h). State 6 comes as it opens, before its rise animation
-  // lets OK through ("Next" said 2 s early, 2026-11-14).
+  // Its OK: the cue once the panel takes it, the panel's own state 9 (above). State 6 comes as it opens, before its
+  // rise animation lets OK through, and code asking for the button from the first frame (the UI input bridge, the
+  // panel's own handler) is no sign ("Next" said before OK did anything, 2026-11-14 and 2026-11-16).
   WeakObj spoken_;
   NextCue next_{"stats_up"};
   void enter() override {
@@ -52,7 +56,12 @@ class StatsUpScreen : public Screen {
     speech::speak(line(false), true);
     next_.arm();
   }
-  void tick() override { next_.tick(true); }
+  bool takes_ok() {
+    uint8_t* d = (uint8_t*)draw_.get();
+    uint8_t* panel = d ? *(uint8_t**)(d + 0xD00) : nullptr;
+    return panel && *(int32_t*)(panel + 0x38) == 9 && *(uint8_t*)(panel + 0x40B8);
+  }
+  void tick() override { next_.tick(takes_ok(), true); }
   void leave() override {
     if (active()) return;   // covered, not closed
     next_.disarm();
