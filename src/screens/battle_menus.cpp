@@ -9,8 +9,8 @@
 //   state 10 Tactics  BP_BtlStrategyInstruct_C inputState (0 Order/Escape, 1 member, 2 order), CursorIndex[level],
 //                     PlayerList, OperationNameList (the game's English names); a member's order: GetOperation
 // The game's state (gui_state) and whose turn it is (acting_member) come from battle_state.h. A skill's description
-// is its help line from the game's file (persona::skill_help): the skill list keeps it for the detail buffer
-// (battle_details.cpp) and the review key, Theurgy reads it after the name.
+// is its help line from the game's file (persona::skill_help): read after the row (MenuScreen::buffer_with) and in the
+// detail buffer (battle_details.cpp) and the review key; Theurgy reads it after the name.
 //
 // Moving the game's cursors (no keys): the lists are actors (BP_BtlGuiBaseActor_C), not widgets.
 // The native lists (skills, items, Theurgy, Tactics) take UBtlGuiListComponent.SetCursor(CurrentIndex), which moves
@@ -98,9 +98,11 @@ class BattleSkills : public BattleList {
     for (int i = 0; i < ids->num; ++i) {
       int id = ids->data[i];
       std::string s = row(id, who);
-      // Name and cost alone: the description was heard on every move through skills cast dozens of times a night. It
-      // is the detail buffer's second line, and the review key still reads it (the user's call, 2026-11-11).
-      b.add_item(slot(std::format("skills.{}", pid), i), game_item(m_, i, [s] { return s; }, [id] { return persona::skill_help(id); }));
+      // Name, cost, then what it does (buffer_with: "Descriptions in menus" off keeps it for the detail buffer, the
+      // 2026-11-11 way; players did not find it there). The buffer's own lines are detail_lines below.
+      auto v = game_item(m_, i, [s] { return s; }, [id] { return persona::skill_help(id); });
+      buffer_with(v, [id] { return persona::skill_help(id); });
+      b.add_item(slot(std::format("skills.{}", pid), i), v);
     }
     b.pop_context();
     if (int c = m_.cursor(); c >= 0) b.set_start(slot(std::format("skills.{}", pid), c));

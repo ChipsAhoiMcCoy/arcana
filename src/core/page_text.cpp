@@ -9,18 +9,25 @@ const char* icon_key(int id, bool pad, bool battle, std::string_view around) {
   for (auto& k : strings::kIconKeys) if (k.id == id) key = &k;
   if (!key) return nullptr;
   if (pad) return key->pad;
-  auto nearby = [&](std::string_view w) {
-    if (battle) return false;
-    std::string a(around);
-    for (auto& ch : a) ch = (char)tolower((unsigned char)ch);
-    return a.find(w) != std::string::npos;
-  };
+  std::string a(around);
+  for (auto& ch : a) ch = (char)tolower((unsigned char)ch);
+  auto says = [&](std::string_view w) { return a.find(w) != std::string::npos; };
+  auto nearby = [&](std::string_view w) { return !battle && says(w); };   // a field key: not while the battle is up
+  // A battle's keys where the battle screen is up or the sentence is about battle: the game names them so on its
+  // battle tutorials wherever they are read (the Tutorial list too, 2026-11-15: "Pressing H during battle will let you
+  // Rush" where the game draws Tab).
+  bool fight = battle || says("battle") || says("tactics") || says("survey");
   switch (id) {
-    case 104: return battle ? strings::kIconUpBattle : key->keyboard;     // battle Tactics; field zoom in
-    case 105: return battle ? strings::kIconDownBattle : key->keyboard;   // battle Survey; field camera reset
+    case 104: return fight ? strings::kIconUpBattle : key->keyboard;     // battle Tactics; field zoom in
+    case 105: return fight ? strings::kIconDownBattle : key->keyboard;   // battle Survey; field camera reset
+    case 108: return fight || says("rush") ? strings::kIconRushBattle : key->keyboard;   // battle Rush; the field's save
+    case 111: return battle && !says("sword") ? strings::kIconItemsBattle : key->keyboard;   // battle Items; the field's strike
     case 112: return nearby("menu") ? strings::kIconMenuField : key->keyboard;   // battle skills (Persona); the field menu
     case 114: return nearby("map") ? strings::kIconMapField : key->keyboard;     // previous page; the field map
-    case 117: return nearby("exploration") || nearby("recover") ? strings::kIconRecoverField : key->keyboard;   // next page; Auto-Recover
+    case 117:   // next page (and the next Persona); Assist in battle; Auto-Recover in Tartarus
+      if (says("assist")) return strings::kIconAssistBattle;
+      return nearby("exploration") || nearby("recover") ? strings::kIconRecoverField : key->keyboard;
+    case 118: return battle || says("theurgy") ? strings::kIconTheurgyBattle : key->keyboard;   // battle Theurgy; the field's dash
     default: return key->keyboard;
   }
 }

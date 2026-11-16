@@ -34,8 +34,12 @@
 namespace p3a::poi {
 using namespace ue;
 
-// A complete navmesh path ends near the thing. Kept per actor while the hero stays on his side of the map (floors
+// The navmesh path ends near the thing. Kept per actor while the hero stays on his side of the map (floors
 // are joined by stairs that jump him: doors::side_stamp counts those, doors passed and levels changing).
+// A path the navmesh calls partial counts when it ends there too: a hit's box floats above the floor, off the mesh,
+// so the path to it never reaches its centre (Mandragora up Paulownia Mall's stairs, 2026-11-15: the path climbed
+// the stairs and stopped 0.6 m short, partial; the shop and the whole upper floor were left out). Its end being on
+// the thing's own floor (within 2.5 m up or down, floors are 3.4 m apart) is what keeps a spot below or above out.
 static bool walkable(UObject* a, const world::FVector& me, const world::FVector& v) {
   static std::map<WeakObj::Key, bool> cache;
   static uint64_t side = 0;
@@ -45,7 +49,7 @@ static bool walkable(UObject* a, const world::FVector& me, const world::FVector&
   if (it != cache.end()) return it->second;
   bool partial = true;
   auto path = world::find_path(me, v, &partial);
-  bool ok = !partial && !path.empty() && std::fabs(path.back().z - v.z) < 250.0f &&
+  bool ok = !path.empty() && std::fabs(path.back().z - v.z) < 250.0f &&
             std::hypot(path.back().x - v.x, path.back().y - v.y) < 300.0f;
   cache[key] = ok;
   return ok;

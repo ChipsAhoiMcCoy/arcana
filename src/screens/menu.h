@@ -122,9 +122,10 @@ class MenuScreen : public Screen, public ui::Screen {
   // A description read after the item's position, and again when it changes while focused (a page the game builds
   // once its cursor is on the item).
   static void describe_with(const ui::NodeVtablePtr& v, std::function<std::string()> text);
-  // A description kept off the row: the detail buffer's second line (the row's own label is its first), and part of
-  // what the review key reads. For a list gone through often, where the same words after every row were noise (the
-  // user's call, 2026-11-11). A choice made once, or a row whose description is its content, keeps describe_with.
+  // A description that can be kept off the row: the detail buffer's second line (the row's own label is its first),
+  // and part of what the review key reads. It is also read after the row while the setting "Descriptions in menus"
+  // is on (the default since 2026-11-15: players never found it on the details keys); off, it is the buffer's alone
+  // (the 2026-11-11 way, for lists gone through often). A row whose description is its content keeps describe_with.
   static void buffer_with(const ui::NodeVtablePtr& v, std::function<std::string()> text);
   // A mirrored list's item: activation confirms it in the game once the game's cursor is on it.
   ui::NodeVtablePtr game_item(Mirror& m, int i, std::function<std::string()> label, std::function<std::string()> details = {});

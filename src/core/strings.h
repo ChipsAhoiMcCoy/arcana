@@ -268,7 +268,8 @@ inline constexpr const char* kThinking = "Thinking";
 // field where the sentence around the icon speaks of the menu, the map or recovering.
 struct IconKey { int id; const char* keyboard; const char* pad; };
 inline constexpr IconKey kIconKeys[] = {
-  {104, "U", "D-pad up"}, {105, "O", "D-pad down"}, {108, "H", "Menu"}, {110, "C", "B"}, {112, "E", "Y"}, {113, "Space", "A"},
+  {104, "U", "D-pad up"}, {105, "O", "D-pad down"}, {108, "H", "Menu"}, {109, "N", "View"}, {110, "C", "B"}, {111, "Ctrl", "X"},
+  {112, "E", "Y"}, {113, "Space", "A"},
   {114, "Q", "LB"}, {115, "B", "LT"}, {117, "E", "RB"}, {118, "Shift", "RT"}, {119, "R", "the right stick button"},
   {121, "I, J, K and L", "the right stick"}};
 inline constexpr const char* kIconUpBattle = "W";       // 104 in battle
@@ -276,6 +277,13 @@ inline constexpr const char* kIconDownBattle = "S";     // 105 in battle
 inline constexpr const char* kIconMenuField = "Tab";    // 112 in the field: the menu
 inline constexpr const char* kIconMapField = "M";       // 114 in the field: the map
 inline constexpr const char* kIconRecoverField = "Y";   // 117 in the field: Auto-Recover
+// A battle's own keys for the controller's buttons, where the sentence around the icon speaks of battle (the game draws
+// these on its tutorials even when they are read from the Tutorial list, outside battle; checked against its glyphs,
+// 2026-11-15): Rush, Assist, Theurgy, Items.
+inline constexpr const char* kIconRushBattle = "Tab";   // 108 (Menu)
+inline constexpr const char* kIconAssistBattle = "F";   // 117 (RB) for an Assist; Q / E for Personas stay E
+inline constexpr const char* kIconTheurgyBattle = "T";  // 118 (RT)
+inline constexpr const char* kIconItemsBattle = "R";    // 111 (X) in battle; the field's strike is Ctrl
 inline constexpr const char* kKeySpace = "Space";       // the key configuration's Space
 inline constexpr const char* kTitleScreen = "Title screen";
 inline constexpr Hint kTutorialKeys{"Q and E turn the pages, Space goes on.", "LB and RB turn the pages, A goes on."};
@@ -284,7 +292,10 @@ inline constexpr Hint kDialogueKeys{"Conversation keys: Space next, B log, Shift
 inline constexpr Hint kFieldKeys{"Field keys: Space checks and talks, Tab menu, M map, B log, Ctrl messages or attack, Shift dash, H saves.",
                                  "Field keys: A checks and talks, Y menu, LB map, L3 log, X messages or attack, RT dash, Menu button saves."};
 // Added to the field's keys on a Tartarus floor. Auto-Recover's button is the one its tutorial draws (icon 117).
-inline constexpr Hint kTartarusKeys{"In Tartarus: Y Auto-Recover, N Navi.", "In Tartarus: RB Auto-Recover, View Navi."};
+// N (View) is the game's Navi: the navigator's support skills (Jamming, Escape Route, Tartarus Search; tutorials
+// Dungeon 24 to 29). "N Navi" alone left players asking what it does (2026-11-15).
+inline constexpr Hint kTartarusKeys{"In Tartarus: Y Auto-Recover, N the navigator's support skills, such as Escape Route.",
+                                    "In Tartarus: RB Auto-Recover, View the navigator's support skills, such as Escape Route."};
 // The help keys (F1 = this screen's keys, Shift+F1 = the mod's own keys, F2 its settings; on a controller, the mod
 // layer's Menu, and View for the settings, whose last row reads the keys).
 inline constexpr Hint kModKeysHint{"Shift+F1 lists the mod's keys, F2 opens its settings.", "Both triggers and View open the mod's settings; its last row lists the mod's keys."};
@@ -324,6 +335,7 @@ inline constexpr const char* kHelpMasterVolume = "Every sound the mod plays. The
 inline constexpr const char* kHelpSoundVolume = "The Shadow sounds and the controller layer's tick.";
 inline constexpr const char* kHelpWallVolume = "How loud the wall tones are.";
 inline constexpr const char* kHelpTriggerDelay = "How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.";
+inline constexpr const char* kHelpMenuDescriptions = "A skill's, item's, gear's or setting's description is read after its row. Off, only the details keys read it, Control and Down.";
 inline constexpr const char* kHelpEntryHints = "Menus say their keys after their first line. Off, F1 still reads them.";
 inline constexpr const char* kHelpVoicedLines = "What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.";
 inline constexpr const char* kHelpVoiceEndSound = "What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.";
@@ -386,6 +398,7 @@ inline constexpr const char* kSetSoundVolume = "Shadow sounds volume";
 inline constexpr const char* kSetWallVolume = "Wall tone volume";
 inline constexpr const char* kSetTriggerDelay = "Controller trigger delay";
 inline constexpr const char* kSetEntryHints = "Menu key hints on entry";
+inline constexpr const char* kSetMenuDescriptions = "Descriptions in menus";
 inline constexpr const char* kSetVoicedLines = "Voiced dialogue";
 inline constexpr const char* kVoicedRead = "read aloud";
 inline constexpr const char* kVoicedName = "speaker's name only";

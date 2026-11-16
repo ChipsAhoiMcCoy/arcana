@@ -53,8 +53,12 @@ static bool g_panel = false;
 static int g_plan = 0;
 static int64_t panel_open_hook(uint8_t* ctx) { g_panel = true; g_plan = 0; return g_panel_open_cmd(ctx); }
 static int64_t panel_close_hook(uint8_t* ctx) { g_panel = false; g_plan = 0; return g_panel_close_cmd(ctx); }
+// Scripts that name the price later (the fortune-teller, BF_NPC_404_000, and about ten others) open the panel with
+// SET_ADD_MONEY_PLANS(-100000000): beyond any wallet, the game's "nothing planned". Any plan that large is no price.
+constexpr int kNoPlan = 100000000;
 static int64_t plan_hook(uint8_t* ctx) {
-  g_plan = flow::int_arg(ctx);
+  int n = flow::int_arg(ctx);
+  g_plan = n <= -kNoPlan || n >= kNoPlan ? 0 : n;
   return g_plan_cmd(ctx);
 }
 

@@ -33,6 +33,22 @@ TEST_CASE("icon_key: the keyboard's keys by place") {
   CHECK(std::string(icon_key(117, false, false, "to Auto-Recover")) == "Y");
   CHECK(std::string(icon_key(117, false, false, "the next page")) == "E");
 }
+TEST_CASE("icon_key: a battle tutorial's keys, wherever it is read (the game's own glyphs, 2026-11-15)") {
+  using p3a::core::icon_key;
+  CHECK(std::string(icon_key(108, false, false, "Pressing  during battle will let you Rush through combat")) == "Tab");
+  CHECK(std::string(icon_key(108, false, false, "You can save from the menu or by pressing ")) == "H");
+  CHECK(std::string(icon_key(117, false, false, "During battle, press  for an Assist")) == "F");
+  CHECK(std::string(icon_key(117, false, true, "then press Q or  to change Personas")) == "E");
+  CHECK(std::string(icon_key(117, false, false, "You can press  during an exploration to automatically recover HP")) == "Y");
+  CHECK(std::string(icon_key(118, false, false, "Press  to activate your Theurgy")) == "T");
+  CHECK(std::string(icon_key(118, false, false, "Hold  to dash")) == "Shift");
+  CHECK(std::string(icon_key(104, false, false, "While in battle, press  to open the Tactics menu")) == "W");
+  CHECK(std::string(icon_key(104, false, false, "Hold  to focus your view closer in on the protagonist")) == "U");
+  CHECK(std::string(icon_key(109, false, false, "Press  while on the Analyze screen")) == "N");
+  CHECK(std::string(icon_key(111, false, false, "You can swing your sword by pressing  while exploring")) == "Ctrl");
+  CHECK(std::string(icon_key(111, false, true, "press  to use an item")) == "R");
+  CHECK(std::string(icon_key(117, true, false, "During battle, press  for an Assist")) == "RB");
+}
 TEST_CASE("finish_icons names a button from its own sentence") {
   using p3a::core::finish_icons;
   std::string menu = std::string("Turn pages with ") + kIconByPlace + (char)114 + ". Pressing " + kIconByPlace + (char)114 + " will display a map.";

@@ -90,7 +90,7 @@ Every menu (title, camp, shops, the Velvet Room, battle lists and the rest) is t
 
 Everything else (C to go back, Q and E for pages) is the game's, and if the game moves its highlight (stick, mouse, page change) the mod follows.
 
-**Details.** Lists you go through often read only what you need to choose: name, cost or count, position. The rest is on the details keys, starting from the top each time you land on a row. This covers the camp menu's entries and help lines; items and skills in the camp menu, in battle and in fusion inheritance (what they do); Equip's gear descriptions; skills on a Persona's status page (a skill just learned is still described at once); the Stats list; Config's setting descriptions; and whoever is in focus in battle. Descriptions are still read at once where they are the point: shops, requests, the calendar, Shuffle Time's cards, difficulty, a skill being learned, and choices in events. F1 mentions the details keys wherever a row has them.
+**Details.** Every item, skill, piece of gear and setting reads its description right after its name, cost or count and position: "Mediarama, 16 SP, 2 of 2, Moderately restores party's HP." This covers the camp menu's entries and help lines; items and skills in the camp menu, in battle and in fusion inheritance; Equip's gear; skills on a Persona's status page; and Config's settings. If you would rather hear only the name, turn off the setting Descriptions in menus (Controls and help): the description then waits on the details keys. The details keys also walk what is too long to say on every move: whoever is in focus in battle (HP, SP, ailments, affinities), a party member on the Stats list (Persona, stats, skills), and the acting member after a battle skill's description, starting from the top each time you land on a row. F1 mentions the details keys wherever a row has them.
 
 ### Key hints
 
@@ -157,6 +157,7 @@ They work like any other menu: up and down choose (at either end a further press
 
 - Controller trigger delay: 150 milliseconds; off, 100 or 250
 - Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
+- Descriptions in menus: on, off. A skill's, item's, gear's or setting's description is read after its row; off, only the details keys read it
 - Mod keys: Space reads the mod's keys
 
 **Sound test** plays each of the mod's sounds with Space or Enter (A), whatever is switched off, and says what it means: each sonar sound (and one played from behind you), the Shadow's growl (plain and hunting), the Shadow alarm and losing you, the two strike-reach rings, the four wall tones and the controller tick.
@@ -205,7 +206,7 @@ Points of interest come in categories, each listed nearest first, empty ones ski
 - Events: spots that start a fight or scene when you walk into them ("Gatekeeper" on a Gatekeeper's floor until it is beaten).
 - Shadows, in Tartarus.
 
-A point is read with its name, distance, clock direction (12 o'clock is where pushing forward walks; in top-down mode, the compass) and position: "Iwatodai Station, 6 meters, 2 o'clock, 1 of 3". The category is said first when you change it or open the controller layer. Only the part of the map you are in is listed, on your floor; past a closed door is listed once you go through. Tartarus lists its whole floor.
+A point is read with its name, distance, clock direction (12 o'clock is where pushing forward walks; in top-down mode, the compass) and position: "Iwatodai Station, 6 meters, 2 o'clock, 1 of 3". The category is said first when you change it or open the controller layer. Only the part of the map you are in is listed: your floor, and other floors you can walk to up or down stairs (Mandragora above Paulownia Mall's fountain); past a closed door is listed once you go through. Tartarus lists its whole floor.
 
 Auto-walk sets off without a word. On the way, prompts for things you pass are not read; the one up when the walk ends is, so arriving reads the target's as usual. Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
 
@@ -218,7 +219,7 @@ With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone
 - Chests by kind ("Treasure Chest", "Rare Treasure Chest", "Gold Treasure Chest", "Locked Treasure Chest, 2 Twilight Fragments"); items read as you pick them up; opened chests leave the list.
 - Breakable objects; a missing person under People until rescued, named once the police notice shows it ("Missing Person, Ayako Yoshimoto"; walk into them to rescue them).
 - Terminals: each floor you can travel to, the furthest marked; Space travels.
-- Auto-Recover (Y, or RB) and the entrance clock read the new HP and SP. N (Navi) and the other helpers speak through messages.
+- Auto-Recover (Y, or RB) and the entrance clock read the new HP and SP. N (View on a controller) is the game's Navi: the navigator's support skills, such as Jamming, Escape Route and Tartarus Search, as the story unlocks them. They and the other helpers speak through messages.
 
 ### Camp menu
 

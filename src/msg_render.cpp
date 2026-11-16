@@ -27,14 +27,16 @@ void* renderer() { return (void*)g_page_to_string; }
 // key; measured 2026-10-27). BmdPageToFString drops them, so pages holding one are rendered here from the letter
 // records (inline UTF-8 at +0, next at +0x28; a new row where a line's +8 changes), with the key's name in place.
 // The ids are the controller's buttons (one per button, though E stands for two of them on the keyboard).
-// Two of the controller's buttons are different keys by place: Y is E in battle (skills) but Tab in the field (the
-// menu: "opening the menu with [112]"), LB is Q for a previous page but M in the field (the map: "[114] will display
-// a map", 2026-10-29). Those are decided once the whole page is rendered, from the words around them
-// (core::finish_icons). The names are the keyboard's defaults, from the tutorials' own sentences, and the controller's
-// from its key list (strings::kIconKeys): 104 / 105 the D-pad (battle Tactics and Survey, measured 2026-10-27; the
-// field's camera zoom and reset), 108 save, 110 cancel, 112 battle skills and the field menu, 113 attack and confirm,
-// 114 / 117 the previous / next page, 115 battle Shift, 118 dash, 119 recenter the camera, 121 rotate it.
-// The D-pad's and the by-place keys depend on whether the battle screen is up.
+// Many of the controller's buttons are different keys by place, so every button is decided once the whole page is
+// rendered, from the sentence around it (core::finish_icons, core::icon_key): Y is E in battle (skills) but Tab in the
+// field ("opening the menu with [112]"), LB is Q for a previous page but M for the map, and a battle's own keys (Tab
+// Rush, F Assist, T Theurgy, W Tactics) where the sentence is about battle, as the game draws them on its battle
+// tutorials even read from the Tutorial list (checked against its glyphs, 2026-11-15; the mod said H, E, Shift, U).
+// The names are the keyboard's defaults, and the controller's from its key list (strings::kIconKeys): 104 / 105 the
+// D-pad (battle Tactics and Survey; the field's camera zoom and reset), 108 save and battle Rush, 109 View (N: Full
+// Analysis, Oracle, network tips), 110 cancel, 111 X (Ctrl: the field's strike; R: battle Items), 112 battle skills and
+// the field menu, 113 attack and confirm, 114 / 117 the previous / next page, 115 battle Shift, 118 dash and Theurgy,
+// 119 recenter the camera, 121 rotate it.
 static bool in_battle() {
   screens::Screen* sc = screens::current();
   return sc && std::strcmp(sc->id(), "battle") == 0;
@@ -59,12 +61,12 @@ static bool render_with_icons(uint8_t* first, std::string& out) {
     if (!tk) {
       int id = *(int32_t*)(l + 0x58);
       if (!id) continue;
-      if (id == 112 || id == 114) { out += core::kIconByPlace; out += (char)id; continue; }   // decided from the finished page
-      const char* n = core::icon_key(id, pad, battle);
+      // Every named button is decided from the finished page's sentence around it (core::icon_key); an unmapped glyph's
+      // place too.
       static std::set<int> logged;
-      if (!n && logged.insert(id).second) log::writef("msg: unmapped icon {} after: {}", id, out);
-      if (n) out += n;
-      else out += core::kIconGlyph;   // an unmapped glyph's place: decided from the finished page too
+      if (id > 2 && id < 256 && core::icon_key(id, pad, battle)) { out += core::kIconByPlace; out += (char)id; continue; }
+      if (logged.insert(id).second) log::writef("msg: unmapped icon {} after: {}", id, out);
+      out += core::kIconGlyph;
       continue;
     }
     for (int i = 0; tk && i < 512; ++i, tk = *(uint8_t**)(tk + 0x28)) out.append((const char*)tk, strnlen((const char*)tk, 8));

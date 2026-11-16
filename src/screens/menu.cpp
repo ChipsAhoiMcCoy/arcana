@@ -15,6 +15,7 @@
 #include "log.h"
 #include "msg.h"
 #include "seh.h"
+#include "settings.h"
 #include "speech.h"
 #include <windows.h>
 #include <xinput.h>
@@ -465,7 +466,7 @@ void MenuScreen::buffer_with(const ui::NodeVtablePtr& v, std::function<std::stri
   if (!v->details) v->details = text;
   // The row as it reads now (its label and whatever was declared before this call: a value, a mark), on one line.
   auto parts = v->announcements;
-  v->detail_lines = [parts, text = std::move(text)] {
+  v->detail_lines = [parts, text] {
     std::string row;
     for (auto& p : parts)
       if (std::string s = p.text ? p.text() : std::string(); !s.empty()) row += (row.empty() ? "" : ", ") + s;
@@ -474,6 +475,11 @@ void MenuScreen::buffer_with(const ui::NodeVtablePtr& v, std::function<std::stri
     if (std::string t = text(); !t.empty()) out.push_back(std::move(t));
     return out;
   };
+  // With "Descriptions in menus" on (the default) it is also read after the row, as describe_with does; asked per
+  // reading, so the setting takes effect at once.
+  v->announcements.push_back(ui::NodeAnnouncement(
+      [text = std::move(text)] { return settings::on(settings::MenuDescriptions) ? text() : std::string(); },
+      true, ui::announcement_kinds::kTooltip));
 }
 
 bool MenuScreen::has_details() {
