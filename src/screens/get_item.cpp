@@ -47,7 +47,9 @@ class GetItemScreen : public Screen {
   }
  public:
   const char* id() const override { return "get_item"; }
-  int priority() const override { return 20; }
+  // A notice drawn over whatever menu gave it (a request's reward over Elizabeth's list, which stays active under it):
+  // over every menu, under the save list, choices, the log and system dialogs.
+  int priority() const override { return 29; }
   bool active() override {
     std::string l = read();
     if (l.empty()) return false;

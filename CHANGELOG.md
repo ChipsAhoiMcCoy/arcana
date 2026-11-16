@@ -11,6 +11,9 @@
 ### Field
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
 
+### Requests
+- A request's reward is read when you report it to Elizabeth ("Got ..."). The request list hid the notice. The Stats up notice is read over any menu too.
+
 ### Battle
 - A physical skill's HP cost is no longer read as damage to the one using it: the skill list already says the price.
 

@@ -27,7 +27,7 @@ class StatsUpScreen : public Screen {
   }
  public:
   const char* id() const override { return "stats_up"; }
-  int priority() const override { return 20; }
+  int priority() const override { return 29; }   // a notice over whatever menu gave it, as get_item
   bool active() override {
     uint8_t* d = (uint8_t*)draw_.get();
     if (!d || *(int32_t*)(d + 0x294) != 6 || !*(UObject**)(d + 0xD00)) return false;
