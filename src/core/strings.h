@@ -563,6 +563,7 @@ inline constexpr Hint kConfigKeys{"Up and down arrows choose, left and right arr
 inline constexpr const char* kKeyCode = "key code";
 inline constexpr const char* kPlaylist = "Playlist. What do you want to change it to?";
 inline constexpr const char* kFavorite = "favorite";
+inline constexpr const char* kBgmCurrent = "current";   // the playlist's track now set (the game's SET mark)
 inline constexpr const char* kDictionary = "Dictionary";
 inline constexpr const char* kNoParty = "No party";
 inline constexpr const char* kTownInfo = "Places here";

@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### Config
+- The Dungeon BGM and Boss Battle BGM playlists move with the arrows again: the mod moved the other playlist's cursor, so the list jumped around and Space could set a track you had not heard.
+- Space or Enter on a BGM row opens its playlist. It used to save and leave the page.
+- The track a playlist has set is said as "current", and setting one says it again with "current".
+
 ## 0.3.0
 
 ### New name

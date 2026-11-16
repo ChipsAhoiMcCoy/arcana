@@ -1,5 +1,6 @@
 // Config (System > Config). Native: AUIConfiguration holds the state (+0x294: 5 on the tab list, 6 in a tab's rows,
-// 11 / 12 / 13 a BGM playlist (battle, boss, dungeon), 19 closing, 24 once closed; measured 2026-10-28), its DrawActor (BP_UIConfiguration_C) answers reflected calls:
+// 11 / 12 / 13 a BGM playlist (battle, dungeon, boss: FUN_1413bc540's cases), 19 closing, 24 once closed; measured
+// 2026-10-28), its DrawActor (BP_UIConfiguration_C) answers reflected calls:
 // GetCursorIndex, GetListNum, IsConfigTypeMode (the tab list) and GetIndexedDrawConfigParam(i) -> FDrawConfigParam
 // (Type, Title, Description, Value, bFlag, bEnable, ListType, ListMaxNum, SelectedLabel). The highlight that marks
 // a value is a sprite, so values come from that struct, not from the drawn text.
@@ -11,6 +12,7 @@
 #include "log.h"
 #include "msg.h"
 #include "ue/scan.h"
+#include <Xinput.h>
 #include <format>
 #include <vector>
 
@@ -18,7 +20,8 @@ namespace p3a::screens {
 using namespace ue;
 
 namespace {
-struct Row { std::string title, desc, value; bool ok = false; };
+struct Row { std::string title, desc, value; int type = -1; bool ok = false; };
+constexpr int kTypeBgm = 4;   // EDrawConfigParamType DCPT_BGM: a row that opens a playlist
 
 std::string take(FString* s) { return s ? core::clean_text(msg::take_fstring(*s)) : std::string(); }
 }  // namespace
@@ -59,11 +62,20 @@ class ConfigScreen : public MenuScreen {
   });
   int state_seen_ = -1;          // the state last tick...
   bool state_settled_ = false;   // ...and whether the game has run a tick in it
+  // The playlist open now: AUIConfiguration +0x3F0 ConfigBGMSelect (state 11), +0x400 ConfigDungeonBGMSelect (12),
+  // +0x3F8 ConfigBossBattleBGMSelect (13). FUN_1413bc540 steps the dialog at its +0x168 / +0x178 / +0x170 (that
+  // function's this is AUIConfiguration +0x288). Writing the boss dialog's cursor while the dungeon one was up moved
+  // nothing the player heard (2026-11-16).
   uint8_t* bgm_dialog() {
     auto* c = (uint8_t*)cfg_.get();
     int st = c ? *(int32_t*)(c + 0x294) : 0;
-    return st >= 11 && st <= 13 ? *(uint8_t**)(c + 0x3F0 + (st == 11 ? 0 : st == 12 ? 8 : 0x10)) : nullptr;
+    int off = st == 11 ? 0x3F0 : st == 12 ? 0x400 : st == 13 ? 0x3F8 : 0;
+    return off ? *(uint8_t**)(c + off) : nullptr;
   }
+  // The track set for the open playlist (GetBgmSetID, compared with each entry's BgmId as the draw marks it): a
+  // change while the same playlist is up is the player's Space taking effect, said by reading the row again.
+  uint8_t* bgm_seen_dialog_ = nullptr;
+  int bgm_set_ = 0;
   UObject* draw() {
     UObject* c = cfg_.get();
     return c ? get<UObject*>(c, "DrawActor") : nullptr;
@@ -96,6 +108,7 @@ class ConfigScreen : public MenuScreen {
     int type = *at("Type"), list = *at("ListType"), value = *(int32_t*)at("Value"), max = *(int32_t*)at("ListMaxNum");
     bool flag = *at("bFlag") != 0, enabled = *at("bEnable") != 0;
     r.ok = !r.title.empty();
+    r.type = type;
     switch (type) {
       case 0: r.value = flag ? strings::kOn : strings::kOff; break;                        // DCPT_FLAG
       case 1: r.value = max > 0 && max != 100 ? std::format("{} {} {}", value, strings::kOf, max) : std::to_string(value); break;   // DCPT_VALUE
@@ -123,6 +136,7 @@ class ConfigScreen : public MenuScreen {
     UStruct* st = (UStruct*)prop_inner_object(prop_inner_prop(ap));
     uint8_t* e = arr->data + i * struct_size(st);
     std::string t = core::clean_text(to_utf8(*(FString*)(e + offset_of(st, "Title"))));
+    if (*(int32_t*)(e + offset_of(st, "BgmId")) == call_int(d, "GetBgmSetID")) t += std::string(", ") + strings::kBgmCurrent;
     if (*(e + offset_of(st, "bIsFavoriteFlag"))) t += std::string(", ") + strings::kFavorite;
     if (*(e + offset_of(st, "bNewFlag"))) t += std::string(", ") + strings::kMailNew;
     return t;
@@ -183,7 +197,7 @@ class ConfigScreen : public MenuScreen {
     }
     // 19 is the close (the wipe out; read from the cancel paths, 0x13927f4 and 0x1392900), 24 once it has played
     // (OnDrawClosed, 0x1392950): Config held the floor through the camp's close wipe, so the System menu was read late.
-    on_ = st == 5 || st == 6 || st == 11 || (on_ && st != 19 && st != 24 && st != 0);   // 11: the BGM playlist
+    on_ = st == 5 || st == 6 || (st >= 11 && st <= 13) || (on_ && st != 19 && st != 24 && st != 0);   // 11-13: the BGM playlists
     return on_;
   }
   std::string title() override { return strings::kConfig; }
@@ -200,7 +214,16 @@ class ConfigScreen : public MenuScreen {
     state_seen_ = st;
     UObject* d = draw();
     if (!d) return;
-    if (call_bool(d, "IsBGMMode")) return;
+    if (call_bool(d, "IsBGMMode")) {
+      uint8_t* dlg = bgm_dialog();
+      int set = call_int(d, "GetBgmSetID");
+      if (dlg && dlg == bgm_seen_dialog_ && set != bgm_set_)
+        if (int c = bgm_.cursor(); c >= 0) say(bgm_entry(d, c), true);
+      bgm_seen_dialog_ = dlg;
+      bgm_set_ = set;
+      return;
+    }
+    bgm_seen_dialog_ = nullptr;
     bool tabs = call_bool(d, "IsConfigTypeMode");
     int n = call_int(d, "GetListNum");
     if (n <= 0) return;
@@ -232,6 +255,10 @@ class ConfigScreen : public MenuScreen {
       auto of_list = [this, key = list_key_, i] { return key == list_key_ && i < (int)rows_.size(); };
       auto v = game_item(list_, i, [this, i, of_list] { return of_list() ? rows_[i].title : std::string(); },
                          [this, i, of_list] { return of_list() ? desc(rows_[i]) : std::string(); });
+      // A BGM row: the game's confirm saves and leaves the page (FUN_141393620); its playlist opens on Left / Right
+      // (FUN_14138b0a0 / b120 / b1a0 by MenueID). Space and Enter open the playlist, the press players made for it.
+      if (!tabs_ && rows_[i].type == kTypeBgm)
+        v->on_activate = [this, i] { if (list_.settled_on(i)) press_game(VK_RIGHT, XINPUT_GAMEPAD_DPAD_RIGHT); };
       if (!tabs_) v->announcements.push_back(ui::NodeAnnouncement([this, i, of_list] { return of_list() ? rows_[i].value : std::string(); }, true, ui::announcement_kinds::kValue));
       buffer_with(v, [this, i, of_list] { return of_list() ? desc(rows_[i]) : std::string(); });
       b.add_item(slot(list_key_, i), v);
