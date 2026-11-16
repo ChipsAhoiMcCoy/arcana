@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.3.0
 
 ### New name
 - The mod is now called Arcana. It says "Arcana loaded" when the game starts.
@@ -15,7 +15,6 @@
 - Comma selects the nearest point of interest, whatever its category, and says it as the bracket keys do; pressed again it moves to the next nearest, and Shift+Comma goes back. It does not walk: press Apostrophe or Period to go there. It has no controller button: the right stick already finds things.
 - Period walks to the selected point, as Apostrophe does, so Comma and Period sit together.
 - Walking to the selected point and using it is now Shift+Period instead of Shift+Enter.
-
 - The category is said once, first, as you enter it (the bracket keys, the controller's layer, Comma landing in another category): "Objects, Vending Machine, 3 meters, north, 1 of 4". Moving through the category says each point without it: "Desk, 2 meters, east, 2 of 4".
 
 ### Shadows in Tartarus

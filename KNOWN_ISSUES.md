@@ -5,6 +5,7 @@ Arcana is an alpha. This is what is missing and what has not been tested. If you
 ## Not covered
 
 - English only, for both the game's text and the mod's own speech.
+- Audio description in 3D story scenes is still being written: the main story from the May full moon to the end, and some side events, are described; April's scenes and the remaining side events are not yet. Every animated movie is described.
 - On a controller, typing a name in the contract still needs a keyboard.
 
 ## Never tried in the running game
