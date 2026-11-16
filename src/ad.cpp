@@ -16,6 +16,7 @@
 #include "devserver.h"
 #include "log.h"
 #include "settings.h"
+#include "speech.h"
 #include "watch.h"
 #include "world.h"
 #include "ue/ue.h"
@@ -59,6 +60,7 @@ int g_voice_id = -1;                // the narrator clip that is ours
 int g_cur = -1;
 bool g_was_playing = false;
 std::string g_key;                  // the movie we last set up for (with or without descriptions)
+int g_mode = settings::DescOff;     // how its descriptions are given (settings::Description)
 float g_base_volume = -1, g_volume = -1;
 // All of the above is the game thread's: the dev routes read it through dev::on_game.
 
@@ -123,7 +125,8 @@ std::string key_of(std::string name) {
 
 std::string data_dir() { return audio::module_dir() + "assets\\ad\\"; }
 
-std::shared_ptr<Scene> load_scene(const std::string& key) {
+// decode false: the descriptions go to the screen reader, as text; no clip is decoded.
+std::shared_ptr<Scene> load_scene(const std::string& key, bool decode) {
   FILE* f = fopen((data_dir() + key + ".txt").c_str(), "rb");
   if (!f) return nullptr;
   auto s = std::make_shared<Scene>();
@@ -147,6 +150,7 @@ std::shared_ptr<Scene> load_scene(const std::string& key) {
   }
   fclose(f);
   s->pcm.resize(s->cues.size());
+  if (!decode) { s->ready = true; return s; }
   std::lock_guard lk(g_decoders_mu);
   if (g_unloading) return nullptr;
   std::vector<Decoder>& list = decoders();
@@ -507,15 +511,20 @@ void tick() {
   Clock c = clock();
   bool playing = c.playing;
   if (!playing && !g_was_playing && g_sched.playing() < 0) return;   // nothing on, nothing finishing
-  if (!settings::on(settings::AudioDescription)) {
-    if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); }
+  // Movies and scenes each have their setting: off, the narrator's voice, or the screen reader. A description
+  // finishing after its movie keeps the mode it started in.
+  int mode = playing ? settings::get(c.event ? settings::SceneDescription : settings::AudioDescription) : g_mode;
+  if (mode == settings::DescOff) {
+    if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); g_key.clear(); }
     return;
   }
-  if (playing && (!g_was_playing || g_key != key_of(c.movie))) {
-    // a movie starts (or the source changed under a running player): load its descriptions, if it has any
+  if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode)) {
+    // a movie starts (or the source changed under a running player, or the setting changed): load its
+    // descriptions, if it has any
     stop_all();
     g_key = key_of(c.movie);
-    auto s = load_scene(g_key);
+    g_mode = mode;
+    auto s = load_scene(g_key, mode == settings::DescAudio);
     g_scene = s;
     g_sched.load(s ? s->cues : std::vector<sched::Cue>{});
     g_runs.assign(g_sched.size(), Run{});
@@ -528,11 +537,21 @@ void tick() {
   std::shared_ptr<Scene> s = g_scene;
   if (!s || !s->ready) return;
 
+  bool reader = g_mode == settings::DescReader;
   audio::Narration n = audio::narration();
-  bool ours = n.id == g_voice_id && g_voice_id >= 0;
+  bool ours = !reader && n.id == g_voice_id && g_voice_id >= 0;
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
-  sched::Voice v{ours && n.active, ours && n.ended};
+  // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
+  sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
   for (const sched::Action& a : g_sched.step({playing, c.paused, c.time}, v)) {
+    if (reader) {   // nothing of ours sounds: nothing to pause or stop
+      if (a.act == sched::Act::Play) {
+        speech::speak(s->texts[a.cue], false);
+        g_runs[a.cue] = Run{c.time, 0, 0};
+        log::writef("ad: {} cue {} read at {:.2f} (due {:.2f}): {}", s->key, a.cue, c.time, s->cues[a.cue].at, s->texts[a.cue]);
+      }
+      continue;
+    }
     switch (a.act) {
       case sched::Act::Play:
         if (!s->pcm[a.cue]) break;   // a clip that would not decode: the cue is logged as cut by the narrator

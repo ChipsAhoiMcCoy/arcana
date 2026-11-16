@@ -77,8 +77,12 @@ static const Def kDefs[Count] = {
    {strings::kEndNext, strings::kEndPage, strings::kEndMessage, strings::kEndCursor, strings::kOff}},
   // the screen reader reads a cutscene's subtitles (msg.cpp)
   {"subtitles", strings::kSetSubtitles, CatDialogue, strings::kHelpSubtitles, Unit::Toggle, {0, 1}, 0},
-  // the narrator in story movies (ad.cpp)
-  {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Toggle, {0, 1}, 1},
+  // the descriptions of the animated story movies and of the story scenes in the 3D engine (ad.cpp): the narrator's
+  // voice or the screen reader. A saved 1 from the old on/off toggle is DescAudio.
+  {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
+   {strings::kOff, strings::kDescAudio, strings::kDescReader}},
+  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
+   {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   {"description_volume", strings::kSetDescriptionVolume, CatDialogue, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},

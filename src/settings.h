@@ -5,7 +5,7 @@ namespace p3a::settings {
 // mod settings menu that changes them: F2, or both triggers and View on a controller (the game's Config keys say so).
 // A new option: an Id here, a row in settings.cpp's table, its name in strings.h, and its README line.
 enum Id { WallTones, Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
-          ShadowAlerts, Spatial, BehindPitch, PoiRange, MasterVolume, SonarVolume, SoundVolume, WallVolume, TriggerDelay, EntryHints, VoicedLines, VoiceEndSound, Subtitles, AudioDescription, DescriptionVolume, TopDown, StrikeAssist, Count };
+          ShadowAlerts, Spatial, BehindPitch, PoiRange, MasterVolume, SonarVolume, SoundVolume, WallVolume, TriggerDelay, EntryHints, VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, DescriptionVolume, TopDown, StrikeAssist, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }
 // VoicedLines: what the screen reader does with a line the game voices.
@@ -14,6 +14,9 @@ enum Voiced { VoicedRead, VoicedName, VoicedSilent };
 enum EndSound { EndNext, EndPage, EndMessage, EndCursor, EndOff };
 // SonarScope: which points of interest the sonar sounds for.
 enum Scope { ScopeAll, ScopeCategory, ScopeSelected };
+// AudioDescription (the animated movies) and SceneDescription (story scenes in the 3D engine): how a description
+// is given, by the narrator's recorded voice or as text to the screen reader (ad.cpp).
+enum Description { DescOff, DescAudio, DescReader };
 // Spatial: how the mod's sounds are placed (audio::set_spatial).
 enum SpatialModel { SpatialStereo, SpatialHrtf, SpatialPan };
 void set(Id id, int value);   // applies it (wall tones, volume) and saves

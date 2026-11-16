@@ -328,8 +328,9 @@ inline constexpr const char* kHelpEntryHints = "Menus say their keys after their
 inline constexpr const char* kHelpVoicedLines = "What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.";
 inline constexpr const char* kHelpVoiceEndSound = "What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.";
 inline constexpr const char* kHelpSubtitles = "The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.";
-inline constexpr const char* kHelpAudioDescription = "A narrator describes what is on screen in the animated story movies, between the lines of dialogue.";
-inline constexpr const char* kHelpDescriptionVolume = "How loud the movie narrator is.";
+inline constexpr const char* kHelpAudioDescription = "What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.";
+inline constexpr const char* kHelpSceneDescription = "What is on screen in the story scenes played in the game's 3D engine is described between the lines: by a narrator's voice, or read by the screen reader.";
+inline constexpr const char* kHelpDescriptionVolume = "How loud the narrator of movies and scenes is.";
 inline constexpr const char* kHelpModKeys = "Reads the list of the mod's keys.";
 // The sound test: each row plays one of the mod's sounds (name, then what it means).
 struct SoundTest { const char* name; const char* help; };
@@ -392,6 +393,9 @@ inline constexpr const char* kVoicedSilent = "not read, the voice plays alone";
 inline constexpr const char* kSetVoiceEndSound = "When a line ends";
 inline constexpr const char* kSetSubtitles = "Read cutscene subtitles";
 inline constexpr const char* kSetAudioDescription = "Audio description in movies";
+inline constexpr const char* kSetSceneDescription = "Audio description in 3D scenes";
+inline constexpr const char* kDescAudio = "narrator's voice";
+inline constexpr const char* kDescReader = "screen reader";
 inline constexpr const char* kSetDescriptionVolume = "Audio description volume";
 inline constexpr const char* kEndNext = "say Next";
 inline constexpr const char* kNext = "Next";

@@ -149,7 +149,8 @@ They work like any other menu: up and down choose (at either end a further press
 - Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
 - When a line ends: say Next, page turn sound, message chime sound, cursor tick sound, off. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
 - Read cutscene subtitles: off, on. They are in the log (B) either way
-- Audio description in movies: on, off. A narrator describes the animated story movies between lines of dialogue, dipping the movie's sound
+- Audio description in movies: narrator's voice, screen reader, off. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
+- Audio description in 3D scenes: narrator's voice, screen reader, off. The same for the story scenes played in the game's 3D engine
 - Audio description volume: 100 percent; 0 to 100 in steps of 10
 
 **Controls and help**
