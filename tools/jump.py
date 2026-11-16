@@ -761,6 +761,9 @@ def play(choices, secs=120, quiet_polls=4):
             seen, quiet = True, 0
             opt = wanted.pop(0) if wanted else 0
             print(f"  choice: answering option {opt} ({ordinal(opt)})")
+            if os.environ.get("P3A_NOFOREGROUND") == "1":   # the user plays another game: never take the front
+                print("  -- a choice needs the game in front (P3A_NOFOREGROUND): stopping here")
+                return "needs focus"
             with FocusLock():
                 p3.focus()
                 time.sleep(0.8)

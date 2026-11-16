@@ -89,7 +89,10 @@ def unminimize():
 def focus():
     """Bring the dev game to the foreground (the user allows it for the dev game). Unfocused, the game's input object
     never sees the decide action, so a choice list (SEL) ignores posted Enter / Space while message pages still take
-    them (2026-11-11). An Alt tap first lets SetForegroundWindow work from a background process."""
+    them (2026-11-11). An Alt tap first lets SetForegroundWindow work from a background process.
+    P3A_NOFOREGROUND=1 (set by tools that run while the user plays another game) refuses it: returns False."""
+    if os.environ.get("P3A_NOFOREGROUND") == "1":
+        return False
     m = re.search(r"window=0x([0-9a-f]+)", http("/health", retry=0, check=False) or "")
     if not m:
         return False
