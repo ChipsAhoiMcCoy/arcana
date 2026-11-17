@@ -558,10 +558,18 @@ inline constexpr const char* kOff = "off";
 inline constexpr const char* kUnavailable = "unavailable";
 inline constexpr const char* kUnsupportedBuild = "This copy of Persona 3 Reload is not the version Arcana was made for, such as the demo or an older update. To keep the game from freezing, menus are not read. Messages and the field still are.";
 inline constexpr Hint kConfigTabKeys{"Up and down arrows choose, Space opens, Escape back. F2 opens the mod's settings.", "Up and down choose, A opens, B back. Both triggers and View open the mod's settings."};
-inline constexpr Hint kBgmKeys{"Up and down arrows choose, Space sets it, F plays it, Escape back.", "Up and down choose, A sets it, X plays it, B back."};
+inline constexpr Hint kBgmKeys{"Up and down arrows choose, Tab and Shift Tab jump between modes and tracks, Space sets it, F plays or stops a track, E marks or unmarks a favorite, Escape back.", "Up and down choose, RT and LT jump between modes and tracks, A sets it, X plays or stops a track, RB marks or unmarks a favorite, B back."};
 inline constexpr Hint kConfigKeys{"Up and down arrows choose, left and right arrows change, Space saves changes, H restores defaults, Escape back. F2 opens the mod's settings.", "Up and down choose, left and right change, A saves changes, Menu button restores defaults, B back. Both triggers and View open the mod's settings."};
 inline constexpr const char* kKeyCode = "key code";
-inline constexpr const char* kPlaylist = "Playlist. What do you want to change it to?";
+inline constexpr const char* kPlaylist = "Playlist";   // when the BGM row's own title is not known
+inline constexpr const char* kBgmModes = "Modes";
+inline constexpr const char* kBgmTracks = "Tracks";
+// The playlist's first three rows (Default, Random, Favorited by their BgmId -1, -2, -3): what each does.
+inline constexpr const char* kBgmModeDesc[] = {"The game's own music", "A random track each time", "A random favorite each time"};
+inline constexpr const char* kBgmNoFavorites = "no favorites yet";
+inline constexpr const char* kBgmPlaying = "playing";
+inline constexpr const char* kBgmStopped = "stopped";
+inline constexpr const char* kBgmUnfavorited = "not a favorite";
 inline constexpr const char* kFavorite = "favorite";
 inline constexpr const char* kBgmCurrent = "current";   // the playlist's track now set (the game's SET mark)
 inline constexpr const char* kDictionary = "Dictionary";

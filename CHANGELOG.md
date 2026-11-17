@@ -9,6 +9,8 @@
 - The Dungeon BGM and Boss Battle BGM playlists move with the arrows again: the mod moved the other playlist's cursor, so the list jumped around and Space could set a track you had not heard.
 - Space or Enter on a BGM row opens its playlist. It used to save and leave the page.
 - The track a playlist has set is said as "current", and setting one says it again with "current".
+- A BGM playlist is named after its row ("Change Battle BGM") and split in two sections, each with its own positions: Modes (Default, Random, Favorited, each said with what it does) and Tracks. Tab and Shift+Tab (RT and LT) jump between them.
+- In a playlist, F (X) says "playing" or "stopped", and E (RB), the game's favorite key, says "favorite" or "not a favorite". The track playing and your favorites are part of each row, and Favorited says "no favorites yet" while it cannot be set. F1 lists these keys.
 - Change Voice Language says the new language as you switch it. It always read English and stayed silent on a change.
 
 ### Field

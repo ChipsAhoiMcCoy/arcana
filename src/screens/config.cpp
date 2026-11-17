@@ -72,10 +72,30 @@ class ConfigScreen : public MenuScreen {
     int off = st == 11 ? 0x3F0 : st == 12 ? 0x400 : st == 13 ? 0x3F8 : 0;
     return off ? *(uint8_t**)(c + off) : nullptr;
   }
+  // The dialog's own entries (FUN_1413a2b20, measured 2026-11-17): +0x78 an array of 0x30-byte entries (+0 BgmId:
+  // -1 Default, -2 Random, -3 Favorited, then the tracks; +0x28 favorite, which E / RB (action 0x19) flips on an
+  // entry whose id is above -2), +0x80 its count, +0xD4 the entry F / X (action 0x1C) is previewing while +0xDA is
+  // set (rows 3 on, a second press on it stops it), +0xE0 whether any entry is a favorite (Space on Favorited does
+  // nothing without one). The draw's BgmParams copy the same order.
+  static constexpr int kBgmModeRows = 3;
+  struct BgmDlg {
+    uint8_t* d = nullptr;
+    int count() const { return d ? *(int32_t*)(d + 0x80) : 0; }
+    uint8_t* entry(int i) const { uint8_t* a = d ? *(uint8_t**)(d + 0x78) : nullptr; return a && i >= 0 && i < count() ? a + i * 0x30 : nullptr; }
+    bool favorite(int i) const { uint8_t* e = entry(i); return e && e[0x28]; }
+    int previewing() const { return d && d[0xDA] ? *(int32_t*)(d + 0xD4) : -1; }
+    bool any_favorite() const { return d && d[0xE0]; }
+  };
+  BgmDlg bgm_dlg() { return {bgm_dialog()}; }
   // The track set for the open playlist (GetBgmSetID, compared with each entry's BgmId as the draw marks it): a
-  // change while the same playlist is up is the player's Space taking effect, said by reading the row again.
+  // change while the same playlist is up is the player's Space taking effect, said by reading the row again. The
+  // focused entry's favorite and the preview are watched alike: E and F say what they did.
   uint8_t* bgm_seen_dialog_ = nullptr;
   int bgm_set_ = 0;
+  int bgm_seen_row_ = -1;
+  bool bgm_seen_fav_ = false;
+  int bgm_seen_preview_ = -1;
+  std::string bgm_title_;   // the BGM row the playlist was opened from ("Change Battle BGM")
   UObject* draw() {
     UObject* c = cfg_.get();
     return c ? get<UObject*>(c, "DrawActor") : nullptr;
@@ -128,17 +148,22 @@ class ConfigScreen : public MenuScreen {
     while (!d.empty() && (d.back() == '.' || d.back() == ' ')) d.pop_back();
     return d;
   }
-  // The BGM playlist's entry (BgmParams[i]): title, favourite, new.
+  // The BGM playlist's entry (BgmParams[i]): title, current, playing, favourite, new. The favourite and the preview
+  // are the dialog's (the draw's copy follows a frame late); Favorited without a favourite cannot be set.
   std::string bgm_entry(UObject* d, int i) {
     auto* arr = field<TArray<uint8_t>>(d, "BgmParams");
     FField* ap = find_prop(class_of(d), "BgmParams");
     if (!arr || !ap || i < 0 || i >= arr->num) return {};
     UStruct* st = (UStruct*)prop_inner_object(prop_inner_prop(ap));
     uint8_t* e = arr->data + i * struct_size(st);
+    BgmDlg dlg = bgm_dlg();
+    auto add = [](std::string& t, const char* w) { t += std::string(", ") + w; };
     std::string t = core::clean_text(to_utf8(*(FString*)(e + offset_of(st, "Title"))));
-    if (*(int32_t*)(e + offset_of(st, "BgmId")) == call_int(d, "GetBgmSetID")) t += std::string(", ") + strings::kBgmCurrent;
-    if (*(e + offset_of(st, "bIsFavoriteFlag"))) t += std::string(", ") + strings::kFavorite;
-    if (*(e + offset_of(st, "bNewFlag"))) t += std::string(", ") + strings::kMailNew;
+    if (*(int32_t*)(e + offset_of(st, "BgmId")) == call_int(d, "GetBgmSetID")) add(t, strings::kBgmCurrent);
+    if (dlg.d && i == dlg.previewing()) add(t, strings::kBgmPlaying);
+    if (dlg.d ? dlg.favorite(i) : *(e + offset_of(st, "bIsFavoriteFlag")) != 0) add(t, strings::kFavorite);
+    if (dlg.d && i == kBgmModeRows - 1 && !dlg.any_favorite()) add(t, strings::kBgmNoFavorites);
+    if (*(e + offset_of(st, "bNewFlag"))) add(t, strings::kMailNew);
     return t;
   }
   bool bgm_mode() { UObject* d = draw(); return d && call_bool(d, "IsBGMMode"); }
@@ -215,15 +240,25 @@ class ConfigScreen : public MenuScreen {
     UObject* d = draw();
     if (!d) return;
     if (call_bool(d, "IsBGMMode")) {
-      uint8_t* dlg = bgm_dialog();
+      BgmDlg dlg = bgm_dlg();
       int set = call_int(d, "GetBgmSetID");
-      if (dlg && dlg == bgm_seen_dialog_ && set != bgm_set_)
-        if (int c = bgm_.cursor(); c >= 0) say(bgm_entry(d, c), true);
-      bgm_seen_dialog_ = dlg;
+      int c = bgm_.cursor();
+      bool fav = dlg.favorite(c);
+      int preview = dlg.previewing();
+      if (dlg.d && dlg.d == bgm_seen_dialog_) {
+        if (set != bgm_set_) { if (c >= 0) say(bgm_entry(d, c), true); }
+        else if (c >= 0 && c == bgm_seen_row_ && fav != bgm_seen_fav_) say(fav ? strings::kFavorite : strings::kBgmUnfavorited, true);
+        else if (preview != bgm_seen_preview_) say(preview >= 0 ? strings::kBgmPlaying : strings::kBgmStopped, true);
+      }
+      bgm_seen_dialog_ = dlg.d;
       bgm_set_ = set;
+      bgm_seen_row_ = c;
+      bgm_seen_fav_ = fav;
+      bgm_seen_preview_ = preview;
       return;
     }
     bgm_seen_dialog_ = nullptr;
+    if (int c = list_.cursor(); !tabs_ && c >= 0 && rows_[c].type == kTypeBgm) bgm_title_ = rows_[c].title;
     bool tabs = call_bool(d, "IsConfigTypeMode");
     int n = call_int(d, "GetListNum");
     if (n <= 0) return;
@@ -238,10 +273,23 @@ class ConfigScreen : public MenuScreen {
     if (bgm_mode()) {
       UObject* d = draw();
       auto* arr = field<TArray<uint8_t>>(d, "BgmParams");
+      // Two sections under the playlist's name, each with its own positions: the modes (Default, Random, Favorited,
+      // each said with what it does) and the tracks; Tab jumps between them.
+      int n = arr ? std::min(arr->num, 500) : 0;
       b.begin_stop("bgm");
-      b.push_context(strings::kPlaylist);
-      for (int i = 0; arr && i < arr->num && i < 500; ++i)
-        b.add_item(slot("bgm", i), game_item(bgm_, i, [this, i] { UObject* dd = draw(); return dd ? bgm_entry(dd, i) : std::string(); }));
+      b.push_context(bgm_title_.empty() ? std::string(strings::kPlaylist) : bgm_title_);
+      for (int i = 0; i < n; ++i) {
+        if (i == 0 || i == kBgmModeRows) {
+          if (i) b.pop_context();
+          b.set_region(i ? "bgm.tracks" : "bgm.modes");
+          b.push_context(i ? strings::kBgmTracks : strings::kBgmModes);
+        }
+        auto v = game_item(bgm_, i, [this, i] { UObject* dd = draw(); return dd ? bgm_entry(dd, i) : std::string(); });
+        if (i < kBgmModeRows) buffer_with(v, [i] { return std::string(strings::kBgmModeDesc[i]); });
+        b.add_item(slot("bgm", i), v);
+      }
+      if (n) b.pop_context();
+      b.set_region({});
       b.pop_context();
       if (int c = bgm_.cursor(); c >= 0) b.set_start(slot("bgm", c));
       return;
