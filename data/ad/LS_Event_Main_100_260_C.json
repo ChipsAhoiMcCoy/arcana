@@ -1,4 +1,16 @@
-{"movie": "LS_Event_Main_100_260_C", "title": "The back door", "cues": [
- {"at": 0.30, "text": "Yukari and the hero race to the back door."},
- {"at": 9.40, "text": "They both jump, startled."}
-]}
+{
+ "movie": "LS_Event_Main_100_260_C",
+ "title": "The back door",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Yukari and the hero run to the back door.",
+   "short": "They run to the back door."
+  },
+  {
+   "at": 9.15,
+   "text": "The back door shudders."
+  }
+ ]
+}

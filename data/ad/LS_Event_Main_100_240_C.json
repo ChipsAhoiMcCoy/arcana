@@ -1,4 +1,20 @@
-{"movie": "LS_Event_Main_100_240_C", "title": "Akihiko returns", "cues": [
- {"at": 3.03, "text": "Yukari kneels by him."},
- {"at": 15.1, "text": "Yukari runs off."}
-]}
+{
+ "movie": "LS_Event_Main_100_240_C",
+ "title": "Akihiko returns",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.02,
+   "text": "Akihiko comes in, hurt.",
+   "short": "Akihiko, hurt."
+  },
+  {
+   "at": 3.05,
+   "text": "Yukari runs to him."
+  },
+  {
+   "at": 15.05,
+   "text": "Yukari runs upstairs."
+  }
+ ]
+}

@@ -1,3 +1,2 @@
 #scene LS_Event_Main_100_310_C
-3.000	1.528	00.mp3	The hero lies face down.
-5.520	1.130	01.mp3	Yukari shakes him.
+3.000	1.349	00.mp3	The hero has collapsed.

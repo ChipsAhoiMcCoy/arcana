@@ -1,5 +1,21 @@
-{"movie": "LS_Event_Main_100_230_C", "title": "Watching the new student", "cues": [
- {"at": 0.1, "text": "Mitsuru, Yukari and the chairman."},
- {"at": 9.4, "text": "Mitsuru turns back to the console."},
- {"at": 15.4, "text": "Yukari is on her feet."}
-]}
+{
+ "movie": "LS_Event_Main_100_230_C",
+ "title": "The command room",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "A room of monitors. Yukari sits as Ikutsuki takes a seat.",
+   "short": "Monitors. Yukari and Ikutsuki sit."
+  },
+  {
+   "at": 8.4,
+   "text": "Yukari shifts in her seat, unhappy.",
+   "short": "Yukari shifts, unhappy."
+  },
+  {
+   "at": 15.2,
+   "text": "Ikutsuki stands up."
+  }
+ ]
+}

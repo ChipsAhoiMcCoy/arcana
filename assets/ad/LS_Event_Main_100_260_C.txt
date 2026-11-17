@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_260_C
-0.300	2.543	00.mp3	Yukari and the hero race to the back door.
-9.400	1.446	01.mp3	They both jump, startled.
+0.050	2.441	00.mp3	Yukari and the hero run to the back door.
+9.150	1.267	01.mp3	The back door shudders.

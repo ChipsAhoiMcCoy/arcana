@@ -1,3 +1,12 @@
-{"movie": "LS_Event_Main_100_290_C", "title": "The command room hears it", "cues": [
- {"at": 0.0, "text": "Mitsuru and Akihiko."}
-]}
+{
+ "movie": "LS_Event_Main_100_290_C",
+ "title": "The command room watches",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Mitsuru, Akihiko and Ikutsuki look stunned.",
+   "short": "The three look stunned."
+  }
+ ]
+}

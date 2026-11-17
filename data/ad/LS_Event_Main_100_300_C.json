@@ -1,6 +1,16 @@
-{"movie": "LS_Event_Main_100_300_C", "title": "The Persona appears", "cues": [
- {"at": 0.5, "text": "Above the hero hovers a mechanical figure with a lyre."},
- {"at": 5.2, "text": "Glittering shards scatter."},
- {"at": 7.1, "text": "Yukari sits on the ground nearby."},
- {"at": 12.89, "text": "More Shadows."}
-]}
+{
+ "movie": "LS_Event_Main_100_300_C",
+ "title": "After the awakening",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "The hero's Persona glows. Two Shadows remain.",
+   "short": "His Persona glows. Two Shadows remain."
+  },
+  {
+   "at": 3.4,
+   "text": "The Persona vanishes."
+  }
+ ]
+}

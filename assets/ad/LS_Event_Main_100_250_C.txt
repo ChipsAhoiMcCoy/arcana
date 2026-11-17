@@ -1,5 +1,4 @@
 #scene LS_Event_Main_100_250_C
-0.100	1.651	00.mp3	The hero gets up from his bed.
-4.000	1.167	01.mp3	Yukari at the door.
-6.400	1.094	02.mp3	The hero nods.
-10.400	2.161	03.mp3	Yukari holds something out. He takes it.
+0.050	1.716	00.mp3	The hero's room. He stands.
+3.800	1.220	01.mp3	Yukari comes in.
+10.600	1.376	02.mp3	She hands him a shortsword.

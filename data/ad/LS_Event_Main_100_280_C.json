@@ -1,4 +1,16 @@
-{"movie": "LS_Event_Main_100_280_C", "title": "The roof", "cues": [
- {"at": 0.40, "text": "A rooftop. Yukari and the hero stand by its door."},
- {"at": 5.20, "text": "Both start."}
-]}
+{
+ "movie": "LS_Event_Main_100_280_C",
+ "title": "The rooftop",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Out on the roof, Yukari locks the door behind them.",
+   "short": "On the roof, Yukari locks the door."
+  },
+  {
+   "at": 5.0,
+   "text": "Yukari braces herself."
+  }
+ ]
+}

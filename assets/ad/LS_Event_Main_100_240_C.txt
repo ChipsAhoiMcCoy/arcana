@@ -1,3 +1,4 @@
 #scene LS_Event_Main_100_240_C
-3.030	1.462	00.mp3	Yukari kneels by him.
-15.100	1.273	01.mp3	Yukari runs off.
+0.020	1.061	00.mp3	Akihiko, hurt.
+3.050	1.341	01.mp3	Yukari runs to him.
+15.050	1.468	02.mp3	Yukari runs upstairs.

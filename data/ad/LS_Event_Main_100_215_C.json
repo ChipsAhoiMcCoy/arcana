@@ -1,1 +1,11 @@
-{"movie": "LS_Event_Main_100_215_C", "title": "Junpei after class", "cues": [{"at": 0.05, "text": "Junpei walks over."}]}
+{
+ "movie": "LS_Event_Main_100_215_C",
+ "title": "Junpei's invitation",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Junpei walks over."
+  }
+ ]
+}

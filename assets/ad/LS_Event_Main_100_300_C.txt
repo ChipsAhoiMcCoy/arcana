@@ -1,5 +1,3 @@
 #scene LS_Event_Main_100_300_C
-0.500	3.412	00.mp3	Above the hero hovers a mechanical figure with a lyre.
-5.200	1.301	01.mp3	Glittering shards scatter.
-7.100	1.938	02.mp3	Yukari sits on the ground nearby.
-12.890	0.944	03.mp3	More Shadows.
+0.300	2.868	00.mp3	The hero's Persona glows. Two Shadows remain.
+3.400	1.307	01.mp3	The Persona vanishes.

@@ -1,9 +1,19 @@
-{"movie": "LS_Event_Main_100_225_C", "title": "The hero turns in", "cues": [
- {"at": 0.3, "text": "The hero's dorm room. He stands by his bed, then sits on its edge, head bowed."},
- {"at": 8.7, "text": "He falls back onto the bed."},
- {"at": 10.5, "text": "He lies there, an arm across his forehead."},
- {"at": 13.2, "text": "He reaches up. Sparks flicker at his fingertips."},
- {"at": 16.6, "text": "His arm drops. His eyes close, and he sleeps."},
- {"at": 25.8, "text": "Clock faces and the numbers eleven fifty-nine swirl over him."},
- {"at": 29.6, "text": "Midnight."}
-]}
+{
+ "movie": "LS_Event_Main_100_225_C",
+ "title": "Tired in his room",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "The hero's room. He sits down."
+  },
+  {
+   "at": 14.75,
+   "text": "Something sparkles."
+  },
+  {
+   "at": 17.7,
+   "text": "His eyes close."
+  }
+ ]
+}

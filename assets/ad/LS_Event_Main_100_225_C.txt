@@ -1,8 +1,4 @@
 #scene LS_Event_Main_100_225_C
-0.300	4.746	00.mp3	The hero's dorm room. He stands by his bed, then sits on its edge, head bowed.
-8.700	1.473	01.mp3	He falls back onto the bed.
-10.500	2.291	02.mp3	He lies there, an arm across his forehead.
-13.200	2.664	03.mp3	He reaches up. Sparks flicker at his fingertips.
-16.600	2.713	04.mp3	His arm drops. His eyes close, and he sleeps.
-25.800	3.578	05.mp3	Clock faces and the numbers eleven fifty-nine swirl over him.
-29.600	0.721	06.mp3	Midnight.
+0.300	1.949	00.mp3	The hero's room. He sits down.
+14.750	1.117	01.mp3	Something sparkles.
+17.700	1.018	02.mp3	His eyes close.

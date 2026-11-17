@@ -1,4 +1,11 @@
-{"movie": "LS_Event_Main_100_310_C", "title": "The hero collapses", "cues": [
- {"at": 3.00, "text": "The hero lies face down."},
- {"at": 5.52, "text": "Yukari shakes him."}
-]}
+{
+ "movie": "LS_Event_Main_100_310_C",
+ "title": "The hero collapses",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 3.0,
+   "text": "The hero has collapsed."
+  }
+ ]
+}

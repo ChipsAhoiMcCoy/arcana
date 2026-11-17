@@ -1,5 +1,24 @@
-{"movie": "LS_Event_Main_100_270_C", "title": "Up the stairs", "cues": [
- {"at": 0.3, "text": "They run up the stairs."},
- {"at": 2.65, "text": "Both crouch, ready."},
- {"at": 7.4, "text": "An exit door."}
-]}
+{
+ "movie": "LS_Event_Main_100_270_C",
+ "title": "Up the stairs",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "They run up the stairs."
+  },
+  {
+   "at": 2.75,
+   "text": "They brace themselves."
+  },
+  {
+   "at": 5.9,
+   "text": "They run on up another flight."
+  },
+  {
+   "at": 9.05,
+   "text": "She runs for a door.",
+   "short": "To a door."
+  }
+ ]
+}

@@ -1,1 +1,21 @@
-{"movie": "LS_Event_Main_100_220_C", "title": "Paulownia Mall", "cues": [{"at": 0.1, "text": "A plaza with a fountain."}, {"at": 4.1, "text": "Junpei leads the hero in."}, {"at": 6.2, "text": "Junpei heads for a crane game."}, {"at": 9.8, "text": "Junpei steps up to the machine."}]}
+{
+ "movie": "LS_Event_Main_100_220_C",
+ "title": "Paulownia Mall with Junpei",
+ "source": "data-only (scene_facts.py, 2026-11-16)",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Junpei leads the hero in."
+  },
+  {
+   "at": 4.1,
+   "text": "They turn and walk on through the crowd.",
+   "short": "They walk on through the crowd."
+  },
+  {
+   "at": 8.75,
+   "text": "Junpei spots a crane game and runs to it.",
+   "short": "Junpei runs to a crane game."
+  }
+ ]
+}
