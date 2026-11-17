@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Personas
+- Persona affinities (the Persona page, fusion and Compendium) are read from the Personas' own table. The mod could read the enemies' table instead, which uses the same numbers for different monsters: Omoikane was said to null Strike and Fire, drain Elec and repel Dark, when it resists Elec and is weak to Dark.
+
 ### Config
 - The Dungeon BGM and Boss Battle BGM playlists move with the arrows again: the mod moved the other playlist's cursor, so the list jumped around and Space could set a track you had not heard.
 - Space or Enter on a BGM row opens its playlist. It used to save and leave the page.

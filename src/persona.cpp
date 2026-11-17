@@ -58,9 +58,19 @@ std::string affinities(int id) {
   return out;
 }
 
+// The enemies' table (DatEnemyAffinityDataAsset, 601 rows) has the same class: the Persona table is taken by its
+// name, never the newest of the class (a battle loads the enemies' one, and Omoikane, row 62, read the enemy row's
+// null Strike and Fire, drain Elec, repel Dark; a player's report, 2026-11-17).
+static UObject* persona_affinity_table() {
+  static const int table_id = watch::want("DatAffinityTable", true);
+  UObject* found = nullptr;
+  for (UObject* o : watch::all(table_id))
+    if (name_of(o) == "DatPersonaAffinityDataAsset") found = o;   // the newest (Episode Aigis has its own copy)
+  return found;
+}
+
 std::vector<std::string> affinity_groups(int id) {
-  static const int table_id = watch::want("DatAffinityTable");
-  UObject* t = watch::get(table_id);
+  UObject* t = persona_affinity_table();
   auto* rows = t ? field<TArray<uint8_t>>(t, "Data") : nullptr;
   if (!rows || id <= 0 || id >= rows->num) return {};
   const uint16_t* a = (const uint16_t*)(rows->data + id * 38);
@@ -284,7 +294,8 @@ std::string describe(int id, int level) {
 
 void install() {
   // Wanted before the first tick, so that tick's one sweep fills them with every other class's.
-  for (const char* c : {"DatPersona", "DatAffinityTable", "DatSkillNameTable", "DatSkillNormalTable"}) watch::want(c);
+  for (const char* c : {"DatPersona", "DatSkillNameTable", "DatSkillNormalTable"}) watch::want(c);
+  watch::want("DatAffinityTable", true);   // the Personas' and the enemies' tables: persona_affinity_table picks
   dev::route("/persona", [](const dev::Request& r, int&) {
     // /persona the hero's stock | ?id=N one Persona's data
     int id = (int)dev::arg_int(r, "id", -1);
@@ -318,7 +329,7 @@ void install() {
         }
         return s;
       }
-      if (id >= 0) return std::format("{} {} arcana {} base level {}; skill {}\n", id, name(id), arcana(id), base_level(id), skill_name(id));
+      if (id >= 0) return std::format("{} {} arcana {} base level {}; skill {}; {}\n", id, name(id), arcana(id), base_level(id), skill_name(id), affinities(id));
       if (levelup) {   // ?levelup=1: the equipped Persona one EXP short of its next level (dev: a skill change roll)
         auto* e = (uint8_t*)stock_entry(equipped());
         int pid = e ? *(uint16_t*)(e + 2) : 0, level = e ? *(uint16_t*)(e + 4) : 0;
