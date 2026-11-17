@@ -12,8 +12,11 @@ struct Clock {
   int frame = -1;      // GetFrameNumber
   int audio_track = -1;   // 0 Japanese voices, 1 English
   bool event = false;  // a scene played in the engine (its LevelSequence's clock; movie = the sequence's name)
+  bool fast = false;   // the scene is fast-forwarded (only with clock(true); otherwise it counts as not playing)
 };
-Clock clock();
+// The playing movie's or scene's clock. A fast-forwarded scene counts as not playing (no description over it) unless
+// even_fast (the dev route: the capture fast-forwards between gaps and still follows the scene's time).
+Clock clock(bool even_fast = false);
 void tick();                                   // every frame: follow the movie, play its descriptions
 std::string selftest(const std::string& filter);   // decode every packed clip and check its length (any thread)
 void register_routes();

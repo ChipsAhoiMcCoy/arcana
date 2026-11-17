@@ -205,14 +205,16 @@ void unload() {
   for (Decoder& d : list) if (d.thread.joinable()) d.thread.join();
 }
 
-Clock clock() {
+Clock clock(bool even_fast) {
   Clock c;
   UObject* m = playing_mana();
   if (!m) {
     UObject* actor = nullptr;
     UObject* ev = playing_event(&actor);
     // Fast-forward runs a scene at four times its pace: no description is played over it (one playing stops).
-    if (!ev || world::scene_fast()) return c;
+    if (!ev) return c;
+    c.fast = world::scene_fast();
+    if (c.fast && !even_fast) return c;
     c.playing = true;
     c.event = true;
     c.paused = call_ret<bool>(ev, "IsPaused");
@@ -585,10 +587,11 @@ void register_routes() {
   track_player_id();
   dev::route("/ad/clock", [](const dev::Request&, int&) {
     return dev::on_game([] {
-      Clock c = clock();
+      Clock c = clock(true);
       if (!c.playing) return std::string("playing=0\n");
-      return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}\n", c.paused ? 1 : 0,
-                         c.event ? "scene" : "movie", c.movie, c.time, c.frame, c.audio_track);
+      return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}{}\n", c.paused ? 1 : 0,
+                         c.event ? "scene" : "movie", c.movie, c.time, c.frame, c.audio_track,
+                         c.fast ? " fast=1" : "");
     });
   }, "the story movie or scene clock (audio description): movie or scene, time s, frame, pause, voice track");
   dev::route("/ad/status", [](const dev::Request&, int&) {
