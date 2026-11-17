@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_540_005_C
-0.050	0.930	00.mp3	The four regroup.
+0.050	0.826	00.mp3	They regroup.
