@@ -65,7 +65,11 @@ TEST_CASE("finish_icons: an icon with no name") {
   CHECK(finish_icons(std::string("pressing ") + kIconGlyph + " will", false, false) == "pressing a key will");
   CHECK(finish_icons(std::string("a ") + kIconGlyph + "Twilight Fragment", false, false) == "a Twilight Fragment");
   CHECK(finish_icons(std::string("See you") + kIconGlyph, false, false) == "See you");
-  CHECK(finish_icons(std::string("") + kIconGlyph + " " + kIconGlyph + " go", true, false) == "a key a key go");
+  CHECK(finish_icons(std::string("") + kIconGlyph + " " + kIconGlyph + " go", true, false) == "go");
+  // The Game Parade newsletter's title: three pictures, GAMES, three more (read "a keya keya key GAMES a keya key").
+  const std::string g3(3, kIconGlyph);
+  CHECK(finish_icons(g3 + " GAMES " + g3, false, false) == "GAMES");
+  CHECK(finish_icons(std::string("press ") + kIconGlyph + kIconGlyph + " to go", false, false) == "press to go");
 }
 TEST_CASE("rows_as_list joins a page of names with commas") {
   using p3a::core::rows_as_list;

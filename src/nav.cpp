@@ -713,16 +713,27 @@ void tick() {
         // A walk between the furniture plans its way again from where it stopped, twice.
         if (!there && g_w.body) {
           std::vector<FVector> again;
-          if (g_w.body_replans < 2 && body_plan(target, me, again)) {
+          bool found = g_w.body_replans < 2 && body_plan(target, me, again);
+          if (found && again.size() > 1) {
             ++g_w.body_replans;
             g_w.path = std::move(again);
             restart_progress(me, now);
             log::writef("nav: blocked at ({:.0f}, {:.0f}), planned again", me.x, me.y);
             return;
           }
-          stop(false);
-          speech::speak(strings::kStuck, true);
-          return;
+          // A plan of no legs: the body touches the thing's box here, so the plan calls him there, but the game's
+          // prompt is not up (its talk trigger faces another side: the Suspicious Man in Club Escapade, where the walk
+          // planned none twice and said "Stuck", 2026-11-17). The body's way is done; on as a walk blocked close to
+          // the target goes: round to the sides it can be come in from.
+          if (!found || again.size() != 1) {
+            stop(false);
+            speech::speak(strings::kStuck, true);
+            return;
+          }
+          log::writef("nav: at ({:.0f}, {:.0f}) the plan says arrived, no prompt: round to another side", me.x, me.y);
+          g_w.body = false;
+          g_w.body_tried = true;
+          refresh_path(me);
         }
         // Blocked close to it (the teleporter pad's pylons, 2026-10-27; the entrance terminal opens only to one
         // side, 2026-10-28): come in through the next way in the engine's sweeps found.

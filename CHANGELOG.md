@@ -49,6 +49,7 @@
 - The download is now `arcana-<version>.zip`, from https://github.com/ChipsAhoiMcCoy/arcana.
 
 ### Auto-walk
+- When the walk reaches someone's side but the game shows no prompt there, it goes round to another side instead of saying "Stuck". It gave up one step from the Suspicious Man in Club Escapade.
 - It moves the hero straight along its way at any angle, as a stick held exactly that way would, instead of the nearest of the eight directions the movement keys give: it keeps to narrow ways between furniture, takes the shortest line, and no camera angle can turn it off course. If the game does not take this, the walk goes back to the movement keys by itself.
 - Things set into the wall, whose spot the hero can only reach the edge of (the radiator and the mirror in your room), are arrived at: the walk said "Stuck" a step away from them.
 - Prompts for things passed on the way are no longer read, so they are not taken for arriving. The prompt up when the walk ends is read as before.
@@ -84,6 +85,9 @@
 - In battle, whoever is in focus and a party member's details (HP, SP, ailments, affinities, Persona) stay on the details keys.
 
 ### Fixes
+- A line the game marks as voiced but has no voice for is read at once. After Junpei's arcade hangout, "The Strength of Junpei's Persona, Hermes, was raised by 3." stayed silent until the review key.
+- Saving says "Saved" with the slot, and the slot is no longer read again over it, which cut "Saved" off.
+- Little pictures in a message are left out unless they sit between words, where they still read as "a key". The Game Parade Newsletter's subject was read "a keya keya key GAMES a keya key".
 - At the fortune-teller in Club Escapade, and the other scripts that show your wallet before naming a price, no longer reads "Price 100000000 yen" before the choices. That number is the game's own "no price yet"; the real price is read once the game names it.
 - Things on another floor you can walk to by stairs are listed again: from Paulownia Mall's fountain, Mandragora upstairs (and from upstairs, the shops below) were left out, so the karaoke bar could not be found or walked to.
 - Tutorials name the keys the game draws: battle tutorials read from the Tutorial list said the field's keys ("Pressing H during battle will let you Rush", Shift for Theurgy, U for Tactics; the game draws Tab, T and W), Assist said E for F, Auto-Recover said E for Y, and Full Analysis, Oracle, the network tips and the sword strike said only "a key" (N, N, N and Ctrl).

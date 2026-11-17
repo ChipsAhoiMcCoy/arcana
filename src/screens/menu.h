@@ -162,6 +162,9 @@ class MenuScreen : public Screen, public ui::Screen {
   // A line of the screen's own (a page that changed, a result, a notice). It goes the way every menu line goes: not
   // said twice until the player presses something or something else speaks.
   static void say(std::string_view text, bool interrupt = false);
+  // The screen's own line answers this entry (the save list's "Saved", said from on_tick): the focused item is not
+  // read after it when the opening comes due.
+  void entry_answered() { entry_say_ = false; }
   std::optional<ui::ControlId> focused() const;
  public:
   // Whether the focused item's list keeps the presses at its ends (Mirror::keep_edges).

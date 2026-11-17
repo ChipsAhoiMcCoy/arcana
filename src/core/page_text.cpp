@@ -42,11 +42,28 @@ std::string finish_icons(std::string out, bool pad, bool battle) {
     const char* name = icon_key(id, pad, battle, around);
     out.replace(p, 2, name ? name : "");
   }
-  for (size_t p; (p = out.find(kIconGlyph)) != std::string::npos;) {
-    bool dropped = p + 1 >= out.size() || isalnum((unsigned char)out[p + 1]);
-    out.replace(p, 1, dropped ? "" : strings::kAKey);
+  // A glyph with no name is "a key" only in a sentence: words on both sides ("pressing [x] will"). One that runs into
+  // its word ("a [key item]Twilight Fragment"), opens or closes the text (a text message's emoji), or stands in a row
+  // of glyphs (the Game Parade newsletter's title, three pictures, "GAMES", three more: read "a keya keya key GAMES",
+  // 2026-11-17) is a picture, and is left out.
+  if (out.find(kIconGlyph) == std::string::npos) return out;
+  std::string r;
+  r.reserve(out.size());
+  for (size_t i = 0; i < out.size(); ++i) {
+    if (out[i] != kIconGlyph) { r += out[i]; continue; }
+    size_t l = i, k = i + 1;
+    while (l > 0 && out[l - 1] == ' ') --l;
+    while (k < out.size() && out[k] == ' ') ++k;
+    bool word_before = l > 0 && out[l - 1] != kIconGlyph;
+    bool word_after = k > i + 1 && k < out.size() && isalnum((unsigned char)out[k]);
+    if (word_before && word_after) r += strings::kAKey;
   }
-  return out;
+  // A picture left out leaves its spaces: one between words, none at either end.
+  std::string t;
+  t.reserve(r.size());
+  for (char c : r) if (c != ' ' || (!t.empty() && t.back() != ' ')) t += c;
+  while (!t.empty() && t.back() == ' ') t.pop_back();
+  return t;
 }
 
 std::string rows_as_list(const std::vector<std::string>& rows, std::string_view joined) {

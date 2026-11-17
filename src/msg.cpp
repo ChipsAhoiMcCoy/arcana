@@ -220,8 +220,13 @@ static void say_dialogue(const std::string& line, const std::string& who, const 
     g_ffwd_text = !who.empty() && line.rfind(who + ": ", 0) == 0 ? line.substr(who.size() + 2) : line;
     return;
   }
-  // A line the game will not voice (its page declares none) is read at once; only a declared voice is waited for.
-  if (!may_be_voiced(kind) || !declares_voice(page)) {
+  // A line the game will not voice (its page declares none) is read at once; only a declared voice is waited for. A
+  // cue the scene's voice sheets do not have never plays (the arcade hangout's stat-up page declares Junpei's 37, his
+  // sheet ends at 36: the line stayed silent, 2026-11-17).
+  int cue_declared = declared_cue(page);
+  bool unvoiced = cue_declared && voice::event_has_cue(cue_declared) == 0;
+  if (unvoiced) log::writef("msg: page declares voice cue {}, which no event voice sheet has: read", cue_declared);
+  if (!may_be_voiced(kind) || !cue_declared || unvoiced) {
     g_pending.active = false;
     speech::speak(line, may_interrupt() && !g_auto);
     if (cue) wait_for_key(page, true);

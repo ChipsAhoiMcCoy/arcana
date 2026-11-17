@@ -102,15 +102,21 @@ class SaveLoadScreen : public MenuScreen {
   bool holds_loading() const override { return true; }
   int priority() const override { return 30; }
   bool active() override { UObject* d = draw_.get(); return d && count() > 0; }
-  void on_enter() override { screens::set_keys(strings::kListKeys); slot_seen_ = -1; }
-  void on_tick() override {
-    // The focused slot's contents changed: the save just went in.
+  // Back from the overwrite prompt (a message window), the list is entered again: a save that went in meanwhile is
+  // said as "Saved" and the slot, and the slot is not read again after it (it cut "Saved" off, 2026-11-17).
+  void on_enter() override { screens::set_keys(strings::kListKeys); if (!screens::returning()) slot_seen_ = -1; }
+  bool announce_entry() override { return !saved(); }
+  void on_tick() override { if (saved()) entry_answered(); }
+  // The focused slot's contents changed: the save just went in.
+  bool saved() {
     int c = list_.cursor();
-    if (c < 0) return;
+    if (c < 0) return false;
     std::string t = slot(c);
-    if (c == slot_seen_ && t != slot_text_) say(std::string(strings::kSaved) + ". " + t, true);
+    bool landed = c == slot_seen_ && t != slot_text_;
+    if (landed) say(std::string(strings::kSaved) + ". " + t, true);
     slot_seen_ = c;
     slot_text_ = t;
+    return landed;
   }
   void build(ui::GraphBuilder& b) override {
     int n = count();

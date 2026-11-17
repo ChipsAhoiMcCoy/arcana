@@ -74,6 +74,48 @@ void tick() {
   }
 }
 
+// The cue sheets the sound manager holds: mAcbFileControlBlock[0x40] at +0x840, each a UAcbFileControlBlock whose
+// +0x40 is its USoundAtomCueSheet (CueSheetName +0x40, an FString; BP_GetCueInfoFromId answers whether it has a cue).
+// An event's voices are its own sheet, Voice_Event_<event> (the Junpei arcade hangout's has cues 1-36, and its stat-up
+// page declares 37, a voice that never plays: the line waited silent until the review key, 2026-11-17).
+static int sheet_has(UObject* sheet, int cue) {
+  UFunction* fn = find_function(class_of(sheet), "BP_GetCueInfoFromId");
+  if (!fn) return -1;
+  Params p(fn);
+  p.set<int32_t>("ID", cue);
+  if (!call(sheet, p)) return -1;
+  return p.ret<bool>() ? 1 : 0;
+}
+template <class F> static void each_sheet(F f) {
+  static const int id = watch::want("PlayAdxControl");
+  UObject* ctl = watch::get(id);
+  if (!ctl) return;
+  for (int k = 0; k < 0x40; ++k) {
+    UObject* sheet = nullptr;
+    std::string name;
+    guarded([&] {
+      auto* blk = ((UObject**)((uint8_t*)ctl + 0x840))[k];
+      if (!blk || !is_live(blk)) return;
+      auto* s = *(UObject**)((uint8_t*)blk + 0x40);
+      if (!s || !is_live(s)) return;
+      sheet = s;
+      name = to_utf8(*(FString*)((uint8_t*)s + 0x40));
+    });
+    if (sheet) f(k, sheet, name);
+  }
+}
+int event_has_cue(int cue) {
+  int seen = 0, has = 0;
+  each_sheet([&](int, UObject* s, const std::string& name) {
+    if (name.rfind("Voice_Event", 0) != 0) return;
+    int h = sheet_has(s, cue);
+    if (h < 0) return;
+    ++seen;
+    if (h) ++has;
+  });
+  return has ? 1 : seen ? 0 : -1;
+}
+
 uint64_t started(int cue) {
   for (size_t i = g_starts.size(); i-- > 0;) if (g_starts[i].cue == cue) return g_starts[i].n;
   return 0;
@@ -132,6 +174,7 @@ void install() {
         read_blocks(raw);
         for (int k = 0; k < 0x100; ++k)
           if (raw[k].blk && raw[k].bank >= 0) s += std::format("all {} type {} bank {} cue {}\n", k, raw[k].type, raw[k].bank, raw[k].cue);
+        each_sheet([&](int k, UObject*, const std::string& name) { s += std::format("sheet {} {}\n", k, name); });
       }
       for (int k = 0; k < 0x100; ++k)
         if (g_slot[k].bank >= 0) s += std::format("block {} bank {} cue {} status {}\n", k, g_slot[k].bank, g_slot[k].cue, g_slot[k].status);
