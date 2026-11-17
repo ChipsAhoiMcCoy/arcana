@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_620_005_C
+4.250	1.276	00.mp3	Akihiko runs up.

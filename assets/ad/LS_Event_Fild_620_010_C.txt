@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_620_010_C
+4.400	1.119	00.mp3	Mitsuru runs up.

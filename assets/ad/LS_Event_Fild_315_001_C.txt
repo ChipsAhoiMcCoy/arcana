@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_315_001_C
+0.100	3.211	00.mp3	The hero walks along, hands in his pockets, then stops.

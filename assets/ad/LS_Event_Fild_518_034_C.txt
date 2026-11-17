@@ -1,0 +1,4 @@
+#scene LS_Event_Fild_518_034_C
+2.400	1.970	00.mp3	A tall white clock with a pendulum.
+5.000	1.714	01.mp3	The hero strolls up to the clock.
+8.500	1.073	02.mp3	He looks up at it.

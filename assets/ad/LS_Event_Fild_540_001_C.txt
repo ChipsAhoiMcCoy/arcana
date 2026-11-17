@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_540_001_C
+0.300	1.923	00.mp3	Mitsuru leads the way, then stops.

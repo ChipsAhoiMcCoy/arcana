@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_515_003_C
+0.500	3.072	00.mp3	A chest on a stand, a beam of light rising from it.
+4.000	3.221	01.mp3	A golden hand reaches in, opens it, and pulls back.

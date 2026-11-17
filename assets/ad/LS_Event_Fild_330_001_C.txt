@@ -1,0 +1,4 @@
+#scene LS_Event_Fild_330_001_C
+0.100	4.095	00.mp3	The hero and Junpei walk into the mall plaza and stop near a fountain.
+4.600	2.224	01.mp3	Shoppers stroll and sit around the fountain.
+7.200	3.850	02.mp3	Beyond it stands a small police box, a bicycle parked out front.

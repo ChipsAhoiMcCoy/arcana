@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_350_001_C
+0.100	2.091	00.mp3	The hero walks a few steps and stops.

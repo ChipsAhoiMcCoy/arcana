@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_518_031_C
+0.400	2.775	00.mp3	The masked golden hand stands on its fingertips.
+3.400	1.647	01.mp3	It turns, then scurries away.

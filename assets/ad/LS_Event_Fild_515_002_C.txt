@@ -1,0 +1,4 @@
+#scene LS_Event_Fild_515_002_C
+1.700	2.583	00.mp3	The masked golden hand stands on its fingers.
+4.500	1.587	01.mp3	It flips over and lands again.
+6.300	2.176	02.mp3	It bursts into red smoke and vanishes.
