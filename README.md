@@ -158,6 +158,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Controller trigger delay: 150 milliseconds; off, 100 or 250
 - Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
 - Descriptions in menus: on, off. A skill's, item's, gear's or setting's description is read after its row; off, only the details keys read it
+- Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster, so menus open, close and change sooner and take your keys sooner. The game's menu sounds still play. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
 - Mod keys: Space reads the mod's keys
 
 **Sound test** plays each of the mod's sounds with Space or Enter (A), whatever is switched off, and says what it means: each sonar sound (and one played from behind you), the Shadow's growl (plain and hunting), the Shadow alarm and losing you, the two strike-reach rings, the four wall tones and the controller tick.

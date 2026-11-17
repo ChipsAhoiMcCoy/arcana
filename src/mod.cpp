@@ -33,6 +33,7 @@
 #include "speech.h"
 #include "textcap.h"
 #include "topdown.h"
+#include "menuspeed.h"
 #include "voice.h"
 #include "watch.h"
 #include "ue/routes.h"
@@ -54,7 +55,7 @@ struct Section { const char* name; void (*fn)(); bool layouts = false; uint64_t 
 static Section g_sections[] = {
   {"watch", watch::tick}, {"probe", ue::probe_tick}, {"input", input::tick}, {"world", world::tick}, {"doors", doors::tick},
   {"voice", voice::tick}, {"msg", msg::tick}, {"screens", screens::tick},
-  {"topdown", topdown::tick}, {"audio", audio::tick},
+  {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
   {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
@@ -124,6 +125,7 @@ void init(bool speech_ok) {
   poi::install();
   sonar::install();
   topdown::install();
+  menuspeed::install();
   shadow::install();
   area::install();
   portrait::install();
@@ -156,6 +158,7 @@ void shutdown() {
   hooks::set_tick_callback(nullptr);
   msg::save_history();   // after the last tick: the game thread no longer adds to it
   topdown::shutdown();
+  menuspeed::shutdown();
   audio::shutdown();
   watch::remove();
   textcap::remove();

@@ -91,6 +91,9 @@ static const Def kDefs[Count] = {
   // a skill's, item's, gear's or setting's description read after its row (MenuScreen::buffer_with), or only on the
   // details keys (the 2026-11-11 way: players did not find them; on since 2026-11-15)
   {"menu_descriptions", strings::kSetMenuDescriptions, CatControls, strings::kHelpMenuDescriptions, Unit::Toggle, {0, 1}, 1},
+  // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales
+  {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
+   {strings::kOff, strings::kSpeed4, strings::kSpeed8, strings::kSpeed16}},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
 
