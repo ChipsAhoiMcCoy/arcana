@@ -1,0 +1,8 @@
+#scene LS_Event_Cmmu_002_090_C
+0.050	2.547	00.mp3	The school rooftop. Yukari stands alone.
+3.050	1.161	01.mp3	The hero walks up.
+16.400	2.024	02.mp3	Yukari presses a hand to her chest.
+23.600	1.550	03.mp3	The hero goes to Yukari.
+25.600	1.344	04.mp3	They hold each other close.
+33.900	1.273	05.mp3	Yukari runs off.
+35.500	1.368	06.mp3	The hero stands alone.

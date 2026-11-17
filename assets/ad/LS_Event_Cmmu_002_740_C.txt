@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_002_740_C
+0.000	0.891	00.mp3	The dorm kitchen.
+1.300	1.568	01.mp3	The hero leans on the fridge.
+6.100	1.112	02.mp3	At the dining table.

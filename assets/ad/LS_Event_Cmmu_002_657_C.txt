@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_002_657_C
+0.300	2.226	00.mp3	Yukari and the hero walk through the mall.
+4.100	1.256	01.mp3	Yukari turns to him.
+9.700	1.429	02.mp3	She steps in close to him.
+12.800	1.195	03.mp3	They walk off together.

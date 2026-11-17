@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_665_C
+4.880	2.457	00.mp3	Yukari faces the hero by a wire fence.

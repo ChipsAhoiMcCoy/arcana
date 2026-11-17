@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_520_C
+2.850	1.480	00.mp3	They sit on Yukari's bed.

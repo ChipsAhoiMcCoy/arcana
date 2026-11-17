@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_330_C
+2.750	1.214	00.mp3	Outside a sweets shop.

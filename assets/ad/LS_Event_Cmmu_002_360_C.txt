@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_360_C
+0.300	3.226	00.mp3	The mall fountain. Yukari and the hero walk up and stop.

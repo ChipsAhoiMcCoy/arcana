@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_002_080_C
+0.050	2.629	00.mp3	The mall fountain. Yukari walks with the hero.
+11.000	2.328	01.mp3	Yukari steps away and answers her phone.
+17.900	1.220	02.mp3	Yukari hangs up.
+23.100	1.829	03.mp3	Later, on a bench by the fountain.

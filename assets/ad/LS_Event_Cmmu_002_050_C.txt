@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_002_050_C
+0.050	1.236	00.mp3	Outside a burger shop.
+6.700	1.120	01.mp3	Yukari runs off.
+9.600	1.368	02.mp3	The hero stands alone.
+20.300	1.636	03.mp3	The hero sets off after her.

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_340_C
+3.700	1.995	00.mp3	A café. The two share a table.

@@ -1,0 +1,9 @@
+#scene LS_Event_Cmmu_002_790_C
+1.200	1.569	00.mp3	Yukari's room, from above.
+3.200	2.031	01.mp3	Yukari wears a maid's uniform.
+12.400	2.488	02.mp3	Black dress, white apron, a frilled headband.
+15.100	1.191	03.mp3	She walks out of the room.
+16.700	1.322	04.mp3	The room stands empty.
+18.400	1.394	05.mp3	Yukari leads Fuuka in.
+20.000	1.566	06.mp3	They stop in the middle of the room.
+25.300	2.392	07.mp3	Yukari steps behind Fuuka and grabs her.

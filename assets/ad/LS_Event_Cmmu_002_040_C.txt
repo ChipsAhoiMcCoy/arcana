@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_002_040_C
+1.250	1.029	00.mp3	The mall fountain.
+3.400	2.079	01.mp3	Yukari turns away and checks her phone.
+10.300	2.287	02.mp3	Yukari lowers the phone and stares at it.
+27.950	1.066	03.mp3	They sit on a bench.

@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_002_010_C
+0.050	1.081	00.mp3	The school rooftop.
+16.700	1.302	01.mp3	Yukari rubs her head.

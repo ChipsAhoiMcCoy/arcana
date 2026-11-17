@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_002_720_C
+0.050	0.987	00.mp3	The dorm lounge.
+15.250	1.318	01.mp3	They watch side by side.
+17.000	0.571	02.mp3	Later.

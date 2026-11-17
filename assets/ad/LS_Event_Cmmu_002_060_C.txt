@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_002_060_C
+0.050	1.081	00.mp3	The school rooftop.
+5.100	1.340	01.mp3	Yukari bows her head.
+11.700	2.110	02.mp3	Yukari stretches her arms over her head.

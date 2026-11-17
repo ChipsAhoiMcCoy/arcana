@@ -1,0 +1,6 @@
+#scene LS_Event_Cmmu_002_055_C
+1.900	1.540	00.mp3	Three men surround Yukari.
+6.200	1.830	01.mp3	The hero steps in front of Yukari.
+11.850	1.468	02.mp3	The hero lunges at them.
+14.600	0.891	03.mp3	The men are gone.
+27.900	1.799	04.mp3	Yukari walks off past the hero.

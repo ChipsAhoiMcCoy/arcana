@@ -1,0 +1,8 @@
+#scene LS_Event_Cmmu_002_200_C
+1.300	2.608	00.mp3	The mall fountain. A small boy runs past.
+7.400	1.776	01.mp3	The boy wanders toward the fountain.
+12.800	1.421	02.mp3	His mother takes his hand.
+14.600	2.653	03.mp3	They walk off together, past Yukari and the hero.
+18.500	1.521	04.mp3	Yukari watches them go.
+27.900	1.127	05.mp3	Later, on a bench.
+36.300	2.712	06.mp3	Yukari places something small in the hero's hand.

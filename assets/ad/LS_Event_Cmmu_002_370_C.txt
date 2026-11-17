@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_002_370_C
+5.300	1.407	00.mp3	A shop full of trinkets.

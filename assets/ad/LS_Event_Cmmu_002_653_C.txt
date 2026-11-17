@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_002_653_C
+0.300	0.991	00.mp3	Paulownia Mall.
+3.250	1.755	01.mp3	Yukari and the hero walk in.
+10.400	1.376	02.mp3	On a bench by the fountain.
