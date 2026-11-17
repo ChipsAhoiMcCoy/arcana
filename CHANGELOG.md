@@ -10,6 +10,8 @@
 
 ### Field
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
+- Auto-walk to a staircase takes the landing's own way to it. On the dorm's 2F landing it cut across the stairs down, so on the night of April 9 every walk to the 3F stairs ended in "It's not safe down below...".
+- Yukari is listed by name during the dorm escape. She was listed as "Person".
 - People who sell you something are listed under Shops, not People: Octopia's takoyaki stand (the New Year's one too), the Flower Shop Lady, the School Store Vendor, the 6HARA Clerk, the Luxury Shopkeeper, the Suspicious Man and the Fortune-Teller.
 
 ### Notices

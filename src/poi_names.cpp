@@ -82,8 +82,18 @@ std::string hit_name(UObject* hit) {
 }
 // An NPC's name as the game labels it: mDispName_, else row KIN_<mNameIndex_> of DT_FldNpcName (641000 = "Student",
 // 1000 = "Kenji Tomochika"; verified at Gekkoukan 2026-10-27), else a cast name from the actor's own name.
+// The name the actor carries itself (mDispName_), or "". The game writes some with an ideographic space between the
+// names ("Yukari　Takeba" on the dorm's escape, 2026-11-16): made a plain one.
+std::string disp_name(UObject* a) {
+  auto* dn = field<FString>(a, "mDispName_");
+  if (!dn) return "";
+  std::string s = to_utf8(*dn);
+  for (size_t at; (at = s.find("\xE3\x80\x80")) != std::string::npos;) s.replace(at, 3, " ");
+  return s;
+}
+
 std::string npc_name(UObject* npc) {
-  if (auto* dn = field<FString>(npc, "mDispName_")) { std::string s = to_utf8(*dn); if (!s.empty()) return s; }
+  if (std::string s = disp_name(npc); !s.empty()) return s;
   // A Social Link partner (FldCmmActor): mUniqueId_ is the arcana counted from the Fool as 0 (6 with the flag
   // CMM_06LOVERS..., 18 with CMM_18MOON..., 2026-10-27).
   if (is_a(npc, "FldCmmActor")) {

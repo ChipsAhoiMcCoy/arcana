@@ -271,6 +271,22 @@ static std::vector<FVector> find_entries(const Goal& g, const FVector& me, std::
 // capsule swept from each point to the next at the height he walks at. People block here (the seated students sit at
 // the aisles' ends); the target is reached from inside its trigger, so its own body is no matter.
 constexpr float kBodyReach = 2500.0f;   // the furthest a walk plans with the body alone (a room, not a district)
+// Floor under every 30 cm of the legs, at most a step (35 cm) below the hero's feet (`me` his middle, `half` his half
+// height). `off`: the first point without.
+static bool on_floor(const std::vector<FVector>& pts, const FVector& me, float half, FVector& off) {
+  float feet = me.z - half;
+  for (size_t i = 0; i < pts.size(); ++i) {
+    const FVector& a = pts[i];
+    const FVector& b = i + 1 < pts.size() ? pts[i + 1] : pts[i];
+    int n = std::max(1, (int)std::ceil(flat(a, b) / 30.0f));
+    for (int k = 0; k <= n; ++k) {
+      float t = (float)k / (float)n;
+      FVector p{a.x + (b.x - a.x) * t, a.y + (b.y - a.y) * t, me.z};
+      if (!world::line(p, FVector{p.x, p.y, feet - 35.0f}).hit) { off = p; return false; }
+    }
+  }
+  return true;
+}
 static bool body_plan(const Goal& g, const FVector& me, std::vector<FVector>& out, std::string* report = nullptr, bool past_people = false) {
   float radius, half;
   hero_body(radius, half);
@@ -302,6 +318,15 @@ static bool body_plan(const Goal& g, const FVector& me, std::vector<FVector>& ou
     if (!plan.found) continue;
     out.clear();
     for (core::Vec2 p : plan.points) out.push_back(FVector{p.x, p.y, me.z});
+    // The capsule is swept at the hero's height, so the plan knows walls and not floors: on the dorm's 2F landing it
+    // ran straight out over the stairs down (the hero walked down them into their trigger, "It's not safe down
+    // below...", 2026-11-16). A plan that leaves his floor is no plan: every 30 cm along it there must be floor no
+    // more than a step below his feet.
+    if (FVector off{}; !on_floor(out, me, half, off)) {
+      log::writef("nav: body plan leaves the floor at ({:.0f}, {:.0f}): not taken", off.x, off.y);
+      if (report) *report += std::format("  leaves the floor at ({:.0f}, {:.0f}): not taken\n", off.x, off.y);
+      return false;
+    }
     return true;
   }
   return false;
@@ -337,7 +362,12 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
     bool partial = false;
     auto path = world::find_path(me, at, &partial);
     if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(me, beside, &partial);
-    if ((path.empty() || partial) && body_plan(goal_of(t), me, body_path)) body = true;
+    // A partial path that ends under the target reaches it: a stairway's trigger floats over the steps, off the
+    // navmesh, so the path to it is always partial. Taken for "stops short", it sent the walk to the 3F stairs on the
+    // body's way out over the stairs down (2026-11-16); the navmesh's path goes round by the landing.
+    Goal g = goal_of(t);
+    bool under = !path.empty() && (g.has_box ? core::box_holds(g.box, world::vec3(path.back()), 50.0f, 400.0f) : flat(path.back(), at) < kArrive);
+    if ((path.empty() || (partial && !under)) && body_plan(g, me, body_path)) body = true;
   }
   g_w = Walk{};   // a new walk's plan starts empty; the keys held and g_walking are not part of it
   g_w.target = target;

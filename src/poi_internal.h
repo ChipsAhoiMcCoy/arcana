@@ -18,6 +18,7 @@ const char* kind_name(Kind k);                     // the kind's own word ("exit
 bool flag_on(const std::string& flag);             // a story flag by name (the game's own check)
 // Row KIN_<idx, 8 digits> of the first of these name tables that has it, "" when none does.
 std::string kin_name(std::initializer_list<const char*> tables, int idx);
+std::string disp_name(ue::UObject* a);              // the name an actor carries itself (mDispName_), or ""
 std::string npc_name(ue::UObject* npc);            // an NPC's (or Social Link partner's) name as the game labels it
 Kind check_kind(const std::string& name);          // a Check-icon hit by its name: Shop, Door or Thing
 std::string icon_of(ue::UObject* hit);             // mCheckIcon_'s value name ("Check", "Goto", "None")

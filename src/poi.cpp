@@ -230,6 +230,9 @@ std::vector<Poi> scan(float radius) {
     bool cmm = is_a(a, "FldCmmActor");
     if (cmm && get_bool(a, "bHidden")) continue;
     std::string nm = cmm ? npc_name(a) : hit_name(a);
+    // A character the story stands in the field as a hit of its own (FldHitCharacter: Yukari on the dorm's escape,
+    // 2026-11-16) has no hit name; it carries its own, which the list said as "Person".
+    if (nm.empty()) nm = disp_name(a);
     if (type == "AreaChange" || icon == "Goto") add(a, Kind::Exit, nm.empty() ? strings::kPoiExit : nm);
     else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop : nm);
     // A vendor under the Speak icon (a hit named as a shop) is a shop like an NPC vendor (below).
