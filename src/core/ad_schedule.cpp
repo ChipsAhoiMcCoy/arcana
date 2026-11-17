@@ -68,6 +68,12 @@ std::vector<Action> Schedule::step(const Clock& c, const Voice& v) {
     resync(c.time);
   }
   last_ = c.time;
+  if (c.fast) {   // fast-forward: the narrator is silent and what the clock passes is skipped
+    cut(out, "fast-forward");
+    for (size_t i = 0; i < cues_.size(); ++i)
+      if (state_[i] == State::Pending && cues_[i].at <= c.time) { state_[i] = State::Skipped; reason_[i] = "fast-forward"; }
+    return out;
+  }
 
   if (cur_ >= 0) {
     if (v.ended) { state_[cur_] = State::Done; cur_ = -1; paused_ = false; }

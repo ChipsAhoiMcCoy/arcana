@@ -124,6 +124,44 @@ TEST_CASE("ad: reset arms every cue again") {
   CHECK(a[0].cue == 0);
 }
 
+TEST_CASE("ad: fast-forward cuts the cue, skips what it passes and keeps the rest") {
+  Schedule s; s.load(three());
+  auto a = s.step({true, false, 1.0}, {});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Play);
+  double t = 1.0;
+  a = s.step({true, false, t += 1.0 / 15, true}, {true, false});   // fast-forward: four times the pace at 60 fps
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Stop);
+  CHECK(s.state(0) == State::Cut);
+  CHECK(s.reason(0) == "fast-forward");
+  while (t < 5.0) {
+    a = s.step({true, false, t += 1.0 / 15, true}, {});
+    CHECK(a.empty());                                       // nothing is said over it, and it is no jump
+  }
+  CHECK(s.state(1) == State::Skipped);
+  CHECK(s.reason(1) == "fast-forward");
+  CHECK(s.state(2) == State::Pending);
+  a.clear();
+  while (a.empty() && t < 9.0) a = s.step({true, false, t += 1.0 / 60}, {});   // back to normal: the schedule goes on
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Play);
+  CHECK(a[0].cue == 2);
+}
+
+TEST_CASE("ad: a cue still ahead of a fast-forward plays on time after it") {
+  Schedule s; s.load(three());
+  double t = 0;
+  while (t < 2.5) s.step({true, false, t += 1.0 / 15, true}, {});
+  CHECK(s.state(0) == State::Skipped);
+  std::vector<Action> a;
+  while (a.empty() && t < 5.0) a = s.step({true, false, t += 1.0 / 60}, {});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Play);
+  CHECK(a[0].cue == 1);
+  CHECK(t - 4.0 < 0.05);
+}
+
 TEST_CASE("ad: every state has a name for the log") {
   CHECK(std::string(state_name(State::Pending)) == "pending");
   CHECK(std::string(state_name(State::Playing)) == "playing");

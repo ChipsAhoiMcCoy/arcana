@@ -205,16 +205,17 @@ void unload() {
   for (Decoder& d : list) if (d.thread.joinable()) d.thread.join();
 }
 
-Clock clock(bool even_fast) {
+Clock clock() {
   Clock c;
   UObject* m = playing_mana();
   if (!m) {
     UObject* actor = nullptr;
     UObject* ev = playing_event(&actor);
-    // Fast-forward runs a scene at four times its pace: no description is played over it (one playing stops).
+    // Fast-forward runs a scene at four times its pace: no description is played over it (one playing stops; the
+    // schedule skips what it passes). It is the same scene: reporting it as stopped reloaded the scene at each
+    // toggle (2026-11-16, 110_210 in a player's log).
     if (!ev) return c;
     c.fast = world::scene_fast();
-    if (c.fast && !even_fast) return c;
     c.playing = true;
     c.event = true;
     c.paused = call_ret<bool>(ev, "IsPaused");
@@ -545,7 +546,7 @@ void tick() {
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
   // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
   sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
-  for (const sched::Action& a : g_sched.step({playing, c.paused, c.time}, v)) {
+  for (const sched::Action& a : g_sched.step({playing, c.paused, c.time, c.fast}, v)) {
     if (reader) {   // nothing of ours sounds: nothing to pause or stop
       if (a.act == sched::Act::Play) {
         speech::speak(s->texts[a.cue], false);
@@ -587,7 +588,7 @@ void register_routes() {
   track_player_id();
   dev::route("/ad/clock", [](const dev::Request&, int&) {
     return dev::on_game([] {
-      Clock c = clock(true);
+      Clock c = clock();
       if (!c.playing) return std::string("playing=0\n");
       return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}{}\n", c.paused ? 1 : 0,
                          c.event ? "scene" : "movie", c.movie, c.time, c.frame, c.audio_track,
