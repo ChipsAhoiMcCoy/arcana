@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Title screen
+- The credits that Z (L1) opens from the title menu are announced: "Credits", then "Credits paused" when you pause them, with what to press. Before, they rolled in silence and the title menu took no keys until they ended, so the game seemed to have stopped responding. Enter (A) pauses them; while they are paused, Tab (the Menu button) skips them and Enter resumes them. Backslash reads the names on screen.
+
+### Mod settings
+- The Sonar rows and the Sound test's sonar sounds are named by their kind alone ("Exits", "Door") instead of starting each with "Sonar:".
+
 ### Menus
 - New setting, Menu animation speed (Controls and help; off by default): while a menu is up, the game runs 4, 8 or 16 times faster, so its opening slides and transitions finish sooner and the menu takes your keys sooner. At 16 times the camp menu opens in about a twentieth of a second instead of a third, and the Velvet Room's menu in under a fifth of a second instead of two. The game's menu sounds still play. Battles, story scenes and conversations keep their normal speed.
 

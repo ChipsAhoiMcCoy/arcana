@@ -134,7 +134,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Sonar: on, off (also F3)
 - Sonar plays: everything nearby, the list's category only, or the selected point only (at any distance)
 - Sonar range: 10 meters; 5, 15, 20, 30 or 40
-- Sonar: exits, doors, people, shops, objects, events, Twilight Fragments: on, off, each kind on its own. Changing one plays its sound
+- Exits, Doors, People, Shops, Objects, Events, Twilight Fragments: on, off, each kind on its own. Changing one plays its sound
 - Sonar volume: 80 percent; 0 to 100 in steps of 10
 
 **Sound**
@@ -171,7 +171,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Choices: the highlighted answer and its position, as the list appears and on every move ("Go with this, 1 of 2"). A script that asks you to pay (the late-night TV shopping) says the price and your money first ("Price 2980 yen, you have 4800 yen").
 - The log (B, in the field or a conversation): each line as you scroll, opening on the newest; Space replays its voice. Lines from before this session are said to be earlier. Closing it in a conversation reads the line on screen again.
 - The party's voiced chatter while exploring, and the navigator's and party's remarks in battle, are not read over the voices; they stay in the log. Unvoiced lines are read.
-- Movies: "Movie paused" (Enter pauses and resumes, Tab skips). Every animated story movie (the anime scenes, both openings, both credit rolls) has audio description: a narrator describes what is on screen between lines, never over dialogue. During the credits, Backslash reads the names on screen.
+- Movies: "Movie paused" (Enter pauses and resumes, Tab skips). Every animated story movie (the anime scenes, both openings, both credit rolls) has audio description: a narrator describes what is on screen between lines, never over dialogue. During the credits, Backslash reads the names on screen. The credits Z (L1) opens from the title menu are announced too: Enter (A) pauses them, and Tab (the Menu button) skips them while they are paused.
 - Cut-ins: a close-up flashed to stress a line is described before it ("Close-up: Yukari, glaring.").
 - Pictures shown full screen are described as they appear (a class question's chalkboard, a sketch in the story).
 - Semicolon (triggers + B) while someone talks with their portrait up describes them as the portrait shows them now: their look, the outfit (uniform, winter coat, swimsuit, yukata, combat gear...) and how they stand. Every outfit of every character with a portrait is described.

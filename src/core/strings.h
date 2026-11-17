@@ -13,6 +13,11 @@ struct Hint {
 inline constexpr const char* kTitlePressAny = "Persona 3 Reload. Press any button.";
 inline constexpr const char* kTitlePressAnyAstrea = "Persona 3 Reload, Episode Aigis. Press any button.";
 inline constexpr const char* kTitleOpening = "Opening movie. Press any button to skip.";
+// The title menu's credits (Z or L1 on the title menu).
+inline constexpr Hint kCreditsRolling{"Credits. Tab twice skips them.", "Credits. The Menu button twice skips them."};
+inline constexpr Hint kCreditsPaused{"Credits paused. Tab skips them, Enter resumes.", "Credits paused. The Menu button skips them, A resumes."};
+inline constexpr const char* kCreditsResumed = "Credits resumed.";
+inline constexpr Hint kCreditsKeys{"Enter pauses and resumes the credits. Tab, while they are paused, skips them.", "A pauses and resumes the credits. The Menu button, while they are paused, skips them."};
 // The two boot notices are images: what they say, in the mod's own words.
 inline constexpr const char* kTitleCaution =
     "Caution. The game shows violence, bullying and suicide, so please take care and take breaks when you need "
@@ -345,16 +350,17 @@ inline constexpr const char* kHelpAudioDescription = "What is on screen in the a
 inline constexpr const char* kHelpSceneDescription = "What is on screen in the story scenes played in the game's 3D engine is described between the lines: by a narrator's voice, or read by the screen reader.";
 inline constexpr const char* kHelpDescriptionVolume = "How loud the narrator of movies and scenes is.";
 inline constexpr const char* kHelpModKeys = "Reads the list of the mod's keys.";
-// The sound test: each row plays one of the mod's sounds (name, then what it means).
+// The sound test: each row plays one of the mod's sounds (name, then what it means). The sonar's rows are named by
+// their kind alone (the user's call, 2026-11-17: no "Sonar:" before every row); the description says what it is.
 struct SoundTest { const char* name; const char* help; };
 inline constexpr SoundTest kSoundTests[] = {
-    {"Sonar: exit", "A way into another area."},
-    {"Sonar: door", "A room's door. One hollow knock."},
-    {"Sonar: person", "Someone to talk to. A whistled note that rises and falls."},
-    {"Sonar: shop", "A shop or vendor. Two small bells struck together."},
-    {"Sonar: object", "Something to check or open."},
-    {"Sonar: event", "A spot that starts a fight or a scene when you walk into it, such as a Gatekeeper."},
-    {"Sonar: Twilight Fragment", "A Twilight Fragment to pick up, or in Tartarus a crystal to strike for one."},
+    {"Exit", "A way into another area."},
+    {"Door", "A room's door. One hollow knock."},
+    {"Person", "Someone to talk to. A whistled note that rises and falls."},
+    {"Shop", "A shop or vendor. Two small bells struck together."},
+    {"Object", "Something to check or open."},
+    {"Event", "A spot that starts a fight or a scene when you walk into it, such as a Gatekeeper."},
+    {"Twilight Fragment", "A Twilight Fragment to pick up, or in Tartarus a crystal to strike for one."},
     {"A sound behind you", "The person whistle, from behind you. Lower in pitch when that setting is on."},
     {"Shadow, facing you", "The nearest Shadow within 30 meters snarls steadily from where it is, louder as it nears. Bright: it faces you."},
     {"Shadow, hunting you", "The snarl of a Shadow that has noticed you: higher and louder."},
@@ -375,13 +381,13 @@ inline constexpr const char* kScopeAll = "everything nearby";
 inline constexpr const char* kScopeCategory = "the list's category only";
 inline constexpr const char* kScopeSelected = "the selected point only, at any distance";
 inline constexpr const char* kSetSonarRange = "Sonar range";
-inline constexpr const char* kSetSonarExits = "Sonar: exits";
-inline constexpr const char* kSetSonarDoors = "Sonar: doors";
-inline constexpr const char* kSetSonarPeople = "Sonar: people";
-inline constexpr const char* kSetSonarShops = "Sonar: shops";
-inline constexpr const char* kSetSonarThings = "Sonar: objects";
-inline constexpr const char* kSetSonarEvents = "Sonar: events";
-inline constexpr const char* kSetSonarFragments = "Sonar: Twilight Fragments";
+inline constexpr const char* kSetSonarExits = "Exits";
+inline constexpr const char* kSetSonarDoors = "Doors";
+inline constexpr const char* kSetSonarPeople = "People";
+inline constexpr const char* kSetSonarShops = "Shops";
+inline constexpr const char* kSetSonarThings = "Objects";
+inline constexpr const char* kSetSonarEvents = "Events";
+inline constexpr const char* kSetSonarFragments = "Twilight Fragments";
 inline constexpr const char* kSetSonarVolume = "Sonar volume";
 inline constexpr const char* kSonarOn = "Sonar on";
 inline constexpr const char* kSonarOff = "Sonar off";
