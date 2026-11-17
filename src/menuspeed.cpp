@@ -1,5 +1,6 @@
 #include "menuspeed.h"
 #include "devserver.h"
+#include "hooks.h"
 #include "log.h"
 #include "msg.h"
 #include "seh.h"
@@ -40,6 +41,13 @@ static bool menu_up() {
   if (watch::get(battle)) { g_why = "battle"; return false; }
   if (world::scene_playing()) { g_why = "story scene"; return false; }
   if (msg::current().open) { g_why = "message window"; return false; }
+  // The game pauses itself while its window is minimized (the world's time stands still, the camp root's timer with it):
+  // a list then reads as not taking input, and the camp counted as busy for 8 minutes while the player was away
+  // (2026-11-17). Nothing runs to be sped.
+  if (UObject* w = gworld()) {
+    auto p = call_static("GameplayStatics", "IsGamePaused", [w](Params& p) { p.set<UObject*>("WorldContextObject", w); });
+    if (p.fn && p.ret<bool>()) { g_why = "game paused"; return false; }
+  }
   // A menu sitting idle runs at the game's time: the game times its idle lines (Igor's "Take all the time you need",
   // 15 s in the request list) on the same clock, and they came sixteen times as often (the user's report, 2026-11-17).
   if (auto* m = dynamic_cast<screens::MenuScreen*>(screens::current())) {
@@ -135,8 +143,15 @@ void install() {
     return dev::on_game([s] {
       if (!s.empty()) g_dev_scale = (float)atof(s.c_str());
       UObject* w = gworld();
-      return std::format("scale wanted {:.2f} (dev {:.2f}), applied {}, world {:.2f}, menu: {}, characters kept {}\n",
-                         scale_wanted(), g_dev_scale, g_applied, w ? read_scale(w) : -1.f, g_why, g_kept.size());
+      auto clock = [w](const char* fn) {
+        auto p = call_static("GameplayStatics", fn, [w](Params& p) { p.set<UObject*>("WorldContextObject", w); });
+        return p.fn ? p.ret<float>() : -1.f;
+      };
+      return std::format("scale wanted {:.2f} (dev {:.2f}), applied {}, world {:.2f}, menu: {}, characters kept {}\n"
+                         "clocks: game {:.3f} real {:.3f} unpaused {:.3f}, frame {}\n",
+                         scale_wanted(), g_dev_scale, g_applied, w ? read_scale(w) : -1.f, g_why, g_kept.size(),
+                         w ? clock("GetTimeSeconds") : -1.f, w ? clock("GetRealTimeSeconds") : -1.f,
+                         w ? clock("GetUnpausedTimeSeconds") : -1.f, hooks::frame());
     });
   }, "?scale=N overrides the menu speed setting (0: the setting); the world's time scale and why");
 }
