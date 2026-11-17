@@ -1,50 +1,52 @@
 #pragma once
-// A menu's title said on entry repeats the row the player just confirmed to open it ("Item" in the camp, then the Item
-// menu's "Item"): the player knows where they went. The title loses its first sentence when that sentence names the
-// confirmed row (its label before any ", Unavailable"-style tail), plural or singular alike; the rest of the title, a
-// question or a prompt ("Tactics. Give an order?"), stays.
+// What the player already knows after confirming a row: its name. A menu's title said on entry ("Item" after the camp's
+// Item) and the heading a confirm's list leads with (the member over Equip's slots, the slot over its gear) repeat it,
+// and are left out (menu.cpp). The test starts from the heading, not from guessing where the row's name ends: the
+// row's label is the heading, or starts with it followed by a comma, colon or period ("Armor: Bulletproof Shirt" is
+// named by "Armor"); case and a plural 's' aside ("Items" names "Item").
 #include <string>
 #include <string_view>
 
 namespace p3a::core {
 namespace title_echo_detail {
 inline bool space(char c) { return c == ' ' || c == '\t'; }
+inline char lower(char c) { return c >= 'A' && c <= 'Z' ? (char)(c - 'A' + 'a') : c; }
+inline bool sep(char c) { return c == ',' || c == ':' || c == '.'; }
 inline std::string_view trim(std::string_view s) {
-  while (!s.empty() && (space(s.front()) || s.front() == '.')) s.remove_prefix(1);
-  while (!s.empty() && (space(s.back()) || s.back() == '.' || s.back() == ',' || s.back() == ':'))
-    s.remove_suffix(1);
+  while (!s.empty() && (space(s.front()) || sep(s.front()))) s.remove_prefix(1);
+  while (!s.empty() && (space(s.back()) || sep(s.back()))) s.remove_suffix(1);
   return s;
 }
 inline std::string fold(std::string_view s) {
   std::string out;
-  for (char c : trim(s)) out += c >= 'A' && c <= 'Z' ? (char)(c - 'A' + 'a') : c;
+  for (char c : trim(s)) out += lower(c);
   if (out.size() > 1 && out.back() == 's') out.pop_back();
   return out;
 }
 }  // namespace title_echo_detail
 
-// The title to say when the screen was opened by confirming a row labelled `label` (empty: none).
-inline std::string drop_echoed_title(std::string_view title, std::string_view label) {
+// Whether `heading` names the row labelled `label`.
+inline bool names_row(std::string_view heading, std::string_view label) {
   using namespace title_echo_detail;
-  if (title.empty() || label.empty()) return std::string(title);
-  std::string_view head = label.substr(0, label.find(", "));
-  head = head.substr(0, head.find(". "));
-  size_t cut = title.find(". ");
-  std::string_view first = title.substr(0, cut);
-  if (fold(first).empty() || fold(first) != fold(head)) return std::string(title);
-  return cut == std::string_view::npos ? std::string() : std::string(trim(title.substr(cut + 2)));
+  heading = trim(heading);
+  label = trim(label);
+  if (heading.empty() || label.empty()) return false;
+  if (label.size() >= heading.size()) {
+    bool same = true;
+    for (size_t i = 0; i < heading.size() && same; ++i) same = lower(label[i]) == lower(heading[i]);
+    if (same && (label.size() == heading.size() || sep(label[heading.size()]))) return true;
+  }
+  size_t end = 0;
+  while (end < label.size() && !sep(label[end])) ++end;
+  return fold(heading) == fold(label.substr(0, end));
 }
 
-// The first line of the list a confirm opened, without a leading name that is the confirmed row's: the member chosen
-// in Equip is the slot list's context ("Colton, Weapon: ..." after "Colton" was confirmed). A line that is only that
-// name is kept.
-inline std::string drop_echoed_prefix(std::string_view line, std::string_view label) {
-  if (label.empty()) return std::string(line);
-  std::string_view head = label.substr(0, label.find(", "));
-  head = head.substr(0, head.find(". "));
-  if (head.empty() || line.size() <= head.size() + 2 || line.substr(0, head.size()) != head) return std::string(line);
-  std::string_view sep = line.substr(head.size(), 2);
-  if (sep != ", " && sep != ". ") return std::string(line);
-  return std::string(line.substr(head.size() + 2));
+// The title to say when the screen was opened by confirming a row labelled `label` (empty: none): without its first
+// sentence when that names the row. The rest, a question or a prompt ("Tactics. Give an order?"), stays.
+inline std::string drop_echoed_title(std::string_view title, std::string_view label) {
+  using namespace title_echo_detail;
+  size_t cut = title.find(". ");
+  if (!names_row(title.substr(0, cut), label)) return std::string(title);
+  return cut == std::string_view::npos ? std::string() : std::string(trim(title.substr(cut + 2)));
 }
 }  // namespace p3a::core

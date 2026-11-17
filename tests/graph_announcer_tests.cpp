@@ -182,3 +182,14 @@ TEST_CASE("a remembered path stands in for a node that is gone") {
   CHECK(spoken(kPlain.compose_from_path({}, next)) == "Your items, list, Soma");
   CHECK(GraphAnnouncer::path_ids(nullptr).empty());
 }
+
+TEST_CASE("a heading the host knows is left out of the landing, never the landing itself") {
+  Arena a;
+  GraphNode* member = a.context("Colton");
+  GraphNode* slot = a.node("Weapon: Long Wakizashi", member);
+  GraphNode* lone = a.node("Colton");
+  GraphAnnouncer known({}, [](const GraphNode&, const std::string& h) { return h == "Colton"; });
+  CHECK(spoken(known.compose_full(slot)) == "Weapon: Long Wakizashi");
+  CHECK(spoken(known.compose_full(lone)) == "Colton");
+  CHECK(spoken(kPlain.compose_full(slot)) == "Colton, Weapon: Long Wakizashi");
+}

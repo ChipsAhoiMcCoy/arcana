@@ -21,8 +21,10 @@
 #include "world.h"
 #include <windows.h>
 #include <xinput.h>
+#include <algorithm>
 #include <atomic>
 #include <format>
+#include <vector>
 
 namespace p3a::screens {
 struct MenuHost;
@@ -57,6 +59,21 @@ uint64_t g_moves = 0;   // the player's moves so far: a confirm waiting for the 
 // opened by it, and its title is not said again when it only names that row (core::drop_echoed_title).
 std::string g_confirmed_label;
 uint64_t g_confirmed_at = ~0ull;
+// The levels (a list's heading) focus sat inside at each confirm, and g_moves at the player's last cancel: the landing
+// of a cancel back into a level the player left by confirming does not say its heading again (back from Equip's gear
+// to the slots says the slot, not "Colton" first). Context ids are scoped by their list, so the set is never cleared.
+std::vector<ui::ControlId> g_left_levels;
+uint64_t g_cancel_at = ~0ull;
+// Whether an entered level's heading is known (GraphAnnouncer::HeadingKnown): the row just confirmed is named by it, or
+// a cancel brought focus back into a level it left by confirming.
+bool heading_known(const ui::GraphNode& level, const std::string& heading) {
+  if (g_confirmed_at == g_moves && core::names_row(heading, g_confirmed_label)) return true;
+  if (g_cancel_at == g_moves)
+    for (const auto& id : g_left_levels)
+      if (id == level.id) return true;
+  return false;
+}
+void cancel_pressed() { g_cancel_at = g_moves; }
 void say_line(std::string_view text, bool interrupt) {
   static core::SaidOnce said;
   if (!said.admit(text, g_moves, input::pad_ms(), speech::count())) {
@@ -80,17 +97,11 @@ ui::GraphNavigator& nav() {
         // drifts or a stuck key read one line again and again until it was let go).
         if (g_held_repeat && g_move_from && nav().focused_id() == g_move_from) return;
         if (g_entry_line) { interrupt = true; g_entry_line = false; }
-        std::string line(text);
         if (g_press_armed) {
           auto at = nav().focused_id();
-          if (at != g_press_on) {
-            interrupt = true;
-            g_press_armed = false;
-            // The landing of a confirm: a leading name that is the row just confirmed is not said again.
-            if (g_confirmed_at == g_moves) line = core::drop_echoed_prefix(line, g_confirmed_label);
-          }
+          if (at != g_press_on) { interrupt = true; g_press_armed = false; }
         }
-        say_line(line, interrupt);
+        say_line(text, interrupt);
       },
       [] { move_sound(); },
       [] { return g_active != nullptr; },
@@ -98,7 +109,8 @@ ui::GraphNavigator& nav() {
       // Left/Right at the end of a game list that does not keep its edges go to the game, which moves on (the next
       // month, a wrap) and the focus follows it. The mod's own lines (a row's walk) have no game answer: they repeat.
       [](ui::GraphDir d) { return (d == ui::GraphDir::Left || d == ui::GraphDir::Right) && g_active && g_active->edges_to_game(); },
-      core::place_of});
+      core::place_of,
+      heading_known});
   return n;
 }
 
@@ -162,6 +174,9 @@ bool nav_press(std::string_view action) {
     for (auto& a : f->vtable->announcements)
       if (a.kind == ui::announcement_kinds::kLabel && a.text) { guarded([&] { g_confirmed_label = a.text(); }); break; }
   g_confirmed_at = g_moves;
+  if (const ui::GraphNode* f = n.focused_node())
+    for (const ui::GraphNode* p = f->parent; p; p = p->parent)
+      if (std::find(g_left_levels.begin(), g_left_levels.end(), p->id) == g_left_levels.end()) g_left_levels.push_back(p->id);
   return n.on_action(Activate);
 }
 
@@ -189,7 +204,7 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
     bool back = false;
     if (cur) guarded([&] { back = cur->escape_is_back(); });
     if ((has_focus_now() && back) || (back && !dynamic_cast<MenuScreen*>(cur))) {
-      if (has_focus_now()) { player_moved(); armed_press(); }
+      if (has_focus_now()) { player_moved(); armed_press(); cancel_pressed(); }
       if (!repeat) input::inject_key('C');
       return true;
     }
@@ -216,6 +231,7 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
   player_moved();
   reached = true;
   if (mods == keys::None && (vk == VK_RETURN || vk == VK_SPACE || vk == VK_ESCAPE || vk == VK_BACK)) armed_press();
+  if (mods == keys::None && (vk == VK_ESCAPE || vk == VK_BACK || vk == 'C')) cancel_pressed();   // C: the game's own cancel
   using namespace ui::ui_actions;
   auto& n = nav();
   if (mods == keys::None) {
@@ -322,6 +338,7 @@ void pad_tick(bool on) {
       if (pressed & bit) pad_button(bit);
     g_pad_next = t + 450;
   }
+  if (b_pressed) { player_moved(); cancel_pressed(); }   // a cancel is a press like any other: a pending confirm is dropped
   if (b_pressed || (pressed & XINPUT_GAMEPAD_A)) armed_press();   // after pad_button: a move clears it
   // Any other new press of the pad's (LB / RB, a trigger, X, Y: input.cpp counts them) reached the game, which answers
   // it with a new list (the items' categories): armed like the confirm, so the landing interrupts and comes at once.

@@ -2,31 +2,35 @@
 #include "core/title_echo.h"
 
 using p3a::core::drop_echoed_title;
+using p3a::core::names_row;
+
+TEST_CASE("title_echo: a heading names the row it starts") {
+  CHECK(names_row("Colton", "Colton, HP 165 of 165, SP 112 of 112"));
+  CHECK(names_row("Armor", "Armor: Bulletproof Shirt, defense 65"));
+  CHECK(names_row("Mail", "Mail. 3 new"));
+  CHECK(names_row("Social Link", "Social Link"));
+  CHECK(names_row("Items", "Item"));
+  CHECK(names_row("skill", "Skill, Unavailable"));
+}
+
+TEST_CASE("title_echo: a heading that is not the row's name does not") {
+  CHECK_FALSE(names_row("Yukari", "Colton, HP 165"));
+  CHECK_FALSE(names_row("Colton", "Coltonia, HP 1"));
+  CHECK_FALSE(names_row("Item", "Itemize"));
+  CHECK_FALSE(names_row("Consumable Items", "Item"));
+  CHECK_FALSE(names_row("Armor", ""));
+  CHECK_FALSE(names_row("", "Armor"));
+}
 
 TEST_CASE("title_echo: the title naming the confirmed row is dropped") {
   CHECK(drop_echoed_title("Item", "Item") == "");
-  CHECK(drop_echoed_title("Social Link", "Social Link") == "");
   CHECK(drop_echoed_title("Items", "Item") == "");
-  CHECK(drop_echoed_title("Skill", "skills") == "");
-}
-
-TEST_CASE("title_echo: a tail on the row's label does not stop the match") {
   CHECK(drop_echoed_title("Persona", "Persona, Unavailable") == "");
-  CHECK(drop_echoed_title("Mail", "Mail. 3 new") == "");
+  CHECK(drop_echoed_title("Equip", "Equip: View or change equipment") == "");
 }
 
 TEST_CASE("title_echo: the rest of the title stays") {
   CHECK(drop_echoed_title("Tactics. Give an order?", "Tactics") == "Give an order?");
-}
-
-TEST_CASE("title_echo: the landing loses a leading name that is the confirmed row's") {
-  using p3a::core::drop_echoed_prefix;
-  CHECK(drop_echoed_prefix("Colton, Weapon: Long Wakizashi, 1 of 5", "Colton, HP 165 of 165, 1 of 3") ==
-        "Weapon: Long Wakizashi, 1 of 5");
-  CHECK(drop_echoed_prefix("Colton", "Colton, HP 165 of 165") == "Colton");
-  CHECK(drop_echoed_prefix("Coltons, Weapon", "Colton") == "Coltons, Weapon");
-  CHECK(drop_echoed_prefix("Yukari, Weapon: Bow", "Colton, HP 1") == "Yukari, Weapon: Bow");
-  CHECK(drop_echoed_prefix("Yukari, Weapon: Bow", "") == "Yukari, Weapon: Bow");
 }
 
 TEST_CASE("title_echo: another title, or no row, keeps the title") {

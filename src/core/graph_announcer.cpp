@@ -67,6 +67,10 @@ std::optional<std::string> GraphAnnouncer::compose_from_path(const std::vector<C
     for (std::size_t j = i; j < to_path.size(); j++) {
       const std::optional<std::string> text = leaf_text(to_path[j]);
       if (!text || text->empty()) continue;
+      if (j + 1 < to_path.size() && heading_known_) {
+        const std::optional<std::string> heading = first_part_text(to_path[j]);
+        if (heading && !heading->empty() && heading_known_(*to_path[j], *heading)) continue;
+      }
       // Dedupe: a level whose label just duplicates the next level down (or the control itself --
       // "a 'Game difficulty' section wrapping the 'Game difficulty' control").
       if (j + 1 < to_path.size()) {

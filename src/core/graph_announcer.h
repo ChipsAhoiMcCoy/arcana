@@ -27,8 +27,13 @@ class GraphAnnouncer {
  public:
   /// "n of m" wording for an auto-stamped sibling position; unset = no auto positions.
   using PositionText = std::function<std::string(int index, int count)>;
+  /// Whether an entered level's heading (its first part) is one the listener already knows, so it is left out of the
+  /// landing: the row just confirmed named it, or focus is back in a level it left by confirming. Never asked for the
+  /// landing node itself. Unset = every entered level reads.
+  using HeadingKnown = std::function<bool(const GraphNode& level, const std::string& heading)>;
   GraphAnnouncer() = default;
-  explicit GraphAnnouncer(PositionText positions) : position_text_(std::move(positions)) {}
+  explicit GraphAnnouncer(PositionText positions, HeadingKnown known = {})
+      : position_text_(std::move(positions)), heading_known_(std::move(known)) {}
 
   /// The line for landing on `to` having come from `from` (null = from nothing: the full path reads).
   /// nullopt when there is nothing to say.
@@ -52,6 +57,7 @@ class GraphAnnouncer {
 
  private:
   PositionText position_text_;
+  HeadingKnown heading_known_;
 };
 
 }  // namespace p3a::ui

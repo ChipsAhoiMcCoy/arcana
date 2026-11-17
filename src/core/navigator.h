@@ -30,6 +30,8 @@ struct NavigatorHost {
   std::function<bool(GraphDir)> edge_answered;
   // The "n of m" wording stamped on a list item; empty = no positions.
   GraphAnnouncer::PositionText position_text;
+  // An entered level's heading the listener already knows (GraphAnnouncer::HeadingKnown); empty = every one reads.
+  GraphAnnouncer::HeadingKnown heading_known;
 };
 
 // The UI action ids the navigator understands: the host maps its keys and buttons to these and calls on_action.

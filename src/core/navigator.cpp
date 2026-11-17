@@ -5,7 +5,7 @@
 
 namespace p3a::ui {
 
-GraphNavigator::GraphNavigator(NavigatorHost host) : host_(std::move(host)), announcer_(host_.position_text) {}
+GraphNavigator::GraphNavigator(NavigatorHost host) : host_(std::move(host)), announcer_(host_.position_text, host_.heading_known) {}
 
 void GraphNavigator::speak(std::string_view text, bool interrupt) {
   if (!text.empty() && host_.speak) host_.speak(text, interrupt);
