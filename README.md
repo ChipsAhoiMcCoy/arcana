@@ -123,6 +123,7 @@ They work like any other menu: up and down choose (at either end a further press
 **Exploring**
 
 - Wall tones: on, off
+- Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
 - Shadow alerts: on, off. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
 - Points of interest range: 60 meters; 20, 40, 100 or 150
 - Wall tone volume: 100 percent; 0 to 100 in steps of 10
@@ -284,7 +285,7 @@ The game's camera sits behind the hero and turns, so a sound "ahead" kept changi
 - While you walk freely the camera faces north and cannot turn. Up always walks north, even where the game uses a fixed scene camera (Fountain Square, the station, many rooms).
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
 - North is the corner map's up, place by place: where the game draws a map turned (Port Island Station, your room, the Command Room), north turns with it.
-- The wall tones are a compass: north, east, south and west, reaching 3 m. While you move, the direction behind your walk stays silent.
+- The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). While you move, the direction behind your walk stays silent.
 - Points of interest give compass directions ("north-east"), and the right stick scans (see On a controller).
 
 Conversations, story scenes, menus and battles keep the game's own camera and sound. Turn the setting off to play with the game's camera.

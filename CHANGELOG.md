@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Wall tones
+- New setting, Wall tone range (Exploring): how far away a wall starts to sound, 1 to 10 meters, 5 by default. It applies in both camera modes. In top-down exploration the tones used to reach only 3 meters; they now reach the same 5 meters as with the game's camera.
+
 ### Title screen
 - The credits that Z (L1) opens from the title menu are announced: "Credits", then "Credits paused" when you pause them, with what to press. Before, they rolled in silence and the title menu took no keys until they ended, so the game seemed to have stopped responding. Enter (A) pauses them; while they are paused, Tab (the Menu button) skips them and Enter resumes them. Backslash reads the names on screen.
 

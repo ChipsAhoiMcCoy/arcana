@@ -13,8 +13,8 @@
 // the key reads at its distance. The old probe (one straight sweep per direction) read any wall that crossed the
 // line, even one you would glide past.
 // In the top-down mode (topdown.cpp) the four directions are the compass, fixed, so a room had a wall within reach in
-// three or four of them all the time and turning no longer quietened them (the user, 2026-11-12). There they reach 3 m,
-// and while the player moves the hero (the movement input, so the stick, the keys and the auto-walk alike, even into a
+// three or four of them all the time and turning no longer quietened them (the user, 2026-11-12). There they reached 3 m
+// (5 m again since 2026-11-17, and a setting since: Wall tone range, 1 to 10 m, either mode), and while the player moves the hero (the movement input, so the stick, the keys and the auto-walk alike, even into a
 // wall) the direction behind the walk is left out. In either mode the tones sound only while the player moves (pushes a
 // way, or the hero moves), as Dark Vision's "when moving"; standing still they are quiet (the user, 2026-11-14; for a
 // day, 2026-11-13, they played all the time).
@@ -32,8 +32,7 @@
 
 namespace p3a::walltones {
 using world::FVector;
-static float g_range = 500.0f;        // cm
-constexpr float kTopDownRange = 300.0f;   // cm, the top-down mode's reach
+static float g_range = 500.0f;        // cm, the setting Wall tone range (5 m by default, both modes)
 constexpr float kMovingCmS = 30.0f;       // the hero moves: faster than this on the ground (a walk is ~250)
 constexpr float kBehindDeg = 100.0f;      // top-down: a direction more than this from the walk's is behind it
 static bool g_moving = false;
@@ -186,7 +185,7 @@ void tick() {
   g_moving = g_asking || (world::player_velocity(vel) && std::hypot(vel.x, vel.y) > kMovingCmS);
   // Only while moving (the user, 2026-11-14): standing still, the tones are quiet, in either mode.
   if (!g_moving) { silence(); return; }
-  const float range = top ? kTopDownRange : g_range;
+  const float range = g_range;
   // Top-down: the direction behind the walk is left out.
   const bool leave_behind = top;
   if (leave_behind) {
@@ -207,6 +206,7 @@ void tick() {
 }
 
 void set_enabled(bool on) { g_enabled = on; if (!on) silence(); }
+void set_range(float cm) { g_range = std::max(cm, 100.0f); }
 std::string status() {
   return std::format("walltones enabled={} range={:.0f} gain={:.2f} h0={:.0f} deg={:.0f} ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f} topdown={} moving={} asking={} heading={:.0f}\n", g_enabled, g_range, g_gain, g_h0, g_deg,
                      g_dist[0], g_dist[1], g_dist[2], g_dist[3], topdown::active(), g_moving, g_asking, g_heading);

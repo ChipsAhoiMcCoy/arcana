@@ -6,6 +6,7 @@
 #include "core/sonar_cues.h"
 #include "core/speech_text.h"
 #include "core/strings.h"
+#include "core/units.h"
 #include "devserver.h"
 #include "input.h"
 #include "keys.h"
@@ -44,6 +45,8 @@ static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90
 // One row per Id, in its order: what the file calls it, what the menu says and where, the values it cycles through.
 static const Def kDefs[Count] = {
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Toggle, {0, 1}, 1},
+  // how far each wall tone reaches, in meters, in either mode (walltones.cpp; Dark Vision's is 15 ft, 1 to 40)
+  {"wall_range", strings::kSetWallRange, CatExploring, strings::kHelpWallRange, Unit::Meters, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5},
   // every nearby point of interest sounds (sonar.cpp)
   {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {0, 1}, 1},
   {"sonar_scope", strings::kSetSonarScope, CatSonar, strings::kHelpSonarScope, Unit::Choice, {ScopeAll, ScopeCategory, ScopeSelected}, ScopeAll,
@@ -115,6 +118,7 @@ static void save() {
 
 static void apply(Id id) {
   if (id == WallTones && !env_flag(L"P3A_NOWALLTONES")) walltones::set_enabled(g_value[id] != 0);
+  if (id == WallRange) walltones::set_range(g_value[id] * 100.0f);
   if (id == MasterVolume) audio::set_master_volume(g_value[id] / 100.0f);
   if (id == SoundVolume) audio::set_bus_volume(audio::Bus::Cues, g_value[id] / 100.0f);
   if (id == SonarVolume) audio::set_bus_volume(audio::Bus::Sonar, g_value[id] / 100.0f);
@@ -149,7 +153,7 @@ static std::string label(Id id) {
   int v = g_value[id];
   switch (kDefs[id].unit) {
     case Unit::Toggle: return v ? strings::kOn : strings::kOff;
-    case Unit::Meters: return std::format("{} {}", v, strings::kMetersUnit);
+    case Unit::Meters: return core::meters((float)v);
     case Unit::Percent: return std::format("{} {}", v, strings::kPercent);
     case Unit::Choice: return v >= 0 && v < (int)kDefs[id].labels.size() ? kDefs[id].labels[v] : std::to_string(v);
     default: return v ? std::format("{} {}", v, strings::kMilliseconds) : std::string(strings::kOff);
