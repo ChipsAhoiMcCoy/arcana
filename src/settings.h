@@ -3,9 +3,13 @@
 namespace p3a::settings {
 // The mod's options, saved to %LOCALAPPDATA%\Arcana\settings.ini (settings-dev.ini for dev launches), and the
 // mod settings menu that changes them: F2, or both triggers and View on a controller (the game's Config keys say so).
-// A new option: an Id here, a row in settings.cpp's table, its name in strings.h, and its README line.
-enum Id { WallTones, WallRange, Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
-          ShadowAlerts, Spatial, BehindPitch, PoiRange, MasterVolume, SonarVolume, SoundVolume, WallVolume, TriggerDelay, EntryHints, VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, DescriptionVolume, TopDown, StrikeAssist, MenuDescriptions, MenuSpeed, Count };
+// A new option: an Id here (in the menu's order: the table follows it), a row in settings.cpp's table, its name in strings.h, and its README line.
+enum Id { TopDown, PoiRange, WallTones, WallRange, ShadowAlerts, StrikeAssist,
+          Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
+          MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
+          Spatial, BehindPitch,
+          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription,
+          TriggerDelay, EntryHints, MenuDescriptions, MenuSpeed, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }
 // VoicedLines: what the screen reader does with a line the game voices.

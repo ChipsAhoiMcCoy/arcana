@@ -122,41 +122,44 @@ They work like any other menu: up and down choose (at either end a further press
 
 **Exploring**
 
+- Top-down exploration: on, off (see below)
+- Points of interest range: 60 meters; 20, 40, 100 or 150
 - Wall tones: on, off
 - Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
 - Shadow alerts: on, off. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
-- Points of interest range: 60 meters; 20, 40, 100 or 150
-- Wall tone volume: 100 percent; 0 to 100 in steps of 10
-- Top-down exploration: on, off (see below)
 - Strike assist: on, off. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
 
 **Sonar**
 
 - Sonar: on, off (also F3)
-- Sonar plays: everything nearby, the list's category only, or the selected point only (at any distance)
-- Sonar range: 10 meters; 5, 15, 20, 30 or 40
+- Plays: everything nearby, the list's category only, or the selected point only (at any distance)
+- Range: 10 meters; 5, 15, 20, 30 or 40
 - Exits, Doors, People, Shops, Objects, Events, Twilight Fragments: on, off, each kind on its own. Changing one plays its sound
-- Sonar volume: 80 percent; 0 to 100 in steps of 10
+
+**Volume** (each 0 to 100 percent in steps of 10)
+
+- Master: 100 percent. Every sound the mod plays, not the game's own
+- Sonar: 80 percent. Changing it plays a sonar sound
+- Wall tones: 100 percent
+- Shadow sounds: 60 percent. The Shadow cues and the controller layer's tick
+- Audio description: 100 percent. The narrator of movies and scenes
 
 **Sound**
 
-- Sound placement: stereo, 3D for headphones, plain left and right. How the sonar and Shadow cues are placed. Stereo (Dark Vision's model, the default) places them by level and by the moment each ear hears them, and darkens sounds behind you. 3D uses Steam Audio's HRTF, which also gives above and below. Plain only pans
+- Placement: stereo, 3D for headphones, plain left and right. How the sonar and Shadow cues are placed. Stereo (Dark Vision's model, the default) places them by level and by the moment each ear hears them, and darkens sounds behind you. 3D uses Steam Audio's HRTF, which also gives above and below. Plain only pans
 - Lower pitch behind you: on, off. The sonar and the Shadow pulse play lower from behind (in top-down mode, from the south)
-- Mod master volume: 100 percent; 0 to 100 in steps of 10. Every sound the mod plays, not the game's own
-- Shadow sounds volume: 60 percent; 0 to 100 in steps of 10. The Shadow cues and the controller layer's tick
 
 **Dialogue and movies**
 
 - Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
 - When a line ends: say Next, page turn sound, message chime sound, cursor tick sound, off. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
-- Read cutscene subtitles: off, on. They are in the log (B) either way
+- Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
 - Audio description in movies: narrator's voice, screen reader, off. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
 - Audio description in 3D scenes: narrator's voice, screen reader, off. The same for the story scenes played in the game's 3D engine
-- Audio description volume: 100 percent; 0 to 100 in steps of 10
 
 **Controls and help**
 
-- Controller trigger delay: 150 milliseconds; off, 100 or 250
+- Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; off, 100 or 250
 - Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
 - Descriptions in menus: on, off. A skill's, item's, gear's or setting's description is read after its row; off, only the details keys read it
 - Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
@@ -299,7 +302,7 @@ Conversations, story scenes, menus and battles keep the game's own camera and so
 - **Strike reach:** while a Shadow is inside your strike's reach (the game's own hit area: the moment any of the Shadow's body touches it), a quick steel ring repeats in the middle of your head: attack now and it connects. When you are also behind it, a glassy upward tick plays instead: the strike gives the advantage. A breakable object rings the same way. Part of Shadow alerts.
 - **Strike assist:** in Tartarus, when you attack with a Shadow close enough that your strike would reach it if you faced it, from any side, you turn to face it as the swing starts. Your reach stays the same: it only aims. A Shadow hunting you comes first, then the nearest. Its own setting, on by default.
 
-Placed sounds stay where they are while they play, so they shift as you move. Positioning is set by the Sound placement setting. The 3D option uses Steam Audio (Valve, Apache 2.0, `phonon.dll`); without that file it falls back to stereo.
+Placed sounds stay where they are while they play, so they shift as you move. Positioning is set by the Placement setting (Sound). The 3D option uses Steam Audio (Valve, Apache 2.0, `phonon.dll`); without that file it falls back to stereo.
 
 ## Known limits
 

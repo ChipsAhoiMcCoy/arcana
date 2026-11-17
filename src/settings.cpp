@@ -32,9 +32,11 @@ enum class Unit { Toggle, Meters, Percent, Ms, Choice };
 // The menu's categories (the user's call, 2026-11-11: one list of 27 rows had grown too long). Each is a stop of its
 // own: a short list with its own positions, its name said on landing; Tab / Shift+Tab (Page Down / Page Up, RB / LB)
 // go to the next / previous one, wrapping. A row names its category, so the table's order stays the file's.
-enum Category { CatExploring, CatSonar, CatSound, CatDialogue, CatControls, CatCount };
-static const char* const kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatSound,
-                                                     strings::kCatDialogue, strings::kCatControls};
+// Regrouped 2026-11-17 (the user's call): every volume in one category, and a row does not repeat its category's name
+// ("Range" under Sonar, "Master" under Volume). The table's order is the menu's order within each category.
+enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatControls, CatCount };
+static const char* const kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatVolume,
+                                                     strings::kCatSound, strings::kCatDialogue, strings::kCatControls};
 struct Def {
   const char* key; const char* name;
   Category cat;        // where the menu lists it
@@ -44,9 +46,15 @@ struct Def {
 static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 // One row per Id, in its order: what the file calls it, what the menu says and where, the values it cycles through.
 static const Def kDefs[Count] = {
+  // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
+  {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
+  {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Toggle, {0, 1}, 1},
   // how far each wall tone reaches, in meters, in either mode (walltones.cpp; Dark Vision's is 15 ft, 1 to 40)
   {"wall_range", strings::kSetWallRange, CatExploring, strings::kHelpWallRange, Unit::Meters, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5},
+  {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {0, 1}, 1},
+  // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
+  {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
   // every nearby point of interest sounds (sonar.cpp)
   {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {0, 1}, 1},
   {"sonar_scope", strings::kSetSonarScope, CatSonar, strings::kHelpSonarScope, Unit::Choice, {ScopeAll, ScopeCategory, ScopeSelected}, ScopeAll,
@@ -61,19 +69,16 @@ static const Def kDefs[Count] = {
   {"sonar_objects", strings::kSetSonarThings, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
   {"sonar_events", strings::kSetSonarEvents, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
   {"sonar_fragments", strings::kSetSonarFragments, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {0, 1}, 1},
+  {"master_volume", strings::kSetMasterVolume, CatVolume, strings::kHelpMasterVolume, Unit::Percent, kPercents, 100},
+  {"sonar_volume", strings::kSetSonarVolume, CatVolume, strings::kHelpSonarVolume, Unit::Percent, kPercents, 80},     // the Sonar bus
+  {"wall_volume", strings::kSetWallVolume, CatVolume, strings::kHelpWallVolume, Unit::Percent, kPercents, 100},
+  {"sound_volume", strings::kSetSoundVolume, CatVolume, strings::kHelpSoundVolume, Unit::Percent, kPercents, 60},     // the Cues bus
+  {"description_volume", strings::kSetDescriptionVolume, CatVolume, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
   // how positional cues are placed: Dark Vision's stereo model, Steam Audio's HRTF, or a plain pan (a new key: the
   // old "hrtf" toggle's saved 1 would have kept the HRTF)
   {"spatial", strings::kSetSpatial, CatSound, strings::kHelpSpatial, Unit::Choice, {SpatialStereo, SpatialHrtf, SpatialPan}, SpatialStereo,
    {strings::kSpatialStereo, strings::kSpatialHrtf, strings::kSpatialPan}},
   {"behind_pitch", strings::kSetBehindPitch, CatSound, strings::kHelpBehindPitch, Unit::Toggle, {0, 1}, 1},
-  {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
-  {"master_volume", strings::kSetMasterVolume, CatSound, strings::kHelpMasterVolume, Unit::Percent, kPercents, 100},
-  {"sonar_volume", strings::kSetSonarVolume, CatSonar, strings::kHelpSonarVolume, Unit::Percent, kPercents, 80},     // the Sonar bus
-  {"sound_volume", strings::kSetSoundVolume, CatSound, strings::kHelpSoundVolume, Unit::Percent, kPercents, 60},     // the Cues bus
-  {"wall_volume", strings::kSetWallVolume, CatExploring, strings::kHelpWallVolume, Unit::Percent, kPercents, 100},
-  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
-  {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
   {"voiced_lines", strings::kSetVoicedLines, CatDialogue, strings::kHelpVoicedLines, Unit::Choice, {VoicedSilent, VoicedName, VoicedRead}, VoicedSilent,
    {strings::kVoicedRead, strings::kVoicedName, strings::kVoicedSilent}},
   {"voice_end_sound", strings::kSetVoiceEndSound, CatDialogue, strings::kHelpVoiceEndSound, Unit::Choice, {EndNext, EndPage, EndMessage, EndCursor, EndOff}, EndNext,
@@ -86,11 +91,8 @@ static const Def kDefs[Count] = {
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
-  {"description_volume", strings::kSetDescriptionVolume, CatDialogue, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
-  // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
-  {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
-  // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
-  {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
+  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
+  {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
   // a skill's, item's, gear's or setting's description read after its row (MenuScreen::buffer_with), or only on the
   // details keys (the 2026-11-11 way: players did not find them; on since 2026-11-15)
   {"menu_descriptions", strings::kSetMenuDescriptions, CatControls, strings::kHelpMenuDescriptions, Unit::Toggle, {0, 1}, 1},
