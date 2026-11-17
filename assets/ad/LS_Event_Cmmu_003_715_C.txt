@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_003_715_C
+3.500	1.898	00.mp3	The dorm lounge. They read manga.
+5.600	0.571	01.mp3	Later.

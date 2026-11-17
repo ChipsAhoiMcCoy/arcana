@@ -1,0 +1,9 @@
+#scene LS_Event_Cmmu_003_030_C
+0.050	1.038	00.mp3	A street in the mall.
+3.050	1.577	01.mp3	Junpei eyes a flower shop.
+5.000	2.043	02.mp3	A woman in an apron tends the flowers.
+16.100	2.620	03.mp3	Junpei backs away from the shop and hurries off.
+19.000	1.134	04.mp3	The hero follows.
+21.400	1.940	05.mp3	A plaza with pillars. They walk on.
+29.850	1.066	06.mp3	They sit on a bench.
+40.200	2.876	07.mp3	Junpei walks off. The hero stays on the bench.

@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_003_710_C
+0.170	0.987	00.mp3	The dorm lounge.
+1.500	2.527	01.mp3	The hero and Junpei read manga on a bench.
+6.400	1.454	02.mp3	The manga lie on the table.

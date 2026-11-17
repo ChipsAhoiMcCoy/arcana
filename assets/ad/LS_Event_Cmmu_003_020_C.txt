@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_003_020_C
+0.050	2.059	00.mp3	Junpei walks up hugging a watermelon.

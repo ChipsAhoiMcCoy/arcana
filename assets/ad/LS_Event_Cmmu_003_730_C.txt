@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_003_730_C
+5.380	1.091	00.mp3	The dorm rooftop.

@@ -1,0 +1,10 @@
+#scene LS_Event_Cmmu_003_025_C
+3.180	1.091	00.mp3	The dorm rooftop.
+15.550	1.153	01.mp3	Koromaru looks up.
+21.350	3.267	02.mp3	Koromaru steps onto the mat and stands over the watermelon.
+27.600	1.299	03.mp3	Ken turns to the hero.
+33.600	1.323	04.mp3	Akihiko arrives.
+49.850	1.335	05.mp3	Akihiko squares up.
+54.300	1.111	06.mp3	The melon bursts.
+58.950	0.571	07.mp3	Later.
+62.900	2.121	08.mp3	Junpei folds his arms and looks down.

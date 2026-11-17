@@ -1,0 +1,6 @@
+#scene LS_Event_Cmmu_003_720_C
+0.050	0.987	00.mp3	The dorm lounge.
+3.900	1.895	01.mp3	Junpei and the hero read manga.
+6.000	0.571	02.mp3	Later.
+7.750	1.518	03.mp3	The hero clenches a fist.
+15.300	0.571	04.mp3	Later.

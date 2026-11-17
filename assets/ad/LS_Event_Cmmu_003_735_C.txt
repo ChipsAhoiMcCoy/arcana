@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_003_735_C
+2.350	1.020	00.mp3	The dorm rooftop.
+7.550	1.546	01.mp3	Junpei turns to the hero.

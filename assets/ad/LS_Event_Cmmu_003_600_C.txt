@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_003_600_C
+1.200	1.553	00.mp3	The cinema's snack counter.
+3.050	1.730	01.mp3	Later. They sit in the audience.
+7.650	1.033	02.mp3	Back at the counter.

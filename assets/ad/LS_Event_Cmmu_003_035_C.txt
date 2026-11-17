@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_003_035_C
+1.180	1.950	00.mp3	The dorm lounge. Junpei sits.
+4.550	1.177	01.mp3	Junpei jumps up.
+6.880	1.685	02.mp3	Wrapped flowers lie on the table.
+9.900	1.472	03.mp3	Junpei folds his arms.
