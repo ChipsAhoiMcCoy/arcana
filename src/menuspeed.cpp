@@ -25,6 +25,7 @@ static bool g_applied = false;     // our scale is on
 static float g_given = 1.f;        // the scale we set
 static float g_before = 1.f;       // the game's value when we set ours
 static const char* g_why = "off";  // why the scale is (not) on, for /menuspeed
+static const char* g_busy = "";    // what the menu is at (MenuScreen::busy), for the log
 static std::vector<WeakObj> g_kept;  // the characters held at the game's own time (keep_characters)
 
 static float scale_wanted() {
@@ -42,12 +43,14 @@ static bool menu_up() {
   // A menu sitting idle runs at the game's time: the game times its idle lines (Igor's "Take all the time you need",
   // 15 s in the request list) on the same clock, and they came sixteen times as often (the user's report, 2026-11-17).
   if (auto* m = dynamic_cast<screens::MenuScreen*>(screens::current())) {
-    bool idle = true;
-    guarded([&] { idle = m->waiting_for_player(); });
-    g_why = idle ? "waiting for the player" : m->id();
-    return !idle;
+    const char* busy = nullptr;
+    guarded([&] { busy = m->busy(); });
+    g_why = busy ? m->id() : "waiting for the player";
+    g_busy = busy ? busy : "";
+    return busy != nullptr;
   }
-  if (screens::camp_open()) { g_why = "camp"; return true; }   // between the root and a submenu
+  g_busy = "";
+  if (screens::camp_open()) { g_why = "camp, between screens"; return true; }   // between the root and a submenu
   if (auto* s = screens::animating()) { g_why = s->id(); return true; }
   g_why = "no menu";
   return false;
@@ -121,7 +124,7 @@ void tick() {
   g_given = read_scale(w);
   g_applied = true;
   keep_characters(g_given);
-  log::writef("menuspeed: on ({}), {:.0f} times", g_why, g_given);
+  log::writef("menuspeed: on ({}{}{}), {:.0f} times", g_why, *g_busy ? ", " : "", g_busy, g_given);
 }
 
 void shutdown() { release(gworld(), "unload"); }

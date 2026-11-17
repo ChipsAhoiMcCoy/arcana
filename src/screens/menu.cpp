@@ -561,11 +561,13 @@ bool MenuScreen::takes_input() {
   return c >= 0 && MenuHost::ready(*m);
 }
 
-bool MenuScreen::waiting_for_player() {
+const char* MenuScreen::busy() {
   bool keys = true;
   guarded([&] { keys = holds_keys(); });
-  if (!keys) return true;
-  return !entry_due_ && pending_confirm_ < 0 && takes_input();
+  if (!keys) return nullptr;
+  if (entry_due_) return "opening";
+  if (pending_confirm_ >= 0) return "a confirm waiting for the game";
+  return takes_input() ? nullptr : "the list not taking input";
 }
 
 // A list whose rows are not read yet (no focus to ask about) is not ready to open.
