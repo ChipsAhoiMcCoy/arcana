@@ -50,8 +50,6 @@ std::string describe(const Shown& s) {
   return out;
 }
 
-size_t outfit_count() { return sizeof(kOutfits) / sizeof(kOutfits[0]); }
-size_t pose_count() { return sizeof(kPoses) / sizeof(kPoses[0]); }
 bool has_outfit(int chara, int clothes) {
   for (auto& o : kOutfits) if (o.chara == chara && o.clothes == clothes && o.text && *o.text) return true;
   return false;

@@ -5,7 +5,7 @@ Arcana is an alpha. This is what is missing and what has not been tested. If you
 ## Not covered
 
 - English only, for both the game's text and the mod's own speech.
-- Audio description in 3D story scenes is still being written: the main story from the May full moon to the end, and some side events, are described; April's scenes and the remaining side events are not yet. Every animated movie is described.
+- Audio description in 3D story scenes is still being written: the main story, side events, Elizabeth's and the teachers' requests, field moments and Yukari's and Junpei's Social Links are described; the other Social Links and Episode Aigis's scenes are not yet. Every animated movie is described.
 - On a controller, typing a name in the contract still needs a keyboard.
 
 ## Never tried in the running game
@@ -19,10 +19,6 @@ Arcana is an alpha. This is what is missing and what has not been tested. If you
 - No full late-game playthrough: menus were tested on saves from various points. Monad and the Abyss of Time were visited only to check area descriptions.
 - Audio description text was checked by automated timing and transcript checks, not by a person watching every movie.
 - Screen readers other than the ones used day to day. Please say which one you use when you report.
-
-## Known bugs
-
-- The BGM playlist in Config: the game opens it with D, but the mod's menus keep W, A, S and D from the game, so it may not be reachable from the keyboard. Found by reading the code; not tried in the game.
 
 ## Behaviour to expect
 

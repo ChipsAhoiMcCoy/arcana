@@ -15,9 +15,7 @@ struct Shown {
 bool parse_texture(std::string_view name, Shown& out);   // "T_BU_PC0002_PoseA_C102" (a path's last part is enough)
 // The character's look in that outfit, then the pose; "" when the outfit has no description.
 std::string describe(const Shown& s);
-// For the tests: how many outfits and poses are written, and whether one is.
-size_t outfit_count();
-size_t pose_count();
+// For the tests: whether an outfit or a pose is written.
 bool has_outfit(int chara, int clothes);
 bool has_pose(int chara, int clothes, char pose);
 }  // namespace p3a::core::portrait

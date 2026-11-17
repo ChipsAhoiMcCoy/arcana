@@ -19,7 +19,6 @@ class NextCue {
   void arm();                                 // the screen opened: the cue is due once it takes OK
   void disarm();                           // gone, or the cue no longer wanted (said already)
   bool armed() const { return armed_; }
-  bool given() const { return given_; }
   // Every tick while the screen is current. `ready`: the screen's own sign it takes OK. `game_sign_enough`: that sign
   // is the game's own (the victory screen's OK key help), so the pad queries are not waited for.
   void tick(bool ready, bool game_sign_enough = false);

@@ -14,7 +14,6 @@ void detach_all();   // unload: removes every detour still in (the modules', the
 // The Win32 layer: the frame's pump (PeekMessageW), focus defang (P3A_NOFOCUS=1, the dev loop) and the low-level
 // keyboard hook refusal. Its detours are recorded with the others; detach_all removes them.
 bool install();
-uint64_t key_ms();         // when the game window last got a key press, or 0
 uint64_t key_count();      // how many key presses the game window has got
 
 // Game-thread work. `tick()` is called once per game frame by pump(); it drains the

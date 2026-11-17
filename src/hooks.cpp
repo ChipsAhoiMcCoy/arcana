@@ -240,8 +240,6 @@ static WndProc_t g_wndproc_orig;
 static bool g_wndproc_hooked;
 static std::atomic<KeyFilter> g_key_filter{nullptr};
 void set_key_filter(KeyFilter f) { g_key_filter = f; }
-static std::atomic<uint64_t> g_key_ms{0};
-uint64_t key_ms() { return g_key_ms; }
 static std::atomic<uint64_t> g_key_count{0};
 uint64_t key_count() { return g_key_count; }
 static std::atomic<void (*)()> g_focus_lost{nullptr};
@@ -252,7 +250,7 @@ static LRESULT CALLBACK wndproc_hook(HWND h, UINT m, WPARAM w, LPARAM l) {
     // The keyboard goes to another window: the key-ups of whatever is held go with it.
     if (auto cb = g_focus_lost.load()) cb();
   }
-  if (m == WM_KEYDOWN || m == WM_SYSKEYDOWN) { g_key_ms = GetTickCount64(); ++g_key_count; }
+  if (m == WM_KEYDOWN || m == WM_SYSKEYDOWN) ++g_key_count;
   if (m == WM_KEYDOWN || m == WM_KEYUP || m == WM_SYSKEYDOWN || m == WM_SYSKEYUP || m == WM_CHAR) {
     if (KeyFilter f = g_key_filter.load(); f && f(m, w, l)) return 0;
   }
