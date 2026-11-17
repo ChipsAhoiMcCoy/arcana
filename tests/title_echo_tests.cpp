@@ -19,6 +19,16 @@ TEST_CASE("title_echo: the rest of the title stays") {
   CHECK(drop_echoed_title("Tactics. Give an order?", "Tactics") == "Give an order?");
 }
 
+TEST_CASE("title_echo: the landing loses a leading name that is the confirmed row's") {
+  using p3a::core::drop_echoed_prefix;
+  CHECK(drop_echoed_prefix("Colton, Weapon: Long Wakizashi, 1 of 5", "Colton, HP 165 of 165, 1 of 3") ==
+        "Weapon: Long Wakizashi, 1 of 5");
+  CHECK(drop_echoed_prefix("Colton", "Colton, HP 165 of 165") == "Colton");
+  CHECK(drop_echoed_prefix("Coltons, Weapon", "Colton") == "Coltons, Weapon");
+  CHECK(drop_echoed_prefix("Yukari, Weapon: Bow", "Colton, HP 1") == "Yukari, Weapon: Bow");
+  CHECK(drop_echoed_prefix("Yukari, Weapon: Bow", "") == "Yukari, Weapon: Bow");
+}
+
 TEST_CASE("title_echo: another title, or no row, keeps the title") {
   CHECK(drop_echoed_title("Config", "System") == "Config");
   CHECK(drop_echoed_title("Item", "") == "Item");

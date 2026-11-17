@@ -80,11 +80,17 @@ ui::GraphNavigator& nav() {
         // drifts or a stuck key read one line again and again until it was let go).
         if (g_held_repeat && g_move_from && nav().focused_id() == g_move_from) return;
         if (g_entry_line) { interrupt = true; g_entry_line = false; }
+        std::string line(text);
         if (g_press_armed) {
           auto at = nav().focused_id();
-          if (at != g_press_on) { interrupt = true; g_press_armed = false; }
+          if (at != g_press_on) {
+            interrupt = true;
+            g_press_armed = false;
+            // The landing of a confirm: a leading name that is the row just confirmed is not said again.
+            if (g_confirmed_at == g_moves) line = core::drop_echoed_prefix(line, g_confirmed_label);
+          }
         }
-        say_line(text, interrupt);
+        say_line(line, interrupt);
       },
       [] { move_sound(); },
       [] { return g_active != nullptr; },
@@ -197,7 +203,11 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
   bool nav_key = (mods == keys::None && (vk == VK_UP || vk == VK_DOWN || vk == VK_LEFT || vk == VK_RIGHT || vk == VK_HOME || vk == VK_END ||
                                          vk == VK_RETURN || vk == VK_SPACE || vk == VK_TAB || vk == VK_NEXT || vk == VK_PRIOR)) ||
                  (mods == keys::Shift && vk == VK_TAB);
-  if (nav_key && !g_active->takes_input()) { ++g_dropped_keys; return true; }
+  if (nav_key && !g_active->takes_input()) {
+    ++g_dropped_keys;
+    log::writef("menu: key {:#x} dropped, {} takes no input now", vk, g_active->id());
+    return true;
+  }
   // A held confirm is one press: repeating it activated the row again on every auto-repeat.
   if (repeat && mods == keys::None && (vk == VK_RETURN || vk == VK_SPACE)) return true;
   g_held_repeat = repeat;
@@ -250,7 +260,10 @@ constexpr uint16_t kPadMask = XINPUT_GAMEPAD_DPAD_UP | XINPUT_GAMEPAD_DPAD_DOWN 
                               XINPUT_GAMEPAD_DPAD_RIGHT | XINPUT_GAMEPAD_A;
 void pad_button(uint16_t b) {
   using namespace ui::ui_actions;
-  if (!g_active->takes_input()) return;   // like on_key: dropped, as the game drops it
+  if (!g_active->takes_input()) {   // like on_key: dropped, as the game drops it
+    log::writef("menu: pad button {:#x} dropped, {} takes no input now", b, g_active->id());
+    return;
+  }
   g_device = 1;
   player_moved();
   bool taken = true;

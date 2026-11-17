@@ -34,4 +34,17 @@ inline std::string drop_echoed_title(std::string_view title, std::string_view la
   if (fold(first).empty() || fold(first) != fold(head)) return std::string(title);
   return cut == std::string_view::npos ? std::string() : std::string(trim(title.substr(cut + 2)));
 }
+
+// The first line of the list a confirm opened, without a leading name that is the confirmed row's: the member chosen
+// in Equip is the slot list's context ("Colton, Weapon: ..." after "Colton" was confirmed). A line that is only that
+// name is kept.
+inline std::string drop_echoed_prefix(std::string_view line, std::string_view label) {
+  if (label.empty()) return std::string(line);
+  std::string_view head = label.substr(0, label.find(", "));
+  head = head.substr(0, head.find(". "));
+  if (head.empty() || line.size() <= head.size() + 2 || line.substr(0, head.size()) != head) return std::string(line);
+  std::string_view sep = line.substr(head.size(), 2);
+  if (sep != ", " && sep != ". ") return std::string(line);
+  return std::string(line.substr(head.size() + 2));
+}
 }  // namespace p3a::core
