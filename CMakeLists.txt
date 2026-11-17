@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.26)
 project(arcana LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -57,10 +57,11 @@ target_link_options(arcana PRIVATE /DELAYLOAD:${PRISM_DLL_NAME} /DELAYLOAD:phono
 add_custom_command(TARGET arcana POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PRISM_DLL} $<TARGET_FILE_DIR:arcana>
   COMMAND ${CMAKE_COMMAND} -E copy_if_different ${PHONON_DLL} $<TARGET_FILE_DIR:arcana>)
-# assets/ (wall tones, the audio description clips) on every build, not only when the DLL relinks: a re-pack of
-# assets/ad with no code change must reach the build too
+# assets/ (wall tones, the audio description clips) checked on every build, not only when the DLL relinks: a re-pack
+# of assets/ad with no code change must reach the build too. Only files whose contents differ are copied (thousands of
+# clips: copying them all took ~9 s a build).
 add_custom_target(arcana_assets ALL
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:arcana>/assets)
+  COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:arcana>/assets)
 
 # --- dsound.dll proxy: dropped into P3R\Binaries\Win64, loads the mod before the game's code runs ---
 add_library(dsound_proxy SHARED src/proxy/dsound_proxy.cpp src/proxy/dsound.def)

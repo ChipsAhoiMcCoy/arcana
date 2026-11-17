@@ -8,7 +8,7 @@ You need:
 
 - Windows 10 or 11.
 - Visual Studio 2022 or its Build Tools, with "Desktop development with C++" for x64.
-- CMake 3.24 or later.
+- CMake 3.26 or later.
 - Ninja (Visual Studio's copy is found automatically if its CMake tools are installed; otherwise put Ninja on your PATH).
 - Python 3 (standard library only) for packaging and the dev client.
 
