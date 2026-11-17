@@ -2,6 +2,7 @@
 #include "devserver.h"
 #include "log.h"
 #include "msg.h"
+#include "seh.h"
 #include "settings.h"
 #include "watch.h"
 #include "world.h"
@@ -38,8 +39,15 @@ static bool menu_up() {
   if (watch::get(battle)) { g_why = "battle"; return false; }
   if (world::scene_playing()) { g_why = "story scene"; return false; }
   if (msg::current().open) { g_why = "message window"; return false; }
-  if (screens::camp_open()) { g_why = "camp"; return true; }
-  if (dynamic_cast<screens::MenuScreen*>(screens::current())) { g_why = screens::current()->id(); return true; }
+  // A menu sitting idle runs at the game's time: the game times its idle lines (Igor's "Take all the time you need",
+  // 15 s in the request list) on the same clock, and they came sixteen times as often (the user's report, 2026-11-17).
+  if (auto* m = dynamic_cast<screens::MenuScreen*>(screens::current())) {
+    bool idle = true;
+    guarded([&] { idle = m->waiting_for_player(); });
+    g_why = idle ? "waiting for the player" : m->id();
+    return !idle;
+  }
+  if (screens::camp_open()) { g_why = "camp"; return true; }   // between the root and a submenu
   if (auto* s = screens::animating()) { g_why = s->id(); return true; }
   g_why = "no menu";
   return false;

@@ -561,6 +561,13 @@ bool MenuScreen::takes_input() {
   return c >= 0 && MenuHost::ready(*m);
 }
 
+bool MenuScreen::waiting_for_player() {
+  bool keys = true;
+  guarded([&] { keys = holds_keys(); });
+  if (!keys) return true;
+  return !entry_due_ && pending_confirm_ < 0 && takes_input();
+}
+
 // A list whose rows are not read yet (no focus to ask about) is not ready to open.
 bool MenuScreen::entry_ready() { return (focused() || mirrors_.empty()) && takes_input(); }
 

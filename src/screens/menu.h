@@ -81,6 +81,11 @@ class MenuScreen : public Screen, public ui::Screen {
   void stop_following() { for (auto& m : mirrors_) m->follow = false; }
   // Whether the focused list takes input now (Mirror::ready, and its cursor is up): the menu waits for the game.
   bool takes_input();
+  // The menu sits waiting for the player: opened and said, the focused list taking input, no confirm waiting for the
+  // game; or the game's own page or prompt is over it (the player reads or answers it). Anything else (opening, a
+  // transition, a list's slide) is the game at work: the menu speed runs only then (menuspeed.cpp), so what the game
+  // times while a menu sits idle (Igor's and the shopkeepers' idle lines) keeps its pace.
+  bool waiting_for_player();
   // Whether the menu has the keys now (false: something of the game's is over it, a term's page, a prompt).
   virtual bool holds_keys() { return true; }
   // A key down going to the game while it has the keys (a screen that reads what the game does with it).
