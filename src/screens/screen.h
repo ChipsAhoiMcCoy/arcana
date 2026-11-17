@@ -34,11 +34,15 @@ class Screen {
   // A save is (about to be) loaded while this screen is up (the title, the save list): the game's money, stats and
   // links change under it, so their change lines wait until the hero is in the field again (screens::loading()).
   virtual bool holds_loading() const { return false; }
+  // The game plays this screen's opening or closing animation while active() is false (the mail's slide in and out):
+  // the menu speed (menuspeed.cpp) runs it faster too.
+  virtual bool animating() { return false; }
 };
 
 void add(std::unique_ptr<Screen> s);
 void tick();                // picks the current screen, runs enter/leave/tick
 Screen* current();
+Screen* animating();        // a screen playing its opening or closing while not active (Screen::animating), or null
 // The current screen's keys for F1: the latest a screen named while it was current (a screen with steps names each
 // step's keys as it enters it).
 void set_keys(const strings::Hint& h);

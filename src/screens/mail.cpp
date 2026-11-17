@@ -129,6 +129,12 @@ class MailScreen : public MenuScreen {
     // The actor stays after it closes (bIsFinishOutAnim, 2026-10-27).
     return d && flag(d, "bIsFinishInAnim") && !flag(d, "bIsStartOutAnim") && !flag(d, "bIsFinishOutAnim");
   }
+  // Sliding in (bIsStartInAnim until bIsFinishInAnim, ~0.6 s) or out (bIsStartOutAnim until bIsFinishOutAnim).
+  bool animating() override {
+    UObject* d = draw_.get();
+    return d && ((flag(d, "bIsStartInAnim") && !flag(d, "bIsFinishInAnim")) ||
+                 (flag(d, "bIsStartOutAnim") && !flag(d, "bIsFinishOutAnim")));
+  }
   // An open mail is read whole when it opens; its keys (reply, next, scroll) are the game's.
   bool holds_keys() override { UObject* d = draw_.get(); return d && !flag(d, "bIsStartMailAnim"); }
   std::string title() override { return strings::kMail; }

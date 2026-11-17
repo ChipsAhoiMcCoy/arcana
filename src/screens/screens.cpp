@@ -23,6 +23,13 @@ static Screen* g_current;
 
 void add(std::unique_ptr<Screen> s) { g_screens.push_back(std::move(s)); }
 Screen* current() { return g_current; }
+Screen* animating() {
+  for (auto& s : g_screens) {
+    bool on = false;
+    if (guarded([&] { on = s->animating(); }) && on) return s.get();
+  }
+  return nullptr;
+}
 static Screen* g_keys_screen;
 static std::function<std::string()> g_keys;
 static std::string g_hint_due;   // an entry hint to speak once this tick's lines are out

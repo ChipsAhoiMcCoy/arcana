@@ -12,6 +12,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <format>
+#include <vector>
 
 namespace p3a::menuspeed {
 using namespace ue;
@@ -23,6 +24,7 @@ static bool g_applied = false;     // our scale is on
 static float g_given = 1.f;        // the scale we set
 static float g_before = 1.f;       // the game's value when we set ours
 static const char* g_why = "off";  // why the scale is (not) on, for /menuspeed
+static std::vector<WeakObj> g_kept;  // the characters held at the game's own time (keep_characters)
 
 static float scale_wanted() {
   if (g_dev_scale > 0) return g_dev_scale;
@@ -38,6 +40,7 @@ static bool menu_up() {
   if (msg::current().open) { g_why = "message window"; return false; }
   if (screens::camp_open()) { g_why = "camp"; return true; }
   if (dynamic_cast<screens::MenuScreen*>(screens::current())) { g_why = screens::current()->id(); return true; }
+  if (auto* s = screens::animating()) { g_why = s->id(); return true; }
   g_why = "no menu";
   return false;
 }
@@ -53,9 +56,30 @@ static void write_scale(UObject* w, float v) {
   });
 }
 
+// The characters on screen (Igor at the fusion table, the camp's party model) keep the game's own time: their looping
+// idles carry sounds (Igor's cards), which a sped world played many times a second (the user's report, 2026-11-17).
+// Each Character's CustomTimeDilation is 1 / scale while the scale is on, one spawned meanwhile included; given back
+// unless the game set its own.
+static void keep_characters(float scale) {
+  static const int chars = watch::want("Character", true);
+  for (UObject* a : watch::all(chars)) {
+    float* t = field<float>(a, "CustomTimeDilation");
+    if (!t || std::fabs(*t - 1.f) >= 0.001f) continue;   // ours already, or the game's own
+    *t = 1.f / scale;
+    g_kept.push_back(WeakObj::of(a));
+  }
+}
+static void free_characters(float scale) {
+  for (auto& k : g_kept)
+    if (UObject* a = k.resolve())
+      if (float* t = field<float>(a, "CustomTimeDilation"); t && std::fabs(*t - 1.f / scale) < 0.001f) *t = 1.f;
+  g_kept.clear();
+}
+
 static void release(UObject* w, const char* why) {
   if (!g_applied) return;
   g_applied = false;
+  free_characters(g_given);
   float now = w ? read_scale(w) : -1.f;
   // Only our own value is taken back: one the game set meanwhile is the game's.
   if (w && std::fabs(now - g_given) < 0.01f) write_scale(w, g_before);
@@ -66,16 +90,18 @@ void tick() {
   UObject* w = gworld();
   float want = scale_wanted();
   bool menu = menu_up();
-  if (!w) { g_applied = false; return; }
+  if (!w) { g_applied = false; g_kept.clear(); return; }
   if (g_applied) {
     float now = read_scale(w);
     if (std::fabs(now - g_given) >= 0.01f) {   // the game changed it: its value stands
       g_applied = false;
+      free_characters(g_given);
       log::writef("menuspeed: the game set {:.2f}, left to it", now);
       return;
     }
     if (!menu || want <= 1.f) { release(w, g_why); return; }
-    if (std::fabs(want - g_given) >= 0.01f) { write_scale(w, want); g_given = read_scale(w); }
+    if (std::fabs(want - g_given) >= 0.01f) { free_characters(g_given); write_scale(w, want); g_given = read_scale(w); }
+    keep_characters(g_given);
     return;
   }
   if (!menu || want <= 1.f) return;
@@ -86,6 +112,7 @@ void tick() {
   write_scale(w, want);
   g_given = read_scale(w);
   g_applied = true;
+  keep_characters(g_given);
   log::writef("menuspeed: on ({}), {:.0f} times", g_why, g_given);
 }
 
@@ -97,8 +124,8 @@ void install() {
     return dev::on_game([s] {
       if (!s.empty()) g_dev_scale = (float)atof(s.c_str());
       UObject* w = gworld();
-      return std::format("scale wanted {:.2f} (dev {:.2f}), applied {}, world {:.2f}, menu: {}\n", scale_wanted(),
-                         g_dev_scale, g_applied, w ? read_scale(w) : -1.f, g_why);
+      return std::format("scale wanted {:.2f} (dev {:.2f}), applied {}, world {:.2f}, menu: {}, characters kept {}\n",
+                         scale_wanted(), g_dev_scale, g_applied, w ? read_scale(w) : -1.f, g_why, g_kept.size());
     });
   }, "?scale=N overrides the menu speed setting (0: the setting); the world's time scale and why");
 }
