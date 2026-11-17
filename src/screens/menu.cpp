@@ -8,6 +8,7 @@
 #include "core/navigator.h"
 #include "core/said_once.h"
 #include "core/slot_id.h"
+#include "core/title_echo.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "input.h"
@@ -52,6 +53,10 @@ void move_sound();
 // player presses something or something else speaks (core::SaidOnce). Nothing here counts time: the pad's stamp only
 // tells one press from the next.
 uint64_t g_moves = 0;   // the player's moves so far: a confirm waiting for the game's cursor is dropped by the next
+// The label of the row the player last confirmed, and g_moves then: a menu that opens before their next press was
+// opened by it, and its title is not said again when it only names that row (core::drop_echoed_title).
+std::string g_confirmed_label;
+uint64_t g_confirmed_at = ~0ull;
 void say_line(std::string_view text, bool interrupt) {
   static core::SaidOnce said;
   if (!said.admit(text, g_moves, input::pad_ms(), speech::count())) {
@@ -145,7 +150,13 @@ bool nav_press(std::string_view action) {
   auto& n = nav();
   if (action == Up || action == Down) { n.on_action(action); return true; }
   if (action == Left || action == Right) return n.on_action(action) || g_active->keeps_edges();
-  return activatable() && n.on_action(Activate);
+  if (!activatable()) return false;
+  g_confirmed_label.clear();
+  if (const ui::GraphNode* f = n.focused_node())
+    for (auto& a : f->vtable->announcements)
+      if (a.kind == ui::announcement_kinds::kLabel && a.text) { guarded([&] { g_confirmed_label = a.text(); }); break; }
+  g_confirmed_at = g_moves;
+  return n.on_action(Activate);
 }
 
 bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached);
@@ -636,6 +647,11 @@ void MenuScreen::enter() {
   bool every = false;
   guarded([&] { every = title_every_entry(); });
   std::string t = title_due() || every ? title() : std::string();
+  if (g_confirmed_at == g_moves && !t.empty()) {
+    std::string kept = core::drop_echoed_title(t, g_confirmed_label);
+    if (kept != t) log::writef("menu: title \"{}\" names the row confirmed, left out", t);
+    t = std::move(kept);
+  }
   nav().attach(this);
   bool say = true;
   guarded([&] { say = announce_entry(); });
