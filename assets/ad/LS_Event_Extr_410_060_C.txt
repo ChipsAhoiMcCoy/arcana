@@ -4,4 +4,4 @@
 12.000	1.787	02.mp3	She walks forward, looking around.
 17.600	2.511	03.mp3	A Shadow with clawed hands creeps up behind her.
 21.900	1.309	04.mp3	The hero dashes off.
-25.900	1.500	05.mp3	The hero shields Yukari.
+26.680	0.860	05.mp3	He shields her.

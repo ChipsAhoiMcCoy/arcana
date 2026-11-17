@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_030_C
-2.380	2.281	00.mp3	The hero sits alone, holding a microphone.
+3.020	1.621	00.mp3	The hero holds a microphone.

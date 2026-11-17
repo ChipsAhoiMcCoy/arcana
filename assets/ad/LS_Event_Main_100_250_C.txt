@@ -2,4 +2,4 @@
 0.100	1.651	00.mp3	The hero gets up from his bed.
 4.000	1.167	01.mp3	Yukari at the door.
 6.400	1.094	02.mp3	The hero nods.
-10.700	2.310	03.mp3	Yukari holds something out. He takes it.
+10.400	2.161	03.mp3	Yukari holds something out. He takes it.

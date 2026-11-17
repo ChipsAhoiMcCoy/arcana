@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_060_C
-0.450	2.927	00.mp3	A burger shop. The hero eats a burger in a booth.
+2.690	0.981	00.mp3	A burger shop.

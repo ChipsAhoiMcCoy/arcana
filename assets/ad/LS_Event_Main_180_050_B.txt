@@ -3,10 +3,10 @@
 12.100	3.475	01.mp3	Akihiko turns and walks out of sight, leaving Ken alone.
 18.550	2.304	02.mp3	Ken covers his face with his hands and cries.
 21.900	0.801	03.mp3	He looks up.
-23.530	1.966	04.mp3	Ken closes his eyes. A flash.
+23.530	1.303	04.mp3	Ken closes his eyes.
 25.750	3.122	05.mp3	A slender blue Persona hovers, a blade atop its head.
 29.200	1.438	06.mp3	It flares and changes.
 30.850	2.308	07.mp3	Now it has two caged spheres on long legs.
 35.000	1.479	08.mp3	Light pours from its centre.
-37.200	2.090	09.mp3	Back in the alley, sparks sink into Ken.
+37.350	2.090	09.mp3	Back in the alley, sparks sink into Ken.
 40.900	0.889	10.mp3	Ken smiles.

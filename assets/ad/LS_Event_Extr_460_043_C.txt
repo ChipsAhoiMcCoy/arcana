@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_043_C
 4.700	2.494	00.mp3	Akihiko turns and walks off to the right.
-8.200	1.305	01.mp3	The hero waits alone.
-9.800	1.427	02.mp3	Akihiko walks back.
+8.840	0.992	01.mp3	The hero waits.
+10.050	1.311	02.mp3	Akihiko returns.

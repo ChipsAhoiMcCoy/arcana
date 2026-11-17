@@ -5,4 +5,4 @@
 14.600	2.653	03.mp3	They walk off together, past Yukari and the hero.
 18.500	1.521	04.mp3	Yukari watches them go.
 27.900	1.127	05.mp3	Later, on a bench.
-36.300	2.712	06.mp3	Yukari places something small in the hero's hand.
+35.200	2.712	06.mp3	Yukari places something small in the hero's hand.

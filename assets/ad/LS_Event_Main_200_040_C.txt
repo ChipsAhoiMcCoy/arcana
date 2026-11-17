@@ -5,4 +5,4 @@
 11.500	1.020	03.mp3	A hatchet flies.
 14.850	1.925	04.mp3	The others run up, weapons ready.
 19.000	1.655	05.mp3	She lifts an Evoker to her head.
-21.170	1.498	06.mp3	Glass shards burst around her.
+21.690	0.970	06.mp3	Shards burst.

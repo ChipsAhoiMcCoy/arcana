@@ -1,7 +1,1 @@
-{"movie": "LS_Event_Main_150_010_C", "title": "Shinjiro and the three strangers", "cues": [
-  {"at": 0.00, "text": "Shinjiro slumps on stairs."},
-  {"at": 3.00, "text": "The pale man with the revolver walks in."},
-  {"at": 8.70, "text": "The boy in green, with a metal case, and the girl in the dress join him. The couple leaves."},
-  {"at": 19.70, "text": "The boy tosses Shinjiro something."},
-  {"at": 36.40, "text": "The three turn and walk away, leaving Shinjiro standing alone."}
-]}
+{"movie": "LS_Event_Main_150_010_C", "title": "Shinjiro and the three strangers", "cues": [{"at": 0.0, "text": "Shinjiro slumps on stairs."}, {"at": 3.0, "text": "The pale man with the revolver walks in."}, {"at": 8.7, "text": "The boy in green, with a metal case, and the girl in the dress join him. The couple leaves."}, {"at": 19.65, "text": "The boy tosses him something."}, {"at": 36.4, "text": "The three turn and walk away, leaving Shinjiro standing alone."}]}

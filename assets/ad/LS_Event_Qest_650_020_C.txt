@@ -1,3 +1,3 @@
 #scene LS_Event_Qest_650_020_C
 0.050	1.947	00.mp3	The hero waits in the faculty office.
-4.350	3.568	01.mp3	Mr. Miyahara walks up, a huge set square on his shoulder.
+4.320	2.834	01.mp3	Mr. Miyahara walks up with a huge set square.

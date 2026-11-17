@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_350_020_C
-0.000	0.853	00.mp3	The infirmary.
+1.850	0.902	00.mp3	The infirmary.

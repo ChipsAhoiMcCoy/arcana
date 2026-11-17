@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_107_004_C
 0.300	2.062	00.mp3	Aigis runs up a path into the woods.
-2.600	2.131	01.mp3	The hero stops and watches her go.
+2.600	2.076	01.mp3	The hero stops and watches her go.

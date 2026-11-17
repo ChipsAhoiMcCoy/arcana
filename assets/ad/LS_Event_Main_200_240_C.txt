@@ -3,5 +3,4 @@
 6.500	1.017	01.mp3	Ryoji stands.
 9.200	1.992	02.mp3	He turns and walks across the room.
 18.300	1.239	03.mp3	Ryoji walks out.
-23.050	1.094	04.mp3	The hero nods.
-34.200	1.094	05.mp3	The hero nods.
+34.200	1.094	04.mp3	The hero nods.

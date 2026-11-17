@@ -1,6 +1,1 @@
-{"movie": "LS_Event_Main_100_250_C", "title": "Yukari wakes the hero", "cues": [
- {"at": 0.1, "text": "The hero gets up from his bed."},
- {"at": 4.0, "text": "Yukari at the door."},
- {"at": 6.4, "text": "The hero nods."},
- {"at": 10.7, "text": "Yukari holds something out. He takes it."}
-]}
+{"movie": "LS_Event_Main_100_250_C", "title": "Yukari wakes the hero", "cues": [{"at": 0.1, "text": "The hero gets up from his bed."}, {"at": 4.0, "text": "Yukari at the door."}, {"at": 6.4, "text": "The hero nods."}, {"at": 10.4, "text": "Yukari holds something out. He takes it."}]}

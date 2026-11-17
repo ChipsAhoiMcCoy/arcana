@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_046_C
-1.100	2.292	00.mp3	The hero takes out his phone and looks at it.
+0.050	1.597	00.mp3	The hero takes out his phone.

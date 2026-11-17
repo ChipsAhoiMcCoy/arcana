@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 43.35,
-   "text": "Junpei, his Evoker to his head. The masked Shadow towers above."
+   "text": "Junpei holds his Evoker to his head."
+  },
+  {
+   "at": 46.0,
+   "text": "The Shadow looms."
   }
  ]
 }

@@ -1,2 +1,3 @@
 #scene LS_Event_Extr_460_040_C
-0.300	2.661	00.mp3	The hero stands alone by the Be Blue V sign.
+0.050	0.810	00.mp3	Be Blue V.
+1.520	1.368	01.mp3	The hero stands alone.

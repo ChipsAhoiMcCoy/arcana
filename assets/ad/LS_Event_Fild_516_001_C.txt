@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_001_C
-0.150	1.895	00.mp3	A case with purple wisps rising.
+1.150	1.040	00.mp3	A smoking case.

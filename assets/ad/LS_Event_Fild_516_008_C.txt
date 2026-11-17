@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_008_C
-0.400	3.615	00.mp3	The hero holds out a hand, Yukari and Junpei beside him.
+1.850	3.315	00.mp3	The hero holds out a hand. Yukari and Junpei stand by.

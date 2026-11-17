@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_160_C
 0.300	2.737	00.mp3	The team runs past stone statues of robed women.
 3.300	2.821	01.mp3	The Shadow: a huge winged body bolted to a wheel.
-6.750	1.161	02.mp3	Blue flames rise.
+7.380	0.844	02.mp3	Blue flames.

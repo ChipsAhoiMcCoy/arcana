@@ -3,4 +3,4 @@
 7.200	2.919	01.mp3	A boy in striped pyjamas peers over the front desk.
 12.700	1.303	02.mp3	The boy stands in the hall.
 14.450	2.444	03.mp3	He breaks apart into black specks and is gone.
-20.400	3.529	04.mp3	The boy is back. On the desk, an open book, a quill and a bell.
+20.350	2.932	04.mp3	The boy is back. On the desk: a book, quill and bell.

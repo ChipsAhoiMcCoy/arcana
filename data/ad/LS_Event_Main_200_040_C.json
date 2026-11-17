@@ -1,9 +1,1 @@
-{"movie": "LS_Event_Main_200_040_C", "title": "Chidori at Tartarus", "cues": [
-{"at": 0.05, "text": "Chidori stands outside Tartarus."},
-{"at": 2.95, "text": "Junpei runs up behind her."},
-{"at": 6.60, "text": "Chidori turns to face Junpei."},
-{"at": 11.50, "text": "A hatchet flies."},
-{"at": 14.85, "text": "The others run up, weapons ready."},
-{"at": 19.00, "text": "She lifts an Evoker to her head."},
-{"at": 21.17, "text": "Glass shards burst around her."}
-]}
+{"movie": "LS_Event_Main_200_040_C", "title": "Chidori at Tartarus", "cues": [{"at": 0.05, "text": "Chidori stands outside Tartarus."}, {"at": 2.95, "text": "Junpei runs up behind her."}, {"at": 6.6, "text": "Chidori turns to face Junpei."}, {"at": 11.5, "text": "A hatchet flies."}, {"at": 14.85, "text": "The others run up, weapons ready."}, {"at": 19.0, "text": "She lifts an Evoker to her head."}, {"at": 21.69, "text": "Shards burst."}]}

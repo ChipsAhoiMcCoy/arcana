@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_002_730_C
-0.000	0.891	00.mp3	The dorm kitchen.
+0.200	0.694	00.mp3	The kitchen.
 1.250	1.006	01.mp3	Yukari cooks.
 4.900	1.540	02.mp3	They sit at the dining table.

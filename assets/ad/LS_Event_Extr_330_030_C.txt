@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_330_030_C
 0.050	0.774	00.mp3	A classroom.
-3.160	1.328	01.mp3	Junpei turns around.

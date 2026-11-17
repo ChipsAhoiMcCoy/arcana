@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_460_035_C
-1.200	3.543	00.mp3	A crowd lines up at the cinema snack bar where the hero works.
-5.860	1.905	01.mp3	Beside him, a man in an apron.
+1.190	1.262	00.mp3	A cinema snack bar.
+6.520	1.211	01.mp3	A man in an apron.

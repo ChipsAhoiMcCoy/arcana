@@ -1,3 +1,3 @@
 #scene LS_Event_Main_200_210_C
-0.100	1.212	00.mp3	Junpei, on a bench.
+0.520	0.703	00.mp3	Junpei.
 26.400	1.455	01.mp3	Junpei grins at Fuuka.

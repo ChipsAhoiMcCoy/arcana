@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_007_C
-0.050	2.976	00.mp3	The hero runs in, sword out, his friends behind.
+0.050	1.829	00.mp3	The hero runs in, sword out.

@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_048_C
-5.400	3.066	00.mp3	Hands in his pockets, Shinjiro turns and walks off.
-8.900	1.305	01.mp3	The hero waits alone.
+5.400	1.803	00.mp3	Shinjiro turns and walks off.
+8.050	1.048	01.mp3	The hero waits.
 10.500	1.354	02.mp3	Shinjiro walks back.

@@ -1,4 +1,4 @@
 #scene LS_Event_Main_190_110_C
 0.100	2.738	00.mp3	In class, the hero sits with Junpei and Yukari.
 3.050	1.053	01.mp3	His phone buzzes.
-4.650	1.444	02.mp3	The hero reads his phone.
+5.250	1.444	02.mp3	The hero reads his phone.

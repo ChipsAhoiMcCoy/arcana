@@ -3,6 +3,5 @@
 2.200	1.294	01.mp3	He stirs and sits up.
 4.050	1.522	02.mp3	Pharos stands by the window.
 12.850	1.331	03.mp3	Pharos offers his hand.
-14.550	1.039	04.mp3	They shake hands.
-17.750	0.958	05.mp3	A white flash.
-19.000	2.325	06.mp3	Pharos is gone. The hero sits alone.
+17.750	0.958	04.mp3	A white flash.
+19.000	2.325	05.mp3	Pharos is gone. The hero sits alone.

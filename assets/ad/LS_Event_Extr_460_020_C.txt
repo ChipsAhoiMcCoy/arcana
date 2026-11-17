@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_460_020_C
-1.360	2.281	00.mp3	The hero serves at the Be Blue V counter.
-5.360	1.830	01.mp3	Beside him, a girl in a dress.
+1.350	0.810	00.mp3	Be Blue V.
+6.030	1.100	01.mp3	A girl in a dress.

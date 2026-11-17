@@ -1,10 +1,1 @@
-{"movie": "LS_Event_Main_120_230_B", "title": "Two Shadows in the lobby", "cues": [
-{"at": 0.05, "text": "The group runs in."},
-{"at": 3.00, "text": "A motorcycle lies smoking."},
-{"at": 5.15, "text": "Two Shadows stand over Yukari and Mitsuru."},
-{"at": 9.95, "text": "One holds a sword."},
-{"at": 14.70, "text": "A schoolgirl walks toward them."},
-{"at": 20.48, "text": "Fuuka runs to her."},
-{"at": 22.70, "text": "Natsuki drops to her knees."},
-{"at": 28.50, "text": "Fuuka stands before Natsuki."}
-]}
+{"movie": "LS_Event_Main_120_230_B", "title": "Two Shadows in the lobby", "cues": [{"at": 0.05, "text": "The group runs in."}, {"at": 3.0, "text": "A motorcycle lies smoking."}, {"at": 5.15, "text": "Two Shadows stand over Yukari and Mitsuru."}, {"at": 9.95, "text": "One holds a sword."}, {"at": 14.7, "text": "A schoolgirl walks toward them."}, {"at": 20.48, "text": "Fuuka runs to her."}, {"at": 22.7, "text": "Natsuki drops to her knees."}, {"at": 28.79, "text": "Fuuka faces Natsuki."}]}

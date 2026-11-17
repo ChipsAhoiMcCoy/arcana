@@ -2,4 +2,3 @@
 1.400	3.117	00.mp3	The Moonlight Bridge. A Shadow hangs between its towers.
 5.500	1.478	01.mp3	Takaya and Jin watch it.
 7.200	1.681	02.mp3	The team runs up behind them.
-17.750	1.103	03.mp3	Takaya smiles.

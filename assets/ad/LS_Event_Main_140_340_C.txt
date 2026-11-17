@@ -7,4 +7,4 @@
 25.000	2.528	05.mp3	Ikutsuki joins the hero and Akihiko.
 34.950	1.745	06.mp3	Aigis blasts Junpei with water.
 38.900	1.528	07.mp3	Junpei lands on his back.
-47.700	1.524	08.mp3	Junpei lies face down.
+48.350	1.524	08.mp3	Junpei lies face down.

@@ -1,4 +1,5 @@
 #scene LS_Event_Fild_517_002_C
-0.050	2.344	00.mp3	The hero, Yukari and Junpei walk on.
-2.600	3.118	01.mp3	Up ahead, a swirling green ring forms, then shrinks away.
-6.000	0.954	02.mp3	Shards scatter.
+0.200	1.861	00.mp3	The hero, Yukari and Junpei.
+2.620	1.195	01.mp3	A ring swirls ahead.
+4.350	0.966	02.mp3	It shrinks away.
+6.000	0.954	03.mp3	Shards scatter.

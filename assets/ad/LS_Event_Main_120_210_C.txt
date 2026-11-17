@@ -5,4 +5,4 @@
 12.700	1.528	03.mp3	The three walk toward the girl.
 20.700	1.323	04.mp3	Fuuka sinks to her knees.
 25.700	1.578	05.mp3	Fuuka gets back to her feet.
-34.700	2.830	06.mp3	Akihiko puts an Evoker into Fuuka's hands.
+34.680	1.969	06.mp3	Akihiko hands Fuuka an Evoker.

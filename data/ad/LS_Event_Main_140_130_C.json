@@ -1,8 +1,1 @@
-{"movie": "LS_Event_Main_140_130_C", "title": "Ken Amada at the school gate", "cues": [
-{"at": 0.00, "text": "Junpei skips ahead."},
-{"at": 12.85, "text": "Natsuki runs over to the group."},
-{"at": 15.20, "text": "She looks at Fuuka."},
-{"at": 20.80, "text": "Fuuka walks over to Natsuki."},
-{"at": 23.10, "text": "The two walk off together, out of sight."},
-{"at": 27.85, "text": "Ikutsuki and a boy."}
-]}
+{"movie": "LS_Event_Main_140_130_C", "title": "Ken Amada at the school gate", "cues": [{"at": 0.0, "text": "Junpei skips ahead."}, {"at": 14.19, "text": "Natsuki runs up."}, {"at": 15.6, "text": "She looks at Fuuka."}, {"at": 20.8, "text": "Fuuka walks over to Natsuki."}, {"at": 23.1, "text": "The two walk off together, out of sight."}, {"at": 27.85, "text": "Ikutsuki and a boy."}]}

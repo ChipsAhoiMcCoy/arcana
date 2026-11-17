@@ -2,7 +2,6 @@
  "movie": "LS_Event_Main_170_040_C",
  "title": "Akihiko confronts Shinjiro",
  "cues": [
-  {"at": 6.70,  "text": "Shinjiro turns his back."},
   {"at": 13.20, "text": "Akihiko throws a punch at Shinjiro."},
   {"at": 25.90, "text": "Shinjiro walks away, leaving Akihiko alone."},
   {"at": 29.95, "text": "Akihiko lowers his head."}

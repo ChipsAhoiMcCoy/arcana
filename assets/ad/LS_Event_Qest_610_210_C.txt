@@ -5,4 +5,4 @@
 12.500	1.489	03.mp3	Elizabeth opens her book.
 15.000	2.296	04.mp3	A glowing card rises from its pages.
 17.500	1.435	05.mp3	Cards circle her in the air.
-19.450	1.319	06.mp3	Light flashes across.
+19.800	0.920	06.mp3	Beams slash.

@@ -1,8 +1,8 @@
 #scene LS_Event_Extr_400_055_C
 0.400	2.993	00.mp3	Takaya waits by some steps. The hero walks up.
 4.400	1.332	01.mp3	Leaves blow between them.
-9.500	1.181	02.mp3	Now in black and white.
-11.050	2.319	03.mp3	A huge fanged creature looms over a boy.
+9.850	0.842	02.mp3	Black and white.
+11.020	1.672	03.mp3	A monster looms over a boy.
 22.900	1.081	04.mp3	The hero starts.
 25.900	2.344	05.mp3	Takaya turns and walks away down the street.
 31.200	2.616	06.mp3	Takaya walks past, a revolver in his belt.

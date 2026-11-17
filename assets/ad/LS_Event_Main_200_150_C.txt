@@ -1,9 +1,9 @@
 #scene LS_Event_Main_200_150_C
 0.020	0.966	00.mp3	Aigis kneels.
-3.050	1.467	01.mp3	The team gathers around her.
+3.040	0.978	01.mp3	The team gathers.
 5.020	1.008	02.mp3	The hero kneels.
 6.350	1.300	03.mp3	Smoke rises off her.
-10.650	3.776	04.mp3	Across the bridge, Ryoji stands by a parked car, watching them.
+10.640	3.157	04.mp3	Across the bridge, Ryoji watches by a parked car.
 15.700	1.524	05.mp3	Yukari gets to her feet.
 36.400	1.654	06.mp3	The hero rises to his feet.
 41.350	1.662	07.mp3	Ryoji crumples to the ground.

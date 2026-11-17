@@ -7,4 +7,4 @@
 12.800	0.958	05.mp3	A white flash.
 14.300	3.026	06.mp3	A horned figure with a pale mask spreads huge wings.
 17.700	1.284	07.mp3	A red orb crowns it.
-21.600	3.491	08.mp3	Back on the bed, a glowing sphere sinks into Yukari's chest.
+22.050	2.451	08.mp3	Back on the bed, a sphere sinks into Yukari.

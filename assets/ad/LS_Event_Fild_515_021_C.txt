@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_515_021_C
-0.200	1.468	00.mp3	The hero crouches down.
+1.360	1.255	00.mp3	The hero crouches.

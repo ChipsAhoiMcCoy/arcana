@@ -2,4 +2,4 @@
 0.300	2.473	00.mp3	A staff room, its desks piled with papers.
 3.000	4.080	01.mp3	The hero waits by the door. A woman in a suit stands with her back to him.
 7.300	1.071	02.mp3	She turns around.
-10.760	1.079	03.mp3	She opens a folder.
+13.850	1.212	03.mp3	She looks at her folder.

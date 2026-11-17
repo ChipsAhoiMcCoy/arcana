@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_330_010_C
-4.450	1.895	00.mp3	Class. A teacher talks up front.
+5.070	1.119	00.mp3	A classroom lesson.

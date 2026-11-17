@@ -1,3 +1,3 @@
 #scene LS_Event_Main_130_160_C
 0.050	1.697	00.mp3	A giant winged heart hangs ahead.
-2.700	1.275	01.mp3	The team takes stances.
+3.000	0.958	01.mp3	Weapons ready.

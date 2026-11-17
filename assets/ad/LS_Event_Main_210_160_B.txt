@@ -4,4 +4,4 @@
 7.450	2.205	02.mp3	A figure walks along the top of the stairs.
 9.900	2.917	03.mp3	It is Takaya, bare-chested, looking down at them.
 37.400	3.509	04.mp3	Takaya walks down the stairs, a revolver tucked in his belt.
-53.500	1.618	05.mp3	The picture shatters like glass.
+54.200	0.946	05.mp3	The view shatters.

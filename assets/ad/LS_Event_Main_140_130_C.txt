@@ -1,7 +1,7 @@
 #scene LS_Event_Main_140_130_C
 0.000	1.209	00.mp3	Junpei skips ahead.
-12.850	1.798	01.mp3	Natsuki runs over to the group.
-15.200	1.050	02.mp3	She looks at Fuuka.
+14.190	1.179	01.mp3	Natsuki runs up.
+15.600	1.050	02.mp3	She looks at Fuuka.
 20.800	1.652	03.mp3	Fuuka walks over to Natsuki.
 23.100	1.998	04.mp3	The two walk off together, out of sight.
 27.850	1.291	05.mp3	Ikutsuki and a boy.

@@ -1,6 +1,6 @@
 #scene LS_Event_Main_190_295_C
 0.100	2.876	00.mp3	In the hot spring, the boys hide behind a rock.
-14.860	2.305	01.mp3	Yukari and Fuuka, in towels, round the rock.
-17.400	2.576	02.mp3	The girls spot the boys, and the scene cuts away.
+14.860	2.391	01.mp3	Yukari and Fuuka, in towels, round the rock.
+17.500	1.107	02.mp3	They spot the boys.
 22.750	1.670	03.mp3	The boys wade toward the rock.
-28.750	2.554	04.mp3	All four freeze, lined up against the rock.
+28.680	1.669	04.mp3	All four freeze against the rock.

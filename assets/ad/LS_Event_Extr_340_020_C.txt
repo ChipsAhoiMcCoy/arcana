@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_340_020_C
-0.250	2.822	00.mp3	The hero and Junpei sit an exam with the class.
+1.900	1.784	00.mp3	The hero and Junpei, mid-exam.
