@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_006_100_C
+0.000	4.722	00.mp3	You sit on a cushion by a low table in Fuuka's room at the dorm, with Fuuka close by.
+16.000	2.831	01.mp3	Fuuka holds out a pair of headphones, and you take them.

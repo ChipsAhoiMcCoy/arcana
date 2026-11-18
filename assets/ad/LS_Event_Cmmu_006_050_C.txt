@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_006_050_C
+0.000	5.842	00.mp3	You sit with Fuuka on the school rooftop. A couple of other students are up here too, and one walks past.
+3.830	3.742	01.mp3	Fuuka gives you a rice ball she made, and you eat it while she watches.
