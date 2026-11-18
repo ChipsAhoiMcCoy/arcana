@@ -4,6 +4,9 @@
 
 ### Audio description
 - Descriptions in 3D story scenes can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the sound a message window makes when you press past a page and goes on. Pressing while the narrator speaks cuts the description short. With Auto on, the box goes on by itself once the description has been said, as the game's own lines do; fast-forward skips descriptions as before. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before. The animated movies never wait: their descriptions stay timed between the lines.
+- More 3D story scenes are described: April's main story (the hero's arrival, the dorm, meeting the chairman, the boy in striped pyjamas, the first days at school, the first Dark Hour and the awakening on the roof), studying at your desk or in the library, Elizabeth's requests (her calls, the outings around the city and the school, her challenge) and the teachers' requests, the Velvet Room's fusion animations, short field moments (the claw machine, the Velvet Room door, the club, the dorm lounge, Aigis running ahead on the island) and Tartarus's own moments (the golden hand Shadow that runs, chests, the Reaper's arrival, the great clock, the party's first steps inside). Social Links have begun with Yukari's, from the rooftop to the last ranks, and Junpei's (the arcade, the watermelon, the flowers, the shrine, the manga nights and the rooftop garden).
+- About 140 descriptions in 3D scenes ran into a moment where the scene stops for a line, and the narrator paused mid-word until you moved on. Every scene's stops are now known exactly, and those descriptions were shortened or moved so each one ends before the scene stops.
+- Fast-forwarding a 3D scene is followed as part of the scene instead of as its end: a description is never finished over fast-forward (one in its last second used to play on), the descriptions you speed past are left out, and the rest play as the scene goes on.
 
 ### Shops
 - Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.
@@ -15,9 +18,12 @@
 - Going back from a mail to the list says the mail you were on again.
 - Turning down a hangout or an outing in a mail's reply takes you back to the inbox, on that mail, instead of leaving you on the mail you already answered.
 
-### Log and travel
+### Messages, log and travel
 - The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.
 - "Where should I go?" is said once per trip: pressing M says it, but the list of entrances after you pick a place on the town map (Paulownia Mall's, for one) and M's list again after you back out of the town map do not repeat it.
+- A line the game marks as voiced but has no voice for is read at once. After Junpei's arcade hangout, "The Strength of Junpei's Persona, Hermes, was raised by 3." stayed silent until the review key.
+- Saving says "Saved" with the slot, and the slot is no longer read again over it, which cut "Saved" off.
+- Little pictures in a message are left out unless they sit between words, where they still read as "a key". The Game Parade Newsletter's subject was read "a keya keya key GAMES a keya key".
 
 ### Punctuation and unknown entries
 - A line that is only punctuation is now said: a page where someone answers "......" reads "Junpei: ellipsis" instead of just the name (screen readers skip a bare ellipsis), and an answer of "..." in a choice list reads "ellipsis, 2 of 3" instead of only its position. Question marks, exclamation marks and dashes on their own are named the same way. A speaker the game hides as "???" is read as "Unknown".
@@ -73,6 +79,7 @@
 - Top-down exploration keeps the camera facing north everywhere you walk. Some places hand the view to a scene camera of their own where you stand: by the Velvet Room's door in Paulownia Mall it turned about a quarter turn away from north, the station and the strip mall have them too, and your room had a fixed camera. While the mode holds, those scene cameras are off and the north camera shows the whole field; the mod also no longer has to turn the camera back every frame there. Walking and sound already went by north and are unchanged. Story scenes, conversations, menus and battles keep the game's own cameras.
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
 - Auto-walk to a staircase takes the landing's own way to it. On the dorm's 2F landing it cut across the stairs down, so on the night of April 9 every walk to the 3F stairs ended in "It's not safe down below...".
+- When the walk reaches someone's side but the game shows no prompt there, it goes round to another side instead of saying "Stuck". It gave up one step from the Suspicious Man in Club Escapade.
 - Yukari is listed by name during the dorm escape. She was listed as "Person".
 - People who sell you something are listed under Shops, not People: Octopia's takoyaki stand (the New Year's one too), the Flower Shop Lady, the School Store Vendor, the 6HARA Clerk, the Luxury Shopkeeper, the Suspicious Man and the Fortune-Teller.
 
@@ -94,7 +101,6 @@
 - The download is now `arcana-<version>.zip`, from https://github.com/ChipsAhoiMcCoy/arcana.
 
 ### Auto-walk
-- When the walk reaches someone's side but the game shows no prompt there, it goes round to another side instead of saying "Stuck". It gave up one step from the Suspicious Man in Club Escapade.
 - It moves the hero straight along its way at any angle, as a stick held exactly that way would, instead of the nearest of the eight directions the movement keys give: it keeps to narrow ways between furniture, takes the shortest line, and no camera angle can turn it off course. If the game does not take this, the walk goes back to the movement keys by itself.
 - Things set into the wall, whose spot the hero can only reach the edge of (the radiator and the mirror in your room), are arrived at: the walk said "Stuck" a step away from them.
 - Prompts for things passed on the way are no longer read, so they are not taken for arriving. The prompt up when the walk ends is read as before.
@@ -119,9 +125,7 @@
 - The wall tones play only while you move (the stick, the keys or the auto-walk, even pushing into a wall), in either camera mode, and are quiet while you stand still.
 
 ### Audio description in story scenes (new)
-- Story scenes played in the game's 3D engine, not only the animated movies, can now be described, in the same narrator voice, between the lines and never over them. The descriptions follow the scene's own clock, wait while a line is on screen, and stay quiet while you fast-forward. Described so far: the main story from the hero's arrival in April (the dorm, meeting the chairman, the boy in striped pyjamas, the first days at school, the first Dark Hour and the awakening on the roof) and the May full moon's monorail operation (Yukari climbing the ladder at the stopped monorail) through the New Year: the ghost story and the night at school, Fuuka, Koromaru, the hotel on the boulevard, Strega, Yakushima and Aigis, Chidori, Ken and Shinjiro, Takaya's ambush, the Personas changing, Ikutsuki's betrayal, the Kyoto trip, Chidori's sacrifice and Ryoji's truth, the New Year, the climb to the top of Tartarus and the ending; and side events (school days, exams, the nurse's office, the night walks with Koromaru, Takaya in the back alley, the new gear and Theurgy in Tartarus, time alone at the arcade, the cinema and the restaurants, part-time jobs, and studying at your desk or in the library). Also described: Elizabeth's requests (her calls, the outings around the city and the school, her challenge) and the teachers' requests, the Velvet Room's fusion animations, and short field moments (the claw machine, the Velvet Room door, the club, the dorm lounge, Aigis running ahead on the island), and Tartarus's own moments (the golden hand Shadow that runs, chests, the Reaper's arrival, the great clock, the party's first steps inside). Social Links have begun with Yukari's, from the rooftop to the last ranks, and Junpei's (the arcade, the watermelon, the flowers, the shrine, the manga nights and the rooftop garden).
-- About 140 descriptions in 3D scenes ran into a moment where the scene stops for a line, and the narrator paused mid-word until you moved on. Every scene's stops are now known exactly, and those descriptions were shortened or moved so each one ends before the scene stops.
-- Fast-forwarding a 3D scene is followed as part of the scene instead of as its end: a description is never finished over fast-forward (one in its last second used to play on), the descriptions you speed past are left out, and the rest play as the scene goes on.
+- Story scenes played in the game's 3D engine, not only the animated movies, can now be described, in the same narrator voice, between the lines and never over them. The descriptions follow the scene's own clock, wait while a line is on screen, and stay quiet while you fast-forward. Described so far: the main story from the May full moon's monorail operation (Yukari climbing the ladder at the stopped monorail) through the New Year: the ghost story and the night at school, Fuuka, Koromaru, the hotel on the boulevard, Strega, Yakushima and Aigis, Chidori, Ken and Shinjiro, Takaya's ambush, the Personas changing, Ikutsuki's betrayal, the Kyoto trip, Chidori's sacrifice and Ryoji's truth, the New Year, the climb to the top of Tartarus and the ending; and side events (school days, exams, the nurse's office, the night walks with Koromaru, Takaya in the back alley, the new gear and Theurgy in Tartarus, time alone at the arcade, the cinema and the restaurants, and part-time jobs).
 - Two settings choose how descriptions are given, one for the animated movies (Audio description in movies) and one for the 3D scenes (Audio description in 3D scenes): by the narrator's voice, as text read by your screen reader, or off. Your earlier on or off for the movies is kept.
 
 ### Descriptions read again
@@ -130,9 +134,6 @@
 - In battle, whoever is in focus and a party member's details (HP, SP, ailments, affinities, Persona) stay on the details keys.
 
 ### Fixes
-- A line the game marks as voiced but has no voice for is read at once. After Junpei's arcade hangout, "The Strength of Junpei's Persona, Hermes, was raised by 3." stayed silent until the review key.
-- Saving says "Saved" with the slot, and the slot is no longer read again over it, which cut "Saved" off.
-- Little pictures in a message are left out unless they sit between words, where they still read as "a key". The Game Parade Newsletter's subject was read "a keya keya key GAMES a keya key".
 - At the fortune-teller in Club Escapade, and the other scripts that show your wallet before naming a price, no longer reads "Price 100000000 yen" before the choices. That number is the game's own "no price yet"; the real price is read once the game names it.
 - Things on another floor you can walk to by stairs are listed again: from Paulownia Mall's fountain, Mandragora upstairs (and from upstairs, the shops below) were left out, so the karaoke bar could not be found or walked to.
 - Tutorials name the keys the game draws: battle tutorials read from the Tutorial list said the field's keys ("Pressing H during battle will let you Rush", Shift for Theurgy, U for Tactics; the game draws Tab, T and W), Assist said E for F, Auto-Recover said E for Y, and Full Analysis, Oracle, the network tips and the sword strike said only "a key" (N, N, N and Ctrl).
