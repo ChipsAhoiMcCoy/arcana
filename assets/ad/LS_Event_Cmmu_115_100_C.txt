@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_115_100_C
-0.000	5.362	00.mp3	Hagakure Ramen. You and Mamoru sit side by side at the counter over bowls of ramen.
+0.000	7.816	00.mp3	Hagakure Ramen. You and Mamoru sit side by side at the counter over bowls of ramen, a bag on the floor by Mamoru's stool.
 12.830	3.189	01.mp3	You and Mamoru eat the rest of your ramen in silence.

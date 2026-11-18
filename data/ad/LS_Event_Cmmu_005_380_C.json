@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_005_380_C", "title": "Lunch at Wakatsu", "cues": [{"at": 0.17, "text": "In Wakatsu, the set-meal restaurant at the Iwatodai strip mall, you and Mitsuru sit together at a table, your meals in front of you."}]}
+{
+ "movie": "LS_Event_Cmmu_005_380_C",
+ "title": "Lunch at Wakatsu",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "In Wakatsu, the set-meal restaurant at the Iwatodai strip mall, you and Mitsuru sit across a table from each other, plates of fried food, rice and soup in front of you."
+  }
+ ]
+}

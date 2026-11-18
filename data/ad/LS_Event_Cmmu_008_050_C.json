@@ -1,1 +1,34 @@
-{"movie": "LS_Event_Cmmu_008_050_C", "title": "Ken: the rematch", "cues": [{"at": 0.03, "text": "The dorm rooftop. Ken faces you with his toy weapon, while Akihiko, Junpei and Koromaru stand by to watch."}, {"at": 13.67, "text": "Ken lunges at you and the match begins. Soon he is panting, his face pained."}, {"at": 21.17, "text": "Ken charges in again, and your blow catches him."}, {"at": 28.44, "text": "Yukari steps out onto the roof, and you turn toward her. In that moment Ken dashes in and lands a clean hit on you."}, {"at": 43.10, "text": "Yukari heads back downstairs, and Koromaru, Junpei and Akihiko follow her, leaving you alone on the roof with Ken."}, {"at": 58.00, "text": "Ken steps up to you and gives you a small silver key."}]}
+{
+ "movie": "LS_Event_Cmmu_008_050_C",
+ "title": "Ken: the rematch",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm rooftop. Ken faces you holding a broom, and you hold a toy bat, while Akihiko, Junpei and Koromaru stand by to watch."
+  },
+  {
+   "at": 13.67,
+   "text": "Ken lunges at you with his broom and the match begins. Soon he is down on one knee, leaning on the broom and panting, while you stand ready with your bat."
+  },
+  {
+   "at": 21.17,
+   "text": "Ken charges in again, and your blow catches him. He drops to one knee again, leaning on his broom."
+  },
+  {
+   "at": 28.44,
+   "text": "At the sound of Yukari's voice you turn toward the door. In that moment Ken dashes in and lands a clean hit: you drop to one knee, holding your head, your bat on the ground."
+  },
+  {
+   "at": 37.5,
+   "text": "Yukari walks out onto the roof and stops beside the others."
+  },
+  {
+   "at": 43.1,
+   "text": "Yukari heads back downstairs, and Koromaru, Junpei and Akihiko follow her, leaving you alone on the roof with Ken. Ken crouches and lays his broom down on the ground."
+  },
+  {
+   "at": 58.0,
+   "text": "Ken steps up to you and gives you a small silver key."
+  }
+ ]
+}

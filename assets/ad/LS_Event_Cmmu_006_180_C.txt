@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_180_C
-0.000	7.645	00.mp3	You sit with Fuuka in Hagakure, the ramen shop, looking over the menu. A couple of other customers eat bowls of ramen nearby.
+0.000	12.173	00.mp3	You sit beside Fuuka at the counter of Hagakure, the ramen shop. Fuuka sits upright with her hands in her lap, gazing up at the menu boards on the wall. Another customer sits at the far end of the counter.

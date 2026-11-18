@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "In the dorm, Ken opens the door of his room and looks out at you."
+   "text": "In the dorm hallway, Ken opens the door of his room a little and peeks out at you, staying half hidden behind it."
+  },
+  {
+   "at": 7.17,
+   "text": "Ken's stomach growls."
   }
  ]
 }
