@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_116_095_C",
+ "title": "Cornered",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "A deserted back street. Nozomi walks in with two men, and a bitter-looking middle-aged man stands waiting there."
+  },
+  {
+   "at": 6.5,
+   "text": "Nozomi turns around to find the two men closing in on him. You come running up."
+  },
+  {
+   "at": 20.83,
+   "text": "Nozomi is in tears. The two men turn and walk off, and Nozomi scurries over to your side."
+  },
+  {
+   "at": 27.5,
+   "text": "The bitter-looking man walks away, leaving you with Nozomi, who is still crying."
+  }
+ ]
+}

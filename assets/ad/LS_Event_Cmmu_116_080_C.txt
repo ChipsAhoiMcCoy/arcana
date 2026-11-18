@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_116_080_C
+0.030	6.156	00.mp3	Paulownia Mall, Fountain Square. Nozomi sits on a bench, scowling, and gets to his feet as you come up.
+10.000	7.969	01.mp3	Nozomi walks off. Soon after, two men stop nearby, unaware of you: a bitter-looking middle-aged man and a rough-looking man.
+23.000	1.544	02.mp3	The two men walk off together.

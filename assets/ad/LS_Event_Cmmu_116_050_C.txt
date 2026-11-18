@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_116_050_C
+0.030	4.233	00.mp3	Paulownia Mall, Fountain Square. You stand with Nozomi among the shoppers.
+1.330	4.055	01.mp3	The bitter-looking man walks up to you. Nozomi scurries around behind you.
+18.000	3.769	02.mp3	Nozomi has stormed right up to the man, and now he lunges at him.
+19.330	3.079	03.mp3	The man turns and walks away, and you turn to watch him go.

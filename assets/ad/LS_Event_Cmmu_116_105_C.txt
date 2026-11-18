@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_116_105_C
+0.000	6.045	00.mp3	Hagakure Ramen. You and Nozomi sit side by side at the counter, bowls of ramen in front of you.
+15.670	3.432	01.mp3	Nozomi holds out his Gourmet License to you, and you take it.

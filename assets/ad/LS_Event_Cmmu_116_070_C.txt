@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_116_070_C
+0.000	4.004	00.mp3	Wilduck Burger. You sit at a table with Nozomi, his food in front of him.
+12.000	3.928	01.mp3	Nozomi pushes back his chair, gets up and stalks away from the table.

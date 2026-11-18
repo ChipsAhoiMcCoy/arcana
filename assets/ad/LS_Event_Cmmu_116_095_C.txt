@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_116_095_C
+0.030	6.290	00.mp3	A deserted back street. Nozomi walks in with two men, and a bitter-looking middle-aged man stands waiting there.
+6.500	4.492	01.mp3	Nozomi turns around to find the two men closing in on him. You come running up.
+20.830	5.461	02.mp3	Nozomi is in tears. The two men turn and walk off, and Nozomi scurries over to your side.
+27.500	4.290	03.mp3	The bitter-looking man walks away, leaving you with Nozomi, who is still crying.

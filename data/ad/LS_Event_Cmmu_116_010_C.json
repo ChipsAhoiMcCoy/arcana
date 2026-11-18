@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_116_010_C",
+ "title": "The Gourmet King and the bitter man",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Paulownia Mall, Fountain Square. A chubby student in your school's uniform sits on a bench, looking up at you as you stand before him."
+  },
+  {
+   "at": 3.33,
+   "text": "A bitter-looking middle-aged man walks up to the two of you. The student scurries around behind you."
+  },
+  {
+   "at": 12.0,
+   "text": "The man turns and walks off into the crowd. You turn to watch him go."
+  },
+  {
+   "at": 22.0,
+   "text": "Wincing in pain, Nozomi runs off."
+  }
+ ]
+}
