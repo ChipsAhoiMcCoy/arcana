@@ -274,3 +274,28 @@ TEST_CASE("drone_loop: one second, seamless, at the common level") {
   CHECK(std::sqrt(sum / v.size()) <= kCueLoudness + 1e-6);
   CHECK(std::sqrt(sum / v.size()) > kCueLoudness * 0.5);
 }
+
+TEST_CASE("sonar field: with a horizon, each beat starts when it is due, not on the frame after it") {
+  // 55 frames a second (not a divisor of the period), each update looking one frame ahead: the starts are exactly a
+  // period apart.
+  SonarField f, plain;
+  const std::vector<SonarField::Item> items = {{1, 1.0f, 0}};
+  const double frame = 1.0 / 55, T = f.params().period_for(1.0f);
+  f.update({}, 0.0, frame);
+  plain.update({}, 0.0);
+  std::vector<double> starts, plain_starts;
+  for (double t = frame; t < 3.0; t += frame) {
+    for (auto& p : f.update(items, t, frame)) {
+      CHECK(p.at >= t);
+      CHECK(p.at <= t + frame + 1e-9);
+      starts.push_back(p.at);
+    }
+    for (auto& p : plain.update(items, t)) plain_starts.push_back(p.at);
+  }
+  REQUIRE(starts.size() > 10);
+  for (size_t i = 1; i < starts.size(); ++i) CHECK(starts[i] - starts[i - 1] == doctest::Approx(T).epsilon(1e-6));
+  // Without one they fall on frames: some gaps are a frame longer than the period.
+  bool uneven = false;
+  for (size_t i = 1; i < plain_starts.size(); ++i) uneven |= plain_starts[i] - plain_starts[i - 1] > T + frame * 0.5;
+  CHECK(uneven);
+}

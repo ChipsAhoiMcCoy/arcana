@@ -11,6 +11,11 @@ namespace p3a::audio {
 bool init();
 void shutdown();
 void tick();             // game thread: reopens the output after the device was lost or missing at launch
+// The clock a sound's start is given in (steady_clock seconds: the sonar's own clock too).
+double now_s();
+// Game thread: how long the mod's ticks have been apart lately (seconds, 5 to 50 ms): the next tick comes about this
+// much later, so a rhythm queues a sound due before then with its exact start, and the wall tones look this far ahead.
+double tick_interval_s();
 void install_routes();   // the dev server's /audio, /audiomute and /audio/render
 // Where a sound is, from the listener (the hero, facing the camera's yaw; world::spot makes one): a unit direction
 // and the distance in metres. pan is the stereo fallback (the sine of the bearing).
@@ -37,7 +42,7 @@ std::string module_dir();
 void set_master_volume(float v);   // the player's Master volume: scales every bus
 // Buses: every sound plays on one, and each bus has its own volume (0..1, changes glide over one 10 ms block).
 // Cues = the mod's signals (signal, signal_here); Walls = the looping channels. The master scales all of them; a new kind of sound gets
-// its own bus (an entry here, a slider in settings.cpp). All voices' own volume changes glide (~15 ms) and the
+// its own bus (an entry here, a slider in settings.cpp). All voices' own volume changes glide (~5 ms) and the
 // output goes through a limiter rather than a hard clip, so nothing clicks or crackles.
 enum class Bus { Cues, Walls, Narration, Sonar, Count };
 void set_bus_volume(Bus b, float v);
@@ -45,7 +50,10 @@ void set_bus_volume(Bus b, float v);
 // HRTF (panned without it). rate != 1 plays it faster or slower, pitch and length together.
 using Pcm = std::shared_ptr<const std::vector<float>>;
 // focus: the thing the player is listening for (sonar::focus): it plays through a solo.
-void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate = 1.0f, bool focus = false);
+// start_s: when it starts (now_s's clock), placed to the sample inside the mixer's block, so a rhythm queued a little
+// ahead keeps its beat instead of falling on the game's frames and the mixer's 10 ms blocks; 0 or a time gone by: at
+// once.
+void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate = 1.0f, bool focus = false, double start_s = 0);
 // A held sound from a place, on the Cues bus: `pcm` looped seamlessly for as long as the caller asks for it again
 // every frame (game thread); after 250 ms unasked, or release_hold, it fades out and ends. One per `id` (not 0):
 // asking again moves it and glides it to the new volume, tone and wobble; `rate` changes take at once. `tone` 0..1:
@@ -61,9 +69,9 @@ void solo(bool on);
 int sample_rate();
 // One of the mod's signals (core/sonar_cues.h: the Shadow's growl, the ambush ticks, the layer's
 // tick) from a place, on the Cues bus. `signal` is the SignalCue's number.
-void signal(int signal, float volume, const Spot& at, float rate = 1.0f, bool focus = false);
+void signal(int signal, float volume, const Spot& at, float rate = 1.0f, bool focus = false, double start_s = 0);
 // The same from no place at all: in the middle of the head, both ears alike (a cue about the player, not a thing).
-void signal_here(int signal, float volume);
+void signal_here(int signal, float volume, double start_s = 0);
 // The narrator (audio description): a mono clip decoded at the mixer rate (decode_mono: WAV or MP3, any thread),
 // played centred on the Narration bus. narrate replaces whatever was playing and returns its id; stop fades out.
 // narration() reports the current clip: `played` == `total` with `ended` set means it played in full.

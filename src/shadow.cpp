@@ -58,7 +58,7 @@ constexpr int kDemoId = 2;                // and the sound test's
 // (FUN_14115f090, 90 degrees). It was 110 here, a guess, until the game's was read (2026-11-14).
 constexpr float kBackTurnedDeg = 90.0f;
 constexpr float kMindRange = 4000.0f;    // cm: how far off a Shadow's noticing is told
-constexpr ULONGLONG kReachMs = 150;      // the ring's rhythm while in reach (the ring itself lasts 0.09 s)
+constexpr double kReachS = 0.150;        // the ring's rhythm while in reach (the ring itself lasts 0.09 s)
 
 // What a Shadow's component shows this frame: the mark over its head, and whether it holds the hero as its target.
 enum class Mark { None, Exclamation, Question };
@@ -433,11 +433,14 @@ void tick() {
   log_ring(nearest, ring, me);
   FVector ring_at{};
   if (ring < 0 && breakable_in_reach(me, ring_at)) ring = (int)SignalCue::Reach;
-  ULONGLONG now = GetTickCount64();
-  static ULONGLONG rang_at = 0;
-  if (ring >= 0 && now - rang_at >= kReachMs) {
-    rang_at = now;
-    audio::signal_here(ring, 1.2f);
+  // Each ring is queued a tick ahead at its own time, a steady 150 ms apart (on the frames and the coarse tick count it
+  // was 150 or 166 ms). After a pause in it, the first rings at once.
+  const double now = audio::now_s();
+  static double ring_next = 0;
+  if (ring >= 0 && now + audio::tick_interval_s() >= ring_next) {
+    const double start = now - ring_next > kReachS ? now : std::max(ring_next, now);
+    audio::signal_here(ring, 1.2f, start);
+    ring_next = start + kReachS;
   }
   // The nearest Shadow within 30 m: one held snarl from where it is (it was a growl repeated faster as it neared; the
   // user asked for one constant sound, its facing told by something other than pitch, 2026-11-15). Louder as it

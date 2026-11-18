@@ -160,12 +160,13 @@ float gain_at(float dist_m) {
 }
 
 // focus: it plays through the solo. db: added to its level. dist: how far it counts as for its level (-1: from `at`).
-void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, float dist = -1.0f) {
+// start_s: when it starts (audio::now_s; 0 at once).
+void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, float dist = -1.0f, double start_s = 0) {
   audio::Spot s = world::spot(me, at);
   Voice v = voice(kind, s);
   if (!v.pcm) return;
   float vol = gain_at(dist >= 0.0f ? dist : s.dist_m) * std::pow(10.0f, (g_trim_db[kind] + db) / 20.0f);
-  audio::play(std::move(v.pcm), vol, s, audio::Bus::Sonar, v.rate, focus);
+  audio::play(std::move(v.pcm), vol, s, audio::Bus::Sonar, v.rate, focus, start_s);
   ++g_fired;
 }
 
@@ -283,13 +284,14 @@ audio::Pcm ping_sound(const char* kind) {
   return p;
 }
 
-// The focused thing's sound once, from where it is now.
-void sound_focus(const FVector& me) {
+// The focused thing's sound once, from where it is now, starting at `start` (its beat; now when that has gone by).
+void sound_focus(const FVector& me, double start) {
   if (!g_focus.has) return;
+  start = std::max(start, now_s());
   const Place pl = place_of(g_focus.loc, g_focus.body, me);
-  if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true);
-  else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m);
-  g_focus_next = now_s() + std::max(g_field.params().period_for(pl.dist_m), kFocusMinPeriod);
+  if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true, start);
+  else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start);
+  g_focus_next = start + std::max(g_field.params().period_for(pl.dist_m), kFocusMinPeriod);
 }
 
 // `p` takes the stage (null: nothing does, but the stage is still cleared): its sound now, and the solo on.
@@ -304,7 +306,7 @@ void focus_on(const poi::Poi* p) {
   // Its first sound once the route ping has played (that ping is the focus's first sound, as in Grim Dark).
   if (now_s() < g_ping_end) { g_focus_next = g_ping_end; return; }
   FVector me;
-  if (world::player_location(me)) sound_focus(me);
+  if (world::player_location(me)) sound_focus(me, 0);
 }
 
 bool focus_any() { return g_focus.has || g_focus_stick || g_focus_layer || g_focus_until; }
@@ -336,7 +338,8 @@ bool focus_tick() {
   if (!g_focus.has || !world::player_location(me)) return true;
   poi::Poi sel;   // the list's choice is followed where it goes (a person walking)
   if (poi::selected(sel) && sel.obj == g_focus.obj) g_focus.loc = sel.loc;
-  if (now_s() >= g_focus_next) sound_focus(me);
+  // Queued a tick ahead with its own start, so the beat keeps time instead of falling on frames.
+  if (now_s() + audio::tick_interval_s() >= g_focus_next) sound_focus(me, g_focus_next);
   return true;
 }
 }  // namespace
@@ -362,13 +365,14 @@ void tick() {
   // early the player could have heard it).
   static std::vector<unsigned> heard;
   std::erase_if(heard, [&](unsigned id) { return std::none_of(items.begin(), items.end(), [&](const auto& it) { return it.id == id; }); });
-  for (const core::SonarField::Ping& p : g_field.update(items, now_s()))
+  // Each beat due before the next tick is queued now with its own start (the field keeps the rhythm, not the frames).
+  for (const core::SonarField::Ping& p : g_field.update(items, now_s(), audio::tick_interval_s()))
     for (const Source& s : g_sources)
       if ((unsigned)s.obj.index == p.id) {
         // Something is beside the hero and this is not it (a metre's leeway: two things side by side both stay).
         const Place pl = place_of(s.loc, s.body, me);
         bool upstaged = nearest <= kCloseM && pl.dist_m > nearest + 1.0f;
-        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m);
+        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m, p.at);
         if (std::find(heard.begin(), heard.end(), p.id) == heard.end()) {
           heard.push_back(p.id);
           log::writef("sonar: {} #{} first sounds at {:.1f} m{}", kKind[s.kind].name, s.obj.index, pl.dist_m,

@@ -28,7 +28,10 @@
 
 ### Wall tones
 - New setting, Wall tone range (Exploring): how far away a wall starts to sound, 1 to 10 meters, 5 by default. It applies in both camera modes. In top-down exploration the tones used to reach only 3 meters; they now reach the same 5 meters as with the game's camera.
+- Wall tones follow your walking more closely: a change in a tone's volume now settles in about 5 ms instead of 15, and the tones are worked out from where you will be a frame later rather than where you were a frame ago: roughly 25 to 45 ms sooner in all.
 
+### Sound timing
+- The sonar's beats, the focused thing's beat and the strike ring now keep an even rhythm. Each beat used to start on the game's next frame and the mixer's next 10 ms block, so beats one period apart could land up to a frame and a half apart. Now each one starts at the exact moment it is due.
 ### Title screen
 - The credits that Z (L1) opens from the title menu are announced: "Credits", then "Credits paused" when you pause them, with what to press. Before, they rolled in silence and the title menu took no keys until they ended, so the game seemed to have stopped responding. Enter (A) pauses them; while they are paused, Tab (the Menu button) skips them and Enter resumes them. Backslash reads the names on screen.
 

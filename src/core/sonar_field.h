@@ -36,13 +36,14 @@ struct FieldParams {
 class SonarField {
  public:
   struct Item { unsigned id; float dist; int kind; };
-  struct Ping { unsigned id; int kind; };
+  struct Ping { unsigned id; int kind; double at; };   // at: when its sound starts (now, or within the horizon)
   // Advance to now_s over the current item set. Returns the things whose sound starts now (0 or more, at most one of
-  // each kind).
+  // each kind). `horizon_s`: a sound due before now + horizon_s (the next update's time) is returned now with its own
+  // start, so the beat falls where it is due and not on the next frame after it.
   // The ids there at the first update after a reset are each seeded a fraction of their period in (so the field does
   // not open on all of them at once); an id that arrives later is due at once. An id absent from `items` keeps its
   // place for grace_s, after which it is forgotten.
-  std::vector<Ping> update(const std::vector<Item>& items, double now_s);
+  std::vector<Ping> update(const std::vector<Item>& items, double now_s, double horizon_s = 0.0);
   void reset();
   FieldParams& params() { return params_; }
   const FieldParams& params() const { return params_; }

@@ -21,7 +21,8 @@ static double hash01(unsigned id) {   // a stable fraction in [0, 1) per id: nei
   return (double)(h & 0xffffffu) / (double)0x1000000u;
 }
 
-std::vector<SonarField::Ping> SonarField::update(const std::vector<Item>& items, double now) {
+std::vector<SonarField::Ping> SonarField::update(const std::vector<Item>& items, double now, double horizon) {
+  const double until = now + (horizon > 0.0 ? horizon : 0.0);
   std::vector<Ping> out;
   const bool running = started_;
   started_ = true;
@@ -46,7 +47,7 @@ std::vector<SonarField::Ping> SonarField::update(const std::vector<Item>& items,
       // the far-off period it last sounded by.
       if (s.played) s.want = s.last_start + T;
     }
-    if (now >= s.want) due.push_back({&it, (now - s.want) / T});
+    if (until >= s.want) due.push_back({&it, (now - s.want) / T});
     keep.emplace(it.id, s);
   }
   // Grace: an id not listed this frame keeps its place until it has been unseen for grace_s. Kept before the turns
@@ -54,19 +55,21 @@ std::vector<SonarField::Ping> SonarField::update(const std::vector<Item>& items,
   for (const auto& [id, slot] : slots_)
     if (!keep.count(id) && now - slot.last_seen <= params_.grace_s) keep.emplace(id, slot);
   // Of those due, the most overdue against its own period first (among equals the nearer); each starts unless one of
-  // its kind started within collide_s, and then waits for the next frame.
+  // its kind starts within collide_s of it, and then waits for the next frame. Each starts when it is due, or now if
+  // that has gone by.
   std::sort(due.begin(), due.end(), [](const Due& a, const Due& b) {
     return a.overdue != b.overdue ? a.overdue > b.overdue : a.it->dist < b.it->dist;
   });
   for (const Due& d : due) {
+    const double start = std::max(keep[d.it->id].want, now);
     bool clear = true;
     for (const auto& [id, slot] : keep)
-      if (id != d.it->id && slot.kind == d.it->kind && now - slot.last_start < params_.collide_s) { clear = false; break; }
+      if (id != d.it->id && slot.kind == d.it->kind && std::abs(start - slot.last_start) < params_.collide_s) { clear = false; break; }
     if (!clear) continue;
     Slot& s = keep[d.it->id];
-    s.played = true; s.last_start = now;
-    s.want = now + std::max(params_.period_for(d.it->dist), 0.01);
-    out.push_back({d.it->id, d.it->kind});
+    s.played = true; s.last_start = start;
+    s.want = start + std::max(params_.period_for(d.it->dist), 0.01);
+    out.push_back({d.it->id, d.it->kind, start});
   }
   slots_.swap(keep);
   return out;

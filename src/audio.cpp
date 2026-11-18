@@ -13,6 +13,7 @@
 #include <windows.h>
 #include <algorithm>
 #include <atomic>
+#include <chrono>
 #include <cmath>
 #include <cstdio>
 #include <format>
@@ -32,8 +33,9 @@ constexpr int kPeriod = 480;   // 10 ms; miniaudio's fixed-size callback always 
 constexpr float kPi = 3.14159265358979f;
 
 // Every gain change glides instead of stepping: a volume that jumps between two samples is a click, and the
-// drivers (wall tones every frame, 10 ms mixer blocks) change volumes in steps. One pole, ~15 ms time constant.
-constexpr float kGlide = 1.0f - 0.99861f;   // 1 - exp(-1 / (0.015 s * 48000))
+// drivers (wall tones every frame, 10 ms mixer blocks) change volumes in steps. One pole, ~5 ms time constant: per
+// sample, so still no click; 15 ms (until 2026-11-17) put a wall tone's change 10 to 45 ms behind the walk.
+constexpr float kGlide = 1.0f - 0.995842f;  // 1 - exp(-1 / (0.005 s * 48000))
 constexpr float kSilent = 1e-5f;            // below this a gliding voice counts as stopped
 
 // A looping mono sample at a fixed pan (the wotr WallTones channel), on the Walls bus.
@@ -46,6 +48,7 @@ struct Loop {
   float gain = 1.0f;        // static trim (set_loop_gain, not clamped): the wall tones' per-file loudness match
   float gl = 0.70710677f, gr = 0.70710677f;
   ULONGLONG refreshed = 0;  // GetTickCount64 at the last set_loop_volume: a loop nobody drives goes silent
+  double onset_at = 0;      // dev: when the driver turned it on from silence (now_s), until the mixer has it at half
 };
 constexpr ULONGLONG kLoopStaleMs = 250;  // the game stops ticking us while paused; the loops must not sing on
 
@@ -75,6 +78,7 @@ struct Shot {
   int slot = -1;          // the HRTF slot, held one block past the end for the filter's tail
   bool dead = false;
   bool focus = false;     // plays through the solo
+  double start_s = 0;     // when it starts (now_s; 0: at the next block), placed to the sample in its block
   float duck = 1.0f;      // glides to 0 when the solo silences it (it is then cut)
   core::SpatialVoice stereo;   // Dark Vision's stereo model: its filters' and delay's state (held by value: the audio
                                // thread neither allocates nor frees)
@@ -140,6 +144,18 @@ bool g_odd_block_logged = false;
 constexpr int kMaxBlock = 4096;
 float g_mono[kMaxBlock], g_ear_l[kMaxBlock], g_ear_r[kMaxBlock];   // audio thread only
 uint64_t g_cb_max_us = 0;   // dev: the slowest callback
+// The mixer's clock: which now_s moment a block stands for. Frames rendered since the device opened, plus a base that
+// follows the callbacks' own times smoothly (they come in bursts while the buffer fills, and wake a little late).
+// Every block plays the device's buffer later, the same for all of them: a sound placed at its time keeps its beat.
+uint64_t g_frames = 0;
+double g_clock = 0;
+bool g_clock_ok = false;
+// dev (/audio): a wall tone's onset (the driver's first volume over silence to the mixer playing it at half), and the
+// scheduled starts (how many, how many came after their time and by how much at most).
+struct Lat { uint32_t n = 0; double sum_ms = 0, max_ms = 0; void add(double ms) { ++n; sum_ms += ms; max_ms = std::max(max_ms, ms); } };
+Lat g_onset, g_late;
+uint32_t g_scheduled = 0;
+double g_buffer_ms = 0;   // the device's buffer (WASAPI), logged when it opens
 
 void pan_gains(float pan, float& l, float& r) {
   float a = (pan + 1.0f) * (kPi / 4.0f);  // equal power
@@ -157,6 +173,14 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
   float* o = (float*)out;
   for (ma_uint32 i = 0; i < frames * 2; ++i) o[i] = 0;
   std::lock_guard lk(g_mu);
+  // The moment this block stands for (see g_clock). A jump (the device stalled, or reopened) starts the clock again.
+  {
+    const double obs = now_s() - (double)g_frames / kRate;
+    if (!g_clock_ok || std::abs(obs - g_clock) > 0.1) { g_clock = obs; g_clock_ok = true; }
+    else g_clock += (obs - g_clock) * 0.02;
+  }
+  const double block_t = g_clock + (double)g_frames / kRate;
+  g_frames += frames;
   // HRTF slots need the fixed block size they were made for (miniaudio's fixed-size callback gives it).
   const bool hrtf_block = g_hrtf_on && hrtf::available() && (int)frames == hrtf::frame() && frames <= (ma_uint32)kMaxBlock;
   if (g_hrtf_on && hrtf::available() && !hrtf_block && !g_odd_block_logged) {
@@ -187,6 +211,16 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
       }
       continue;
     }
+    // A start in a later block waits (holding nothing); one in this block begins at its sample.
+    ma_uint32 first = 0;
+    if (sh.start_s > 0) {
+      const double off = (sh.start_s - block_t) * kRate;
+      if (off >= (double)frames) continue;
+      ++g_scheduled;
+      if (off > 0) first = (ma_uint32)off;
+      else if (-off > kRate / 1000.0) g_late.add(-off * 1000.0 / kRate);   // more than a millisecond after its time
+      sh.start_s = 0;
+    }
     if (sh.spatial && hrtf_block && sh.slot < 0) {
       sh.slot = hrtf::claim();
       if (sh.slot < 0) { ++g_hrtf_fallbacks; sh.spatial = false; }   // all slots busy: this one pans
@@ -202,7 +236,7 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
     if (sh.hold && GetTickCount64() - sh.held_at > sh.hold_ms) sh.vol_to = 0.0f;   // nobody holds it: fade out
     if (sh.hold) sh.tone += (sh.tone_to - sh.tone) * 0.3f;   // per block: ~30 ms to settle
     const float coef = sh.hold ? tone_coef(sh.tone, kRate) : 1.0f;
-    for (ma_uint32 i = 0; i < frames; ++i) {
+    for (ma_uint32 i = first; i < frames; ++i) {
       if (sh.hold && sh.pos >= (double)v.size()) sh.pos -= (double)v.size();   // a held voice loops
       size_t k = (size_t)sh.pos;
       if (!sh.hold && k + 1 >= v.size()) { sh.dead = true; break; }
@@ -253,6 +287,10 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
     if (target <= 0.0f && lp.cur < kSilent) { lp.cur = 0; lp.pos = (lp.pos + frames) % lp.samples.size(); continue; }
     for (ma_uint32 i = 0; i < frames; ++i) {
       lp.cur += (target - lp.cur) * kGlide;
+      if (lp.onset_at > 0 && target > 0 && lp.cur >= target * 0.5f) {
+        g_onset.add((block_t + (double)i / kRate - lp.onset_at) * 1000.0);
+        lp.onset_at = 0;
+      }
       float s = lp.samples[lp.pos] * lp.cur * bus_gain(Bus::Walls, i);  // the loop's own gain, then the Walls bus (the master in it)
       if (++lp.pos >= lp.samples.size()) lp.pos = 0;  // seamless wrap
       o[i * 2] += s * lp.gl; o[i * 2 + 1] += s * lp.gr;
@@ -308,6 +346,13 @@ static bool open_device() {
   cfg.periodSizeInFrames = kPeriod;   // noFixedSizedCallback stays false: every callback is exactly this long
   if (ma_device_init(nullptr, &cfg, &g_device) != MA_SUCCESS) return false;
   if (ma_device_start(&g_device) != MA_SUCCESS) { close_device(); return false; }
+  // How far ahead of the ear the mixer works: WASAPI's buffer (22 ms on a 48 kHz device in low-latency shared mode).
+  ma_uint32 buf = 0;
+  if (g_device.pContext->backend == ma_backend_wasapi && g_device.wasapi.pAudioClientPlayback &&
+      SUCCEEDED(((ma_IAudioClient*)g_device.wasapi.pAudioClientPlayback)->lpVtbl->GetBufferSize((ma_IAudioClient*)g_device.wasapi.pAudioClientPlayback, &buf)) && g_device.playback.internalSampleRate)
+    g_buffer_ms = 1000.0 * buf / g_device.playback.internalSampleRate;
+  log::writef("audio: device '{}' at {} Hz (mixer {} Hz), {}-frame periods, buffer {:.1f} ms", g_device.playback.name,
+              g_device.playback.internalSampleRate, kRate, g_device.playback.internalPeriodSizeInFrames, g_buffer_ms);
   return true;
 }
 
@@ -326,7 +371,15 @@ bool init() {
   log::writef("audio: output ready ({} Hz, {}-frame periods)", kRate, kPeriod);
   return true;
 }
+double now_s() { return std::chrono::duration<double>(std::chrono::steady_clock::now().time_since_epoch()).count(); }
+static double g_tick_at = 0, g_tick_gap = 1.0 / 60;
+double tick_interval_s() { return std::clamp(g_tick_gap, 0.005, 0.05); }
 void tick() {
+  {
+    const double t = now_s();
+    if (g_tick_at > 0 && t - g_tick_at < 0.25) g_tick_gap += (t - g_tick_at - g_tick_gap) * 0.2;   // a pause is not a frame
+    g_tick_at = t;
+  }
   if (!g_inited) return;
   if (g_rerouted.exchange(false)) log::write("audio: the output moved to the new default device");
   const ULONGLONG now = GetTickCount64();
@@ -365,7 +418,7 @@ void shutdown() {
 
 // One shot into the mixer, whole, under the lock. `spatial`: heard from `at` (through the HRTF, panned without it);
 // false: from no place, both ears alike.
-static void push_shot(Pcm pcm, float volume, const Spot& at, Bus bus, float rate, bool spatial, bool focus = false) {
+static void push_shot(Pcm pcm, float volume, const Spot& at, Bus bus, float rate, bool spatial, bool focus = false, double start_s = 0) {
   if (!g_ready || !pcm || pcm->size() < 2 || (int)bus < 0 || bus >= Bus::Count) return;   // only the device callback drains g_shots
   std::lock_guard lk(g_mu);
   if (g_shots.size() >= kMaxShots) return;
@@ -377,10 +430,11 @@ static void push_shot(Pcm pcm, float volume, const Spot& at, Bus bus, float rate
   s.bus = bus;
   s.spot = at;
   s.spatial = spatial;
+  if (start_s > 0) s.start_s = std::min(start_s, now_s() + 0.5);   // a rhythm queues a frame ahead, never far
   if (g_solo && soloed_out(s)) return;   // the solo holds: only the focus starts
   g_shots.push_back(std::move(s));
 }
-void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate, bool focus) { push_shot(std::move(pcm), volume, at, bus, rate, true, focus); }
+void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate, bool focus, double start_s) { push_shot(std::move(pcm), volume, at, bus, rate, true, focus, start_s); }
 void hold(int id, Pcm pcm, float volume, const Spot& at, float rate, float tone, float wobble, int hold_ms) {
   if (!g_ready || !pcm || pcm->size() < 2 || id == 0) return;
   const ULONGLONG now = GetTickCount64();
@@ -452,8 +506,8 @@ static Pcm signal_pcm(int signal) {
   made[signal] = std::make_shared<const std::vector<float>>(std::move(file));
   return made[signal];
 }
-void signal(int signal, float volume, const Spot& at, float rate, bool focus) { push_shot(signal_pcm(signal), volume, at, Bus::Cues, rate, true, focus); }
-void signal_here(int signal, float volume) { push_shot(signal_pcm(signal), volume, Spot{}, Bus::Cues, 1.0f, false); }
+void signal(int signal, float volume, const Spot& at, float rate, bool focus, double start_s) { push_shot(signal_pcm(signal), volume, at, Bus::Cues, rate, true, focus, start_s); }
+void signal_here(int signal, float volume, double start_s) { push_shot(signal_pcm(signal), volume, Spot{}, Bus::Cues, 1.0f, false, false, start_s); }
 void set_spatial(int model) { std::lock_guard lk(g_mu); g_spatial = model; g_hrtf_on = model == 1; }
 
 bool render_beep_wav(float freq, int ms, const Spot& at, const std::string& path) {
@@ -534,7 +588,14 @@ bool load_loop(int id, const std::string& wav_path, float pan) {
 }
 void set_loop_volume(int id, float volume) {
   std::lock_guard lk(g_mu);
-  for (Loop& l : g_loops) if (l.id == id) { l.volume = volume < 0 ? 0 : volume > 1 ? 1 : volume; l.refreshed = GetTickCount64(); }
+  for (Loop& l : g_loops)
+    if (l.id == id) {
+      const float v = volume < 0 ? 0 : volume > 1 ? 1 : volume;
+      if (v > 0 && l.volume <= 0 && l.cur < kSilent) l.onset_at = now_s();   // dev: an onset from silence, timed to the mixer
+      if (v <= 0) l.onset_at = 0;
+      l.volume = v;
+      l.refreshed = GetTickCount64();
+    }
 }
 void set_loop_gain(int id, float gain) {
   std::lock_guard lk(g_mu);
@@ -547,7 +608,7 @@ void set_bus_volume(Bus b, float v) {
   std::lock_guard lk(g_mu);
   g_bus[(int)b].target = v < 0 ? 0 : v > 1 ? 1 : v;
 }
-void reset_stats() { std::lock_guard lk(g_mu); g_cb_max_us = 0; g_hrtf_fallbacks = 0; }
+void reset_stats() { std::lock_guard lk(g_mu); g_cb_max_us = 0; g_hrtf_fallbacks = 0; g_onset = {}; g_late = {}; g_scheduled = 0; }
 std::string status() {
   std::lock_guard lk(g_mu);
   int loud = 0;
@@ -557,7 +618,11 @@ std::string status() {
                      g_ready.load(), g_master, g_bus[(int)Bus::Cues].target, g_bus[(int)Bus::Walls].target, g_bus[(int)Bus::Narration].target,
                      g_bus[(int)Bus::Sonar].target, g_shots.size(), g_loops.size(), loud, g_limit, g_limited_blocks,
                      !hrtf::available() ? "unavailable" : g_hrtf_on ? "on" : g_spatial == 0 ? "off (stereo model)" : "off (pan)", hrtf::slots_used(), hrtf::slot_count(), g_hrtf_fallbacks,
-                     hrtf::air(), g_cb_max_us, g_followed.load());
+                     hrtf::air(), g_cb_max_us, g_followed.load()) +
+         std::format("latency: device buffer {:.1f} ms; tick every {:.1f} ms; wall-tone onset to half volume in the mixer avg {:.1f} max {:.1f} ms ({}); "
+                     "scheduled starts {}, late {} (max {:.1f} ms)\n",
+                     g_buffer_ms, tick_interval_s() * 1000.0, g_onset.n ? g_onset.sum_ms / g_onset.n : 0.0, g_onset.max_ms, g_onset.n,
+                     g_scheduled, g_late.n, g_late.max_ms);
 }
 // Dev routes: the mixer, the process mute, an offline HRTF render.
 void install_routes() {

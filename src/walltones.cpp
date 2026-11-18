@@ -36,6 +36,8 @@ static float g_range = 500.0f;        // cm, the setting Wall tone range (5 m by
 constexpr float kMovingCmS = 30.0f;       // the hero moves: faster than this on the ground (a walk is ~250)
 constexpr float kBehindDeg = 100.0f;      // top-down: a direction more than this from the walk's is behind it
 static bool g_moving = false;
+static bool g_predict = true;             // dev: /walltones?predict=0 probes from the last frame's place
+static float g_ahead_cm = 0;              // dev: how far ahead the last probe looked
 static bool g_asking = false;             // the player pushes a way (the stick, the keys, the auto-walk)
 constexpr float kAskingInput = 0.2f;      // the input vector's length above which the player pushes a way
 static float g_heading = 0;               // top-down: the walk's bearing from north, degrees
@@ -182,10 +184,22 @@ void tick() {
   // nothing, and the tones fell silent just as the wall was nearest. The velocity stands in where no input is read.
   FVector in{}, vel{};
   g_asking = world::player_input(in) && std::hypot(in.x, in.y) > kAskingInput;
-  g_moving = g_asking || (world::player_velocity(vel) && std::hypot(vel.x, vel.y) > kMovingCmS);
+  const bool has_vel = world::player_velocity(vel);
+  g_moving = g_asking || (has_vel && std::hypot(vel.x, vel.y) > kMovingCmS);
   // Only while moving (the user, 2026-11-14): standing still, the tones are quiet, in either mode.
   if (!g_moving) { silence(); return; }
   const float range = g_range;
+  // The place is the last frame's, and the tones are heard after this frame: probed from where the hero will be one
+  // tick on (his velocity over the time between ticks), slid along what he would meet on the way there.
+  g_ahead_cm = 0;
+  if (g_predict && has_vel) {
+    const float dt = (float)audio::tick_interval_s();
+    FVector q = p;
+    if (slide_move(q, FVector{vel.x * dt, vel.y * dt, 0})) {
+      g_ahead_cm = std::hypot(q.x - p.x, q.y - p.y);
+      p = q;
+    }
+  }
   // Top-down: the direction behind the walk is left out.
   const bool leave_behind = top;
   if (leave_behind) {
@@ -208,14 +222,15 @@ void tick() {
 void set_enabled(bool on) { g_enabled = on; if (!on) silence(); }
 void set_range(float cm) { g_range = std::max(cm, 100.0f); }
 std::string status() {
-  return std::format("walltones enabled={} range={:.0f} gain={:.2f} h0={:.0f} deg={:.0f} ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f} topdown={} moving={} asking={} heading={:.0f}\n", g_enabled, g_range, g_gain, g_h0, g_deg,
-                     g_dist[0], g_dist[1], g_dist[2], g_dist[3], topdown::active(), g_moving, g_asking, g_heading);
+  return std::format("walltones enabled={} range={:.0f} gain={:.2f} h0={:.0f} deg={:.0f} ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f} topdown={} moving={} asking={} heading={:.0f} predict={} ahead_cm={:.0f}\n", g_enabled, g_range, g_gain, g_h0, g_deg,
+                     g_dist[0], g_dist[1], g_dist[2], g_dist[3], topdown::active(), g_moving, g_asking, g_heading, g_predict, g_ahead_cm);
 }
 
 void install() {
   if (env_flag(L"P3A_NOWALLTONES")) g_enabled = false;   // dev launches: quiet while testing
   dev::route("/walltones", [](const dev::Request& r, int&) {
     if (dev::has(r, "on")) set_enabled(dev::arg(r, "on") == "1");
+    if (dev::has(r, "predict")) g_predict = dev::arg(r, "predict") == "1";
     if (dev::has(r, "range")) g_range = (float)dev::arg_num(r, "range", g_range);
     if (dev::has(r, "vol")) g_gain = (float)dev::arg_num(r, "vol", g_gain);
     if (dev::has(r, "h0")) g_h0 = (float)dev::arg_num(r, "h0", g_h0);
@@ -255,6 +270,6 @@ void install() {
       return std::format("{:.1f} us per tick ({} ticks): ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f}\n",(double)(t1.QuadPart - t0.QuadPart) * 1e6 / (double)f.QuadPart / n, n, d[0], d[1], d[2], d[3]);
     });
     return status();
-  }, "?on=1|0&range=cm&vol=0..1&h0=cm&deg=&step=cm&rise=cm&time=N&from=x,y,z,yaw&prof=x0,y0,x1,y1,ztop wall tones state, tuning, probe cost");
+  }, "?on=1|0&predict=1|0&range=cm&vol=0..1&h0=cm&deg=&step=cm&rise=cm&time=N&from=x,y,z,yaw&prof=x0,y0,x1,y1,ztop wall tones state, tuning, probe cost");
 }
 }  // namespace p3a::walltones
