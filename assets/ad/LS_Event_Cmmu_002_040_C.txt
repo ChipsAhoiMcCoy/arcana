@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_002_040_C
-1.250	1.029	00.mp3	The mall fountain.
-3.400	2.079	01.mp3	Yukari turns away and checks her phone.
-10.300	2.287	02.mp3	Yukari lowers the phone and stares at it.
-27.950	1.066	03.mp3	They sit on a bench.
+0.000	3.258	00.mp3	You and Yukari stand by the fountain in Paulownia Mall.
+3.200	5.689	01.mp3	Yukari steps away from you and takes out her phone. She looks at the screen for a moment before she answers.
+9.230	3.825	02.mp3	Yukari ends the call and stands staring at her phone, then lowers it.
+23.230	4.252	03.mp3	Later, you and Yukari sit side by side on a bench by the fountain.

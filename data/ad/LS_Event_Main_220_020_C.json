@@ -1,8 +1,5 @@
-{"movie": "LS_Event_Main_220_020_C", "title": "Aigis at the hero's door", "cues": [
-{"at": 0.30, "text": "The hero sits on his bed, head down."},
-{"at": 4.30, "text": "He looks up, stands, and walks to the door."},
-{"at": 8.40, "text": "He opens it. Aigis stands outside."},
-{"at": 11.80, "text": "Aigis clasps her hands."},
-{"at": 14.10, "text": "She lowers her head."},
-{"at": 18.20, "text": "She lowers her hand from her eyes."}
+{"movie": "LS_Event_Main_220_020_C", "title": "Aigis at your door", "cues": [
+{"at": 0.10, "text": "Your room in the dorm. You sit on your bed, head down."},
+{"at": 4.20, "text": "You get up, cross the room and open the door. Aigis stands in the hallway outside."},
+{"at": 18.20, "text": "Aigis wipes her eyes with her gloved hand, then lowers it."}
 ]}

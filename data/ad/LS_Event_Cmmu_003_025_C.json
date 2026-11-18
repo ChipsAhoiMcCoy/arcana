@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_003_025_C", "title": "Splitting a watermelon", "cues": [{"at": 3.18, "text": "The dorm rooftop. Ken stands with Koromaru.", "short": "The dorm rooftop."}, {"at": 15.55, "text": "Koromaru looks up."}, {"at": 21.35, "text": "Koromaru steps onto the mat and stands over the watermelon."}, {"at": 27.6, "text": "Ken turns to the hero."}, {"at": 33.6, "text": "Akihiko arrives."}, {"at": 49.85, "text": "Akihiko squares up."}, {"at": 54.3, "text": "The melon bursts."}, {"at": 58.95, "text": "Later."}, {"at": 62.9, "text": "Junpei folds his arms and looks down."}]}
+{
+ "movie": "LS_Event_Cmmu_003_025_C",
+ "title": "Splitting a watermelon",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The dorm rooftop. A watermelon sits on a mat with a baseball bat lying beside it. You and Junpei stand by the mat; Ken and Koromaru stand across from you."
+  },
+  {
+   "at": 21.35,
+   "text": "Koromaru trots onto the mat and plants himself over the watermelon."
+  },
+  {
+   "at": 33.55,
+   "text": "Akihiko steps out through the rooftop door and comes over to the group."
+  },
+  {
+   "at": 49.85,
+   "text": "Akihiko raises his fists and walks up to the watermelon. Akihiko drops to one knee and smashes the watermelon with his fist. Chunks of it scatter across the mat."
+  },
+  {
+   "at": 59.2,
+   "text": "Later, you and Junpei are alone on the rooftop."
+  }
+ ]
+}

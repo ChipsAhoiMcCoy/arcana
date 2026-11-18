@@ -1,6 +1,3 @@
 #scene LS_Event_Cmmu_002_190_C
-0.050	2.547	00.mp3	The school rooftop. Yukari stands alone.
-3.050	1.161	01.mp3	The hero walks up.
-13.000	1.604	02.mp3	The hero scratches his head.
-24.900	1.273	03.mp3	Yukari runs off.
-26.400	1.935	04.mp3	The hero stands alone at the railing.
+0.000	5.112	00.mp3	On the school rooftop, Yukari stands at the railing with her back to you. You walk up behind her.
+24.670	4.002	01.mp3	Yukari runs off across the rooftop. A door closes behind her.

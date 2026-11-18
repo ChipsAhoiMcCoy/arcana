@@ -1,6 +1,6 @@
 {"movie": "LS_Event_Main_220_010_C", "title": "Junpei and Yukari at the school gate", "cues": [
-{"at": 0.10, "text": "Aigis stands nearby."},
-{"at": 4.30, "text": "Behind them, Aigis watches."},
-{"at": 17.30, "text": "Aigis turns and runs off."},
-{"at": 33.40, "text": "Junpei spins around. All three run toward the school."}
+{"at": 0.10, "text": "The school entranceway. You walk along the paved path between the planters, a bag over your shoulder, and Junpei jogs up behind you. A little way ahead, Aigis stands still by the planters, a bag in her hand, watching you."},
+{"at": 9.20, "text": "Yukari walks up and joins you and Junpei."},
+{"at": 17.05, "text": "Aigis turns and runs off past the planters, out of sight."},
+{"at": 33.20, "text": "Junpei spins around and breaks into a run for the school building. You and Yukari run after him."}
 ]}

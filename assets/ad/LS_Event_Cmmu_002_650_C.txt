@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_650_C
-0.050	0.812	00.mp3	A classroom.
+0.050	5.418	00.mp3	Your classroom after school. You sit at your desk; Yukari stands beside it with her bag in hand.

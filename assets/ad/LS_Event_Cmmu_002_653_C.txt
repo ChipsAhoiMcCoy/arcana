@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_002_653_C
-0.300	0.991	00.mp3	Paulownia Mall.
-3.250	1.755	01.mp3	Yukari and the hero walk in.
-10.400	1.376	02.mp3	On a bench by the fountain.
+0.050	12.385	00.mp3	Paulownia Mall at Christmas, the domed plaza decorated for the season, shoppers passing by the fountain. You and Yukari walk in together, school bags in hand, and stop to take in the decorations.
+10.850	6.541	01.mp3	A little later, you and Yukari sit side by side on a bench by the fountain, your bags set down beside you.
+12.200	3.212	02.mp3	Yukari holds out a small package to you, and you take it.

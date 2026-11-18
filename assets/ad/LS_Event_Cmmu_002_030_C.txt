@@ -1,7 +1,4 @@
 #scene LS_Event_Cmmu_002_030_C
-0.050	1.029	00.mp3	The mall fountain.
-4.100	1.285	01.mp3	Yukari looks around.
-6.900	1.780	02.mp3	Yukari goes to a crying boy.
-12.450	1.630	03.mp3	The boy keeps rubbing his eyes.
-19.300	1.418	04.mp3	Later, at a police box.
-23.100	1.556	05.mp3	Yukari folds her arms.
+0.000	6.698	00.mp3	You and Yukari walk through Paulownia Mall's fountain square with your school bags. Yukari turns to you as she walks.
+6.870	7.367	01.mp3	A small boy stands alone in the square, crying and rubbing his eyes with his arm. Yukari walks over to him, and you follow.
+18.030	9.455	02.mp3	Yukari leads the boy across the square to the police box. Afterwards, the boy sits inside with a police officer while you and Yukari stand outside.

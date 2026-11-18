@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_002_055_C
-1.900	1.540	00.mp3	Three men surround Yukari.
-6.200	1.830	01.mp3	The hero steps in front of Yukari.
-11.850	1.468	02.mp3	The hero lunges at them.
-14.600	0.891	03.mp3	The men are gone.
-27.900	1.799	04.mp3	Yukari walks off past the hero.
+0.000	5.817	00.mp3	In a back corner at the foot of a stairway, beside a vending machine, three young men stand around Yukari.
+1.870	2.637	01.mp3	You run up and stop a few steps behind Yukari.
+6.170	3.396	02.mp3	You walk past Yukari and plant yourself between her and the men.
+11.000	7.644	03.mp3	You take a fighting stance, and the fight with the three men is quick. When it is over the men are gone, and you stand alone with Yukari.
+27.670	2.872	04.mp3	Yukari turns and walks away, leaving you behind.

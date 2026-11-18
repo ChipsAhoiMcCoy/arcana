@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_002_390_C
-0.050	2.464	00.mp3	Yukari and the hero leave a manga café.
-11.900	1.195	01.mp3	They walk off together.
+0.050	7.955	00.mp3	You and Yukari step out of a manga café and stop beside a drinks vending machine by its door. Yukari takes out her phone and checks it.

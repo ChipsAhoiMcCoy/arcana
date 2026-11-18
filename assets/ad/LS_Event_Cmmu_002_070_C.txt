@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_070_C
-0.050	1.147	00.mp3	A small restaurant.
+0.000	8.678	00.mp3	In a small set-meal restaurant, you and Yukari sit across a table from each other, each with the same tray of fish, rice and small side bowls.

@@ -1,5 +1,2 @@
 #scene LS_Event_Cmmu_002_020_C
-0.600	4.413	00.mp3	A street in the mall. Far off, the hero and Yukari stand at a flower shop.
-6.400	1.297	01.mp3	Red and pink flowers.
-11.900	1.883	02.mp3	The hero gestures at the flowers.
-16.700	1.168	03.mp3	Yukari smiles.
+0.000	12.393	00.mp3	At a flower stall in the square by Port Island Station, you and Yukari stand with your school bags in hand, looking over buckets of flowers. Red and pink gerberas fill the front of the stall, and a woman minds it.
