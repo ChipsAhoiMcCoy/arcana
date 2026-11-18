@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_221_030_C",
+ "title": "The music box by the river",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the school trip, you and Ryoji walk down to a riverbank. Couples stand together in pairs along the water."
+  },
+  {
+   "at": 11.55,
+   "text": "Ryoji holds up a small music box. It plays a melody."
+  }
+ ]
+}

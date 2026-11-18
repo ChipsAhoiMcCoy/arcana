@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_221_040_C",
+ "title": "Ryoji's last song",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the music room, Ryoji sits alone at the grand piano. You walk over to him."
+  },
+  {
+   "at": 18.0,
+   "text": "Ryoji turns to the keys and plays."
+  },
+  {
+   "at": 44.33,
+   "text": "Fuuka comes in through the door, and you turn toward her. You look back at the piano. The bench is empty: Ryoji is gone."
+  }
+ ]
+}
