@@ -20,6 +20,8 @@ bool busy();                                   // queued steps remain
 uint16_t real_buttons();
 // Swallow these real pad buttons from the game (while the mod owns them, e.g. a mod menu is open).
 void set_swallow(uint16_t mask);
+// The same for a box of the mod's over a paused scene (a description waiting for A): kept apart from the menus' mask.
+void set_swallow_prompt(uint16_t mask);
 // A game cursor at an end of a list the game would wrap (the battle wheel's target): these real buttons, and the left
 // stick pushed left (stick_sides bit 0) or right (bit 1), are hidden from the game while the cursor is there.
 void block_ends(uint16_t buttons, int stick_sides);

@@ -10,13 +10,21 @@
 // core::ad::Schedule decides what plays when (pauses, seeks, a skip); here its actions reach the mixer's
 // narrator, and the movie's own volume (Mana SetVolume) dips under a description. Every cue's end is logged
 // ("ad: <key> cue N done|cut ... played P of T s") and kept for /ad/status: the in-game tests read those.
+// With DescriptionWait on, each description is a box like a message window: it pauses its movie or scene and waits
+// for Enter (see "the description box" below).
 #include "ad.h"
 #include "audio.h"
 #include "core/ad_schedule.h"
+#include "core/strings.h"
 #include "devserver.h"
+#include "hooks.h"
+#include "input.h"
+#include "keys.h"
 #include "log.h"
+#include "msg.h"
 #include "settings.h"
 #include "speech.h"
+#include "voice.h"
 #include "watch.h"
 #include "world.h"
 #include "ue/ue.h"
@@ -196,9 +204,58 @@ void stop_all() {
   g_cur = -1;
   g_voice_id = -1;
 }
+
+// ---- the description box (setting DescriptionWait) ----
+// A description pauses its movie (Mana Pause) or scene (the SequencePlayer's Pause: what the game's own holds at a
+// message do) and waits like a message window: the window-open sound, the description (the narrator, then the
+// line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the page sound and
+// plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
+// never reaches the game (keys::set_prompt, input::set_swallow_prompt). Fast-forward, a skip, the source ending or
+// the setting turned off closes it. The schedule sees the held source as playing (Clock::held): the cue's narrator
+// plays out and nothing further starts until the box closes.
+int g_box = -1;              // the cue whose box is up, else -1
+bool g_box_go = false;       // Enter, Space or A taken while it is up (game thread: the window procedure runs there)
+bool g_box_pad = true;       // A was down at the last frame (only a fresh press counts)
+bool g_box_ended = false;    // its narrator finished (the end cue was given)
+bool g_releasing = false;    // the box closed and asked the source to play: until it reports so, the pause is ours
+
+uint16_t a_mask() { static uint16_t a = input::button_mask("a"); return a; }
+uint16_t pad_a() { return input::layer_open() ? 0 : (input::real_buttons() & a_mask()); }
+
+void hold_source(bool on) {
+  if (UObject* m = playing_mana()) {
+    if (UFunction* fn = find_function(class_of(m), "Pause")) { Params p(fn); p.set<uint8_t>("bPause", on ? 1 : 0); call(m, p); }
+    return;
+  }
+  if (UObject* ev = playing_event(nullptr)) call(ev, on ? "Pause" : "Play");
+}
+
+void open_box(int cue) {
+  g_box = cue;
+  g_box_go = false;
+  g_box_ended = false;
+  g_box_pad = pad_a() != 0;   // an A still down from the last message is not this box's press
+  input::set_swallow_prompt(a_mask());
+  hold_source(true);
+  voice::play_system_sound(voice::CueWindowOpen);
+}
+
+// resume: the source is still the one the box held (playing, not replaced): it plays again.
+void close_box(bool resume) {
+  if (g_box < 0) return;
+  if (g_cur >= 0) audio::narrate_stop();   // gone on before the narrator finished: the cue is logged cut
+  if (resume) { hold_source(false); g_releasing = true; }
+  input::set_swallow_prompt(0);
+  g_box = -1;
+  g_box_go = false;
+}
 }  // namespace
 
+bool holding() { return g_box >= 0 || g_releasing; }
+
 void unload() {
+  // a box still up lets its scene go (the game thread: it calls the game), and the keys stop coming here
+  hooks::run_on_game_thread([] { close_box(true); keys::set_prompt(nullptr); }, 3000);
   g_unloading = true;
   std::vector<Decoder> list;
   { std::lock_guard lk(g_decoders_mu); list.swap(decoders()); }
@@ -517,13 +574,16 @@ void tick() {
   // Movies and scenes each have their setting: off, the narrator's voice, or the screen reader. A description
   // finishing after its movie keeps the mode it started in.
   int mode = playing ? settings::get(c.event ? settings::SceneDescription : settings::AudioDescription) : g_mode;
+  if (!playing || !c.paused) g_releasing = false;
   if (mode == settings::DescOff) {
+    close_box(playing);
     if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); g_key.clear(); }
     return;
   }
   if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode)) {
     // a movie starts (or the source changed under a running player, or the setting changed): load its
     // descriptions, if it has any
+    close_box(g_key == key_of(c.movie));
     stop_all();
     g_key = key_of(c.movie);
     g_mode = mode;
@@ -546,22 +606,51 @@ void tick() {
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
   // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
   sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
-  for (const sched::Action& a : g_sched.step({playing, c.paused, c.time, c.fast}, v)) {
+  const bool wait = settings::on(settings::DescriptionWait);
+  sched::Clock sc{playing, c.paused, c.time, c.fast};
+  if (g_box >= 0) {
+    if (!playing || c.fast || !wait) close_box(playing);
+    else {
+      const bool a = pad_a() != 0;
+      if (a && !g_box_pad) g_box_go = true;
+      g_box_pad = a;
+      if (g_box_go) {
+        log::writef("ad: {} cue {} box closed at {:.2f}", s->key, g_box, c.time);
+        close_box(true);
+        voice::play_system_sound(voice::CuePage);
+        sc.paused = false;   // it plays from this frame
+      } else {
+        if (!c.paused) hold_source(true);   // the game let it go meanwhile: hold it again
+        sc.paused = false;
+        sc.held = true;
+        // the narrator finished: the cue a voiced line gets when it ends and waits ("Next", or the chosen sound)
+        if (!reader && ours && n.ended && !g_box_ended) {
+          g_box_ended = true;
+          if (settings::get(settings::VoiceEndSound) == settings::EndNext) speech::speak(strings::kNext, false);
+          else voice::play_end_sound();
+        }
+      }
+    }
+  }
+  for (const sched::Action& a : g_sched.step(sc, v)) {
+    if (a.act == sched::Act::Play && wait) msg::remember_line(s->texts[a.cue]);
     if (reader) {   // nothing of ours sounds: nothing to pause or stop
       if (a.act == sched::Act::Play) {
+        if (wait) open_box(a.cue);
         speech::speak(s->texts[a.cue], false);
         g_runs[a.cue] = Run{c.time, 0, 0};
-        log::writef("ad: {} cue {} read at {:.2f} (due {:.2f}): {}", s->key, a.cue, c.time, s->cues[a.cue].at, s->texts[a.cue]);
+        log::writef("ad: {} cue {} read at {:.2f} (due {:.2f}){}: {}", s->key, a.cue, c.time, s->cues[a.cue].at, wait ? ", box" : "", s->texts[a.cue]);
       }
       continue;
     }
     switch (a.act) {
       case sched::Act::Play:
         if (!s->pcm[a.cue]) break;   // a clip that would not decode: the cue is logged as cut by the narrator
+        if (wait) open_box(a.cue);
         g_voice_id = audio::narrate(s->pcm[a.cue]);
         g_cur = a.cue;
         g_runs[a.cue] = Run{c.time, 0, s->pcm[a.cue]->size()};
-        log::writef("ad: {} cue {} plays at {:.2f} (due {:.2f}): {}", s->key, a.cue, c.time, s->cues[a.cue].at, s->texts[a.cue]);
+        log::writef("ad: {} cue {} plays at {:.2f} (due {:.2f}){}: {}", s->key, a.cue, c.time, s->cues[a.cue].at, wait ? ", box" : "", s->texts[a.cue]);
         break;
       case sched::Act::Pause: audio::narrate_pause(true); break;
       case sched::Act::Resume: audio::narrate_pause(false); break;
@@ -584,6 +673,11 @@ void tick() {
 }
 
 void register_routes() {
+  keys::set_prompt([](uint32_t vk, bool repeat) {
+    if (g_box < 0 || (vk != VK_RETURN && vk != VK_SPACE)) return false;
+    if (!repeat) g_box_go = true;
+    return true;
+  });
   player_id();
   track_player_id();
   dev::route("/ad/clock", [](const dev::Request&, int&) {

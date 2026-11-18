@@ -24,6 +24,9 @@ void set_modal(ModalKey key, ModalPad pad);
 // game (down, repeat, char and up). Runs before the mod's bindings. nullptr clears.
 using CaptureKey = std::function<bool(uint32_t vk, bool repeat)>;
 void set_capture(CaptureKey key);
+// A box of the mod's that waits for the player over a paused scene (a description, ad.cpp): unmodified presses, before
+// the menu, the capture and the bindings; true swallows the key from the game. nullptr clears.
+void set_prompt(CaptureKey key);
 // The bespoke menu's keys (screens/menu.cpp): every key down with its modifiers, before the capture and the
 // bindings; true swallows it. Keys the mod injects for the game (input::inject_key) never reach it.
 using MenuKey = std::function<bool(uint32_t vk, int mods, bool repeat)>;

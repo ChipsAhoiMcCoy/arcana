@@ -162,6 +162,26 @@ TEST_CASE("ad: a cue still ahead of a fast-forward plays on time after it") {
   CHECK(t - 4.0 < 0.05);
 }
 
+TEST_CASE("ad: a description's box holds the scene: its narrator plays out, the next cue waits for it to close") {
+  Schedule s; s.load({{1.0, 2.0}, {1.2, 1.0}});
+  auto a = s.step({true, false, 1.0}, {});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Play);
+  Clock held{true, false, 1.0, false, true};   // the mod paused the scene: its clock stands, IsPaused is ours
+  a = s.step(held, {true, false});
+  CHECK(a.empty());                            // not paused: the narrator goes on
+  a = s.step(held, {false, true});
+  CHECK(a.empty());                            // done, and the next cue does not start under the box
+  CHECK(s.state(0) == State::Done);
+  CHECK(s.state(1) == State::Pending);
+  a = s.step({true, false, 1.0}, {});          // the box closes: the scene plays on
+  CHECK(a.empty());
+  a = s.step({true, false, 1.2}, {});          // the next cue on time
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].act == Act::Play);
+  CHECK(a[0].cue == 1);
+}
+
 TEST_CASE("ad: every state has a name for the log") {
   CHECK(std::string(state_name(State::Pending)) == "pending");
   CHECK(std::string(state_name(State::Playing)) == "playing");

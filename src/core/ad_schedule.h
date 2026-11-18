@@ -13,7 +13,9 @@ struct Cue { double at = 0; double dur = 0; };
 // The movie clock, read each frame: the movie is playing at all, is paused, and its time in seconds.
 // fast: the player fast-forwards the scene. It is still the same scene: nothing is said over it (a cue playing is
 // cut) and the cues its clock passes are skipped, but the schedule is kept, so the rest play once it runs normally.
-struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; };
+// held: a description's box holds the scene (the mod paused it until the player presses Enter): its cue's narrator is
+// followed as if the scene played (paused stays false), but no further cue starts until the box is closed.
+struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; bool held = false; };
 // The narrator, as the mixer reports it: a clip is sounding (or held by a pause), or it reached its end.
 struct Voice { bool active = false; bool ended = false; };
 

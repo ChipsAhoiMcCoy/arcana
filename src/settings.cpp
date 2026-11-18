@@ -93,6 +93,8 @@ static const Def kDefs[Count] = {
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
+  // a description pauses its movie or scene, like a message window, until Enter (A) (ad.cpp); off: said over it
+  {"description_wait", strings::kSetDescriptionWait, CatDialogue, strings::kHelpDescriptionWait, Unit::Toggle, {0, 1}, 1},
   {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
   {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales

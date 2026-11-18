@@ -110,6 +110,7 @@ static void remember(const std::string& kind, const std::string& line) {
   if (g_history.size() > 500) g_history.erase(g_history.begin());
 }
 const std::vector<std::string>& history() { return g_history; }
+void remember_line(const std::string& line) { remember("Description", line); }
 
 
 // Voiced dialogue (setting VoicedLines): a page that declares a voice (declares_voice) is never read (or only its

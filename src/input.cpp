@@ -27,7 +27,7 @@ static std::deque<Step> g_queue;
 static uint64_t g_step_start = 0;   // when the front step began (0 = not started)
 static uint32_t g_latched = 0;
 static bool g_vpad = false;
-static uint16_t g_real_buttons = 0, g_swallow = 0;
+static uint16_t g_real_buttons = 0, g_swallow = 0, g_swallow_prompt = 0;
 static bool g_real_connected = false;
 static uint64_t g_polls = 0, g_synth_polls = 0;
 
@@ -147,7 +147,7 @@ static DWORD WINAPI get_state_hook(DWORD user, XINPUT_STATE* st) {
       // Here, as the game first reads the press: before anything the press makes the mod or the game say.
       if (st->Gamepad.wButtons & ~g_real_buttons) speech::player_pressed(false);
       g_real_buttons = st->Gamepad.wButtons;
-      st->Gamepad.wButtons &= ~(g_swallow | g_end_buttons.load());
+      st->Gamepad.wButtons &= ~(g_swallow | g_swallow_prompt | g_end_buttons.load());
       int sides = g_end_sticks;
       if (((sides & 1) && st->Gamepad.sThumbLX < 0) || ((sides & 2) && st->Gamepad.sThumbLX > 0)) st->Gamepad.sThumbLX = 0;
     } else {
@@ -221,6 +221,7 @@ static void set_vpad_connected(bool on) {
 }
 uint16_t real_buttons() { return g_real_buttons; }
 void set_swallow(uint16_t m) { g_swallow = m; }
+void set_swallow_prompt(uint16_t m) { g_swallow_prompt = m; }
 
 void post_key(uint32_t vk, bool down, bool synthetic) {
   HWND w = hooks::game_window();

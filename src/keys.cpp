@@ -28,6 +28,8 @@ static ModalPad g_modal_pad;
 void set_modal(ModalKey key, ModalPad pad) { g_modal_key = std::move(key); g_modal_pad = std::move(pad); }
 static CaptureKey g_capture;
 void set_capture(CaptureKey key) { g_capture = std::move(key); }
+static CaptureKey g_prompt;
+void set_prompt(CaptureKey key) { g_prompt = std::move(key); }
 static MenuKey g_menu;
 void set_menu(MenuKey key) { g_menu = std::move(key); }
 void bind_pad(const char* name, uint16_t button) { for (auto& b : g_bindings) if (b.name == name) b.pad = button; }
@@ -101,6 +103,12 @@ static bool filter(UINT msg, WPARAM w, LPARAM l) {
       return true;
     }
     int mods = current_mods();
+    if (g_prompt && !synthetic && msg == WM_KEYDOWN && mods == None) {
+      CaptureKey h = g_prompt;
+      bool taken = false;
+      if (!guarded([&] { taken = h(vk, repeat); })) log::write("keys: prompt faulted");
+      if (taken) { g_swallowing[vk] = true; return true; }
+    }
     if (g_menu && !synthetic && msg == WM_KEYDOWN) {
       MenuKey h = g_menu;
       bool taken = false;

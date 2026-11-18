@@ -2,6 +2,7 @@
 // silent and looks like a hang, so the pause is announced. Subtitles are BMD pages: msg speaks them.
 #include "screens/screen.h"
 #include "screens/util.h"
+#include "ad.h"
 #include "core/strings.h"
 #include "speech.h"
 
@@ -31,7 +32,7 @@ class MovieScreen : public Screen {
     UObject* m = mana();
     if (!m) return;
     if (opening_line_due()) speech::speak(strings::kTitleOpening, true);
-    int p = ask(m, "IsPaused") ? 1 : 0;
+    int p = ask(m, "IsPaused") && !ad::holding() ? 1 : 0;   // a description's box is not the player's pause
     if (paused_ >= 0 && p != paused_) speech::speak(p ? strings::kMoviePaused() : strings::kMovieResumed, true);
     paused_ = p;
   }

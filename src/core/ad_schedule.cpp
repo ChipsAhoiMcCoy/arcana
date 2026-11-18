@@ -83,7 +83,7 @@ std::vector<Action> Schedule::step(const Clock& c, const Voice& v) {
     if (c.paused && !paused_) { out.push_back({Act::Pause, cur_}); paused_ = true; }
     else if (!c.paused && paused_) { out.push_back({Act::Resume, cur_}); paused_ = false; }
   }
-  if (c.paused) return out;
+  if (c.paused || c.held) return out;
 
   for (size_t i = 0; i < cues_.size(); ++i) {
     if (state_[i] != State::Pending || cues_[i].at > c.time) continue;

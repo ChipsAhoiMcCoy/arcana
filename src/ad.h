@@ -14,6 +14,9 @@ struct Clock {
   bool event = false;  // a scene played in the engine (its LevelSequence's clock; movie = the sequence's name)
   bool fast = false;   // the scene is fast-forwarded: still playing, but no description is said over it
 };
+// A description's box holds the movie or scene paused (or has just let it go): the pause is the mod's, not the
+// player's (the movie screen says nothing of it).
+bool holding();
 // The playing movie's or scene's clock.
 Clock clock();
 void tick();                                   // every frame: follow the movie, play its descriptions
