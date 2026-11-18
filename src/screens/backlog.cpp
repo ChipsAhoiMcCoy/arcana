@@ -10,6 +10,9 @@
 #include "core/strings.h"
 #include "log.h"
 #include "msg.h"
+#include "seh.h"
+#include "ue/scan.h"
+#include <map>
 
 namespace p3a::screens {
 using namespace ue;
@@ -50,7 +53,44 @@ class BacklogScreen : public MenuScreen {
   // already: skipping it read every entry one older than the game's (the player's report, 2026-10-29; the voice-end
   // rule is a guess from that report and the opposite measurement, which opened the log at once).
   int skip_ = 0;
+  // The game's own log (read 2026-11-17; the count above went one off when the page on screen was already in it):
+  // exe+0x12392f0() is the store, +0x08 its count (at most 30), +0x10 its oldest node; a node is {entry, next, prev}.
+  // An entry (0x50, built by exe+0x12360d0) holds its speaker's BMD page at +0x38 and its line's at +0x40, the same
+  // FCurrentBmdPage the message windows read (null speaker: a thought or narration; a choice's line is the answer).
+  std::map<int, std::string> game_lines_;
+  std::string game_line(int c) {
+    if (auto it = game_lines_.find(c); it != game_lines_.end()) return it->second;
+    void* who = nullptr; void* line = nullptr;
+    guarded([&] {
+      auto* store = (uint8_t*)((void* (*)())(scan::exe_base() + 0x12392f0))();
+      if (!store || c >= *(int32_t*)(store + 8)) return;
+      auto* node = *(uint8_t**)(store + 0x10);
+      for (int i = 0; node && i < c; ++i) node = *(uint8_t**)(node + 8);
+      auto* e = node ? *(uint8_t**)node : nullptr;
+      if (!e) return;
+      who = *(void**)(e + 0x38);
+      line = *(void**)(e + 0x40);
+    });
+    std::string text = line ? msg::page_string(line) : std::string();
+    if (text.empty()) return {};
+    // The mod's record of the same line has its wording ("Thinking: ..."): the newest record that ends with it.
+    std::string out;
+    auto& h = msg::history();
+    for (size_t i = h.size(); i-- > 0 && out.empty();) {
+      const std::string& r = h[i];
+      if (r == text || (r.size() > text.size() + 2 && r.ends_with(text) && r.compare(r.size() - text.size() - 2, 2, ": ") == 0)) out = r;
+    }
+    if (out.empty()) {
+      std::string speaker = who ? msg::page_string(who) : std::string();
+      if (speaker.rfind("DEV:", 0) == 0 || speaker.rfind("Internal", 0) == 0) speaker = strings::kThinking;
+      out = core::spoken_line(speaker, text);
+    }
+    game_lines_[c] = out;
+    return out;
+  }
   std::string entry(int c, int n) {
+    if (std::string g = game_line(c); !g.empty()) return g;
+    log::writef("backlog: entry {} of {} not readable from the game's log, counted from the mod's record", c, n);
     auto& h = msg::history();
     int i = core::log_record_index(c, n, skip_, (int)h.size());
     return i < 0 ? std::string(strings::kLogEarlier) : h[(size_t)i];
@@ -75,6 +115,7 @@ class BacklogScreen : public MenuScreen {
   bool title_every_entry() override { return true; }
   void on_enter() override {
     skip_ = 0;
+    game_lines_.clear();
     screens::set_keys(strings::kLogKeys);
     msg::Current m = msg::current();
     auto& h = msg::history();

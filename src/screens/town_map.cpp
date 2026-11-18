@@ -253,6 +253,15 @@ class LocationListScreen : public MenuScreen {
     return has_items(m) ? m : nullptr;
   }
   Mirror& list_ = mirror("places", [this] { uint8_t* l = list(); return l ? *(int32_t*)(l + 0x200) : -1; });
+  // "Where should I go?" once per trip (the user's call, 2026-11-17): M's list, the town map it opens (access state 9,
+  // back to the list at 10) and a destination's entrance list are one trip; it ends when the M screen and the town map
+  // are both gone. Every list in it carries the same title, so only the first says it.
+  bool titled_ = false, quiet_ = false;
+  bool trip_open() {
+    if (town_.get() && pause_top() == 2) return true;
+    int s = access_.get() ? *(int32_t*)((uint8_t*)access_.get() + 0x294) : -1;
+    return s == 5 || s == 6 || s == 9 || s == 10;
+  }
  public:
   LocationListScreen() {
     // FUN_1414371e0 case 6: the M list reads nothing until the fade over it ends (FUN_14108e800); an entrance's list has
@@ -269,9 +278,16 @@ class LocationListScreen : public MenuScreen {
   }
   const char* id() const override { return "location_list"; }
   int priority() const override { return 16; }
-  bool active() override { return list() != nullptr; }
-  std::string title() override { return strings::kTownMapWhere; }
-  void on_enter() override { screens::set_keys(strings::kFastTravelKeys); }
+  bool active() override {
+    if (!trip_open()) titled_ = false;
+    return list() != nullptr;
+  }
+  std::string title() override { return quiet_ ? std::string() : strings::kTownMapWhere; }
+  void on_enter() override {
+    quiet_ = titled_;
+    titled_ = true;
+    screens::set_keys(strings::kFastTravelKeys);
+  }
   void build(ui::GraphBuilder& b) override {
     uint8_t* l = list();
     auto* a = l ? (TArray<uint8_t>*)(l + 0xD0) : nullptr;

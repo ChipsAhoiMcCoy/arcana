@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Log and travel
+- The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.
+- "Where should I go?" is said once per trip: pressing M says it, but the list of entrances after you pick a place on the town map (Paulownia Mall's, for one) and M's list again after you back out of the town map do not repeat it.
+
 ### Punctuation and unknown entries
 - A line that is only punctuation is now said: a page where someone answers "......" reads "Junpei: ellipsis" instead of just the name (screen readers skip a bare ellipsis), and an answer of "..." in a choice list reads "ellipsis, 2 of 3" instead of only its position. Question marks, exclamation marks and dashes on their own are named the same way. A speaker the game hides as "???" is read as "Unknown".
 - The compendium names a Persona you have not registered "Unknown" ("Unknown, Magician, level 50"), as the game shows question marks there. Before, the row began with the arcana and nothing where the name goes.
