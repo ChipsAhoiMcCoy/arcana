@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Where am I
+- Pressing Slash (controller: both triggers and Y) again steps through its parts one at a time: the first press still reads everything, the next ones the date, the area, your yen and the objective, then everything again. Anything else spoken, or a game key, starts it over from everything.
+
 ### Shops
 - Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.
 - Slash (Where am I) works in a shop: it said "Not in the field". It names the place you walked in from (the shop's own room has no name in the game).

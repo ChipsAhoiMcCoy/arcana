@@ -39,7 +39,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+F1: The mod's own keys
 - F2: Mod settings
 - F3: Sonar on or off
-- Slash: Where am I: area, date, yen and current objective
+- Slash: Where am I: date, area, yen and current objective. Press it again (nothing else said in between) to hear them one at a time: the date, then the area, the yen, the objective, then all of them again
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
 - Backslash: Repeat the current message, or describe the current screen
@@ -63,7 +63,7 @@ Hold both triggers (LT and RT) for the mod's keys. You hear a tick and, in the f
 - A: Walk to the selected point (again, or push the left stick, to stop)
 - B: Describe the area, the person talking, or the Persona or Shadow in focus
 - X: Repeat the message, or describe the screen
-- Y: Where am I
+- Y: Where am I (again to step through its parts, as Slash does)
 - LB: Social stats
 - RB: Social Links
 - L3: Party

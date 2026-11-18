@@ -36,7 +36,16 @@ static void where_am_i() {
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();
   parts.push_back(goal.empty() ? std::string(strings::kNoObjective) : std::string(strings::kObjective) + ": " + goal);
-  speech::speak_parts(parts, true);
+  // Pressed again with nothing else said and no game key since, it steps through the parts one at a time (the
+  // player's call, 2026-11-17): the first press reads them all, the next ones the date, the area, the yen and the
+  // objective, then all of them again. Each press rebuilds the parts, so a step reads them as they stand now.
+  static uint64_t spoken = ~0ull, key_ms = 0;
+  static size_t step = 0;   // 0 = all of them, n = part n-1
+  step = (speech::count() == spoken && keys::game_key_ms() == key_ms) ? (step + 1) % (parts.size() + 1) : 0;
+  if (step == 0) speech::speak_parts(parts, true);
+  else speech::speak(parts[step - 1], true);
+  spoken = speech::count();
+  key_ms = keys::game_key_ms();
 }
 
 static void review() {
