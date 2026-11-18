@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_101_600_C
+0.000	4.311	00.mp3	The movie theater at Port Island Station. You and Kenji walk in together.
+1.000	5.240	01.mp3	In the screening room, you and Kenji sit side by side among the audience, watching the film.
+7.670	4.162	02.mp3	Afterwards, you and Kenji stand facing each other outside the screening room.
