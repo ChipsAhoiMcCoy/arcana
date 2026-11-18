@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_515_020_C
-0.520	1.468	00.mp3	The hero crouches down.

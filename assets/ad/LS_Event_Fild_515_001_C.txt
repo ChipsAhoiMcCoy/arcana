@@ -1,4 +1,0 @@
-#scene LS_Event_Fild_515_001_C
-0.600	4.287	00.mp3	A giant golden hand wearing a blue mask creeps along on its fingertips.
-7.400	2.355	01.mp3	The hero stands ready with two companions.
-10.100	2.995	02.mp3	The masked hand rears up, swoops past and hovers.

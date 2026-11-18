@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_510_034_C
-3.400	4.794	00.mp3	In Tartarus, a golden Shadow shaped like a hand scurries away on its fingers.
-97.600	2.655	01.mp3	The hero, Junpei and Yukari run after it.
