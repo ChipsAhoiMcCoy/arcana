@@ -1,2 +1,2 @@
 #scene LS_Event_Main_130_100_C
-2.050	1.592	00.mp3	Fuuka stands at the consoles.
+0.050	6.527	00.mp3	In the command room, Fuuka stands at the bank of consoles and monitors. Yukari stands beside her, alone with her.

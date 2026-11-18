@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_280_C
-2.100	2.857	00.mp3	Junpei strolls up to the woman. The others follow.
-28.000	1.083	01.mp3	The hero bolts.
-33.100	1.664	02.mp3	The woman is left standing alone.
+0.000	2.872	00.mp3	Further along the beach, a woman stands on her own.
+2.000	3.019	01.mp3	Junpei walks up to her. You and Akihiko follow.
+28.000	6.560	02.mp3	You turn and run off down the beach, and Akihiko runs after you. Junpei stares, then bolts after you both.

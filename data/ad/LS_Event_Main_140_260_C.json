@@ -1,6 +1,18 @@
-{"movie": "LS_Event_Main_140_260_C", "title": "Junpei tries his luck", "cues": [
-  {"at": 6.40, "text": "The boys walk over to two girls, one sitting."},
-  {"at": 9.70, "text": "The hero gestures."},
-  {"at": 37.20, "text": "The girls are gone."},
-  {"at": 45.60, "text": "The hero nods."}
-]}
+{
+ "movie": "LS_Event_Main_140_260_C",
+ "title": "Junpei tries his luck",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the beach, you, Junpei and Akihiko walk up and stop, eyeing two young women further along the sand."
+  },
+  {
+   "at": 6.33,
+   "text": "The three of you walk over to them. One sits under a beach parasol; the other stands beside her."
+  },
+  {
+   "at": 37.35,
+   "text": "The two women are gone. Junpei stands there, downcast."
+  }
+ ]
+}

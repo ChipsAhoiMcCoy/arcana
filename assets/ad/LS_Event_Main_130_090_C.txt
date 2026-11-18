@@ -1,6 +1,4 @@
 #scene LS_Event_Main_130_090_C
-0.450	2.366	00.mp3	At a ramen counter, Shinjiro eats.
-5.880	1.199	01.mp3	Akihiko sits.
-11.900	3.063	02.mp3	The cook hands Akihiko a steaming bowl. He eats.
-26.000	4.302	03.mp3	Shinjiro sets down his bowl, stands, and walks out past Akihiko.
-31.000	1.756	04.mp3	Shinjiro's bowl sits empty.
+0.050	10.622	00.mp3	In Hagakure, the ramen shop at the Iwatodai strip mall, Shinjiro sits alone at the counter eating from a bowl. Akihiko walks in and sits down one stool away from him.
+11.850	4.148	01.mp3	The server sets a steaming bowl in front of Akihiko, and he starts to eat.
+25.700	7.293	02.mp3	Shinjiro puts down his bowl, gets up from his stool and walks out behind Akihiko, leaving the empty bowl on the counter.

@@ -1,5 +1,6 @@
 #scene LS_Event_Main_140_220_C
-1.250	1.426	00.mp3	Yukari gets to her feet.
-16.020	1.113	01.mp3	Yukari is gone.
-20.050	1.642	02.mp3	Mitsuru stands over the hero.
-22.900	1.600	03.mp3	The hero nods and gets up.
+0.000	3.344	00.mp3	In the sitting room, Yukari gets up from the sofa, staring.
+13.000	3.808	01.mp3	Yukari turns and runs out of the room. Mitsuru gets to her feet.
+16.000	3.751	02.mp3	A door bangs shut. Yukari is gone; Mitsuru is left standing.
+18.670	1.231	03.mp3	Mitsuru turns to you.
+22.330	1.810	04.mp3	You nod and get up from the sofa.

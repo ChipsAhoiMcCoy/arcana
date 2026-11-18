@@ -1,12 +1,7 @@
 #scene LS_Event_Main_140_230_C
-0.100	1.905	00.mp3	The hero comes up behind Yukari.
-3.400	2.399	01.mp3	She glances back, then turns to face him.
-8.900	1.728	02.mp3	Yukari keeps her eyes down.
-38.600	1.819	03.mp3	Yukari walks over to the hero.
-44.600	1.775	04.mp3	The hero steps close beside her.
-47.600	3.350	05.mp3	Yukari has her arms around the hero. They break apart.
-51.200	1.071	06.mp3	She turns aside.
-66.000	1.757	07.mp3	Junpei heads off along a stream.
-68.000	1.321	08.mp3	Yukari follows him.
-69.700	1.775	09.mp3	The hero follows, then stops.
-75.600	1.748	10.mp3	He scratches his head and walks on.
+0.000	6.658	00.mp3	Outside, away from the house, Yukari stands alone with her back to you. You walk up behind her, hands in your pockets.
+38.500	2.733	01.mp3	Yukari walks over and stops close in front of you.
+44.700	5.194	02.mp3	You step in beside her. Yukari puts her arms around you and holds on, her eyes closed.
+47.500	4.130	03.mp3	Yukari starts, and the two of you break apart. You turn away from each other.
+54.130	2.528	04.mp3	You turn toward the voice. Junpei walks up.
+65.800	5.201	05.mp3	Junpei turns and heads back. Yukari follows him, and you walk after them, then stop.

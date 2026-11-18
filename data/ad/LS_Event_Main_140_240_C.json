@@ -1,11 +1,22 @@
-{"movie": "LS_Event_Main_140_240_C", "title": "The girls get Ikutsuki's call", "cues": [
-{"at": 1.20, "text": "Mitsuru, Yukari and Fuuka on a forest path."},
-{"at": 9.10, "text": "Fuuka turns and walks on. The others follow."},
-{"at": 12.50, "text": "They stop among ferns."},
-{"at": 15.60, "text": "Mitsuru's phone buzzes."},
-{"at": 17.20, "text": "She flips it open."},
-{"at": 20.20, "text": "She holds it out."},
-{"at": 25.10, "text": "Yukari pulls out her phone."},
-{"at": 30.70, "text": "Mitsuru puts her phone away. Yukari lowers hers, frowning."},
-{"at": 36.95, "text": "Yukari folds her arms."}
-]}
+{
+ "movie": "LS_Event_Main_140_240_C",
+ "title": "The girls get Ikutsuki's call",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "Mitsuru, Yukari and Fuuka walk along a forest path."
+  },
+  {
+   "at": 7.67,
+   "text": "Yukari and Mitsuru look down; Mitsuru folds her arms. Fuuka turns and walks on, and the others follow her further up the path."
+  },
+  {
+   "at": 15.33,
+   "text": "Mitsuru takes out her phone, looks at it and answers. She holds the phone out between them."
+  },
+  {
+   "at": 25.0,
+   "text": "Yukari pulls out her own phone and makes a call."
+  }
+ ]
+}

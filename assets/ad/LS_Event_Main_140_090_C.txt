@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_090_C
-0.100	2.066	00.mp3	The hero sleeps under a checked blanket.
-2.900	1.448	01.mp3	He wakes to find Pharos.
-11.100	2.457	02.mp3	Pharos breaks into dark flecks and vanishes.
+0.000	3.489	00.mp3	You lie asleep in your bed in your dorm room, under a checked blanket.
+2.870	6.495	01.mp3	You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed.
+11.000	4.300	02.mp3	Pharos breaks apart into dark flecks that scatter and fade, and he is gone.

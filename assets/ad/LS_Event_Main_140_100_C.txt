@@ -1,6 +1,5 @@
 #scene LS_Event_Main_140_100_C
-0.100	1.621	00.mp3	The hero walks into the lounge.
-6.800	2.148	01.mp3	The others sit on the sofas in silence.
-16.100	1.785	02.mp3	Ikutsuki walks in behind them.
-38.800	1.684	03.mp3	Mitsuru gets up and walks away.
-42.900	1.236	04.mp3	Yukari stands up.
+0.000	12.875	00.mp3	You come in through the dorm's front door, your bag over your shoulder. Fuuka, Yukari, Mitsuru, Akihiko and Junpei sit around the table in the lounge in silence; Fuuka, Yukari and Mitsuru look downcast.
+16.000	4.633	01.mp3	The front door opens and Ikutsuki, the chairman, walks over to the group, smiling.
+22.000	1.512	02.mp3	Junpei jumps to his feet.
+38.670	6.278	03.mp3	Mitsuru gets up from the sofa and walks out of the lounge. Yukari stands up, startled, and watches her go.

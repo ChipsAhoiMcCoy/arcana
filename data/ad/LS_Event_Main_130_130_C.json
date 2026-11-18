@@ -1,1 +1,3 @@
-{"movie": "LS_Event_Main_130_130_C", "title": "The robed Shadow on the throne", "cues": [{"at": 0.02, "text": "A fat Shadow on a throne."}, {"at": 3.0, "text": "Weapons out."}]}
+{"movie": "LS_Event_Main_130_130_C", "title": "The Shadow on the throne", "cues": [
+  {"at": 0.05, "text": "You and your party run into a large hall hung with curtains and stop short. On a throne at the far end sits a huge, round Shadow in robes, with a tall, pale figure rising up behind it, and flat white figures like paper dolls stand on either side. You all take up fighting stances."}
+]}

@@ -1,9 +1,6 @@
 #scene LS_Event_Main_130_060_C
-2.900	1.234	00.mp3	Fuuka holds its paw.
-5.550	1.961	01.mp3	They stand by a flight of stone steps.
-8.550	2.053	02.mp3	The dog gets up and trots to the hero.
-10.850	1.808	03.mp3	The hero crouches, hand out.
-12.950	1.345	04.mp3	He pats the dog's head.
-25.600	1.288	05.mp3	The woman hurries away.
-29.500	2.145	06.mp3	Yukari goes to Koromaru and kneels.
-32.000	0.837	07.mp3	She pets him.
+0.050	11.201	00.mp3	Outside the dorm, at the foot of its front steps, Fuuka crouches in front of a white dog with her hand held out, and Yukari stands watching. You walk up behind them with your school bag on your shoulder.
+2.200	2.591	01.mp3	The dog lifts a paw and sets it in Fuuka's hand.
+8.550	6.279	02.mp3	The dog gets up and trots over to you. You crouch and hold out your hand, and it sniffs it. You pat the dog's head.
+15.400	4.650	03.mp3	A woman walks up behind Yukari and Fuuka and looks at the dog. They turn to her.
+25.600	5.421	04.mp3	The woman hurries off. Yukari goes over to Koromaru, crouches in front of him and pets him.

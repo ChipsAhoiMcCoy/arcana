@@ -1,3 +1,3 @@
 #scene LS_Event_Main_140_190_C
-0.050	1.429	00.mp3	A man in grey walks in.
-19.700	1.609	01.mp3	Takeharu's arms are crossed.
+0.000	9.447	00.mp3	In the Kirijo vacation home, Mitsuru stands waiting. A man in a grey suit, with a patch over one eye, walks up and stops facing her. She smiles at him.
+17.000	4.058	01.mp3	Mitsuru looks down, a hand at her chest. Takeharu folds his arms.

@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_250_C
-0.100	1.630	00.mp3	The boys walk up among palms.
-7.800	2.193	01.mp3	Junpei pulls out a letter and holds it up.
-25.360	1.281	02.mp3	Akihiko leaves.
-29.800	2.210	03.mp3	Junpei turns and trudges after him.
+0.000	5.031	00.mp3	Among palm trees near the beach, you, Junpei and Akihiko walk up in swimsuits.
+7.700	4.855	01.mp3	Junpei pulls out a letter and opens it. You and Akihiko step closer to look.
+25.330	1.810	02.mp3	Akihiko turns and walks off.
+29.670	2.709	03.mp3	Junpei turns from you and stomps off after him.

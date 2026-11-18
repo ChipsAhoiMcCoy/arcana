@@ -1,8 +1,5 @@
 {"movie": "LS_Event_Main_140_270_C", "title": "Akihiko tries his luck", "cues": [
-  {"at": 6.75, "text": "Akihiko strides over. Junpei and the hero follow."},
-  {"at": 10.30, "text": "One sits, one stands."},
-  {"at": 19.45, "text": "The hero answers with an open hand."},
-  {"at": 28.30, "text": "The hero nods."},
-  {"at": 39.55, "text": "The women are gone. The boys stand alone."},
-  {"at": 44.25, "text": "Junpei scratches his head."}
+{"at": 0.00, "text": "Further along the beach, two young women are a little way off, one sitting, the other standing beside her."},
+{"at": 6.67, "text": "Akihiko strides over to them. You and Junpei follow."},
+{"at": 41.20, "text": "The two women are gone. The three of you are left standing on the sand."}
 ]}

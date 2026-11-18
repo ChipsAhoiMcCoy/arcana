@@ -1,3 +1,2 @@
 #scene LS_Event_Main_140_010_C
-0.600	4.002	00.mp3	An empty classroom. The hero sits near Yukari. His phone buzzes.
-5.850	2.097	01.mp3	He reads it, then puts the phone away.
+0.600	7.035	00.mp3	An empty classroom. You sit at your desk, and Yukari sits at the desk beside yours. Your phone buzzes, and you take it out.

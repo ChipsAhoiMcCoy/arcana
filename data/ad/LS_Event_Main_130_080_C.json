@@ -1,11 +1,34 @@
-{"movie": "LS_Event_Main_130_080_C", "title": "The coffin in the alley", "cues": [
-  {"at": 0.50, "text": "A back alley. A black coffin stands upright on the paving, red mist curling at its base."},
-  {"at": 6.90, "text": "More coffins stand around it."},
-  {"at": 9.35, "text": "The nearest coffin melts into black smoke."},
-  {"at": 11.85, "text": "A teen appears."},
-  {"at": 13.70, "text": "Three strangers walk toward him."},
-  {"at": 21.36, "text": "The boy in green opens a case."},
-  {"at": 35.65, "text": "The pale man waves a revolver overhead, then aims it ahead."},
-  {"at": 39.50, "text": "He tucks it into his jeans."},
-  {"at": 42.75, "text": "The pale man turns his back."}
-]}
+{
+ "movie": "LS_Event_Main_130_080_C",
+ "title": "The coffin in the alley",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "A back alley on the outskirts of Port Island Station, with bins lined up along a wall. Coffins stand upright on the paving, a mist curling around the base of each."
+  },
+  {
+   "at": 10.3,
+   "text": "The nearest coffin crumbles away into black smoke. A teenage boy in a cap and jacket stands where it was, and looks around him."
+  },
+  {
+   "at": 13.25,
+   "text": "Three strangers walk up and stop in front of him: a pale, shirtless young man with long hair and tattooed arms, a boy in glasses carrying a metal case, and a girl in a long dress."
+  },
+  {
+   "at": 21.4,
+   "text": "The boy in glasses sets down his case, opens it and holds up a sheet of paper toward the teenager."
+  },
+  {
+   "at": 28.7,
+   "text": "The pale young man walks toward the teenager. The teenager backs away, then turns and runs."
+  },
+  {
+   "at": 35.65,
+   "text": "The pale young man raises a revolver high over his head, then levels it at the running boy and fires. The boy falls. The pale young man lowers the gun and tucks it into his jeans."
+  },
+  {
+   "at": 42.7,
+   "text": "The pale young man turns his back on the fallen boy."
+  }
+ ]
+}

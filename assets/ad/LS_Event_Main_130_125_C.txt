@@ -1,2 +1,2 @@
 #scene LS_Event_Main_130_125_C
-3.800	1.094	00.mp3	The hero nods.
+0.050	10.757	00.mp3	You stand in a row with Akihiko, Junpei, Yukari, Fuuka and Mitsuru, facing a building with an arched entrance and a big curly sign over it reading champs de fleurs.

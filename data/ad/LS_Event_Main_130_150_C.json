@@ -1,1 +1,6 @@
-{"movie": "LS_Event_Main_130_150_C", "title": "The hotel room", "cues": [{"at": 0.4, "text": "A hotel room with a large round bed. The hero sits on its edge, head in his hand."}, {"at": 15.4, "text": "Yukari comes out of the bathroom in a towel and walks toward him."}, {"at": 23.49, "text": "She jerks back."}]}
+{"movie": "LS_Event_Main_130_150_C", "title": "The hotel room", "cues": [
+ {"at": 0.40, "text": "A room in the love hotel, with a large round bed in the middle. You sit alone on its edge, bent forward, holding your head."},
+ {"at": 14.55, "text": "You get up from the bed. Yukari comes out of the bathroom wrapped in a towel and walks slowly toward you, her eyes lowered."},
+ {"at": 23.50, "text": "Swaying on her feet, Yukari has laid a hand on your chest. She snaps out of it, jerks her hand back, clutches the towel to herself and runs back into the bathroom. The door shuts."},
+ {"at": 30.40, "text": "The bathroom door opens and Yukari comes out again, dressed in her school uniform, and stops in front of you."}
+]}

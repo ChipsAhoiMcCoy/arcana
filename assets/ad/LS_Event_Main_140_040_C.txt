@@ -1,3 +1,4 @@
 #scene LS_Event_Main_140_040_C
-13.000	1.010	00.mp3	Yukari stands.
-20.600	1.876	01.mp3	Yukari slowly sits back down.
+0.050	5.378	00.mp3	The meeting in the dorm's command room goes on. Everyone is still seated around the low table.
+9.020	2.701	01.mp3	Yukari jumps to her feet and faces Mitsuru.
+20.550	1.876	02.mp3	Yukari slowly sits back down.

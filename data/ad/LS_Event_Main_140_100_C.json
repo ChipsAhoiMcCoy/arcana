@@ -1,7 +1,1 @@
-{"movie": "LS_Event_Main_140_100_C", "title": "Ikutsuki proposes Yakushima", "cues": [
-{"at": 0.10, "text": "The hero walks into the lounge."},
-{"at": 6.80, "text": "The others sit on the sofas in silence."},
-{"at": 16.10, "text": "Ikutsuki walks in behind them."},
-{"at": 38.80, "text": "Mitsuru gets up and walks away."},
-{"at": 42.90, "text": "Yukari stands up."}
-]}
+{"movie": "LS_Event_Main_140_100_C", "title": "Ikutsuki proposes Yakushima", "cues": [{"at": 0.00, "text": "You come in through the dorm's front door, your bag over your shoulder. Fuuka, Yukari, Mitsuru, Akihiko and Junpei sit around the table in the lounge in silence; Fuuka, Yukari and Mitsuru look downcast."}, {"at": 16.00, "text": "The front door opens and Ikutsuki, the chairman, walks over to the group, smiling."}, {"at": 22.00, "text": "Junpei jumps to his feet."}, {"at": 38.67, "text": "Mitsuru gets up from the sofa and walks out of the lounge. Yukari stands up, startled, and watches her go."}]}

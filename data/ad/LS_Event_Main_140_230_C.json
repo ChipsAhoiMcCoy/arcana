@@ -1,13 +1,30 @@
-{"movie": "LS_Event_Main_140_230_C", "title": "Yukari and the hero talk about her father", "cues": [
-{"at": 0.10, "text": "The hero comes up behind Yukari."},
-{"at": 3.40, "text": "She glances back, then turns to face him."},
-{"at": 8.90, "text": "Yukari keeps her eyes down."},
-{"at": 38.60, "text": "Yukari walks over to the hero."},
-{"at": 44.60, "text": "The hero steps close beside her."},
-{"at": 47.60, "text": "Yukari has her arms around the hero. They break apart."},
-{"at": 51.20, "text": "She turns aside."},
-{"at": 66.00, "text": "Junpei heads off along a stream."},
-{"at": 68.00, "text": "Yukari follows him."},
-{"at": 69.70, "text": "The hero follows, then stops."},
-{"at": 75.60, "text": "He scratches his head and walks on."}
-]}
+{
+ "movie": "LS_Event_Main_140_230_C",
+ "title": "Yukari and you talk about her father",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Outside, away from the house, Yukari stands alone with her back to you. You walk up behind her, hands in your pockets."
+  },
+  {
+   "at": 38.5,
+   "text": "Yukari walks over and stops close in front of you."
+  },
+  {
+   "at": 44.7,
+   "text": "You step in beside her. Yukari puts her arms around you and holds on, her eyes closed."
+  },
+  {
+   "at": 47.5,
+   "text": "Yukari starts, and the two of you break apart. You turn away from each other."
+  },
+  {
+   "at": 54.13,
+   "text": "You turn toward the voice. Junpei walks up."
+  },
+  {
+   "at": 65.8,
+   "text": "Junpei turns and heads back. Yukari follows him, and you walk after them, then stop."
+  }
+ ]
+}
