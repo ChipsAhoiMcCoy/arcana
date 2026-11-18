@@ -29,6 +29,7 @@
 #include "settings.h"
 #include "sonar.h"
 #include "speech.h"
+#include "ue/scan.h"
 #include "watch.h"
 #include "world.h"
 #include <windows.h>
@@ -95,11 +96,55 @@ float map_turn(int major, int minor) {
   return 0.0f;
 }
 
+// ---- turned rooms ----
+// A room the game reaches by a jump (a trigger that fades and puts the hero at a start point) can be turned from the
+// map. The alley behind Fountain Square (field part 3) is entered walking north and starts the hero facing east, and
+// left walking west it starts him facing south (BF_OBJ_103_101_015: FLD_PC_MODEL_SET_POS(1011) / (1010); the starts'
+// yaws in LV_F103_101_AreaChange). There north is turned a quarter turn, so a way walked into the jump goes on the same
+// way out of it: up keeps going to the Velvet Room's door, down leads back out. The part is the game's own
+// (GET_FIELD_PARTS_ID: native 0x11af780, then 0x11addf0; the jump's script sets it). The alley alone for now (the
+// user's trial, 2026-11-17).
+struct PartTurn { int major, minor, part; float turn; };
+constexpr PartTurn kPartTurns[] = {{103, 101, 3, 90.0f}};
+float g_turn = 0;              // this part's turn from the map's north
+int g_part = -1;               // the field part, as the game has it
+float room_north() { return std::remainder(g_north + g_turn, 360.0f); }
+
+int field_part() {
+  if (!known_build()) return -1;
+  auto owner = (uintptr_t (*)())(scan::exe_base() + 0x11af780);
+  auto part = (uint32_t (*)(uintptr_t))(scan::exe_base() + 0x11addf0);
+  uintptr_t o = owner();
+  return o ? (int)part(o) : -1;
+}
+
+// Each frame the mode holds: the part's turn. It takes effect at once, a key held through the jump too: the turn is
+// the one that makes the way walked in "up" in the new room, so a held up walks on along it (the game's own hold of
+// the old way through a camera cut, 0x11d7db0, would walk the alley's arrival into its north wall).
+void part_tick() {
+  const int part = field_part();
+  float turn = 0;
+  for (const PartTurn& t : kPartTurns)
+    if (t.major == g_field_major && t.minor == g_field_minor && t.part == part) turn = t.turn;
+  if (part != g_part) log::writef("topdown: field part {}", part);
+  g_part = part;
+  if (turn == g_turn) return;
+  g_turn = turn;
+  world::set_north(true, room_north());
+  log::writef("topdown: part {} turned {:.0f} from the map: north is yaw {:.0f}", part, turn, room_north());
+}
+
 // North for the field the hero is in: found once per field (a field load makes a new hero), once its hit actors have
 // streamed in and name it.
 void north_tick() {
   UObject* hero = world::player();
-  if (hero && !(WeakObj::of(hero) == g_north_hero)) { g_north_hero = WeakObj::of(hero); g_north_due = true; }
+  if (hero && !(WeakObj::of(hero) == g_north_hero)) {
+    // A new field: its parts are its own.
+    g_north_hero = WeakObj::of(hero);
+    g_north_due = true;
+    g_turn = 0;
+    g_part = -1;
+  }
   if (!g_north_due) return;
   int major = 0, minor = 0;
   if (!poi::area_ids(major, minor)) return;
@@ -110,7 +155,7 @@ void north_tick() {
   if (north == g_north) return;
   g_north = north;
   log::writef("topdown: field {} {}, map turned {:.0f}: north is yaw {:.0f}", major, minor, g_field_turn, g_north);
-  if (g_active) world::set_north(true, g_north);
+  if (g_active) world::set_north(true, room_north());
 }
 
 UObject* op() {
@@ -155,7 +200,7 @@ void hold_camera(UObject* o) {
   UObject* cam = get<UObject*>(o, "FreeCamera");
   UObject* yaw_comp = cam ? get<UObject*>(cam, "YawSceneComp") : nullptr;
   float yaw = yaw_comp ? get<FRotator>(yaw_comp, "RelativeRotation").yaw : 0.0f;
-  float diff = std::remainder(yaw - g_north, 360.0f);
+  float diff = std::remainder(yaw - room_north(), 360.0f);
   g_relocked_now = !yaw_comp || std::fabs(diff) > 0.5f;
   if (g_relocked_now) {
     if (g_relock_run == 0) {
@@ -166,7 +211,7 @@ void hold_camera(UObject* o) {
     }
     ++g_relock_run;
     Params p(find_function(class_of(o), "SetFreeCameraYaw"));
-    p.set<float>("Angle", g_north);
+    p.set<float>("Angle", room_north());
     call(o, p);
     ++g_relocks;
   }
@@ -247,7 +292,7 @@ void hold_listener() {
   Params p(find_function(class_of(pc), "SetAudioListenerOverride"));
   p.set<UObject*>("AttachToComponent", nullptr);
   p.set<FVector>("Location", FVector{me.x, me.y, me.z + g_listener_h});
-  p.set<FRotator>("Rotation", FRotator{0.0f, g_north, 0.0f});
+  p.set<FRotator>("Rotation", FRotator{0.0f, room_north(), 0.0f});
   g_listener_set = call(pc, p);
 }
 
@@ -336,7 +381,7 @@ void scan_tick() {
 
 void enter() {
   g_active = true;
-  world::set_north(true, g_north);
+  world::set_north(true, room_north());
   input::claim_right_stick(true, input::StickClaim::TopDown);
   log::write("topdown: on (camera north, listener on the hero)");
 }
@@ -355,7 +400,7 @@ void leave() {
 }  // namespace
 
 bool active() { return g_active; }
-float north_yaw() { return g_north; }
+float north_yaw() { return room_north(); }
 
 void tick() {
   if (g_unloading) return;
@@ -374,7 +419,8 @@ void tick() {
   hold_zones();
   hold_camera(o);
   relock_run_end();
-  hold_walk(o, g_north);
+  part_tick();
+  hold_walk(o, room_north());
   hold_listener();
   scan_tick();
 }
@@ -423,6 +469,7 @@ void install() {
       UObject* cop = o ? get<UObject*>(o, "OpCameraComp") : nullptr;
       UObject* hit = cop ? get<UObject*>(cop, "CurrentHitRef") : nullptr;
       walk += std::format("zones held {} scene camera {}\n", g_zones.size(), hit ? name_of(hit) : "none");
+      walk += std::format("field part {} turned {:.0f}: room north yaw {:.0f}\n", g_part, g_turn, room_north());
       return walk + std::format("topdown setting={} active={} exploring={} operator state={} keys={} listener_set={} h={:.0f}\n"
                          "camera speed={:.1f} margin={:.1f} saved={} ({:.1f}, {:.1f}) relocks={} camera_yaw={:.1f} scan held={} on={}\n",
                          settings::on(settings::TopDown), g_active, world::exploring(), o ? get<int32_t>(o, "State", -1) : -1,

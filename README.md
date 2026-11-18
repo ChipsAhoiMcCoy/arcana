@@ -287,6 +287,7 @@ The game's camera sits behind the hero and turns, so a sound "ahead" kept changi
 - While you walk freely the camera faces north and cannot turn. The scene cameras some places switch to (by the Velvet Room's door, the station, your room) are turned off, so the north camera shows everywhere. Up always walks north.
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
 - North is the corner map's up, place by place: where the game draws a map turned (Port Island Station, your room, the Command Room), north turns with it.
+- A room the game reaches by a jump can be turned so the way you walked in stays up. The back alley to the Velvet Room is: walk north up the passage from Fountain Square and up keeps leading along the alley to the door, down leads back out.
 - The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). While you move, the direction behind your walk stays silent.
 - Points of interest give compass directions ("north-east"), and the right stick scans (see On a controller).
 
