@@ -1,0 +1,6 @@
+#scene LS_Event_Cmmu_009_050_C
+2.330	6.957	00.mp3	Outside the dorm, Koromaru sits beside you. The girl in the floral shirt and the naughty-looking boy run up to him.
+12.000	4.108	01.mp3	The children run off, and the woman who knew Koromaru at the shrine walks up.
+28.170	3.348	02.mp3	The woman has gone. An old man walks up the street toward you.
+38.330	6.435	03.mp3	The old man has sat down, and you play shogi with him, Koromaru beside you. Mitsuru walks over from the dorm.
+64.830	3.596	04.mp3	Koromaru runs off toward the old man's voice, and you follow.

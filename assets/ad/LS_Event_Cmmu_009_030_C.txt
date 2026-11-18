@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_009_030_C
+0.030	9.407	00.mp3	Outside the dorm, Koromaru sits beside you. A woman walks up the street to the dorm. Koromaru trots over to her. She bends down and pets Koromaru.
+18.830	5.046	01.mp3	She walks away. Koromaru stands watching her go, and Aigis walks over to you both.

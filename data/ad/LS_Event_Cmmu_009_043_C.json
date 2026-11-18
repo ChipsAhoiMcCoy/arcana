@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_009_043_C",
+ "title": "At the police station",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Inside the police station, you stand before Officer Kurosawa with Koromaru and a stray brown dog."
+  },
+  {
+   "at": 4.17,
+   "text": "Kurosawa walks off to make a phone call."
+  }
+ ]
+}

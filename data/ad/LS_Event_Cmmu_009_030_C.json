@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_009_030_C",
+ "title": "A familiar face",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, Koromaru sits beside you. A woman walks up the street to the dorm. Koromaru trots over to her. She bends down and pets Koromaru."
+  },
+  {
+   "at": 18.83,
+   "text": "She walks away. Koromaru stands watching her go, and Aigis walks over to you both."
+  }
+ ]
+}

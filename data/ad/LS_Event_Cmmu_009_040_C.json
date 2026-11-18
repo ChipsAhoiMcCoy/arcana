@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_009_040_C",
+ "title": "Takoyaki",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, the woman walks up to you and Koromaru and pets him."
+  },
+  {
+   "at": 8.03,
+   "text": "You and Koromaru eat the takoyaki together, you with a toothpick, Koromaru from his own portion."
+  },
+  {
+   "at": 9.77,
+   "text": "A dog walks up and stops a short way off."
+  },
+  {
+   "at": 17.1,
+   "text": "The other dog comes over to Koromaru's takoyaki, lies down and eats it."
+  }
+ ]
+}

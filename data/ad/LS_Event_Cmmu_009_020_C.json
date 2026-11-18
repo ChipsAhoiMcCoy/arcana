@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_009_020_C",
+ "title": "A call for help",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, Koromaru sits beside you on the street."
+  },
+  {
+   "at": 8.0,
+   "text": "A girl in a floral shirt runs up to you, out of breath."
+  },
+  {
+   "at": 14.83,
+   "text": "She runs off, and you and Koromaru run after her."
+  }
+ ]
+}

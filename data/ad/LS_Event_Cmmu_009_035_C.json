@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_009_035_C",
+ "title": "At the shrine with the woman",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "At Naganaki Shrine, you and Koromaru walk up to the woman who knew him there."
+  },
+  {
+   "at": 15.67,
+   "text": "She walks away down the path. Koromaru sits down beside you."
+  }
+ ]
+}

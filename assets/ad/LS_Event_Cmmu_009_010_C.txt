@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_009_010_C
+0.030	3.180	00.mp3	Outside the dorm, Koromaru sits at your feet on the street.
+11.670	6.089	01.mp3	An old man carrying a plastic shopping bag walks slowly up the street and stops in front of Koromaru.
+49.330	5.943	02.mp3	Later, back in front of the dorm, Koromaru trots beside you. Fuuka and Aigis come over to meet you both.

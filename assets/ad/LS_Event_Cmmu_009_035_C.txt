@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_009_035_C
+0.030	4.320	00.mp3	At Naganaki Shrine, you and Koromaru walk up to the woman who knew him there.
+15.670	3.466	01.mp3	She walks away down the path. Koromaru sits down beside you.

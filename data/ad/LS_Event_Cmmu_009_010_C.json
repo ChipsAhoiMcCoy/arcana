@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_009_010_C",
+ "title": "The old man from the shrine",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, Koromaru sits at your feet on the street."
+  },
+  {
+   "at": 11.67,
+   "text": "An old man carrying a plastic shopping bag walks slowly up the street and stops in front of Koromaru."
+  },
+  {
+   "at": 49.33,
+   "text": "Later, back in front of the dorm, Koromaru trots beside you. Fuuka and Aigis come over to meet you both."
+  }
+ ]
+}

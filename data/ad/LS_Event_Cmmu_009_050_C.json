@@ -1,0 +1,26 @@
+{
+ "movie": "LS_Event_Cmmu_009_050_C",
+ "title": "Visitors at the dorm",
+ "cues": [
+  {
+   "at": 2.33,
+   "text": "Outside the dorm, Koromaru sits beside you. The girl in the floral shirt and the naughty-looking boy run up to him."
+  },
+  {
+   "at": 12.0,
+   "text": "The children run off, and the woman who knew Koromaru at the shrine walks up."
+  },
+  {
+   "at": 28.17,
+   "text": "The woman has gone. An old man walks up the street toward you."
+  },
+  {
+   "at": 38.33,
+   "text": "The old man has sat down, and you play shogi with him, Koromaru beside you. Mitsuru walks over from the dorm."
+  },
+  {
+   "at": 64.83,
+   "text": "Koromaru runs off toward the old man's voice, and you follow."
+  }
+ ]
+}

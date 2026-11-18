@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_009_055_C
+0.030	5.941	00.mp3	At Naganaki Shrine, Koromaru runs ahead of you up the path, turning back again and again to look at you.
+14.000	4.230	01.mp3	You follow him further into the shrine grounds, and Koromaru runs to meet you.
+24.700	1.648	02.mp3	Koromaru gives you a collar.

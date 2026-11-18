@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_009_055_C",
+ "title": "Koromaru's collar",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "At Naganaki Shrine, Koromaru runs ahead of you up the path, turning back again and again to look at you."
+  },
+  {
+   "at": 14.0,
+   "text": "You follow him further into the shrine grounds, and Koromaru runs to meet you."
+  },
+  {
+   "at": 24.7,
+   "text": "Koromaru gives you a collar."
+  }
+ ]
+}

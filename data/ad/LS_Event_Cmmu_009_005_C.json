@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_009_005_C",
+ "title": "Koromaru slips out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm lounge. Koromaru sits beside Mitsuru, then gets up, runs to the front doors and slips outside. Yukari walks over to you."
+  },
+  {
+   "at": 13.67,
+   "text": "Mitsuru gets up from her seat, walks to the front doors and goes out after him."
+  }
+ ]
+}

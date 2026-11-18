@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_009_005_C
+0.000	8.417	00.mp3	The dorm lounge. Koromaru sits beside Mitsuru, then gets up, runs to the front doors and slips outside. Yukari walks over to you.
+13.670	4.353	01.mp3	Mitsuru gets up from her seat, walks to the front doors and goes out after him.
