@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_600_823_C
+0.030	5.044	00.mp3	The dorm lounge. You sit at the dining table, studying with Akihiko and Mitsuru.

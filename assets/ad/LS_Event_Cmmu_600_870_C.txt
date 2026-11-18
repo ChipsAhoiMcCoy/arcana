@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_600_870_C
+0.030	17.075	00.mp3	The playground at Naganaki Shrine, where the whole team has come along on Koromaru's walk. Yukari and Mitsuru sit side by side, talking quietly. Nearby, Fuuka is on the jungle gym, with Junpei calling directions. Ken and Akihiko stand by the slide.
+11.000	3.817	01.mp3	Koromaru rears up and rests his front paws on top of Aigis's head.
