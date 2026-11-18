@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_600_700_C
+0.000	5.875	00.mp3	You come into the dorm lounge with your bag. Mitsuru, Yukari, Junpei and Fuuka stand waiting for you.
+36.000	2.569	01.mp3	Yukari takes a step toward Junpei, glaring.
+41.670	5.118	02.mp3	Mitsuru leads you all upstairs, to a quiet corner with armchairs and a bookshelf at the back.

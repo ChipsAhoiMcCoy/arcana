@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_600_817_C
+0.000	4.395	00.mp3	You sit at the dorm's dining table with Yukari, Junpei and Fuuka, studying.
