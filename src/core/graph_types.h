@@ -84,6 +84,8 @@ struct NodeVtable {
   /// Optional. The control's details as lines the host walks one at a time on demand (P3R: the detail buffer, the
   /// right stick or Ctrl+Up / Down), the control's own line first.
   std::function<std::vector<std::string>()> detail_lines;
+  /// Optional. What the control's subject looks like (P3R: the area key on a Persona or a Shadow).
+  std::function<std::string()> appearance;
   /// Optional. Horizontal value adjust (a setting's value): sign is -1 (decrease) / +1 (increase),
   /// large requests a coarse step. When set, left/right do NOT navigate.
   std::function<void(int sign, bool large)> on_adjust;

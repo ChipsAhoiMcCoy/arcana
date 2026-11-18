@@ -119,6 +119,11 @@ class MenuScreen : public Screen, public ui::Screen {
   virtual std::vector<std::string> detail_lines();
   // The focused item's identity: landing on another starts the buffer at its top again.
   std::string detail_key() const;
+  // What the focused item's Persona or Shadow looks like (the area key): the item's own (look_persona), else any line
+  // of a Persona status page ("ps.<id>"); "" when it shows none.
+  virtual std::string appearance();
+  // The item shows Persona `persona`: the area key on it says how that Persona looks (core/look_text).
+  static void look_persona(const ui::NodeVtablePtr& v, int persona);
 
   // The id of a mirrored list's item i.
   static ui::ControlId slot(const std::string& key, int i);

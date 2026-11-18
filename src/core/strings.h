@@ -773,7 +773,7 @@ inline constexpr const char* kKeyHelpPoiNearest = "Select the nearest point of i
 inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points of interest of any kind, toward the nearest";
 inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";
 inline constexpr const char* kKeyHelpPoiAgain = "The selected point of interest again: where it is now, and its sound";
-inline constexpr const char* kKeyHelpArea = "Describe the area: how the place around you looks, or while someone talks, how they look (press again for the place)";
+inline constexpr const char* kKeyHelpArea = "Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks";
 // A key's name in that list: its modifiers, then the key as Windows names it (kKeyUnnamed and its code when it has
 // no name).
 inline constexpr const char* kModCtrl = "Ctrl+";

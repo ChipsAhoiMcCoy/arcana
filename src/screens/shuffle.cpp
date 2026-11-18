@@ -403,14 +403,18 @@ class ShuffleScreen : public MenuScreen {
     if (UObject* ui = shuffle_ui(); ui && overstock(ui)) {
       if (const uint8_t* e = overstock_stats(ui)) { build_status_page(b, e, {}, {}, nullptr, nullptr, {}); return; }
       std::vector<std::string> rows;
+      std::vector<int> ids;
       int id = gained(ui);
       rows.push_back(std::format("{}: {}", strings::kGain, id ? persona::describe(id, persona::base_level(id)) : std::string()));
-      for (auto& o : persona::stock()) rows.push_back(persona::describe(o.id, o.level));
+      ids.push_back(id);
+      for (auto& o : persona::stock()) { rows.push_back(persona::describe(o.id, o.level)); ids.push_back(o.id); }
       release_.count = (int)rows.size();
       b.begin_stop("release");
       for (int i = 0; i < (int)rows.size(); ++i) {
         std::string t = rows[i];
-        b.add_item(slot("release", i), game_item(release_, i, [t] { return t; }));
+        auto v = game_item(release_, i, [t] { return t; });
+        look_persona(v, ids[i]);
+        b.add_item(slot("release", i), v);
       }
       if (int c = release_.cursor(); c >= 0) b.set_start(slot("release", c));
       return;

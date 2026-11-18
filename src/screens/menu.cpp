@@ -4,6 +4,7 @@
 #include "screens/util.h"
 #include "screens/battle_details.h"
 #include "core/speech_text.h"
+#include "core/look_text.h"
 #include "core/menu_step.h"
 #include "core/navigator.h"
 #include "core/said_once.h"
@@ -638,6 +639,24 @@ int MenuScreen::focused_row(const std::string& key) const {
 }
 
 std::optional<ui::ControlId> MenuScreen::focused() const { return g_active == this ? nav().focused_id() : std::nullopt; }
+
+std::string MenuScreen::appearance() {
+  const ui::GraphNode* n = g_active == this ? nav().focused_node() : nullptr;
+  if (n && n->vtable && n->vtable->appearance) {
+    std::string a;
+    guarded([&] { a = n->vtable->appearance(); });
+    if (!a.empty()) return a;
+  }
+  auto f = focused();
+  std::string k = f && f->structural_key().is_string() ? f->structural_key().text() : std::string();
+  if (!k.starts_with("ps.")) return {};
+  int id = std::atoi(k.c_str() + 3);
+  return id > 0 ? core::look::persona(id) : std::string();
+}
+
+void MenuScreen::look_persona(const ui::NodeVtablePtr& v, int persona) {
+  if (persona > 0) v->appearance = [persona] { return core::look::persona(persona); };
+}
 
 std::string MenuScreen::detail_key() const {
   auto f = focused();

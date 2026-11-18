@@ -353,7 +353,9 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
         walk = persona::detail_lines(r + 0x18);
       }
       n = i + 1;
-      b.add_item(slot(key, i), game_item(list_, i, [l] { return l; }));
+      auto v = game_item(list_, i, [l] { return l; });
+      look_persona(v, *(uint16_t*)(r + 0x1A));
+      b.add_item(slot(key, i), v);
     }
   } else if (st == 12) {
     screens::set_keys(strings::kFusionKeys);
@@ -374,7 +376,9 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
       l += have == need ? std::format(", {}", strings::kSpecialReady) : std::format(", {} {} {} {}", strings::kSpecialHave, have, strings::kOf, need);
       if (i == fr) walk = persona::detail_lines(r + 0x18);
       n = i + 1;
-      b.add_item(slot(key, i), game_item(list_, i, [l] { return l; }));
+      auto v = game_item(list_, i, [l] { return l; });
+      look_persona(v, *(uint16_t*)(r + 0x1A));
+      b.add_item(slot(key, i), v);
     }
   } else {
     screens::set_keys(strings::kFusionSearchKeys);
@@ -386,7 +390,9 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
                                   strings::kFusionAnd, persona::name(*(uint16_t*)(r + 0x16A)));
       if (i == fr) walk = persona::detail_lines(r + 0x18);
       n = i + 1;
-      b.add_item(slot(key, i), game_item(list_, i, [l] { return l; }));
+      auto v = game_item(list_, i, [l] { return l; });
+      look_persona(v, *(uint16_t*)(r + 0x1A));
+      b.add_item(slot(key, i), v);
     }
     if (rs->num <= 0) b.add_item(ui::ControlId::structural("velvet.none"), item([] { return std::string(strings::kFusionNone); }));
   }
@@ -452,7 +458,9 @@ void VelvetScreen::build_book(ui::GraphBuilder& b) {
     std::string l = e[0x88] ? std::format("{}, {} {}", persona::describe(id, level), *(int32_t*)(e + 0x94), strings::kYen)
                             : std::format("{}, {} {}, {}", social::arcana_name(persona::arcana(id)), strings::kLevel, level, strings::kNotRegistered);
     for (auto& o : stock) if (e[0x88] && o.id == id) { l += std::format(", {}", strings::kAlreadyOwned); break; }
-    b.add_item(slot(key, i), game_item(book_list_, i, [l] { return l; }));
+    auto v = game_item(book_list_, i, [l] { return l; });
+    if (e[0x88]) look_persona(v, id);   // an unregistered entry is a question mark in the game too
+    b.add_item(slot(key, i), v);
   }
   // A registered Persona's details to the right, as registered (the row's entry at +0x18).
   int n = rows->data ? std::min(rows->num, 600) : 0, f = focused_row(key);
@@ -474,7 +482,9 @@ void VelvetScreen::build_regist(ui::GraphBuilder& b) {
     uint8_t* e = rows->data + i * kRow;
     std::string l = entry_line(e);
     if (e[0x8A]) l += std::string(", ") + strings::kMarked;
-    b.add_item(slot(key, i), game_item(regist_list_, i, [l] { return l; }));
+    auto v = game_item(regist_list_, i, [l] { return l; });
+    look_persona(v, *(uint16_t*)(e + 0x1A));
+    b.add_item(slot(key, i), v);
   }
   int n = rows->data ? std::min(rows->num, 64) : 0, f = focused_row(key);
   if (f >= 0 && f < n) add_walk(b, key, f, n, persona::detail_lines(rows->data + f * kRow + 0x18));

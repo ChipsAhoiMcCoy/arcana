@@ -51,7 +51,7 @@ The game's own controls work as usual. The mod adds:
 - Period: Walk to the selected point of interest, as Apostrophe does (press again, or move, to stop)
 - Shift+Period: Walk to the selected point and use it: Space is pressed for you once its prompt (check, talk, open) comes up. Nothing is pressed where no prompt comes, as at an exit
 - Shift+Apostrophe: Party: each member's level, HP and SP
-- Semicolon: Describe the area, or while someone talks, describe them
+- Semicolon: Describe the area, or while someone talks, describe them; on a Persona or a Shadow in focus (a battle target, a fusion, the compendium), describe it
 - Shift+Semicolon: The selected point of interest again, from where you stand, with its sound
 
 ### On a controller
@@ -61,7 +61,7 @@ Hold both triggers (LT and RT) for the mod's keys. You hear a tick and, in the f
 - D-pad left / right: Previous / next category
 - D-pad up / down: Previous (nearer) / next (farther) point of interest
 - A: Walk to the selected point (again, or push the left stick, to stop)
-- B: Describe the area
+- B: Describe the area, the person talking, or the Persona or Shadow in focus
 - X: Repeat the message, or describe the screen
 - Y: Where am I
 - LB: Social stats
@@ -178,6 +178,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Cut-ins: a close-up flashed to stress a line is described before it ("Close-up: Yukari, glaring.").
 - Pictures shown full screen are described as they appear (a class question's chalkboard, a sketch in the story).
 - Semicolon (triggers + B) while someone talks with their portrait up describes them as the portrait shows them now: their look, the outfit (uniform, winter coat, swimsuit, yukata, combat gear...) and how they stand. Every outfit of every character with a portrait is described.
+- Semicolon (triggers + B) on a Persona or a Shadow describes how it looks, written from the game's own 3D models: every Persona (the DLC ones too) and every Shadow, recoloured siblings and bosses included, and the people you fight. It works on the enemy or party member under the cursor in battle (a party member: their Persona), any Persona status page (a fusion's result, a level up, the camp's Persona list, Shuffle Time), the fusion and search lists, the compendium (registered entries only) and the registry list.
 - Messages (Ctrl, or the morning's "I've got a text message..."): each mail as sender and title, "new" when unread; Space reads it, Escape closes. The reply choice that follows is read like any choice.
 - A new day: the date, weekday, time of day and moon as the day-change screen starts ("April 7, Tuesday, Morning. Waxing gibbous moon"), and a new time of day as its screen plays. A date reached any other way (a load, a story jump) is said once you can walk.
 - Game over: "Game Over" and the poem are read whole; Space or Enter (A) skips to the choices, each read with its description.

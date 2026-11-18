@@ -191,7 +191,9 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     // A Persona: its name with the member's lines, then its sections: Stats (one per line, as the status page totals
     // them: base, incense and fusion bonus), Skills, Affinities. `entry` is its FDatUnitPersonaEntry.
     auto persona_sections = [&](int pid, int lv, const uint8_t* entry, auto skill_at) {
-      b.add_item(ui::ControlId::structural(k + ".persona"), item([pid, lv] { return persona::describe(pid, lv); }));
+      auto pv = item([pid, lv] { return persona::describe(pid, lv); });
+      look_persona(pv, pid);
+      b.add_item(ui::ControlId::structural(k + ".persona"), pv);
       b.set_region(k + ".stats");
       b.push_context(strings::kStatsTitle);
       for (int i = 0; i < 5; ++i) {

@@ -15,6 +15,8 @@
 #include "calendar.h"
 #include "poi.h"
 #include "portrait.h"
+#include "screens/battle_details.h"
+#include "screens/menu.h"
 #include "seh.h"
 #include "speech.h"
 #include "ue/scan.h"
@@ -92,7 +94,17 @@ static ca::Scene scene(std::vector<std::string>* levels_out = nullptr) {
   return s;
 }
 
+// A Persona or Shadow in focus: a battle's target or member (their Persona), a fusion's result, a compendium or
+// fusion list row, any Persona status page (core/look_text: the words). "" when none is in focus.
+static std::string appearance() {
+  if (screens::MenuScreen* m = screens::menu::active())
+    if (std::string a = m->appearance(); !a.empty()) return a;
+  return screens::battle_details::appearance();
+}
+
 void describe() {
+  // A Persona or Shadow in focus: how it looks (2026-11-17), before anything else.
+  if (std::string a = appearance(); !a.empty()) { speech::speak(a, true); return; }
   // Talking to someone: the character first; pressed again on the same line, the place behind them; again, the
   // character (2026-11-14). A new line or portrait starts over with the character.
   static std::string last_portrait;

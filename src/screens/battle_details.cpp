@@ -15,6 +15,7 @@
 #include "screens/util.h"
 #include "screens/battle_state.h"
 #include "screens/battle_words.h"
+#include "core/look_text.h"
 #include "devserver.h"
 #include "input.h"
 #include "msg.h"
@@ -97,6 +98,16 @@ void frame() {
   bool on = in_focus() && !input::modal();
   input::claim_right_stick(on);
   if (int d = input::take_right_flick(); d && on) step(-d);   // a flick up is +1: back toward the top
+}
+std::string appearance() {
+  std::string out;
+  guarded([&] {
+    UObject* u = focused_unit();
+    if (!u || msg::current().blocking) return;
+    if (ue::get_bool(u, "EnemyFlag")) out = core::look::enemy(btl_words().unit_int("GetUnitID", u));
+    else if (int pid = btl_words().unit_int("GetPersonaEquipID", u); pid > 0) out = core::look::persona(pid);
+  });
+  return out;
 }
 void install() {
   dev::route("/battle/details", [](const dev::Request& r, int&) {
