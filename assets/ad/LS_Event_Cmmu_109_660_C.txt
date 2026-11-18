@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_109_660_C
+0.000	4.777	00.mp3	In the school's main lobby, you stand with Chihiro. She is looking away from you, frowning.
+15.500	2.796	01.mp3	Chihiro turns and runs off across the lobby.
+31.500	1.742	02.mp3	Chihiro turns and walks away.

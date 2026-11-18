@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_109_653_C
+0.000	8.724	00.mp3	In Paulownia Mall's Fountain Square, decorated for Christmas, you and Chihiro walk in side by side among the shoppers, both carrying your bags.
+11.330	4.879	01.mp3	You and Chihiro walk on to look around, and stop together at another spot in the square.
+16.670	3.609	02.mp3	Chihiro holds out a small handmade gift to you, and you take it.
