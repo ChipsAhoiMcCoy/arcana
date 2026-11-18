@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_007_080_C
+0.000	2.865	00.mp3	The school rooftop. You walk out across it with Aigis.
+3.000	2.282	01.mp3	Aigis turns away from you, her face sad.
