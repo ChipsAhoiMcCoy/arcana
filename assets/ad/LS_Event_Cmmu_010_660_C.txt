@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_010_660_C
+0.030	2.641	00.mp3	In the dorm lounge, you look through a photo album.

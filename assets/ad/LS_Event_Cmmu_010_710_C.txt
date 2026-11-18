@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_010_710_C
+0.170	3.819	00.mp3	The dorm rooftop. You and Shinjiro work in the vegetable garden.

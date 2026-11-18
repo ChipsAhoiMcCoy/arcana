@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_010_025_C",
+ "title": "Mitsuru waits for Shinjiro",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, you and Shinjiro walk up to the entrance, where Mitsuru stands waiting."
+  },
+  {
+   "at": 25.17,
+   "text": "Akihiko walks up to the three of you."
+  },
+  {
+   "at": 33.33,
+   "text": "Shinjiro turns away and goes up the steps into the dorm; the door shuts behind him. Mitsuru hurries in after him."
+  },
+  {
+   "at": 52.5,
+   "text": "You turn and walk past Akihiko into the dorm, leaving him standing outside."
+  }
+ ]
+}
