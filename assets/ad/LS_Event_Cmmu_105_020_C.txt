@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_105_020_C
+0.000	6.911	00.mp3	After a run, Kazushi stands facing you, out of breath and wincing. A few teammates rest nearby, two of them sitting.
+11.670	3.498	01.mp3	Kazushi stops short in mid-step, his face twisted in pain.

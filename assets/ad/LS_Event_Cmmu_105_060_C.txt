@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_105_060_C
+0.000	5.774	00.mp3	On the athletic field, you walk up near Yuko while the team runs past. Kazushi is not among them.
+6.130	4.974	01.mp3	Yuko takes out her phone, flips it open and reads it, then closes it and turns to you.

@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_105_030_C
+0.000	6.755	00.mp3	On the track, Kazushi grins at you, ready for another run. Yuko and a few teammates stand by, two of them sitting.
+3.000	7.101	01.mp3	Kazushi's leg gives way and he falls to the ground. Yuko stares in shock, and the teammates nearby turn toward him.

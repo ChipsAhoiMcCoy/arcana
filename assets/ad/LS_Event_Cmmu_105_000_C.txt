@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_105_000_C
+0.000	9.500	00.mp3	The school athletic field. You stand at the edge of the track, beside a water jug, while a boy sprints past along the track and two more runners follow behind him.

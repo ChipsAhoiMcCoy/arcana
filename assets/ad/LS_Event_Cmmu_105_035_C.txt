@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_105_035_C
+0.000	6.964	00.mp3	The nurse's office. Kazushi sits on a chair, looking glum, while two teammates stand over him. You stand beside him.
+4.700	5.150	01.mp3	The two teammates walk out, and the door closes behind them, leaving you alone with Kazushi.
