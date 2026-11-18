@@ -7,6 +7,7 @@
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/persona_status.h"
+#include "core/look_text.h"
 #include "core/strings.h"
 #include "msg.h"
 #include "persona.h"
@@ -89,6 +90,11 @@ class SkillLearnScreen : public MenuScreen {
   bool active() override {
     UObject* p = ps_.get();
     return p && !persona::status_page_up(p) && learning(p) && persona::shown_status();   // Sequence_ clears on close
+  }
+  // The area key: the Persona whose page this is (its slots carry no Persona key).
+  std::string appearance() override {
+    const uint8_t* e = persona::shown_status();
+    return e ? core::look::persona(*(uint16_t*)(e + 2)) : MenuScreen::appearance();
   }
   std::string learn_line() {
     UObject* p = ps_.get();

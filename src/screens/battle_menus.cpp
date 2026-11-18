@@ -21,6 +21,7 @@
 #include "screens/util.h"
 #include "screens/battle_state.h"
 #include "screens/battle_words.h"
+#include "core/look_text.h"
 #include "core/strings.h"
 #include "items.h"
 #include "persona.h"
@@ -87,6 +88,8 @@ class BattleSkills : public BattleList {
   }
   const char* id() const override { return "battle_skills"; }
   std::string title() override { return strings::kSkills; }
+  // The area key: the Persona heading the list (the one Q / E switched to).
+  std::string appearance() override { int pid = persona(); return pid > 0 ? core::look::persona(pid) : std::string(); }
   void build(ui::GraphBuilder& b) override {
     auto* ids = skill_ids();
     if (!ids) return;

@@ -116,6 +116,9 @@ void describe() {
     return;
   }
   last_portrait.clear();
+  // A message window over a Persona page (a fusion's level up asking which skill to forget): the page's Persona.
+  if (screens::MenuScreen* m = screens::menu::under())
+    if (std::string a = m->appearance(); !a.empty()) { speech::speak(a, true); return; }
   if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
   std::string d = ca::describe(scene());
   speech::speak(d.empty() ? std::string(strings::kNoAreaDescription) + " " + poi::area_name() : d, true);

@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Persona and Shadow descriptions
-- Semicolon (triggers + B) on a Persona or a Shadow describes how it looks: every Persona, the DLC ones included, every Shadow and each of its recoloured siblings, the full-moon bosses and the people you fight, written from the game's own 3D models in the style of the portrait descriptions. In battle it describes the enemy under the cursor (a party member: their Persona); it also works on any Persona status page (a fusion's result, a level up, the camp's Persona list, Shuffle Time), the fusion and search lists, the compendium's registered entries and the registry list.
+- Semicolon (triggers + B) on a Persona or a Shadow describes how it looks: every Persona, the DLC ones included, every Shadow and each of its recoloured siblings, the full-moon bosses and the people you fight, written from the game's own 3D models in the style of the portrait descriptions. In battle it describes the enemy under the cursor (a party member: their Persona); it also works on any Persona status page (a fusion's result, a level up, the camp's Persona list, Shuffle Time), the fusion and search lists, the compendium's registered entries and the registry list, the battle's skill list (the Persona heading it, the one Q and E switched to) and a Persona learning a skill, also while a message covers its page.
 
 ### Wall tones
 - New setting, Wall tone range (Exploring): how far away a wall starts to sound, 1 to 10 meters, 5 by default. It applies in both camera modes. In top-down exploration the tones used to reach only 3 meters; they now reach the same 5 meters as with the game's camera.

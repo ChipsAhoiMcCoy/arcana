@@ -764,6 +764,7 @@ std::string MenuScreen::describe() {
 
 namespace menu {
 MenuScreen* active() { return has_focus_now() ? g_active : nullptr; }
+MenuScreen* under() { return g_active; }
 
 void frame() {
   // The menu ticked this frame is the one with focus; a message window over it hands everything back to the game.

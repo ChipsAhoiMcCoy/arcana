@@ -198,6 +198,7 @@ namespace menu {
 void install();                 // navigator hooks, key capture, the /menu dev route
 void frame();                   // every mod tick (screens::tick): pad capture while a menu has focus
 MenuScreen* active();           // the menu that has the keys now, or null
+MenuScreen* under();            // the current menu, also while a message window over it has the keys, or null
 std::string dump();             // the focused screen's graph, one node per line (/menu)
 }  // namespace menu
 }  // namespace p3a::screens
