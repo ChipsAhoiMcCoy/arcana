@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_501_001_C
-0.300	2.395	00.mp3	The party runs in and stops, weapons drawn.

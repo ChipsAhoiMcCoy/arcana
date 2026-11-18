@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_217_001_C
-0.050	1.291	00.mp3	The lounge. Yukari.
-2.400	1.674	01.mp3	Yukari turns and walks off.
