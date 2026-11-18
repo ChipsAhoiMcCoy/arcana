@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_109_340_C
+0.000	5.540	00.mp3	At Port Island Station, among the crowd, you and Chihiro walk out into the plaza and stop.

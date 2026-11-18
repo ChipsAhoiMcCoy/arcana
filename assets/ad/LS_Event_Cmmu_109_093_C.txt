@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_109_093_C
+0.000	4.773	00.mp3	You and Chihiro walk into the student council room, where Mitsuru stands waiting for you.
+25.500	2.647	01.mp3	Chihiro spins around and runs out of the room.
+45.800	2.647	02.mp3	Chihiro spins around and runs out of the room.

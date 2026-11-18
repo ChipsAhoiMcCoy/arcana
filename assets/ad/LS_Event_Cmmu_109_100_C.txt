@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_109_100_C
+0.000	3.249	00.mp3	At Chihiro's home, you sit with her on cushions on the floor.
+7.500	4.150	01.mp3	You get up to leave and start toward the door. Chihiro looks up, startled.
+20.500	4.300	02.mp3	You turn back, walk over to Chihiro and draw her close. She looks startled.

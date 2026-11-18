@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_109_093_C",
+ "title": "Chihiro speaks up",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Chihiro walk into the student council room, where Mitsuru stands waiting for you."
+  },
+  {
+   "at": 25.5,
+   "text": "Chihiro spins around and runs out of the room."
+  },
+  {
+   "at": 45.8,
+   "text": "Chihiro spins around and runs out of the room."
+  }
+ ]
+}
