@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_108_600_C
+1.100	7.130	00.mp3	At the cinema in Port Island Station, Keisuke meets you, and the two of you take seats among the audience as the film begins.
