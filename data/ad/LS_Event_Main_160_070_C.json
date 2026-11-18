@@ -1,9 +1,4 @@
-{
- "movie": "LS_Event_Main_160_070_C",
- "title": "Ken joins the squad",
- "cues": [
-  {"at": 0.00,  "text": "Ikutsuki enters."},
-  {"at": 3.90,  "text": "Ken stands beside Ikutsuki."},
-  {"at": 20.05, "text": "Ken looks pleased."}
- ]
-}
+{"movie": "LS_Event_Main_160_070_C", "title": "Ken joins the squad", "cues": [
+  {"at": 0.05, "text": "The command room on the dorm's top floor. You sit on the sofas with Yukari, Junpei, Fuuka, Mitsuru and Akihiko, Aigis standing nearby, as the chairman, Ikutsuki, walks in."},
+  {"at": 3.90, "text": "The door opens and Ken walks in to stand beside the chairman. Akihiko, Mitsuru and Fuuka stare at him in surprise."}
+]}

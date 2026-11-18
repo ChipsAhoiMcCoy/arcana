@@ -1,11 +1,26 @@
-{"movie": "LS_Event_Main_140_340_C", "title": "Last day at the beach", "cues": [
-  {"at": 2.55, "text": "The boys stand on the beach."},
-  {"at": 4.80, "text": "The girls walk up with Aigis."},
-  {"at": 13.70, "text": "Junpei and Aigis have run off."},
-  {"at": 17.45, "text": "Yukari laughs. She and Aigis walk off together."},
-  {"at": 23.10, "text": "Fuuka and Mitsuru follow."},
-  {"at": 25.00, "text": "Ikutsuki joins the hero and Akihiko."},
-  {"at": 34.95, "text": "Aigis blasts Junpei with water."},
-  {"at": 38.90, "text": "Junpei lands on his back."},
-  {"at": 48.35, "text": "Junpei lies face down."}
-]}
+{
+ "movie": "LS_Event_Main_140_340_C",
+ "title": "Last day at the beach",
+ "cues": [
+  {
+   "at": 2.55,
+   "text": "On the Kirijo family's private beach, you stand by a parasol with Junpei and Akihiko. Yukari, Fuuka, Mitsuru and Aigis walk over to join you."
+  },
+  {
+   "at": 13.7,
+   "text": "Junpei runs off into the sea, and Aigis dashes in after him with a splash. Yukari laughs and heads down to the water with Aigis."
+  },
+  {
+   "at": 23.1,
+   "text": "Fuuka and Mitsuru follow them into the water. Later, you sit on the sand with Akihiko, and Ikutsuki walks over to you."
+  },
+  {
+   "at": 35.55,
+   "text": "Out in the shallows, Aigis aims her arm at Junpei and a jet of water blasts from her fingertips straight into him. Yukari grins and drops into a fighting stance, and so do you."
+  },
+  {
+   "at": 46.4,
+   "text": "Everyone has piled onto Junpei. He lies sprawled face down in the shallows while the others stand over him, laughing."
+  }
+ ]
+}

@@ -1,1 +1,3 @@
-{"movie": "LS_Event_Main_160_130_C", "title": "A message in class", "cues": [{"at": 0.1, "text": "In class, the hero takes out his phone."}, {"at": 4.6, "text": "He puts the phone away."}]}
+{"movie": "LS_Event_Main_160_130_C", "title": "A message in class", "cues": [
+  {"at": 0.05, "text": "In class, you take out your phone and open a new message."}
+]}

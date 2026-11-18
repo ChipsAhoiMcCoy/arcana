@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_150_110_C", "title": "Ikutsuki hears of Strega", "cues": [{"at": 0.90, "text": "Ikutsuki sits alone at the command console. He stands."}, {"at": 10.75, "text": "He strokes his chin."}, {"at": 17.05, "text": "He rubs his chin."}]}
+{"movie": "LS_Event_Main_150_110_C", "title": "Ikutsuki hears of Strega", "cues": [
+  {"at": 0.00, "text": "In the dorm's command room, Ikutsuki sits alone at the console. A call comes in; he gets up and answers it."},
+  {"at": 15.00, "text": "The call ends. Ikutsuki stands by the console with one arm folded, a hand raised to his chin."}
+]}

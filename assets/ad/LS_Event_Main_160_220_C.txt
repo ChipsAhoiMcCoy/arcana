@@ -1,3 +1,2 @@
 #scene LS_Event_Main_160_220_C
-0.100	1.078	00.mp3	The team runs in.
-2.350	0.955	01.mp3	A masked Shadow.
+0.000	13.902	00.mp3	You and the team run into a round underground chamber and stop short before the Shadow: a tall, masked figure crowned with a mass of wild hair, bundles of cables trailing from its body. Everyone takes a fighting stance.

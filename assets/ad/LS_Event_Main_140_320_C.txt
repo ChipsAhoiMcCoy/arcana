@@ -1,8 +1,7 @@
 #scene LS_Event_Main_140_320_C
-0.300	2.485	00.mp3	The hero walks along a forest path and stops.
-6.600	3.025	01.mp3	The blonde girl stands by a tree, then walks toward him.
-15.100	2.403	02.mp3	She steps close and hugs the hero tightly.
-18.400	1.862	03.mp3	Junpei and Akihiko run up.
-28.000	1.004	04.mp3	Yukari and Fuuka.
-33.400	1.440	05.mp3	Mitsuru stands with Fuuka.
-38.400	1.384	06.mp3	She lets go of the hero.
+0.300	6.576	00.mp3	You walk along a dirt path in the woods and stop. The girl from the pier stands among the trees ahead, watching you.
+6.600	2.673	01.mp3	You step closer. She turns and walks up to you.
+15.100	7.506	02.mp3	She steps in and throws her arms around you, holding you tight. Junpei and Akihiko come running up and stop short, staring.
+22.050	2.726	03.mp3	Yukari and Fuuka hurry up the path toward you.
+33.400	4.249	04.mp3	Mitsuru stands with the others. Ikutsuki, the chairman, walks up to the group.
+38.400	1.882	05.mp3	The girl lets go of you and steps back.

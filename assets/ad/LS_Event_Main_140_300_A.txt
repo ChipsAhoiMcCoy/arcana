@@ -1,6 +1,2 @@
 #scene LS_Event_Main_140_300_A
-0.600	4.132	00.mp3	At the end of a wooden pier, a girl in a long blue dress looks out to sea.
-7.000	2.175	01.mp3	Wind lifts the ruffled hem of her dress.
-10.300	2.259	02.mp3	Her fingers are jointed, like a machine's.
-13.400	4.763	03.mp3	She has short blonde hair, round devices over her ears, and a jointed neck.
-21.700	1.602	04.mp3	Her blue eyes stare straight ahead.
+0.600	17.981	00.mp3	At the end of a wooden pier on the Kirijo family's private beach, a girl in a long, ruffled dress stands alone, looking out to sea. The wind lifts the hem of her dress. Her fingers are jointed like a machine's, her neck is jointed too, and round devices cover her ears under her short hair.

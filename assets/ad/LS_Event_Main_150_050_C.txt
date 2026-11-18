@@ -1,4 +1,2 @@
 #scene LS_Event_Main_150_050_C
-0.150	1.105	00.mp3	The others rush in.
-7.400	1.200	01.mp3	Mitsuru turns away.
-15.800	0.992	02.mp3	Everyone nods.
+0.050	7.228	00.mp3	In the command room, Fuuka sits at the console with Mitsuru standing beside her. You run in with Junpei, Yukari and Aigis.

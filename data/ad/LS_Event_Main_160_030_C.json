@@ -1,11 +1,6 @@
-{
- "movie": "LS_Event_Main_160_030_C",
- "title": "Koromaru joins",
- "cues": [
-  {"at": 4.70, "text": "Mitsuru and Akihiko wait."},
-  {"at": 6.70, "text": "Koromaru walks out and sits, wearing a metal collar."},
-  {"at": 9.90, "text": "Fuuka hurries over."},
-  {"at": 21.33, "text": "Junpei grins."},
-  {"at": 26.40, "text": "Fuuka stands up."}
- ]
-}
+{"movie": "LS_Event_Main_160_030_C", "title": "Koromaru joins", "cues": [
+  {"at": 0.00, "text": "You, Junpei, Yukari, Fuuka and Aigis come into the dorm's command room, where Mitsuru and Akihiko stand waiting."},
+  {"at": 4.67, "text": "Between Mitsuru and Akihiko sits Koromaru, the white dog, a metal collar fitted around his neck. You all walk over to him."},
+  {"at": 12.67, "text": "Fuuka crouches down beside Koromaru."},
+  {"at": 26.33, "text": "Fuuka gets up from beside Koromaru and turns to face the others."}
+]}

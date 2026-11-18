@@ -1,4 +1,4 @@
 #scene LS_Event_Main_160_090_C
-0.300	1.525	00.mp3	The hero sleeps in his bed.
-3.000	1.563	01.mp3	The hero opens his eyes.
-6.700	1.764	02.mp3	Pharos crumbles into black flecks.
+0.050	2.559	00.mp3	Your room at the dorm. You lie asleep in bed.
+2.850	7.905	01.mp3	You open your eyes and prop yourself up on the bed. Pharos, the boy in striped pyjamas, stands by the window at the foot of the bed.
+5.700	3.526	02.mp3	Pharos breaks apart into black flecks that scatter and are gone.

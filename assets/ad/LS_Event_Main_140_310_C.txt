@@ -1,11 +1,9 @@
 #scene LS_Event_Main_140_310_C
-0.600	3.247	00.mp3	A blonde girl in a long dress stands alone by the sea.
-4.250	2.582	01.mp3	Junpei, Akihiko and the hero watch her.
-18.750	2.444	02.mp3	Junpei stretches, then walks up to the girl.
-28.050	2.231	03.mp3	Junpei freezes, then trudges back.
-32.400	3.303	04.mp3	Akihiko pats the hero's head and walks over to her.
-39.400	2.573	05.mp3	Akihiko freezes, then rejoins the others.
-46.750	1.656	06.mp3	Akihiko rubs his forehead.
-50.200	1.679	07.mp3	The hero walks over to the girl.
-53.100	1.692	08.mp3	The hero murmurs something to her.
-58.400	2.526	09.mp3	She spins around and runs off past the hero.
+0.600	10.325	00.mp3	On the rocks above the beach, you, Junpei and Akihiko stand looking at a wooden pier. At its far end, a girl in a long dress stands alone, gazing out at the sea.
+18.750	3.217	01.mp3	Junpei stretches, then walks out along the pier to the girl.
+28.050	4.861	02.mp3	Junpei stands frozen, then trudges back to you and Akihiko with his head hung.
+32.400	4.795	03.mp3	Akihiko rests a hand on top of your head, then walks out along the pier to the girl.
+39.400	3.687	04.mp3	Akihiko stands frozen, then walks back to you and Junpei.
+46.750	4.824	05.mp3	You walk out along the pier to the girl, while Junpei and Akihiko watch from the rocks.
+53.050	3.918	06.mp3	You say something to her, too quietly to hear. She turns to face you.
+58.400	3.549	07.mp3	She dashes away past you and runs off. You turn to watch her go.

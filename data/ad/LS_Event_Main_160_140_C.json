@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_160_140_C", "title": "Akihiko at the gate", "cues": [{"at": 5.00, "text": "Akihiko heads out the gate. The hero follows."}]}
+{"movie": "LS_Event_Main_160_140_C", "title": "Akihiko at the gate", "cues": [
+  {"at": 0.05, "text": "The school gate. Akihiko waits by it with his bag as you walk up."},
+  {"at": 4.40, "text": "Akihiko turns and walks off, and you follow him."}
+]}

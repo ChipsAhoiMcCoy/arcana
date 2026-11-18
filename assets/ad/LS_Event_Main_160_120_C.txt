@@ -1,2 +1,4 @@
 #scene LS_Event_Main_160_120_C
-9.350	1.350	00.mp3	Aigis sits by the hero.
+0.050	6.990	00.mp3	Your classroom. Aigis, in her school uniform, stands at the front beside the teacher while the class sits at their desks.
+9.350	3.934	01.mp3	Aigis walks between the desks and sits down at the desk beside yours.
+11.050	2.003	02.mp3	Yukari jumps to her feet, scowling.

@@ -1,8 +1,7 @@
 {"movie": "LS_Event_Main_160_180_C", "title": "Junpei is missing", "cues": [
-{"at": 0.05, "text": "The team surrounds Fuuka's Persona."},
-{"at": 5.40, "text": "Ken hurries in."},
-{"at": 12.00, "text": "Fuuka's Persona bursts into sparks."},
-{"at": 17.10, "text": "Everyone turns and files out."},
-{"at": 19.90, "text": "Shinjiro stays behind with the hero."},
-{"at": 26.55, "text": "Shinjiro walks past the hero."}
+{"at": 0.00, "text": "In the dorm's command room, among the consoles and wall screens, everyone stands in a ring around Fuuka: she is enclosed inside her Persona, a towering woman with outstretched arms whose wide, glowing skirt surrounds Fuuka like a dome. Ikutsuki, the chairman, stands with them, and Koromaru sits at their feet."},
+{"at": 5.33, "text": "The door opens and Ken hurries in, out of breath. Everyone turns to him."},
+{"at": 11.33, "text": "Fuuka's Persona breaks apart into drifting sparks and is gone, leaving Fuuka standing among the others."},
+{"at": 17.00, "text": "Everyone turns and heads out after Mitsuru, Koromaru trotting along. Shinjiro stays behind, turns to you and steps closer."},
+{"at": 26.60, "text": "Shinjiro walks past you after the others."}
 ]}

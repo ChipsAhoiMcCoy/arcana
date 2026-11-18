@@ -1,7 +1,5 @@
 {"movie": "LS_Event_Main_150_060_C", "title": "Koromaru at the shrine", "cues": [
-  {"at": 0.25, "text": "Koromaru lies bleeding by Akihiko."},
-  {"at": 4.60, "text": "Fuuka runs to Koromaru and kneels."},
-  {"at": 13.18, "text": "Flowers lie nearby."},
-  {"at": 15.55, "text": "Yukari and Fuuka kneel."},
-  {"at": 23.95, "text": "Koromaru lifts his head."}
+  {"at": 0.00, "text": "At the shrine, at the foot of the stone steps below the torii gate, Koromaru, the white dog, lies wounded on the ground, bleeding. Akihiko kneels beside him. The rest of you run up and stop short."},
+  {"at": 4.50, "text": "Fuuka runs to Koromaru and kneels over him. Yukari hurries after her and kneels at his other side."},
+  {"at": 23.83, "text": "Koromaru lifts his head."}
 ]}

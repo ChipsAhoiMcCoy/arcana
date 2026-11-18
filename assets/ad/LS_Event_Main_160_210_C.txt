@@ -1,3 +1,2 @@
 #scene LS_Event_Main_160_210_C
-7.400	1.113	00.mp3	Fuuka keeps searching.
-16.900	0.992	01.mp3	Everyone nods.
+0.000	6.610	00.mp3	In the mall's plaza, the team still stands around Fuuka inside her Persona, and Mitsuru, troubled, turns to you.

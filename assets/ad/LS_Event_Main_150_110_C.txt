@@ -1,4 +1,3 @@
 #scene LS_Event_Main_150_110_C
-0.900	3.387	00.mp3	Ikutsuki sits alone at the command console. He stands.
-10.750	1.158	01.mp3	He strokes his chin.
-17.050	1.049	02.mp3	He rubs his chin.
+0.000	6.546	00.mp3	In the dorm's command room, Ikutsuki sits alone at the console. A call comes in; he gets up and answers it.
+15.000	6.217	01.mp3	The call ends. Ikutsuki stands by the console with one arm folded, a hand raised to his chin.

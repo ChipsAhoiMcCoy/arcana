@@ -1,3 +1,0 @@
-#scene LS_Event_Main_160_230_C
-0.300	1.890	00.mp3	The team stands ready, then relaxes.
-4.250	1.094	01.mp3	The hero nods.

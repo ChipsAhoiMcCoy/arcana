@@ -1,2 +1,3 @@
 #scene LS_Event_Main_160_140_C
-5.000	2.923	00.mp3	Akihiko heads out the gate. The hero follows.
+0.050	3.977	00.mp3	The school gate. Akihiko waits by it with his bag as you walk up.
+4.400	2.893	01.mp3	Akihiko turns and walks off, and you follow him.

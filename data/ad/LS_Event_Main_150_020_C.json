@@ -1,7 +1,6 @@
-{"movie": "LS_Event_Main_150_020_C", "title": "Aigis in the hero's room", "cues": [
-  {"at": 1.60, "text": "Aigis stands over the sleeping hero."},
-  {"at": 10.20, "text": "The hero sits up in bed. Aigis walks to the door and faces Yukari."},
-  {"at": 22.90, "text": "The hero raises a hand to Yukari."},
-  {"at": 38.30, "text": "Yukari turns and walks out the door."},
-  {"at": 43.05, "text": "Aigis faces the hero."}
+{"movie": "LS_Event_Main_150_020_C", "title": "Aigis in your room", "cues": [
+  {"at": 1.40, "text": "In your dorm room, you lie in bed. Aigis stands beside it, looking down at you."},
+  {"at": 10.05, "text": "Sitting up in bed, you watch Aigis walk to the door and open it. Yukari stands in the hall outside."},
+  {"at": 19.70, "text": "You get out of bed and join them at the door."},
+  {"at": 38.20, "text": "Yukari turns and walks off down the hall."}
 ]}

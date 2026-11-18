@@ -1,6 +1,5 @@
 #scene LS_Event_Main_160_100_C
-0.100	1.862	00.mp3	Junpei walks up to a girl sketching.
-5.700	2.578	01.mp3	Junpei scratches his head. She keeps drawing.
-9.100	2.738	02.mp3	She rises, holding her sketchbook, and walks off.
-19.600	2.023	03.mp3	She turns away, hugging her sketchbook.
-24.300	1.231	04.mp3	Chidori walks away.
+0.050	7.157	00.mp3	The plaza outside Port Island Station. Junpei walks up to the bench where the girl in the long, frilly dress sits drawing.
+5.550	10.497	01.mp3	Junpei scratches his head. The girl gets up from the bench, holding her sketchboard to her chest, and walks a few steps past him. A drop of blood falls from her hand onto the paving.
+19.550	4.297	02.mp3	The girl turns her back on Junpei and walks a few steps away, then stops.
+24.050	1.697	03.mp3	Chidori nods and walks away.

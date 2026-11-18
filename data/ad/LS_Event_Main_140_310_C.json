@@ -1,12 +1,10 @@
-{"movie": "LS_Event_Main_140_310_C", "title": "The girl on the beach", "cues": [
-{"at": 0.60, "text": "A blonde girl in a long dress stands alone by the sea."},
-{"at": 4.25, "text": "Junpei, Akihiko and the hero watch her."},
-{"at": 18.75, "text": "Junpei stretches, then walks up to the girl."},
-{"at": 28.05, "text": "Junpei freezes, then trudges back."},
-{"at": 32.40, "text": "Akihiko pats the hero's head and walks over to her."},
-{"at": 39.40, "text": "Akihiko freezes, then rejoins the others."},
-{"at": 46.75, "text": "Akihiko rubs his forehead."},
-{"at": 50.20, "text": "The hero walks over to the girl."},
-{"at": 53.10, "text": "The hero murmurs something to her."},
-{"at": 58.40, "text": "She spins around and runs off past the hero."}
+{"movie": "LS_Event_Main_140_310_C", "title": "The girl on the pier", "cues": [
+  {"at": 0.60, "text": "On the rocks above the beach, you, Junpei and Akihiko stand looking at a wooden pier. At its far end, a girl in a long dress stands alone, gazing out at the sea."},
+  {"at": 18.75, "text": "Junpei stretches, then walks out along the pier to the girl."},
+  {"at": 28.05, "text": "Junpei stands frozen, then trudges back to you and Akihiko with his head hung."},
+  {"at": 32.40, "text": "Akihiko rests a hand on top of your head, then walks out along the pier to the girl."},
+  {"at": 39.40, "text": "Akihiko stands frozen, then walks back to you and Junpei."},
+  {"at": 46.75, "text": "You walk out along the pier to the girl, while Junpei and Akihiko watch from the rocks."},
+  {"at": 53.05, "text": "You say something to her, too quietly to hear. She turns to face you."},
+  {"at": 58.40, "text": "She dashes away past you and runs off. You turn to watch her go."}
 ]}

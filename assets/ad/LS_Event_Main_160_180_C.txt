@@ -1,7 +1,6 @@
 #scene LS_Event_Main_160_180_C
-0.050	1.762	00.mp3	The team surrounds Fuuka's Persona.
-5.400	1.012	01.mp3	Ken hurries in.
-12.000	2.079	02.mp3	Fuuka's Persona bursts into sparks.
-17.100	1.755	03.mp3	Everyone turns and files out.
-19.900	2.208	04.mp3	Shinjiro stays behind with the hero.
-26.550	1.805	05.mp3	Shinjiro walks past the hero.
+0.000	18.724	00.mp3	In the dorm's command room, among the consoles and wall screens, everyone stands in a ring around Fuuka: she is enclosed inside her Persona, a towering woman with outstretched arms whose wide, glowing skirt surrounds Fuuka like a dome. Ikutsuki, the chairman, stands with them, and Koromaru sits at their feet.
+5.330	4.297	01.mp3	The door opens and Ken hurries in, out of breath. Everyone turns to him.
+11.330	6.037	02.mp3	Fuuka's Persona breaks apart into drifting sparks and is gone, leaving Fuuka standing among the others.
+17.000	7.993	03.mp3	Everyone turns and heads out after Mitsuru, Koromaru trotting along. Shinjiro stays behind, turns to you and steps closer.
+26.600	2.311	04.mp3	Shinjiro walks past you after the others.

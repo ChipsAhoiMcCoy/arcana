@@ -1,3 +1,2 @@
 #scene LS_Event_Main_150_040_C
-0.200	1.405	00.mp3	The hero sleeps in bed.
-2.850	1.243	01.mp3	He props himself up.
+0.050	1.948	00.mp3	You are asleep in bed in your dorm room.
