@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_350_015_C
-0.000	0.853	00.mp3	The infirmary.
-1.200	1.660	01.mp3	Mr. Edogawa eyes him.

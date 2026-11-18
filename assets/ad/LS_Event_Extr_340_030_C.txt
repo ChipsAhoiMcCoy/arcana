@@ -1,4 +1,2 @@
 #scene LS_Event_Extr_340_030_C
-2.700	0.979	00.mp3	A school hallway.
-4.000	1.498	01.mp3	Students crowd before a wall.
-7.850	1.449	02.mp3	The hero stands among them.
+0.170	6.137	00.mp3	A school hallway. Students crowd in front of the exam results posted on the wall, and you head over to them.

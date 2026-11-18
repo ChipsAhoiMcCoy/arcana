@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Extr_400_024_C", "title": "Alone at the station", "cues": [
- {"at": 0.0, "text": "The hero, outside the station."},
- {"at": 3.38, "text": "Red stains."},
- {"at": 10.72, "text": "The hero runs off."}
-]}
+{"movie": "LS_Event_Extr_400_024_C", "title": "Alone at the station", "cues": [{"at": 0.05, "text": "Outside Iwatodai Station, you walk out alone onto a plaza where puddles of blood mark the paving."}, {"at": 10.70, "text": "You break into a run."}]}

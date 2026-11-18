@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_340_020_C
-1.900	1.784	00.mp3	The hero and Junpei, mid-exam.
+0.300	7.509	00.mp3	Your classroom, silent during an exam. You and your classmates, Junpei and Yukari among them, sit bent over your papers.

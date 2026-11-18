@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_360_010_C
-1.050	2.266	00.mp3	The hero sits at his desk, head in hand.
-4.700	1.322	01.mp3	He types at the computer.
+0.000	5.204	00.mp3	You sit at the computer desk in the dorm lounge, chin in hand, then type away at the keyboard.

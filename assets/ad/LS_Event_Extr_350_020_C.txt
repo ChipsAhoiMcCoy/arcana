@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_350_020_C
-1.850	0.902	00.mp3	The infirmary.

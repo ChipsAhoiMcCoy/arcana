@@ -1,4 +1,3 @@
 #scene LS_Event_Extr_400_024_C
-0.000	1.823	00.mp3	The hero, outside the station.
-3.380	0.911	01.mp3	Red stains.
-10.720	1.276	02.mp3	The hero runs off.
+0.050	5.974	00.mp3	Outside Iwatodai Station, you walk out alone onto a plaza where puddles of blood mark the paving.
+10.700	1.241	01.mp3	You break into a run.

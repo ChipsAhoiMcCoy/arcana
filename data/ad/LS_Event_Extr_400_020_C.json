@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Extr_400_020_C", "title": "The hospital checkup", "cues": [
- {"at": 0.05, "text": "A hospital room."},
- {"at": 2.4, "text": "The hero sits on a bed."},
- {"at": 13.4, "text": "Ikutsuki turns and steps out of the room."}
-]}
+{"movie": "LS_Event_Extr_400_020_C", "title": "The hospital checkup", "cues": [{"at": 0.05, "text": "A room at the hospital. You sit while Ikutsuki walks over to you."}, {"at": 13.40, "text": "Ikutsuki turns away and walks a few steps off to take a call."}]}

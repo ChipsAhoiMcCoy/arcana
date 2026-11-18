@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_350_013_C
-0.000	0.853	00.mp3	The infirmary.
-7.530	1.306	01.mp3	The hero holds a cup.
+3.900	3.470	00.mp3	Mr. Edogawa brews something up and hands you a steaming cup.
