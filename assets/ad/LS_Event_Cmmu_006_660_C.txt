@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_006_660_C
+0.000	5.505	00.mp3	A hallway at school, outside the faculty office. You are with Fuuka when a teacher walks up to her.
+5.670	4.482	01.mp3	Mr. Ekoda walks off down the hall. Fuuka turns away, her face falling.
+28.330	2.129	02.mp3	Fuuka turns and runs off down the hall.
+41.670	1.634	03.mp3	Fuuka hurries off down the hall.

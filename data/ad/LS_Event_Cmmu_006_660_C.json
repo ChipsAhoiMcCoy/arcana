@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_006_660_C",
+ "title": "Fuuka: the tech club",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A hallway at school, outside the faculty office. You are with Fuuka when a teacher walks up to her."
+  },
+  {
+   "at": 5.67,
+   "text": "Mr. Ekoda walks off down the hall. Fuuka turns away, her face falling."
+  },
+  {
+   "at": 28.33,
+   "text": "Fuuka turns and runs off down the hall."
+  },
+  {
+   "at": 41.67,
+   "text": "Fuuka hurries off down the hall."
+  }
+ ]
+}
