@@ -12,6 +12,8 @@
 //  - UFldOperationPlayer (AFldOperator.OpPlayerComp): Direction (+0xC0, FMatrix) and CameraChanged (+0x120), see
 //    hold_walk. Verified at Fountain Square's scene camera (yaw -50), 2026-11-12: each key walked the compass.
 //  - MiniMapInfoDataAsset.Data (FMiniMapInfoTable: FieldID, DegreeAngle): each field's north, see map_turn.
+//  - AFldCameraHitBase (AFldCameraHitSpline.BoxComp, AFldCameraHitBox.Box): the scene-camera zones, see hold_zones;
+//    UFldOperationCamera (AFldOperator.OpCameraComp).CurrentHitRef (+0xB8) is the zone showing the field.
 #include "topdown.h"
 #include "audio.h"
 #include "core/sonar_cues.h"
@@ -19,6 +21,7 @@
 #include "core/units.h"
 #include "dat.h"
 #include "devserver.h"
+#include "hooks.h"
 #include "input.h"
 #include "log.h"
 #include "nav.h"
@@ -50,6 +53,7 @@ constexpr float kScanSwitchDeg = 4.0f;
 constexpr ULONGLONG kScanRefreshMs = 250;   // how often the points are read again while the stick is held
 
 bool g_active = false;
+bool g_unloading = false;   // the unload has let go: nothing is held again
 float g_north = kBaseNorthYaw;   // this field's north (map_turn)
 WeakObj g_north_hero;            // the hero it was found for: a new hero is a new field
 bool g_north_due = true;         // looked up again each frame until the field's ids are known
@@ -185,6 +189,57 @@ void release_camera() {
   g_behavior = {};
 }
 
+// ---- the scene-camera zones: the free camera everywhere ----
+// A place's scene cameras take the view inside invisible zones: AFldCameraHitSpline (a camera on a rail) and
+// AFldCameraHitBox (a fixed camera, as in the hero's room). Each frame the camera operation takes the first zone the
+// hero's capsule overlaps (native 0x112a6c0: GetOverlappingActors filtered to AFldCameraHitBase) as
+// UFldOperationCamera.CurrentHitRef (0x11e0320), and that zone's camera shows the field. Fountain Square is one zone
+// facing north, but the one by the Velvet Room's door faces yaw 1.5, a quarter turn off, and its camera turned the
+// view back every frame while the lock turned it north (2026-11-17). While the mode holds, every zone's box has no
+// collision: no zone is overlapped, the game drops the zone camera itself (CurrentHitRef null) and the free camera,
+// facing north, shows the field. Each box's own setting comes back when the mode lets go, so story scenes, menus and
+// battles have the zones as the game made them.
+constexpr uint8_t kNoCollision = 0;   // ECollisionEnabled::NoCollision
+struct Zone { WeakObj box; uint8_t was; };
+std::vector<Zone> g_zones;   // the boxes the mode turned off, with their own setting
+
+UObject* zone_box(UObject* z) {
+  UObject* b = get<UObject*>(z, "BoxComp");
+  return b ? b : get<UObject*>(z, "Box");
+}
+
+void set_collision(UObject* box, uint8_t type) {
+  Params p(find_function(class_of(box), "SetCollisionEnabled"));
+  p.set<uint8_t>("NewType", type);
+  call(box, p);
+}
+
+// Every zone loaded, the ones streamed in since too: a box not yet held is turned off (a dozen or so zones are loaded
+// in a town, compared each frame by index).
+void hold_zones() {
+  static const int zones = watch::want("FldCameraHitBase", true);
+  for (UObject* z : watch::all(zones)) {
+    UObject* box = zone_box(z);
+    if (!box) continue;
+    const WeakObj w = WeakObj::of(box);
+    bool held = false;
+    for (const Zone& h : g_zones) if (h.box == w) { held = true; break; }
+    if (held) continue;
+    const uint8_t was = call_ret<uint8_t>(box, "GetCollisionEnabled", kNoCollision);
+    g_zones.push_back({w, was});
+    if (was != kNoCollision) set_collision(box, kNoCollision);
+  }
+}
+
+// Game thread. A zone gone with its field is passed over.
+void release_zones() {
+  int back = 0;
+  for (const Zone& h : g_zones)
+    if (UObject* box = h.box.resolve(); box && h.was != kNoCollision) { set_collision(box, h.was); ++back; }
+  if (back) log::writef("topdown: {} scene-camera zones back to the game", back);
+  g_zones.clear();
+}
+
 void hold_listener() {
   UObject* pc = player_controller();
   FVector me;
@@ -291,6 +346,7 @@ void leave() {
   world::set_north(false, g_north);
   input::claim_right_stick(false, input::StickClaim::TopDown);
   release_camera();
+  release_zones();
   release_listener();
   release_walk();
   scan_release();
@@ -302,11 +358,13 @@ bool active() { return g_active; }
 float north_yaw() { return g_north; }
 
 void tick() {
+  if (g_unloading) return;
   UObject* o = op();
   bool want = settings::on(settings::TopDown) && world::exploring() && operator_free(o);
   if (want) north_tick();   // before entering: the mode starts facing this field's north
   if (want != g_active) want ? enter() : leave();
   if (!g_active) return;
+  hold_zones();
   hold_camera(o);
   relock_run_end();
   hold_walk(o, g_north);
@@ -317,6 +375,17 @@ void tick() {
 // The unload runs off the game thread: only the camera's two values are written back (plain memory). The listener
 // override stays until the next mod's mode sets or clears it.
 void shutdown() { release_camera(); }
+
+// Before the unload: the mode lets go on the game thread (the zones' collision is a UFunction call), and the tick
+// holds nothing after (it ran in the same frame as the job and turned the zones off again, 2026-11-17). A copy loaded
+// after would otherwise take a turned-off box for the game's own setting and never give it back.
+void unload() {
+  hooks::run_on_game_thread([] {
+    g_unloading = true;
+    if (g_active) leave();
+    release_zones();
+  }, 3000);
+}
 
 void install() {
   dev::route("/topdown", [](const dev::Request& r, int&) {
@@ -344,6 +413,9 @@ void install() {
                            : std::string("walk none\n");
       walk += std::format("field {} {} map turned {:.0f} north yaw {:.0f}{}\n", g_field_major, g_field_minor, g_field_turn, g_north,
                           g_north_due ? " (looking)" : "");
+      UObject* cop = o ? get<UObject*>(o, "OpCameraComp") : nullptr;
+      UObject* hit = cop ? get<UObject*>(cop, "CurrentHitRef") : nullptr;
+      walk += std::format("zones held {} scene camera {}\n", g_zones.size(), hit ? name_of(hit) : "none");
       return walk + std::format("topdown setting={} active={} exploring={} operator state={} keys={} listener_set={} h={:.0f}\n"
                          "camera speed={:.1f} margin={:.1f} saved={} ({:.1f}, {:.1f}) relocks={} camera_yaw={:.1f} scan held={} on={}\n",
                          settings::on(settings::TopDown), g_active, world::exploring(), o ? get<int32_t>(o, "State", -1) : -1,

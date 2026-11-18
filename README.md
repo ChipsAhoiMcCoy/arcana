@@ -284,7 +284,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 
 The game's camera sits behind the hero and turns, so a sound "ahead" kept changing direction. Top-down mode (on by default) presents the field the way Dark Vision does:
 
-- While you walk freely the camera faces north and cannot turn. Up always walks north, even where the game uses a fixed scene camera (Fountain Square, the station, many rooms).
+- While you walk freely the camera faces north and cannot turn. The scene cameras some places switch to (by the Velvet Room's door, the station, your room) are turned off, so the north camera shows everywhere. Up always walks north.
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
 - North is the corner map's up, place by place: where the game draws a map turned (Port Island Station, your room, the Command Room), north turns with it.
 - The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). While you move, the direction behind your walk stays silent.

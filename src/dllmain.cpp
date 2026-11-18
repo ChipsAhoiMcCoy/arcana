@@ -12,6 +12,7 @@
 #include "mod.h"
 #include "nav.h"
 #include "speech.h"
+#include "topdown.h"
 #include "ue/ue.h"
 
 namespace p3a {
@@ -113,6 +114,7 @@ extern "C" __declspec(dllexport) DWORD WINAPI p3a_unload(LPVOID) {
   if (!g_up) return 1;
   nav::unload();   // before the key filter goes: the walk's held keys are let go
   ad::unload();    // the clip decoders' worker threads end before their code goes
+  topdown::unload();   // the scene-camera zones' collision, set back on the game thread while jobs still run
   // The server first, so no request runs mod code while it is torn down; cancelling releases handlers that wait
   // on the game thread.
   hooks::cancel_pending();

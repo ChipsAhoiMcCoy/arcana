@@ -36,6 +36,7 @@
 - Change Voice Language says the new language as you switch it. It always read English and stayed silent on a change.
 
 ### Field
+- Top-down exploration keeps the camera facing north everywhere you walk. Some places hand the view to a scene camera of their own where you stand: by the Velvet Room's door in Paulownia Mall it turned about a quarter turn away from north, the station and the strip mall have them too, and your room had a fixed camera. While the mode holds, those scene cameras are off and the north camera shows the whole field; the mod also no longer has to turn the camera back every frame there. Walking and sound already went by north and are unchanged. Story scenes, conversations, menus and battles keep the game's own cameras.
 - Opening the travel list (LB / M) no longer says the area's name before "Where should I go?", and closing it no longer says the area again.
 - Auto-walk to a staircase takes the landing's own way to it. On the dorm's 2F landing it cut across the stairs down, so on the night of April 9 every walk to the 3F stairs ended in "It's not safe down below...".
 - Yukari is listed by name during the dorm escape. She was listed as "Person".

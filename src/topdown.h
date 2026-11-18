@@ -7,6 +7,8 @@ namespace p3a::topdown {
 // from above with north always ahead.
 //  - The free camera is fixed facing north: the stick's yaw speed is 0 and the camera's follow (it swung round behind
 //    the hero) is off. Restored on leaving the mode.
+//  - The place's scene-camera zones (a camera on a rail or a fixed one takes the view where the hero stands in one)
+//    are turned off, so the north-facing free camera shows every part of the field. Given back on leaving.
 //  - Up walks north whatever camera shows the field (the game walks the hero along the camera's way, and a place's
 //    scene cameras have their own): the walk's direction is held north.
 //  - The game's own 3D audio is heard from the hero facing north (APlayerController's audio listener override; CRI
@@ -22,4 +24,5 @@ bool active();        // the mode holds this frame
 float north_yaw();
 void install();       // dev route /topdown
 void shutdown();      // the unload: the camera's values given back
+void unload();        // the unload, before the game-thread jobs are cancelled: the zones given back
 }  // namespace p3a::topdown
