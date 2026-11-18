@@ -3,12 +3,16 @@
 ## Unreleased
 
 ### Audio description
-- Descriptions can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the movie or scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the page-turn sound and goes on. Pressing while the narrator speaks cuts the description short. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before.
+- Descriptions can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the movie or scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the sound a message window makes when you press past a page and goes on. Pressing while the narrator speaks cuts the description short. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before.
 
 ### Shops
 - Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.
 - Slash (Where am I) works in a shop: it said "Not in the field". It names the place you walked in from (the shop's own room has no name in the game).
 - After choosing Buy Weapon and a member, the list starts at the first weapon instead of repeating "Buy Weapon, for Colton". Any list whose heading is only the choices you just made skips it the same way.
+
+### Mail
+- Opening a mail from the list reads its text: the sender and subject, which the list just said, are no longer read again first. The review key still reads it whole.
+- Going back from a mail to the list says the mail you were on again.
 
 ### Log and travel
 - The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.

@@ -24,6 +24,7 @@ using namespace ue;
 class MailScreen : public MenuScreen {
   Finder draw_{"MailDraw"}, actor_{"MailActor"};
   bool reading_ = false;
+  bool listed_ = false;   // the list was up this entry: its row said the sender and title
   std::string said_;
   struct Mail { std::string sender, title, body; bool fresh = false; };
   static bool flag(UObject* d, const char* n) { auto* b = field<bool>(d, n); return b && *b; }
@@ -145,7 +146,7 @@ class MailScreen : public MenuScreen {
   static constexpr ULONGLONG kBackWaitMs = 400;
   void on_enter() override {
     back_at_ = 0;
-    if (!screens::returning()) { reading_ = false; said_.clear(); }
+    if (!screens::returning()) { reading_ = false; listed_ = false; said_.clear(); }
     else if (reading_) back_at_ = GetTickCount64();
     screens::set_keys(strings::kMailKeys);
   }
@@ -169,10 +170,14 @@ class MailScreen : public MenuScreen {
       if (m.body.empty() && flag(d, "bIsFlipToMainAnim")) return;
       std::string s = m.sender.empty() ? m.title : m.sender + ". " + m.title;
       if (!m.body.empty()) s += ". " + m.body;
-      say(s, true); said_ = s; reading_ = true;
+      // Opened from the list, whose row just said the sender and title: the body alone. Opened straight (the
+      // morning's text) or with no body: the whole mail. The review key reads it whole either way.
+      say(listed_ && !m.body.empty() ? m.body : s, true); said_ = s; reading_ = true;
       return;
     }
-    if (!reading && reading_) reading_ = false;
+    if (!reading) listed_ = true;
+    // Back from an open mail to the list: the row the player left, again.
+    if (!reading && reading_) { reading_ = false; say_focus(); }
   }
   void build(ui::GraphBuilder& b) override {
     UObject* d = draw_.get();
