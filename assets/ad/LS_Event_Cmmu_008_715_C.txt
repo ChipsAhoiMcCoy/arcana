@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_008_715_C
+0.170	6.000	00.mp3	The dorm lounge. You and Ken sit side by side in front of the TV, watching a detective movie.

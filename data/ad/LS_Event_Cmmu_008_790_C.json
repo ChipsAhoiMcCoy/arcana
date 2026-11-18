@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_008_790_C",
+ "title": "Camera footage: Ken",
+ "cues": [
+  {
+   "at": 2.1,
+   "text": "Camera footage plays: Ken alone in his room at the dorm, holding a long practice weapon. Ken sets his feet and swings the weapon, lunging and striking at the air."
+  },
+  {
+   "at": 9.0,
+   "text": "Ken swings again, and the shaft cracks against his own shin. He winces in pain."
+  },
+  {
+   "at": 13.33,
+   "text": "Ken crosses the room, picks up his milk and drinks it down."
+  }
+ ]
+}
