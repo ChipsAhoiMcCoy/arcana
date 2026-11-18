@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_112_080_C
+0.000	4.382	00.mp3	In the home economics room, you and Bebe sew at machines facing each other.
+3.500	2.804	01.mp3	Some time later, the two of you are still at your machines.
