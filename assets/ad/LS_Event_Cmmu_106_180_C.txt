@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_106_180_C
+0.000	7.258	00.mp3	The school entranceway, among students heading out. You walk up to Yuko, both of you with your bags; she stands looking at her phone.
+9.420	6.770	01.mp3	Two girls walk up and stop in front of Yuko, one in black tights and one with bright hair. Yuko turns to face them.
+18.330	4.383	02.mp3	The girl in black tights walks off, and the girl with bright hair hurries after her.

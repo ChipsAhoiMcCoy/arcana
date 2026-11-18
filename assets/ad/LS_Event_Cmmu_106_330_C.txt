@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_106_330_C
+0.000	5.215	00.mp3	Paulownia Mall, among crowds of people. You walk out with Yuko, and she stops beside you.
+4.830	7.040	01.mp3	Yuko hurries over to a crane game, and you follow her. Yuko feeds the crane game and works the claw down over a prize.
+18.000	4.177	02.mp3	Yuko plays again and again, nudging the prize along, until it drops.
