@@ -19,6 +19,7 @@
 #include "devserver.h"
 #include "hooks.h"
 #include "input.h"
+#include "screens/util.h"
 #include "keys.h"
 #include "log.h"
 #include "msg.h"
@@ -208,7 +209,8 @@ void stop_all() {
 // ---- the description box (setting DescriptionWait) ----
 // A description pauses its movie (Mana Pause) or scene (the SequencePlayer's Pause: what the game's own holds at a
 // message do) and waits like a message window: the window-open sound, the description (the narrator, then the
-// line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the page sound and
+// line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the sound a message
+// window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
 // plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
 // never reaches the game (keys::set_prompt, input::set_swallow_prompt). Fast-forward, a skip, the source ending or
 // the setting turned off closes it. The schedule sees the held source as playing (Clock::held): the cue's narrator
@@ -617,7 +619,7 @@ void tick() {
       if (g_box_go) {
         log::writef("ad: {} cue {} box closed at {:.2f}", s->key, g_box, c.time);
         close_box(true);
-        voice::play_system_sound(voice::CuePage);
+        screens::cursor_sound(9);   // what a message window plays as Enter turns its page (measured 2026-11-17)
         sc.paused = false;   // it plays from this frame
       } else {
         if (!c.paused) hold_source(true);   // the game let it go meanwhile: hold it again
