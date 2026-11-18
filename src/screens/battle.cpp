@@ -420,8 +420,14 @@ class BattleScreen : public Screen {
     if (!l || !i || l->num < 2 || *i < 0 || *i >= l->num) return {};
     return {*i == 0, *i == l->num - 1, l->data[*i]};
   }
-  bool mine() { return screens::current() == this && !msg::current().blocking && !input::modal(); }
-  std::string analyze_line(UObject* t) { return std::format("{}, {} {}", w_.enemy(t), strings::kLevel, w_.unit_int("GetUnitLevel", t)); }
+  // The screen that has the keys: this one, or Analyze's page over it (the same target keys).
+  bool mine() {
+    Screen* c = screens::current();
+    bool ours = c == this || (c && std::string_view(c->id()) == "battle_analyze");
+    return ours && !msg::current().blocking && !input::modal();
+  }
+  // Analyze's page is its own menu (battle_menus.cpp, BattleAnalyze); a press at its end says the target's line.
+  std::string analyze_line(UObject* t) { return w_.analyze_name(t); }
   void say_end(int st, UObject* t) {
     // Interrupting, like a menu's end: each press says it afresh instead of queueing the name (the user's call, 2026-11-09).
     if (t) speech::speak(st == 1 ? target_line(t) : analyze_line(t), true);
@@ -521,15 +527,7 @@ class BattleScreen : public Screen {
         screens::set_keys(strings::kGuardKeys);
         speech::speak(std::format("{} {}", strings::kGuardTitle, strings::kGuardKeys()), true);
         break;
-      case 8: {   // Analyze: the target's name, health, the affinities found so far and its level; Q / E (A / D) move it
-        UObject* t = cursor_target();
-        if (entering) screens::set_keys(strings::kAnalyzeKeys);
-        if (!t || (!entering && t == target_.resolve())) break;
-        target_ = WeakObj::of(t);
-        std::string s = analyze_line(t);
-        speech::speak(entering ? std::string(strings::kAnalyze) + ". " + s : s, true);
-        break;
-      }
+      // 8 Analyze: its own page (BattleAnalyze) once the screen's component is made; nothing is said before.
       default: break;
     }
   }

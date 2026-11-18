@@ -482,6 +482,76 @@ class BattleSurvey : public BattleList {
   }
 };
 
+// Analyze (state 8, BP_BtlGuiAnalyze_C) as a page in sections, like a Persona's status page (persona_status.cpp):
+// the target's line (name, health, ailments), its arcana, level, maximum HP and SP; each affinity on a line of its
+// own, as the icon row shows it, unknown ones too; the "Skill & attack type" panel (attack type, each skill with its
+// description in the detail buffer); the drops. What the game still hides reads "unknown" where it draws "??" or
+// "UNKNOWN". The arrows walk the lines, Tab jumps a section; the target keys (Q / E, A / D, LB / RB) are the game's,
+// and a new target puts the focus on its first line. Up once the screen's component is made (BtlWords::panel): the
+// battle screen says nothing over the opening.
+class BattleAnalyze : public BattleList {
+  UObject* shown_ = nullptr;   // compared, never dereferenced: the target the page was last built for
+  static std::string key(UObject* t) { return std::format("an.{:x}", (uintptr_t)t); }
+ public:
+  BattleAnalyze() : BattleList(8, "BP_BtlGuiAnalyze_C", strings::kAnalyzeKeys) {}
+  const char* id() const override { return "battle_analyze"; }
+  std::string title() override { return strings::kAnalyze; }
+  bool active() override { return BattleList::active() && w_.analyze_comp() && cursor_target(); }
+  void on_enter() override { BattleList::on_enter(); shown_ = cursor_target(); }
+  void on_tick() override {
+    UObject* t = cursor_target();
+    if (t && shown_ && t != shown_) focus(ui::ControlId::structural(key(t) + ".name"));
+    if (t) shown_ = t;
+  }
+  void build(ui::GraphBuilder& b) override {
+    UObject* t = cursor_target();
+    if (!t) return;
+    BtlWords::AnalyzePanel p = w_.panel(t);
+    if (!p.up) return;
+    std::string k = key(t);
+    auto line = [&](const std::string& id, std::string text) {
+      b.add_item(ui::ControlId::structural(k + "." + id), item([text] { return text; }));
+    };
+    b.begin_stop(k);
+    b.set_region(k + ".top");
+    WeakObj wt = WeakObj::of(t);
+    b.add_item(ui::ControlId::structural(k + ".name"), item([this, wt] { UObject* u = wt.resolve(); return u ? w_.analyze_name(u) : std::string(); }));
+    auto top = w_.panel_status(p);
+    for (size_t i = 0; i < top.size(); ++i) line(std::format("st{}", i), top[i]);
+    b.set_region(k + ".aff");
+    b.push_context(strings::kAffinitiesTitle);
+    for (size_t i = 0; i < p.attrs.size(); ++i) {
+      int a = p.attrs[i].first;
+      line(std::format("aff{}", i), std::format("{}: {}", p.attrs[i].second, strings::kAffinityShort[a >= 0 && a <= 6 ? a : 6]));
+    }
+    b.pop_context();
+    b.set_region(k + ".skills");
+    b.push_context(strings::kSkillAttackTitle);
+    if (!p.attack_shown && !p.skills_shown) line("unknown", strings::kUnknownCapLine);
+    if (p.attack_shown) line("attack", p.attack.empty() ? std::string(strings::kAttackTypeUnknown) : std::format("{} {}", strings::kAttackType, p.attack));
+    if (p.skills_shown) {
+      for (int sid : p.skills) {
+        std::string n = w_.skill_name(sid);
+        if (n.empty()) continue;
+        auto v = item([n] { return n; }, {}, [sid] { return persona::skill_help(sid); });
+        buffer_with(v, [sid] { return persona::skill_help(sid); });
+        b.add_item(ui::ControlId::structural(std::format("{}.skill{}", k, sid)), v);
+      }
+    } else if (p.attack_shown) {
+      line("skills", strings::kSkillsUnknown);
+    }
+    b.pop_context();
+    if (!p.drops.empty()) {
+      b.set_region(k + ".drops");
+      b.push_context(strings::kDrops);
+      for (size_t i = 0; i < p.drops.size(); ++i) line(std::format("drop{}", i), p.drops[i]);
+      b.pop_context();
+    }
+    b.set_region({});
+  }
+};
+
+std::unique_ptr<Screen> make_battle_analyze() { return std::make_unique<BattleAnalyze>(); }
 std::unique_ptr<Screen> make_battle_survey() { return std::make_unique<BattleSurvey>(); }
 std::unique_ptr<Screen> make_battle_skills() { return std::make_unique<BattleSkills>(); }
 std::unique_ptr<Screen> make_battle_items() { return std::make_unique<BattleItems>(); }

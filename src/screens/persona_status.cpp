@@ -16,8 +16,8 @@ using namespace ue;
 // A Persona status page as lines to move through (one stop, "ps.<id>"), in sections (menu.h: the arrows walk every
 // line top to bottom, Tab / Shift+Tab or a trigger press jump to a section and say its title): the name (after `lead`,
 // "Result") with the `bonus` line if any and the EXP to the next level; the stats, one per line; each skill (its cost;
-// its description after the position and on the review key); the skills it learns later; its affinities, one entry
-// per kind.
+// its description after the position and on the review key); the skills it learns later; its affinities, one line
+// per element, normal ones included ("Fire: weak", "Slash: normal").
 // `before` (a level up): each stat says what it gained, each skill it did not have says "new".
 // `name_item` (the camp's list, a game_item at `name_id`) replaces the name line.
 ui::ControlId status_name_id(int persona) { return ui::ControlId::structural(std::format("ps.{}.name", persona)); }
@@ -83,11 +83,10 @@ void build_status_page(ui::GraphBuilder& b, const uint8_t* e, const std::string&
   }
   b.set_region(k + ".aff");
   b.push_context(strings::kAffinitiesTitle);
-  auto groups = persona::affinity_groups(id);
-  if (groups.empty()) groups.push_back(strings::kNoAffinities);
-  for (size_t i = 0; i < groups.size(); ++i) {
-    std::string g = groups[i];
-    g[0] = (char)toupper((unsigned char)g[0]);
+  // Every icon of the page's row, normal ones too (the user's call, 2026-11-17: a sighted player sees all nine).
+  auto lines = persona::affinity_lines(id);
+  for (size_t i = 0; i < lines.size(); ++i) {
+    std::string g = lines[i];
     b.add_item(ui::ControlId::structural(std::format("{}.aff{}", k, i)), M::item([g] { return g; }));
   }
   b.pop_context();

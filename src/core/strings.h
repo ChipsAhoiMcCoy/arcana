@@ -120,6 +120,16 @@ inline constexpr Hint kAllTargetsKeys{"Space to confirm, Escape to cancel.", "A 
 // EBtlDataAnalyze 0..6: normal, null, repel, drain, weak, resist, unknown
 inline constexpr const char* kAttrNames[] = {"Slash", "Strike", "Pierce", "Fire", "Ice", "Elec", "Wind", "Light", "Dark"};
 inline constexpr const char* kAffinity[] = {"", "nulls", "repels", "drains", "weak to", "resists", ""};
+// Analyze's panel (core::analyze_affinities): each affinity a sentence of its own.
+inline constexpr const char* kAffinityCap[] = {"", "Nulls", "Repels", "Drains", "Weak to", "Resists", ""};
+inline constexpr const char* kAffinitiesUnknown = "Affinities unknown";
+// An affinity on its own line, as the icon row shows it: "Fire: weak", "Slash: normal", "Dark: unknown".
+inline constexpr const char* kAffinityShort[] = {"normal", "null", "repel", "drain", "weak", "resist", "unknown"};
+inline constexpr const char* kNoAffinitiesCap = "No weaknesses or resistances";
+inline constexpr const char* kUnknownCap = "Unknown";
+inline constexpr const char* kNormalCap = "Normal";
+inline constexpr const char* kRestNormal = "The rest normal";
+inline constexpr const char* kRestUnknown = "The rest unknown";
 inline constexpr const char* kDamage = "damage";
 inline constexpr const char* kHealed = "healed";
 inline constexpr const char* kDefeated = "defeated";
@@ -201,6 +211,14 @@ inline constexpr const char* kDrops = "Drops";
 inline constexpr const char* kMaxWord = "Max";              // "Max HP 83, max SP 20"
 inline constexpr const char* kMaxWordLower = "max";
 inline constexpr const char* kAttackType = "Attack type";   // then the game's name for it: "Attack type Strike Attack"
+// What Analyze still hides, said where its panel would be (the game draws "??" and "UNKNOWN").
+inline constexpr const char* kStatusUnknown = "Level, HP and SP unknown";
+inline constexpr const char* kSkillsAttackUnknown = "Skills and attack type unknown";
+inline constexpr const char* kSkillsUnknown = "Skills unknown";
+inline constexpr const char* kAttackTypeUnknown = "Attack type unknown";
+inline constexpr const char* kLevelCap = "Level";
+inline constexpr const char* kSkillAttackTitle = "Skill and attack type";   // the panel's own heading, "SKILL & ATTACK TYPE"
+inline constexpr const char* kUnknownCapLine = "Unknown";
 inline constexpr const char* kSurveyTitle = "Survey";
 inline constexpr const char* kAllOutTitle = "All-Out Attack?";
 inline constexpr const char* kGuardTitle = "Guard?";

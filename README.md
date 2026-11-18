@@ -112,7 +112,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 - Fusion Search: Q and E sort.
 - Shops: Q and E switch member or category.
 - Area map: Tab zooms.
-- Battle: Q on the target list analyzes; A and D switch target in Analyze.
+- Battle: Q on the target list analyzes; A and D switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections.
 
 ## Mod settings
 
@@ -255,7 +255,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 - Keys: Space attack, E skills, R items, C guard (asks first), Q analyze, W tactics, Tab rush, A and D or left and right change target, S survey (up and down go through everyone), F assist, T Theurgy when "Theurgy ready" is announced.
 - Skill lists read name and cost (a physical skill's cost in HP); Space confirms, Q and E change Persona, F shows its status page. A skill or item that hits a whole side asks once ("Use Mazio Gem on all enemies? Space to confirm, Escape to cancel.").
 - What enemies and members acting on their own used, damage, healing and defeats ("2 Cowardly Maya defeated"); on a target you chose, the number alone ("14 damage"). Your own choices are not read back.
-- Details of whoever is in focus (Ctrl+Down, right stick): name and level, HP, SP, ailments and buffs with turns left, guarding, affinities found, and for a party member their Persona, stats and Theurgy gauge. In Analyze also maximum HP and SP, arcana, attack type, skills and drops as far as the game shows.
+- Details of whoever is in focus (Ctrl+Down, right stick): name and level, HP, SP, ailments and buffs with turns left, guarding, affinities found, and for a party member their Persona, stats and Theurgy gauge. In Analyze also its arcana, level, maximum HP and SP, affinities, attack type, skills and drops, as far as the game shows.
 - "S.E.E.S. advantage" or "Shadow advantage" at the start; "1 More! Shift available", after which B (Shift) passes the turn; the All-Out Attack prompt once with its buttons.
 - Tactics (W): "Give an order?", each member's order, and the orders. Rush (Tab) lets the party fight alone.
 - A battle against the clock (the Priestess on the monorail) says the time left at the start, with each of your turns, every 5 minutes, at 1 minute, 30 and 10 seconds, and when the story cuts it short.

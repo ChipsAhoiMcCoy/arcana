@@ -32,6 +32,36 @@ std::string short_attack(std::string name) {
   return name;
 }
 
+std::vector<std::string> analyze_affinities(const std::vector<std::pair<int, std::string>>& attrs) {
+  std::vector<std::string> by[7];
+  for (auto& [a, name] : attrs)
+    if (a >= 0 && a <= 6 && !name.empty()) by[a].push_back(name);
+  auto join = [](const std::vector<std::string>& v) {
+    std::string s;
+    for (size_t i = 0; i < v.size(); ++i) s += (i ? ", " : "") + v[i];
+    return s;
+  };
+  std::vector<std::string> out;
+  if (by[6].size() == attrs.size()) { out.push_back(strings::kAffinitiesUnknown); return out; }
+  static const int order[] = {4, 5, 1, 2, 3};   // weak, resists, nulls, repels, drains
+  for (int a : order)
+    if (!by[a].empty()) out.push_back(std::string(strings::kAffinityCap[a]) + " " + join(by[a]));
+  const auto &normal = by[0], &unknown = by[6];
+  if (unknown.empty()) {
+    if (out.empty()) out.push_back(strings::kNoAffinitiesCap);
+    else if (!normal.empty()) out.push_back(strings::kRestNormal);
+  } else if (normal.empty()) {
+    out.push_back(out.empty() ? std::string(strings::kAffinitiesUnknown) : std::string(strings::kRestUnknown));
+  } else if (unknown.size() <= normal.size()) {
+    out.push_back(std::string(strings::kUnknownCap) + ": " + join(unknown));
+    out.push_back(strings::kRestNormal);
+  } else {
+    out.push_back(std::string(strings::kNormalCap) + ": " + join(normal));
+    out.push_back(strings::kRestUnknown);
+  }
+  return out;
+}
+
 std::string defeated_line(const std::vector<std::string>& names) {
   std::map<std::string, int> count;
   std::vector<std::string> order;

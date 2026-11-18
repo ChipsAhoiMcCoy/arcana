@@ -18,6 +18,7 @@ namespace p3a::screens {
   X(stats_up) \
   X(battle) \
   X(battle_survey) \
+  X(battle_analyze) \
   X(battle_skills) \
   X(battle_items) \
   X(battle_targets) \

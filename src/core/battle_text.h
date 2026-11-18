@@ -3,6 +3,7 @@
 // screens read the numbers, these say them.
 #include <cstdint>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace p3a::core {
@@ -12,6 +13,11 @@ constexpr int health_share(int hp, int max) { return (hp * 100 + max - 1) / max;
 std::string turns_text(int n);
 // The game's attack names are "Fire Attack", "Ice Attack": the word is dropped ("weak to Fire, Ice").
 std::string short_attack(std::string name);
+// Analyze's affinity panel as lines, from each attack's EBtlDataAnalyze (0 normal, 1 nulls, 2 repels, 3 drains, 4 weak,
+// 5 resists, 6 unknown) and its short name, in the panel's order: "Weak to Fire, Ice", "Resists Slash", then whichever
+// of the normal and the unknown ones is shorter to name, the other as the rest: "Unknown: Dark", "The rest normal".
+// Nothing found yet: "Affinities unknown"; everything found and nothing special: "No weaknesses or resistances".
+std::vector<std::string> analyze_affinities(const std::vector<std::pair<int, std::string>>& attrs);
 // Enemies that fell together, in one line: "2 Cowardly Maya, Muttering Tiara defeated". The names in the order they
 // first fell; one that fell several times has its count before it.
 std::string defeated_line(const std::vector<std::string>& names);

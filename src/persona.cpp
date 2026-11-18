@@ -87,6 +87,24 @@ std::vector<std::string> affinity_groups(int id) {
   return out;
 }
 
+std::vector<std::string> affinity_lines(int id) {
+  UObject* t = persona_affinity_table();
+  auto* rows = t ? field<TArray<uint8_t>>(t, "Data") : nullptr;
+  if (!rows || id <= 0 || id >= rows->num) return {};
+  const uint16_t* a = (const uint16_t*)(rows->data + id * 38);
+  static const int kColumn[9] = {0, 1, 2, 3, 4, 5, 6, 8, 9};
+  static const struct { uint16_t bit; int kind; } kinds[] = {{0x0800, 4}, {0x1000, 5}, {0x0100, 1}, {0x0200, 2}, {0x0400, 3}};
+  std::vector<std::string> out;
+  guarded([&] {
+    for (int i = 0; i < 9; ++i) {
+      int kind = 0;
+      for (auto& k : kinds) if (a[kColumn[i]] & k.bit) { kind = k.kind; break; }
+      out.push_back(std::format("{}: {}", strings::kAttrNames[i], strings::kAffinityShort[kind]));
+    }
+  });
+  return out;
+}
+
 int arcana(int id) { const uint8_t* r = record(id); return r ? r[2] : 0; }   // Race 1 = Fool
 int base_level(int id) { const uint8_t* r = record(id); return r ? r[3] : 0; }
 
@@ -235,9 +253,7 @@ std::vector<std::string> detail_lines(const uint8_t* e) {
       std::string l = skill_name(sid), cost = skill_cost(sid);
       out.push_back(cost.empty() ? l : l + ", " + cost);
     }
-  auto groups = affinity_groups(id);
-  if (groups.empty()) groups.push_back(strings::kNoAffinities);
-  for (auto g : groups) { g[0] = (char)toupper((unsigned char)g[0]); out.push_back(g); }
+  for (auto& l : affinity_lines(id)) out.push_back(l);
   return out;
 }
 

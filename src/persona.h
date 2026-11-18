@@ -16,7 +16,10 @@ int unit_level(int unit_id);              // the hero's (unit 1) level from the 
 int equipped();                           // the hero's equipped stock slot, or -1
 std::string describe(int id, int level);   // "Orpheus, Fool, level 3"
 std::string affinities(int id);            // "weak to Elec, resists Wind" (UDatAffinityTable), or ""
-std::vector<std::string> affinity_groups(int id);   // the same, one entry per kind: {"weak to Elec", "resists Wind"}
+std::vector<std::string> affinity_groups(int id);
+// Every affinity the status page's icon row shows, in its order (kAttrNames): "Slash: normal" .. "Dark: weak". Empty
+// when the table is not loaded.
+std::vector<std::string> affinity_lines(int id);   // the same, one entry per kind: {"weak to Elec", "resists Wind"}
 // A dyad fusion's result as the Velvet Room computes it, or 0 when the pair cannot fuse. The arcana comes from the
 // game's chart (NormalSpreadDataAsset: Data[low arcana - 1].Races[high arcana - 1]); the level target is
 // (level A + level B) / 2 + 1 (BP_CombineCalc GetNormalSpreadLevel). Different arcana: the lowest Persona of the
@@ -35,7 +38,7 @@ int stat_total(const uint8_t* entry, int i);
 int exp_to_next(const uint8_t* entry);    // EXP still needed for its next level (entry +8 EXP), -1 at 99 or unknown
 int level_with_exp(const uint8_t* entry, int gain);   // the level it reaches with `gain` more EXP
 // An entry as lines to step through one at a time: each stat ("Strength 12"), each skill with its cost, each kind of
-// affinity ("Weak to Elec").
+// affinity ("Fire: weak", normal ones too).
 std::vector<std::string> detail_lines(const uint8_t* entry);
 const uint8_t* stock_entry(int slot);     // the hero's stock entry in that slot (FDatUnitPersonaEntry), or null
 // The skills a Persona learns by levelling (UDatPersonaGrowthTable.Data[id].skillEvent[16]: level above the base

@@ -128,3 +128,20 @@ TEST_CASE("battle_text: why a row cannot be bought") {
   CHECK(std::string(cannot_buy_reason(99, 3, 100, -1)) == strings::kCannotBuy);       // money not known
   CHECK(std::string(cannot_buy_reason(99, -1, 0, 0)) == strings::kCannotBuy);         // free, owned count not known
 }
+
+TEST_CASE("battle_text: Analyze's affinity panel") {
+  auto panel = [](std::vector<int> states) {
+    static const char* names[] = {"Slash", "Strike", "Pierce", "Fire", "Ice", "Elec", "Wind", "Light", "Dark", "Almighty"};
+    std::vector<std::pair<int, std::string>> v;
+    for (size_t i = 0; i < states.size(); ++i) v.push_back({states[i], names[i]});
+    return analyze_affinities(v);
+  };
+  using V = std::vector<std::string>;
+  CHECK(panel({6, 6, 6, 6, 6, 6, 6, 6, 6, 6}) == V{"Affinities unknown"});
+  CHECK(panel({0, 0, 0, 0, 0, 0, 0, 0, 0, 0}) == V{"No weaknesses or resistances"});
+  CHECK(panel({0, 0, 0, 4, 5, 0, 0, 0, 0, 0}) == V{"Weak to Fire", "Resists Ice", "The rest normal"});
+  CHECK(panel({6, 6, 6, 4, 6, 6, 6, 6, 6, 6}) == V{"Weak to Fire", "The rest unknown"});
+  CHECK(panel({0, 6, 6, 4, 6, 6, 6, 6, 6, 6}) == V{"Weak to Fire", "Normal: Slash", "The rest unknown"});
+  CHECK(panel({0, 0, 0, 4, 0, 0, 0, 0, 1, 6}) == V{"Weak to Fire", "Nulls Dark", "Unknown: Almighty", "The rest normal"});
+  CHECK(panel({0, 0, 0, 0, 0, 0, 0, 0, 0, 6}) == V{"Unknown: Almighty", "The rest normal"});
+}

@@ -72,6 +72,12 @@ class BtlWords {
     return unit_names_[key] = ftext_call(d, p);
   }
   std::string skill_name(int id) { return cached_text(skill_names_, "GetSkillName", "skillId", id); }
+  // An affinity slot's name. GatAnalizeAttr's attr numbers the slots as the Personas' table does (7 Almighty, 8 Light,
+  // 9 Dark), and GetAttackName does not (its 8 is "Dark", its 9 empty: Analyze read "Dark" for Light, 2026-11-17).
+  static std::string analyze_attr_name(int attr) {
+    if (attr >= 0 && attr <= 6) return strings::kAttrNames[attr];
+    return attr == 8 ? strings::kAttrNames[7] : attr == 9 ? strings::kAttrNames[8] : std::string();
+  }
   std::string attack_name(int attr) { return cached_text(attack_names_, "GetAttackName", "attr", attr); }
   std::string persona_name(int id) { return cached_text(persona_names_, "GetPersonaName", "PersonaID", id); }
   // "3 SP" / "121 HP": what the skill costs this member now (GetSkillCost has already turned a physical skill's
@@ -139,60 +145,120 @@ class BtlWords {
     if (has_support(a, first[i])) return first[i];
     return second[i] >= 0 && has_support(a, second[i]) ? second[i] : -1;
   }
-  // What the Analyze screen shows of an enemy besides its affinities, each behind the screen's own gate
-  // (UBtlGuiAnalyzeComponent CheckShowStatus / CheckShowArcana / CheckShowAttackAttr / CheckShowSkill / CheckShowItem,
-  // which BP_BtlGuiAnalyze asks before it draws a panel): its maximum HP and SP, its arcana (GetUnitArcana), how its
-  // plain attack hits (the actor's GetAttackAttr), its skills (GetSkillList's eight slots) and what it drops
+  // The Analyze screen's own component: there only while the screen is up.
+  ue::UObject* analyze_comp() { static Finder comp{"BtlGuiAnalyzeComponent"}; return comp.get(); }
+  // One of the Analyze screen's gates (UBtlGuiAnalyzeComponent CheckShowStatus / CheckShowArcana /
+  // CheckShowAttackAttr / CheckShowSkill / CheckShowItem), which BP_BtlGuiAnalyze asks before it draws a panel.
+  bool analyze_shows(ue::UObject* c, const char* gate, ue::UObject* a) {
+    ue::UFunction* f = c ? ue::find_function(ue::class_of(c), gate) : nullptr;
+    if (!f) return false;
+    ue::Params p(f);
+    p.set<ue::UObject*>("Actor", a);
+    ue::call(c, p);
+    return p.ret<bool>();
+  }
+  // What the Analyze screen shows of an enemy, panel by panel, each behind the screen's own gate: its arcana
+  // (GetUnitArcana); level, maximum HP and SP (one gate: BP_BtlGuiAnalyze's Set Status Number draws the level behind
+  // CheckShowStatus; "??" until then); the affinity icons (GatAnalizeAttr per attack, 6 unknown; BP_BtlGuiAnalyze
+  // ChangeResitText walks attr 0..9 and skips 7, Almighty); "Skill & attack type": how its plain attack hits (the
+  // actor's GetAttackAttr) and its skills (GetSkillList's eight slots), "UNKNOWN" until shown; what it drops
   // (GetEnemyDropItem 0..3). Seen on a Cowardly Maya not yet analyzed (2026-11-11): Magician, HP 83, SP 20, Strike
-  // Attack, skills unknown. Nothing while Analyze is not up: the component is the screen's.
-  std::vector<std::string> analysis(ue::UObject* a) {
-    std::vector<std::string> out;
-    static Finder comp{"BtlGuiAnalyzeComponent"};
-    ue::UObject* c = comp.get();
+  // Attack, skills unknown. `up` false while Analyze is not up: the component is the screen's.
+  struct AnalyzePanel {
+    bool up = false;
+    int arcana = 0;                                   // 0: not shown
+    bool status = false;
+    int level = 0, max_hp = 0, max_sp = 0;
+    std::vector<std::pair<int, std::string>> attrs;   // EBtlDataAnalyze, short name
+    bool attack_shown = false, skills_shown = false, items_shown = false;
+    std::string attack;
+    std::vector<int> skills;
+    std::vector<std::string> drops;
+  };
+  AnalyzePanel panel(ue::UObject* a) {
+    AnalyzePanel out;
+    ue::UObject* c = analyze_comp();
     ue::UObject* d = db();
     if (!c || !d || !a) return out;
-    auto shows = [&](const char* gate) {
-      ue::UFunction* f = ue::find_function(ue::class_of(c), gate);
-      if (!f) return false;
-      ue::Params p(f);
-      p.set<ue::UObject*>("Actor", a);
-      ue::call(c, p);
-      return p.ret<bool>();
-    };
-    if (shows("CheckShowStatus"))
-      out.push_back(std::format("{} {} {}, {} {} {}", strings::kMaxWord, strings::kHP, unit_int("GetUnitMaxHP", a), strings::kMaxWordLower, strings::kSP, unit_int("GetUnitMaxSP", a)));
+    out.up = true;
+    auto shows = [&](const char* gate) { return analyze_shows(c, gate, a); };
     if (shows("CheckShowArcana"))
-      if (int arc = unit_int("GetUnitArcana", a); arc > 0 && arc < (int)std::size(strings::kArcana))
-        out.push_back(std::format("{} {}", strings::kArcanaWord, strings::kArcana[arc]));
-    if (shows("CheckShowAttackAttr"))
-      if (std::string n = attack_name(ue::call_ret<uint8_t>(a, "GetAttackAttr")); !n.empty()) out.push_back(std::format("{} {}", strings::kAttackType, n));
-    if (shows("CheckShowSkill"))
+      if (int arc = unit_int("GetUnitArcana", a); arc > 0 && arc < (int)std::size(strings::kArcana)) out.arcana = arc;
+    if ((out.status = shows("CheckShowStatus"))) {
+      out.level = unit_int("GetUnitLevel", a);
+      out.max_hp = unit_int("GetUnitMaxHP", a);
+      out.max_sp = unit_int("GetUnitMaxSP", a);
+    }
+    if (ue::UFunction* f = ue::find_function(ue::class_of(d), "GatAnalizeAttr"))
+      for (int attr = 0; attr <= 9; ++attr) {
+        if (attr == 7) continue;
+        ue::Params p(f);
+        p.set<ue::UObject*>("Actor", a);
+        p.set<uint8_t>("attr", (uint8_t)attr);
+        ue::call(d, p);
+        out.attrs.push_back({p.ret<uint8_t>(), analyze_attr_name(attr)});
+      }
+    if ((out.attack_shown = shows("CheckShowAttackAttr"))) out.attack = attack_name(ue::call_ret<uint8_t>(a, "GetAttackAttr"));
+    if ((out.skills_shown = shows("CheckShowSkill")))
       if (ue::UFunction* f = ue::find_function(ue::class_of(d), "GetSkillList")) {
         ue::Params p(f);
         p.set<ue::UObject*>("Actor", a);
         ue::call(d, p);
-        std::string names;
         if (auto* ids = p.at<ue::TArray<int32_t>>("Output")) {
           for (int i = 0; ids->data && i < ids->num && i < 8; ++i)
-            if (ids->data[i] > 0)
-              if (std::string n = skill_name(ids->data[i]); !n.empty()) names += (names.empty() ? "" : ", ") + n;
+            if (ids->data[i] > 0) out.skills.push_back(ids->data[i]);
           if (ids->data) msg::game_free(ids->data);   // the game allocated the list
         }
-        if (!names.empty()) out.push_back(std::format("{}: {}", strings::kSkills, names));
       }
-    if (shows("CheckShowItem"))
-      if (ue::UFunction* f = ue::find_function(ue::class_of(d), "GetEnemyDropItem")) {
-        std::string names;
+    if ((out.items_shown = shows("CheckShowItem")))
+      if (ue::UFunction* f = ue::find_function(ue::class_of(d), "GetEnemyDropItem"))
         for (int i = 0; i < 4; ++i) {
           ue::Params p(f);
           p.set<ue::UObject*>("Actor", a);
           p.set<int32_t>("Index", i);
           ue::call(d, p);
           if (int id = p.ret<int32_t>(); id > 0)
-            if (std::string n = cached_text(item_names_, "GetItemName", "ItemId", id); !n.empty()) names += (names.empty() ? "" : ", ") + n;
+            if (std::string n = cached_text(item_names_, "GetItemName", "ItemId", id); !n.empty()) out.drops.push_back(n);
         }
-        if (!names.empty()) out.push_back(std::format("{}: {}", strings::kDrops, names));
-      }
+    return out;
+  }
+  // The target as Analyze's first line: its name, health as a share, ailments and buffs.
+  std::string analyze_name(ue::UObject* t) {
+    std::string s = unit_name(t);
+    int hp = unit_int("GetUnitHP", t), mx = unit_int("GetUnitMaxHP", t);
+    if (mx > 0) s += std::format(", {}%", core::health_share(hp, mx));
+    return s + ailments(t) + buffs(t);
+  }
+  // The panel's top lines: "Arcana Hermit", "Level 5", "Max HP 83", "Max SP 20" (or each "unknown").
+  std::vector<std::string> panel_status(const AnalyzePanel& p) {
+    std::vector<std::string> out;
+    out.push_back(p.arcana ? std::format("{} {}", strings::kArcanaWord, strings::kArcana[p.arcana]) : std::format("{} {}", strings::kArcanaWord, strings::kUnknown));
+    auto num = [&](const std::string& what, int v) { return p.status ? std::format("{} {}", what, v) : std::format("{} {}", what, strings::kUnknown); };
+    out.push_back(num(strings::kLevelCap, p.level));
+    out.push_back(num(std::format("{} {}", strings::kMaxWord, strings::kHP), p.max_hp));
+    out.push_back(num(std::format("{} {}", strings::kMaxWord, strings::kSP), p.max_sp));
+    return out;
+  }
+  // The detail buffer's lines on Analyze (detail()): the same panels, the affinities summed up
+  // (core::analyze_affinities).
+  std::vector<std::string> analysis(ue::UObject* a) {
+    std::vector<std::string> out;
+    AnalyzePanel p = panel(a);
+    if (!p.up) return out;
+    out = panel_status(p);
+    for (auto& l : core::analyze_affinities(p.attrs)) out.push_back(l);
+    if (!p.attack_shown && !p.skills_shown) out.push_back(strings::kSkillsAttackUnknown);
+    if (p.attack_shown) out.push_back(p.attack.empty() ? std::string(strings::kAttackTypeUnknown) : std::format("{} {}", strings::kAttackType, p.attack));
+    if (p.skills_shown) {
+      std::string names;
+      for (int id : p.skills) if (std::string n = skill_name(id); !n.empty()) names += (names.empty() ? "" : ", ") + n;
+      if (!names.empty()) out.push_back(std::format("{}: {}", strings::kSkills, names));
+    } else if (p.attack_shown) out.push_back(strings::kSkillsUnknown);
+    if (!p.drops.empty()) {
+      std::string names;
+      for (auto& n : p.drops) names += (names.empty() ? "" : ", ") + n;
+      out.push_back(std::format("{}: {}", strings::kDrops, names));
+    }
     return out;
   }
   // Everything known about a unit, one line each: what the right stick (Ctrl+Up / Down) walks through. The first line
@@ -205,7 +271,9 @@ class BtlWords {
     int level = unit_int("GetUnitLevel", a);
     party::Member m;
     if (!foe && party::member(unit_int("GetUnitID", a), m)) level = m.level;
-    out.push_back(std::format("{}, {} {}", unit_name(a), strings::kLevel, level));
+    // On Analyze a Shadow's level, like its affinities, is the panel's (analysis), shown only once it is known.
+    bool panel = foe && analyze_comp();
+    out.push_back(panel ? unit_name(a) : std::format("{}, {} {}", unit_name(a), strings::kLevel, level));
     int hp = unit_int("GetUnitHP", a), mx = unit_int("GetUnitMaxHP", a);
     if (foe) { if (mx > 0) out.push_back(std::format("{} {}%", strings::kHP, core::health_share(hp, mx))); }
     else {
@@ -238,8 +306,8 @@ class BtlWords {
     for (int i = 0; i < 4; ++i) effect(has_support(a, 10 + i), 10 + i, strings::kBreaks[i]);
     effect(has_support(a, 14), 14, strings::kAilmentsDoubled);
     if (out.size() == before) out.push_back(strings::kNoEffects);
-    for (auto& l : affinity_groups(a)) out.push_back(l);
-    if (foe) for (auto& l : analysis(a)) out.push_back(l);
+    if (!panel) for (auto& l : affinity_groups(a)) out.push_back(l);
+    if (panel) for (auto& l : analysis(a)) out.push_back(l);
     if (!foe) {
       if (int pid = unit_int("GetPersonaEquipID", a); pid > 0) out.push_back(std::format("{} {}", strings::kPersonaWord, persona_name(pid)));
       static const char* stats[] = {"GetStatusStrength", "GetStatusMagic", "GetStatusEndurance", "GetStatusSpeed", "GetStatusLuck"};
@@ -286,7 +354,7 @@ class BtlWords {
       p.set<uint8_t>("attr", (uint8_t)attr);
       ue::call(d, p);
       int a = p.ret<uint8_t>();
-      std::string name = a >= 1 && a <= 5 ? core::short_attack(attack_name(attr)) : std::string();
+      std::string name = a >= 1 && a <= 5 ? analyze_attr_name(attr) : std::string();
       if (!name.empty()) by[a].push_back(name);
     }
     static const int order[] = {4, 5, 1, 2, 3};   // weak, resists, nulls, repels, drains
