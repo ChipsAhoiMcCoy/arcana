@@ -6,6 +6,8 @@ namespace p3a::walltones {
 void install();
 void tick();   // game thread, every mod tick
 void set_enabled(bool on);
+// The setting Wall tones: 0 off, 1 only while the player moves, 2 continuous (settings::WallMode).
+void set_mode(int mode);
 void set_range(float cm);   // how far each tone reaches, in either mode (the setting Wall tone range)
 // The settings menu's sound test: one tone alone (0 ahead, 1 right, 2 behind, 3 left) for a little over a second,
 // whatever the setting and wherever the player is.

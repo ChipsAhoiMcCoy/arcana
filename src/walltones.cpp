@@ -43,6 +43,7 @@ constexpr float kAskingInput = 0.2f;      // the input vector's length above whi
 static float g_heading = 0;               // top-down: the walk's bearing from north, degrees
 static float g_gain = 1.0f;
 static bool g_enabled = true;
+static bool g_continuous = false;   // the setting Wall tones on Continuous: they play standing still too
 static bool g_loaded = false;
 static float g_dist[4] = {0, 0, 0, 0};
 static float g_h0 = 60.0f, g_deg = 20.0f;   // the cone: half-width at the feet (cm), widening per side (degrees)
@@ -186,8 +187,9 @@ void tick() {
   g_asking = world::player_input(in) && std::hypot(in.x, in.y) > kAskingInput;
   const bool has_vel = world::player_velocity(vel);
   g_moving = g_asking || (has_vel && std::hypot(vel.x, vel.y) > kMovingCmS);
-  // Only while moving (the user, 2026-11-14): standing still, the tones are quiet, in either mode.
-  if (!g_moving) { silence(); return; }
+  // Only while moving (the user, 2026-11-14): standing still, the tones are quiet, in either mode. Continuous (the
+  // setting, 2026-11-17) plays them standing still too.
+  if (!g_moving && !g_continuous) { silence(); return; }
   const float range = g_range;
   // The place is the last frame's, and the tones are heard after this frame: probed from where the hero will be one
   // tick on (his velocity over the time between ticks), slid along what he would meet on the way there.
@@ -200,8 +202,8 @@ void tick() {
       p = q;
     }
   }
-  // Top-down: the direction behind the walk is left out.
-  const bool leave_behind = top;
+  // Top-down: the direction behind the walk is left out (standing still, with no walk, all four sound).
+  const bool leave_behind = top && g_moving;
   if (leave_behind) {
     const FVector& d = g_asking ? in : vel;
     g_heading = std::atan2(d.y, d.x) * 180.0f / 3.14159265f - topdown::north_yaw();
@@ -220,9 +222,10 @@ void tick() {
 }
 
 void set_enabled(bool on) { g_enabled = on; if (!on) silence(); }
+void set_mode(int mode) { g_continuous = mode == 2; set_enabled(mode != 0); }
 void set_range(float cm) { g_range = std::max(cm, 100.0f); }
 std::string status() {
-  return std::format("walltones enabled={} range={:.0f} gain={:.2f} h0={:.0f} deg={:.0f} ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f} topdown={} moving={} asking={} heading={:.0f} predict={} ahead_cm={:.0f}\n", g_enabled, g_range, g_gain, g_h0, g_deg,
+  return std::format("walltones enabled={} continuous={} range={:.0f} gain={:.2f} h0={:.0f} deg={:.0f} ahead={:.0f} right={:.0f} behind={:.0f} left={:.0f} topdown={} moving={} asking={} heading={:.0f} predict={} ahead_cm={:.0f}\n", g_enabled, g_continuous, g_range, g_gain, g_h0, g_deg,
                      g_dist[0], g_dist[1], g_dist[2], g_dist[3], topdown::active(), g_moving, g_asking, g_heading, g_predict, g_ahead_cm);
 }
 

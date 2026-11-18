@@ -23,6 +23,8 @@ enum Scope { ScopeAll, ScopeCategory, ScopeSelected };
 enum Description { DescOff, DescAudio, DescReader };
 // Spatial: how the mod's sounds are placed (audio::set_spatial).
 enum SpatialModel { SpatialStereo, SpatialHrtf, SpatialPan };
+// WallTones: when the tones play (walltones::set_mode). A saved 1 from the old on/off toggle is WallMoving.
+enum WallMode { WallOff, WallMoving, WallContinuous };
 void set(Id id, int value);   // applies it (wall tones, volume) and saves
 
 // The menu: modal while open (the game gets no keys or buttons; the field keeps running).

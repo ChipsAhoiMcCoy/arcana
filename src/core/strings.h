@@ -351,7 +351,7 @@ inline constexpr const char* kCatDialogue = "Dialogue and movies";
 inline constexpr const char* kCatControls = "Controls and help";
 inline constexpr const char* kCatSoundTest = "Sound test";
 // What each setting does: read with its row, after the position.
-inline constexpr const char* kHelpWallTones = "A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer.";
+inline constexpr const char* kHelpWallTones = "A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer. They play all the time, only while you move, or not at all.";
 inline constexpr const char* kHelpSonar = "Every point of interest near you repeats its own sound from where it is, faster and louder the closer it is. F3 also switches it.";
 inline constexpr const char* kHelpSonarScope = "Which points the sonar plays: everything nearby, only the category the points of interest list is on, or only the point you selected there, at any distance.";
 inline constexpr const char* kHelpSonarRange = "How far away a thing can be and still sound.";
@@ -434,6 +434,8 @@ inline constexpr const char* kSetMasterVolume = "Master";
 inline constexpr const char* kSetSoundVolume = "Shadow sounds";
 inline constexpr const char* kSetWallVolume = "Wall tones";
 inline constexpr const char* kSetWallRange = "Wall tone range";
+inline constexpr const char* kWallContinuous = "continuous";
+inline constexpr const char* kWallMoving = "only while moving";
 inline constexpr const char* kSetTriggerDelay = "Trigger delay";
 inline constexpr const char* kSetEntryHints = "Menu key hints on entry";
 inline constexpr const char* kSetMenuSpeed = "Menu animation speed";
