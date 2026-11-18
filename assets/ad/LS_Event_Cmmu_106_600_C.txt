@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_106_600_C
+1.000	6.281	00.mp3	The cinema at Port Island Station. You and Yuko sit side by side in the audience while the film plays.

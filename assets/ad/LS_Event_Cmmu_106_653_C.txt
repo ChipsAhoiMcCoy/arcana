@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_106_653_C
+0.000	5.516	00.mp3	Paulownia Mall, decorated for Christmas and crowded with people. You and Yuko walk in together.
+11.670	2.355	01.mp3	Later, you and Yuko sit side by side.
+14.330	3.735	02.mp3	Yuko holds out a medicated patch she made herself, and you take it.
