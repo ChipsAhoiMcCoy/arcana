@@ -1,3 +1,2 @@
 #scene LS_Event_Qest_650_070_C
-0.050	1.947	00.mp3	The hero waits in the faculty office.
-2.350	1.182	01.mp3	A woman in orange.
+0.000	7.970	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, talking to herself, and comes over to you.

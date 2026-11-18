@@ -1,4 +1,0 @@
-#scene LS_Event_Qest_620_020_C
-0.300	1.887	00.mp3	The hero walks into the dorm lobby.
-2.400	1.234	01.mp3	He answers his phone.
-5.400	1.116	02.mp3	He lowers the phone.
