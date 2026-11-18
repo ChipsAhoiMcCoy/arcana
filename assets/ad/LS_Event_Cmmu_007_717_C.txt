@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_007_717_C
+0.230	4.809	00.mp3	The dorm lounge. You and Aigis sit reading together again, Aigis with her novel.

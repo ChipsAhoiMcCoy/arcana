@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_007_737_C
+0.170	4.186	00.mp3	The dorm rooftop. You and Aigis work together at the vegetable planters.
