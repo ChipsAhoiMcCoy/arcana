@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_105_085_C
+0.000	6.450	00.mp3	The nurse's office. Kazushi sits on a chair while the track team advisor and another teacher stand over him.
+4.900	3.081	01.mp3	The door opens and Yuko walks in, with you behind her.
+24.500	3.376	02.mp3	The door opens again, and two members of the track team walk in.

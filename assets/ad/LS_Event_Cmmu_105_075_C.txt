@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_105_075_C
+3.000	7.099	00.mp3	At the school entranceway, among students heading home, you turn around. Kazushi walks up to you, his bag over his shoulder.
+6.400	1.854	01.mp3	The two of you set off side by side.

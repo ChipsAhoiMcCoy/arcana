@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_105_080_C
+0.000	6.114	00.mp3	On the athletic field, you and Yuko stand near Kazushi and a few teammates, one of them sitting on the ground.
+1.200	3.772	01.mp3	Kazushi turns around as the track team advisor strides up to him.
+11.050	4.095	02.mp3	Kazushi walks off. Yuko frowns after him, then comes over to you.
