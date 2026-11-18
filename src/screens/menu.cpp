@@ -531,10 +531,10 @@ void MenuScreen::buffer_with(const ui::NodeVtablePtr& v, std::function<std::stri
     if (std::string t = text(); !t.empty()) out.push_back(std::move(t));
     return out;
   };
-  // With "Descriptions in menus" on (the default) it is also read after the row, as describe_with does; asked per
-  // reading, so the setting takes effect at once.
+  // It is also read after the row, as describe_with does (always: the setting that could keep it off the row was
+  // removed, the user's call, 2026-11-17).
   v->announcements.push_back(ui::NodeAnnouncement(
-      [text = std::move(text)] { return settings::on(settings::MenuDescriptions) ? text() : std::string(); },
+      [text = std::move(text)] { return text(); },
       true, ui::announcement_kinds::kTooltip));
 }
 

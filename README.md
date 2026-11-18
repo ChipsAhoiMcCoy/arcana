@@ -90,7 +90,7 @@ Every menu (title, camp, shops, the Velvet Room, battle lists and the rest) is t
 
 Everything else (C to go back, Q and E for pages) is the game's, and if the game moves its highlight (stick, mouse, page change) the mod follows.
 
-**Details.** Every item, skill, piece of gear and setting reads its description right after its name, cost or count and position: "Mediarama, 16 SP, 2 of 2, Moderately restores party's HP." This covers the camp menu's entries and help lines; items and skills in the camp menu, in battle and in fusion inheritance; Equip's gear; skills on a Persona's status page; and Config's settings. If you would rather hear only the name, turn off the setting Descriptions in menus (Controls and help): the description then waits on the details keys. The details keys also walk what is too long to say on every move: whoever is in focus in battle (HP, SP, ailments, affinities), a party member on the Stats list (Persona, stats, skills), and the acting member after a battle skill's description, starting from the top each time you land on a row. F1 mentions the details keys wherever a row has them.
+**Details.** Every item, skill, piece of gear and setting reads its description right after its name, cost or count and position: "Mediarama, 16 SP, 2 of 2, Moderately restores party's HP." This covers the camp menu's entries and help lines; items and skills in the camp menu, in battle and in fusion inheritance; Equip's gear; skills on a Persona's status page; and Config's settings. The details keys read it again. The details keys also walk what is too long to say on every move: whoever is in focus in battle (HP, SP, ailments, affinities), a party member on the Stats list (Persona, stats, skills), and the acting member after a battle skill's description, starting from the top each time you land on a row. F1 mentions the details keys wherever a row has them.
 
 ### Key hints
 
@@ -161,7 +161,6 @@ They work like any other menu: up and down choose (at either end a further press
 
 - Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; off, 100 or 250
 - Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
-- Descriptions in menus: on, off. A skill's, item's, gear's or setting's description is read after its row; off, only the details keys read it
 - Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
 - Mod keys: Space reads the mod's keys
 

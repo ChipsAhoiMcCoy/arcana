@@ -98,8 +98,8 @@ class BattleSkills : public BattleList {
     for (int i = 0; i < ids->num; ++i) {
       int id = ids->data[i];
       std::string s = row(id, who);
-      // Name, cost, then what it does (buffer_with: "Descriptions in menus" off keeps it for the detail buffer, the
-      // 2026-11-11 way; players did not find it there). The buffer's own lines are detail_lines below.
+      // Name, cost, then what it does (buffer_with: also the detail buffer's). The buffer's own lines are detail_lines
+      // below.
       auto v = game_item(m_, i, [s] { return s; }, [id] { return persona::skill_help(id); });
       buffer_with(v, [id] { return persona::skill_help(id); });
       b.add_item(slot(std::format("skills.{}", pid), i), v);
