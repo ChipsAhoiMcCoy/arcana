@@ -55,7 +55,7 @@ static std::atomic<uint64_t> g_count{0};
 uint64_t count() { return g_count; }
 void speak(std::string_view utf8, bool interrupt) {
   ++g_count;
-  std::string s = core::tidy_joins(utf8);   // no ".," where the mod joined a position or a description on
+  std::string s = core::speakable(core::tidy_joins(utf8));   // a line of "..." alone names its marks   // no ".," where the mod joined a position or a description on
   log::writef("[speak{}] {}", interrupt ? "!" : "", s);
   history().push(s);
   std::lock_guard lk(g_mu);

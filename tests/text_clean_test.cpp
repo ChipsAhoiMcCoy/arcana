@@ -47,3 +47,18 @@ TEST_CASE("tidy_joins leaves ellipses, numbers and plain commas") {
   CHECK(tidy_joins("Dia, 3 SP, 1 of 1. Restores 1,000 HP.") == "Dia, 3 SP, 1 of 1. Restores 1,000 HP.");
   CHECK(tidy_joins("Ver. 1.5, ok") == "Ver. 1.5, ok");
 }
+
+TEST_CASE("speakable names a line that is only punctuation") {
+  using p3a::core::speakable;
+  CHECK(speakable("......") == "ellipsis");
+  CHECK(speakable("...") == "ellipsis");
+  CHECK(speakable("\xE2\x80\xA6") == "ellipsis");
+  CHECK(speakable("?") == "question mark");
+  CHECK(speakable("......!?") == "ellipsis, exclamation mark, question mark");
+  CHECK(speakable("!!!") == "exclamation mark");
+  CHECK(speakable("...Huh?") == "...Huh?");
+  CHECK(speakable("Yes.") == "Yes.");
+  CHECK(speakable("") == "");
+  CHECK(speakable(" ") == " ");
+  CHECK(speakable("...?") == "ellipsis, question mark");
+}

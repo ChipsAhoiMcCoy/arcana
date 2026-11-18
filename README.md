@@ -274,7 +274,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 - The result page is the status page, with the Social Link bonus ("Social Link bonus: rank 8, 32793 EXP, up to level 28"); Q and E page to the materials.
 - Inheritance: "Choose skills to inherit, up to 2.", each skill with its cost, and "chosen, 1 of 2 picks" as you choose; Igor's "Is this Persona acceptable?" adds what it inherits. "Fusing." marks the animation (Tab skips). The bonus level up is a page too ("Agility 21, up 7", new skills marked "new").
 - Fusion Search names each Persona your stock can make and from which two; Special Fusion lists recipes with materials and how many you have.
-- The compendium reads registered Personas with their price and says which are in your stock; Registration lists your Personas, then their status page.
+- The compendium reads registered Personas with their price and says which are in your stock (one not registered yet is "Unknown"); Registration lists your Personas, then their status page.
 
 ### Shops
 

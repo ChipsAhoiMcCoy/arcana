@@ -4,6 +4,7 @@
 #include <algorithm>
 
 #include "core/message_builder.h"
+#include "core/text_clean.h"
 
 namespace p3a::ui {
 namespace {
@@ -94,7 +95,7 @@ std::optional<std::string> GraphAnnouncer::leaf_text(const GraphNode* node) cons
   bool any = false;
   auto push = [&message, &any](const std::string& part) {
     if (part.empty()) return;
-    message.list_item().fragment(part);
+    message.list_item().fragment(p3a::core::speakable(part));   // an answer of "..." is said, not a bare position
     any = true;
   };
 

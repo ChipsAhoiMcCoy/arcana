@@ -456,7 +456,7 @@ void VelvetScreen::build_book(ui::GraphBuilder& b) {
     uint8_t* e = rows->data + i * kRow;
     int id = *(uint16_t*)(e + 0x1A), level = *(uint16_t*)(e + 0x1C);
     std::string l = e[0x88] ? std::format("{}, {} {}", persona::describe(id, level), *(int32_t*)(e + 0x94), strings::kYen)
-                            : std::format("{}, {} {}, {}", social::arcana_name(persona::arcana(id)), strings::kLevel, level, strings::kNotRegistered);
+                            : std::format("{}, {}, {} {}", strings::kUnknownCap, social::arcana_name(persona::arcana(id)), strings::kLevel, level);   // the game's "?????"
     for (auto& o : stock) if (e[0x88] && o.id == id) { l += std::format(", {}", strings::kAlreadyOwned); break; }
     auto v = game_item(book_list_, i, [l] { return l; });
     if (e[0x88]) look_persona(v, id);   // an unregistered entry is a question mark in the game too

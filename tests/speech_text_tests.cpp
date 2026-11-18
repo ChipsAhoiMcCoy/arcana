@@ -61,3 +61,9 @@ TEST_CASE("sentence ends a line with a stop") {
   CHECK(sentence("Caf\xC3\xA9") == "Caf\xC3\xA9.");
   CHECK(sentence("Hm\xE2\x80\xA6") == "Hm\xE2\x80\xA6.");
 }
+
+TEST_CASE("spoken_line names punctuation and a hidden speaker") {
+  CHECK(p3a::core::spoken_line("Junpei", "......") == "Junpei: ellipsis");
+  CHECK(p3a::core::spoken_line("", "...") == "ellipsis");
+  CHECK(p3a::core::spoken_line("???", "Hello.") == "Unknown: Hello.");
+}

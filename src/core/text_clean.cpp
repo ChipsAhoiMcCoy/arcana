@@ -1,4 +1,7 @@
 #include "core/text_clean.h"
+#include "core/strings.h"
+#include <cstring>
+#include <vector>
 
 namespace p3a::core {
 // Punctuation that closes what came before: a space left in front of it by a dropped icon ("Thanks @.") or a row
@@ -85,6 +88,41 @@ std::string tidy_joins(std::string_view s) {
     }
     out += c;
   }
+  return out;
+}
+
+std::string speakable(std::string_view s) {
+  std::vector<const char*> names;
+  size_t i = 0;
+  auto at = [&](const char* u) { size_t n = std::strlen(u); return s.substr(i, n) == u ? n : 0; };
+  while (i < s.size()) {
+    char c = s[i];
+    const char* name = nullptr;
+    size_t n = 0;
+    if (c == ' ') { ++i; continue; }
+    if (c == '.' || at("\xE2\x80\xA6")) {   // a run of periods and U+2026 HORIZONTAL ELLIPSIS
+      size_t dots = 0, j = i;
+      while (j < s.size()) {
+        if (s[j] == '.') { ++j; ++dots; continue; }
+        if (s.substr(j, 3) == "\xE2\x80\xA6") { j += 3; dots += 3; continue; }
+        break;
+      }
+      name = dots >= 2 ? strings::kPunctEllipsis : strings::kPunctPeriod;
+      n = j - i;
+    } else if (c == '?') name = strings::kPunctQuestion, n = 1;
+    else if (c == '!') name = strings::kPunctExclamation, n = 1;
+    else if (c == ',') name = strings::kPunctComma, n = 1;
+    else if (c == '-') name = strings::kPunctDash, n = 1;
+    else if (c == '~') name = strings::kPunctTilde, n = 1;
+    else if ((n = at("\xE2\x80\x94")) || (n = at("\xE2\x80\x93"))) name = strings::kPunctDash;   // em / en dash
+    else if ((n = at("\xE3\x80\x9C")) || (n = at("\xEF\xBD\x9E"))) name = strings::kPunctTilde;  // wave dash, fullwidth tilde
+    else return std::string(s);   // a word, a digit or another glyph: the line speaks for itself
+    if (names.empty() || names.back() != name) names.push_back(name);   // "!!!" is one exclamation mark
+    i += n;
+  }
+  if (names.empty()) return std::string(s);
+  std::string out;
+  for (auto* n : names) { if (!out.empty()) out += ", "; out += n; }
   return out;
 }
 }  // namespace p3a::core

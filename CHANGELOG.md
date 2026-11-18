@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Punctuation and unknown entries
+- A line that is only punctuation is now said: a page where someone answers "......" reads "Junpei: ellipsis" instead of just the name (screen readers skip a bare ellipsis), and an answer of "..." in a choice list reads "ellipsis, 2 of 3" instead of only its position. Question marks, exclamation marks and dashes on their own are named the same way. A speaker the game hides as "???" is read as "Unknown".
+- The compendium names a Persona you have not registered "Unknown" ("Unknown, Magician, level 50"), as the game shows question marks there. Before, the row began with the arcana and nothing where the name goes.
+
 ### Persona and Shadow descriptions
 - Semicolon (triggers + B) on a Persona or a Shadow describes how it looks: every Persona, the DLC ones included, every Shadow and each of its recoloured siblings, the full-moon bosses and the people you fight, written from the game's own 3D models in the style of the portrait descriptions. In battle it describes the enemy under the cursor (a party member: their Persona); it also works on any Persona status page (a fusion's result, a level up, the camp's Persona list, Shuffle Time), the fusion and search lists, the compendium's registered entries and the registry list, the battle's skill list (the Persona heading it, the one Q and E switched to) and a Persona learning a skill, also while a message covers its page.
 

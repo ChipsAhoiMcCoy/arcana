@@ -1,5 +1,6 @@
 #include "core/speech_text.h"
 #include "core/strings.h"
+#include "core/text_clean.h"
 #include <format>
 
 namespace p3a::core {
@@ -10,10 +11,12 @@ std::string position(std::string_view text, size_t place, size_t count) {
 std::string place_of(int place, int count) { return std::format("{} {} {}", place, strings::kOf, count); }
 
 std::string spoken_line(std::string_view speaker, std::string_view text) {
-  if (speaker.empty()) return std::string(text);
-  std::string out(speaker);
+  // A page of "......" names its marks: after a name it was "Junpei:" and nothing (the player's report, 2026-11-17).
+  if (speaker.empty()) return speakable(text);
+  // A speaker the game hides is "???": a screen reader says nothing for it.
+  std::string out = speaker.find_first_not_of('?') == std::string_view::npos ? std::string(strings::kUnknownCap) : std::string(speaker);
   out += ": ";
-  out += text;
+  out += speakable(text);
   return out;
 }
 
