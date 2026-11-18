@@ -63,8 +63,8 @@ void play(Pcm pcm, float volume, const Spot& at, Bus bus, float rate = 1.0f, boo
 void hold(int id, Pcm pcm, float volume, const Spot& at, float rate, float tone, float wobble, int hold_ms = 250);
 void release_hold(int id);
 // The solo: while on, only focus sounds play from places; every other placed sound (the sonar's field, a Shadow's
-// growl) fades out at once and new ones are dropped, and the wall tones go quiet. Sounds about the player (no place:
-// the layer's tick, the strike's ring) and the narrator still play. Game thread, every frame is fine.
+// growl) fades out at once and new ones are dropped. The wall tones, sounds about the player (no place: the layer's
+// tick, the strike's ring) and the narrator still play. Game thread, every frame is fine.
 void solo(bool on);
 int sample_rate();
 // One of the mod's signals (core/sonar_cues.h: the Shadow's growl, the ambush ticks, the layer's

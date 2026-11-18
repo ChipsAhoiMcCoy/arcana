@@ -89,7 +89,7 @@ Place place_of(const FVector& loc, const Body& b, const FVector& me) {
 struct Source { ue::WeakObj obj; int kind; FVector loc; bool selected; Body body; };
 
 // The focus: one thing heard alone, its sound repeating at its distance's rhythm while the rest of the mod's placed
-// sounds (the field, the wall tones, a Shadow's growl) are silenced (audio::solo), so what it is and where can be
+// sounds (the field, a Shadow's growl; not the wall tones, 2026-11-17) are silenced (audio::solo), so what it is and where can be
 // heard (the user, 2026-11-13). Held while a point is chosen in the list (until the controller's layer closes, or
 // kFocusMs after a key, or once the hero walks off) and while the right stick points somewhere.
 struct Focus { ue::WeakObj obj; int kind = -1; bool shadow = false; FVector loc{}; bool has = false; Body body; };

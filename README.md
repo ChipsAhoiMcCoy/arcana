@@ -217,7 +217,7 @@ A point is read with its name, distance, clock direction (12 o'clock is where pu
 
 Auto-walk sets off without a word. On the way, prompts for things you pass are not read; the one up when the walk ends is, so arriving reads the target's as usual. Auto-walk turns you to face what you walked to, so its prompt appears; stairs and doors end it on the far side. A party member's remark on the way pauses it until you close the remark.
 
-With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone, repeating at its distance's rhythm from where it is, however far, while the mod's other sounds go quiet. This lasts about 3 seconds (or while you hold the triggers) and ends once you walk.
+With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone, repeating at its distance's rhythm from where it is, however far, while the mod's other sounds from places go quiet (the wall tones keep playing). This lasts about 3 seconds (or while you hold the triggers) and ends once you walk.
 
 ### Tartarus
 

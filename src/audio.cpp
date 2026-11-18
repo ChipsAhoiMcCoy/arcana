@@ -282,8 +282,8 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
   const ULONGLONG now = GetTickCount64();
   for (Loop& lp : g_loops) {
     if (lp.samples.empty()) continue;
-    // Watchdog: silent unless driven. The solo silences the wall tones too.
-    float target = soloing || now - lp.refreshed > kLoopStaleMs ? 0.0f : lp.volume * lp.gain;
+    // Watchdog: silent unless driven. The solo leaves the wall tones playing (the user, 2026-11-17: on is always on).
+    float target = now - lp.refreshed > kLoopStaleMs ? 0.0f : lp.volume * lp.gain;
     if (target <= 0.0f && lp.cur < kSilent) { lp.cur = 0; lp.pos = (lp.pos + frames) % lp.samples.size(); continue; }
     for (ma_uint32 i = 0; i < frames; ++i) {
       lp.cur += (target - lp.cur) * kGlide;
