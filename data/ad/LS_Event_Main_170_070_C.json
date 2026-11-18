@@ -1,8 +1,5 @@
-{
- "movie": "LS_Event_Main_170_070_C",
- "title": "Plans for the break",
- "cues": [
-  {"at": 4.05,  "text": "The others sit around the lounge table."},
-  {"at": 30.90, "text": "Ken gets up and leaves."}
- ]
-}
+{"movie": "LS_Event_Main_170_070_C", "title": "Plans for the break", "cues": [
+{"at": 0.0, "text": "The dorm's front door. You come in with your bag over your shoulder."},
+{"at": 4.0, "text": "In the lounge, the others sit on the sofas around the low table: Junpei, Yukari, Fuuka, Ken, Akihiko, Mitsuru and Shinjiro. Aigis stands behind them, with Koromaru sitting beside her. You walk over to join them."},
+{"at": 30.83, "text": "Ken gets up and walks out of the lounge."}
+]}

@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Main_180_080_C", "title": "Natsuki's goodbye", "cues": [
-{"at": 0.10, "text": "A classroom."},
-{"at": 11.90, "text": "Natsuki walks to the front of the class."}
-]}
+{
+ "movie": "LS_Event_Main_180_080_C",
+ "title": "Natsuki's goodbye",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "A classroom in the middle of a lesson. A teacher stands at the front. Fuuka sits at her desk, Natsuki a couple of desks away."
+  },
+  {
+   "at": 11.9,
+   "text": "Natsuki gets up and walks to the front of the class."
+  }
+ ]
+}

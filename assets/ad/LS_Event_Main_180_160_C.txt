@@ -1,4 +1,3 @@
 #scene LS_Event_Main_180_160_C
-0.300	2.737	00.mp3	The team runs past stone statues of robed women.
-3.300	2.821	01.mp3	The Shadow: a huge winged body bolted to a wheel.
-7.380	0.844	02.mp3	Blue flames.
+0.200	10.220	00.mp3	On the bridge's roadway, you and the others run toward three stone statues of robed women. Flames flicker up around them, and everyone pulls up and takes a fighting stance.
+3.300	12.485	01.mp3	The Shadow drops down from above and hangs over the statues: a huge grey body with small wings, its arms and legs spread and bolted to a great ring, its head inside a helmet with a single opening.

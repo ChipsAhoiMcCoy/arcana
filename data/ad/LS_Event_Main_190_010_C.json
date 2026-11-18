@@ -1,12 +1,1 @@
-{
- "movie": "LS_Event_Main_190_010_C",
- "title": "Pharos says goodbye",
- "cues": [
-  {"at": 0.05, "text": "The hero sleeps."},
-  {"at": 2.20, "text": "He stirs and sits up."},
-  {"at": 4.05, "text": "Pharos stands by the window."},
-  {"at": 12.85, "text": "Pharos offers his hand."},
-  {"at": 17.75, "text": "A white flash."},
-  {"at": 19.00, "text": "Pharos is gone. The hero sits alone."}
- ]
-}
+{"movie": "LS_Event_Main_190_010_C", "title": "Pharos says goodbye", "cues": [{"at": 0.05, "text": "Your room in the dorm. You lie asleep under the covers. Pharos, the boy in striped pyjamas, stands by the window."}, {"at": 2.20, "text": "You push yourself up on your elbows and look at him. Then you sit on the edge of the bed, and Pharos stands in front of you."}, {"at": 12.85, "text": "Pharos holds out his hand. You reach out and take it, and the two of you hold hands."}, {"at": 17.67, "text": "Pharos has let go and stands back from you. A white flash fills the room. When it fades, he is gone, and you sit alone on the edge of the bed."}]}

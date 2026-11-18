@@ -1,3 +1,2 @@
 #scene LS_Event_Main_170_110_C
-0.100	2.581	00.mp3	The team runs up a shopping street and stops short.
-10.050	0.901	01.mp3	They all nod.
+0.000	15.568	00.mp3	You run up the street outside Iwatodai Station with Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis and Koromaru, past the shop fronts and parked bicycles, and all of you pull up together. A sound from up ahead, and everyone startles.

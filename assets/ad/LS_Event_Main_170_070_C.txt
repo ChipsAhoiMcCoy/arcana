@@ -1,3 +1,4 @@
 #scene LS_Event_Main_170_070_C
-4.050	1.945	00.mp3	The others sit around the lounge table.
-30.900	1.368	01.mp3	Ken gets up and leaves.
+0.000	3.359	00.mp3	The dorm's front door. You come in with your bag over your shoulder.
+4.000	14.060	01.mp3	In the lounge, the others sit on the sofas around the low table: Junpei, Yukari, Fuuka, Ken, Akihiko, Mitsuru and Shinjiro. Aigis stands behind them, with Koromaru sitting beside her. You walk over to join them.
+30.830	2.026	02.mp3	Ken gets up and walks out of the lounge.

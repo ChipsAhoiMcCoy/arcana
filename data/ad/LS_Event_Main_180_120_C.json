@@ -1,4 +1,10 @@
-{"movie": "LS_Event_Main_180_120_C", "title": "The night before the last operation", "cues": [
-{"at": 3.18, "text": "The team sits in the lounge."},
-{"at": 23.10, "text": "Everyone nods."}
-]}
+{
+ "movie": "LS_Event_Main_180_120_C",
+ "title": "The night before the last operation",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The dorm lounge. You sit with the whole team: Yukari, Junpei, Akihiko, Mitsuru, Fuuka, Aigis and Ken, Koromaru among you."
+  }
+ ]
+}

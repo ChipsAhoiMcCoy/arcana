@@ -1,6 +1,4 @@
 #scene LS_Event_Main_190_020_C
-5.680	1.343	00.mp3	Sushi fills the table.
-8.020	2.737	01.mp3	Takeharu, with an eyepatch, waits with two aides.
-17.600	2.818	02.mp3	Takeharu nods, then steps over to Yukari.
-25.180	1.623	03.mp3	Takeharu folds his arms.
-31.550	1.018	04.mp3	Junpei beams.
+0.100	13.727	00.mp3	The dorm lounge. Big platters of sushi cover the low table. You, Yukari, Fuuka and Akihiko sit on the sofas around it; Mitsuru, Junpei and Ken stand nearby, and Koromaru sits at the end of the table.
+8.000	11.694	01.mp3	The front door opens. A man in a suit with a patch over one eye walks in, followed by a man and a woman in suits, who stand back by the windows. You and the others get up and go to meet him.
+17.170	4.451	02.mp3	Takeharu nods to all of you, then steps across to stand in front of Yukari.

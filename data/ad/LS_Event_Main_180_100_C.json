@@ -1,5 +1,10 @@
-{"movie": "LS_Event_Main_180_100_C", "title": "Yukari asks Mitsuru", "cues": [
-{"at": 0.55, "text": "Yukari writes at a table. Mitsuru walks in."},
-{"at": 10.17, "text": "Mitsuru folds arms."},
-{"at": 17.90, "text": "Mitsuru flicks back her hair."}
-]}
+{
+ "movie": "LS_Event_Main_180_100_C",
+ "title": "Yukari asks Mitsuru",
+ "cues": [
+  {
+   "at": 0.55,
+   "text": "The student council room. Yukari sits alone at the table, writing. The door opens and Mitsuru walks in."
+  }
+ ]
+}

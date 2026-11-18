@@ -1,6 +1,22 @@
-{"movie": "LS_Event_Main_180_060_C", "title": "Ken comes back", "cues": [
-{"at": 4.25, "text": "Everyone sits in the lounge."},
-{"at": 7.75, "text": "Fuuka stands. Koromaru turns."},
-{"at": 11.50, "text": "Koromaru runs to the door. Ken walks in."},
-{"at": 15.15, "text": "The team stands facing Ken."}
-]}
+{
+ "movie": "LS_Event_Main_180_060_C",
+ "title": "Ken comes back",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The dorm lounge. You sit with Yukari, Junpei, Fuuka and Mitsuru, Koromaru among you. Aigis stands nearby."
+  },
+  {
+   "at": 7.7,
+   "text": "Fuuka gets to her feet. Koromaru stands up and turns toward the front door."
+  },
+  {
+   "at": 11.45,
+   "text": "Koromaru runs to the front door as it opens, and Ken walks in."
+  },
+  {
+   "at": 15.15,
+   "text": "Everyone gets up and gathers around Ken."
+  }
+ ]
+}

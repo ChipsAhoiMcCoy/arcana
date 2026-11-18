@@ -1,8 +1,7 @@
 #scene LS_Event_Main_170_020_C
-3.200	1.165	00.mp3	Junpei walks in.
-10.850	3.271	01.mp3	Junpei bows low, then straightens and scratches his head.
-17.850	2.941	02.mp3	Fuuka gets up from her chair by the window and steps aside.
-21.000	2.872	03.mp3	Junpei walks over and sits in it, beside Chidori.
-29.300	1.169	04.mp3	Everyone startles.
-33.250	1.103	05.mp3	Fuuka runs out.
-45.300	1.704	06.mp3	Junpei turns and walks out.
+0.000	12.834	00.mp3	Chidori's hospital room. Chidori sits up in bed. Mitsuru sits on a chair at one side of the bed with her arms crossed, Akihiko standing beside her, and Fuuka sits on a stool by the window on the other side.
+3.170	1.189	01.mp3	Junpei comes in.
+10.770	4.177	02.mp3	Junpei bows low to Mitsuru, then straightens up with a hand on his cap.
+17.770	7.646	03.mp3	Fuuka gets up from the stool by the window and steps aside. Junpei walks around the bed and sits down on the stool, beside Chidori.
+33.100	5.124	04.mp3	Fuuka runs out of the room. Junpei leans over the bed and takes hold of Chidori's arm.
+45.100	1.502	05.mp3	Junpei walks out of the room.

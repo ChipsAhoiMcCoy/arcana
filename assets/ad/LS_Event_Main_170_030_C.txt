@@ -1,8 +1,9 @@
 #scene LS_Event_Main_170_030_C
-8.550	1.298	00.mp3	Shinjiro walks in.
-16.250	3.965	01.mp3	A red figure with fiery hair rises over Chidori and grips her.
-22.850	2.791	02.mp3	Shinjiro grabs her, and the figure bursts apart.
-31.750	1.348	03.mp3	Shinjiro walks out.
-34.900	1.720	04.mp3	Akihiko runs after him.
-38.300	2.881	05.mp3	Mitsuru leaves too. Junpei stays with Chidori.
-49.400	1.395	06.mp3	Chidori hides a smile.
+0.000	6.326	00.mp3	Chidori's hospital room. Chidori sits up in bed, and Junpei stands beside her holding a new sketchbook.
+6.500	11.606	01.mp3	Junpei sets the sketchbook on the bedside table and sits down on the stool next to her. Across the room, Mitsuru sits in a chair with her arms crossed, and Akihiko stands near her, watching.
+8.500	1.298	02.mp3	Shinjiro walks in.
+16.170	13.558	03.mp3	In a burst of sparks, a figure rises out of Chidori: a long-limbed shape with a mane of fiery hair. It crouches over her on the bed with its arms around her. Akihiko, Mitsuru and Shinjiro hurry to the bedside.
+22.830	8.902	04.mp3	Shinjiro pushes past to Chidori, takes out a syringe and injects her arm. The figure fades away, and Chidori slumps, gasping for breath.
+31.670	1.696	05.mp3	Shinjiro walks out of the room.
+34.830	1.968	06.mp3	Akihiko runs out after him.
+38.000	3.772	07.mp3	Mitsuru leaves the room too, and Junpei is left alone with Chidori.

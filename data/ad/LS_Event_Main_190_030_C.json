@@ -1,12 +1,1 @@
-{
- "movie": "LS_Event_Main_190_030_C",
- "title": "The group photo",
- "cues": [
-  {"at": 4.70, "text": "Junpei walks off."},
-  {"at": 12.16, "text": "Everyone lines up, Takeharu too."},
-  {"at": 20.53, "text": "Flash."},
-  {"at": 21.50, "text": "In the photo, Koromaru leaps barking and Junpei's cap flies off."},
-  {"at": 30.75, "text": "Koromaru hops."},
-  {"at": 32.85, "text": "Everyone laughs."}
- ]
-}
+{"movie": "LS_Event_Main_190_030_C", "title": "The group photo", "cues": [{"at": 0.10, "text": "Later, in the lounge, the sushi platters on the table are empty. You and the others sit on the sofas around it with Mitsuru's father, while his aides in suits stand by the windows. A camera lies on the table."}, {"at": 4.67, "text": "Junpei crosses the room to one of the men in suits by the windows and holds out his camera to him."}, {"at": 12.15, "text": "Everyone lines up in front of the windows for the photo: Mitsuru's father at one end, then Mitsuru, Fuuka, Akihiko, Yukari, Junpei, and you at the other end, with Ken and Koromaru in front. The man in the suit raises the camera."}, {"at": 21.50, "text": "The camera flashes. The photo: Koromaru has leapt up barking, and everyone flinches. Mitsuru has a hand to her forehead and her eyes shut, Ken squeezes one eye closed, Fuuka and Yukari stare, Akihiko scowls, and Junpei's cap flies off his head as he gapes. Mitsuru's father and you stand still and composed at either end."}, {"at": 30.73, "text": "Koromaru bounces happily, and Yukari, Fuuka and the others laugh."}]}

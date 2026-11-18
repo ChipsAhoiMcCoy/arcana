@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_070_C
-0.300	1.853	00.mp3	The hero sleeps in his dorm room.
-2.850	1.772	01.mp3	He sits up. Pharos is there.
-13.200	1.855	02.mp3	Pharos crumbles into black flecks.
+0.300	2.219	00.mp3	Your dorm room. You lie asleep in bed.
+2.900	6.795	01.mp3	You prop yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed by the window.
+12.900	3.012	02.mp3	Pharos breaks apart into drifting flecks and is gone.

@@ -1,3 +1,2 @@
 #scene LS_Event_Main_180_130_C
-0.100	2.165	00.mp3	The command room. Fuuka scans for it.
-10.600	0.992	01.mp3	Everyone nods.
+0.100	18.356	00.mp3	The command room at the top of the dorm, during the Dark Hour. You, Akihiko, Mitsuru, Junpei, Yukari, Ken and the chairman sit around the low table; Aigis stands beside the sofas with Koromaru at her feet. Behind them Fuuka sits inside her Persona, a great glowing sphere, searching.

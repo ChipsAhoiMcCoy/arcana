@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_180_110_C", "title": "Pharos before the last full moon", "cues": [
-{"at": 0.20, "text": "The hero sleeps in his bed."},
-{"at": 2.88, "text": "He sits up. Pharos is there."},
-{"at": 6.70, "text": "Pharos dissolves into black flakes."}
-]}
+{
+ "movie": "LS_Event_Main_180_110_C",
+ "title": "Pharos before the last full moon",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "Your dorm room. You lie asleep in bed."
+  },
+  {
+   "at": 2.9,
+   "text": "You prop yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed."
+  },
+  {
+   "at": 6.4,
+   "text": "Pharos breaks apart into drifting flecks and is gone."
+  }
+ ]
+}

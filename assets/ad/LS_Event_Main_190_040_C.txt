@@ -1,5 +1,4 @@
 #scene LS_Event_Main_190_040_C
-0.300	1.628	00.mp3	The sushi platters sit empty.
-9.600	2.597	01.mp3	Koromaru gets up and trots over to Junpei.
-15.750	1.456	02.mp3	Koromaru sits back down.
-19.380	1.774	03.mp3	A clock: 11:59.
+0.100	12.617	00.mp3	The lounge. Everyone sits around the table among half-empty sushi platters, Mitsuru's father with them on the sofa and his aides standing by the windows. Koromaru sits on the sofa beside Junpei.
+9.400	3.519	01.mp3	Koromaru gets up and steps over toward Junpei, looking at him.
+19.400	3.797	02.mp3	A clock face appears over the room, its hands at one minute to midnight.

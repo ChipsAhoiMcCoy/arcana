@@ -1,3 +1,3 @@
 #scene LS_Event_Main_170_130_C
-0.400	1.119	00.mp3	The team regroups.
-14.400	1.427	01.mp3	Akihiko runs off.
+0.000	3.675	00.mp3	The battle won, the team gathers in front of the station around Fuuka.
+14.330	5.737	01.mp3	Akihiko turns his back on the group and runs off down the street. Yukari turns to watch him go.

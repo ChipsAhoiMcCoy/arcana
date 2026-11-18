@@ -1,4 +1,4 @@
 #scene LS_Event_Main_170_090_C
-0.100	1.525	00.mp3	The hero sleeps in his bed.
-2.900	1.448	01.mp3	He wakes to find Pharos.
-8.250	1.748	02.mp3	Pharos breaks into black specks.
+0.000	2.559	00.mp3	Your room at the dorm. You lie asleep in bed.
+2.830	6.495	01.mp3	You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed.
+8.170	4.250	02.mp3	Pharos smiles, then breaks apart into a cloud of dark specks and is gone.

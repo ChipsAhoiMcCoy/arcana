@@ -1,8 +1,4 @@
-{
- "movie": "LS_Event_Main_170_050_C",
- "title": "Chidori's flowers",
- "cues": [
-  {"at": 1.84, "text": "A hospital room."},
-  {"at": 9.01, "text": "The wilted flowers sparkle."}
- ]
-}
+{"movie": "LS_Event_Main_170_050_C", "title": "Chidori's flowers", "cues": [
+{"at": 0.0, "text": "Chidori's hospital room. Chidori sits up in bed, and Junpei sits on a stool beside her. On the bedside table stands a vase of sunflowers."},
+{"at": 9.0, "text": "Chidori reaches a hand toward the drooping sunflowers. Sparks of light swirl around the vase, and the flowers lift their heads, fresh again. Junpei jumps to his feet."}
+]}

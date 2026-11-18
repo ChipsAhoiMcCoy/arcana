@@ -1,9 +1,5 @@
-{
- "movie": "LS_Event_Main_170_060_C",
- "title": "Pharos returns",
- "cues": [
-  {"at": 0.40,  "text": "The hero sleeps in his room."},
-  {"at": 2.85,  "text": "Pharos stands by the bed."},
-  {"at": 11.30, "text": "Pharos breaks into black specks and vanishes."}
- ]
-}
+{"movie": "LS_Event_Main_170_060_C", "title": "Pharos returns", "cues": [
+{"at": 0.0, "text": "Your room at the dorm. You lie asleep in bed."},
+{"at": 2.83, "text": "You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed."},
+{"at": 11.0, "text": "Pharos breaks apart into a cloud of dark specks and is gone."}
+]}

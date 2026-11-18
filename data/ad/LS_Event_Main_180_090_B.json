@@ -1,13 +1,38 @@
-{"movie": "LS_Event_Main_180_090_B", "title": "Natsuki's goodbye and Juno", "cues": [
-{"at": 10.90, "text": "Natsuki turns her back and looks out through the fence."},
-{"at": 29.22, "text": "Natsuki walks past Fuuka and leaves."},
-{"at": 33.67, "text": "Fuuka, alone. Her phone buzzes."},
-{"at": 35.90, "text": "She takes out her phone."},
-{"at": 40.60, "text": "She puts the phone away."},
-{"at": 44.17, "text": "Fuuka clasps her hands, eyes shut."},
-{"at": 46.85, "text": "Lucia appears: a masked woman, arms spread, above a glowing dome."},
-{"at": 51.75, "text": "It becomes a new Persona: a mask of eyes, wings of glowing discs."},
-{"at": 59.40, "text": "On the rooftop, a glowing light sinks into Fuuka's hands."},
-{"at": 63.45, "text": "Yukari and the others arrive."},
-{"at": 68.78, "text": "Junpei rubs his head."}
-]}
+{
+ "movie": "LS_Event_Main_180_090_B",
+ "title": "Natsuki's goodbye and Juno",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The school rooftop. Fuuka and Natsuki stand facing each other."
+  },
+  {
+   "at": 10.9,
+   "text": "Natsuki turns away and looks out through the fence."
+  },
+  {
+   "at": 29.22,
+   "text": "Natsuki walks past Fuuka to the door and leaves. The door closes behind her, and Fuuka is alone."
+  },
+  {
+   "at": 35.9,
+   "text": "Fuuka takes out her phone and reads a message."
+  },
+  {
+   "at": 44.2,
+   "text": "Fuuka clasps her hands at her chest and closes her eyes."
+  },
+  {
+   "at": 46.5,
+   "text": "Fuuka's Persona, Lucia, appears: a masked woman with long flowing hair, arms spread wide, rising from a glassy dome. In a flash of light it changes into a new Persona, Juno: its mask covered in eyes, great wings set with rows of ringed discs spreading from its shoulders."
+  },
+  {
+   "at": 59.45,
+   "text": "Back on the rooftop, a ball of light sinks into Fuuka's cupped hands."
+  },
+  {
+   "at": 63.45,
+   "text": "The rooftop door opens. You come out with Yukari, Junpei and Aigis and walk over to Fuuka."
+  }
+ ]
+}
