@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_900_010_C
-0.200	1.795	00.mp3	Elizabeth steps out of the blue door.
-2.200	2.823	01.mp3	She gestures to it, and the hero follows her in.

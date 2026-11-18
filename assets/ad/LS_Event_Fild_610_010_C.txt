@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_610_010_C
-0.100	1.742	00.mp3	An elevated monorail track.
-2.200	1.666	01.mp3	The hero and Yukari run on.
+0.000	7.277	00.mp3	Out on the monorail's elevated track, high above the city, you run along the rails with Junpei and Yukari, then stop.

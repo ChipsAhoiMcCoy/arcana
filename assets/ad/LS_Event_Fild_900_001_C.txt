@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_900_001_C
-0.100	2.577	00.mp3	The hero pushes open the blue door and steps through.

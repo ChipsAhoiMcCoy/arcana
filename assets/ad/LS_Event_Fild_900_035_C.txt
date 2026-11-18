@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_900_035_C
-0.200	1.596	00.mp3	A door opens down the hallway.
-2.100	2.200	01.mp3	The hero and Elizabeth step into the alley.

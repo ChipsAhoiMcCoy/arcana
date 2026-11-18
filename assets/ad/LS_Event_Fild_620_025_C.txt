@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_620_025_C
-0.300	1.890	00.mp3	The hero walks forward and stops.
-5.350	1.240	01.mp3	He reaches out a hand.
+4.170	3.040	00.mp3	You reach out a hand to the gate, and everything goes white.

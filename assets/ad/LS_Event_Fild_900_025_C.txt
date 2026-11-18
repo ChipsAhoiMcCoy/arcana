@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_900_025_C
-0.200	1.596	00.mp3	A door opens down the hallway.
-2.200	1.800	01.mp3	The hero steps back into the alley.
