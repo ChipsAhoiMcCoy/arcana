@@ -39,6 +39,7 @@
 
 ### Mod settings
 - The Sonar rows and the Sound test's sonar sounds are named by their kind alone ("Exits", "Door") instead of starting each with "Sonar:".
+- Every setting's values run in the order of the game's own Config menu: On is to the left of Off, and Off is always at the right end (Audio description, Menu animation speed, Trigger delay and When a line ends included), so Left turns a setting on and Right turns it off, as in the game. Voiced dialogue runs from read aloud to not read. Numbers still grow to the right.
 - The settings are regrouped. A new Volume category holds every volume: Master, Sonar, Wall tones, Shadow sounds and Audio description (the wall tone volume was under Exploring, the sonar's under Sonar, the narrator's under Dialogue and movies). Sound keeps Placement and Lower pitch behind you. Rows no longer repeat their category's name: under Sonar, "Plays" and "Range"; under Volume, "Master" and "Sonar". "Controller trigger delay" is now "Trigger delay" and "Read cutscene subtitles" is "Read subtitles". Exploring lists Top-down exploration and the points of interest range first, then the wall tones, then the Shadow options. Saved settings are kept.
 - New defaults: the Sonar, Wall tones and Shadow sounds volumes start at 50 percent (they were 80, 100 and 60). Volumes you have already set are kept.
 - The Descriptions in menus setting is removed: a skill's, item's, gear's or setting's description is always read after its row, and the details keys read it again.

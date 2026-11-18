@@ -152,18 +152,18 @@ They work like any other menu: up and down choose (at either end a further press
 
 **Dialogue and movies**
 
-- Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
+- Voiced dialogue: read aloud, speaker's name only, not read (the voice plays alone). Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
 - When a line ends: say Next, page turn sound, message chime sound, cursor tick sound, off. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
-- Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
+- Read subtitles: on, off. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
 - Audio description in movies: narrator's voice, screen reader, off. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
 - Audio description in 3D scenes: narrator's voice, screen reader, off. The same for the story scenes played in the game's 3D engine
 - Descriptions wait for Enter: on, off. On, each description pauses the movie or scene like a message window, with its sounds, and Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. Descriptions are in the log (B). Off, they are fitted between the lines while the movie or scene plays
 
 **Controls and help**
 
-- Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; off, 100 or 250
-- Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
-- Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
+- Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; 100, 250 or off
+- Menu key hints on entry: on, off. Menus say their keys after their first line, besides F1
+- Menu animation speed: 4 times, 8 times, 16 times, off. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
 - Mod keys: Space reads the mod's keys
 
 **Sound test** plays each of the mod's sounds with Space or Enter (A), whatever is switched off, and says what it means: each sonar sound (and one played from behind you), the Shadow's growl (plain and hunting), the Shadow alarm and losing you, the two strike-reach rings, the four wall tones and the controller tick.

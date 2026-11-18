@@ -45,34 +45,36 @@ struct Def {
 };
 static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 // One row per Id, in its order: what the file calls it, what the menu says and where, the values it cycles through.
+// The values run left to right as the game's own Config draws them (the user's call, 2026-11-17): On left of Off
+// (BP_UIConfiguration's ON text at x -96, OFF at +92), Off always at the right end, numbers growing to the right.
 static const Def kDefs[Count] = {
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
-  {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
+  {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {1, 0}, 1},
   // in the top-down mode, a room reached by a jump is turned so the way walked in stays up (topdown.cpp kRoomTurns)
-  {"turned_rooms", strings::kSetTurnedRooms, CatExploring, strings::kHelpTurnedRooms, Unit::Toggle, {0, 1}, 1},
+  {"turned_rooms", strings::kSetTurnedRooms, CatExploring, strings::kHelpTurnedRooms, Unit::Toggle, {1, 0}, 1},
   {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
   // when the wall tones play: all the time, only while the player moves (the default), or never (walltones.cpp)
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Choice, {WallContinuous, WallMoving, WallOff}, WallMoving,
    {strings::kOff, strings::kWallMoving, strings::kWallContinuous}},
   // how far each wall tone reaches, in meters, in either mode (walltones.cpp; Dark Vision's is 15 ft, 1 to 40)
   {"wall_range", strings::kSetWallRange, CatExploring, strings::kHelpWallRange, Unit::Meters, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5},
-  {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {0, 1}, 1},
+  {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {1, 0}, 1},
   // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
-  {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
+  {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {1, 0}, 1},
   // every nearby point of interest sounds (sonar.cpp)
-  {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {0, 1}, 1},
+  {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {1, 0}, 1},
   {"sonar_scope", strings::kSetSonarScope, CatSonar, strings::kHelpSonarScope, Unit::Choice, {ScopeAll, ScopeCategory, ScopeSelected}, ScopeAll,
    {strings::kScopeAll, strings::kScopeCategory, strings::kScopeSelected}},
   // 10 m (20 was tried for a day under the key sonar_distance: what made things seem late was the wait before a
   // thing's first sound, not the range; the user's call, 2026-11-10).
   {"sonar_range", strings::kSetSonarRange, CatSonar, strings::kHelpSonarRange, Unit::Meters, {5, 10, 15, 20, 30, 40}, 10},
-  {"sonar_exits", strings::kSetSonarExits, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_doors", strings::kSetSonarDoors, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_people", strings::kSetSonarPeople, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_shops", strings::kSetSonarShops, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_objects", strings::kSetSonarThings, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_events", strings::kSetSonarEvents, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
-  {"sonar_fragments", strings::kSetSonarFragments, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
+  {"sonar_exits", strings::kSetSonarExits, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_doors", strings::kSetSonarDoors, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_people", strings::kSetSonarPeople, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_shops", strings::kSetSonarShops, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_objects", strings::kSetSonarThings, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_events", strings::kSetSonarEvents, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
+  {"sonar_fragments", strings::kSetSonarFragments, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {1, 0}, 1},
   {"master_volume", strings::kSetMasterVolume, CatVolume, strings::kHelpMasterVolume, Unit::Percent, kPercents, 100},
   {"sonar_volume", strings::kSetSonarVolume, CatVolume, strings::kHelpSonarVolume, Unit::Percent, kPercents, 50},     // the Sonar bus
   {"wall_volume", strings::kSetWallVolume, CatVolume, strings::kHelpWallVolume, Unit::Percent, kPercents, 50},
@@ -82,25 +84,25 @@ static const Def kDefs[Count] = {
   // old "hrtf" toggle's saved 1 would have kept the HRTF)
   {"spatial", strings::kSetSpatial, CatSound, strings::kHelpSpatial, Unit::Choice, {SpatialStereo, SpatialHrtf, SpatialPan}, SpatialStereo,
    {strings::kSpatialStereo, strings::kSpatialHrtf, strings::kSpatialPan}},
-  {"behind_pitch", strings::kSetBehindPitch, CatSound, strings::kHelpBehindPitch, Unit::Toggle, {0, 1}, 1},
-  {"voiced_lines", strings::kSetVoicedLines, CatDialogue, strings::kHelpVoicedLines, Unit::Choice, {VoicedSilent, VoicedName, VoicedRead}, VoicedSilent,
+  {"behind_pitch", strings::kSetBehindPitch, CatSound, strings::kHelpBehindPitch, Unit::Toggle, {1, 0}, 1},
+  {"voiced_lines", strings::kSetVoicedLines, CatDialogue, strings::kHelpVoicedLines, Unit::Choice, {VoicedRead, VoicedName, VoicedSilent}, VoicedSilent,
    {strings::kVoicedRead, strings::kVoicedName, strings::kVoicedSilent}},
   {"voice_end_sound", strings::kSetVoiceEndSound, CatDialogue, strings::kHelpVoiceEndSound, Unit::Choice, {EndNext, EndPage, EndMessage, EndCursor, EndOff}, EndNext,
    {strings::kEndNext, strings::kEndPage, strings::kEndMessage, strings::kEndCursor, strings::kOff}},
   // the screen reader reads a cutscene's subtitles (msg.cpp)
-  {"subtitles", strings::kSetSubtitles, CatDialogue, strings::kHelpSubtitles, Unit::Toggle, {0, 1}, 0},
+  {"subtitles", strings::kSetSubtitles, CatDialogue, strings::kHelpSubtitles, Unit::Toggle, {1, 0}, 0},
   // the descriptions of the animated story movies and of the story scenes in the 3D engine (ad.cpp): the narrator's
   // voice or the screen reader. A saved 1 from the old on/off toggle is DescAudio.
-  {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
+  {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
-  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,
+  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   // a description pauses its movie or scene, like a message window, until Enter (A) (ad.cpp); off: said over it
-  {"description_wait", strings::kSetDescriptionWait, CatDialogue, strings::kHelpDescriptionWait, Unit::Toggle, {0, 1}, 1},
-  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
-  {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
+  {"description_wait", strings::kSetDescriptionWait, CatDialogue, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
+  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {100, 150, 250, 0}, 150},
+  {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {1, 0}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales
-  {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
+  {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {1, 2, 3, 0}, 0,
    {strings::kOff, strings::kSpeed4, strings::kSpeed8, strings::kSpeed16}},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
