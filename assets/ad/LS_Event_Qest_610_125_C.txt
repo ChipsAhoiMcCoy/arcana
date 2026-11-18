@@ -1,7 +1,5 @@
 #scene LS_Event_Qest_610_125_C
-0.050	2.054	00.mp3	Elizabeth and the hero stroll the street.
-2.900	1.936	01.mp3	Elizabeth runs off to an alley stall.
-10.350	1.575	02.mp3	Elizabeth holds out her money.
-15.700	2.113	03.mp3	Later, the two sit eating takoyaki.
-18.350	1.922	04.mp3	Elizabeth chews, eyes closed.
-25.000	3.570	05.mp3	Later, outside Wilduck Burger. The hero holds his stomach.
+0.030	12.941	00.mp3	You walk with Elizabeth past Wilduck Burger in the Iwatodai Strip Mall. Elizabeth stops short, then runs off down a narrow alley to a takoyaki stand. You follow her. Elizabeth holds out her money to the cook.
+15.670	7.685	01.mp3	Later, you and Elizabeth sit side by side in the alley, each with a tray of takoyaki. Elizabeth chews with her eyes closed.
+21.330	5.445	02.mp3	Time skips ahead through meal after meal: only the sounds of eating, one place after another.
+24.330	6.044	03.mp3	Later, outside Wilduck Burger, you stand clutching your stomach, wincing, as Elizabeth walks up to you.

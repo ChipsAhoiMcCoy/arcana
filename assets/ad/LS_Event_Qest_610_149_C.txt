@@ -1,3 +1,0 @@
-#scene LS_Event_Qest_610_149_C
-0.050	0.929	00.mp3	The school gate.
-4.400	1.094	01.mp3	The hero nods.

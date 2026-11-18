@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_147_C
-0.400	3.474	00.mp3	Elizabeth runs in and flips over the high-jump bar onto the mat.
+0.000	5.791	00.mp3	Elizabeth sprints up to the high-jump bar, flips over it backward and lands on the mat, while you stand by.

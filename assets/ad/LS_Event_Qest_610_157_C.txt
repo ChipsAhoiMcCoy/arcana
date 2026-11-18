@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_157_C
-0.050	0.960	00.mp3	Outside the dorm.
+0.000	2.599	00.mp3	Outside the dorm, Elizabeth stands facing you.

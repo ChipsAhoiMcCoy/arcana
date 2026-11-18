@@ -1,8 +1,3 @@
 #scene LS_Event_Qest_610_210_C
-0.500	3.647	00.mp3	A round chamber walled with giant gears. The hero walks in.
-4.800	1.307	01.mp3	Elizabeth waits for him.
-10.550	1.225	02.mp3	The hero squares up.
-12.500	1.489	03.mp3	Elizabeth opens her book.
-15.000	2.296	04.mp3	A glowing card rises from its pages.
-17.500	1.435	05.mp3	Cards circle her in the air.
-19.800	0.920	06.mp3	Beams slash.
+0.170	6.716	00.mp3	A door opens and you walk into a wide round chamber walled with giant gears. Elizabeth stands waiting for you.
+12.330	8.919	01.mp3	Elizabeth opens her book. A card lifts out of its pages, then a whole row of cards spreads through the air around her, and blades of energy streak past.

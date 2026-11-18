@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Qest_610_125_C", "title": "Elizabeth tries takoyaki", "cues": [{"at": 0.05, "text": "Elizabeth and the hero stroll the street."}, {"at": 2.9, "text": "Elizabeth runs off to an alley stall."}, {"at": 10.35, "text": "Elizabeth holds out her money."}, {"at": 15.7, "text": "Later, the two sit eating takoyaki."}, {"at": 18.35, "text": "Elizabeth chews, eyes closed."}, {"at": 25.0, "text": "Later, outside Wilduck Burger. The hero holds his stomach."}]}
+{
+ "movie": "LS_Event_Qest_610_125_C",
+ "title": "Elizabeth tries takoyaki",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "You walk with Elizabeth past Wilduck Burger in the Iwatodai Strip Mall. Elizabeth stops short, then runs off down a narrow alley to a takoyaki stand. You follow her. Elizabeth holds out her money to the cook."
+  },
+  {
+   "at": 15.67,
+   "text": "Later, you and Elizabeth sit side by side in the alley, each with a tray of takoyaki. Elizabeth chews with her eyes closed."
+  },
+  {
+   "at": 21.33,
+   "text": "Time skips ahead through meal after meal: only the sounds of eating, one place after another."
+  },
+  {
+   "at": 24.33,
+   "text": "Later, outside Wilduck Burger, you stand clutching your stomach, wincing, as Elizabeth walks up to you."
+  }
+ ]
+}

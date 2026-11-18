@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Qest_610_130_C", "title": "Elizabeth at the shrine", "cues": [{"at": 0.05, "text": "A shrine. Elizabeth walks in."}, {"at": 3.1, "text": "Elizabeth steps up to the offering box."}, {"at": 6.0, "text": "She pours a stream of glittering coins into it."}, {"at": 9.75, "text": "The hero presses a hand to his forehead."}, {"at": 13.9, "text": "Elizabeth turns around."}, {"at": 19.4, "text": "They walk to a rack of paper strips."}, {"at": 24.0, "text": "Later, by the gate."}, {"at": 26.1, "text": "A slide and a jungle gym."}, {"at": 31.0, "text": "Elizabeth zooms down the slide, arms spread."}, {"at": 35.6, "text": "The hero nods."}, {"at": 39.6, "text": "Elizabeth stands deep inside the jungle gym."}, {"at": 46.35, "text": "Elizabeth teeters along a bar, arms out."}, {"at": 52.05, "text": "They sit together on a bench."}]}
+{
+ "movie": "LS_Event_Qest_610_130_C",
+ "title": "Elizabeth at the shrine",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Elizabeth walks into the shrine grounds ahead of you."
+  },
+  {
+   "at": 3.0,
+   "text": "Elizabeth steps up to the offering box and pours coins into it from her hand in a glittering stream that goes on and on. You press a hand to your forehead."
+  },
+  {
+   "at": 23.83,
+   "text": "Later, you and Elizabeth cross the grounds toward a corner with playground equipment. Elizabeth climbs the slide and rides it down with her arms spread, landing at the bottom."
+  },
+  {
+   "at": 37.33,
+   "text": "Later, Elizabeth stands deep inside the jungle gym, boxed in by its bars, while you watch from outside. Elizabeth walks along a low horizontal bar, arms stretched out for balance, as you look on."
+  },
+  {
+   "at": 46.33,
+   "text": "Later, you and Elizabeth sit together on a bench."
+  }
+ ]
+}
