@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_115_080_C
+0.000	5.919	00.mp3	The takoyaki stand at the Iwatodai Strip Mall. You and Mamoru eat takoyaki side by side.
+16.330	1.169	01.mp3	Mamoru runs off.

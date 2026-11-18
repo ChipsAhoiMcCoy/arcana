@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_115_105_C
+0.030	2.900	00.mp3	Iwatodai Station. Mamoru stands facing you.
+1.330	2.255	01.mp3	Mamoru holds out a key, and you take it.

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_115_020_C
+0.000	5.525	00.mp3	Hagakure Ramen. You and Mamoru sit side by side at the counter, eating bowls of ramen.
