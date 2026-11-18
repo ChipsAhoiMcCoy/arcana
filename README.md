@@ -157,7 +157,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
 - Audio description in movies: narrator's voice, screen reader, off. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
 - Audio description in 3D scenes: narrator's voice, screen reader, off. The same for the story scenes played in the game's 3D engine
-- Descriptions wait for Enter: on, off. On, each description pauses the movie or scene like a message window, with its sounds, and Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). Descriptions are in the log (B). Off, they are fitted between the lines while the movie or scene plays
+- Descriptions wait for Enter: on, off. On, each description pauses the movie or scene like a message window, with its sounds, and Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. Descriptions are in the log (B). Off, they are fitted between the lines while the movie or scene plays
 
 **Controls and help**
 

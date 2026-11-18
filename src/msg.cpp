@@ -270,6 +270,8 @@ void player_pressed() {
 // just as a scene's description began, and talked over it); that change goes to the log only.
 static bool g_auto_key = false;
 void auto_key_pressed() { g_auto_key = true; }
+static bool g_auto_on = false;
+bool auto_on() { return g_auto_on; }
 
 // The controller's confirm and cancel (A 0x1000, B 0x2000) and Auto (X 0x4000) pressed for the game: not in the mod
 // layer or menu.
@@ -559,6 +561,7 @@ void tick() {
   // +0x34 (0 off, 1 on; found 2026-10-29 by copying every object after each press).
   uint32_t autov = 0;
   guarded([&] { autov = *(uint32_t*)((uint8_t*)m + 0x34); });
+  g_auto_on = autov != 0;
   // A press outside a conversation (Shift dashes in the field) is not one for Auto.
   if (!talking) g_auto_key = false;
   bool auto_key = g_auto_key;

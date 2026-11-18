@@ -212,13 +212,17 @@ void stop_all() {
 // line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the sound a message
 // window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
 // plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
-// never reaches the game (keys::set_prompt, input::set_swallow_prompt). Fast-forward, a skip, the source ending or
+// never reaches the game (keys::set_prompt, input::set_swallow_prompt). With the game's Auto on it goes on by itself
+// once the description is said, as Auto turns a page once its voice ends: the narrator's clip at its end, the screen
+// reader once it reports quiet (one that cannot tell, NVDA, at once: the game's own unvoiced pages under Auto do not
+// wait for it either); no end cue then. Fast-forward, a skip, the source ending or
 // the setting turned off closes it. The schedule sees the held source as playing (Clock::held): the cue's narrator
 // plays out and nothing further starts until the box closes.
 int g_box = -1;              // the cue whose box is up, else -1
 bool g_box_go = false;       // Enter, Space or A taken while it is up (game thread: the window procedure runs there)
 bool g_box_pad = true;       // A was down at the last frame (only a fresh press counts)
 bool g_box_ended = false;    // its narrator finished (the end cue was given)
+bool g_box_spoke = false;    // the screen reader reported it speaking (Auto waits for it to go quiet)
 bool g_releasing = false;    // the box closed and asked the source to play: until it reports so, the pause is ours
 
 uint16_t a_mask() { static uint16_t a = input::button_mask("a"); return a; }
@@ -236,6 +240,7 @@ void open_box(int cue) {
   g_box = cue;
   g_box_go = false;
   g_box_ended = false;
+  g_box_spoke = false;
   g_box_pad = pad_a() != 0;   // an A still down from the last message is not this box's press
   input::set_swallow_prompt(a_mask());
   hold_source(true);
@@ -616,8 +621,19 @@ void tick() {
       const bool a = pad_a() != 0;
       if (a && !g_box_pad) g_box_go = true;
       g_box_pad = a;
+      bool by_auto = false;
+      if (!g_box_go && msg::auto_on()) {   // Auto: on once it is said
+        if (reader) {
+          const int sp = speech::speaking();
+          if (sp == 1) g_box_spoke = true;
+          by_auto = sp == -1 || (sp == 0 && g_box_spoke);
+        } else {
+          by_auto = !ours || n.ended;
+        }
+        g_box_go = by_auto;
+      }
       if (g_box_go) {
-        log::writef("ad: {} cue {} box closed at {:.2f}", s->key, g_box, c.time);
+        log::writef("ad: {} cue {} box closed at {:.2f}{}", s->key, g_box, c.time, by_auto ? " (Auto)" : "");
         close_box(true);
         screens::cursor_sound(9);   // what a message window plays as Enter turns its page (measured 2026-11-17)
         sc.paused = false;   // it plays from this frame

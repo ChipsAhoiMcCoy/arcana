@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Audio description
-- Descriptions can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the movie or scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the sound a message window makes when you press past a page and goes on. Pressing while the narrator speaks cuts the description short. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before.
+- Descriptions can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the movie or scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the sound a message window makes when you press past a page and goes on. Pressing while the narrator speaks cuts the description short. With Auto on, the box goes on by itself once the description has been said, as the game's own lines do; fast-forward skips descriptions as before. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before.
 
 ### Shops
 - Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.

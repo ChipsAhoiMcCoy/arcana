@@ -26,6 +26,7 @@ void player_pressed();
 uint32_t press_count();   // how many such presses so far: a screen that acts on the player's confirm compares it
 // The player pressed the game's Auto key (Shift; X on a controller): the next change of Auto is theirs, and said.
 void auto_key_pressed();
+bool auto_on();   // the game's Auto (UMsgManager +0x34) as of the last tick: pages turn by themselves
 // Reads a scene's description (a story cut-in, a full-screen picture), queued; the next dialogue line then queues
 // after it, not over it. Nothing is read for a null text, or while the scene is fast-forwarded (game thread).
 void say_description(const char* text);
