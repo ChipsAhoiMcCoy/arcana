@@ -1,9 +1,6 @@
 #scene LS_Event_Cmmu_003_790_C
-1.100	1.207	00.mp3	A cluttered dorm room.
-3.100	1.917	01.mp3	Clothes and magazines litter the floor.
-5.400	1.643	02.mp3	Mitsuru walks in and looks around.
-10.750	1.909	03.mp3	A police officer follows her in.
-17.700	1.165	04.mp3	Junpei walks in.
-30.900	2.541	05.mp3	Officer Kurosawa walks out past Junpei.
-37.000	1.699	06.mp3	Mitsuru walks out past Junpei.
-39.100	1.083	07.mp3	Junpei, alone.
+1.030	10.006	00.mp3	A cluttered dorm room, seen from high in one corner. Clothes, magazines and rubbish cover the floor, a guitar leans against the shelves and posters cover the walls.
+3.030	5.675	01.mp3	Mitsuru walks in and picks her way through the mess, looking around. A police officer follows her in.
+16.830	2.602	02.mp3	Junpei walks in and stops short at the sight of them.
+30.500	2.541	03.mp3	Officer Kurosawa walks out past Junpei.
+35.000	5.434	04.mp3	Mitsuru walks out past Junpei, and the door closes behind her, leaving him alone in his room.

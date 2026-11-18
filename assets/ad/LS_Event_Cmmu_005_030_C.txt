@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_005_030_C
+0.000	6.167	00.mp3	At Iwatodai Strip Mall, you stand with Mitsuru in front of a takoyaki stand, where a vendor is at work.
+4.850	3.071	01.mp3	Mitsuru walks up to the stand to order, and you follow her.
+23.100	4.010	02.mp3	Later, you sit down with the takoyaki, and Mitsuru takes her first bite.

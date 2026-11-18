@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_005_200_C
+0.000	3.948	00.mp3	In front of the dorm, Mitsuru is beside her motorcycle, checking it over.
+6.400	2.889	01.mp3	Mitsuru holds out a key. You step forward and take it.

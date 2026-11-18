@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_003_740_C
-2.170	1.020	00.mp3	The dorm rooftop.
-12.340	0.979	01.mp3	Junpei digs.
+0.200	5.769	00.mp3	The dorm rooftop. You and Junpei kneel side by side at the vegetable planters, working the soil.

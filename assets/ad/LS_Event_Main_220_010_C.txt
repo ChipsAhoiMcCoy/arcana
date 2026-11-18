@@ -1,5 +1,5 @@
 #scene LS_Event_Main_220_010_C
-0.100	1.278	00.mp3	Aigis stands nearby.
-4.300	1.830	01.mp3	Behind them, Aigis watches.
-17.300	1.546	02.mp3	Aigis turns and runs off.
-33.400	3.091	03.mp3	Junpei spins around. All three run toward the school.
+0.100	13.577	00.mp3	The school entranceway. You walk along the paved path between the planters, a bag over your shoulder, and Junpei jogs up behind you. A little way ahead, Aigis stands still by the planters, a bag in her hand, watching you.
+9.200	2.476	01.mp3	Yukari walks up and joins you and Junpei.
+17.050	3.269	02.mp3	Aigis turns and runs off past the planters, out of sight.
+33.200	5.821	03.mp3	Junpei spins around and breaks into a run for the school building. You and Yukari run after him.

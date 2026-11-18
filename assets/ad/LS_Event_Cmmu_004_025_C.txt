@@ -1,0 +1,6 @@
+#scene LS_Event_Cmmu_004_025_C
+0.000	5.009	00.mp3	You and Akihiko come running in through the door of the dorm and pull up, out of breath.
+6.670	5.417	01.mp3	Akihiko notices a large parcel in the lounge, walks over to it and reads the label.
+17.000	11.014	02.mp3	Later, the whole dorm is gathered in the lounge around the open parcel: Yukari, Junpei, Mitsuru, Fuuka, Ken, Aigis and Koromaru. Akihiko sits on the sofa.
+21.670	7.164	03.mp3	Everyone eats and talks together. Later, with most of the food gone, Akihiko stands beside you by the parcel.
+44.330	5.864	04.mp3	Akihiko finds a medal in the bottom of the box and looks at it in surprise, then his face falls.

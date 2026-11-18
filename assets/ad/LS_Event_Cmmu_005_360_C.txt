@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_005_360_C
+0.050	8.104	00.mp3	You and Mitsuru sit together at an outdoor café table, steaming cups of coffee in front of you, other customers at the tables around you.

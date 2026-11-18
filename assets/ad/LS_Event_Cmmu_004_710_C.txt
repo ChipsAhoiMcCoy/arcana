@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_004_710_C
+0.170	4.833	00.mp3	You and Akihiko sit in the dorm lounge, watching a boxing match on the TV.

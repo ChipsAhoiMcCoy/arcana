@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_003_040_C
-0.050	1.236	00.mp3	Outside a burger shop.
-4.450	2.738	01.mp3	Junpei heads off. The hero walks the other way.
+0.050	5.120	00.mp3	Outside a burger shop. You and Junpei walk along the street with your school bags and stop.

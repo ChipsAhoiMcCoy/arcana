@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_003_730_C
-5.380	1.091	00.mp3	The dorm rooftop.
+0.170	4.101	00.mp3	The dorm rooftop. You and Junpei walk over to the vegetable planters.
+2.500	4.798	01.mp3	Junpei crouches at a planter, looking over the vegetables, while you stand beside him.

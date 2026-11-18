@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_005_100_C
+0.000	2.244	00.mp3	You sit with Mitsuru in her room at the dorm.
+6.700	2.268	01.mp3	Mitsuru holds out a key, and you take it.

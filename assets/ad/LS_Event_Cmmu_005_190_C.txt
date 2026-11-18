@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_005_190_C
+1.000	3.131	00.mp3	You and Mitsuru sit down together in her room at the dorm.

@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_004_790_C
+1.170	5.424	00.mp3	The footage shows Akihiko alone in his dorm room, scowling as he pounds a punching bag.
+3.670	5.647	01.mp3	He stops the bag, turns away and walks over to a magazine lying open on the sofa, and reads.
+11.500	5.647	02.mp3	He turns to face the empty sofa, steps up to it and puts on a smile, as if someone were sitting there.

@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_005_090_C
+0.000	4.306	00.mp3	Mitsuru walks ahead of you to a quiet spot with no one else around, and stops.
+38.500	4.345	01.mp3	You step close to Mitsuru and hold her. She starts in surprise, then smiles.

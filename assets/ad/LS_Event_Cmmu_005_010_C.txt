@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_005_010_C
+0.000	6.379	00.mp3	At the counter of Hagakure Ramen, you sit on a stool beside Mitsuru. The shop's owner works behind the counter.
+10.200	3.157	01.mp3	Mitsuru starts on her bowl of ramen, and you eat beside her.

@@ -1,7 +1,4 @@
 #scene LS_Event_Main_220_020_C
-0.300	2.029	00.mp3	The hero sits on his bed, head down.
-4.300	2.200	01.mp3	He looks up, stands, and walks to the door.
-8.400	2.298	02.mp3	He opens it. Aigis stands outside.
-11.800	1.395	03.mp3	Aigis clasps her hands.
-14.100	1.075	04.mp3	She lowers her head.
-18.200	1.669	05.mp3	She lowers her hand from her eyes.
+0.100	2.917	00.mp3	Your room in the dorm. You sit on your bed, head down.
+4.200	4.532	01.mp3	You get up, cross the room and open the door. Aigis stands in the hallway outside.
+18.200	3.278	02.mp3	Aigis wipes her eyes with her gloved hand, then lowers it.

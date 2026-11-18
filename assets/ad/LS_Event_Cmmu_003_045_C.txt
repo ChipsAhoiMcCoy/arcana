@@ -1,5 +1,2 @@
 #scene LS_Event_Cmmu_003_045_C
-1.180	1.990	00.mp3	The shrine. The hero and Junpei sit.
-4.180	1.715	01.mp3	Takoyaki sits between them.
-13.600	0.571	02.mp3	Later.
-24.350	1.194	03.mp3	Junpei stands up.
+0.050	6.068	00.mp3	Naganaki Shrine. You and Junpei sit side by side on a bench, a pack of takoyaki between you.

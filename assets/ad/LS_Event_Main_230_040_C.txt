@@ -1,4 +1,4 @@
 #scene LS_Event_Main_230_040_C
-1.750	3.161	00.mp3	A teacher leaves the podium, and Mitsuru takes his place.
-11.800	2.053	01.mp3	Mitsuru steps away and leaves the stage.
-15.300	3.715	02.mp3	The hero, Junpei and Yukari sit among rows of empty seats.
+0.200	12.191	00.mp3	The graduation ceremony, in the school auditorium. You sit in the seats facing the stage with Junpei and Yukari. On the stage, a teacher stands at the podium; Mitsuru waits off to one side.
+1.700	4.913	01.mp3	The teacher steps away from the podium and walks off, and Mitsuru crosses to take his place.
+10.550	3.996	02.mp3	Her head lowered, Mitsuru steps away from the podium and walks off the stage.

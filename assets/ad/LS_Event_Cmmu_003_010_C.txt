@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_003_010_C
-1.100	1.523	00.mp3	The arcade. Junpei.
-14.250	1.672	01.mp3	The hero points at a game screen.
+0.050	7.954	00.mp3	The arcade. You and Junpei stand among the game cabinets, school bags over your shoulders, while other students sit playing at the machines.
