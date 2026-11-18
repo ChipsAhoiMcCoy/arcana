@@ -139,9 +139,9 @@ They work like any other menu: up and down choose (at either end a further press
 **Volume** (each 0 to 100 percent in steps of 10)
 
 - Master: 100 percent. Every sound the mod plays, not the game's own
-- Sonar: 80 percent. Changing it plays a sonar sound
-- Wall tones: 100 percent
-- Shadow sounds: 60 percent. The Shadow cues and the controller layer's tick
+- Sonar: 50 percent. Changing it plays a sonar sound
+- Wall tones: 50 percent
+- Shadow sounds: 50 percent. The Shadow cues and the controller layer's tick
 - Audio description: 100 percent. The narrator of movies and scenes
 
 **Sound**

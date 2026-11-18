@@ -70,9 +70,9 @@ static const Def kDefs[Count] = {
   {"sonar_events", strings::kSetSonarEvents, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
   {"sonar_fragments", strings::kSetSonarFragments, CatSonar, strings::kHelpSonarKind, Unit::Toggle, {0, 1}, 1},
   {"master_volume", strings::kSetMasterVolume, CatVolume, strings::kHelpMasterVolume, Unit::Percent, kPercents, 100},
-  {"sonar_volume", strings::kSetSonarVolume, CatVolume, strings::kHelpSonarVolume, Unit::Percent, kPercents, 80},     // the Sonar bus
-  {"wall_volume", strings::kSetWallVolume, CatVolume, strings::kHelpWallVolume, Unit::Percent, kPercents, 100},
-  {"sound_volume", strings::kSetSoundVolume, CatVolume, strings::kHelpSoundVolume, Unit::Percent, kPercents, 60},     // the Cues bus
+  {"sonar_volume", strings::kSetSonarVolume, CatVolume, strings::kHelpSonarVolume, Unit::Percent, kPercents, 50},     // the Sonar bus
+  {"wall_volume", strings::kSetWallVolume, CatVolume, strings::kHelpWallVolume, Unit::Percent, kPercents, 50},
+  {"sound_volume", strings::kSetSoundVolume, CatVolume, strings::kHelpSoundVolume, Unit::Percent, kPercents, 50},     // the Cues bus
   {"description_volume", strings::kSetDescriptionVolume, CatVolume, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
   // how positional cues are placed: Dark Vision's stereo model, Steam Audio's HRTF, or a plain pan (a new key: the
   // old "hrtf" toggle's saved 1 would have kept the HRTF)
