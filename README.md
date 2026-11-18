@@ -39,7 +39,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+F1: The mod's own keys
 - F2: Mod settings
 - F3: Sonar on or off
-- Slash: Where am I: date, area, yen and current objective. Press it again within 5 seconds (nothing else said in between) to hear them one at a time: the date, then the area, the yen, the objective, then all of them again
+- Slash: Where am I: date, area, yen and current objective. Press it again within 5 seconds (nothing else said in between) to hear them one at a time: the date, then the area, the yen, the objective, then round again from the date
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
 - Backslash: Repeat the current message, or describe the current screen
