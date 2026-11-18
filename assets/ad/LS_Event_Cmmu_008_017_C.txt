@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_008_017_C
+0.000	4.391	00.mp3	You and Ken walk up the street to the dorm. A boy and his mother come toward you.
+11.400	5.721	01.mp3	The mother walks off, and the boy follows her. Ken watches them go, then turns to you, his face sad.

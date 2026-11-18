@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_008_025_C
+0.030	5.812	00.mp3	You follow Ken into his room in the dorm. He crosses to the far side, then turns back to face you.
+28.100	3.719	01.mp3	You turn and walk out of Ken's room, and the door closes behind you.

@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_008_030_C
+0.030	10.313	00.mp3	The back alley behind Port Island Station. You walk in with Ken, past a group of rough-looking young people hanging around by the wall. The young people turn and stare at Ken.
+24.000	5.619	01.mp3	Ken walks on past them, deeper into the alley, and you follow him until he stops and turns to you.
+39.700	3.772	02.mp3	Some time later, you and Ken are back in the alley, and Ken is smiling.
+47.200	4.894	03.mp3	Ken heads off down the alley, and you follow. He stops and looks back, his face falling.

@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_008_040_C
+0.030	3.884	00.mp3	The dorm rooftop, beside the garden beds. Ken stands facing you.
+7.700	4.891	01.mp3	Ken takes out two toy weapons and gives one to you. You step apart and face each other.
+16.500	2.385	02.mp3	Ken charges at you, and the two of you spar.

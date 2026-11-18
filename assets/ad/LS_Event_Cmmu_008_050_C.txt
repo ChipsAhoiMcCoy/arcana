@@ -1,0 +1,7 @@
+#scene LS_Event_Cmmu_008_050_C
+0.030	7.284	00.mp3	The dorm rooftop. Ken faces you with his toy weapon, while Akihiko, Junpei and Koromaru stand by to watch.
+13.670	4.720	01.mp3	Ken lunges at you and the match begins. Soon he is panting, his face pained.
+21.170	2.747	02.mp3	Ken charges in again, and your blow catches him.
+28.440	6.474	03.mp3	Yukari steps out onto the roof, and you turn toward her. In that moment Ken dashes in and lands a clean hit on you.
+43.100	7.348	04.mp3	Yukari heads back downstairs, and Koromaru, Junpei and Akihiko follow her, leaving you alone on the roof with Ken.
+58.000	2.929	05.mp3	Ken steps up to you and gives you a small silver key.

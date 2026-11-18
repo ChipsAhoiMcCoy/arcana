@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_008_035_C
+0.000	2.552	00.mp3	You stand with Ken on the street outside the dorm.
