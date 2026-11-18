@@ -9,9 +9,14 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "hooks.h"
+#include "input.h"
+#include "keys.h"
+#include "speech.h"
 #include "msg.h"
 #include "seh.h"
 #include "ue/scan.h"
+#include <windows.h>
+#include <xinput.h>
 #include <algorithm>
 #include <format>
 #include <memory>
@@ -25,7 +30,9 @@ class MailScreen : public MenuScreen {
   Finder draw_{"MailDraw"}, actor_{"MailActor"};
   bool reading_ = false;
   bool listed_ = false;   // the list was up this entry: its row said the sender and title
-  std::string said_;
+  bool reread_ = false;   // Up or Down over the open mail: read it again (the next tick, on the mail then open)
+  uint16_t pad_was_ = 0;
+  std::string said_, open_text_;
   struct Mail { std::string sender, title, body; bool fresh = false; };
   static bool flag(UObject* d, const char* n) { auto* b = field<bool>(d, n); return b && *b; }
   Mail mail(UObject* d, int i) {
@@ -171,10 +178,22 @@ class MailScreen : public MenuScreen {
       std::string s = m.sender.empty() ? m.title : m.sender + ". " + m.title;
       if (!m.body.empty()) s += ". " + m.body;
       // Opened from the list, whose row just said the sender and title: the body alone. Opened straight (the
-      // morning's text) or with no body: the whole mail. The review key reads it whole either way.
-      say(listed_ && !m.body.empty() ? m.body : s, true); said_ = s; reading_ = true;
+      // morning's text) or with no body: the whole mail. The review key reads it whole either way. Then its place
+      // in the list, as a menu row ends with its position.
+      auto* items = field<TArray<uint8_t>>(d, "MailListItems");
+      std::string pos = items ? std::format("{} {} of {}", strings::kMailMessage, *si + 1, items->num) : std::string();
+      std::string text = listed_ && !m.body.empty() ? m.body : s;
+      if (!pos.empty()) { text += ". " + pos; s += ". " + pos; }
+      say(text, true); said_ = s; open_text_ = text; reading_ = true;
       return;
     }
+    // Up or Down over the open mail reads it again, as a one-row list does (the user's call, 2026-11-17). Spoken
+    // directly: the menu's guard would take the same line again for a repeat. The pad's D-pad is the game's here
+    // (the mail has the keys), so its presses are read from the real pad.
+    uint16_t pad = input::real_buttons() & (XINPUT_GAMEPAD_DPAD_UP | XINPUT_GAMEPAD_DPAD_DOWN);
+    if (reading && reading_ && (pad & ~pad_was_) && !input::layer_open()) reread_ = true;
+    pad_was_ = pad;
+    if (reread_) { reread_ = false; if (reading && reading_ && !open_text_.empty()) speech::speak(open_text_, true); }
     if (!reading) listed_ = true;
     // Back from an open mail to the list: the row the player left, again.
     if (!reading && reading_) { reading_ = false; say_focus(); }
@@ -192,6 +211,9 @@ class MailScreen : public MenuScreen {
         return m.title.empty() ? std::format("{} {}", strings::kMail, i + 1) : line(m);
       }));
     if (int c = list_.cursor(); c >= 0) b.set_start(slot("mail", c));
+  }
+  void on_game_key(uint32_t vk, int mods) override {
+    if (mods == keys::None && (vk == VK_UP || vk == VK_DOWN) && reading_) reread_ = true;
   }
   std::string describe() override { return reading_ && !said_.empty() ? said_ : MenuScreen::describe(); }
 };
