@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
 ### Audio description
 - Descriptions can wait for you like a message window (Descriptions wait for Enter, on by default): each one pauses the movie or scene, plays the game's message-window sound, is read by the narrator or your screen reader, and waits for Enter, Space or A, which plays the sound a message window makes when you press past a page and goes on. Pressing while the narrator speaks cuts the description short. With Auto on, the box goes on by itself once the description has been said, as the game's own lines do; fast-forward skips descriptions as before. They are also in the log (B). Turn the option off to have them fitted between the lines while the scene plays, as before.
@@ -35,6 +35,7 @@
 ### Sound timing
 - The sonar's beats, the focused thing's beat and the strike ring now keep an even rhythm. Each beat used to start on the game's next frame and the mixer's next 10 ms block, so beats one period apart could land up to a frame and a half apart. Now each one starts at the exact moment it is due.
 - Sounds from places (the sonar, a Shadow's snarl, the focused thing) are heard from where you and the camera will be a frame later, as the wall tones are, so they keep their place as you run past or turn the camera.
+
 ### Title screen
 - The credits that Z (L1) opens from the title menu are announced: "Credits", then "Credits paused" when you pause them, with what to press. Before, they rolled in silence and the title menu took no keys until they ended, so the game seemed to have stopped responding. Enter (A) pauses them; while they are paused, Tab (the Menu button) skips them and Enter resumes them. Backslash reads the names on screen.
 
@@ -53,6 +54,7 @@
 - Analyze is a page you move through, like a Persona's status page. It opens on the enemy's name and health. Down goes through its arcana, level, maximum HP and maximum SP, then each affinity on a line of its own ("Fire: weak", "Slash: normal", "Dark: unknown"), then the "Skill and attack type" panel (each skill's description is in the detail lines), then what it drops. Tab and Shift+Tab (the triggers) jump between Affinities, Skill and attack type, and Drops. Changing target (A and D, LB and RB) goes back to the new target's name. What the game still hides is said as unknown, as the screen shows it ("Level unknown", "Unknown" under Skill and attack type). Before, Analyze said only the name, health and level, and the rest waited in the detail lines.
 - Analyze no longer gives away a Shadow's level before the game shows it (the screen draws "Lv ??" until then).
 - A foe's Light and Dark affinities are named right. A Shadow weak to Light was said to be weak to Dark, and one weak to Dark left that weakness out.
+- A physical skill's HP cost is no longer read as damage to the one using it: the skill list already says the price.
 
 ### Personas
 - A Persona's status page (the camp, fusion results, the Compendium, level ups, in battle) reads all nine affinities, one line each, normal ones too: "Slash: normal", "Fire: weak", as the page's icon row shows them. Before, only weaknesses and resistances were read.
@@ -82,9 +84,6 @@
 
 ### Camp menu
 - An arrow pressed while the camp menu closes says nothing. It read the next entry, which the game had already stopped listening to.
-
-### Battle
-- A physical skill's HP cost is no longer read as damage to the one using it: the skill list already says the price.
 
 ## 0.3.0
 
