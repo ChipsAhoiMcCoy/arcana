@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_005_715_C
+0.170	4.212	00.mp3	The lounge of the dorm. You and Mitsuru sit together with the books she has brought.
+6.170	6.024	01.mp3	Some time later, you are deep in one of her books, turning page after page, while Mitsuru reads beside you.
