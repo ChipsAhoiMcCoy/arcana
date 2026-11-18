@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_106_045_C
+0.000	7.289	00.mp3	You and Yuko lead three children, a boy and two girls, onto the school's sports field. They run on ahead, looking all around.
+8.550	3.317	01.mp3	The children race off down the field while you and Yuko watch.

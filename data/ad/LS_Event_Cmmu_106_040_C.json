@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_106_040_C",
+ "title": "The boy again",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Yuko stand together in the fountain square of Paulownia Mall."
+  },
+  {
+   "at": 5.9,
+   "text": "A small boy comes running across the square and crashes into Yuko."
+  },
+  {
+   "at": 9.85,
+   "text": "Two little girls run up behind him."
+  }
+ ]
+}

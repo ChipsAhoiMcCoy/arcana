@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_106_035_C
+0.000	6.099	00.mp3	You and Yuko walk through the fountain square of Paulownia Mall. Two girls from school walk over to Yuko.
+21.400	1.816	01.mp3	You and Yuko sit down together.
+33.200	1.631	02.mp3	Yuko gets up and walks off.

@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_106_035_C",
+ "title": "Girls in Paulownia Mall",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Yuko walk through the fountain square of Paulownia Mall. Two girls from school walk over to Yuko."
+  },
+  {
+   "at": 21.4,
+   "text": "You and Yuko sit down together."
+  },
+  {
+   "at": 33.2,
+   "text": "Yuko gets up and walks off."
+  }
+ ]
+}
