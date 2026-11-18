@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_460_041_C
+0.030	5.889	00.mp3	Outside Be Blue V, the healing shop in Paulownia Mall. Yukari stands with you beneath its sign.
+4.500	2.188	01.mp3	Yukari turns and walks into the shop.
+8.670	2.065	02.mp3	Later, Yukari walks back out to you.

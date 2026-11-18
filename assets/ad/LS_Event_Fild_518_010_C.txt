@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_518_010_C
+0.000	2.302	00.mp3	You lay a hand on a tall grandfather clock.
+2.330	3.199	01.mp3	Its pendulum swings, and sparkles swirl up around you.

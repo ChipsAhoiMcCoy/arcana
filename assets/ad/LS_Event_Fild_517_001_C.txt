@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_517_001_C
+0.000	4.591	00.mp3	You hold out a hand while Yukari and Junpei stand by with their weapons ready.
+1.830	3.901	01.mp3	A small glowing orb takes shape before you, and a flash fills the view.

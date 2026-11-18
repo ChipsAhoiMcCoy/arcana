@@ -1,0 +1,4 @@
+#scene LS_Event_Extr_460_044_C
+0.030	8.033	00.mp3	Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Mitsuru stands facing you.
+4.500	4.113	01.mp3	Mitsuru turns and walks off for the treatment, leaving you waiting by the sign.
+8.830	1.799	02.mp3	Later, Mitsuru walks back to you.

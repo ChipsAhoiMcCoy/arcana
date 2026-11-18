@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_515_020_C
+0.500	3.798	00.mp3	In Tartarus, you crouch down beside the missing person you have found.

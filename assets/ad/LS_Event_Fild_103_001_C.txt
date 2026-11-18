@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_103_001_C
+0.000	10.144	00.mp3	You walk into Club Escapade through padded double doors. Past the entrance, a crowd dances on a floor with the club's name across it, beside a long bar and a stage.

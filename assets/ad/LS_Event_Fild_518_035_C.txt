@@ -1,0 +1,3 @@
+#scene LS_Event_Fild_518_035_C
+0.000	5.756	00.mp3	Hands in your pockets, you stroll up to a tall grandfather clock standing in a ring set into the floor.
+3.770	3.186	01.mp3	You raise a hand to the clock, and its hands begin to turn.

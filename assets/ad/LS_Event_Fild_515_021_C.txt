@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_515_021_C
+0.000	4.099	00.mp3	Tartarus. You crouch on the floor beside the lost cat you found on this floor.

@@ -1,0 +1,2 @@
+#scene LS_Event_Qest_610_010_C
+0.170	6.271	00.mp3	Your room in the dorm, by the door. Your phone beeps in your pocket; you take it out, look at the screen and answer.

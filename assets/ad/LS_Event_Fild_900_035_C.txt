@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_900_035_C
+0.000	5.155	00.mp3	A door opens at the end of the Velvet Room hall, and you and Elizabeth step back out together.

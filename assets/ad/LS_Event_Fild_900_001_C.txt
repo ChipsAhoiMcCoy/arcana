@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_900_001_C
+0.000	6.790	00.mp3	Tartarus entrance hall. You push open the glowing door to the Velvet Room, a door no one else can see, and step through.

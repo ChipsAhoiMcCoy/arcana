@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_300_010_C
+0.030	12.207	00.mp3	A still, empty room with a patterned carpet. A tall padded armchair stands behind a round, cloth-covered table, and a small chair with a lyre-shaped back faces it. No one sits in either.

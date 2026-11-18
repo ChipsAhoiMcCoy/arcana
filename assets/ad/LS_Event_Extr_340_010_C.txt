@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_340_010_C
+0.070	10.185	00.mp3	An exam in your classroom. Everyone sits bent over their papers, pencils moving, you, Junpei and Yukari among them, and the teacher watches from a chair at the front.

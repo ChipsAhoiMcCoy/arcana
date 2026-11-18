@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_470_020_C
+0.000	6.921	00.mp3	The school library. You sit at a long table with a book open, studying, while other students read at the tables around you.

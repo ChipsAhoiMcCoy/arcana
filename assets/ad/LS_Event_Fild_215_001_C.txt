@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_215_001_C
+0.000	5.744	00.mp3	The dorm lounge. You stand at the front desk, where a cardboard box sits beside a stack of papers.

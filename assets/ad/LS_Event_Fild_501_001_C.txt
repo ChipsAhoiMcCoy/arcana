@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_501_001_C
+0.000	6.912	00.mp3	In Tartarus, you run in with your teammates close behind and skid to a halt, weapons drawn, as a battle begins.

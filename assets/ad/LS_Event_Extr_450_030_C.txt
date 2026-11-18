@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_450_030_C
+0.030	6.571	00.mp3	A karaoke booth. You stand alone by the table, your bag set beside you, a microphone in your hand, singing.
