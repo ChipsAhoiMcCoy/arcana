@@ -1,4 +1,0 @@
-#scene LS_Event_Extr_460_045_C
-8.700	2.053	00.mp3	Aigis turns and walks off to the right.
-11.250	1.237	01.mp3	The hero waits alone.
-13.800	1.156	02.mp3	Aigis walks back.

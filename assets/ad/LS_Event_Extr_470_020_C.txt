@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_470_020_C
-0.050	0.780	00.mp3	The library.
-3.050	2.028	01.mp3	The hero studies among other students.

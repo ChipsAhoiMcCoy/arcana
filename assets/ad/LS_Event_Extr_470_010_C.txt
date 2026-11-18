@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_470_010_C
-0.050	0.809	00.mp3	At his desk.

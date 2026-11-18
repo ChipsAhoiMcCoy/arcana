@@ -1,4 +1,0 @@
-#scene LS_Event_Extr_460_046_C
-3.400	2.343	00.mp3	Koromaru turns and trots off to the right.
-6.200	0.960	01.mp3	The hero waits.
-8.400	1.261	02.mp3	Koromaru trots back.

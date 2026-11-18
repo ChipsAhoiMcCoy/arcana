@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_460_041_C
-4.700	3.396	00.mp3	Yukari turns and walks off, leaving the hero by the sign.
-9.550	1.252	01.mp3	She walks back to him.
