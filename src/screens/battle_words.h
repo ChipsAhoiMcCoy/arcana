@@ -4,6 +4,7 @@
 // GetSupportTurn). One instance (btl_words) serves the battle screen (battle.cpp), the battle's lists
 // (battle_menus.cpp) and the detail buffer (battle_details.cpp).
 #include "screens/util.h"
+#include "core/affinity.h"
 #include "core/battle_text.h"
 #include "core/strings.h"
 #include "msg.h"
@@ -72,12 +73,10 @@ class BtlWords {
     return unit_names_[key] = ftext_call(d, p);
   }
   std::string skill_name(int id) { return cached_text(skill_names_, "GetSkillName", "skillId", id); }
-  // An affinity slot's name. GatAnalizeAttr's attr numbers the slots as the Personas' table does (7 Almighty, 8 Light,
-  // 9 Dark), and GetAttackName does not (its 8 is "Dark", its 9 empty: Analyze read "Dark" for Light, 2026-11-17).
-  static std::string analyze_attr_name(int attr) {
-    if (attr >= 0 && attr <= 6) return strings::kAttrNames[attr];
-    return attr == 8 ? strings::kAttrNames[7] : attr == 9 ? strings::kAttrNames[8] : std::string();
-  }
+  // An affinity slot's name. GatAnalizeAttr's attr numbers the slots as the Personas' table does (core/affinity: 7
+  // Almighty, 8 Light, 9 Dark), and GetAttackName does not (its 8 is "Dark", its 9 empty: Analyze read "Dark" for
+  // Light, 2026-11-17).
+  static std::string analyze_attr_name(int attr) { return core::attr_name(attr); }
   std::string attack_name(int attr) { return cached_text(attack_names_, "GetAttackName", "attr", attr); }
   std::string persona_name(int id) { return cached_text(persona_names_, "GetPersonaName", "PersonaID", id); }
   // "3 SP" / "121 HP": what the skill costs this member now (GetSkillCost has already turned a physical skill's

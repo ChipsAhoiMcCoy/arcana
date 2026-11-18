@@ -17,6 +17,7 @@
 #include "core/sonar_cues.h"
 #include "core/strings.h"
 #include "core/units.h"
+#include "dat.h"
 #include "devserver.h"
 #include "input.h"
 #include "log.h"
@@ -75,19 +76,17 @@ int g_relock_run = 0;
 bool g_relocked_now = false;
 
 // How far the game turns this field's minimap (MiniMapInfoDataAsset, rows "102_141_000": field, area, part; every
-// part of an area is turned alike). Episode Aigis loads its own copy of the table: both agree on the fields they share.
+// part of an area is turned alike). Episode Aigis loads its own copy of the table: the running story's is read.
 float map_turn(int major, int minor) {
   static const int assets = watch::want("MiniMapInfoDataAsset", true);
   const std::string key = std::format("{:03}_{:03}_", major, minor);
-  for (UObject* a : watch::all(assets)) {
-    TableRows rows = table_rows(a);
-    if (!rows) continue;
-    const int32_t id_off = offset_of(rows.row, "FieldID"), angle_off = offset_of(rows.row, "DegreeAngle");
-    if (id_off < 0 || angle_off < 0) continue;
-    for (int32_t i = 0; i < rows.num; ++i) {
-      uint8_t* r = rows.at(i);
-      if (to_utf8(*(FString*)(r + id_off)).starts_with(key)) return *(float*)(r + angle_off);
-    }
+  TableRows rows = table_rows(dat::find(assets, "MiniMapInfoDataAsset"));
+  if (!rows) return 0.0f;
+  const int32_t id_off = offset_of(rows.row, "FieldID"), angle_off = offset_of(rows.row, "DegreeAngle");
+  if (id_off < 0 || angle_off < 0) return 0.0f;
+  for (int32_t i = 0; i < rows.num; ++i) {
+    uint8_t* r = rows.at(i);
+    if (to_utf8(*(FString*)(r + id_off)).starts_with(key)) return *(float*)(r + angle_off);
   }
   return 0.0f;
 }

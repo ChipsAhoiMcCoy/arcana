@@ -5,6 +5,7 @@
 // working. The hero's entered first name is UTF-8 at UGlobalWork +0xC728 (measured 2026-10-28).
 #include "party.h"
 #include "core/strings.h"
+#include "dat.h"
 #include "devserver.h"
 #include "log.h"
 #include "screens/screen.h"
@@ -63,8 +64,8 @@ std::string name(int id) {
     if (g) guarded([&] { const char* p = (const char*)g + 0xC728; size_t n = strnlen(p, 32); if (n < 32) s.assign(p, n); });
     if (!s.empty()) { s[0] = (char)toupper((unsigned char)s[0]); return s; }
   }
-  static const int table_id = watch::want("DatPlayerFirstNameTable");
-  UObject* t = watch::get(table_id);
+  static const int table_id = watch::want("DatPlayerFirstNameTable", true);
+  UObject* t = dat::find(table_id, "DatPlayerFirstNameDataAsset");   // Episode Aigis has its own copy
   TableRows rows = table_rows(t);
   if (!rows) return {};
   int id_off = offset_of(rows.row, "mPlayerID"), name_off = offset_of(rows.row, "mName");
@@ -171,7 +172,7 @@ void tick() {
 void install() {
   // Wanted before the first tick, so that tick's one sweep fills them with every other class's.
   watch::want("GlobalWork");
-  watch::want("DatPlayerFirstNameTable");
+  watch::want("DatPlayerFirstNameTable", true);
   g_max_hp = resolve("GetUnitMaxHP");
   g_max_sp = resolve("GetUnitMaxSP");
   log::writef("party: max HP routine {}, max SP routine {}", (void*)g_max_hp, (void*)g_max_sp);

@@ -1,4 +1,5 @@
 #include "gametext.h"
+#include "dat.h"
 #include "devserver.h"
 #include "watch.h"
 #include "seh.h"
@@ -9,13 +10,10 @@ namespace p3a::gametext {
 using namespace ue;
 
 UObject* table(const char* name) {
-  static std::map<std::string, WeakObj> cache;
-  WeakObj& w = cache[name];
-  if (UObject* t = w.resolve()) return t;
   // From the object watcher's list: a table not loaded here (the dungeon's, in town) was a full object scan per call.
+  // By name and story (DT_SystemTextName has an Episode Aigis copy).
   static const int tables = watch::want("DataTable", true);
-  for (UObject* t : watch::all(tables)) if (name_of(t) == name) { w = WeakObj::of(t); return t; }
-  return nullptr;
+  return dat::find(tables, name);
 }
 
 std::string system_text(int row) {

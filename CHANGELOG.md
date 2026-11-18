@@ -25,7 +25,7 @@
 
 ### Personas
 - A Persona's status page (the camp, fusion results, the Compendium, level ups, in battle) reads all nine affinities, one line each, normal ones too: "Slash: normal", "Fire: weak", as the page's icon row shows them. Before, only weaknesses and resistances were read.
-- Persona affinities (the Persona page, fusion and Compendium) are read from the Personas' own table. The mod could read the enemies' table instead, which uses the same numbers for different monsters: Omoikane was said to null Strike and Fire, drain Elec and repel Dark, when it resists Elec and is weak to Dark.
+- Persona affinities (the Persona page, fusion and Compendium) are read from the Personas' own table. The mod could read the enemies' table instead, which uses the same numbers for different monsters: Omoikane was said to null Strike and Fire, drain Elec and repel Dark, when it resists Elec and is weak to Dark. Episode Aigis keeps its own copies of the game's tables (skill names and costs, fusion, Persona affinities, names, the minimap, system text); the mod now reads the copy for the story you are playing, the same one the game reads, instead of whichever was loaded last.
 
 ### Config
 - The Dungeon BGM and Boss Battle BGM playlists move with the arrows again: the mod moved the other playlist's cursor, so the list jumped around and Space could set a track you had not heard.

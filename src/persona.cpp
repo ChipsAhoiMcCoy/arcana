@@ -5,6 +5,8 @@
 // 2026-10-27: Orpheus 3 and Apsaras 2).
 #include "persona.h"
 #include "bmdfile.h"
+#include "core/affinity.h"
+#include "dat.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "party.h"
@@ -46,62 +48,35 @@ static const uint8_t* record(int id) {
   if (!rows || id <= 0 || id >= rows->num) return nullptr;
   return rows->data + id * 0xE;
 }
-// Affinities: UDatAffinityTable (DatPersonaAffinityDataAsset) Data[id] = u16 attr[19]: 0 Slash .. 6 Wind, 7 Almighty,
-// 8 Light, 9 Dark (2026-10-31: Gabriel nulls 8 and is weak to 9; Hell Biker weak to 8, its page marks Light). The
-// high byte is the kind (0x01 nulls, 0x02 repels, 0x04 drains, 0x08 weak, 0x10 resists), 0x0014 alone is normal
-// (measured 2026-10-28: Nekomata 0x0800 Elec, 0x1000 Wind, as its status shows; 2026-10-31: Jack Frost 0x0100 Ice,
-// Mithras 0x0400 Fire, "Drain" on its level-up page, Hell Biker 0x0200 Fire and Wind, the repel shield on its page;
-// the table holds no 0x20-0x80 kinds, one 0x2000 on Alice's Dark, not read).
+// Affinities: UDatAffinityTable (DatPersonaAffinityDataAsset) Data[id] = u16 attr[19], 38 bytes a row: the slots
+// and kinds are core/affinity's (tested there: 8 Light, 9 Dark).
 std::string affinities(int id) {
   std::string out;
   for (auto& g : affinity_groups(id)) out += (out.empty() ? "" : ", ") + g;
   return out;
 }
 
-// The enemies' table (DatEnemyAffinityDataAsset, 601 rows) has the same class: the Persona table is taken by its
-// name, never the newest of the class (a battle loads the enemies' one, and Omoikane, row 62, read the enemy row's
-// null Strike and Fire, drain Elec, repel Dark; a player's report, 2026-11-17).
-static UObject* persona_affinity_table() {
+// The enemies' table (DatEnemyAffinityDataAsset, 601 rows) has the same class, and Episode Aigis has its own copy of
+// both: the Persona table is taken by its name and story (dat::find), never the newest of the class (a battle loads
+// the enemies' one, and Omoikane, row 62, read the enemy row's null Strike and Fire, drain Elec, repel Dark; a
+// player's report, 2026-11-17).
+static const uint16_t* affinity_row(int id) {
   static const int table_id = watch::want("DatAffinityTable", true);
-  UObject* found = nullptr;
-  for (UObject* o : watch::all(table_id))
-    if (name_of(o) == "DatPersonaAffinityDataAsset") found = o;   // the newest (Episode Aigis has its own copy)
-  return found;
+  UObject* t = dat::find(table_id, "DatPersonaAffinityDataAsset");
+  auto* rows = t ? field<TArray<uint8_t>>(t, "Data") : nullptr;
+  if (!rows || id <= 0 || id >= rows->num) return nullptr;
+  return (const uint16_t*)(rows->data + id * core::kAffinitySlotsInRow * 2);
 }
 
 std::vector<std::string> affinity_groups(int id) {
-  UObject* t = persona_affinity_table();
-  auto* rows = t ? field<TArray<uint8_t>>(t, "Data") : nullptr;
-  if (!rows || id <= 0 || id >= rows->num) return {};
-  const uint16_t* a = (const uint16_t*)(rows->data + id * 38);
-  static const int kColumn[9] = {0, 1, 2, 3, 4, 5, 6, 8, 9};   // kAttrNames' order in the table (7 is Almighty)
-  static const struct { uint16_t bit; int kind; } kinds[] = {{0x0800, 4}, {0x1000, 5}, {0x0100, 1}, {0x0200, 2}, {0x0400, 3}};
   std::vector<std::string> out;
-  guarded([&] {
-    for (auto& k : kinds) {
-      std::string list;
-      for (int i = 0; i < 9; ++i) if (a[kColumn[i]] & k.bit) list += (list.empty() ? "" : " ") + std::string(strings::kAttrNames[i]);
-      if (!list.empty()) out.push_back(std::string(strings::kAffinity[k.kind]) + " " + list);
-    }
-  });
+  if (const uint16_t* a = affinity_row(id)) guarded([&] { out = core::affinity_groups(a); });
   return out;
 }
 
 std::vector<std::string> affinity_lines(int id) {
-  UObject* t = persona_affinity_table();
-  auto* rows = t ? field<TArray<uint8_t>>(t, "Data") : nullptr;
-  if (!rows || id <= 0 || id >= rows->num) return {};
-  const uint16_t* a = (const uint16_t*)(rows->data + id * 38);
-  static const int kColumn[9] = {0, 1, 2, 3, 4, 5, 6, 8, 9};
-  static const struct { uint16_t bit; int kind; } kinds[] = {{0x0800, 4}, {0x1000, 5}, {0x0100, 1}, {0x0200, 2}, {0x0400, 3}};
   std::vector<std::string> out;
-  guarded([&] {
-    for (int i = 0; i < 9; ++i) {
-      int kind = 0;
-      for (auto& k : kinds) if (a[kColumn[i]] & k.bit) { kind = k.kind; break; }
-      out.push_back(std::format("{}: {}", strings::kAttrNames[i], strings::kAffinityShort[kind]));
-    }
-  });
+  if (const uint16_t* a = affinity_row(id)) guarded([&] { out = core::affinity_lines(a); });
   return out;
 }
 
@@ -150,8 +125,8 @@ int dyad_result(int a, int la, int b, int lb) {
   if (ra < 1 || rb < 1 || a == b) return 0;
   // From the object watcher, not a scan: Fusion Search tries every pair in the stock per cursor move (66 for 12
   // Personas), and a scan each was about 1 ms (2026-10-29).
-  static const int chart_id = watch::want("NormalSpreadDataAsset");
-  UObject* chart = watch::get(chart_id);
+  static const int chart_id = watch::want("NormalSpreadDataAsset", true);
+  UObject* chart = dat::find(chart_id, "NormalSpreadDataAsset");
   int race = 0;
   if (chart) guarded([&] {
     // Data: TArray<FNormalSpreadItem{TArray<uint8> Races}>
@@ -181,8 +156,8 @@ std::string skill_help(int id) {
   return bmdfile::text(f->dialogs[id].pages[0]);
 }
 std::string skill_name(int id) {
-  static const int table_id = watch::want("DatSkillNameTable");
-  UObject* t = watch::get(table_id);
+  static const int table_id = watch::want("DatSkillNameTable", true);
+  UObject* t = dat::find(table_id, "DatSkillNameDataAsset");
   auto* rows = t ? field<TArray<FText>>(t, "Data") : nullptr;
   if (!rows || id <= 0 || id >= rows->num) return {};
   std::string s;
@@ -191,8 +166,8 @@ std::string skill_name(int id) {
 }
 
 std::string skill_cost(int id) {
-  static const int table_id = watch::want("DatSkillNormalTable");
-  UObject* t = watch::get(table_id);
+  static const int table_id = watch::want("DatSkillNormalTable", true);
+  UObject* t = dat::find(table_id, "DatSkillNormalDataAsset");
   if (!t) return {};
   TableRows rows = table_rows(t);
   if (!rows || id <= 0 || id >= rows.num) return {};
@@ -310,14 +285,30 @@ std::string describe(int id, int level) {
 
 void install() {
   // Wanted before the first tick, so that tick's one sweep fills them with every other class's.
-  for (const char* c : {"DatPersona", "DatSkillNameTable", "DatSkillNormalTable"}) watch::want(c);
-  watch::want("DatAffinityTable", true);   // the Personas' and the enemies' tables: persona_affinity_table picks
+  watch::want("DatPersona");
+  // Every copy (the enemies' affinities, Episode Aigis's tables): dat::find picks.
+  for (const char* c : {"DatSkillNameTable", "DatSkillNormalTable", "DatAffinityTable", "NormalSpreadDataAsset"}) watch::want(c, true);
   dev::route("/persona", [](const dev::Request& r, int&) {
     // /persona the hero's stock | ?id=N one Persona's data
     int id = (int)dev::arg_int(r, "id", -1);
     std::string find = dev::arg(r, "find");
+    std::string dyad = dev::arg(r, "dyad");
     bool bench = dev::has(r, "bench"), learn = dev::has(r, "learn"), levelup = dev::has(r, "levelup");
-    return dev::on_game([id, find, bench, learn, levelup] {
+    return dev::on_game([id, find, dyad, bench, learn, levelup] {
+      if (!dyad.empty()) {   // ?dyad=SLOT: what the base in that stock slot makes with each other one (the chart's way)
+        int base = std::atoi(dyad.c_str());
+        auto st = stock();
+        const Owned* a = nullptr;
+        for (auto& o : st) if (o.slot == base) a = &o;
+        if (!a) return std::string("no Persona in that slot\n");
+        std::string s;
+        for (auto& o : st)
+          if (&o != a) {
+            int res = dyad_result(a->id, a->level, o.id, o.level);
+            s += std::format("{} + {}: {}\n", name(a->id), name(o.id), res ? describe(res, base_level(res)) : std::string("none"));
+          }
+        return s;
+      }
       if (bench) {   // ?bench=1: Fusion Search's work for one cursor move (every stock pair), and one object scan
         LARGE_INTEGER f, t0, t1, t2;
         QueryPerformanceFrequency(&f);
@@ -371,6 +362,6 @@ void install() {
       for (auto& o : stock()) s += std::format("  slot {} id {} {}\n", o.slot, o.id, describe(o.id, o.level));
       return s;
     });
-  }, "the hero's Persona stock | ?id=N one Persona | ?learn=1 the equipped one 1 EXP short of its next skill | ?levelup=1 of its next level (dev)");
+  }, "the hero's Persona stock | ?id=N one Persona | ?dyad=SLOT that slot's dyad results (the chart's way) | ?learn=1 the equipped one 1 EXP short of its next skill | ?levelup=1 of its next level (dev)");
 }
 }  // namespace p3a::persona

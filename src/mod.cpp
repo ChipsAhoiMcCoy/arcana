@@ -16,6 +16,7 @@
 #include "area.h"
 #include "portrait.h"
 #include "calendar.h"
+#include "dat.h"
 #include "gametext.h"
 #include "stats.h"
 #include "party.h"
@@ -134,6 +135,7 @@ void init(bool speech_ok) {
   commands::install();
   bmdfile::install();
   gametext::install();
+  dat::install();
   calendar::install();
   stats::install();
   if (ue::known_build()) confirm::install();   // fixed addresses: this build only

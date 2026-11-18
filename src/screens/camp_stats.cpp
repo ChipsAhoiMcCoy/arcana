@@ -12,6 +12,7 @@
 #include "screens/camp_util.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
+#include "dat.h"
 #include "party.h"
 #include "persona.h"
 #include "stats.h"
@@ -34,10 +35,10 @@ class CampStats : public MenuScreen, private CampStatsUi {
   // stand in while the table is not loaded.
   std::string tactic_name(int t) {
     if (t < 0 || t >= 5) return {};
-    static const int table = watch::want("DatBtlCommonNameTable");
+    static const int table = watch::want("DatBtlCommonNameTable", true);
     std::string s;
-    if (UObject* dat = watch::get(table)) {
-      TableRows rows = table_rows(dat);
+    if (UObject* names = dat::find(table, "DatBtlCommonNameDataAsset")) {
+      TableRows rows = table_rows(names);
       int name = rows ? offset_of(rows.row, "Name") : -1;
       if (uint8_t* r = name >= 0 ? rows.at(3 + t) : nullptr) guarded([&] { s = text(*(FText*)(r + name)); });
     }
