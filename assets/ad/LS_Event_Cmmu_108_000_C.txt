@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_108_000_C
+0.000	2.524	00.mp3	You sit among the art club members in the art room.

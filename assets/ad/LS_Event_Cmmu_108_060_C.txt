@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_108_060_C
+1.000	3.730	00.mp3	In the art room, Keisuke gets up from his seat and comes over to you.

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_108_075_C
+0.000	2.895	00.mp3	You and Keisuke sit together on the school rooftop.

@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_108_055_C",
+ "title": "Art club: an offer to study abroad",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school lobby, you and Fuuka wait outside the faculty office while the advisor talks with Keisuke inside."
+  },
+  {
+   "at": 5.79,
+   "text": "A student comes running up behind you and Fuuka. The faculty office door opens, and Keisuke comes out with the advisor."
+  },
+  {
+   "at": 12.83,
+   "text": "Keisuke runs off with the student."
+  }
+ ]
+}
