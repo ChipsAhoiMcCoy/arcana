@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_102_070_C
+0.000	5.062	00.mp3	In the student council room, Hidetoshi stands and addresses the members seated at the table.
+5.600	3.879	01.mp3	After the meeting, Hidetoshi stays standing near you, looking troubled.

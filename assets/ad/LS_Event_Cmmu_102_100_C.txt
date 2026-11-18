@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_102_100_C
+0.000	8.018	00.mp3	In the student council room, Hidetoshi stands before the seated members, finishing a talk. After the meeting, Hidetoshi comes over to you.
+10.690	3.750	01.mp3	Hidetoshi takes out a lighter and shows it to you. He hands you the lighter.

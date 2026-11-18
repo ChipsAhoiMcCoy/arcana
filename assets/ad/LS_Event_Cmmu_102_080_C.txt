@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_102_080_C
+0.000	4.597	00.mp3	You walk into the student council room, where Chihiro stands alone, looking worried.

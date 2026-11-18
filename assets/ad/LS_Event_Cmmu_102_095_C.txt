@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_102_095_C
+0.000	2.972	00.mp3	On the school rooftop, Hidetoshi stands facing you.

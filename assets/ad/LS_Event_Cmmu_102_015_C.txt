@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_102_015_C
+0.000	4.226	00.mp3	You walk into the faculty office and up to a woman teacher sitting at her desk.
+7.400	1.849	01.mp3	You read through the form and sign it.

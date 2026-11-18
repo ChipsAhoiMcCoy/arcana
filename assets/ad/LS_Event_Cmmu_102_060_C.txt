@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_102_060_C
+0.000	4.190	00.mp3	You walk into the student council room. Hidetoshi sits alone at the table.
+9.600	4.586	01.mp3	Hidetoshi gets up from the table and walks a few steps away, then turns back to you.

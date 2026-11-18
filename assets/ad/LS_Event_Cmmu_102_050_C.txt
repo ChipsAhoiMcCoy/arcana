@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_102_050_C
+0.000	6.858	00.mp3	You walk into the student council room. Hidetoshi sits at the table, scowling, while two council members stand over him.
+4.900	4.574	01.mp3	The two of them walk out, and the door shuts behind them. You go over to Hidetoshi.

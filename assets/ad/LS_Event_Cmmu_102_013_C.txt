@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_102_013_C
+0.000	2.688	00.mp3	In your classroom, Mitsuru comes over to your desk.
