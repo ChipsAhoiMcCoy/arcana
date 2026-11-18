@@ -1,2 +1,0 @@
-#scene LS_Event_Qest_600_320_C
-0.200	2.272	00.mp3	The Velvet Room, with Igor and Elizabeth.

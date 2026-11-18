@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Qest_610_110_C", "title": "Elizabeth at Paulownia Mall", "cues": [{"at": 0.75, "text": "The mall fountain. The hero and Elizabeth walk up to it."}, {"at": 12.3, "text": "Elizabeth flings handful after handful of coins into the fountain."}, {"at": 20.7, "text": "Elizabeth turns and walks off. The hero follows."}, {"at": 23.9, "text": "They stop at a police box, beside a board of posters."}, {"at": 27.4, "text": "Elizabeth steps up to the window."}, {"at": 30.6, "text": "She turns to the posters."}, {"at": 34.8, "text": "Elizabeth walks off. The hero follows."}, {"at": 38.9, "text": "Red padded club doors behind a rope line."}, {"at": 42.1, "text": "Elizabeth walks up to the doors."}, {"at": 44.4, "text": "She turns back to the hero."}, {"at": 49.3, "text": "Elizabeth dances in front of the doors, flinging her arms out in wide poses."}, {"at": 60.7, "text": "Elizabeth walks away, leaving the hero by the doors."}, {"at": 63.9, "text": "She stops by a long pool."}, {"at": 66.0, "text": "Then she hurries back to the hero."}, {"at": 72.9, "text": "Later, by a stairway."}]}
+{
+ "movie": "LS_Event_Qest_610_110_C",
+ "title": "Elizabeth at Paulownia Mall",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Paulownia Mall. You and Elizabeth walk up to the fountain in the middle of the square."
+  },
+  {
+   "at": 10.9,
+   "text": "Elizabeth flings handful after handful of coins into the fountain."
+  },
+  {
+   "at": 20.7,
+   "text": "Elizabeth turns and walks off, and you follow her to a police box with an officer behind its window and a board of wanted posters beside it."
+  },
+  {
+   "at": 33.67,
+   "text": "Elizabeth leads you on to the padded doors of a club behind a rope line. Elizabeth turns back to you, then dances in front of the closed doors, flinging her arms out in wide poses."
+  },
+  {
+   "at": 60.67,
+   "text": "Elizabeth walks off to another fountain, leaving you where you stand. She runs off to look at the third, then hurries back to you."
+  }
+ ]
+}
