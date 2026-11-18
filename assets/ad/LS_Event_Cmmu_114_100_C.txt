@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_114_100_C
+0.000	3.863	00.mp3	The bar at Club Escapade. You sit beside Mutatsu at the counter.
+13.000	5.171	01.mp3	Mutatsu gets up from the counter and stands beside you. He holds out a gift, and you take it.
+19.000	2.438	02.mp3	Mutatsu turns and walks away from the bar.

@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_114_100_C",
+ "title": "Mutatsu says goodbye",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The bar at Club Escapade. You sit beside Mutatsu at the counter."
+  },
+  {
+   "at": 13.0,
+   "text": "Mutatsu gets up from the counter and stands beside you. He holds out a gift, and you take it."
+  },
+  {
+   "at": 19.0,
+   "text": "Mutatsu turns and walks away from the bar."
+  }
+ ]
+}
