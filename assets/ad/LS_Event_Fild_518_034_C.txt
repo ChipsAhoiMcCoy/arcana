@@ -1,4 +1,4 @@
 #scene LS_Event_Fild_518_034_C
-2.400	1.970	00.mp3	A tall white clock with a pendulum.
-5.000	1.714	01.mp3	The hero strolls up to the clock.
-8.500	1.073	02.mp3	He looks up at it.
+0.250	13.242	00.mp3	You stand alone in a hall of tall pillars. A tall clock with a swinging pendulum rises from a ring of lights in the floor, and a small object lies near it. You walk up to the clock, hands in your pockets, and look up at it.
+10.570	3.140	01.mp3	You turn aside and read through a small booklet in your hand.
+14.000	3.307	02.mp3	You lay a hand on the clock. Its hands turn and it chimes.

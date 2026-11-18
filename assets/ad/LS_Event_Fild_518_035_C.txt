@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_518_035_C
-0.400	2.229	00.mp3	The hero strolls up to the tall white clock.
-4.600	2.368	01.mp3	He raises a hand to it. Its hands turn.

@@ -1,3 +1,0 @@
-#scene LS_Event_Fild_518_010_C
-0.300	1.993	00.mp3	The hero lays a hand on a tall clock.
-2.500	1.689	01.mp3	Sparkles swirl up around him.

@@ -1,2 +1,3 @@
 #scene LS_Event_Fild_518_037_C
-1.500	3.431	00.mp3	A Shadow, a black mass of clawed arms, scuttles out of sight.
+0.200	6.546	00.mp3	You run across the floor. Ahead crouches a Shadow, a black mass of clawed arms, with a flickering aura around it.
+1.400	3.990	01.mp3	It charges wildly past you, then stops and casts about, searching.

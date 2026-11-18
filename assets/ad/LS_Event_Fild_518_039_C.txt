@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_518_039_C
-1.300	2.898	00.mp3	A Shadow, a black mass of clawed arms, searches about.
-4.400	1.626	01.mp3	It lunges, then flinches.
+0.200	5.300	00.mp3	You walk into a hall. Ahead, a Shadow, a black mass of clawed arms, prowls toward you.
+1.170	4.906	01.mp3	It searches about and spots you, then turns and flees, and stops to cower in place.
