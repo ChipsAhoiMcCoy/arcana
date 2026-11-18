@@ -2,4 +2,5 @@
 0.000	2.982	00.mp3	You are in the dorm kitchen with Fuuka, making gyoza.
 6.670	1.763	01.mp3	Yukari walks into the kitchen.
 24.170	8.437	02.mp3	The gyoza are cooked. You sit at the dining table with Fuuka and Yukari, each with a plate of gyoza, a bowl of rice and a dipping dish.
-35.330	2.831	03.mp3	Fuuka holds out a pair of headphones, and you take them.
+30.670	3.011	03.mp3	Yukari walks off, leaving you and Fuuka at the table.
+35.330	2.831	04.mp3	Fuuka holds out a pair of headphones, and you take them.

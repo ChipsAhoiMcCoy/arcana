@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_735_C
-0.000	7.109	00.mp3	The dorm lounge. You sit with Mitsuru over cups of tea and a plate of snacks she has set out, and she holds her cup as she talks.
+0.000	11.255	00.mp3	The dorm lounge. You sit beside Mitsuru on the sofa, cups of tea and a basket of snacks on the table in front of you. She sits with her arms folded; you lean forward, elbows on your knees.

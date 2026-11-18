@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_006_020_C
 0.000	6.048	00.mp3	You sit with Fuuka in the open-air corridor behind the school building again. A stray cat pads up to you.
-11.490	2.679	01.mp3	The cat jerks back from the food and darts away.
+11.490	6.686	01.mp3	Fuuka crouches and sets the open bento down in front of the cat. The cat sniffs it, jerks back and darts away.
 16.670	2.248	02.mp3	Fuuka tries a bite of the bento herself.

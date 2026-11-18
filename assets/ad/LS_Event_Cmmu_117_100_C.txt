@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_117_100_C
-0.000	5.826	00.mp3	Naganaki Shrine. Akinari has been waiting for you, and he smiles as you sit down beside him.
+0.000	4.474	00.mp3	Naganaki Shrine. You sit beside Akinari on a bench, and he smiles at you.
 13.500	5.359	01.mp3	Akinari hands you a worn notebook. Then he gets to his feet and turns a little away from you.
-20.670	8.070	02.mp3	Akinari smiles at you, then fades away until he is gone. You get up with a start and turn to the place where he stood, your face falling.
+20.670	9.778	02.mp3	Akinari smiles at you. In a flash of light he breaks into drifting sparks until he is gone. You get up with a start and look to where he stood, your face falling.

@@ -4,7 +4,7 @@
  "cues": [
   {
    "at": 2.33,
-   "text": "Outside the dorm, Koromaru sits beside you. The girl in the floral shirt and the naughty-looking boy run up to him."
+   "text": "Outside the dorm, you sit on the front steps with Koromaru sitting at your side. The girl in the floral shirt and the naughty-looking boy run up to him."
   },
   {
    "at": 12.0,
@@ -16,7 +16,11 @@
   },
   {
    "at": 38.33,
-   "text": "The old man has sat down, and you play shogi with him, Koromaru beside you. Mitsuru walks over from the dorm."
+   "text": "You and the old man now sit on the dorm steps with a shogi board between you, Koromaru sitting by the board. Mitsuru walks up from the street, her school bag in hand."
+  },
+  {
+   "at": 52.67,
+   "text": "The game over, the old man walks off down the street, leaving you standing at the foot of the steps with Mitsuru and Koromaru."
   },
   {
    "at": 64.83,

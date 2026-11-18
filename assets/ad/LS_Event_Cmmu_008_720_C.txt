@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_008_720_C
 0.170	8.200	00.mp3	The dorm lounge. You and Ken sit in front of the TV as the last detective movie ends, Ken leaning forward, his eyes on the screen.
-14.500	3.095	01.mp3	Ken's eyes fall shut where he sits, then snap open.
+14.500	5.223	01.mp3	Ken yawns behind his hand and rubs his eyes; his eyes drift shut, then snap open.
 16.500	3.984	02.mp3	A little later, Ken sits beside you fast asleep, his eyes closed.

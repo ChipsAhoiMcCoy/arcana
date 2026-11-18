@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_005_790_C
-1.100	6.469	00.mp3	The footage shows Mitsuru's room in the dorm. Mitsuru walks across the room alone and sits down at a small table.
+1.100	7.877	00.mp3	The footage shows Mitsuru's room in the dorm. Mitsuru walks in wrapped in a bath towel and sits down in an armchair beside a low table.
 13.000	4.626	01.mp3	Mitsuru picks up a magazine from the table and opens it, leafing through the pages.
 19.330	4.478	02.mp3	Mitsuru sets the magazine back down, then gets up and walks away across the room.
