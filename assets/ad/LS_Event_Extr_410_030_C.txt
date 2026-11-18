@@ -1,7 +1,4 @@
 #scene LS_Event_Extr_410_030_C
-0.400	0.920	00.mp3	The command room.
-1.750	2.889	01.mp3	The team sits around a table with a metal case on it.
-5.000	3.170	02.mp3	Ikutsuki opens it: an armband and cartridges.
-10.550	1.480	03.mp3	Yukari points to the case.
-19.900	1.677	04.mp3	Ikutsuki gets up to leave.
-37.100	1.327	05.mp3	A clock nears midnight.
+0.000	8.076	00.mp3	The dorm's command room. You sit around the table with Yukari, Junpei, Akihiko, Mitsuru, Fuuka and Ikutsuki, the chairman.
+1.670	7.036	01.mp3	Ikutsuki gets up, steps over to a metal case and opens it: inside are an armband and a set of cartridges.
+19.830	2.368	02.mp3	Ikutsuki stands and leaves through the door.

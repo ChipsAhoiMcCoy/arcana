@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_450_040_C
-2.630	1.221	00.mp3	The hero eats alone.

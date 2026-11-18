@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_450_010_C
-0.200	0.828	00.mp3	An arcade.
-2.670	1.060	01.mp3	The hero plays.

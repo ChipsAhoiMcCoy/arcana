@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_410_080_C
-2.050	1.269	00.mp3	Back in the entrance hall.
+0.000	3.544	00.mp3	Back in Tartarus's entrance hall, the six of you stand together.

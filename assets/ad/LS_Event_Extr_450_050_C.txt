@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_450_050_C
-0.030	0.839	00.mp3	A restaurant.
-2.670	1.022	01.mp3	The hero eats.

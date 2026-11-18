@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Extr_410_060_C", "title": "Split up in Tartarus", "cues": [{"at": 0.25, "text": "In Tartarus, the hero stands alone among twisted spires."}, {"at": 8.4, "text": "Elsewhere, Yukari stands alone by a low wall."}, {"at": 12.0, "text": "She walks forward, looking around."}, {"at": 17.6, "text": "A Shadow with clawed hands creeps up behind her."}, {"at": 21.9, "text": "The hero dashes off."}, {"at": 26.68, "text": "He shields her."}]}
+{
+ "movie": "LS_Event_Extr_410_060_C",
+ "title": "Split up in Tartarus",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Inside Tartarus, you stand alone in a corridor. You turn around: no one else is there."
+  },
+  {
+   "at": 6.17,
+   "text": "Elsewhere on the floor, Yukari stands alone, then walks slowly forward, looking around."
+  },
+  {
+   "at": 17.33,
+   "text": "A Shadow with clawed hands creeps up behind Yukari and lunges at her."
+  },
+  {
+   "at": 21.67,
+   "text": "You break into a run through the corridors. You reach Yukari and plant yourself between her and the Shadow."
+  }
+ ]
+}

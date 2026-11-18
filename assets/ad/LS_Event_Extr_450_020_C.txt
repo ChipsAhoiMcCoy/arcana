@@ -1,4 +1,0 @@
-#scene LS_Event_Extr_450_020_C
-0.050	1.845	00.mp3	A cafe. The hero sits alone.
-2.100	1.171	01.mp3	He sips his coffee.
-6.850	1.028	02.mp3	Steam rises.
