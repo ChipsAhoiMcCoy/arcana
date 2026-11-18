@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_109_050_C
+0.000	4.444	00.mp3	You sit with Chihiro in the quiet open-air corridor behind the school building.

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_109_060_C
+0.000	4.652	00.mp3	Inside Bookworms, the used bookstore, Chihiro stands with you among the shelves.

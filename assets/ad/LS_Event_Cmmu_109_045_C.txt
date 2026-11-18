@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_109_045_C
+0.000	6.293	00.mp3	In Paulownia Mall's Fountain Square, Chihiro walks a few steps ahead of you, then turns back to you, smiling.
+3.830	8.373	01.mp3	She hurries off across the square, and you walk away to wait for her. Later, as she stands on her own, a young man walks up and stops in front of her.
+16.470	3.720	02.mp3	You walk over to them and face the man. The man turns and walks away.
+37.170	2.068	03.mp3	Chihiro runs off across the square.

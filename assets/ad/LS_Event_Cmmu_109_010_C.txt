@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_109_010_C
+0.000	6.376	00.mp3	In the school's main lobby, with students passing through, a girl in glasses walks up to you, holding her school bag.
