@@ -124,9 +124,12 @@ class CampItem : public MenuScreen {
       for (int i = 0; slots && i < slots->num; ++i) {
         int sl = slots->data[i];
         std::string label;
-        for (auto& o : stock) if (o.slot == sl) label = persona::describe(o.id, o.level);
-        if (label.empty() && i < (int)stock.size()) label = persona::describe(stock[i].id, stock[i].level);
-        b.add_item(slot("item.persona", i), game_item(pers_, i, [label] { return label; }));
+        int pid = 0;
+        for (auto& o : stock) if (o.slot == sl) label = persona::describe(o.id, o.level), pid = o.id;
+        if (label.empty() && i < (int)stock.size()) label = persona::describe(stock[i].id, stock[i].level), pid = stock[i].id;
+        auto v = game_item(pers_, i, [label] { return label; });
+        look_persona(v, pid);
+        b.add_item(slot("item.persona", i), v);
       }
       b.pop_context();
       if (int c = pers_.cursor(); c >= 0) b.set_start(slot("item.persona", c));
