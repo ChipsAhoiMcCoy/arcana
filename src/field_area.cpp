@@ -90,8 +90,14 @@ std::string area_name() {
   static std::string last;
   std::string a = area_name_now();
   if (world::player()) { if (a != strings::kUnknownArea) last = a; return a; }
-  int major = 0, minor = 0;   // a field's set is loaded (none at the title: the last place is another game's)
-  return a == strings::kUnknownArea && !last.empty() && area_ids(major, minor) ? last : a;
+  if (a != strings::kUnknownArea || last.empty()) return a;
+  // Only while a field's set is loaded (none at the title: the last place is another game's). The shop's set has no
+  // hit actors (area_ids finds none): its streamed levels name it (LV_F103_119_001_BG).
+  for (auto& l : world::visible_levels()) {
+    int ma = 0, mi = 0;
+    if (sscanf(l.c_str(), "LV_F%d_%d", &ma, &mi) == 2 && ma >= 100) return last;
+  }
+  return a;
 }
 
 static std::string area_name_now() {
