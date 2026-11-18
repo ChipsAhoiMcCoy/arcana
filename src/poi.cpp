@@ -4,7 +4,7 @@
 //    mKeyPushBluePrint_ / mOverlapBluePrint_ (an unnamed box with only an overlap blueprint is a trigger), and the
 //    flags that retire it: mExecutedFlagName_, mOffFlagName_, mIgnoreFlagName_.
 //  - AFldNpcActor: bHidden, Children, mNpcBaseClass_ / mCharaBaseClass_ (a placeholder has none of them),
-//    mCharaModelList_ (empty: no character stands there).
+//    mCharaModelList_ (empty: no character stands there), mIconActor_ (the game's talk icon: someone is, a body or not).
 //  - AFldDungeonObjectActor: ObjType and m_pHitActorList (a chest's kind for its hit), Box (a breakable's body).
 //  - UFldDungeonMissingController.m_pMissingPerson, +0x108 / +0x168 (its case: missing_name); AEnemySymbolBaseCore
 //    (the roaming Shadows) with the enemy manager's holders (shadow::enemy_holders).
@@ -254,8 +254,11 @@ std::vector<Poi> scan(float radius) {
     // Nobody standing in it: no character model loaded (mCharaModelList_, a TMap: its element array's count is 0).
     // Three such spots on the dorm's third floor (FldNpcActor_298_*, a base class but no model and no icon, 5/4
     // evening, 2026-11-12) were listed as "Person" 2 m away, and the auto-walk stalled against their collision.
+    // A spot the game gave an interaction icon (mIconActor_) is someone to talk to even without a model of its own:
+    // the Weak Cat at the Station Outskirts (FldNpcActor_424_000; its body is placed in the level, the spot's only
+    // child is its talk icon, 2026-11-18) was left out.
     auto* models = field<TArray<uint8_t>>(a, "mCharaModelList_");
-    if (models && models->num == 0) continue;
+    if (models && models->num == 0 && !get<UObject*>(a, "mIconActor_")) continue;
     // A vendor is a shop: talking opens its menu. The game marks most with the Shop icon (Octopia, 2026-11-16: listed
     // as a Person before); the rest by their script (core::npc_sells).
     bool sells = icon_of(a) == "Shop";

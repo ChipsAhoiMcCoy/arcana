@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Field
+- Characters the game lets you talk to but who have no model of their own in their spot are listed again: the Weak Cat at the Station Outskirts was left off the list and the radar.
+
 ## 0.4.0
 
 ### Audio description
