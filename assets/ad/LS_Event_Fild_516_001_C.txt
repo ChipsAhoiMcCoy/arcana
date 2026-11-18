@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_516_001_C
-1.150	1.040	00.mp3	A smoking case.
