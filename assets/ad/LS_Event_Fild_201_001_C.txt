@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_201_001_C
-0.050	1.020	00.mp3	The dorm rooftop.
-6.200	2.350	01.mp3	Planters full of soil line the rooftop wall.
+0.050	6.763	00.mp3	On the dorm rooftop, Ikutsuki stands waiting for you beside a row of planters full of soil, set out along the wall.

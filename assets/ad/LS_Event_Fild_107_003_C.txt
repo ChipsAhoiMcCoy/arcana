@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_107_003_C
-0.300	2.019	00.mp3	Aigis runs up a path through the woods.
-2.800	1.789	01.mp3	The hero stops and watches her.
+0.200	4.934	00.mp3	Far up the path, the girl from the pier runs on through the woods, and you stop to watch her.

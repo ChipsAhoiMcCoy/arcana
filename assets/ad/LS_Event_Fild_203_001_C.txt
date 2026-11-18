@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_203_001_C
-0.050	2.701	00.mp3	The dorm lounge. Mitsuru walks up to the hero.
-3.400	1.818	01.mp3	Junpei strolls over to join them.
+3.350	2.531	00.mp3	Junpei walks over to join you and Mitsuru.

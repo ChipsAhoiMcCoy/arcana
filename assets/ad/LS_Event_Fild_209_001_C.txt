@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_209_001_C
-0.050	1.267	00.mp3	A box on the front desk.

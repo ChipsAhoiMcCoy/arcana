@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_208_001_C
-0.050	1.730	00.mp3	The hero walks along a hallway.

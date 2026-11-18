@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_103_002_C
-0.350	1.965	00.mp3	Elizabeth waits by a door in an alley.
+0.350	5.420	00.mp3	Elizabeth stands outside the Velvet Room door in Paulownia Mall, waiting. You walk up to her.

@@ -1,5 +1,0 @@
-#scene LS_Event_Fild_103_004_C
-1.050	3.904	00.mp3	A claw machine full of boxed prizes. The hero works the controls.
-6.000	3.170	01.mp3	He steps back, hands in his pockets, and watches the claw.
-13.500	1.135	02.mp3	The claw lifts a box.
-15.000	1.313	03.mp3	The hero looks pleased.
