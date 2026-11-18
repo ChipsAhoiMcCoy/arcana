@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_600_530_C
+0.000	3.254	00.mp3	You sit at your desk in the classroom. A man walks up to you.

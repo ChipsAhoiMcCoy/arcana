@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_600_580_C
+0.000	5.940	00.mp3	The summer festival at Naganaki Shrine, crowded with people. You walk through it with Mitsuru and Aigis.

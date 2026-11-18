@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_600_633_C
+0.000	4.247	00.mp3	Inside Wilduck Burger, in a staff uniform, you clean one of the tables.

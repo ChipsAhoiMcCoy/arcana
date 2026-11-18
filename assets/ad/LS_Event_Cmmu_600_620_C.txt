@@ -1,0 +1,5 @@
+#scene LS_Event_Cmmu_600_620_C
+0.000	7.139	00.mp3	In a classroom still full of culture festival displays, you stand with Kenji, Kazushi and Yukari, ready to clear it out.
+18.330	2.297	01.mp3	Junpei and Aigis walk over to the group.
+73.000	2.804	02.mp3	Yuko comes into the room and walks over to the group.
+85.670	5.227	03.mp3	Chihiro hurries in, looking flustered. Yuko and Yukari both stare at you, frowning.
