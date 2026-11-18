@@ -24,6 +24,14 @@ static WeakObj g_cam_mgr;
 static bool g_north_on = false;
 static float g_north_yaw = -90.0f;
 static float listener_yaw() { return g_north_on ? g_north_yaw : g_cam_yaw; }
+// The listener a tick ahead: the hero's place and the camera's yaw are the last frame's when the mod reads them, and a
+// sound is heard after this frame, so world::spot hears from where he and the camera will be at the next tick (as far
+// on as they went over the last one). A jump (a cut, a teleport, a field change) is not a move: no lead then.
+static bool g_lead_on = true;          // dev: /world?lead=0|1
+static FVector g_lead{};               // cm the hero went over the last tick
+static float g_yaw_lead = 0;           // degrees the camera turned over the last tick
+constexpr float kLeadMaxCm = 100.0f;   // a tick's move past this is a jump
+constexpr float kLeadMaxDeg = 20.0f;   // a tick's turn past this is a cut
 void set_north(bool on, float yaw) { g_north_on = on; g_north_yaw = yaw; }
 bool north_up() { return g_north_on; }
 float camera_yaw() { return g_cam_yaw; }
@@ -163,6 +171,24 @@ void tick() {
     call(cm, r);
     g_cam_yaw = r.ret<FRotator>().yaw;
   }
+  {
+    static FVector last{};
+    static float last_yaw = 0;
+    static bool have = false;
+    FVector me;
+    const bool now_have = player_location(me);
+    g_lead = {};
+    g_yaw_lead = 0;
+    if (have && now_have && g_lead_on) {
+      const FVector d{me.x - last.x, me.y - last.y, me.z - last.z};
+      if (std::hypot(d.x, d.y) < kLeadMaxCm && std::fabs(d.z) < kLeadMaxCm) g_lead = d;
+      const float turn = std::remainder(g_cam_yaw - last_yaw, 360.0f);
+      if (std::fabs(turn) < kLeadMaxDeg) g_yaw_lead = turn;
+    }
+    have = now_have;
+    if (now_have) last = me;
+    last_yaw = g_cam_yaw;
+  }
   // The sounds that are playing stay at their places while the hero walks and the camera turns.
   if (FVector me; player_location(me)) audio::follow([&](float x, float y, float z) { return spot(me, FVector{x, y, z}); });
   // A mode change (daily -> dark hour -> dungeon) swaps the active player actor: the one held is let go the frame it
@@ -275,7 +301,8 @@ Hit line(const FVector& from, const FVector& to, const char* profile, std::vecto
 std::string status() {
   FVector p{};
   bool have = player_location(p);
-  return std::format("player={} at ({:.0f}, {:.0f}, {:.0f}) camera yaw {:.1f}", have ? name_of(player()) : "none", p.x, p.y, p.z, g_cam_yaw) + (g_north_on ? std::format(" north {:.0f}", g_north_yaw) : std::string());
+  return std::format("player={} at ({:.0f}, {:.0f}, {:.0f}) camera yaw {:.1f}", have ? name_of(player()) : "none", p.x, p.y, p.z, g_cam_yaw) + (g_north_on ? std::format(" north {:.0f}", g_north_yaw) : std::string()) +
+         std::format(" lead={} ({:.0f}, {:.0f}) cm, {:.1f} deg", g_lead_on, g_lead.x, g_lead.y, g_yaw_lead);
 }
 
 // The field streams whole districts at once: an actor counts only if its level is the persistent level or a streamed
@@ -383,7 +410,8 @@ float camera_bearing(const FVector& from, const FVector& to) { return core::bear
 // The hero's location is the capsule's middle and most targets (navmesh points, hit boxes) sit near the floor: see
 // core::listener_spot for how height is counted.
 audio::Spot spot(const FVector& from, const FVector& to) {
-  core::ListenerSpot l = core::listener_spot(vec3(from), vec3(to), listener_yaw());
+  const FVector ear{from.x + g_lead.x, from.y + g_lead.y, from.z + g_lead.z};
+  core::ListenerSpot l = core::listener_spot(vec3(ear), vec3(to), listener_yaw() + (g_north_on ? 0.0f : g_yaw_lead));
   audio::Spot s;
   s.right = l.right;
   s.ahead = l.ahead;
@@ -499,6 +527,7 @@ void register_routes() {
   }, "?class=FldHitCore&r=cm actors near the player");
   dev::route("/world", [](const dev::Request& r, int&) {
     auto out = std::make_shared<std::string>("timeout\n");
+    if (dev::has(r, "lead")) g_lead_on = dev::arg(r, "lead") == "1";
     float range = (float)dev::arg_num(r, "range", 600);
     bool skip = dev::arg(r, "people") == "0";
     hooks::run_on_game_thread([out, range, skip] {

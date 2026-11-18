@@ -32,6 +32,7 @@
 
 ### Sound timing
 - The sonar's beats, the focused thing's beat and the strike ring now keep an even rhythm. Each beat used to start on the game's next frame and the mixer's next 10 ms block, so beats one period apart could land up to a frame and a half apart. Now each one starts at the exact moment it is due.
+- Sounds from places (the sonar, a Shadow's snarl, the focused thing) are heard from where you and the camera will be a frame later, as the wall tones are, so they keep their place as you run past or turn the camera.
 ### Title screen
 - The credits that Z (L1) opens from the title menu are announced: "Credits", then "Credits paused" when you pause them, with what to press. Before, they rolled in silence and the title menu took no keys until they ended, so the game seemed to have stopped responding. Enter (A) pauses them; while they are paused, Tab (the Menu button) skips them and Enter resumes them. Backslash reads the names on screen.
 
