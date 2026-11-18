@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_460_010_C
-1.200	1.745	00.mp3	The hero works a café counter.
-7.000	1.359	01.mp3	A suited man beside him.

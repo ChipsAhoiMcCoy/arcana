@@ -1,4 +1,0 @@
-#scene LS_Event_Extr_460_030_C
-1.200	1.262	00.mp3	A cinema snack bar.
-3.500	1.046	01.mp3	The hero serves.
-6.500	1.355	02.mp3	An aproned co-worker.

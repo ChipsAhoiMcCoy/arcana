@@ -1,5 +1,5 @@
 #scene LS_Event_Extr_450_065_C
-0.050	0.720	00.mp3	Burgers.
-1.840	1.174	01.mp3	Piles of burgers.
-9.600	0.708	02.mp3	He slumps.
-12.050	1.333	03.mp3	He hunches over the tray.
+0.030	5.217	00.mp3	Wilduck Burger. You sit at a table, staring wide-eyed at a tray piled high with burgers.
+9.500	2.033	01.mp3	You sit hunched over the tray, wincing.
+14.000	2.033	02.mp3	You sit hunched over the tray, wincing.
+18.500	2.033	03.mp3	You sit hunched over the tray, wincing.

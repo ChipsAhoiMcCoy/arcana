@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_460_025_C
-0.050	1.909	00.mp3	Be Blue V is packed with customers.
-7.800	1.366	01.mp3	A girl beside the hero.

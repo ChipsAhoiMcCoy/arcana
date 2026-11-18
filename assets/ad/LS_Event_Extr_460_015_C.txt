@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_460_015_C
-1.020	0.995	00.mp3	A busy café.
-5.850	1.342	01.mp3	A suited man beside him.

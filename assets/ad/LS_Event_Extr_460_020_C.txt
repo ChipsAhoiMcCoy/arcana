@@ -1,3 +1,0 @@
-#scene LS_Event_Extr_460_020_C
-1.350	0.810	00.mp3	Be Blue V.
-6.030	1.100	01.mp3	A girl in a dress.

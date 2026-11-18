@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_450_060_C
-2.690	0.981	00.mp3	A burger shop.
