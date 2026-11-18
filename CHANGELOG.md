@@ -13,6 +13,7 @@
 ### Mail
 - Opening a mail from the list reads its text: the sender and subject, which the list just said, are no longer read again first. The review key still reads it whole.
 - Going back from a mail to the list says the mail you were on again.
+- Turning down a hangout or an outing in a mail's reply takes you back to the inbox, on that mail, instead of leaving you on the mail you already answered.
 
 ### Log and travel
 - The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.

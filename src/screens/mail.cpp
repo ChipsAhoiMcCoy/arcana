@@ -9,6 +9,7 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "hooks.h"
+#include "log.h"
 #include "msg.h"
 #include "seh.h"
 #include "ue/scan.h"
@@ -139,30 +140,41 @@ class MailScreen : public MenuScreen {
   // An open mail is read whole when it opens; its keys (reply, next, scroll) are the game's.
   bool holds_keys() override { UObject* d = draw_.get(); return d && !flag(d, "bIsStartMailAnim"); }
   std::string title() override { return strings::kMail; }
-  // Back from the thought and reply choice over an open mail: it was read already, so not again whole. The game may
-  // be closing it (the part-time job's mail as the trip's loading begins); if it is still open a moment later, the
-  // player is left on it (turning down a hangout, 2026-11-14): its sender and title say where they are.
-  ULONGLONG back_at_ = 0;
-  static constexpr ULONGLONG kBackWaitMs = 400;
+  // Back from the thought and reply choice over an open mail. Accepting (a hangout, a trip) runs CLOSE_MAIL_MENU,
+  // which sets bit 0x10 of AMailActor +0x388 (close requested; the actor goes on to state 7, closing). Declining
+  // leaves it clear: once the reply's window has closed, the actor is back in state 5 (the open mail taking input,
+  // its reply already made), with nothing left to read. The player is taken back to the list, as the mail's own back
+  // does (the user's call, 2026-11-17), and the list says the row. A mail opened straight (bit 0x20, the morning's
+  // text) closes by itself after a declined reply.
+  bool after_reply_ = false;
+  // The mail actor's state 5 cancel (exe+0x145f220, measured on the 0x69ce3439 build): the list flip (draw +0x2b9),
+  // sound 0x1FE, the list's key help, state 4. Only while state 5 waits for the player (bits 0x10 and 0x20 clear, no
+  // script at +0x360), as the game's own cancel and right-click check.
+  bool back_to_list() {
+    auto* a = (uint8_t*)actor_.get();
+    if (!a) return false;
+    uint32_t bits = *(uint32_t*)(a + 0x388);
+    if (bits & 0x30) { after_reply_ = false; return false; }   // the game is closing it (or will)
+    if (*(int32_t*)(a + 0x294) != 5 || *(void**)(a + 0x360)) return false;   // the reply's window still closing
+    after_reply_ = false;
+    ((void (*)(void*))(scan::exe_base() + 0x145f220))(a);
+    log::writef("mail: declined reply, back to the list");
+    return true;
+  }
   void on_enter() override {
-    back_at_ = 0;
+    after_reply_ = false;
     if (!screens::returning()) { reading_ = false; listed_ = false; said_.clear(); }
-    else if (reading_) back_at_ = GetTickCount64();
+    else if (reading_) after_reply_ = true;
     screens::set_keys(strings::kMailKeys);
   }
-  void on_leave() override { back_at_ = 0; if (!active()) { reading_ = false; said_.clear(); } }   // closed, not covered
+  void on_leave() override { if (!active()) { after_reply_ = false; reading_ = false; said_.clear(); } }   // closed, not covered
   void on_tick() override {
     UObject* d = draw_.get();
     auto* si = field<int32_t>(d, "SelectedIndex");
     if (!si) return;
     bool reading = flag(d, "bIsStartMailAnim");
-    if (back_at_ && !reading) back_at_ = 0;   // back on the list: the list's own entry says it
-    if (back_at_ && GetTickCount64() - back_at_ >= kBackWaitMs) {
-      back_at_ = 0;
-      Mail m = mail(d, *si);
-      std::string s = m.sender.empty() ? m.title : m.sender + ". " + m.title;
-      if (!s.empty()) say(s, true);
-    }
+    if (after_reply_ && !reading) after_reply_ = false;
+    if (after_reply_) guarded([&] { back_to_list(); });
     if (reading && !reading_) {
       Mail m = mail(d, *si);
       // Not laid out yet: wait for it while the list flips to the mail (bIsFlipToMainAnim, cleared by the flip's
