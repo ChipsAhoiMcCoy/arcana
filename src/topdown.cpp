@@ -104,8 +104,16 @@ float map_turn(int major, int minor) {
 // way out of it: up keeps going to the Velvet Room's door, down leads back out. The part is the game's own
 // (GET_FIELD_PARTS_ID: native 0x11af780, then 0x11addf0; the jump's script sets it). The alley alone for now (the
 // user's trial, 2026-11-17).
-struct PartTurn { int major, minor, part; float turn; };
-constexpr PartTurn kPartTurns[] = {{103, 101, 3, 90.0f}};
+// A room with one way in (a whole field: part -1) is turned the same way. Each turn is read from the game's own start
+// points: the way the hero faces on arriving, against the way he faces when sent back out (turned round, that is the
+// way he walked in). Only rooms whose every way in gives the same turn are listed: a wrong turn is worse than none
+// (the user, 2026-11-17). Of the 39 doors between fields, the others keep the walker's heading or disagree between
+// their ways in (Iwatodai Station and the strip mall, the faculty office).
+struct RoomTurn { int major, minor, part; float turn; };
+constexpr RoomTurn kRoomTurns[] = {
+  {103, 101, 3, 90.0f},    // Fountain Square's back alley, to the Velvet Room (starts 1011 / 1010; tried in the game)
+  {101, 141, -1, 180.0f},  // the school rooftop: its stairs turn back, the hero steps out facing the way he climbed from
+};
 float g_turn = 0;              // this part's turn from the map's north
 int g_part = -1;               // the field part, as the game has it
 float room_north() { return std::remainder(g_north + g_turn, 360.0f); }
@@ -124,8 +132,9 @@ int field_part() {
 void part_tick() {
   const int part = field_part();
   float turn = 0;
-  for (const PartTurn& t : kPartTurns)
-    if (t.major == g_field_major && t.minor == g_field_minor && t.part == part) turn = t.turn;
+  if (settings::on(settings::TurnedRooms))
+    for (const RoomTurn& t : kRoomTurns)
+      if (t.major == g_field_major && t.minor == g_field_minor && (t.part == part || t.part < 0)) turn = t.turn;
   if (part != g_part) log::writef("topdown: field part {}", part);
   g_part = part;
   if (turn == g_turn) return;
@@ -470,6 +479,10 @@ void install() {
       UObject* hit = cop ? get<UObject*>(cop, "CurrentHitRef") : nullptr;
       walk += std::format("zones held {} scene camera {}\n", g_zones.size(), hit ? name_of(hit) : "none");
       walk += std::format("field part {} turned {:.0f}: room north yaw {:.0f}\n", g_part, g_turn, room_north());
+      if (UObject* hero = world::player()) {
+        const float y = world::yaw_of(hero);
+        walk += std::format("hero yaw {:.0f}, {:.0f} clockwise from the room's north\n", y, std::remainder(y - room_north(), 360.0f));
+      }
       return walk + std::format("topdown setting={} active={} exploring={} operator state={} keys={} listener_set={} h={:.0f}\n"
                          "camera speed={:.1f} margin={:.1f} saved={} ({:.1f}, {:.1f}) relocks={} camera_yaw={:.1f} scan held={} on={}\n",
                          settings::on(settings::TopDown), g_active, world::exploring(), o ? get<int32_t>(o, "State", -1) : -1,

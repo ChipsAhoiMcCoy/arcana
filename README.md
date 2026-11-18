@@ -123,6 +123,7 @@ They work like any other menu: up and down choose (at either end a further press
 **Exploring**
 
 - Top-down exploration: on, off (see below)
+- Keep your heading through passages: on, off. In top-down exploration, rooms the game moves you into turned around are turned to match (see below)
 - Points of interest range: 60 meters; 20, 40, 100 or 150
 - Wall tones: on, off
 - Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
@@ -288,7 +289,7 @@ The game's camera sits behind the hero and turns, so a sound "ahead" kept changi
 - While you walk freely the camera faces north and cannot turn. The scene cameras some places switch to (by the Velvet Room's door, the station, your room) are turned off, so the north camera shows everywhere. Up always walks north.
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
 - North is the corner map's up, place by place: where the game draws a map turned (Port Island Station, your room, the Command Room), north turns with it.
-- A room the game reaches by a jump can be turned so the way you walked in stays up. The back alley to the Velvet Room is: walk north up the passage from Fountain Square and up keeps leading along the alley to the door, down leads back out.
+- Where the game moves you into a room turned around, that room is turned so the way you walked in stays up (the Keep your heading through passages setting, on by default). The back alley to the Velvet Room: walk north up the passage from Fountain Square, and up keeps leading along the alley to the door while down leads back out. The school rooftop: its stairs turn back on themselves, so on the roof up leads away from the stairwell door and down leads back to it. Compass words in a turned room follow the turn. Only rooms with a single way in whose turn the game's own data gives exactly are turned.
 - The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). While you move, the direction behind your walk stays silent.
 - Points of interest give compass directions ("north-east"), and the right stick scans (see On a controller).
 

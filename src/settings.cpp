@@ -48,6 +48,8 @@ static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90
 static const Def kDefs[Count] = {
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
+  // in the top-down mode, a room reached by a jump is turned so the way walked in stays up (topdown.cpp kRoomTurns)
+  {"turned_rooms", strings::kSetTurnedRooms, CatExploring, strings::kHelpTurnedRooms, Unit::Toggle, {0, 1}, 1},
   {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Toggle, {0, 1}, 1},
   // how far each wall tone reaches, in meters, in either mode (walltones.cpp; Dark Vision's is 15 ft, 1 to 40)
