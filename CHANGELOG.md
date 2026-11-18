@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Audio description
+- Only 3D story scenes wait for Enter at a description. The animated movies play straight through again, with their descriptions timed between the lines as before 0.4.0: the movie no longer stops at each one.
+
 ## 0.4.0
 
 ### Audio description

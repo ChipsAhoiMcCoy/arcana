@@ -10,8 +10,9 @@
 // core::ad::Schedule decides what plays when (pauses, seeks, a skip); here its actions reach the mixer's
 // narrator, and the movie's own volume (Mana SetVolume) dips under a description. Every cue's end is logged
 // ("ad: <key> cue N done|cut ... played P of T s") and kept for /ad/status: the in-game tests read those.
-// With DescriptionWait on, each description is a box like a message window: it pauses its movie or scene and waits
-// for Enter (see "the description box" below).
+// With DescriptionWait on, each description in a 3D scene is a box like a message window: it pauses the scene and waits
+// for Enter (see "the description box" below). The animated movies' descriptions are timed to fit between their lines
+// and never stop the movie.
 #include "ad.h"
 #include "audio.h"
 #include "core/ad_schedule.h"
@@ -206,9 +207,8 @@ void stop_all() {
   g_voice_id = -1;
 }
 
-// ---- the description box (setting DescriptionWait) ----
-// A description pauses its movie (Mana Pause) or scene (the SequencePlayer's Pause: what the game's own holds at a
-// message do) and waits like a message window: the window-open sound, the description (the narrator, then the
+// ---- the description box (setting DescriptionWait; 3D scenes only) ----
+// A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the window-open sound, the description (the narrator, then the
 // line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the sound a message
 // window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
 // plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
@@ -613,7 +613,8 @@ void tick() {
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
   // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
   sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
-  const bool wait = settings::on(settings::DescriptionWait);
+  // only 3D scenes wait: an animated movie's descriptions are timed to fit its gaps (the user's call, 2026-11-18)
+  const bool wait = c.event && settings::on(settings::DescriptionWait);
   sched::Clock sc{playing, c.paused, c.time, c.fast};
   if (g_box >= 0) {
     if (!playing || c.fast || !wait) close_box(playing);
