@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_112_360_C
+0.000	5.471	00.mp3	Paulownia Mall, by the fountain, after the arcade. You and Bebe stop together, and he smiles.
+8.330	2.653	01.mp3	Bebe turns and walks off, back toward the arcade.

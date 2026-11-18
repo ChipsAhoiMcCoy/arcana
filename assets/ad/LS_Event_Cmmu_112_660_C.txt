@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_112_660_C
+0.000	2.527	00.mp3	The school rooftop. You read a letter from Bebe.

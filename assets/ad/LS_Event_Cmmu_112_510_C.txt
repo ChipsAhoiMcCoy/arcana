@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_112_510_C
+0.000	4.741	00.mp3	The home economics room. Bebe works at a sewing machine, and you stay beside him.

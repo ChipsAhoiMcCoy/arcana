@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_110_075_C
+0.030	8.248	00.mp3	Iwatodai Strip Mall. Maiko sits alone on a bench by the takoyaki stand. You and her parents come running up, and she gets to her feet.
+12.330	2.639	01.mp3	Maiko walks over to you while her parents look on.

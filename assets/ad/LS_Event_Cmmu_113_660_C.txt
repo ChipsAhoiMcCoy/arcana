@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_113_660_C
+0.030	5.412	00.mp3	In the dorm lounge, bag in hand, you stop in front of the television. A news program is on.

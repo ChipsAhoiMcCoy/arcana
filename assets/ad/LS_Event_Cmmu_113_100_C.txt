@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_113_100_C
+4.670	3.833	00.mp3	At Port Island Station, Tanaka holds out a letter, and you take it.
+17.170	1.669	01.mp3	Tanaka turns and walks away.

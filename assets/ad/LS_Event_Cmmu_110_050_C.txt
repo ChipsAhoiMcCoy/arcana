@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_110_050_C
+0.030	4.162	00.mp3	Naganaki Shrine. Maiko is crying. You sit down with her on a bench.

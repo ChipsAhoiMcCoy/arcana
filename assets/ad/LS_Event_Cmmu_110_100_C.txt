@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_110_100_C
+0.030	4.998	00.mp3	Naganaki Shrine. Maiko clambers up the jungle gym, and you climb up after her.
+2.670	3.730	01.mp3	After a long while of playing, Maiko catches her breath beside you.
+12.330	3.563	02.mp3	Maiko holds out a ring she made from beads and gives it to you.

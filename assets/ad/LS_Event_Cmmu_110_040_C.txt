@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_110_040_C
+0.000	3.267	00.mp3	Naganaki Shrine. Maiko sits beside you on a bench.

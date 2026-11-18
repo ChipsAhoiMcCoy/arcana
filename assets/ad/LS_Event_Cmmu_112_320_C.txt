@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_112_320_C
+0.000	4.528	00.mp3	Iwatodai Strip Mall. You walk through the shops beside Bebe, and he turns to you.
+3.000	4.451	01.mp3	Bebe hurries over to a takoyaki stand called Octopia, and you follow him.

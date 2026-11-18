@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_110_025_C
+0.000	3.706	00.mp3	Wilduck Burger. You and Maiko sit across a table from each other.
+5.400	1.572	01.mp3	Maiko bursts into tears.

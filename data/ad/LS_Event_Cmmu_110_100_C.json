@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_110_100_C",
+ "title": "Maiko's goodbye",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Naganaki Shrine. Maiko clambers up the jungle gym, and you climb up after her."
+  },
+  {
+   "at": 2.67,
+   "text": "After a long while of playing, Maiko catches her breath beside you."
+  },
+  {
+   "at": 12.33,
+   "text": "Maiko holds out a ring she made from beads and gives it to you."
+  }
+ ]
+}

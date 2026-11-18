@@ -1,0 +1,18 @@
+{
+ "movie": "LS_Event_Cmmu_113_010_C",
+ "title": "President Tanaka: the autograph",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Outside Port Island Station, among the passers-by, a man in a suit stands facing you, smiling."
+  },
+  {
+   "at": 6.5,
+   "text": "The man steps up to you and hands you a business card."
+  },
+  {
+   "at": 14.0,
+   "text": "President Tanaka turns his back on you, walks a few steps away and stops, scowling. Tanaka turns around and starts at the sight of you, still standing there. He stomps right up to you, glaring."
+  }
+ ]
+}

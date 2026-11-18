@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_110_070_C
+2.000	3.330	00.mp3	Maiko turns and walks away, leaving you alone at the shrine.
+7.330	2.013	01.mp3	A man and a woman come running up to you.

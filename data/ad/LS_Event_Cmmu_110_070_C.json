@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_110_070_C",
+ "title": "Maiko's parents",
+ "cues": [
+  {
+   "at": 2.0,
+   "text": "Maiko turns and walks away, leaving you alone at the shrine."
+  },
+  {
+   "at": 7.33,
+   "text": "A man and a woman come running up to you."
+  }
+ ]
+}
