@@ -1,12 +1,7 @@
 #scene LS_Event_Main_210_150_C
-7.850	2.002	00.mp3	Shadows rise from the floor around them.
-11.500	1.163	01.mp3	Jin stays kneeling.
-13.900	1.427	02.mp3	Mitsuru runs past Jin.
-16.400	1.959	03.mp3	Ken and Koromaru run after her.
-21.100	2.439	04.mp3	Junpei, Yukari and Fuuka run past him.
-26.700	2.569	05.mp3	Aigis dashes off. Akihiko follows.
-29.500	2.181	06.mp3	The hero stays, looking down at Jin.
-32.600	1.174	07.mp3	He turns and runs.
-34.000	3.171	08.mp3	Shadows, all hands and red eyes, crawl toward Jin.
-41.100	1.895	09.mp3	Jin grips the handle of his case.
-43.500	1.689	10.mp3	In a corridor, the group stops.
+0.000	4.720	00.mp3	Jin is down on one knee beside his briefcase, beaten. The team stands around him.
+7.900	8.434	01.mp3	Shadows rise out of the floor all around you: black shapes with glowing eyes, clawing out on huge hands. Everyone takes a fighting stance.
+13.900	12.081	02.mp3	Mitsuru turns and runs for the way up. Ken runs after her, and Koromaru follows. Junpei, Yukari and Fuuka run after them. Aigis dashes off, and Akihiko runs after her.
+29.500	8.316	03.mp3	You are the last one left. You look at Jin a moment longer, then turn and run after the others, while the Shadows crawl in on him from every side.
+41.100	3.396	04.mp3	Jin crouches with his hand on the handle of his briefcase.
+43.450	4.766	05.mp3	Further up, in a corridor, the rest of you stop running as a blast sounds from below.

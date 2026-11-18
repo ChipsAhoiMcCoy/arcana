@@ -1,10 +1,6 @@
 #scene LS_Event_Main_200_150_C
-0.020	0.966	00.mp3	Aigis kneels.
-3.040	0.978	01.mp3	The team gathers.
-5.020	1.008	02.mp3	The hero kneels.
-6.350	1.300	03.mp3	Smoke rises off her.
-10.640	3.157	04.mp3	Across the bridge, Ryoji watches by a parked car.
-15.700	1.524	05.mp3	Yukari gets to her feet.
-36.400	1.654	06.mp3	The hero rises to his feet.
-41.350	1.662	07.mp3	Ryoji crumples to the ground.
-44.700	1.322	08.mp3	The hero kneels by him.
+0.040	9.866	00.mp3	On the Moonlight Bridge, Aigis kneels on the road, smoke rising from her body. Koromaru reaches her first, barking, and the rest of you run up behind him.
+3.050	2.933	01.mp3	You kneel beside Aigis while the others gather around her.
+10.650	6.816	02.mp3	Ryoji walks up the road from beside a parked car and stops a short way from the group. Everyone turns to look at him.
+36.350	3.943	03.mp3	The others stare at you, then turn back to Ryoji as you get to your feet.
+41.350	3.738	04.mp3	Ryoji crumples to the road. You go to him and crouch at his side.

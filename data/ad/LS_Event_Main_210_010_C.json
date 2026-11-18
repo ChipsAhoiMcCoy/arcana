@@ -1,7 +1,5 @@
 {"movie": "LS_Event_Main_210_010_C", "title": "New Year at the dorm", "cues": [
-{"at": 0.10, "text": "The dorm lounge."},
-{"at": 4.40, "text": "The hero holds his hand out to Koromaru."},
-{"at": 8.60, "text": "Junpei walks in and stops beside Ken."},
-{"at": 22.36, "text": "The hero pets Koromaru."},
-{"at": 26.40, "text": "Akihiko is on his feet."}
+{"at": 0.10, "text": "The dorm lounge. You sit at the table with Koromaru beside you and Akihiko seated nearby as Ken walks over."},
+{"at": 8.05, "text": "Junpei comes in and joins you."},
+{"at": 22.40, "text": "While the others make up their minds, you reach out and pet Koromaru."}
 ]}

@@ -1,7 +1,3 @@
-{
- "movie": "LS_Event_Main_210_237_C",
- "title": "A brief scene",
- "cues": [
-  {"at": 0.0, "text": "Kurosawa."}
- ]
-}
+{"movie": "LS_Event_Main_210_237_C", "title": "Port Island Station", "cues": [
+  {"at": 0.1, "text": "Port Island Station. People stand about the plaza outside, Officer Kurosawa among them."}
+]}

@@ -1,5 +1,4 @@
 #scene LS_Event_Main_210_100_C
-4.700	3.815	00.mp3	Chidori sits up in bed. Mitsuru, Junpei and the hero walk in.
-45.300	3.182	01.mp3	The hero nods. Junpei stays by Chidori's bed.
-51.300	2.224	02.mp3	The hero and Mitsuru step out to the door.
-55.300	1.438	03.mp3	Mitsuru folds her arms.
+0.000	3.838	00.mp3	A hospital corridor, outside the closed door of a patient's room.
+5.400	11.166	01.mp3	Inside the room, Chidori sits up in bed. A doctor in a white coat stands at her bedside, by a vase of sunflowers. Junpei, Mitsuru and you walk in and stop at the foot of the bed.
+51.200	4.794	02.mp3	You and Mitsuru leave Junpei at Chidori's bedside and walk over to the closed door.

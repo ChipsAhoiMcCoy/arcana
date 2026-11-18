@@ -1,10 +1,5 @@
 {"movie": "LS_Event_Main_200_170_C", "title": "Ryoji's choice", "cues": [
-{"at": 15.70, "text": "The hero's head is bowed."},
-{"at": 18.86, "text": "Everyone startles."},
-{"at": 22.55, "text": "Yukari sits back down."},
-{"at": 24.40, "text": "Junpei leans toward Ryoji."},
-{"at": 47.86, "text": "Ryoji stands and turns away."},
-{"at": 49.80, "text": "He walks past the hero's seat."},
-{"at": 51.60, "text": "Koromaru gets up and watches him."},
-{"at": 53.70, "text": "Ryoji walks out of view."}
+{"at": 0.04, "text": "The command room on the dorm's fourth floor. Everyone sits on the sofas and chairs around the long table, Ryoji among them, with Koromaru sitting on the floor."},
+{"at": 20.50, "text": "Junpei jumps up from his seat. Yukari, on her feet since Ryoji's apology, sinks back into hers."},
+{"at": 47.85, "text": "Ryoji stands up, turns away from the table and walks slowly across the room, past your seat, and out through the door. Koromaru gets up and watches him go."}
 ]}

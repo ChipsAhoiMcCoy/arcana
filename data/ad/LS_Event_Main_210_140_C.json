@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_210_140_C", "title": "Jin blocks the way", "cues": [{"at": 0.1, "text": "The team stops short in front of Jin."}, {"at": 13.02, "text": "Jin squares up."}]}
+{"movie": "LS_Event_Main_210_140_C", "title": "Jin blocks the way", "cues": [
+{"at": 0.00, "text": "Inside Tartarus, the team runs onto a wide floor and stops short. Jin stands alone ahead of you, a metal briefcase in his hand. Everyone takes a fighting stance."},
+{"at": 12.33, "text": "Jin sets himself in a fighting stance, his briefcase at his side."}
+]}

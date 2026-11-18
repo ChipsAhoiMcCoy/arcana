@@ -1,8 +1,4 @@
-{
- "movie": "LS_Event_Main_210_070_C",
- "title": "The magazine at Hagakure",
- "cues": [
-  {"at": 1.35,  "text": "At a ramen counter."},
-  {"at": 8.86,  "text": "Aigis gets up and fetches a magazine from the counter."}
- ]
-}
+{"movie": "LS_Event_Main_210_070_C", "title": "The magazine at Hagakure", "cues": [
+{"at": 0.03, "text": "Hagakure, the ramen shop. You sit around a table with Yukari, Junpei, Akihiko and Aigis."},
+{"at": 8.86, "text": "Aigis gets up, takes a magazine from the counter and lays it open on the table in front of everyone."}
+]}

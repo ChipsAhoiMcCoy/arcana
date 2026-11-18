@@ -1,4 +1,3 @@
-{"movie": "LS_Event_Main_210_275_C", "title": "The team welcomes the hero back", "cues": [
-{"at": 0.05, "text": "The hero walks to Aigis."},
-{"at": 1.80, "text": "The others run up and surround him."}
+{"movie": "LS_Event_Main_210_275_C", "title": "You're back", "cues": [
+  {"at": 0.05, "text": "The school entranceway. You walk up to Aigis, and the others come running from all sides and crowd around you, Koromaru first among them."}
 ]}

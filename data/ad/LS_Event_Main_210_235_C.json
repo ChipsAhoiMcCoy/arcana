@@ -1,7 +1,3 @@
-{
- "movie": "LS_Event_Main_210_235_C",
- "title": "A brief scene",
- "cues": [
-  {"at": 0.0, "text": "Two men in coats."}
- ]
-}
+{"movie": "LS_Event_Main_210_235_C", "title": "The strip mall", "cues": [
+  {"at": 0.1, "text": "The Iwatodai Strip Mall. People stand about in the street, and a man runs in to join them."}
+]}

@@ -1,13 +1,30 @@
-{"movie": "LS_Event_Main_210_150_C", "title": "Jin stays behind", "cues": [
-{"at": 7.85, "text": "Shadows rise from the floor around them."},
-{"at": 11.50, "text": "Jin stays kneeling."},
-{"at": 13.90, "text": "Mitsuru runs past Jin."},
-{"at": 16.40, "text": "Ken and Koromaru run after her."},
-{"at": 21.10, "text": "Junpei, Yukari and Fuuka run past him."},
-{"at": 26.70, "text": "Aigis dashes off. Akihiko follows."},
-{"at": 29.50, "text": "The hero stays, looking down at Jin."},
-{"at": 32.60, "text": "He turns and runs."},
-{"at": 34.00, "text": "Shadows, all hands and red eyes, crawl toward Jin."},
-{"at": 41.10, "text": "Jin grips the handle of his case."},
-{"at": 43.50, "text": "In a corridor, the group stops."}
-]}
+{
+ "movie": "LS_Event_Main_210_150_C",
+ "title": "Jin stays behind",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Jin is down on one knee beside his briefcase, beaten. The team stands around him."
+  },
+  {
+   "at": 7.9,
+   "text": "Shadows rise out of the floor all around you: black shapes with glowing eyes, clawing out on huge hands. Everyone takes a fighting stance."
+  },
+  {
+   "at": 13.9,
+   "text": "Mitsuru turns and runs for the way up. Ken runs after her, and Koromaru follows. Junpei, Yukari and Fuuka run after them. Aigis dashes off, and Akihiko runs after her."
+  },
+  {
+   "at": 29.5,
+   "text": "You are the last one left. You look at Jin a moment longer, then turn and run after the others, while the Shadows crawl in on him from every side."
+  },
+  {
+   "at": 41.1,
+   "text": "Jin crouches with his hand on the handle of his briefcase."
+  },
+  {
+   "at": 43.45,
+   "text": "Further up, in a corridor, the rest of you stop running as a blast sounds from below."
+  }
+ ]
+}

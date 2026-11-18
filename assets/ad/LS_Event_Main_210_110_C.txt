@@ -1,3 +1,2 @@
 #scene LS_Event_Main_210_110_C
-1.340	1.336	00.mp3	The hero faces her.
-7.400	1.094	01.mp3	The hero nods.
+0.000	5.395	00.mp3	In a room at school, you sit facing a teacher across a desk, an open file in front of her.

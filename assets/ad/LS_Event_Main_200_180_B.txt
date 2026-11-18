@@ -1,6 +1,4 @@
 #scene LS_Event_Main_200_180_B
-0.050	0.987	00.mp3	The dorm lounge.
-22.050	2.470	01.mp3	Junpei is on his feet, arms flung wide.
-32.700	1.619	02.mp3	Yukari faces Junpei.
-42.400	2.108	03.mp3	Junpei stands alone in the middle of the room.
-47.050	1.263	04.mp3	The others stay seated.
+0.040	4.701	00.mp3	The dorm lounge. You sit down on the sofas with the others, Koromaru among you.
+22.000	2.980	01.mp3	Junpei leaps up from his seat and flings his arms out.
+29.350	3.170	02.mp3	Yukari jumps to her feet and turns to face Junpei.

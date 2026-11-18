@@ -1,8 +1,6 @@
 {"movie": "LS_Event_Main_210_160_B", "title": "Takaya at the top", "cues": [
-{"at": 0.70, "text": "A wide staircase rises among tall pillars."},
-{"at": 3.50, "text": "The group walks up to its foot."},
-{"at": 7.45, "text": "A figure walks along the top of the stairs."},
-{"at": 9.90, "text": "It is Takaya, bare-chested, looking down at them."},
-{"at": 37.40, "text": "Takaya walks down the stairs, a revolver tucked in his belt."},
-{"at": 54.20, "text": "The view shatters."}
+{"at": 0.03, "text": "Near the top of Tartarus, the team walks to the foot of a wide staircase that climbs between tall pillars."},
+{"at": 7.40, "text": "Takaya appears at the top of the stairs and walks along the landing, looking down at you all."},
+{"at": 37.40, "text": "Takaya walks down the stairs toward you, a revolver tucked in the front of his belt."},
+{"at": 44.75, "text": "You take a fighting stance."}
 ]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_210_120_C", "title": "Aigis on the roof", "cues": [{"at": 0.10, "text": "The hero walks onto the roof."}, {"at": 3.20, "text": "Aigis stands at the fence."}, {"at": 5.65, "text": "She turns, and the hero walks closer."}, {"at": 10.30, "text": "Aigis turns back toward the fence."}, {"at": 15.45, "text": "Aigis turns to face him again."}, {"at": 17.95, "text": "The hero scratches the back of his head."}, {"at": 22.55, "text": "The hero nods. Aigis smiles."}]}
+{
+ "movie": "LS_Event_Main_210_120_C",
+ "title": "Aigis on the roof",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk out onto the school roof, hands in your pockets. Aigis stands alone at the fence with her back to you."
+  },
+  {
+   "at": 5.6,
+   "text": "Aigis turns around to face you, and you walk up to her by the fence."
+  }
+ ]
+}

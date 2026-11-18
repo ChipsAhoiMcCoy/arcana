@@ -1,7 +1,5 @@
 #scene LS_Event_Main_210_160_B
-0.700	2.587	00.mp3	A wide staircase rises among tall pillars.
-3.500	1.529	01.mp3	The group walks up to its foot.
-7.450	2.205	02.mp3	A figure walks along the top of the stairs.
-9.900	2.917	03.mp3	It is Takaya, bare-chested, looking down at them.
-37.400	3.509	04.mp3	Takaya walks down the stairs, a revolver tucked in his belt.
-54.200	0.946	05.mp3	The view shatters.
+0.030	6.131	00.mp3	Near the top of Tartarus, the team walks to the foot of a wide staircase that climbs between tall pillars.
+7.400	4.791	01.mp3	Takaya appears at the top of the stairs and walks along the landing, looking down at you all.
+37.400	4.576	02.mp3	Takaya walks down the stairs toward you, a revolver tucked in the front of his belt.
+44.750	1.381	03.mp3	You take a fighting stance.

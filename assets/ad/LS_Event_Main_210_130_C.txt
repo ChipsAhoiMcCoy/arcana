@@ -1,3 +1,3 @@
 #scene LS_Event_Main_210_130_C
-9.400	1.588	00.mp3	The team sits in the dorm lounge.
-27.450	2.965	01.mp3	The hero rises from his seat and faces the group.
+0.000	10.207	00.mp3	The dorm lounge. You sit on the sofas with Mitsuru, Akihiko, Junpei, Yukari, Fuuka and Ken, with Koromaru sitting among you and Aigis standing nearby.
+27.400	3.015	01.mp3	You get up from your seat, and everyone turns to look at you.

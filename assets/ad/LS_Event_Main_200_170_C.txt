@@ -1,9 +1,4 @@
 #scene LS_Event_Main_200_170_C
-15.700	1.383	00.mp3	The hero's head is bowed.
-18.860	1.169	01.mp3	Everyone startles.
-22.550	1.452	02.mp3	Yukari sits back down.
-24.400	1.810	03.mp3	Junpei leans toward Ryoji.
-47.860	1.692	04.mp3	Ryoji stands and turns away.
-49.800	1.586	05.mp3	He walks past the hero's seat.
-51.600	1.866	06.mp3	Koromaru gets up and watches him.
-53.700	1.435	07.mp3	Ryoji walks out of view.
+0.040	9.713	00.mp3	The command room on the dorm's fourth floor. Everyone sits on the sofas and chairs around the long table, Ryoji among them, with Koromaru sitting on the floor.
+20.500	6.266	01.mp3	Junpei jumps up from his seat. Yukari, on her feet since Ryoji's apology, sinks back into hers.
+47.850	9.595	02.mp3	Ryoji stands up, turns away from the table and walks slowly across the room, past your seat, and out through the door. Koromaru gets up and watches him go.

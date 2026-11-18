@@ -1,3 +1,2 @@
 #scene LS_Event_Main_210_030_C
-0.030	1.073	00.mp3	Everyone gathers.
-6.200	0.992	01.mp3	Everyone nods.
+0.030	6.270	00.mp3	Naganaki Shrine. You stand together with the others among the New Year crowd, the girls still in their kimonos.

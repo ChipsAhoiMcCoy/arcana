@@ -1,4 +1,3 @@
 #scene LS_Event_Main_200_260_C
-0.200	1.981	00.mp3	Ryoji and the hero join the others.
-19.500	3.112	01.mp3	Ryoji walks to the doorway, then turns back to the group.
-26.600	1.510	02.mp3	Ryoji walks out the door.
+0.100	5.466	00.mp3	The dorm lounge. You come in with Ryoji to where the others sit waiting, Koromaru among them.
+18.200	8.007	01.mp3	Ryoji turns and walks toward the front door, then stops and looks back at everyone with a smile. Ryoji goes out through the front door.

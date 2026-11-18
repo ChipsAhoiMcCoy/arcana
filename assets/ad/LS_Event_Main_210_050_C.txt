@@ -1,4 +1,3 @@
 #scene LS_Event_Main_210_050_C
-5.700	2.299	00.mp3	Yukari turns to face the rooftop fence.
-35.860	0.929	01.mp3	All three nod.
-40.530	2.197	02.mp3	Junpei throws up a hand and leans away.
+0.030	4.015	00.mp3	The school rooftop. You walk out to where Yukari and Junpei are standing.
+5.700	3.295	01.mp3	Yukari turns her back to you both and looks out from the rooftop.

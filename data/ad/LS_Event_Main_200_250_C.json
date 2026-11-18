@@ -1,70 +1,13 @@
-{
- "movie": "LS_Event_Main_200_250_C",
- "title": "Ryoji's true form",
- "cues": [
-  {
-   "at": 0.3,
-   "text": "The hero's room. Ryoji stands by the window, eyes closed."
-  },
-  {
-   "at": 3.9,
-   "text": "He opens his eyes and turns to the hero."
-  },
-  {
-   "at": 8.7,
-   "text": "They sit on the bed."
-  },
-  {
-   "at": 15.0,
-   "text": "The hero gestures toward Ryoji."
-  },
-  {
-   "at": 17.45,
-   "text": "Ryoji smiles and gets up from the bed."
-  },
-  {
-   "at": 23.45,
-   "text": "The hero sits with his head bowed."
-  },
-  {
-   "at": 26.5,
-   "text": "He stands and steps up to Ryoji."
-  },
-  {
-   "at": 29.95,
-   "text": "Ryoji nods and closes his eyes."
-  },
-  {
-   "at": 32.4,
-   "text": "The hero hangs his head."
-  },
-  {
-   "at": 35.9,
-   "text": "He raises his Evoker to his own temple."
-  },
-  {
-   "at": 49.4,
-   "text": "Ryoji stands and walks to the middle of the room."
-  },
-  {
-   "at": 54.0,
-   "text": "He turns to the hero."
-  },
-  {
-   "at": 55.7,
-   "text": "Energy bursts from his chest and engulfs him."
-  },
-  {
-   "at": 58.7,
-   "text": "A winged, masked figure floats in his place."
-  },
-  {
-   "at": 98.4,
-   "text": "The figure bursts into sparks, and Ryoji stands there again."
-  },
-  {
-   "at": 103.2,
-   "text": "Ryoji touches his chin."
-  }
- ]
-}
+{"movie": "LS_Event_Main_200_250_C", "title": "Your answer to Ryoji", "cues": [
+{"at": 0.17, "text": "Your room in the dorm. Ryoji stands by the window, eyes closed, as you come in through the door. He opens his eyes and turns to face you."},
+{"at": 8.70, "text": "You sit down beside each other on the bed."},
+{"at": 17.40, "text": "Ryoji smiles, gets up from the bed and goes to stand by the window."},
+{"at": 23.40, "text": "You stay seated a moment with your head bowed, then get up and go to stand in front of him."},
+{"at": 29.90, "text": "Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple. Everything goes white."},
+{"at": 49.20, "text": "Ryoji gets up, walks to the middle of the room and turns to face you. Light bursts from his chest and swallows him in a pillar of light. When it fades, a tall masked figure hangs in the air where he stood, huge blade-like wings spread at its back."},
+{"at": 66.40, "text": "In a flash the figure is gone, and Ryoji stands there again, smiling."},
+{"at": 72.20, "text": "You sit a moment with your head bowed, then get up and walk over to Ryoji."},
+{"at": 80.05, "text": "Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple. Everything goes white."},
+{"at": 98.20, "text": "In a flash the masked figure is gone, and Ryoji stands there again."},
+{"at": 112.75, "text": "Ryoji holds out a small music box, and you take it."}
+]}

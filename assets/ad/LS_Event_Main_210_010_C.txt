@@ -1,6 +1,4 @@
 #scene LS_Event_Main_210_010_C
-0.100	0.905	00.mp3	The dorm lounge.
-4.400	2.231	01.mp3	The hero holds his hand out to Koromaru.
-8.600	2.231	02.mp3	Junpei walks in and stops beside Ken.
-22.360	1.491	03.mp3	The hero pets Koromaru.
-26.400	1.501	04.mp3	Akihiko is on his feet.
+0.100	7.028	00.mp3	The dorm lounge. You sit at the table with Koromaru beside you and Akihiko seated nearby as Ken walks over.
+8.050	1.715	01.mp3	Junpei comes in and joins you.
+22.400	3.674	02.mp3	While the others make up their minds, you reach out and pet Koromaru.

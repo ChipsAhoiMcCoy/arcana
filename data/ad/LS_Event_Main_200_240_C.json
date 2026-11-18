@@ -1,7 +1,5 @@
 {"movie": "LS_Event_Main_200_240_C", "title": "Ryoji asks for an answer", "cues": [
- {"at": 1.75, "text": "The lounge. Ryoji sits with the group."},
- {"at": 6.50, "text": "Ryoji stands."},
- {"at": 9.20, "text": "He turns and walks across the room."},
- {"at": 18.30, "text": "Ryoji walks out."},
- {"at": 34.20, "text": "The hero nods."}
+{"at": 1.70, "text": "The dorm lounge. Ryoji sits on a sofa with the others; you, Mitsuru and Aigis stand nearby."},
+{"at": 6.55, "text": "Ryoji gets up and walks a few steps away from the group, then turns back toward Fuuka."},
+{"at": 16.20, "text": "Ryoji walks out of the lounge as the others watch him go. Then everyone turns to you."}
 ]}

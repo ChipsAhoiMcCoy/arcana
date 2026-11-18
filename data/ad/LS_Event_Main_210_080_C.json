@@ -1,7 +1,4 @@
-{"movie": "LS_Event_Main_210_080_C", "title": "Mitsuru calls the hero away", "cues": [
-{"at": 0.60, "text": "A classroom. The hero and Junpei sit near Yukari."},
-{"at": 3.90, "text": "Mitsuru walks in."},
-{"at": 8.85, "text": "The hero stands up."},
-{"at": 10.60, "text": "Mitsuru walks out, and the hero follows her."},
-{"at": 15.00, "text": "Junpei and Yukari stay behind."}
+{"movie": "LS_Event_Main_210_080_C", "title": "Mitsuru calls you away", "cues": [
+{"at": 0.10, "text": "Your classroom. You sit at your desk with Junpei, Yukari standing nearby, as the door opens and Mitsuru walks in and comes over to you."},
+{"at": 8.85, "text": "You get up and follow Mitsuru out of the classroom, leaving Junpei and Yukari behind."}
 ]}

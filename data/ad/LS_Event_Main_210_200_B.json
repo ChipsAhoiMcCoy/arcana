@@ -1,7 +1,4 @@
-{"movie": "LS_Event_Main_210_200_B", "title": "Nyx Avatar rises again", "cues": [
-  {"at": 1.25, "text": "The Nyx Avatar slumps, wings drooping."},
-  {"at": 3.90, "text": "The team stares. It slowly straightens."},
-  {"at": 6.60, "text": "It rises to its full height, wings opening, its long blade in hand."},
-  {"at": 11.75, "text": "It whirls its wings, then hovers above the team."},
-  {"at": 15.20, "text": "Its shadow falls across them."}
+{"movie": "LS_Event_Main_210_200_B", "title": "The Nyx Avatar rises again", "cues": [
+  {"at": 1.25, "text": "The Nyx Avatar hangs slumped above the platform, wings drooping, while you and the team spread out beneath it, watching."},
+  {"at": 6.2, "text": "It slowly straightens and rises to its full height before the moon, wings opening, its long blade in hand. With a sweep of its wings it scatters feathers and hovers over the team once more."}
 ]}

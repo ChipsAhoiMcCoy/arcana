@@ -1,17 +1,12 @@
 #scene LS_Event_Main_200_250_C
-0.300	3.399	00.mp3	The hero's room. Ryoji stands by the window, eyes closed.
-3.900	2.316	01.mp3	He opens his eyes and turns to the hero.
-8.700	1.056	02.mp3	They sit on the bed.
-15.000	2.028	03.mp3	The hero gestures toward Ryoji.
-17.450	2.317	04.mp3	Ryoji smiles and gets up from the bed.
-23.450	1.781	05.mp3	The hero sits with his head bowed.
-26.500	2.109	06.mp3	He stands and steps up to Ryoji.
-29.950	2.228	07.mp3	Ryoji nods and closes his eyes.
-32.400	1.426	08.mp3	The hero hangs his head.
-35.900	2.165	09.mp3	He raises his Evoker to his own temple.
-49.400	2.650	10.mp3	Ryoji stands and walks to the middle of the room.
-54.000	1.236	11.mp3	He turns to the hero.
-55.700	2.421	12.mp3	Energy bursts from his chest and engulfs him.
-58.700	2.497	13.mp3	A winged, masked figure floats in his place.
-98.400	3.546	14.mp3	The figure bursts into sparks, and Ryoji stands there again.
-103.200	1.524	15.mp3	Ryoji touches his chin.
+0.170	8.570	00.mp3	Your room in the dorm. Ryoji stands by the window, eyes closed, as you come in through the door. He opens his eyes and turns to face you.
+8.700	2.007	01.mp3	You sit down beside each other on the bed.
+17.400	4.160	02.mp3	Ryoji smiles, gets up from the bed and goes to stand by the window.
+23.400	4.488	03.mp3	You stay seated a moment with your head bowed, then get up and go to stand in front of him.
+29.900	7.328	04.mp3	Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple. Everything goes white.
+49.200	14.855	05.mp3	Ryoji gets up, walks to the middle of the room and turns to face you. Light bursts from his chest and swallows him in a pillar of light. When it fades, a tall masked figure hangs in the air where he stood, huge blade-like wings spread at its back.
+66.400	4.068	06.mp3	In a flash the figure is gone, and Ryoji stands there again, smiling.
+72.200	4.053	07.mp3	You sit a moment with your head bowed, then get up and walk over to Ryoji.
+80.050	7.328	08.mp3	Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple. Everything goes white.
+98.200	3.937	09.mp3	In a flash the masked figure is gone, and Ryoji stands there again.
+112.750	3.059	10.mp3	Ryoji holds out a small music box, and you take it.

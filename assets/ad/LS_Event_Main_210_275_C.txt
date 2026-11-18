@@ -1,3 +1,2 @@
 #scene LS_Event_Main_210_275_C
-0.050	1.520	00.mp3	The hero walks to Aigis.
-1.800	1.766	01.mp3	The others run up and surround him.
+0.050	7.923	00.mp3	The school entranceway. You walk up to Aigis, and the others come running from all sides and crowd around you, Koromaru first among them.

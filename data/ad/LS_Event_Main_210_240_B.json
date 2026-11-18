@@ -1,42 +1,6 @@
-{
- "movie": "LS_Event_Main_210_240_B",
- "title": "The Universe card",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "Igor at his table, Elizabeth beside him."
-  },
-  {
-   "at": 5.0,
-   "text": "Igor rests his chin on his folded hands."
-  },
-  {
-   "at": 10.65,
-   "text": "A blazing light above Igor swells until all is white."
-  },
-  {
-   "at": 15.0,
-   "text": "A card spins in the air beside the hero."
-  },
-  {
-   "at": 19.75,
-   "text": "The card bursts into a flash of light."
-  },
-  {
-   "at": 25.9,
-   "text": "On the wall, a clock's hands spin wildly."
-  },
-  {
-   "at": 29.4,
-   "text": "The hands slow and stop."
-  },
-  {
-   "at": 32.1,
-   "text": "The doors beneath slide open onto a white void."
-  },
-  {
-   "at": 36.4,
-   "text": "Igor and Elizabeth wait before the open doors."
-  }
- ]
-}
+{"movie": "LS_Event_Main_210_240_B", "title": "The Universe card", "cues": [
+  {"at": 0.1, "text": "The Velvet Room. Igor sits at his table, hands folded, Elizabeth standing beside him."},
+  {"at": 10.65, "text": "The room flashes white. When it clears, a card spins in the air before you, circled by streams of light."},
+  {"at": 19.75, "text": "The card bursts in a flash, and everything goes white again."},
+  {"at": 23.55, "text": "Above the room's doors, the hands of a clock spin wildly, then slow and stop. The doors slide open onto a blank white void, with Igor and Elizabeth waiting before it."}
+]}

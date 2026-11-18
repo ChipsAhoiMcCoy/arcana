@@ -1,2 +1,2 @@
 #scene LS_Event_Main_210_237_C
-0.000	0.808	00.mp3	Kurosawa.
+0.100	5.655	00.mp3	Port Island Station. People stand about the plaza outside, Officer Kurosawa among them.

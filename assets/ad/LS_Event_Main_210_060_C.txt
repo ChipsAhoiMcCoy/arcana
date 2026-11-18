@@ -1,2 +1,2 @@
 #scene LS_Event_Main_210_060_C
-0.100	1.786	00.mp3	Dorm lobby. Junpei walks up.
+0.030	5.897	00.mp3	You come in the front door of the dorm, school bag in hand, and Junpei walks over to meet you in the lobby.
