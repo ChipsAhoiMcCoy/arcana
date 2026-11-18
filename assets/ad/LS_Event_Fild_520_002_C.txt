@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_520_002_C
-3.400	1.070	00.mp3	Yukari nods.

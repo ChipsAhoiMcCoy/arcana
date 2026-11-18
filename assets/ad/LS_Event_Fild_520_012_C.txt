@@ -1,2 +1,0 @@
-#scene LS_Event_Fild_520_012_C
-2.850	1.635	00.mp3	The hero and his friends nod.

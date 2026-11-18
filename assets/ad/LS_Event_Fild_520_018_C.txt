@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_520_018_C
-1.500	2.352	00.mp3	The hero, Yukari and Junpei walk up.
-8.000	1.474	01.mp3	The hero holds a blue light.
+6.830	4.668	00.mp3	Standing before the sealed chest, you hold out a small fragment that glows in your hand.
