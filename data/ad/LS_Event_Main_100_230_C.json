@@ -1,21 +1,18 @@
 {
  "movie": "LS_Event_Main_100_230_C",
  "title": "The command room",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
-   "at": 0.1,
-   "text": "A room of monitors. Yukari sits as Ikutsuki takes a seat.",
-   "short": "Monitors. Yukari and Ikutsuki sit."
+   "at": 0.05,
+   "text": "The dorm's command room: control consoles and wall screens. Yukari sits in a swivel chair at a console, Mitsuru stands beside her, and Ikutsuki, the chairman, walks over to join them."
   },
   {
    "at": 8.4,
-   "text": "Yukari shifts in her seat, unhappy.",
-   "short": "Yukari shifts, unhappy."
+   "text": "Yukari looks down, troubled. A console chimes with an incoming call, and Mitsuru turns to answer it."
   },
   {
-   "at": 15.2,
-   "text": "Ikutsuki stands up."
+   "at": 13.8,
+   "text": "Yukari springs up from her chair."
   }
  ]
 }

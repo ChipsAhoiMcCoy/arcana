@@ -1,4 +1,4 @@
 #scene LS_Event_Main_110_200_C
-0.300	1.578	00.mp3	The hero sleeps in his room.
-2.950	2.046	01.mp3	A boy in striped pyjamas, by the bed.
-10.200	2.309	02.mp3	The boy breaks into black specks and vanishes.
+0.100	3.308	00.mp3	In your dorm room, you lie asleep in bed. Your eyes open.
+2.900	4.407	01.mp3	You push yourself up on the bed. The boy in striped pyjamas stands beside it.
+9.400	2.820	02.mp3	The boy breaks apart into black specks and is gone.

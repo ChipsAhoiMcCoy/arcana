@@ -1,24 +1,22 @@
 {
  "movie": "LS_Event_Main_100_270_C",
  "title": "Up the stairs",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
    "at": 0.05,
-   "text": "They run up the stairs."
+   "text": "You and Yukari run up the dorm's carpeted staircase and stop on a landing."
   },
   {
-   "at": 2.75,
-   "text": "They brace themselves."
+   "at": 2.65,
+   "text": "You and Yukari both drop into a fighting stance, watching the stairs."
   },
   {
-   "at": 5.9,
-   "text": "They run on up another flight."
+   "at": 5.75,
+   "text": "You run on up the stairs to the top floor, to a door at the end of the hall under an exit sign."
   },
   {
    "at": 9.05,
-   "text": "She runs for a door.",
-   "short": "To a door."
+   "text": "Yukari runs through the door, and you follow."
   }
  ]
 }

@@ -1,16 +1,18 @@
 {
  "movie": "LS_Event_Main_100_300_C",
- "title": "After the awakening",
- "source": "data-only (scene_facts.py, 2026-11-16)",
+ "title": "Orpheus fades",
  "cues": [
   {
-   "at": 0.3,
-   "text": "The hero's Persona glows. Two Shadows remain.",
-   "short": "His Persona glows. Two Shadows remain."
+   "at": 0.1,
+   "text": "On the rooftop, your Persona Orpheus hangs in the air above you: a tall, slender, machine-like figure with a lyre on its back. It breaks into glittering shards and is gone."
   },
   {
-   "at": 3.4,
-   "text": "The Persona vanishes."
+   "at": 5.2,
+   "text": "Yukari sits on the ground a few steps from you."
+  },
+  {
+   "at": 11.2,
+   "text": "Two Shadows crawl across the roof toward you, masks set in heaps of clawing black arms. You set yourself to face them."
   }
  ]
 }

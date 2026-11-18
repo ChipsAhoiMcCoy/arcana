@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_080_C
-0.400	3.495	00.mp3	In his room, the hero stands at a small sink, fixing his hair.
-6.700	1.880	01.mp3	He turns and crosses to the door.
+0.030	4.862	00.mp3	In your dorm room, you stand at a small sink, fixing your hair. Someone knocks at the door.
+5.170	5.173	01.mp3	You cross to the door and open it. Yukari stands outside, her school bag on her shoulder.

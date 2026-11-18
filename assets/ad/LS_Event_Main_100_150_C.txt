@@ -1,3 +1,4 @@
 #scene LS_Event_Main_100_150_C
-0.050	1.306	00.mp3	Mitsuru sits reading.
-5.750	2.544	01.mp3	The silver-haired young man walks past her and out.
+0.000	7.241	00.mp3	The dorm lounge. Mitsuru sits on the sofa reading a book. Akihiko, a bandage on his brow, walks up behind her.
+5.720	2.488	01.mp3	Akihiko walks off toward the front door.
+9.170	3.983	02.mp3	The door shuts behind him. Mitsuru closes her eyes, disappointed.

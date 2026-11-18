@@ -1,19 +1,22 @@
 {
  "movie": "LS_Event_Main_100_225_C",
- "title": "Tired in his room",
- "source": "data-only (scene_facts.py, 2026-11-16)",
+ "title": "Worn out in your room",
  "cues": [
   {
-   "at": 0.3,
-   "text": "The hero's room. He sits down."
+   "at": 0.05,
+   "text": "In your dorm room, still in your school uniform, you sit down on the edge of the bed, shoulders slumped, head bowed."
   },
   {
-   "at": 14.75,
-   "text": "Something sparkles."
+   "at": 8.05,
+   "text": "You fall back across the bed, an arm over your forehead, then let it drop and stare at the ceiling."
   },
   {
-   "at": 17.7,
-   "text": "His eyes close."
+   "at": 14.4,
+   "text": "You raise one hand toward the ceiling. A few tiny sparks of light glitter around your fingers and fade."
+  },
+  {
+   "at": 16.4,
+   "text": "Your arm falls to the bed and your eyes close. You fall asleep on top of the covers."
   }
  ]
 }

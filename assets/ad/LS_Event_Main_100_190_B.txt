@@ -1,5 +1,5 @@
 #scene LS_Event_Main_100_190_B
-0.100	1.727	00.mp3	Coffins stand where the people were.
-2.400	3.607	01.mp3	The man on the steps gets up and walks out among them, looking around.
-10.300	1.869	02.mp3	Black slime wells up around his feet.
-14.700	0.986	03.mp3	He sinks down.
+0.000	7.433	00.mp3	The same alley, now silent. Where the young people stood, tall coffins stand upright. The man still sits alone on the steps.
+2.330	3.054	01.mp3	He gets up and walks out among the coffins, looking around.
+8.500	2.681	02.mp3	Black ooze wells up out of the ground around his shoes.
+14.670	2.236	03.mp3	He drops to his knees, clutching his head.

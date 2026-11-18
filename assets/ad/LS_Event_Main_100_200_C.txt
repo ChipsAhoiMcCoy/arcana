@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_200_C
-7.100	4.328	00.mp3	Yukari looks up at the big screen, where the hero sleeps under a checked blanket.
+0.000	10.121	00.mp3	The room with the monitors. Mitsuru and Yukari sit at the console, Ikutsuki standing beside them. The big screen shows you, asleep in your bed under a checked blanket.

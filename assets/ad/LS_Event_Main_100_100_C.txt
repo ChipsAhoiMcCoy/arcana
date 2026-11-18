@@ -1,3 +1,2 @@
 #scene LS_Event_Main_100_100_C
-0.400	3.974	00.mp3	A school entrance lined with shoe lockers. Yukari walks ahead of the hero.
-8.200	1.443	01.mp3	She turns and walks away.
+0.030	6.443	00.mp3	At the school's entrance, among rows of shoe lockers, Yukari walks a few steps ahead of you, then turns to face you.

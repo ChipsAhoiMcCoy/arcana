@@ -1,16 +1,14 @@
 {
  "movie": "LS_Event_Main_100_260_C",
  "title": "The back door",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
    "at": 0.05,
-   "text": "Yukari and the hero run to the back door.",
-   "short": "They run to the back door."
+   "text": "You and Yukari run through the dorm's dining room, past the long counter, and down a short hall to the back door."
   },
   {
-   "at": 9.15,
-   "text": "The back door shudders."
+   "at": 8.1,
+   "text": "Something pounds against the back door from outside, twice. Yukari flinches back from it."
   }
  ]
 }

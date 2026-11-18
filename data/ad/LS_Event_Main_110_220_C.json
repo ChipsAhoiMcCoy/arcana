@@ -1,7 +1,14 @@
 {
  "movie": "LS_Event_Main_110_220_C",
- "title": "The team gathers in the command room",
+ "title": "The team gathers",
  "cues": [
-  {"at": 0.6,   "text": "The others hurry in."}
+  {
+   "at": 0.1,
+   "text": "In the command room, you, Yukari and Junpei run in to Mitsuru and Akihiko at the consoles."
+  },
+  {
+   "at": 16.4,
+   "text": "You nod."
+  }
  ]
 }

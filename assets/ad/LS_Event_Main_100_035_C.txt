@@ -1,3 +1,2 @@
 #scene LS_Event_Main_100_035_C
-0.400	1.804	00.mp3	The hero walks along a pavement.
-3.300	4.268	01.mp3	A coffin stands upright on the pavement. He walks past it without a glance.
+0.030	7.160	00.mp3	You walk along a street, hands in your pockets. A coffin stands upright on the pavement, and you walk past it without a glance.

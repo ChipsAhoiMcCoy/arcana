@@ -3,12 +3,12 @@
  "title": "Mitsuru's scan",
  "cues": [
   {
-   "at": 0.2,
-   "text": "Mitsuru works at a scanner in the command room."
+   "at": 0.1,
+   "text": "In the dorm's command room, Mitsuru sits on the sofa, working a boxy scanner with an antenna."
   },
   {
-   "at": 3.04,
-   "text": "Akihiko walks in."
+   "at": 3.05,
+   "text": "The door opens and Akihiko walks in."
   }
  ]
 }

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_120_C
-0.020	0.852	00.mp3	Auditorium.
+0.000	8.607	00.mp3	The school auditorium, during the opening ceremony. You sit among the students, facing the stage. Beside you, a classmate leans over to whisper.

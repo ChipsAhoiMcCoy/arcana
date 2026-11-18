@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_320_C
-0.100	2.717	00.mp3	The Velvet Room. The hero sits facing Igor.
+0.100	4.126	00.mp3	The Velvet Room. You sit facing Igor; Elizabeth stands at his side.

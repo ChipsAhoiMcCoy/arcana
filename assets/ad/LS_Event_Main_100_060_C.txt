@@ -1,3 +1,2 @@
 #scene LS_Event_Main_100_060_C
-2.700	2.864	00.mp3	The red-haired young woman joins them at the front desk.
-10.970	1.669	01.mp3	Both girls wear gun holsters.
+0.030	6.171	00.mp3	Mitsuru walks down the hallway to the front desk, where you stand with Yukari. She too wears a holstered gun.

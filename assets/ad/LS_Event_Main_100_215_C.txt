@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_215_C
-0.050	1.225	00.mp3	Junpei walks over.
+0.050	3.472	00.mp3	In the classroom, you sit at your desk as Junpei walks up to you.

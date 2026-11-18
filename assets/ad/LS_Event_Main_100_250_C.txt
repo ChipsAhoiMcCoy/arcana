@@ -1,4 +1,4 @@
 #scene LS_Event_Main_100_250_C
-0.050	1.716	00.mp3	The hero's room. He stands.
-3.800	1.220	01.mp3	Yukari comes in.
-10.600	1.376	02.mp3	She hands him a shortsword.
+0.050	3.689	00.mp3	In your dorm room, you sit on the edge of your bed, then get to your feet.
+3.750	3.614	01.mp3	The door opens and Yukari steps in. You walk over to meet her.
+9.300	2.722	02.mp3	Yukari holds out a short sword, and you take it.

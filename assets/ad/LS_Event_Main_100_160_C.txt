@@ -1,5 +1,4 @@
 #scene LS_Event_Main_100_160_C
-0.200	1.486	00.mp3	Yukari and a stranger.
-4.100	2.267	01.mp3	The hero sits down across from Ikutsuki.
-18.300	2.616	02.mp3	Ikutsuki stands, then walks out of the lounge.
-23.750	1.236	03.mp3	Yukari stands up.
+0.170	6.482	00.mp3	You come into the dorm lounge with your bag. Yukari sits on a sofa across from a man with glasses and long hair.
+4.000	2.207	01.mp3	You set down your bag and sit facing them.
+18.170	3.277	02.mp3	Ikutsuki has risen; he turns and walks out of the lounge.

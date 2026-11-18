@@ -1,12 +1,10 @@
 {
  "movie": "LS_Event_Main_100_320_C",
  "title": "The Velvet Room",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
    "at": 0.1,
-   "text": "The Velvet Room. The hero sits facing Igor. Elizabeth stands nearby.",
-   "short": "The Velvet Room. The hero sits facing Igor."
+   "text": "The Velvet Room. You sit facing Igor; Elizabeth stands at his side."
   }
  ]
 }

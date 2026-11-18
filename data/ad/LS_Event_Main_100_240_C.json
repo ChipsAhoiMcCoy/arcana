@@ -1,20 +1,22 @@
 {
  "movie": "LS_Event_Main_100_240_C",
  "title": "Akihiko returns",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
-   "at": 0.02,
-   "text": "Akihiko comes in, hurt.",
-   "short": "Akihiko, hurt."
+   "at": 0.05,
+   "text": "The dorm's front lobby. Akihiko staggers in through the front door, clutching his side, and slumps to the floor against the wall. Mitsuru and Yukari come running, Ikutsuki close behind."
   },
   {
    "at": 3.05,
-   "text": "Yukari runs to him."
+   "text": "Yukari runs to Akihiko and kneels beside him."
+  },
+  {
+   "at": 8.25,
+   "text": "A heavy crash shakes the building. Everyone startles; Ikutsuki whirls around, and Yukari jumps to her feet."
   },
   {
    "at": 15.05,
-   "text": "Yukari runs upstairs."
+   "text": "Yukari runs off toward the stairs."
   }
  ]
 }

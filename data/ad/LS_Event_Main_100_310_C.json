@@ -1,11 +1,14 @@
 {
  "movie": "LS_Event_Main_100_310_C",
- "title": "The hero collapses",
- "source": "data-only (scene_facts.py, 2026-11-16)",
+ "title": "You collapse",
  "cues": [
   {
-   "at": 3.0,
-   "text": "The hero has collapsed."
+   "at": 1.2,
+   "text": "You stagger and fall face down on the roof."
+  },
+  {
+   "at": 2.97,
+   "text": "Yukari scrambles over to you on her knees and leans over you."
   }
  ]
 }

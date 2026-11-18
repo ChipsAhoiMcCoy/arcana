@@ -1,5 +1,2 @@
 #scene LS_Event_Main_100_180_C
-1.400	2.546	00.mp3	A back alley. Young people hang around in pairs.
-4.200	3.533	01.mp3	A man in a suit slumps on some steps, a radio beside him.
-9.500	3.899	02.mp3	Nearby, a girl with a shoulder bag talks to a man in a patterned shirt.
-20.500	1.816	03.mp3	A young couple strolls past him.
+0.000	10.468	00.mp3	A back alley by the station. Young people stand around in twos and threes, talking. A man in a suit sits slumped on some steps, head down, a radio beside him.

@@ -1,5 +1,2 @@
 #scene LS_Event_Main_100_110_C
-0.300	2.473	00.mp3	A staff room, its desks piled with papers.
-3.000	4.080	01.mp3	The hero waits by the door. A woman in a suit stands with her back to him.
-7.300	1.071	02.mp3	She turns around.
-13.850	1.212	03.mp3	She looks at her folder.
+0.030	8.803	00.mp3	In the faculty office, between desks piled with papers, a woman in a suit stands with her back to you. She turns and walks over, a folder in her hand.

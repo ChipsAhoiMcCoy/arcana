@@ -1,4 +1,5 @@
 #scene LS_Event_Main_100_225_C
-0.300	1.949	00.mp3	The hero's room. He sits down.
-14.750	1.117	01.mp3	Something sparkles.
-17.700	1.018	02.mp3	His eyes close.
+0.050	6.226	00.mp3	In your dorm room, still in your school uniform, you sit down on the edge of the bed, shoulders slumped, head bowed.
+8.050	5.249	01.mp3	You fall back across the bed, an arm over your forehead, then let it drop and stare at the ceiling.
+14.400	5.817	02.mp3	You raise one hand toward the ceiling. A few tiny sparks of light glitter around your fingers and fade.
+16.400	4.712	03.mp3	Your arm falls to the bed and your eyes close. You fall asleep on top of the covers.

@@ -1,19 +1,18 @@
 {
  "movie": "LS_Event_Main_100_250_C",
- "title": "Yukari wakes the hero",
- "source": "data-only (scene_facts.py, 2026-11-16)",
+ "title": "Yukari wakes you",
  "cues": [
   {
    "at": 0.05,
-   "text": "The hero's room. He stands."
+   "text": "In your dorm room, you sit on the edge of your bed, then get to your feet."
   },
   {
-   "at": 3.8,
-   "text": "Yukari comes in."
+   "at": 3.75,
+   "text": "The door opens and Yukari steps in. You walk over to meet her."
   },
   {
-   "at": 10.6,
-   "text": "She hands him a shortsword."
+   "at": 9.3,
+   "text": "Yukari holds out a short sword, and you take it."
   }
  ]
 }

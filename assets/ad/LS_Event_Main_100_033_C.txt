@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_033_C
-0.300	2.928	00.mp3	The hero waits outside a station, a bag on his shoulder.
+0.030	4.947	00.mp3	Outside Iwatodai Station, you stand alone on the plaza with a bag over your shoulder.

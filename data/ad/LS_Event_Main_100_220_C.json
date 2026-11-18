@@ -1,21 +1,14 @@
 {
  "movie": "LS_Event_Main_100_220_C",
  "title": "Paulownia Mall with Junpei",
- "source": "data-only (scene_facts.py, 2026-11-16)",
  "cues": [
   {
    "at": 0.05,
-   "text": "Junpei leads the hero in."
+   "text": "A paved plaza around a fountain, ringed by shopfronts and an arcade, with people passing through. You and Junpei walk in, school bags in hand."
   },
   {
-   "at": 4.1,
-   "text": "They turn and walk on through the crowd.",
-   "short": "They walk on through the crowd."
-  },
-  {
-   "at": 8.75,
-   "text": "Junpei spots a crane game and runs to it.",
-   "short": "Junpei runs to a crane game."
+   "at": 8.7,
+   "text": "Junpei spots a crane game outside the arcade and hurries over to it, grinning."
   }
  ]
 }

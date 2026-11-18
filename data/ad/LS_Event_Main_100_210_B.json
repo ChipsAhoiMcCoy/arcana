@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_100_210_B", "title": "The Velvet Room", "cues": [{"at": 2.3, "text": "A large clock face on an ornate wall, its hands spinning."}, {"at": 6.35, "text": "A young woman stands beside a long-nosed old man on a sofa."}, {"at": 11.2, "text": "The hero sits across the table."}, {"at": 16.5, "text": "A paper appears on the table."}, {"at": 24.75, "text": "A light drifts to the hero."}]}
+{
+ "movie": "LS_Event_Main_100_210_B",
+ "title": "The Velvet Room, again",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "A room of tall, ornate walls with a large clock face set into them, its hands turning. A long-nosed old man sits in a high-backed armchair at a round table, hands folded under his chin; a young woman stands beside him holding a large book. You sit in a chair across the table from them."
+  },
+  {
+   "at": 16.45,
+   "text": "A small ball of light glows above the table and fades, leaving a sheet of paper lying on it."
+  },
+  {
+   "at": 23.75,
+   "text": "A small light drifts down from above and circles beside you."
+  }
+ ]
+}
