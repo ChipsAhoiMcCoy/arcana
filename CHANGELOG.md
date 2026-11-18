@@ -4,6 +4,8 @@
 
 ### Shops
 - Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.
+- Slash (Where am I) works in a shop: it said "Not in the field". It names the place you walked in from (the shop's own room has no name in the game).
+- After choosing Buy Weapon and a member, the list starts at the first weapon instead of repeating "Buy Weapon, for Colton". Any list whose heading is only the choices you just made skips it the same way.
 
 ### Log and travel
 - The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.

@@ -3,6 +3,7 @@
 
 using p3a::core::drop_echoed_title;
 using p3a::core::names_row;
+using p3a::core::names_rows;
 
 TEST_CASE("title_echo: a heading names the row it starts") {
   CHECK(names_row("Colton", "Colton, HP 165 of 165, SP 112 of 112"));
@@ -38,4 +39,13 @@ TEST_CASE("title_echo: another title, or no row, keeps the title") {
   CHECK(drop_echoed_title("Item", "") == "Item");
   CHECK(drop_echoed_title("Items", "Itemize") == "Items");
   CHECK(drop_echoed_title("", "Item") == "");
+}
+
+TEST_CASE("title_echo: a heading made of the rows confirmed on the way") {
+  std::vector<std::string> path{"Buy Weapon", "Colton"};
+  CHECK(names_rows("Buy Weapon, for Colton", path));
+  CHECK(names_rows("Colton", path));
+  CHECK_FALSE(names_rows("Buy Weapon", path));                 // the last confirm is not in it
+  CHECK_FALSE(names_rows("Buy Armor, for Colton", path));      // a part nobody confirmed
+  CHECK_FALSE(names_rows("Buy Weapon, for Colton", std::vector<std::string>{}));
 }

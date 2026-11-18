@@ -83,7 +83,18 @@ int tartarus_floor() {
   return dungeon == 299 && floor >= 1 && floor < 264 ? floor : 0;
 }
 
+static std::string area_name_now();
+// A shop or another screen with its own small set (the weapon shop's LV_F103_119, which no table names) hides the
+// hero: the place is still the one the hero walked in from, the last name read while the hero was there.
 std::string area_name() {
+  static std::string last;
+  std::string a = area_name_now();
+  if (world::player()) { if (a != strings::kUnknownArea) last = a; return a; }
+  int major = 0, minor = 0;   // a field's set is loaded (none at the title: the last place is another game's)
+  return a == strings::kUnknownArea && !last.empty() && area_ids(major, minor) ? last : a;
+}
+
+static std::string area_name_now() {
   banner_tick();
   int major = 0, minor = 0;
   if (area_ids(major, minor)) {

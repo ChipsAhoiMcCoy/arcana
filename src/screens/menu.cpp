@@ -60,6 +60,10 @@ uint64_t g_moves = 0;   // the player's moves so far: a confirm waiting for the 
 // opened by it, and its title is not said again when it only names that row (core::drop_echoed_title).
 std::string g_confirmed_label;
 uint64_t g_confirmed_at = ~0ull;
+// Every label confirmed in the current screen, oldest first: a list's heading made of several of them (the shop's
+// "Buy Weapon, for Colton") names nothing new either. Cleared when another screen is confirmed in.
+std::vector<std::string> g_confirmed_path;
+std::string g_confirmed_screen;
 // The levels (a list's heading) focus sat inside at each confirm, and g_moves at the player's last cancel: the landing
 // of a cancel back into a level the player left by confirming does not say its heading again (back from Equip's gear
 // to the slots says the slot, not "Colton" first). Context ids are scoped by their list, so the set is never cleared.
@@ -68,7 +72,7 @@ uint64_t g_cancel_at = ~0ull;
 // Whether an entered level's heading is known (GraphAnnouncer::HeadingKnown): the row just confirmed is named by it, or
 // a cancel brought focus back into a level it left by confirming.
 bool heading_known(const ui::GraphNode& level, const std::string& heading) {
-  if (g_confirmed_at == g_moves && core::names_row(heading, g_confirmed_label)) return true;
+  if (g_confirmed_at == g_moves && (core::names_row(heading, g_confirmed_label) || core::names_rows(heading, g_confirmed_path))) return true;
   if (g_cancel_at == g_moves)
     for (const auto& id : g_left_levels)
       if (id == level.id) return true;
@@ -175,6 +179,11 @@ bool nav_press(std::string_view action) {
     for (auto& a : f->vtable->announcements)
       if (a.kind == ui::announcement_kinds::kLabel && a.text) { guarded([&] { g_confirmed_label = a.text(); }); break; }
   g_confirmed_at = g_moves;
+  if (g_confirmed_screen != g_active->id()) { g_confirmed_path.clear(); g_confirmed_screen = g_active->id(); }
+  if (!g_confirmed_label.empty()) {
+    if (g_confirmed_path.size() >= 8) g_confirmed_path.erase(g_confirmed_path.begin());
+    g_confirmed_path.push_back(g_confirmed_label);
+  }
   if (const ui::GraphNode* f = n.focused_node())
     for (const ui::GraphNode* p = f->parent; p; p = p->parent)
       if (std::find(g_left_levels.begin(), g_left_levels.end(), p->id) == g_left_levels.end()) g_left_levels.push_back(p->id);

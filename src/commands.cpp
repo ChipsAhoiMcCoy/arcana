@@ -26,10 +26,12 @@
 
 namespace p3a::commands {
 static void where_am_i() {
-  if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
+  // A shop hides the hero: the place is then the one the hero walked in from (poi::area_name).
+  std::string area = poi::area_name();
+  if (!world::player() && area == strings::kUnknownArea) { speech::speak(strings::kNotInField, true); return; }
   // The date first, then the area (the player's order, 2026-11-14); each its own utterance, so the screen reader
   // pauses between them.
-  std::vector<std::string> parts{calendar::describe(calendar::now()), poi::area_name()};
+  std::vector<std::string> parts{calendar::describe(calendar::now()), area};
   if (int m = stats::money(); m >= 0) parts.push_back(std::format("{} {}", m, strings::kYen));
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();

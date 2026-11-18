@@ -6,6 +6,7 @@
 // named by "Armor"); case and a plural 's' aside ("Items" names "Item").
 #include <string>
 #include <string_view>
+#include <vector>
 
 namespace p3a::core {
 namespace title_echo_detail {
@@ -48,5 +49,24 @@ inline std::string drop_echoed_title(std::string_view title, std::string_view la
   size_t cut = title.find(". ");
   if (!names_row(title.substr(0, cut), label)) return std::string(title);
   return cut == std::string_view::npos ? std::string() : std::string(trim(title.substr(cut + 2)));
+}
+// Whether a heading made of rows confirmed on the way here names them all ("Buy Weapon, for Colton" after Buy Weapon,
+// then Colton): every comma-separated part, a leading "for" aside, names one of `labels`, and one names the last.
+inline bool names_rows(std::string_view heading, const std::vector<std::string>& labels) {
+  using namespace title_echo_detail;
+  if (labels.empty()) return false;
+  bool last = false;
+  for (size_t at = 0; at <= heading.size();) {
+    size_t end = heading.find(", ", at);
+    if (end == std::string_view::npos) end = heading.size();
+    std::string_view part = trim(heading.substr(at, end - at));
+    if (part.size() > 4 && lower(part[0]) == 'f' && lower(part[1]) == 'o' && lower(part[2]) == 'r' && part[3] == ' ')
+      part.remove_prefix(4);
+    bool any = false;
+    for (const auto& l : labels) if (names_row(part, l)) { any = true; if (&l == &labels.back()) last = true; }
+    if (!any) return false;
+    at = end + 2;
+  }
+  return last;
 }
 }  // namespace p3a::core
