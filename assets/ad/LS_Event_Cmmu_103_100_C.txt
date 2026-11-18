@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_103_100_C
+0.030	5.513	00.mp3	You come into Bookworms. Bunkichi is dozing in his chair, eyes closed, murmuring in his sleep.
+3.400	3.403	01.mp3	Bunkichi's eyes snap open and he straightens up in his chair.
+23.770	2.285	02.mp3	Bunkichi holds out a single persimmon.

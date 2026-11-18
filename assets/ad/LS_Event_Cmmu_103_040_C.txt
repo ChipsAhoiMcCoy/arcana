@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_103_040_C
+0.030	2.656	00.mp3	You come into Bookworms. Bunkichi is there alone.
+9.600	4.511	01.mp3	The door opens and Mitsuko hurries in, out of breath, and stops short, wide-eyed.

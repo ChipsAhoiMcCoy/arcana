@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_103_080_C
+0.030	4.398	00.mp3	You come into Bookworms. Bunkichi beams at you, with Mitsuko beside him.

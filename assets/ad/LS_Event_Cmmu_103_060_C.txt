@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_103_060_C
+0.030	4.875	00.mp3	You come into Bookworms. Bunkichi and Mitsuko are silent, both looking downcast.
