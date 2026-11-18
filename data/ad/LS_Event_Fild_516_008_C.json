@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_516_008_C", "title": "Unlocking", "cues": [{"at": 0.00, "text": "You step up and hold out a hand, Yukari and Junpei standing by with their weapons ready."}]}
+{
+ "movie": "LS_Event_Fild_516_008_C",
+ "title": "Unlocking",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You step up and hold out a hand, your party standing by with weapons ready."
+  }
+ ]
+}

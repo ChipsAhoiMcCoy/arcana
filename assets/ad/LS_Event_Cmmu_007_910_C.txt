@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_910_C
-0.000	8.317	00.mp3	The entrance hall of Tartarus. Yukari, Fuuka, Mitsuru and Akihiko stand talking among themselves while Aigis walks up to you.
+0.000	7.975	00.mp3	The entrance hall of Tartarus. Yukari, Fuuka, Mitsuru and Akihiko stand nearby in pairs while Aigis walks up to you.

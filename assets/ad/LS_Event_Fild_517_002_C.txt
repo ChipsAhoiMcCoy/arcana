@@ -1,4 +1,4 @@
 #scene LS_Event_Fild_517_002_C
-0.170	5.668	00.mp3	You, Yukari, Junpei and Akihiko walk up to a sealed door at the top of a flight of steps.
+0.170	3.986	00.mp3	You and your party walk up to a sealed door at the top of a flight of steps.
 2.600	2.401	01.mp3	A ring of energy swirls across the doorway.
 4.300	5.531	02.mp3	The ring shrinks away to nothing, and glowing shards burst out and scatter across the floor around you.

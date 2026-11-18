@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_518_030_C", "title": "Into battle", "cues": [{"at": 0.00, "text": "You run forward with Yukari, Junpei and Akihiko, weapons drawn, and the four of you pull up together."}]}
+{
+ "movie": "LS_Event_Fild_518_030_C",
+ "title": "Into battle",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You run forward with your party, weapons drawn, and all of you pull up together."
+  }
+ ]
+}

@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_007_910_C", "title": "Aigis joins the Tartarus team", "cues": [
-{"at": 0.00, "text": "The entrance hall of Tartarus. Yukari, Fuuka, Mitsuru and Akihiko stand talking among themselves while Aigis walks up to you."}
-]}
+{
+ "movie": "LS_Event_Cmmu_007_910_C",
+ "title": "Aigis joins the Tartarus team",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The entrance hall of Tartarus. Yukari, Fuuka, Mitsuru and Akihiko stand nearby in pairs while Aigis walks up to you."
+  }
+ ]
+}

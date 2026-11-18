@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Fild_517_002_C", "title": "The Monad door opens", "cues": [{"at": 0.17, "text": "You, Yukari, Junpei and Akihiko walk up to a sealed door at the top of a flight of steps."}, {"at": 2.60, "text": "A ring of energy swirls across the doorway."}, {"at": 4.30, "text": "The ring shrinks away to nothing, and glowing shards burst out and scatter across the floor around you."}]}
+{
+ "movie": "LS_Event_Fild_517_002_C",
+ "title": "The Monad door opens",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "You and your party walk up to a sealed door at the top of a flight of steps."
+  },
+  {
+   "at": 2.6,
+   "text": "A ring of energy swirls across the doorway."
+  },
+  {
+   "at": 4.3,
+   "text": "The ring shrinks away to nothing, and glowing shards burst out and scatter across the floor around you."
+  }
+ ]
+}
