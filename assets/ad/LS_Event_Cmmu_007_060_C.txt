@@ -1,0 +1,4 @@
+#scene LS_Event_Cmmu_007_060_C
+0.000	5.189	00.mp3	Iwatodai Strip Mall. You and Aigis come upon the old lady talking with a smirking student.
+7.850	6.248	01.mp3	Kiyoshi walks off with the money, and the old lady goes the other way. Aigis turns to look after Kiyoshi.
+14.500	2.375	02.mp3	Aigis sets off after him, and you follow.

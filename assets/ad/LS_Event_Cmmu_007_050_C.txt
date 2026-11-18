@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_007_050_C
+0.000	3.526	00.mp3	Port Island Station. You and Aigis walk across the plaza.
+2.670	6.710	01.mp3	Aigis turns and runs toward the sound, and you follow. A white cat sits there, and Aigis stops in front of it.

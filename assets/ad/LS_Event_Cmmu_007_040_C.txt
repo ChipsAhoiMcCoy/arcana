@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_007_040_C
+0.000	6.327	00.mp3	Paulownia Mall, Fountain Square. You and Aigis walk across the plaza, and an elderly woman comes up to you.
+21.400	1.321	01.mp3	The old lady walks off.
