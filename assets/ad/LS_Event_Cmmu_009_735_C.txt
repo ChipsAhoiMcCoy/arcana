@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_009_735_C
+0.170	3.132	00.mp3	In the dorm lounge, you sit brushing Koromaru's coat.

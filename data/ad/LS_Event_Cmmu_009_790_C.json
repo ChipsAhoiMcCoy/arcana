@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_009_790_C",
+ "title": "The hidden camera",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "Footage from a security camera looks down on a lounge in the dorm. Koromaru walks up toward the camera and turns around beneath it. Fuuka, Yukari and Aigis walk into view and gather around Koromaru."
+  },
+  {
+   "at": 13.33,
+   "text": "Aigis steps away from the others and looks straight up at the camera."
+  },
+  {
+   "at": 20.13,
+   "text": "Yukari and Fuuka spin around and stare up at the camera."
+  },
+  {
+   "at": 28.17,
+   "text": "Yukari, furious, turns on her heel and storms off, and Fuuka hurries after her, leaving Aigis and Koromaru under the camera."
+  }
+ ]
+}
