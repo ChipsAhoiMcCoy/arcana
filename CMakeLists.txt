@@ -60,8 +60,10 @@ add_custom_command(TARGET arcana POST_BUILD
 # assets/ (wall tones, the audio description clips) checked on every build, not only when the DLL relinks: a re-pack
 # of assets/ad with no code change must reach the build too. Only files whose contents differ are copied (thousands of
 # clips: copying them all took ~9 s a build).
+# Files gone from assets/ are removed from the build's copy too (a dropped description kept playing from it).
 add_custom_target(arcana_assets ALL
-  COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:arcana>/assets)
+  COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${CMAKE_SOURCE_DIR}/assets $<TARGET_FILE_DIR:arcana>/assets
+  COMMAND ${CMAKE_COMMAND} -DSRC=${CMAKE_SOURCE_DIR}/assets -DDST=$<TARGET_FILE_DIR:arcana>/assets -P ${CMAKE_SOURCE_DIR}/cmake/prune_assets.cmake)
 
 # --- dsound.dll proxy: dropped into P3R\Binaries\Win64, loads the mod before the game's code runs ---
 add_library(dsound_proxy SHARED src/proxy/dsound_proxy.cpp src/proxy/dsound.def)
