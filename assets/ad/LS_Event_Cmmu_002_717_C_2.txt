@@ -1,4 +1,2 @@
 #scene LS_Event_Cmmu_002_717_C_2
-0.020	0.729	00.mp3	The lounge.
-4.680	1.411	01.mp3	Yukari beside the hero.
-6.400	0.571	02.mp3	Later.
+0.000	6.886	00.mp3	In the dorm lounge, you and Yukari sit side by side in front of the TV, the next DVD of the series playing.
