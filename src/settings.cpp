@@ -95,7 +95,11 @@ static const Def kDefs[Count] = {
   // voice or the screen reader. A saved 1 from the old on/off toggle is DescAudio.
   {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
-  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
+  // the 3D scenes: described, described once (a description heard is not read again), or not; and by whom. The saved
+  // scene_description=2 of the old row (Off / narrator / screen reader) meant the screen reader: load() moves it.
+  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {SceneOn, SceneOnce, SceneOff}, SceneOn,
+   {strings::kOff, strings::kOn, strings::kSceneOnce}},
+  {"scene_voice", strings::kSetSceneVoice, CatDialogue, strings::kHelpSceneVoice, Unit::Choice, {DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   // a 3D scene's description pauses it, like a message window, until Enter (A) (ad.cpp); off: said over it. Movies never wait
   {"description_wait", strings::kSetDescriptionWait, CatDialogue, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
@@ -145,13 +149,23 @@ static void load() {
   for (int i = 0; i < Count; ++i) g_value[i] = kDefs[i].def;
   if (FILE* f = _wfopen(file().c_str(), L"r")) {
     char line[256];
+    std::vector<std::pair<std::string, int>> saved;
     while (fgets(line, sizeof line, f)) {
       std::string key; int v;
-      if (!core::parse_setting(line, key, v)) continue;
+      if (core::parse_setting(line, key, v)) saved.emplace_back(key, v);
+    }
+    fclose(f);
+    // a file from before scene_voice: its scene_description=2 was the screen reader, not "suppress repeated"
+    const bool voice_saved = std::ranges::any_of(saved, [](const auto& kv) { return kv.first == "scene_voice"; });
+    for (auto [key, v] : saved) {
+      if (key == "scene_description" && v == DescReader && !voice_saved) {
+        g_value[SceneDescription] = SceneOn;
+        g_value[SceneVoice] = DescReader;
+        continue;
+      }
       for (int i = 0; i < Count; ++i)   // a value the option does not offer (a hand edit) keeps the default
         if (key == kDefs[i].key && std::ranges::find(kDefs[i].values, v) != kDefs[i].values.end()) g_value[i] = v;
     }
-    fclose(f);
   }
   for (int i = 0; i < Count; ++i) apply((Id)i);
 }

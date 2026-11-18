@@ -4,6 +4,7 @@
 
 ### Audio description
 - Every 3D story scene's description was rewritten, now that a description pauses the scene until you go on: the main story from the arrival to graduation, every Social Link and the team's Linked Episodes, the group outings and study nights, Elizabeth's requests and outings, Takaya's night meetings, Tartarus's one-time moments and the short field scenes. They speak to you in the second person ("You walk into the lounge"), say where a scene is when its lines don't, and are as full as the moment needs, with fewer, longer descriptions in place of many short ones. Scenes the dialogue already carries (walking to school, morning greetings, studying, job shifts, the fusion animation, Tartarus notices and anything else that repeats) are left quiet. The animated movies are unchanged.
+- "Audio description in 3D scenes" (F2, Dialogue) is now on, suppress repeated descriptions, or off. Suppress repeated descriptions reads each description once: one you have heard (gone on from with Enter or Auto, or heard to its end) is not read again when its scene comes back. Who reads them, the narrator's voice or your screen reader, is its own row, "3D scene descriptions read by"; a saved screen-reader choice carries over.
 
 ### Field
 - Characters the game lets you talk to but who have no model of their own in their spot are listed again: the Weak Cat at the Station Outskirts was left off the list and the radar.

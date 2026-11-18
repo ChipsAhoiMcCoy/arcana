@@ -8,7 +8,7 @@ enum Id { TopDown, TurnedRooms, PoiRange, WallTones, WallRange, ShadowAlerts, St
           Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
           MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
           Spatial, BehindPitch,
-          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, DescriptionWait,
+          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, DescriptionWait,
           TriggerDelay, EntryHints, MenuSpeed, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }
@@ -18,9 +18,13 @@ enum Voiced { VoicedRead, VoicedName, VoicedSilent };
 enum EndSound { EndNext, EndPage, EndMessage, EndCursor, EndOff };
 // SonarScope: which points of interest the sonar sounds for.
 enum Scope { ScopeAll, ScopeCategory, ScopeSelected };
-// AudioDescription (the animated movies) and SceneDescription (story scenes in the 3D engine): how a description
-// is given, by the narrator's recorded voice or as text to the screen reader (ad.cpp).
+// AudioDescription (the animated movies) and SceneVoice (story scenes in the 3D engine): how a description is given,
+// by the narrator's recorded voice or as text to the screen reader (ad.cpp). SceneVoice offers no DescOff: that is
+// SceneDescription's.
 enum Description { DescOff, DescAudio, DescReader };
+// SceneDescription: whether the 3D scenes are described, and SceneOnce: a description already heard is not read
+// again (core/heard_cues, ad.cpp).
+enum SceneMode { SceneOff, SceneOn, SceneOnce };
 // Spatial: how the mod's sounds are placed (audio::set_spatial).
 enum SpatialModel { SpatialStereo, SpatialHrtf, SpatialPan };
 // WallTones: when the tones play (walltones::set_mode). A saved 1 from the old on/off toggle is WallMoving.

@@ -13,9 +13,14 @@
 // With DescriptionWait on, each description in a 3D scene is a box like a message window: it pauses the scene and waits
 // for Enter (see "the description box" below). The animated movies' descriptions are timed to fit between their lines
 // and never stop the movie.
+// A 3D scene's description once heard (its box closed by Enter or Auto, or its narration played to its end) is
+// recorded in seen-descriptions.txt beside the settings (core/heard_cues); with SceneDescription on "suppress repeated
+// descriptions" a scene is loaded without the ones heard. Movies are not recorded.
 #include "ad.h"
 #include "audio.h"
 #include "core/ad_schedule.h"
+#include "core/heard_cues.h"
+#include "mod.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "hooks.h"
@@ -52,6 +57,8 @@ struct Scene {
   std::string file;   // the movie's path under CriData/Stream ("#file" line)
   std::vector<sched::Cue> cues;
   std::vector<std::string> files, texts;
+  std::vector<std::string> heard_ids;   // a 3D scene's: each cue's core::HeardCues id (empty for a movie)
+  int left_out = 0;                     // cues left out as heard before (settings::SceneOnce)
   std::vector<std::shared_ptr<const std::vector<float>>> pcm;
   std::atomic<bool> ready{false};
   std::atomic<int> failed{0};
@@ -71,6 +78,7 @@ int g_cur = -1;
 bool g_was_playing = false;
 std::string g_key;                  // the movie we last set up for (with or without descriptions)
 int g_mode = settings::DescOff;     // how its descriptions are given (settings::Description)
+bool g_once = false;                // it was loaded without the descriptions already heard (settings::SceneOnce)
 float g_base_volume = -1, g_volume = -1;
 // All of the above is the game thread's: the dev routes read it through dev::on_game.
 
@@ -135,8 +143,37 @@ std::string key_of(std::string name) {
 
 std::string data_dir() { return audio::module_dir() + "assets\\ad\\"; }
 
+// ---- the descriptions heard (3D scenes) ----
+// The file sits beside the settings; dev launches (P3A_NOFOCUS) keep their own, as they do settings-dev.ini.
+std::wstring heard_file() {
+  std::wstring p = log::path();
+  p = p.substr(0, p.find_last_of(L'\\') + 1);
+  return p + (env_flag(L"P3A_NOFOCUS") ? L"seen-descriptions-dev.txt" : L"seen-descriptions.txt");
+}
+core::HeardCues& heard() {
+  static core::HeardCues* h = [] {
+    auto* h = new core::HeardCues;
+    if (FILE* f = _wfopen(heard_file().c_str(), L"rb")) {
+      char line[256];
+      while (fgets(line, sizeof line, f)) h->add_line(line);
+      fclose(f);
+    }
+    log::writef("ad: {} scene descriptions heard before", h->size());
+    return h;
+  }();
+  return *h;
+}
+// A 3D scene's cue was heard: recorded (once).
+void mark_heard(const Scene& s, int cue) {
+  if (cue < 0 || cue >= (int)s.heard_ids.size()) return;
+  const std::string& id = s.heard_ids[cue];
+  if (!heard().add(id)) return;
+  if (FILE* f = _wfopen(heard_file().c_str(), L"ab")) { fprintf(f, "%s\n", id.c_str()); fclose(f); }
+}
+
 // decode false: the descriptions go to the screen reader, as text; no clip is decoded.
-std::shared_ptr<Scene> load_scene(const std::string& key, bool decode) {
+// scene: a 3D scene (its cues get heard ids); once: the cues already heard are left out.
+std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scene, bool once) {
   FILE* f = fopen((data_dir() + key + ".txt").c_str(), "rb");
   if (!f) return nullptr;
   auto s = std::make_shared<Scene>();
@@ -154,6 +191,11 @@ std::shared_ptr<Scene> load_scene(const std::string& key, bool decode) {
     if (sscanf(line, "%lf\t%lf\t%63[^\t]\t%n", &at, &dur, file, &used) < 3) continue;
     std::string text = line + used;
     while (!text.empty() && (text.back() == '\n' || text.back() == '\r')) text.pop_back();
+    if (scene) {
+      std::string id = core::HeardCues::id(key, text);
+      if (once && heard().heard(key, text)) { ++s->left_out; continue; }   // heard before: left out
+      s->heard_ids.push_back(std::move(id));
+    }
     s->cues.push_back({at, dur});
     s->files.push_back(file);
     s->texts.push_back(text);
@@ -194,6 +236,7 @@ void log_endings(const Scene& s) {
     if (st == g_seen[i]) continue;
     g_seen[i] = st;
     if (st == sched::State::Playing || st == sched::State::Pending) continue;
+    if (st == sched::State::Done) mark_heard(s, (int)i);   // said to its end (a box's narrator, or one said over the scene)
     const Run& r = g_runs[i];
     log::writef("ad: {} cue {} {} at {:.2f} {}{}played {:.2f} of {:.2f} s", s.key, i, sched::state_name(st),
                 s.cues[i].at, g_sched.reason((int)i), g_sched.reason((int)i).empty() ? "" : ", ",
@@ -580,28 +623,38 @@ void tick() {
   if (!playing && !g_was_playing && g_sched.playing() < 0) return;   // nothing on, nothing finishing
   // Movies and scenes each have their setting: off, the narrator's voice, or the screen reader. A description
   // finishing after its movie keeps the mode it started in.
-  int mode = playing ? settings::get(c.event ? settings::SceneDescription : settings::AudioDescription) : g_mode;
+  // A 3D scene: SceneDescription says whether (and whether once), SceneVoice by whom.
+  int mode = g_mode;
+  bool once = g_once;
+  if (playing && !c.event) { mode = settings::get(settings::AudioDescription); once = false; }
+  if (playing && c.event) {
+    const int scene = settings::get(settings::SceneDescription);
+    mode = scene == settings::SceneOff ? settings::DescOff : settings::get(settings::SceneVoice);
+    once = scene == settings::SceneOnce;
+  }
   if (!playing || !c.paused) g_releasing = false;
   if (mode == settings::DescOff) {
     close_box(playing);
     if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); g_key.clear(); }
     return;
   }
-  if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode)) {
+  if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode || once != g_once)) {
     // a movie starts (or the source changed under a running player, or the setting changed): load its
     // descriptions, if it has any
     close_box(g_key == key_of(c.movie));
     stop_all();
     g_key = key_of(c.movie);
     g_mode = mode;
-    auto s = load_scene(g_key, mode == settings::DescAudio);
+    g_once = once;
+    auto s = load_scene(g_key, mode == settings::DescAudio, c.event, once);
     g_scene = s;
     g_sched.load(s ? s->cues : std::vector<sched::Cue>{});
     g_runs.assign(g_sched.size(), Run{});
     g_seen.assign(g_sched.size(), sched::State::Pending);
     g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
     g_volume = g_base_volume;
-    log::writef("ad: {} {} ({}), {} descriptions", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0);
+    log::writef("ad: {} {} ({}), {} descriptions{}", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
+                s && s->left_out ? std::format(", {} heard before left out", s->left_out) : std::string());
   }
   g_was_playing = playing;
   std::shared_ptr<Scene> s = g_scene;
@@ -635,6 +688,7 @@ void tick() {
       }
       if (g_box_go) {
         log::writef("ad: {} cue {} box closed at {:.2f}{}", s->key, g_box, c.time, by_auto ? " (Auto)" : "");
+        mark_heard(*s, g_box);   // the player went on from it (or Auto did): heard, even if cut short
         close_box(true);
         screens::cursor_sound(9);   // what a message window plays as Enter turns its page (measured 2026-11-17)
         sc.paused = false;   // it plays from this frame
@@ -753,6 +807,13 @@ void register_routes() {
       return out;
     });
   }, "?start=1[&movie=filter][&mode=full] play described movies in game and check every description plays in full; no args: progress");
+  dev::route("/ad/heard", [](const dev::Request& r, int&) {
+    const bool clear = dev::has(r, "clear");
+    return dev::on_game([clear] {
+      if (clear) { heard().clear(); _wremove(heard_file().c_str()); }
+      return std::format("{} scene descriptions heard{}\n", heard().size(), clear ? " (forgotten)" : "");
+    });
+  }, "the 3D scene descriptions heard (suppress repeated descriptions); ?clear=1 forgets them");
   dev::route("/ad/selftest",[](const dev::Request& r, int&) {
     // Every packed clip of every movie decoded and its length compared with the cue's (a fast check of the shipped
     // files, not of the timing or the mixer). Runs on the server's thread: it touches no game state.
