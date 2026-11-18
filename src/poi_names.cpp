@@ -2,7 +2,8 @@
 // Read here:
 //  - AFldHitCore: mNameIndex_ (the row KIN_<8 digits> of DT_FldDailyHitName / DT_FldDungeonHitName: Name, and Name2
 //    while the row's story `flag` is on), mCheckIcon_ (the prompt's icon), mOffFlagName_.
-//  - AFldNpcActor: mDispName_, else mNameIndex_ in DT_FldNpcName; AFldCmmActor (a Social Link partner): mUniqueId_.
+//  - AFldNpcActor: mDispName_, else mNameIndex_ in DT_FldNpcName, else the row of its mMajorID_ / mMinorID_;
+//    AFldCmmActor (a Social Link partner): mUniqueId_.
 //  - UGlobalWorkBpLib::GWorkFlagChk: the game's story-flag check, by flag name.
 //  - UFldEnemyComp.EnemyType (EFldEnemyType) and AFldDungeonObjectActor.ObjType (EDungeonObjType), as value names.
 #include "poi_internal.h"
@@ -103,8 +104,14 @@ std::string npc_name(UObject* npc) {
       if (!n.empty()) return std::format("{} ({})", n, social::arcana_name(id));
     }
   }
-  std::string n = kin_name({"DT_FldNpcName"}, get<int32_t>(npc, "mNameIndex_", -1));
-  return n.empty() ? npc_actor_name(npc) : n;
+  // Its name index, else the rows its script ids name (core::npc_name_rows): Officer Kurosawa outside the Paulownia
+  // Mall police station has no index and was listed as "Person" (2026-11-18).
+  UObject* lvl = outer_of(npc);
+  UObject* w = lvl ? outer_of(lvl) : nullptr;   // a ULevel's outer is its UWorld, named for the level
+  for (int row : core::npc_name_rows(get<int32_t>(npc, "mNameIndex_", -1), get<int32_t>(npc, "mMajorID_", -1),
+                                     get<int32_t>(npc, "mMinorID_", -1), w ? name_of(w) : std::string()))
+    if (std::string n = kin_name({"DT_FldNpcName"}, row); !n.empty()) return n;
+  return npc_actor_name(npc);
 }
 
 // A hit under the plain Check icon, sorted by the name the game gives it (the lists: core::check_kind).

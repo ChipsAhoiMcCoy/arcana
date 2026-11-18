@@ -95,6 +95,21 @@ bool npc_sells(int major, int minor, std::string_view level) {
   return major == 103 && minor == 700 && level.ends_with("_Event_550");
 }
 
+// Surveyed from every map's placed NPCs (2026-11-18): of 780 with a name index, 586 point at their major's row. Of
+// those without one, every field-level NPC whose major has a row is that character (Officer Kurosawa outside the
+// Paulownia Mall police station, Mitsuru / Junpei / Akihiko on event days, the bartender); the backdrops of the shop
+// and Velvet Room menus (LV_WeaponShop, LV_VelvetRoom) borrow ids whose rows are someone else (Octopia, Ms. Toriumi).
+std::vector<int> npc_name_rows(int name_index, int major, int minor, std::string_view level) {
+  std::vector<int> rows;
+  if (name_index >= 0) rows.push_back(name_index);
+  bool field = level.size() > 4 && level.starts_with("LV_F") && isdigit((unsigned char)level[4]);
+  if (field && major > 0 && major < 100000) {
+    if (minor > 0 && minor < 1000) rows.push_back(major * 1000 + minor);
+    rows.push_back(major * 1000);
+  }
+  return rows;
+}
+
 std::string chest_name(const std::string& type, const std::string& game_name) {
   if (type == "TBoxRare") return strings::kPoiChestRare;
   if (type == "TBoxJewelry") return strings::kPoiChestGold;

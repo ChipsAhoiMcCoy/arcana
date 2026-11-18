@@ -98,6 +98,16 @@ TEST_CASE("check_kind: shops, doors and things by the game's names") {
   CHECK(check_kind("") == CheckKind::Thing);
 }
 
+TEST_CASE("npc_name_rows: the index first, then the script ids on a field level") {
+  CHECK(npc_name_rows(1000, 1, 0, "LV_F101_102_Npc") == std::vector<int>{1000, 1000});
+  CHECK(npc_name_rows(-1, 150, 0, "LV_F103_101_Npc") == std::vector<int>{150000});            // Officer Kurosawa
+  CHECK(npc_name_rows(-1, 31, 700, "LV_F103_101_Npc_KeyFree_Event_300") == std::vector<int>{31700, 31000});
+  CHECK(npc_name_rows(-1, 103, 119, "LV_WeaponShop").empty());                                // a shop's backdrop
+  CHECK(npc_name_rows(-1, 201, 103, "LV_VelvetRoom").empty());
+  CHECK(npc_name_rows(-1, 150, 0, "").empty());
+  CHECK(npc_name_rows(-1, -1, -1, "LV_F103_101_Npc").empty());
+}
+
 TEST_CASE("npc_sells: the vendors' scripts, not their event-day chatter") {
   CHECK(npc_sells(103, 0, "LV_F105_102_Npc"));                        // Octopia
   CHECK(npc_sells(104, 0, "LV_F103_111_Npc"));                        // Luxury Shopkeeper (Speak icon)

@@ -45,6 +45,12 @@ CheckKind check_kind(const std::string& name);
 // Those marked with the Shop icon are shops by the icon; this covers the ones under the Speak icon too.
 bool npc_sells(int major, int minor, std::string_view level);
 
+// The rows of the NPC name table (DT_FldNpcName, KIN_<8 digits>) to try for an NPC, best first: its own mNameIndex_
+// (-1 when it has none), then, on a field level (LV_F<n>...), the rows its script ids name: major * 1000 + minor, then
+// major * 1000 (the character's own row: 150 -> 150000 "Officer Kurosawa"). Shop and Velvet Room backdrop levels reuse
+// other characters' ids, so they get only the index.
+std::vector<int> npc_name_rows(int name_index, int major, int minor, std::string_view level);
+
 // A Tartarus chest's name by its dungeon object type: the rare and the gold ones by the mod's words, a locked one
 // with what it costs ("..., 3 Twilight Fragments"), any other by the game's own name.
 std::string chest_name(const std::string& type, const std::string& game_name);
