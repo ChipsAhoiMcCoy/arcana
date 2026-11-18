@@ -1,6 +1,7 @@
 #scene LS_Event_Main_200_050_B
-0.030	2.640	00.mp3	Chidori sinks to her knees. Junpei runs over.
-11.000	2.724	01.mp3	Up on the steps, Takaya and Jin stand watching.
-25.050	1.715	02.mp3	Takaya fires his revolver.
-27.600	2.695	03.mp3	Junpei drops to his knees and falls face down.
-31.680	1.066	04.mp3	Chidori slumps.
+0.050	5.132	00.mp3	Chidori staggers and sinks to the ground. Junpei runs to her and kneels at her side.
+10.700	4.841	01.mp3	At the top of the steps, Takaya and Jin walk into view and stand looking down at you all.
+19.350	3.599	02.mp3	Junpei gets to his feet beside Chidori and faces Takaya.
+24.350	4.169	03.mp3	Takaya draws a revolver from his waistband and levels it at Junpei.
+25.050	1.088	04.mp3	Takaya fires.
+27.350	4.235	05.mp3	Junpei sways, drops to his knees beside Chidori and falls face down.

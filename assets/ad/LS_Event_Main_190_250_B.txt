@@ -1,13 +1,7 @@
 #scene LS_Event_Main_190_250_B
-1.100	4.152	00.mp3	On a riverbank below wooden terraces, Yukari walks away from Mitsuru.
-16.850	1.411	01.mp3	Yukari slaps Mitsuru.
-20.100	2.677	02.mp3	Mitsuru holds her cheek. People stroll past.
-25.700	1.130	03.mp3	Both stand still.
-39.500	1.873	04.mp3	Yukari walks off along the path.
-41.800	1.993	05.mp3	Mitsuru stays, a hand on her hip.
-47.150	0.900	06.mp3	Her eyes close.
-48.850	4.274	07.mp3	Her Persona appears, an armored woman with a crown and blades for arms.
-53.400	3.478	08.mp3	It becomes a masked woman with spiked wings and a wide skirt.
-58.950	1.344	09.mp3	A bone whip in her hand.
-61.400	2.574	10.mp3	Back on the path, sparks sink into Mitsuru's chest.
-64.200	1.839	11.mp3	She stands still as people pass.
+1.000	7.234	00.mp3	A path along a riverbank in Kyoto, below a row of wooden terraces. Yukari walks a few steps ahead of Mitsuru.
+16.670	3.387	01.mp3	Yukari steps up to Mitsuru and slaps her across the face.
+20.000	4.719	02.mp3	Mitsuru holds her cheek. Yukari turns away toward the river as people stroll past.
+39.330	3.562	03.mp3	Yukari walks off along the path. Mitsuru stays where she is.
+48.370	14.911	04.mp3	Mitsuru closes her eyes. In a burst of light her Persona, Penthesilea, appears: an armored woman with a crown and blades for arms. It changes into Artemisia, a masked woman with spiked wings and a wide skirt, a whip in her hand.
+60.600	6.417	05.mp3	Back on the path, sparks of light sink into Mitsuru's chest. She stands still as people pass, then smiles.

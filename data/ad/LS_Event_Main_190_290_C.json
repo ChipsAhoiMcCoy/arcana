@@ -1,8 +1,6 @@
 {"movie": "LS_Event_Main_190_290_C", "title": "The boys in the hot spring", "cues": [
-{"at": 4.05, "text": "The boys soak in a hot spring."},
-{"at": 14.60, "text": "Suddenly, all four boys startle."},
-{"at": 19.25, "text": "Mitsuru, Yukari and Fuuka walk in wearing towels, with Aigis."},
-{"at": 23.34, "text": "The boys stand."},
-{"at": 33.68, "text": "Junpei gags him."},
-{"at": 42.40, "text": "All four freeze."}
+{"at": 0.00, "text": "The inn's open-air hot spring. You sit in the steaming water with Junpei, Akihiko and Ryoji."},
+{"at": 14.53, "text": "A door slides open somewhere beyond the steam. Akihiko and Ryoji start, and Junpei gets up off his seat in the water."},
+{"at": 19.20, "text": "Yukari, Fuuka and Mitsuru walk out onto the far side of the bath, wrapped in towels, with Aigis beside them. You and the others stand up in the water and stare."},
+{"at": 32.33, "text": "Junpei lunges at Ryoji, splashing through the water, and clamps a hand over his mouth."}
 ]}

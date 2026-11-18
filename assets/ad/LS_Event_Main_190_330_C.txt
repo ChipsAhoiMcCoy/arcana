@@ -1,8 +1,5 @@
 #scene LS_Event_Main_190_330_C
-3.100	4.408	00.mp3	Akihiko, Ryoji, Junpei and the hero sit on a bench in the lobby.
-12.950	2.060	01.mp3	Yukari, Fuuka and Aigis walk up.
-16.750	1.983	02.mp3	The girls stand before them, silent.
-19.000	3.274	03.mp3	Yukari turns and walks off. Fuuka and Aigis follow.
-29.400	1.112	04.mp3	Mitsuru walks in.
-31.000	2.189	05.mp3	She passes the bench with her eyes closed.
-35.750	1.078	06.mp3	Junpei slumps.
+1.170	8.522	00.mp3	You sit on a long bench with Akihiko, Ryoji and Junpei, bags at your feet, while other students wait around you. A teacher walks past.
+12.000	3.365	01.mp3	Yukari, Fuuka and Aigis walk up and stop in front of the bench.
+16.670	6.647	02.mp3	The three girls look at the four of you without a word. Then Yukari turns and walks away, and Fuuka and Aigis follow her.
+28.030	7.063	03.mp3	You and the others straighten up on the bench. Mitsuru walks past with her eyes closed, never looking at you, and keeps going.

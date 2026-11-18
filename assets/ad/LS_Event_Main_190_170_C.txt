@@ -1,4 +1,4 @@
 #scene LS_Event_Main_190_170_C
-0.000	1.116	00.mp3	A hospital room.
-11.550	1.134	01.mp3	Junpei stands up.
-22.900	1.547	02.mp3	Chidori looks down at her lap.
+0.050	5.905	00.mp3	In a hospital room, Chidori sits up in bed. Junpei walks in and sits down in the chair beside her.
+11.550	3.901	01.mp3	Junpei gets up, leans over the bed and reaches for Chidori's hand.
+14.050	3.776	02.mp3	Chidori jerks her hand away, and Junpei straightens up, startled.

@@ -1,6 +1,5 @@
 #scene LS_Event_Main_190_060_C
-2.100	3.327	00.mp3	A giant clock face looms over Tartarus's entrance hall.
-5.750	3.464	01.mp3	Ikutsuki and Aigis wait beneath two bull heads on the wall.
-9.450	1.373	02.mp3	The team runs up to them.
-45.900	1.224	03.mp3	Aigis steps forward.
-49.850	1.401	04.mp3	Aigis spreads her arms.
+2.100	18.707	00.mp3	In Tartarus's entrance hall, a giant clock face looms overhead. Ikutsuki waits at the far end, Aigis standing beside him between two great bull heads mounted on the wall. You run in with Mitsuru, Akihiko, Yukari, Junpei, Fuuka, Ken and Koromaru, and stop in a line facing them.
+42.100	3.858	01.mp3	Mitsuru turns toward Ikutsuki and drops into a fighting stance.
+45.900	3.125	02.mp3	Aigis steps forward from Ikutsuki's side, toward you.
+48.550	3.664	03.mp3	Aigis plants her feet and spreads her arms wide, ready to fight.

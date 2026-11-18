@@ -1,11 +1,6 @@
-{"movie": "LS_Event_Main_200_100_C", "title": "Ryoji leaves the dorm; Aigis alone with the hero", "cues": [
-{"at": 3.30, "text": "In the dorm lounge, Ryoji turns and walks past the hero toward the door."},
-{"at": 8.60, "text": "Aigis walks in."},
-{"at": 19.50, "text": "Aigis turns to face Junpei."},
-{"at": 26.60, "text": "The others get up to leave."},
-{"at": 28.60, "text": "Later, only Aigis and the hero remain."},
-{"at": 32.70, "text": "Aigis looks down."},
-{"at": 36.30, "text": "Aigis turns and walks out of the lounge."},
-{"at": 38.80, "text": "She walks down a dorm hallway alone."},
-{"at": 42.40, "text": "Her hand on her chest, she walks on."}
+{"movie": "LS_Event_Main_200_100_C", "title": "Ryoji leaves the dorm", "cues": [
+{"at": 0.25, "text": "You walk into the dorm lounge with your bag on your shoulder. Akihiko, Yukari, Fuuka and Koromaru are sitting around the low table, and Junpei stands with Ryoji."},
+{"at": 3.20, "text": "Ryoji walks past you and out the front door. A moment later, Aigis walks into the lounge."},
+{"at": 26.55, "text": "The others get up and head off, leaving you alone in the lounge with Aigis."},
+{"at": 35.70, "text": "Aigis turns and walks out of the lounge. Then she walks alone down a dorm hallway, stops, and lays a hand on her chest."}
 ]}

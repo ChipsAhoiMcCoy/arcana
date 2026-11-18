@@ -1,5 +1,5 @@
 {"movie": "LS_Event_Main_190_170_C", "title": "Chidori sends Junpei away", "cues": [
-{"at": 0.00, "text": "A hospital room."},
-{"at": 11.55, "text": "Junpei stands up."},
-{"at": 22.90, "text": "Chidori looks down at her lap."}
+  {"at": 0.05, "text": "In a hospital room, Chidori sits up in bed. Junpei walks in and sits down in the chair beside her."},
+  {"at": 11.55, "text": "Junpei gets up, leans over the bed and reaches for Chidori's hand."},
+  {"at": 14.05, "text": "Chidori jerks her hand away, and Junpei straightens up, startled."}
 ]}

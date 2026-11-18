@@ -1,7 +1,6 @@
 {"movie": "LS_Event_Main_190_080_B", "title": "Sacrifices on the crosses", "cues": [
-  {"at": 1.85, "text": "The team is chained to crosses."},
-  {"at": 9.40, "text": "Fuuka hangs above Yukari."},
-  {"at": 11.40, "text": "Mitsuru is chained too."},
-  {"at": 13.05, "text": "Takeharu stands beside Aigis."},
-  {"at": 29.35, "text": "Ikutsuki aims a gun at him."}
+  {"at": 1.85, "text": "You come to chained to a tall wooden cross, arms stretched out along its beam and your feet off the ground. Yukari, Junpei, Fuuka, Akihiko, Mitsuru and Ken hang chained to crosses all around you."},
+  {"at": 14.50, "text": "Below the crosses stand Ikutsuki, Aigis, and Mitsuru's father, Takeharu Kirijo, a man with a patch over one eye."},
+  {"at": 20.05, "text": "Aigis seizes Takeharu from behind and holds him fast."},
+  {"at": 28.05, "text": "Ikutsuki draws a pistol and levels it at Takeharu."}
 ]}

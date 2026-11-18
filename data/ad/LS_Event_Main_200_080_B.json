@@ -1,13 +1,38 @@
-{"movie": "LS_Event_Main_200_080_B", "title": "Junpei's new Persona", "cues": [
-{"at": 2.05, "text": "Junpei lays Chidori down and bows over her."},
-{"at": 5.10, "text": "He stands. Chidori lies still on the paving."},
-{"at": 9.70, "text": "Junpei fires."},
-{"at": 11.50, "text": "His red Persona floats beside Chidori's, a white figure with blade-like wings."},
-{"at": 16.40, "text": "They merge into one: a red body, a white mask, and huge golden wings."},
-{"at": 22.70, "text": "Now it towers behind Junpei."},
-{"at": 28.20, "text": "Fire streaks toward Jin."},
-{"at": 30.40, "text": "Jin drops to one knee."},
-{"at": 40.30, "text": "Smoke billows over them."},
-{"at": 50.50, "text": "Junpei pushes himself up and stands, head bowed."},
-{"at": 53.85, "text": "He kneels beside Chidori."}
-]}
+{
+ "movie": "LS_Event_Main_200_080_B",
+ "title": "Junpei's new Persona",
+ "cues": [
+  {
+   "at": 2.05,
+   "text": "Junpei lays Chidori down on the paving and bows over her. Junpei gets to his feet and turns toward Takaya. Chidori lies still on the ground behind him."
+  },
+  {
+   "at": 9.7,
+   "text": "Junpei puts his Evoker to his head and fires."
+  },
+  {
+   "at": 11.25,
+   "text": "Junpei's Persona hovers face to face with Chidori's Persona, Medea, a pale figure with blade-like wings, and the two draw together. In a burst of light they become one new Persona: a slender masked figure with great jagged wings spread wide."
+  },
+  {
+   "at": 27.65,
+   "text": "The Persona hurls a blast of fire up the steps. Jin runs in front of Takaya and takes it."
+  },
+  {
+   "at": 30.4,
+   "text": "Jin drops to one knee. Junpei sinks to his hands and knees beside Chidori."
+  },
+  {
+   "at": 35.85,
+   "text": "Jin pulls the pin from a grenade and throws it. Thick smoke rolls over the steps and everyone below them."
+  },
+  {
+   "at": 45.02,
+   "text": "Yukari runs to Junpei, kneels and holds him back as the rest of you gather around."
+  },
+  {
+   "at": 49.35,
+   "text": "Junpei pushes himself up and stands with his head bowed, then turns to Chidori. He kneels beside her."
+  }
+ ]
+}

@@ -1,7 +1,8 @@
 {"movie": "LS_Event_Main_200_050_B", "title": "Chidori falls", "cues": [
-{"at": 0.03, "text": "Chidori sinks to her knees. Junpei runs over."},
-{"at": 11.00, "text": "Up on the steps, Takaya and Jin stand watching."},
-{"at": 25.05, "text": "Takaya fires his revolver."},
-{"at": 27.60, "text": "Junpei drops to his knees and falls face down."},
-{"at": 31.68, "text": "Chidori slumps."}
+{"at": 0.05, "text": "Chidori staggers and sinks to the ground. Junpei runs to her and kneels at her side."},
+{"at": 10.70, "text": "At the top of the steps, Takaya and Jin walk into view and stand looking down at you all."},
+{"at": 19.35, "text": "Junpei gets to his feet beside Chidori and faces Takaya."},
+{"at": 24.35, "text": "Takaya draws a revolver from his waistband and levels it at Junpei."},
+{"at": 25.05, "text": "Takaya fires."},
+{"at": 27.35, "text": "Junpei sways, drops to his knees beside Chidori and falls face down."}
 ]}

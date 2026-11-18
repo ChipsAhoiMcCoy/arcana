@@ -1,11 +1,18 @@
-{"movie": "LS_Event_Main_190_150_B", "title": "Yukari's resolve", "cues": [
-{"at": 0.00, "text": "Yukari's bedroom."},
-{"at": 2.25, "text": "She bends over the laptop."},
-{"at": 4.25, "text": "She sits up straight."},
-{"at": 6.30, "text": "Yukari closes her eyes."},
-{"at": 8.90, "text": "Her Persona appears: a chained girl on a huge horned skull."},
-{"at": 12.80, "text": "A white flash."},
-{"at": 14.30, "text": "A horned figure with a pale mask spreads huge wings."},
-{"at": 17.70, "text": "A red orb crowns it."},
-{"at": 22.05, "text": "Back on the bed, a sphere sinks into Yukari."}
-]}
+{
+ "movie": "LS_Event_Main_190_150_B",
+ "title": "Yukari's resolve",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "On the edge of her bed, Yukari leans in close to the laptop's screen."
+  },
+  {
+   "at": 6.2,
+   "text": "Yukari closes her eyes. Her Persona, Io, appears: a girl bound in chains, seated on a huge horned skull. In a burst of light it changes into Isis: a tall figure with a pale, mask-like face and curving horns, an orb held high above its head, and vast wings spread wide."
+  },
+  {
+   "at": 22.05,
+   "text": "Back on the bed, Yukari sits with her eyes closed as a glowing sphere of light sinks into her chest."
+  }
+ ]
+}

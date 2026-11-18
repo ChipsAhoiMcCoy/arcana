@@ -1,5 +1,7 @@
 {"movie": "LS_Event_Main_190_190_C", "title": "Finding Mitsuru on the roof", "cues": [
- {"at": 0.00, "text": "Mitsuru stands at a fence."},
- {"at": 25.95, "text": "Mitsuru walks off past Ryoji and Yukari."},
- {"at": 29.30, "text": "Yukari and Ryoji watch her leave."}
+{"at": 0.00, "text": "The school rooftop. Mitsuru stands alone at the fence, and Yukari walks up behind her."},
+{"at": 16.17, "text": "The rooftop door opens and Ryoji strolls out toward Mitsuru, smiling."},
+{"at": 25.83, "text": "Mitsuru starts toward the door, then stops and turns back to Yukari."},
+{"at": 29.50, "text": "Mitsuru walks out through the door. Yukari turns to watch her go."},
+{"at": 34.30, "text": "Yukari scowls, turns to Ryoji and marches up to him. As he talks, she kicks him."}
 ]}

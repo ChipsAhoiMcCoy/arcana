@@ -1,5 +1,5 @@
-{"movie": "LS_Event_Main_200_120_C", "title": "Aigis confronts Ryoji on the bridge", "cues": [
-{"at": 0.10, "text": "Ryoji stands alone on a bridge. Aigis walks up behind him."},
-{"at": 5.30, "text": "Ryoji turns to face her."},
-{"at": 17.70, "text": "Aigis takes a stance."}
+{"movie": "LS_Event_Main_200_120_C", "title": "Aigis confronts Ryoji", "cues": [
+{"at": 0.05, "text": "Ryoji stands alone on a bridge among stopped cars and trucks, a huge full moon above him. Aigis strides up behind him."},
+{"at": 5.20, "text": "Ryoji turns around to face her."},
+{"at": 17.02, "text": "Aigis drops into a fighting stance."}
 ]}

@@ -1,12 +1,9 @@
 #scene LS_Event_Main_200_080_B
-2.050	2.580	00.mp3	Junpei lays Chidori down and bows over her.
-5.100	2.390	01.mp3	He stands. Chidori lies still on the paving.
-9.700	1.079	02.mp3	Junpei fires.
-11.500	4.673	03.mp3	His red Persona floats beside Chidori's, a white figure with blade-like wings.
-16.400	4.403	04.mp3	They merge into one: a red body, a white mask, and huge golden wings.
-22.700	1.657	05.mp3	Now it towers behind Junpei.
-28.200	1.384	06.mp3	Fire streaks toward Jin.
-30.400	1.302	07.mp3	Jin drops to one knee.
-40.300	1.349	08.mp3	Smoke billows over them.
-50.500	2.768	09.mp3	Junpei pushes himself up and stands, head bowed.
-53.850	1.556	10.mp3	He kneels beside Chidori.
+2.050	9.653	00.mp3	Junpei lays Chidori down on the paving and bows over her. Junpei gets to his feet and turns toward Takaya. Chidori lies still on the ground behind him.
+9.700	2.622	01.mp3	Junpei puts his Evoker to his head and fires.
+11.250	15.660	02.mp3	Junpei's Persona hovers face to face with Chidori's Persona, Medea, a pale figure with blade-like wings, and the two draw together. In a burst of light they become one new Persona: a slender masked figure with great jagged wings spread wide.
+27.650	5.560	03.mp3	The Persona hurls a blast of fire up the steps. Jin runs in front of Takaya and takes it.
+30.400	4.652	04.mp3	Jin drops to one knee. Junpei sinks to his hands and knees beside Chidori.
+35.850	6.207	05.mp3	Jin pulls the pin from a grenade and throws it. Thick smoke rolls over the steps and everyone below them.
+45.020	4.908	06.mp3	Yukari runs to Junpei, kneels and holds him back as the rest of you gather around.
+49.350	5.969	07.mp3	Junpei pushes himself up and stands with his head bowed, then turns to Chidori. He kneels beside her.

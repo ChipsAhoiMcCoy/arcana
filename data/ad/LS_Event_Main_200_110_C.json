@@ -1,6 +1,4 @@
-{"movie": "LS_Event_Main_200_110_C", "title": "Mitsuru's late-night call", "cues": [
-{"at": 2.10, "text": "Mitsuru sits on a sofa, arms folded."},
-{"at": 4.60, "text": "She stands and makes a call."},
-{"at": 11.50, "text": "She hangs up and lowers the phone."},
-{"at": 14.10, "text": "She folds her arms."}
+{"movie": "LS_Event_Main_200_110_C", "title": "Mitsuru's late call", "cues": [
+{"at": 0.55, "text": "Mitsuru sits alone on a sofa, arms folded."},
+{"at": 2.05, "text": "She gets up, takes out her phone and makes a call."}
 ]}

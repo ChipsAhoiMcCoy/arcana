@@ -1,13 +1,4 @@
 #scene LS_Event_Main_190_220_C
-2.200	3.196	00.mp3	An inn's lobby. Two staff women wait by the front desk.
-5.900	2.423	01.mp3	The group walks in with bags as the staff bow.
-14.400	1.319	02.mp3	Ryoji looks around.
-21.700	2.318	03.mp3	Aigis perks up and hurries off with her bag.
-24.900	1.694	04.mp3	Junpei and Yukari follow.
-27.200	2.628	05.mp3	Aigis stops at tall windows facing a garden.
-32.500	1.177	06.mp3	Fuuka gives a start.
-35.050	1.190	07.mp3	Fuuka shakes her head.
-48.900	1.695	08.mp3	Ms. Toriumi walks off.
-52.420	1.176	09.mp3	Junpei walks over.
-55.070	1.142	10.mp3	Aigis walks over.
-59.650	1.078	11.mp3	Junpei slumps.
+1.170	10.215	00.mp3	The entrance hall of a traditional inn in Kyoto. Two staff women bow as you walk in carrying your bags, with Junpei, Yukari, Aigis, Fuuka and Ryoji.
+21.500	7.771	01.mp3	Aigis hurries off down the hall with her bag, and the rest of you follow her to tall windows that look out on a garden courtyard, where she stops.
+55.070	3.906	02.mp3	Aigis walks over to stand with you, Junpei and Ryoji, smiling.

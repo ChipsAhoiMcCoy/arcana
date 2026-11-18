@@ -1,3 +1,2 @@
 #scene LS_Event_Main_200_020_C
-0.300	2.857	00.mp3	The hero's room. He sleeps under a checked blanket.
-4.950	1.207	01.mp3	He sits up in bed.
+0.000	2.580	00.mp3	Your room in the dorm. You lie asleep in bed.

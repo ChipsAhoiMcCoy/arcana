@@ -1,5 +1,4 @@
 #scene LS_Event_Main_190_120_C
-0.050	1.049	00.mp3	In the dorm lounge.
-22.200	1.525	01.mp3	Later, Yukari walks off.
-25.850	2.271	02.mp3	Fuuka follows. Yukari turns around.
-32.400	1.477	03.mp3	Yukari holds the disc.
+0.050	6.368	00.mp3	In the dorm lounge, you sit on the sofas with Akihiko, Yukari, Junpei, Fuuka, Ken and Koromaru.
+21.550	4.418	01.mp3	The meeting breaks up. Yukari gets up and walks off, and Fuuka goes after her.
+25.850	4.301	02.mp3	Yukari stops and turns around. Fuuka catches up and hands her something.

@@ -1,3 +1,4 @@
 #scene LS_Event_Main_200_090_C
-0.600	2.319	00.mp3	Junpei joins the team at a long table.
-22.800	1.541	01.mp3	Junpei faces the hero.
+0.550	6.076	00.mp3	In a meeting room at the dorm, the others wait around a long table with a sketchbook on it. Junpei walks in.
+9.700	3.701	01.mp3	Yukari opens the sketchbook on the table and turns its pages.
+14.700	5.330	02.mp3	The open page shows a pencil sketch of Junpei in his cap, his chin resting on his hand.

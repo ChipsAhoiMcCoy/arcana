@@ -1,7 +1,6 @@
 {"movie": "LS_Event_Main_190_060_C", "title": "Ikutsuki's betrayal", "cues": [
-  {"at": 2.10, "text": "A giant clock face looms over Tartarus's entrance hall."},
-  {"at": 5.75, "text": "Ikutsuki and Aigis wait beneath two bull heads on the wall."},
-  {"at": 9.45, "text": "The team runs up to them."},
-  {"at": 45.90, "text": "Aigis steps forward."},
-  {"at": 49.85, "text": "Aigis spreads her arms."}
+  {"at": 2.10, "text": "In Tartarus's entrance hall, a giant clock face looms overhead. Ikutsuki waits at the far end, Aigis standing beside him between two great bull heads mounted on the wall. You run in with Mitsuru, Akihiko, Yukari, Junpei, Fuuka, Ken and Koromaru, and stop in a line facing them."},
+  {"at": 42.10, "text": "Mitsuru turns toward Ikutsuki and drops into a fighting stance."},
+  {"at": 45.90, "text": "Aigis steps forward from Ikutsuki's side, toward you."},
+  {"at": 48.55, "text": "Aigis plants her feet and spreads her arms wide, ready to fight."}
 ]}
