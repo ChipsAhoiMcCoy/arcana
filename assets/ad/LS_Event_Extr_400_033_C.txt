@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_400_033_C
-8.200	3.166	00.mp3	Takaya, shirtless and tattooed, turns and walks off.
-12.020	1.000	01.mp3	Koromaru turns.
-15.400	2.361	02.mp3	The hero sets off. Koromaru follows.
+0.000	5.153	00.mp3	You walk Koromaru into Naganaki Shrine. He stops short and growls at someone ahead.
+4.030	5.215	01.mp3	Takaya steps out toward you. You take a fighting stance, Koromaru bristling beside you.
+15.200	2.762	02.mp3	You set off after Takaya, Koromaru following.

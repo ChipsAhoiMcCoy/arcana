@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_070_C", "title": "A suspicious man", "cues": [{"at": 1.75, "text": "A man in a dark suit walks up to the hero."}, {"at": 5.60, "text": "The hero scratches his head."}, {"at": 9.40, "text": "The man walks away."}, {"at": 12.90, "text": "Across the plaza, he waits by a staircase."}]}
+{
+ "movie": "LS_Event_Extr_400_070_C",
+ "title": "A suspicious man",
+ "cues": [
+  {
+   "at": 1.7,
+   "text": "In a busy plaza, a man in a suit walks up to you."
+  },
+  {
+   "at": 9.2,
+   "text": "The man walks off across the plaza and waits by a staircase."
+  }
+ ]
+}

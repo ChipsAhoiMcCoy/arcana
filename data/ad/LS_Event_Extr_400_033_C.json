@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_400_033_C", "title": "Takaya meets Koromaru", "cues": [{"at": 8.20, "text": "Takaya, shirtless and tattooed, turns and walks off."}, {"at": 12.02, "text": "Koromaru turns."}, {"at": 15.40, "text": "The hero sets off. Koromaru follows."}]}
+{
+ "movie": "LS_Event_Extr_400_033_C",
+ "title": "Takaya meets Koromaru",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk Koromaru into Naganaki Shrine. He stops short and growls at someone ahead."
+  },
+  {
+   "at": 4.03,
+   "text": "Takaya steps out toward you. You take a fighting stance, Koromaru bristling beside you."
+  },
+  {
+   "at": 15.2,
+   "text": "You set off after Takaya, Koromaru following."
+  }
+ ]
+}

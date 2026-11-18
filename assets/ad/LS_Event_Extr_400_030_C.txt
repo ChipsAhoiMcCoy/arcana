@@ -1,6 +1,3 @@
 #scene LS_Event_Extr_400_030_C
-7.500	2.301	00.mp3	The hero joins Aigis and Koromaru.
-10.040	0.953	01.mp3	Aigis turns.
-13.400	1.451	02.mp3	Koromaru turns to the hero.
-16.400	1.094	03.mp3	The hero nods.
-20.050	3.102	04.mp3	The hero crouches beside Koromaru, who pants happily.
+0.000	3.593	00.mp3	In the dorm lounge, Koromaru whines at Aigis while you look on.
+20.030	4.164	01.mp3	Koromaru trots over to you. You crouch beside him, and he pants happily.

@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_400_040_C
-0.050	2.251	00.mp3	Takaya sits; Jin stands by him.
-21.050	1.560	01.mp3	Takaya sits, head bowed.
+0.000	12.859	00.mp3	In a run-down hideout open to the city, Takaya sits on a bench with a sheet of paper in his hands, Jin standing beside him. Tartarus rises in the distance. A revolver lies on the table in front of them.

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_050_C", "title": "Takaya by day", "cues": [{"at": 0.40, "text": "The hero crosses a paved square and stops short."}, {"at": 3.62, "text": "Takaya waits by the pillars."}, {"at": 10.00, "text": "Takaya turns and walks off."}, {"at": 12.90, "text": "The hero follows him."}]}
+{
+ "movie": "LS_Event_Extr_400_050_C",
+ "title": "Takaya at the station",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You cross the plaza at Port Island Station and stop short: Takaya is waiting by a pillar."
+  },
+  {
+   "at": 9.36,
+   "text": "Takaya turns and walks off. You follow him."
+  }
+ ]
+}

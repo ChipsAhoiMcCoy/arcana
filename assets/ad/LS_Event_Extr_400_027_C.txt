@@ -1,8 +1,4 @@
 #scene LS_Event_Extr_400_027_C
-0.150	2.777	00.mp3	The Shadow is gone. The hero faces Takaya.
-3.550	2.829	01.mp3	Takaya, shirtless and tattooed, walks past him.
-7.100	1.898	02.mp3	The hero walks up behind Takaya.
-14.400	1.233	03.mp3	Takaya turns away.
-20.100	1.758	04.mp3	Takaya walks off down the bridge.
-23.850	2.309	05.mp3	Mitsuru rides up on a silver motorcycle.
-27.680	1.349	06.mp3	She takes off her helmet.
+0.000	3.909	00.mp3	The Shadow is gone. You lower your guard and face Takaya on the bridge.
+3.500	4.306	01.mp3	Takaya walks past you and stops with his back to you. You walk up behind him.
+20.030	6.562	02.mp3	Takaya walks off along the bridge. Mitsuru rides up on a motorcycle, stops beside you and takes off her helmet.

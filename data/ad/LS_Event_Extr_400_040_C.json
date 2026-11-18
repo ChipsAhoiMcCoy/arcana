@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Extr_400_040_C", "title": "Takaya and Jin wait", "cues": [{"at": 0.05, "text": "Takaya sits; Jin stands by him."}, {"at": 21.05, "text": "Takaya sits, head bowed."}]}
+{
+ "movie": "LS_Event_Extr_400_040_C",
+ "title": "Takaya and Jin wait",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In a run-down hideout open to the city, Takaya sits on a bench with a sheet of paper in his hands, Jin standing beside him. Tartarus rises in the distance. A revolver lies on the table in front of them."
+  }
+ ]
+}

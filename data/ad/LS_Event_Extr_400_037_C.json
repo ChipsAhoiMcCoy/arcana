@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_037_C", "title": "Takaya questions the hero", "cues": [{"at": 2.52, "text": "Takaya faces the hero."}, {"at": 8.85, "text": "Takaya opens a hand."}, {"at": 13.70, "text": "Takaya rests a hand on his hip."}, {"at": 26.90, "text": "Takaya walks over to stand at the hero's shoulder."}, {"at": 30.30, "text": "He leans in close, gesturing with one hand."}, {"at": 34.80, "text": "Takaya turns and walks away."}, {"at": 36.90, "text": "The hero takes out his phone."}, {"at": 41.52, "text": "He nods to Koromaru."}]}
+{
+ "movie": "LS_Event_Extr_400_037_C",
+ "title": "Takaya questions you",
+ "cues": [
+  {
+   "at": 26.36,
+   "text": "Takaya walks over to stand at your shoulder, leans in close and hands you a folded piece of paper."
+  },
+  {
+   "at": 34.53,
+   "text": "Takaya turns and walks away. You take out your phone and look at it."
+  }
+ ]
+}

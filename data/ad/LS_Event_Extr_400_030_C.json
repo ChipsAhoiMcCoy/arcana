@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_030_C", "title": "Koromaru wants a walk", "cues": [{"at": 7.5, "text": "The hero joins Aigis and Koromaru."}, {"at": 10.04, "text": "Aigis turns."}, {"at": 13.4, "text": "Koromaru turns to the hero."}, {"at": 16.4, "text": "The hero nods."}, {"at": 20.05, "text": "The hero crouches beside Koromaru, who pants happily."}]}
+{
+ "movie": "LS_Event_Extr_400_030_C",
+ "title": "Koromaru wants a walk",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the dorm lounge, Koromaru whines at Aigis while you look on."
+  },
+  {
+   "at": 20.03,
+   "text": "Koromaru trots over to you. You crouch beside him, and he pants happily."
+  }
+ ]
+}
