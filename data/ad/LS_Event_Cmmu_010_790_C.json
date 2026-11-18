@@ -1,0 +1,22 @@
+{
+ "movie": "LS_Event_Cmmu_010_790_C",
+ "title": "The cooking show",
+ "cues": [
+  {
+   "at": 1.17,
+   "text": "Footage from a camera high in a corner of the dorm lounge. Shinjiro sits alone on the sofa watching a cooking show on the television, with Koromaru sitting nearby."
+  },
+  {
+   "at": 10.67,
+   "text": "Shinjiro hurriedly lies down on the sofa and keeps still, as if asleep. Koromaru gets up as the front door opens."
+  },
+  {
+   "at": 13.67,
+   "text": "Fuuka and Aigis walk in from the entrance, and Koromaru goes to meet them."
+  },
+  {
+   "at": 26.0,
+   "text": "Fuuka hurries Aigis away across the lounge and out of sight. Shinjiro, alone again with Koromaru, looks crestfallen."
+  }
+ ]
+}

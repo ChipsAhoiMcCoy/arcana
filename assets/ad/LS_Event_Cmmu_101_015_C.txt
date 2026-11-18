@@ -1,0 +1,3 @@
+#scene LS_Event_Cmmu_101_015_C
+0.000	5.225	00.mp3	At Hagakure Ramen, you and Kenji sit side by side at the counter over bowls of ramen.
+14.000	3.062	01.mp3	You and Kenji take out your phones and trade numbers.

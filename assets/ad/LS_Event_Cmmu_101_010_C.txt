@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_101_010_C
+0.000	4.284	00.mp3	In your classroom, you sit at your desk. A classmate walks up to you, smiling.

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_101_070_C
+0.000	3.890	00.mp3	At Wilduck Burger, you sit at a table with Kenji, who looks downcast.

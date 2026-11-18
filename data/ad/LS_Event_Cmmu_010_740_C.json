@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_010_740_C",
+ "title": "Tempura bowls",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm kitchen. You and Shinjiro stand together at the counter."
+  },
+  {
+   "at": 8.33,
+   "text": "Later, the tempura bowls are ready. Shinjiro smiles."
+  }
+ ]
+}

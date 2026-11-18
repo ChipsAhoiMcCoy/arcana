@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_010_737_C",
+ "title": "Katsudon again",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm kitchen. You and Shinjiro stand at the counter, facing each other."
+  },
+  {
+   "at": 6.5,
+   "text": "Later, you and Shinjiro sit side by side at the kitchen counter with the katsudon you made."
+  }
+ ]
+}

@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_101_030_C
+0.000	4.007	00.mp3	At Hagakure Ramen, Kenji sits beside you at the counter without a word.

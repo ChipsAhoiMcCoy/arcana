@@ -1,0 +1,14 @@
+{
+ "movie": "LS_Event_Cmmu_010_735_C",
+ "title": "Shinjiro's katsudon",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm kitchen. You and Shinjiro stand at the counter, facing each other."
+  },
+  {
+   "at": 6.5,
+   "text": "Later, the katsudon is ready. You and Shinjiro sit side by side at the kitchen counter and eat."
+  }
+ ]
+}

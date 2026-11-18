@@ -1,0 +1,2 @@
+#scene LS_Event_Cmmu_101_020_C
+0.000	3.991	00.mp3	At Hagakure Ramen, you and Kenji eat side by side at the counter.
