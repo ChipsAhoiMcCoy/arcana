@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "Outside the dorm, Koromaru sits beside you. A woman walks up the street to the dorm. Koromaru trots over to her. She bends down and pets Koromaru."
+   "text": "Outside the dorm, you sit on the front steps, Koromaru standing beside you. He perks up at something down the street."
+  },
+  {
+   "at": 5.5,
+   "text": "A woman walks up the street to the dorm. Koromaru trots over to her, and she bends down and pets him."
   },
   {
    "at": 18.83,

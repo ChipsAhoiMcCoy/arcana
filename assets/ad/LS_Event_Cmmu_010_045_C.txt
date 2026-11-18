@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_010_045_C
 0.030	4.480	00.mp3	Hagakure Ramen. You and Shinjiro sit at the counter, the envelope with you.
 9.000	2.653	01.mp3	The cook sets two bowls of ramen down in front of you.
-28.500	6.794	02.mp3	You get up and walk out, the door closing behind you. Shinjiro stays at the counter alone, the envelope beside him.
+28.500	13.194	02.mp3	You both stand by the counter now, Shinjiro holding the envelope. You turn and walk out, the door closing behind you. Shinjiro stays behind, puts the envelope away inside his coat, and stands with a hand on his hip.

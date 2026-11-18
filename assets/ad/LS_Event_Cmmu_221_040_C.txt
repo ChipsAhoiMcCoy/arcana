@@ -1,4 +1,5 @@
 #scene LS_Event_Cmmu_221_040_C
-0.000	4.835	00.mp3	In the music room, Ryoji sits alone at the grand piano. You walk over to him.
-18.000	2.091	01.mp3	Ryoji turns to the keys and plays.
-44.330	7.178	02.mp3	Fuuka comes in through the door, and you turn toward her. You look back at the piano. The bench is empty: Ryoji is gone.
+0.000	8.335	00.mp3	In the music room, Ryoji sits alone at the grand piano, turned away from the keys with his hands resting on his knee. You walk over to him.
+18.000	3.343	01.mp3	Ryoji turns to the keys and plays, his eyes closed.
+44.330	3.767	02.mp3	Fuuka comes in through the door with her school bag, and you turn toward her.
+47.330	6.388	03.mp3	You look back at the piano. The bench is empty: Ryoji is gone. Fuuka walks over to stand beside you.

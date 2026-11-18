@@ -4,11 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "In the student council room, Hidetoshi stands before the seated members, finishing a talk. After the meeting, Hidetoshi comes over to you."
+   "text": "In the student council room, Hidetoshi stands before the seated members, Mitsuru among them, finishing a talk. After the meeting, Hidetoshi comes over to you."
   },
   {
    "at": 10.69,
-   "text": "Hidetoshi takes out a lighter and shows it to you. He hands you the lighter."
+   "text": "Hidetoshi holds out a lighter on his open palm."
+  },
+  {
+   "at": 14.3,
+   "text": "He hands you the lighter, then folds his arms."
   }
  ]
 }

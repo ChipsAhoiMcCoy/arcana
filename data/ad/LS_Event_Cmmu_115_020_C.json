@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_115_020_C", "title": "Ramen on the house", "cues": [{"at": 0.00, "text": "Hagakure Ramen. You and Mamoru sit side by side at the counter, eating bowls of ramen."}]}
+{
+ "movie": "LS_Event_Cmmu_115_020_C",
+ "title": "Ramen on the house",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Hagakure Ramen. You and Mamoru sit side by side at the counter, eating bowls of ramen, Mamoru hunched over his and digging in."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_840_C
-0.030	7.775	00.mp3	The dorm lounge. You study around the dining table with Mitsuru, Yukari, Junpei and Akihiko, Mitsuru leading the session.
+0.030	12.383	00.mp3	The dorm lounge. You study around the dining table with Mitsuru, Yukari, Junpei and Akihiko, Mitsuru leading the session; Junpei sits beside you, with Mitsuru and Yukari across the table.

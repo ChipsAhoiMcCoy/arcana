@@ -3,3 +3,5 @@
 12.600	2.819	01.mp3	You join in, and the three of you go over the whole shop.
 19.250	6.175	02.mp3	The shop door opens and a young foreign man walks in. He comes up to Bunkichi and holds out a wallet.
 33.600	1.308	03.mp3	Bebe walks out of the shop.
+39.670	3.445	04.mp3	Bunkichi bends low over the open wallet and digs through it.
+52.500	3.571	05.mp3	Bunkichi shuffles up to you, bowing over the wallet in his hands.

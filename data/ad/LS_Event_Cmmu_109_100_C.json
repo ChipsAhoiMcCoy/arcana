@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_109_100_C", "title": "Stay a little longer", "cues": [{"at": 0.00, "text": "At Chihiro's home, you sit with her on cushions on the floor."}, {"at": 7.50, "text": "You get up to leave and start toward the door. Chihiro looks up, startled."}, {"at": 20.50, "text": "You turn back, walk over to Chihiro and draw her close. She looks startled."}]}
+{
+ "movie": "LS_Event_Cmmu_109_100_C",
+ "title": "Stay a little longer",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Chihiro's home, in her room, you sit with her on cushions on the floor, Chihiro kneeling with her hands folded in her lap."
+  },
+  {
+   "at": 4.1,
+   "text": "Chihiro holds out a book, and you lean over and take it."
+  },
+  {
+   "at": 7.5,
+   "text": "You get up to leave and start toward the door. Chihiro looks up, startled, and scrambles to her feet."
+  },
+  {
+   "at": 20.5,
+   "text": "You turn back, walk over to Chihiro and draw her close. She looks startled."
+  }
+ ]
+}

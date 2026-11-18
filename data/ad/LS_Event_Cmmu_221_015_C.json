@@ -4,7 +4,7 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "In the music room, you and Ryoji stand beside the boxes you carried in."
+   "text": "In the music room, you and Ryoji stand beside a stack of boxes you carried in, Ryoji with a hand on his hip."
   },
   {
    "at": 10.67,
@@ -13,6 +13,10 @@
   {
    "at": 24.0,
    "text": "Ryoji sits down at the grand piano and plays."
+  },
+  {
+   "at": 43.83,
+   "text": "You take out your phone and look at it while Ryoji sits at the piano."
   }
  ]
 }

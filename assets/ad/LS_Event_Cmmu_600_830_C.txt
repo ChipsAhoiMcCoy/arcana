@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_600_830_C
 0.030	8.161	00.mp3	The dorm lounge. You sit at the dining table, studying with Aigis. Ken stands nearby, watching, with Koromaru sitting at his feet.
 9.670	4.998	01.mp3	Ken has joined you and Aigis at the table with his workbooks, Koromaru at his side.
+17.500	4.735	02.mp3	Some time later, Ken has nodded off over his workbook, his chin propped on his hand.

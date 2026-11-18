@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Cmmu_004_740_C", "title": "Hotpot with Akihiko", "cues": [
-{"at": 0.17, "text": "You and Akihiko are in the dorm kitchen."},
-{"at": 2.17, "text": "Later, the two of you are at the dining table with a hotpot simmering between you, bowls, chopsticks and glasses of water set out."}
-]}
+{
+ "movie": "LS_Event_Cmmu_004_740_C",
+ "title": "Hotpot with Akihiko",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "You and Akihiko stand in the dorm kitchen, a clay hotpot on the counter by the stove. You break into a nervous sweat."
+  },
+  {
+   "at": 2.17,
+   "text": "Later, the two of you are at the dining table with a hotpot simmering between you, bowls, chopsticks and glasses of water set out."
+  }
+ ]
+}

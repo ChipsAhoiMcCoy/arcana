@@ -1,5 +1,7 @@
 #scene LS_Event_Cmmu_600_590_C
-0.000	7.092	00.mp3	The summer festival at Naganaki Shrine, lined with stalls and crowded with people. You arrive with Mitsuru and Aigis.
-9.670	8.735	01.mp3	Aigis turns and heads straight for a takoyaki stall, where a vendor is cooking. You and Mitsuru follow her. Aigis bites into a takoyaki.
-23.170	2.590	02.mp3	The three of you move on to a stall selling masks.
-31.670	4.577	03.mp3	Further along, you come to a lucky-draw stall. You take your turn and draw a ticket.
+0.000	10.505	00.mp3	The summer festival at Naganaki Shrine, lined with stalls and crowded with people. You arrive with Mitsuru and Aigis, and Aigis wanders a few steps ahead, looking around.
+9.670	6.344	01.mp3	Aigis turns and heads straight for a takoyaki stall, where a vendor is cooking. You and Mitsuru follow her.
+16.000	5.716	02.mp3	Moments later, standing off to one side of the stall, Aigis eats takoyaki from a tray in her hands.
+23.170	2.590	03.mp3	The three of you move on to a stall selling masks.
+31.670	5.704	04.mp3	Further along, you come to a lucky-draw stall, where a man stands behind a counter with a box on it.
+40.500	3.488	05.mp3	You step up to the counter, reach into the box and draw one out.

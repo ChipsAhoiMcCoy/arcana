@@ -4,11 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "The summer festival at Naganaki Shrine, lined with stalls and crowded with people. You arrive with Mitsuru and Aigis."
+   "text": "The summer festival at Naganaki Shrine, lined with stalls and crowded with people. You arrive with Mitsuru and Aigis, and Aigis wanders a few steps ahead, looking around."
   },
   {
    "at": 9.67,
-   "text": "Aigis turns and heads straight for a takoyaki stall, where a vendor is cooking. You and Mitsuru follow her. Aigis bites into a takoyaki."
+   "text": "Aigis turns and heads straight for a takoyaki stall, where a vendor is cooking. You and Mitsuru follow her."
+  },
+  {
+   "at": 16.0,
+   "text": "Moments later, standing off to one side of the stall, Aigis eats takoyaki from a tray in her hands."
   },
   {
    "at": 23.17,
@@ -16,7 +20,11 @@
   },
   {
    "at": 31.67,
-   "text": "Further along, you come to a lucky-draw stall. You take your turn and draw a ticket."
+   "text": "Further along, you come to a lucky-draw stall, where a man stands behind a counter with a box on it."
+  },
+  {
+   "at": 40.5,
+   "text": "You step up to the counter, reach into the box and draw one out."
   }
  ]
 }
