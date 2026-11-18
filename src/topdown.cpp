@@ -362,6 +362,13 @@ void tick() {
   UObject* o = op();
   bool want = settings::on(settings::TopDown) && world::exploring() && operator_free(o);
   if (want) north_tick();   // before entering: the mode starts facing this field's north
+  if (want != g_active && !want) {
+    // What let go: the setting, the field not explorable (and why), or the field operator's state and keys.
+    std::string why = !settings::on(settings::TopDown) ? std::string("setting off")
+                    : !world::exploring() ? world::not_exploring_reason()
+                    : std::format("operator state {} keys {}", o ? get<int32_t>(o, "State", -1) : -1, o ? get<int32_t>(o, "KeyState", -1) : -1);
+    log::writef("topdown: letting go ({})", why);
+  }
   if (want != g_active) want ? enter() : leave();
   if (!g_active) return;
   hold_zones();

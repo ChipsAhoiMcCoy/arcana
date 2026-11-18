@@ -72,6 +72,19 @@ static bool exploring_now() {
   if (scene_playing()) return false;
   return !(ue::known_build() && screens::faded_out());
 }
+// Why exploring() is false this frame (the log's "topdown: off" lines), or empty.
+std::string not_exploring_reason() {
+  static const int battle = watch::want("BtlCoreComponent");
+  if (!player()) return "no hero";
+  if (screens::Screen* s = screens::current()) return std::string("screen ") + s->id();
+  if (msg::current().blocking) return "message";
+  if (watch::get(battle)) return "battle";
+  if (input::modal()) return "mod modal";
+  if (scene_playing()) return "scene";
+  if (ue::known_build() && screens::faded_out()) return "faded out";
+  return "";
+}
+
 bool exploring() {
   static uint64_t at = ~0ull;
   static bool value = false;
