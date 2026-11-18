@@ -20,12 +20,6 @@ std::vector<std::string> affinity_groups(int id);
 // Every affinity the status page's icon row shows, in its order (kAttrNames): "Slash: normal" .. "Dark: weak". Empty
 // when the table is not loaded.
 std::vector<std::string> affinity_lines(int id);   // the same, one entry per kind: {"weak to Elec", "resists Wind"}
-// A dyad fusion's result as the Velvet Room computes it, or 0 when the pair cannot fuse. The arcana comes from the
-// game's chart (NormalSpreadDataAsset: Data[low arcana - 1].Races[high arcana - 1]); the level target is
-// (level A + level B) / 2 + 1 (BP_CombineCalc GetNormalSpreadLevel). Different arcana: the lowest Persona of the
-// result arcana at or above the target; same arcana: the highest below it, never one of the two. Only Personas with
-// flag 0 take part (0x2 = special fusion only, 0x200 = DLC, 0x8 = unused; the table, 2026-10-27).
-int dyad_result(int a, int level_a, int b, int level_b);
 std::string skill_name(int id);           // UDatSkillNameTable.Data[id] ("Agi")
 std::string skill_help(int id);           // its help line (BMD_SkillHelp dialog id), empty if unknown
 std::string skill_cost(int id);           // "4 SP", "8% HP" or "" (UDatSkillNormalTable.Data[id]: costtype 1 HP%, 2 SP)

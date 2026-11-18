@@ -120,34 +120,6 @@ int equipped() {
   return v;
 }
 
-int dyad_result(int a, int la, int b, int lb) {
-  int ra = arcana(a), rb = arcana(b);
-  if (ra < 1 || rb < 1 || a == b) return 0;
-  // From the object watcher, not a scan: Fusion Search tries every pair in the stock per cursor move (66 for 12
-  // Personas), and a scan each was about 1 ms (2026-10-29).
-  static const int chart_id = watch::want("NormalSpreadDataAsset", true);
-  UObject* chart = dat::find(chart_id, "NormalSpreadDataAsset");
-  int race = 0;
-  if (chart) guarded([&] {
-    // Data: TArray<FNormalSpreadItem{TArray<uint8> Races}>
-    auto* rows = field<TArray<TArray<uint8_t>>>(chart, "Data");
-    int lo = std::min(ra, rb) - 1, hi = std::max(ra, rb) - 1;
-    if (rows && lo < rows->num && hi < rows->data[lo].num) race = rows->data[lo].data[hi];
-  });
-  if (race < 1) return 0;
-  int target = (la + lb) / 2 + 1;
-  int best = 0, best_level = 0;
-  for (int id = 1; id < 600; ++id) {
-    const uint8_t* r = record(id);
-    if (!r) break;
-    if (r[2] != race || *(uint16_t*)r != 0 || id == a || id == b) continue;
-    int lv = r[3];
-    if (ra != rb) { if (lv >= target && (!best || lv < best_level)) { best = id; best_level = lv; } }
-    else if (lv < target && (!best || lv > best_level)) { best = id; best_level = lv; }
-  }
-  return best;
-}
-
 // The game's help line for a skill, from its file (BMD_SkillHelp, dialog = the skill id) rather than the drawn page:
 // the game builds that page once per highlight, so a drawn-page read came up empty after a second or on a reused page.
 std::string skill_help(int id) {
@@ -287,42 +259,13 @@ void install() {
   // Wanted before the first tick, so that tick's one sweep fills them with every other class's.
   watch::want("DatPersona");
   // Every copy (the enemies' affinities, Episode Aigis's tables): dat::find picks.
-  for (const char* c : {"DatSkillNameTable", "DatSkillNormalTable", "DatAffinityTable", "NormalSpreadDataAsset"}) watch::want(c, true);
+  for (const char* c : {"DatSkillNameTable", "DatSkillNormalTable", "DatAffinityTable"}) watch::want(c, true);
   dev::route("/persona", [](const dev::Request& r, int&) {
     // /persona the hero's stock | ?id=N one Persona's data
     int id = (int)dev::arg_int(r, "id", -1);
     std::string find = dev::arg(r, "find");
-    std::string dyad = dev::arg(r, "dyad");
-    bool bench = dev::has(r, "bench"), learn = dev::has(r, "learn"), levelup = dev::has(r, "levelup");
-    return dev::on_game([id, find, dyad, bench, learn, levelup] {
-      if (!dyad.empty()) {   // ?dyad=SLOT: what the base in that stock slot makes with each other one (the chart's way)
-        int base = std::atoi(dyad.c_str());
-        auto st = stock();
-        const Owned* a = nullptr;
-        for (auto& o : st) if (o.slot == base) a = &o;
-        if (!a) return std::string("no Persona in that slot\n");
-        std::string s;
-        for (auto& o : st)
-          if (&o != a) {
-            int res = dyad_result(a->id, a->level, o.id, o.level);
-            s += std::format("{} + {}: {}\n", name(a->id), name(o.id), res ? describe(res, base_level(res)) : std::string("none"));
-          }
-        return s;
-      }
-      if (bench) {   // ?bench=1: Fusion Search's work for one cursor move (every stock pair), and one object scan
-        LARGE_INTEGER f, t0, t1, t2;
-        QueryPerformanceFrequency(&f);
-        auto st = stock();
-        int pairs = 0;
-        QueryPerformanceCounter(&t0);
-        for (size_t a = 0; a < st.size(); ++a)
-          for (size_t b = a + 1; b < st.size(); ++b) { dyad_result(st[a].id, st[a].level, st[b].id, st[b].level); ++pairs; }
-        QueryPerformanceCounter(&t1);
-        find_first("NormalSpreadDataAsset");
-        QueryPerformanceCounter(&t2);
-        auto us = [&](LARGE_INTEGER a, LARGE_INTEGER b) { return (b.QuadPart - a.QuadPart) * 1000000 / f.QuadPart; };
-        return std::format("{} pairs: {} us; one object scan: {} us\n", pairs, us(t0, t1), us(t1, t2));
-      }
+    bool learn = dev::has(r, "learn"), levelup = dev::has(r, "levelup");
+    return dev::on_game([id, find, learn, levelup] {
       if (!find.empty()) {
         for (int i = 1; i < 600; ++i) if (name(i) == find) return std::format("{} {}\n", i, find);
         return std::string("not found\n");
@@ -362,6 +305,6 @@ void install() {
       for (auto& o : stock()) s += std::format("  slot {} id {} {}\n", o.slot, o.id, describe(o.id, o.level));
       return s;
     });
-  }, "the hero's Persona stock | ?id=N one Persona | ?dyad=SLOT that slot's dyad results (the chart's way) | ?learn=1 the equipped one 1 EXP short of its next skill | ?levelup=1 of its next level (dev)");
+  }, "the hero's Persona stock | ?id=N one Persona | ?learn=1 the equipped one 1 EXP short of its next skill | ?levelup=1 of its next level (dev)");
 }
 }  // namespace p3a::persona
