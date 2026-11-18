@@ -1,8 +1,4 @@
-{
- "movie": "LS_Event_Main_120_020_C",
- "title": "Overheard in the courtyard",
- "cues": [
-  {"at": 0.6,   "text": "Yukari walks along a brick colonnade."},
-  {"at": 17.0,  "text": "The two girls walk off."}
- ]
-}
+{"movie": "LS_Event_Main_120_020_C", "title": "Overheard on the school grounds", "cues": [
+  {"at": 0.00, "text": "On the school grounds after practice, Yukari walks alone along a brick colonnade. Further down it, two girls in school uniform stand by the arches, chatting."},
+  {"at": 15.67, "text": "The two girls turn and walk off together down the colonnade. Yukari stays where she is and watches them go."}
+]}

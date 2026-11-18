@@ -1,9 +1,5 @@
-{
- "movie": "LS_Event_Main_120_050_C",
- "title": "The boy returns",
- "cues": [
-  {"at": 0.3,   "text": "The hero sleeps in his room."},
-  {"at": 2.95,  "text": "The boy in stripes is back."},
-  {"at": 8.6,   "text": "The boy breaks into black specks and vanishes."}
- ]
-}
+{"movie": "LS_Event_Main_120_050_C", "title": "The boy returns", "cues": [
+  {"at": 0.00, "text": "In your dorm room. You lie asleep in bed, the covers pulled up."},
+  {"at": 2.87, "text": "You open your eyes and push yourself up on one arm. A boy in striped pyjamas stands at the foot of your bed, watching you."},
+  {"at": 8.20, "text": "The boy breaks apart into a cloud of black specks and is gone."}
+]}

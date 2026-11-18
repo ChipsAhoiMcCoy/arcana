@@ -1,4 +1,4 @@
 #scene LS_Event_Main_120_180_C
-0.400	1.839	00.mp3	Natsuki sits hunched on her bed.
-6.550	1.802	01.mp3	She clutches her head in both hands.
-10.200	0.967	02.mp3	She stands up.
+0.000	5.437	00.mp3	In a bedroom, a girl sits alone on the edge of her bed, arms wrapped around herself, head bowed.
+6.500	3.208	01.mp3	Natsuki clutches her head in both hands and doubles over.
+10.170	2.843	02.mp3	She gets to her feet and stands still, staring ahead.

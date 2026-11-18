@@ -1,3 +1,2 @@
 #scene LS_Event_Main_120_250_C
-0.050	1.600	00.mp3	Mitsuru and Yukari kneel.
-7.000	0.930	01.mp3	Battle begins.
+0.000	15.511	00.mp3	A towering Persona now floats over Fuuka: a woman with long arms spread wide, whose skirt forms a glass dome around Fuuka and Natsuki. You, Akihiko and Junpei stand ready to fight, while Mitsuru and Yukari kneel on the floor beside you.

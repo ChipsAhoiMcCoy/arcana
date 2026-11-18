@@ -1,7 +1,6 @@
-{"movie": "LS_Event_Main_120_200_C", "title": "The hero wakes alone", "cues": [
-  {"at": 0.50, "text": "The hero lies face down on a rough, rippled floor."},
-  {"at": 4.60, "text": "He pushes himself up onto one knee."},
-  {"at": 9.20, "text": "He gets to his feet."},
-  {"at": 14.40, "text": "A boy in striped pajamas forms from shadow."},
-  {"at": 21.90, "text": "The boy dissolves into shadow and is gone."}
+{"movie": "LS_Event_Main_120_200_C", "title": "You wake alone", "cues": [
+  {"at": 0.00, "text": "You lie face down on a rippled floor in a wide, strange hall whose walls twist in ridges. No one else is there. Slowly you push yourself up onto your hands and knees."},
+  {"at": 8.93, "text": "You get to your feet and look around."},
+  {"at": 14.27, "text": "Beside you a dark haze gathers and takes the shape of a boy in striped pyjamas. He stands facing you."},
+  {"at": 21.77, "text": "The boy dissolves back into a dark haze and is gone. You stand alone again."}
 ]}

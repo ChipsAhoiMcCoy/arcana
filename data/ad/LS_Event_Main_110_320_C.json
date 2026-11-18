@@ -1,14 +1,4 @@
-{
- "movie": "LS_Event_Main_110_320_C",
- "title": "The train stops",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "Yukari kneels, hands over her head. Junpei braces."
-  },
-  {
-   "at": 6.3,
-   "text": "Yukari gets slowly to her feet."
-  }
- ]
-}
+{"movie": "LS_Event_Main_110_320_C", "title": "The train stops", "cues": [
+{"at": 0.00, "text": "The monorail has stopped. In the front car, Yukari kneels on the floor with her hands over her head, and Junpei crouches beside her, braced. Slowly he straightens and looks around."},
+{"at": 5.90, "text": "Yukari gets shakily to her feet. The door to the driver's cab opens, and you walk back out to join them."}
+]}

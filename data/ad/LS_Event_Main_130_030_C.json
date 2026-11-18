@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_130_030_C", "title": "Natsuki and Fuuka in class", "cues": [{"at": 3.40, "text": "Fuuka comes in, holding her bag."}, {"at": 8.35, "text": "Natsuki walks up to Fuuka."}, {"at": 16.25, "text": "Fuuka nods to Natsuki."}]}
+{"movie": "LS_Event_Main_130_030_C", "title": "Natsuki and Fuuka in class", "cues": [
+{"at": 0.00, "text": "A classroom full of students. Two girls talk at a desk, one standing, one sitting."},
+{"at": 3.40, "text": "Fuuka comes in through the door, holding her bag in front of her, and stops just inside."},
+{"at": 8.35, "text": "Natsuki walks across the room to Fuuka."}
+]}

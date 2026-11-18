@@ -1,2 +1,2 @@
 #scene LS_Event_Main_120_060_C
-0.300	1.915	00.mp3	Yukari walks over to their desks.
+0.000	6.521	00.mp3	In your classroom, you and Junpei sit at your desks. Yukari, standing nearby, turns around to face you both.

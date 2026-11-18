@@ -1,3 +1,2 @@
 #scene LS_Event_Main_130_010_C
-0.600	2.838	00.mp3	The hero sits alone at a desk in an empty classroom.
-5.200	1.880	01.mp3	He checks his phone, then pockets it.
+0.600	4.230	00.mp3	You sit at your desk in the classroom, your bag on the desk, and take out your phone.

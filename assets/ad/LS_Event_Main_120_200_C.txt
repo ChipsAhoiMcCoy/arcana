@@ -1,6 +1,5 @@
 #scene LS_Event_Main_120_200_C
-0.500	2.843	00.mp3	The hero lies face down on a rough, rippled floor.
-4.600	1.958	01.mp3	He pushes himself up onto one knee.
-9.200	1.157	02.mp3	He gets to his feet.
-14.400	2.513	03.mp3	A boy in striped pajamas forms from shadow.
-21.900	2.291	04.mp3	The boy dissolves into shadow and is gone.
+0.000	10.091	00.mp3	You lie face down on a rippled floor in a wide, strange hall whose walls twist in ridges. No one else is there. Slowly you push yourself up onto your hands and knees.
+8.930	1.744	01.mp3	You get to your feet and look around.
+14.270	6.393	02.mp3	Beside you a dark haze gathers and takes the shape of a boy in striped pyjamas. He stands facing you.
+21.770	4.344	03.mp3	The boy dissolves back into a dark haze and is gone. You stand alone again.

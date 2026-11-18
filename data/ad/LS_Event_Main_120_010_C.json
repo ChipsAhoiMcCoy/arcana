@@ -1,7 +1,4 @@
-{
- "movie": "LS_Event_Main_120_010_C",
- "title": "Akihiko's recovery",
- "cues": [
-  {"at": 13.0,  "text": "Junpei slumps forward."}
- ]
-}
+{"movie": "LS_Event_Main_120_010_C", "title": "Akihiko's recovery", "cues": [
+{"at": 0.00, "text": "You come in through the dorm's front door, bag in hand. Akihiko, Yukari and Junpei sit on the sofas in the lounge; Akihiko has his arms folded."},
+{"at": 14.53, "text": "Junpei slumps forward, elbows on his knees."}
+]}

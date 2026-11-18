@@ -1,3 +1,4 @@
 #scene LS_Event_Main_110_290_C
-6.700	1.923	00.mp3	The car jolts. All three stagger.
-14.820	2.039	01.mp3	Pale, masked Shadows burst out ahead.
+0.000	5.951	00.mp3	After the fight, you, Yukari and Junpei stand together in the car. Yukari glares at Junpei.
+3.530	8.181	01.mp3	The three of you turn to look about the car. Then it lurches forward with a jolt; the hanging straps swing, and all of you stagger and brace yourselves.
+14.800	8.293	02.mp3	In a burst at the far end of the car, three more Shadows appear between you and the next door: two pale, masked figures and a third between them.

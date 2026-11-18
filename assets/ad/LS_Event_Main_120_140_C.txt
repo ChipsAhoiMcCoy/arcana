@@ -1,3 +1,2 @@
 #scene LS_Event_Main_120_140_C
-6.600	1.094	00.mp3	The hero nods.
-15.000	1.339	01.mp3	Junpei hangs his head.
+14.830	2.514	00.mp3	Junpei's shoulders slump and he hangs his head.

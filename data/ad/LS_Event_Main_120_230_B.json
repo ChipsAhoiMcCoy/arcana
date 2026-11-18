@@ -1,1 +1,8 @@
-{"movie": "LS_Event_Main_120_230_B", "title": "Two Shadows in the lobby", "cues": [{"at": 0.05, "text": "The group runs in."}, {"at": 3.0, "text": "A motorcycle lies smoking."}, {"at": 5.15, "text": "Two Shadows stand over Yukari and Mitsuru."}, {"at": 9.95, "text": "One holds a sword."}, {"at": 14.7, "text": "A schoolgirl walks toward them."}, {"at": 20.48, "text": "Fuuka runs to her."}, {"at": 22.7, "text": "Natsuki drops to her knees."}, {"at": 28.79, "text": "Fuuka faces Natsuki."}]}
+{"movie": "LS_Event_Main_120_230_B", "title": "Two Shadows in the lobby", "cues": [
+{"at": 0.00, "text": "You run into the entrance hall of Tartarus with Akihiko, Junpei and Fuuka and stop short. You, Akihiko and Junpei raise your fists, ready to fight."},
+{"at": 3.04, "text": "A motorcycle lies smoking on the floor. At the foot of the great staircase stand two giant Shadows: one tall and thin, with long dangling arms and a cross down its body; the other round, with a fan of feathers behind its head. Mitsuru and Yukari are down on the floor near the stairs."},
+{"at": 14.70, "text": "A girl in a school uniform walks into the hall, toward the Shadows. You, Akihiko and Junpei rush forward."},
+{"at": 20.48, "text": "Fuuka runs across the hall to Natsuki."},
+{"at": 22.70, "text": "Natsuki sinks to her knees in front of Fuuka. Behind them, the two Shadows turn toward the girls."},
+{"at": 28.79, "text": "Fuuka turns around to face the Shadows, with Natsuki kneeling behind her."}
+]}

@@ -1,3 +1,2 @@
 #scene LS_Event_Main_130_020_C
-4.050	1.355	00.mp3	Fuuka sits back down.
-15.850	1.275	01.mp3	The hero gestures.
+0.550	9.276	00.mp3	In the dorm lounge, everyone sits on the sofas around the low table: you, Yukari, Junpei, Akihiko, Mitsuru, Chairman Ikutsuki, and Fuuka.

@@ -1,14 +1,5 @@
-{
- "movie": "LS_Event_Main_110_290_C",
- "title": "The monorail starts moving",
- "cues": [
-  {
-   "at": 6.7,
-   "text": "The car jolts. All three stagger."
-  },
-  {
-   "at": 14.82,
-   "text": "Pale, masked Shadows burst out ahead."
-  }
- ]
-}
+{"movie": "LS_Event_Main_110_290_C", "title": "The monorail starts moving", "cues": [
+{"at": 0.00, "text": "After the fight, you, Yukari and Junpei stand together in the car. Yukari glares at Junpei."},
+{"at": 3.53, "text": "The three of you turn to look about the car. Then it lurches forward with a jolt; the hanging straps swing, and all of you stagger and brace yourselves."},
+{"at": 14.80, "text": "In a burst at the far end of the car, three more Shadows appear between you and the next door: two pale, masked figures and a third between them."}
+]}

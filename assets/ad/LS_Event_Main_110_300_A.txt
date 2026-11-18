@@ -1,3 +1,2 @@
 #scene LS_Event_Main_110_300_A
-43.350	2.078	00.mp3	Junpei holds his Evoker to his head.
-46.000	1.024	01.mp3	The Shadow looms.
+43.300	34.589	00.mp3	In the front car, the Shadow waits amid a whirl of flying paper: the figure of a woman, her face half pale and half dark, a mask over her eyes marked with the Roman numeral two, her long hair streaming out behind her in sheets of printed pages, the letters B and J on her chest. Outside, the monorail races along its track toward another train, sparks flying from the rails. While they spoke, a gust from the Shadow knocked Junpei staggering. Now he draws his Evoker from its holster and holds it to his temple, sweating, teeth clenched. The Shadow smiles.

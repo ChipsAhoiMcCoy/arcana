@@ -1,8 +1,4 @@
-{
- "movie": "LS_Event_Main_110_310_B",
- "title": "The driver's cab",
- "cues": [
-  {"at": 0.3,   "text": "The driver's cab at the front of the train."},
-  {"at": 7.55,  "text": "The hero moves to the controls."}
- ]
-}
+{"movie": "LS_Event_Main_110_310_B", "title": "The runaway train", "cues": [
+{"at": 0.00, "text": "After the battle, you, Yukari and Junpei stand in the front car beside the window, the track still rushing past outside."},
+{"at": 7.33, "text": "You nod, then run for the door to the driver's cab at the front of the car."}
+]}

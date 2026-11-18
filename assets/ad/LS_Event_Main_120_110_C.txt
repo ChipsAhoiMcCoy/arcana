@@ -1,3 +1,2 @@
 #scene LS_Event_Main_120_110_C
-0.050	1.529	00.mp3	The five stand in a circle.
-24.250	1.314	01.mp3	Yukari looks puzzled.
+0.000	9.216	00.mp3	After school, in the student council room. You, Yukari, Junpei and Akihiko stand in a loose circle among the folding chairs, facing Mitsuru.

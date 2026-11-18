@@ -1,1 +1,8 @@
-{"movie": "LS_Event_Main_120_210_C", "title": "Finding Fuuka in Tartarus", "cues": [{"at": 0.1, "text": "The hero walks up to Akihiko and Junpei."}, {"at": 2.68, "text": "Twisted growths cover the walls."}, {"at": 7.7, "text": "Junpei turns. Far behind them stands a girl in uniform."}, {"at": 12.7, "text": "The three walk toward the girl."}, {"at": 20.7, "text": "Fuuka sinks to her knees."}, {"at": 25.7, "text": "Fuuka gets back to her feet."}, {"at": 34.68, "text": "Akihiko hands Fuuka an Evoker."}]}
+{"movie": "LS_Event_Main_120_210_C", "title": "Finding Fuuka in Tartarus", "cues": [
+{"at": 0.00, "text": "Inside Tartarus, twisted growths cover the walls. You walk up to Junpei and Akihiko, who are waiting for you."},
+{"at": 7.70, "text": "Junpei spins around. Some way behind the group stands a pale-faced girl in a school uniform."},
+{"at": 12.70, "text": "You, Junpei and Akihiko walk over to the girl."},
+{"at": 20.67, "text": "Fuuka sinks down onto the floor. You walk over and kneel in front of her."},
+{"at": 25.70, "text": "Fuuka gets back to her feet, and you stand up with her."},
+{"at": 34.68, "text": "Akihiko holds out an Evoker, and Fuuka takes it in both hands."}
+]}

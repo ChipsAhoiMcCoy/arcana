@@ -1,50 +1,12 @@
-{
- "movie": "LS_Event_Main_120_090_C",
- "title": "Behind the station",
- "cues": [
-  {
-   "at": 1.9,
-   "text": "A back alley. Delinquents hang around."
-  },
-  {
-   "at": 4.9,
-   "text": "More toughs stand by some steps."
-  },
-  {
-   "at": 7.6,
-   "text": "Yukari, Junpei and the hero walk in."
-  },
-  {
-   "at": 13.65,
-   "text": "A guy in black walks up."
-  },
-  {
-   "at": 33.15,
-   "text": "He punches Junpei in the gut."
-  },
-  {
-   "at": 36.55,
-   "text": "Yukari kneels by Junpei."
-  },
-  {
-   "at": 46.25,
-   "text": "The newcomer shoves the punk."
-  },
-  {
-   "at": 52.25,
-   "text": "The punk backs off and runs."
-  },
-  {
-   "at": 54.1,
-   "text": "Yukari helps Junpei to his feet."
-  },
-  {
-   "at": 63.0,
-   "text": "Shinjiro turns back to face them."
-  },
-  {
-   "at": 92.2,
-   "text": "Shinjiro walks away."
-  }
- ]
-}
+{"movie": "LS_Event_Main_120_090_C", "title": "Behind the station", "cues": [
+  {"at": 0.00, "text": "A back alley behind Port Island Station, with bins along a wall and a flight of concrete steps. Rough-looking teenagers hang around in small groups. You, Yukari and Junpei walk in among them, and the nearest ones turn to look."},
+  {"at": 13.33, "text": "Two young men, one in a tracksuit, one in a black T-shirt, walk over from the steps and plant themselves in front of you."},
+  {"at": 32.80, "text": "The one in the black T-shirt drives a fist into Junpei's stomach. Junpei doubles over and sinks into a crouch."},
+  {"at": 36.53, "text": "Yukari drops to her knees beside Junpei. The one in the tracksuit points at them and calls to the others."},
+  {"at": 43.53, "text": "A tall young man in a long coat and a beanie has walked up behind the punks and stands facing them."},
+  {"at": 46.20, "text": "The punk squares up to him, but the young man hits him first. The punk staggers back and drops to one knee."},
+  {"at": 52.20, "text": "The punk and his friend back away and hurry off. Yukari gets up, and Junpei slowly straightens and turns to the young man."},
+  {"at": 62.80, "text": "Shinjiro, who had turned away to leave, stops and turns back toward Yukari."},
+  {"at": 88.00, "text": "Yukari bows to him."},
+  {"at": 91.83, "text": "Shinjiro turns his back, hands in his pockets, and walks away down the alley."}
+]}

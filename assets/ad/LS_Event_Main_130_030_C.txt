@@ -1,4 +1,4 @@
 #scene LS_Event_Main_130_030_C
-3.400	1.930	00.mp3	Fuuka comes in, holding her bag.
-8.350	1.495	01.mp3	Natsuki walks up to Fuuka.
-16.250	1.479	02.mp3	Fuuka nods to Natsuki.
+0.000	4.672	00.mp3	A classroom full of students. Two girls talk at a desk, one standing, one sitting.
+3.400	4.785	01.mp3	Fuuka comes in through the door, holding her bag in front of her, and stops just inside.
+8.350	2.143	02.mp3	Natsuki walks across the room to Fuuka.
