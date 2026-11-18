@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_320_020_C
-0.050	0.929	00.mp3	The school gate.
-3.350	1.606	01.mp3	The hero turns to Junpei.
+0.030	2.580	00.mp3	At the school gate, Junpei hurries over to you.

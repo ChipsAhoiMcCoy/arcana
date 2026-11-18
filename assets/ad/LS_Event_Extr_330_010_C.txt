@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_330_010_C
-5.070	1.119	00.mp3	A classroom lesson.

@@ -1,2 +1,0 @@
-#scene LS_Event_Extr_340_010_C
-2.400	0.793	00.mp3	An exam.

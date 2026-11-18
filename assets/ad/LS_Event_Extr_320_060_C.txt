@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_320_060_C
-0.050	2.090	00.mp3	Ryoji stands by Junpei's desk.
-6.850	1.094	01.mp3	The hero nods.
+0.030	5.608	00.mp3	In the classroom, Junpei sits at his desk with Ryoji standing beside it. You walk over to them.
