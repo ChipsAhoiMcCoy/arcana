@@ -8,6 +8,7 @@
 - A Social Link partner you have not begun a link with is no longer given away by their arcana: the field and the town map's list of who is where say "Unknown Arcana" until the link is formed (the game's own prompt shows the arcana only then too).
 
 ### Menus
+- A text in the mail list could be read with a line someone had said to you earlier in the place of its sender (and, opened, with another old line before its message): the game had loaded the text into the memory that conversation used. Only the text's own sender and message are read now.
 - Semicolon (triggers + B) on a Social Link in the camp menu, or on its page, describes the picture the menu draws beside it, written from the game's own artwork: each partner, both halves of the old couple, and the team's collage of faces, which grows as members join.
 
 ## 0.4.0

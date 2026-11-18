@@ -30,8 +30,22 @@ static uint64_t g_created_seq = 0;
 // frame it changes. Two entry points feed it: CreateBmdPage (most UI and
 // message windows) and BmdSetTextSize, the layout pass 37 call sites run on pages they build themselves
 // (subtitles, battle and camp text; exe+0x124b4b0, found 2026-10-27 from the p3rpc.slplus call-site signature).
-struct LivePage { std::string text; uint64_t first_ms, last_frame; void* wrapper; int dialog, page; void* layout = nullptr; void* line = nullptr; uint64_t seq = 0; uint64_t built_frame = 0; };   // seq: its text's Created; built_frame: when its text was built
+struct LivePage { std::string text; uint64_t first_ms, last_frame; void* wrapper; int dialog, page; void* layout = nullptr; void* line = nullptr; uint64_t seq = 0; uint64_t built_frame = 0; uint64_t file = 0; };   // seq: its text's Created; built_frame: when its text was built; file: file_stamp of its buffer then
 static std::map<std::pair<void*, void*>, LivePage> g_live;
+// Which message file a buffer holds now: its header (size, dialog count) and dialog table hashed. A buffer's address
+// is reused by the next file loaded there, and a page of the old file left in g_live is not a page of the new one: a
+// mail's sender read as a line a child had said in the field a quarter of an hour before (2026-11-18).
+static uint64_t file_stamp(const void* buf) {
+  uint64_t h = 1469598103934665603ull;
+  guarded([&] {
+    auto* d = (const uint8_t*)buf;
+    uint32_t count = *(const uint32_t*)(d + 0x18);
+    if (count > 0xFFFF) count = _byteswap_ulong(count);   // stored big-endian until the game converts it
+    size_t n = 0x20 + (size_t)std::min<uint32_t>(count, 64) * 8;
+    for (size_t i = 0; i < n; ++i) h = (h ^ d[i]) * 1099511628211ull;
+  });
+  return h;
+}
 // (buffer, dialog, page) -> text, by CreateBmdPage. A buffer's address is reused by the next message file loaded
 // there, so a dialog built again from its page 0 drops its later pages: a tutorial's page turned must not join a page
 // of an earlier file's dialog (2026-10-31).
@@ -44,9 +58,12 @@ static void record_page(void* r, void* wrapper, int dialog, int page) {
   void* layout = nullptr; void* line = nullptr;
   guarded([&] { layout = *(void**)((uint8_t*)r + 0x28); line = layout ? *(void**)((uint8_t*)layout + 0x48) : nullptr; });
   bool known = false;
+  uint64_t file = file_stamp(buf);
   {
     std::lock_guard lk(g_bmd_mu);
     auto it = g_live.find(key);
+    // Another file's page at the same addresses: a new page.
+    if (it != g_live.end() && it->second.file != file) { g_live.erase(it); it = g_live.end(); }
     if (it != g_live.end()) {
       it->second.last_frame = hooks::frame();
       if (dialog >= 0) { it->second.dialog = dialog; it->second.page = page; it->second.wrapper = wrapper; }
@@ -65,7 +82,7 @@ static void record_page(void* r, void* wrapper, int dialog, int page) {
     it->second.first_ms = now;
     it->second.built_frame = hooks::frame();
   } else {
-    g_live[key] = LivePage{t, now, hooks::frame(), wrapper, dialog, page, layout, line, 0, hooks::frame()};
+    g_live[key] = LivePage{t, now, hooks::frame(), wrapper, dialog, page, layout, line, 0, hooks::frame(), file};
     if (g_live.size() > 512) for (auto i = g_live.begin(); i != g_live.end();) i = hooks::frame() - i->second.last_frame > 300 ? g_live.erase(i) : std::next(i);
   }
   if (!t.empty()) {
@@ -110,10 +127,11 @@ std::vector<Created> visible(unsigned frames) {
   return out;
 }
 std::vector<Created> pages_of(const void* buf) {
+  uint64_t file = file_stamp(buf);   // only the pages of the file the buffer holds now
   std::lock_guard lk(g_bmd_mu);
   std::vector<Created> out;
   for (auto& [k, v] : g_live)
-    if (k.first == buf && !v.text.empty()) out.push_back(Created{v.seq, v.first_ms, v.wrapper, v.dialog, v.page, v.text, k.first, k.second});
+    if (k.first == buf && v.file == file && !v.text.empty()) out.push_back(Created{v.seq, v.first_ms, v.wrapper, v.dialog, v.page, v.text, k.first, k.second});
   return out;
 }
 PageInfo page_info(const void* page) {
