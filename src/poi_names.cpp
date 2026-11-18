@@ -101,7 +101,7 @@ std::string npc_name(UObject* npc) {
     int id = get<int32_t>(npc, "mUniqueId_", -1) + 1;
     if (id >= 1 && id <= 22) {
       std::string n = social::person(id);
-      if (!n.empty()) return std::format("{} ({})", n, social::arcana_name(id));
+      if (!n.empty()) return std::format("{} ({})", n, social::formed_arcana(id));
     }
   }
   // Its name index, else the rows its script ids name (core::npc_name_rows): Officer Kurosawa outside the Paulownia

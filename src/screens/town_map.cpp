@@ -88,7 +88,8 @@ class TownMapScreen : public MenuScreen {
         int arcana = *(int32_t*)e, rank = *(int32_t*)(e + 4);
         std::string n = core::clean_text(to_utf8(*(FString*)(e + 0x10)));
         log::writef("town_map: {} link {} rank {} reversed {} '{}'", dest, arcana, rank, e[8], n);
-        std::string s = std::format("{} ({})", n.empty() ? social::person(arcana) : n, social::arcana_name(arcana));
+        std::string s = std::format("{} ({})", n.empty() ? social::person(arcana) : n,
+                                    rank > 0 ? social::arcana_name(arcana) : strings::kUnknownArcana);
         if (rank > 0) s += std::format(", {} {}", strings::kRank, rank);
         if (e[8]) s += std::string(", ") + strings::kReversed;
         else for (auto& m : mine) if (m.arcana == arcana && m.rank == rank && social::ready(m)) s += std::string(", ") + strings::kReadyToRankUp;

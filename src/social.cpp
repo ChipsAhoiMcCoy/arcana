@@ -59,6 +59,15 @@ std::vector<Link> read() {
 
 std::string arcana_name(int id) { return id >= 1 && id <= 22 ? strings::kArcana[id] : std::to_string(id); }
 
+int rank(int id) {
+  for (auto& l : read()) if (l.arcana == id) return l.rank;
+  return 0;
+}
+
+// Where a person is named before the player has formed their link (the field, town info), their arcana is not told:
+// the player learns it when the link begins, as the game's own prompt shows it (the user's call, 2026-11-18).
+std::string formed_arcana(int id) { return rank(id) > 0 ? arcana_name(id) : strings::kUnknownArcana; }
+
 bool reversed(int id) { return id >= 1 && id <= 22 && party::flag(0x1000003F + id); }
 
 // A column of the arcana's row in DT_CommunityFormat_Name (rows "<id 2 digits><Japanese arcana>").
@@ -81,9 +90,7 @@ std::string partner(int id) { return community_field(id, "CommunityName"); }
 // The person as the camp shows them: name A until the link is formed ("Jersey-Wearing Student"), B after
 // ("Kazushi Miyamoto").
 std::string person(int id) {
-  int rank = 0;
-  for (auto& l : read()) if (l.arcana == id) rank = l.rank;
-  std::string n = community_field(id, rank > 0 ? "CampDispCommunityCharacterNameB" : "CampDispCommunityCharacterNameA");
+  std::string n = community_field(id, rank(id) > 0 ? "CampDispCommunityCharacterNameB" : "CampDispCommunityCharacterNameA");
   return n.empty() ? partner(id) : n;
 }
 

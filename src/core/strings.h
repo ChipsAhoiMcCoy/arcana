@@ -258,6 +258,7 @@ inline constexpr const char* kNewSocialLink = "New Social Link";
 inline constexpr const char* kSocialLinkUp = "Social Link rank up";
 inline constexpr const char* kSocialLinkMaxed = "Social Link at max rank";
 inline constexpr const char* kSocialLink = "Social Link";
+inline constexpr const char* kUnknownArcana = "Unknown Arcana";   // a Social Link partner before the link is formed
 inline constexpr const char* kSocialLinkReversed = "Social Link reversed";
 inline constexpr const char* kSocialLinkRestored = "Social Link restored";
 inline constexpr const char* kRankMax = "MAX";

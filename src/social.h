@@ -7,6 +7,8 @@ namespace p3a::social {
 struct Link { int arcana; int rank; int points; };   // arcana 1 Fool .. 22 Aeon; rank 0 = not established
 std::vector<Link> read();                // every link record (game thread)
 std::string arcana_name(int id);
+int rank(int id);                        // the link's rank, 0 before it is formed
+std::string formed_arcana(int id);       // the arcana once the link is formed, else "Unknown Arcana" (no spoilers)
 std::string person(int id);              // the partner's name as the camp shows it ("Kenji Tomochika")
 std::string partner_rank(const std::string& name);   // "Magician, rank 3" when `name` is an established link's partner
 bool reversed(int id);                   // the link is reversed (story flag; game thread)

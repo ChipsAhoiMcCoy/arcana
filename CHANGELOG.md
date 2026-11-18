@@ -5,6 +5,7 @@
 ### Field
 - Characters the game lets you talk to but who have no model of their own in their spot are listed again: the Weak Cat at the Station Outskirts was left off the list and the radar.
 - A few named characters the game places without a name of their own are called by their name instead of "Person": Officer Kurosawa outside the Paulownia Mall police station, and Mitsuru, Junpei, Akihiko, the bartender and others on certain days.
+- A Social Link partner you have not begun a link with is no longer given away by their arcana: the field and the town map's list of who is where say "Unknown Arcana" until the link is formed (the game's own prompt shows the arcana only then too).
 
 ## 0.4.0
 
