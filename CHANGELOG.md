@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Shops
+- Opening a shop says only its name ("Shop"); your money is no longer read with it. The status key still reads it.
+
 ### Log and travel
 - The log (B) reads each line from the game's own log, so the line you hear is the one whose voice plays when you confirm it. Before, every line could be read one older than the game's, after a voiced page or fast-forwarding.
 - "Where should I go?" is said once per trip: pressing M says it, but the list of entrances after you pick a place on the town map (Paulownia Mall's, for one) and M's list again after you back out of the town map do not repeat it.

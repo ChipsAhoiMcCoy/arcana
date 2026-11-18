@@ -184,9 +184,8 @@ class ShopScreen : public MenuScreen {
   }
   // The quantity is the game's (up and down change it): the menu stands aside, its number is read as it changes.
   bool holds_keys() override { int st = state(); return st != 9 && st != 0x16 && st != 0x12; }
-  std::string title() override {
-    return std::format("{}. {} {}", antique() ? strings::kAntiqueShop : strings::kShop, stats::money(), strings::kYen);
-  }
+  // The money is not said on entry (the status key reads it; the user's call, 2026-11-17).
+  std::string title() override { return antique() ? strings::kAntiqueShop : strings::kShop; }
   // F1: the keys of the state in front (the weapon shop's lists switch member with Q / E, the sell list category).
   std::string keys() {
     int st = state();
