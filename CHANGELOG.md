@@ -7,6 +7,9 @@
 - A few named characters the game places without a name of their own are called by their name instead of "Person": Officer Kurosawa outside the Paulownia Mall police station, and Mitsuru, Junpei, Akihiko, the bartender and others on certain days.
 - A Social Link partner you have not begun a link with is no longer given away by their arcana: the field and the town map's list of who is where say "Unknown Arcana" until the link is formed (the game's own prompt shows the arcana only then too).
 
+### Menus
+- Semicolon (triggers + B) on a Social Link in the camp menu, or on its page, describes the picture the menu draws beside it, written from the game's own artwork: each partner, both halves of the old couple, and the team's collage of faces, which grows as members join.
+
 ## 0.4.0
 
 ### Audio description

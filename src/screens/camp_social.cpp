@@ -8,10 +8,14 @@
 //   (+0x48 / +0x4C its previous / page entries).
 //   The details scene: +0x54 == 1 while up, +0x58 the arcana, +0x68 a pointer to the people's ListCursor, +0x78 TArray
 //   of the people (0x20 each: +0x8 the name FString; read 2026-10-30).
+//   The picture beside the link: UCmpCommu +0x60, 28 T_UI_Camp_Commu_Bustup textures in the order of the table at
+//   0x1453b8350 (FUN_141302980 loads them); FUN_141300ba0 picks the one drawn (core/social_art: the words). The Fool's
+//   collage counts the members who joined: FUN_1412d5fc0(6..9) and Shinjiro (FUN_1412d5fc0(10) or flag 0x6f).
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/camp_util.h"
 #include "bmdfile.h"
+#include "core/social_art.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
 #include "msg.h"
@@ -24,6 +28,25 @@
 
 namespace p3a::screens {
 using namespace ue;
+
+namespace {
+// The members the Fool's collage shows beyond the first four (FUN_141300ba0's count).
+int fool_members() {
+  auto joined = fn<char (*)(uint16_t)>(0x12d5fc0);
+  int n = 0;
+  for (int m : {6, 7, 8, 9}) n += joined((uint16_t)m) != 0;
+  void* g = fn<void* (*)()>(0x122ac90)();
+  if (joined(10) || (g && fn<bool (*)(void*, uint32_t)>(0x122a080)(g, 0x6f))) ++n;
+  return n;
+}
+// The area key on a link or a person: the picture the menu draws for them.
+void look_picture(const ui::NodeVtablePtr& v, int arcana, std::function<int()> person) {
+  v->appearance = [arcana, person] {
+    int p = core::social_art::picture(arcana, person ? person() : 0, arcana == 1 ? fool_members() : 0);
+    return core::social_art::describe(p);
+  };
+}
+}  // namespace
 
 // ---------------------------------------------------------------- Social Link
 class CampSocial : public MenuScreen, private CampSocialUi {
@@ -64,7 +87,10 @@ class CampSocial : public MenuScreen, private CampSocialUi {
       uint8_t* e = links->data[i];
       int arcana = e ? *(uint16_t*)e : 0;
       std::string label = social::describe(link_of(all, arcana));
-      b.add_item(slot("links", i), game_item(list_, i, [label] { return label; }));
+      auto v = game_item(list_, i, [label] { return label; });
+      // The Hierophant's picture follows the cursor on its page's people, as the game's does.
+      look_picture(v, arcana, [this] { uint8_t* a = actor(); uint8_t* d = a ? *(uint8_t**)(a + 0x418) : nullptr; return d ? cursor_at(d, 0x68).index() : 0; });
+      b.add_item(slot("links", i), v);
     }
     if (int c = list_.cursor(); c >= 0) b.set_start(slot("links", c));
   }
@@ -174,11 +200,15 @@ class CampSocialDetails : public MenuScreen, private CampSocialUi {
     b.begin_stop(key);
     // The link itself first: its rank and memo, read on the way in.
     std::string head = social::describe(link());
-    b.add_item(ui::ControlId::structural(key + ".memo"), item([this, head] { std::string m = memo(); return m.empty() ? head : head + ". " + m; }));
+    int arcana = i32(d, 0x58);
+    auto memo_v = item([this, head] { std::string m = memo(); return m.empty() ? head : head + ". " + m; });
+    look_picture(memo_v, arcana, [this] { uint8_t* dd = details(); return dd ? cursor_at(dd, 0x68).index() : 0; });
+    b.add_item(ui::ControlId::structural(key + ".memo"), memo_v);
     for (int i = 0; i < ppl->num; ++i) {
       std::string n = core::clean_text(to_utf8(*(FString*)(ppl->data + i * 0x20 + 8)));
       auto v = game_item(people_, i, [n] { return n; });
       describe_with(v, [this, i, n] { return profile(i, n); });
+      look_picture(v, arcana, [i] { return i; });
       b.add_item(slot(key, i), v);
     }
     // The page opens on the link's own line, not the game's cursor on its first member (2026-10-31).
