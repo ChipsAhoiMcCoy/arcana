@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Main_130_100_C", "title": "Yukari asks Fuuka a favor", "cues": [
-  {"at": 0.05, "text": "In the command room, Fuuka stands at the bank of consoles and monitors. Yukari stands beside her, alone with her."}
-]}
+{
+ "movie": "LS_Event_Main_130_100_C",
+ "title": "Yukari asks Fuuka a favor",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In the command room, Fuuka stands at the bank of consoles and monitors. Yukari stands beside her, alone with her, hands behind her back, and rubs the back of her head as she starts to ask."
+  }
+ ]
+}

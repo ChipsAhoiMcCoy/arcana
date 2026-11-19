@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Main_140_290_C", "title": "Arguing after striking out", "cues": [
-{"at": 0.00, "text": "Back on the beach, Junpei and Akihiko stand with you, looking glum."},
-{"at": 13.63, "text": "Junpei stares at something, wide-eyed. You turn round."}
-]}
+{
+ "movie": "LS_Event_Main_140_290_C",
+ "title": "Arguing after striking out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Back on the beach, Junpei and Akihiko stand with you, looking glum. Akihiko folds his arms."
+  },
+  {
+   "at": 13.63,
+   "text": "Junpei stares at something, wide-eyed. You turn round."
+  }
+ ]
+}

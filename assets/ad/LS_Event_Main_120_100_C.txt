@@ -1,3 +1,3 @@
 #scene LS_Event_Main_120_100_C
-0.000	12.758	00.mp3	A classroom door opens and you, Yukari and Junpei walk in. Mitsuru is already there, standing beside a girl who sits hunched forward in a chair with her head in her hands. A man in a suit sits facing her.
+0.000	15.421	00.mp3	A door opens and you, Yukari and Junpei walk into a room crowded with desks, computers and shelves of files. Mitsuru is already there, standing beside a girl who sits hunched forward in a chair with her head down. A man in a suit sits facing her.
 25.200	4.970	01.mp3	Mr. Ekoda gets up from his chair and walks out of the room. Mitsuru turns to the girl.

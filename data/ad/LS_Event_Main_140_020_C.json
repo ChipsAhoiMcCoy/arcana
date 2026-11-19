@@ -1,6 +1,22 @@
-{"movie": "LS_Event_Main_140_020_C", "title": "Yukari questions Mitsuru", "cues": [
- {"at": 0.05, "text": "The command room at the dorm. Everyone sits on the sofas around the low table: you, Yukari, Junpei, Fuuka, Mitsuru and Akihiko, with the chairman in an armchair."},
- {"at": 13.95, "text": "Yukari gets to her feet, glaring at Mitsuru."},
- {"at": 18.65, "text": "Yukari sits back down."},
- {"at": 23.30, "text": "Yukari, Fuuka and Junpei start in shock."}
-]}
+{
+ "movie": "LS_Event_Main_140_020_C",
+ "title": "Yukari questions Mitsuru",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The command room at the dorm. Everyone sits around the low table: you, Mitsuru and Akihiko on the sofa, Yukari, Fuuka and Junpei on stools facing you, and the chairman in an armchair. Mitsuru and Akihiko both have their arms folded."
+  },
+  {
+   "at": 13.95,
+   "text": "Yukari gets to her feet, glaring at Mitsuru."
+  },
+  {
+   "at": 18.65,
+   "text": "Yukari sits back down."
+  },
+  {
+   "at": 23.3,
+   "text": "Yukari, Fuuka and Junpei start in shock."
+  }
+ ]
+}

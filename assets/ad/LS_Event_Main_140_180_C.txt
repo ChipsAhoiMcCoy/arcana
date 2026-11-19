@@ -2,5 +2,5 @@
 0.000	14.212	00.mp3	On the beach, Mitsuru, Fuuka and Yukari stand together in their swimsuits: Mitsuru in a bikini with a flower at the shoulder and a long wrap skirt, Fuuka in a bikini top and a short skirt, Yukari in a bikini top and denim shorts.
 3.000	6.367	01.mp3	The three of them chat among themselves, too quietly to hear. Junpei turns to you with a grin and walks over.
 16.670	1.831	02.mp3	Junpei sprints off toward the sea.
-18.970	10.257	03.mp3	Junpei splashes into the water. Akihiko races after him and splashes in too. You stand on the sand holding a float ring, the girls a little way behind you.
-32.770	2.152	04.mp3	You walk toward the water with the float ring.
+18.970	11.191	03.mp3	Junpei splashes into the water. Akihiko races after him and splashes in too. You stand on the sand beside a float ring lying at your feet, the girls a little way behind you.
+32.770	3.269	04.mp3	You walk off toward the water, leaving the float ring on the sand.

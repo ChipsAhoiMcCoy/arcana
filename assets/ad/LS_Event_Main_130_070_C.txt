@@ -1,4 +1,4 @@
 #scene LS_Event_Main_130_070_C
-0.050	12.191	00.mp3	In the command room on the dorm's fourth floor, you sit around the low table with Akihiko, Yukari, Mitsuru, Fuuka and Junpei. Ikutsuki comes in through the door and walks over to stand before you all.
+0.050	14.481	00.mp3	In the command room on the dorm's fourth floor, you sit around the low table with Akihiko, Yukari, Mitsuru, Fuuka and Junpei; Mitsuru sits with her arms folded. Ikutsuki comes in through the door and walks over to stand before you all.
 5.400	1.993	01.mp3	Ikutsuki takes a seat with the group.
 16.350	4.069	02.mp3	Mitsuru's face falls, and she says nothing. Yukari turns to look at her.

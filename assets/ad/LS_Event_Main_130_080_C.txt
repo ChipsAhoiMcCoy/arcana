@@ -1,6 +1,6 @@
 #scene LS_Event_Main_130_080_C
 0.050	10.240	00.mp3	A back alley on the outskirts of Port Island Station, with bins lined up along a wall. Coffins stand upright on the paving, a mist curling around the base of each.
-10.300	7.536	01.mp3	The nearest coffin crumbles away into black smoke. A teenage boy in a cap and jacket stands where it was, and looks around him.
+10.300	7.194	01.mp3	The nearest coffin crumbles away into smoke. A teenage boy in a cap and jacket stands where it was, and looks around him.
 13.250	11.254	02.mp3	Three strangers walk up and stop in front of him: a pale, shirtless young man with long hair and tattooed arms, a boy in glasses carrying a metal case, and a girl in a long dress.
 21.400	5.979	03.mp3	The boy in glasses sets down his case, opens it and holds up a sheet of paper toward the teenager.
 28.700	5.687	04.mp3	The pale young man walks toward the teenager. The teenager backs away, then turns and runs.

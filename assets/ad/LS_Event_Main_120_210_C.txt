@@ -2,6 +2,6 @@
 0.000	7.049	00.mp3	Inside Tartarus, twisted growths cover the walls. You walk up to Junpei and Akihiko, who are waiting for you.
 7.700	5.561	01.mp3	Junpei spins around. Some way behind the group stands a pale-faced girl in a school uniform.
 12.700	2.938	02.mp3	You, Junpei and Akihiko walk over to the girl.
-20.670	3.614	03.mp3	Fuuka sinks down onto the floor. You walk over and kneel in front of her.
+20.670	5.976	03.mp3	Fuuka sinks to her knees on the floor, her hands clasped at her chest. You walk over and crouch in front of her.
 25.700	2.805	04.mp3	Fuuka gets back to her feet, and you stand up with her.
 34.680	3.901	05.mp3	Akihiko holds out an Evoker, and Fuuka takes it in both hands.

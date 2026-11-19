@@ -1,2 +1,2 @@
 #scene LS_Event_Main_130_130_C
-0.050	18.228	00.mp3	You and your party run into a large hall hung with curtains and stop short. On a throne at the far end sits a huge, round Shadow in robes, with a tall, pale figure rising up behind it, and flat white figures like paper dolls stand on either side. You all take up fighting stances.
+0.050	18.531	00.mp3	You and your party run into a large hall and stop short. On a throne at the far end sits a huge, round Shadow in robes, with a tall figure crowned with branching antlers rising up behind it, and flat cut-out figures like paper dolls stand on either side. You all take up fighting stances.

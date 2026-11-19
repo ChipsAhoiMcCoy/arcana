@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Main_120_100_C", "title": "Questioning Mr. Ekoda", "cues": [
-  {"at": 0.00, "text": "A classroom door opens and you, Yukari and Junpei walk in. Mitsuru is already there, standing beside a girl who sits hunched forward in a chair with her head in her hands. A man in a suit sits facing her."},
-  {"at": 25.20, "text": "Mr. Ekoda gets up from his chair and walks out of the room. Mitsuru turns to the girl."}
-]}
+{
+ "movie": "LS_Event_Main_120_100_C",
+ "title": "Questioning Mr. Ekoda",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A door opens and you, Yukari and Junpei walk into a room crowded with desks, computers and shelves of files. Mitsuru is already there, standing beside a girl who sits hunched forward in a chair with her head down. A man in a suit sits facing her."
+  },
+  {
+   "at": 25.2,
+   "text": "Mr. Ekoda gets up from his chair and walks out of the room. Mitsuru turns to the girl."
+  }
+ ]
+}

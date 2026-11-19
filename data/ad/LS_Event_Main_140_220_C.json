@@ -1,7 +1,22 @@
-{"movie": "LS_Event_Main_140_220_C", "title": "Yukari learns about her father", "cues": [
-{"at": 0.00, "text": "In the sitting room, Yukari gets up from the sofa, staring."},
-{"at": 13.00, "text": "Yukari turns and runs out of the room. Mitsuru gets to her feet."},
-{"at": 16.00, "text": "A door bangs shut. Yukari is gone; Mitsuru is left standing."},
-{"at": 18.67, "text": "Mitsuru turns to you."},
-{"at": 22.33, "text": "You nod and get up from the sofa."}
-]}
+{
+ "movie": "LS_Event_Main_140_220_C",
+ "title": "Yukari learns about her father",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the sitting room, Yukari gets up from the sofa, staring."
+  },
+  {
+   "at": 13.0,
+   "text": "Yukari turns and runs out of the room. Mitsuru gets to her feet."
+  },
+  {
+   "at": 16.0,
+   "text": "A door bangs shut. Yukari is gone; Mitsuru is left standing."
+  },
+  {
+   "at": 18.67,
+   "text": "Mitsuru turns to you."
+  }
+ ]
+}

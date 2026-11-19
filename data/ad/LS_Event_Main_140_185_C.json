@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_140_185_C", "title": "After dinner", "cues": [{"at": 0.00, "text": "Back in the vacation home after dinner, you and the others walk in and stop in a loose line. Fuuka turns to face everyone."}, {"at": 6.33, "text": "Everyone nods. You and the others head off toward your rooms; Mitsuru stays where she is."}]}
+{
+ "movie": "LS_Event_Main_140_185_C",
+ "title": "After dinner",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Back in the vacation home after dinner, you and the others walk in and stop in a loose line. Fuuka turns to face everyone, and Junpei clutches his stomach."
+  },
+  {
+   "at": 6.33,
+   "text": "Fuuka, Akihiko, Junpei and you head off toward your rooms. Yukari stops and looks back; Mitsuru stays where she is, a hand on her hip."
+  }
+ ]
+}

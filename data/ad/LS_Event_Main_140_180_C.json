@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Main_140_180_C", "title": "Swimsuits on the beach", "cues": [{"at": 0.00, "text": "On the beach, Mitsuru, Fuuka and Yukari stand together in their swimsuits: Mitsuru in a bikini with a flower at the shoulder and a long wrap skirt, Fuuka in a bikini top and a short skirt, Yukari in a bikini top and denim shorts."}, {"at": 3.00, "text": "The three of them chat among themselves, too quietly to hear. Junpei turns to you with a grin and walks over."}, {"at": 16.67, "text": "Junpei sprints off toward the sea."}, {"at": 18.97, "text": "Junpei splashes into the water. Akihiko races after him and splashes in too. You stand on the sand holding a float ring, the girls a little way behind you."}, {"at": 32.77, "text": "You walk toward the water with the float ring."}]}
+{
+ "movie": "LS_Event_Main_140_180_C",
+ "title": "Swimsuits on the beach",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the beach, Mitsuru, Fuuka and Yukari stand together in their swimsuits: Mitsuru in a bikini with a flower at the shoulder and a long wrap skirt, Fuuka in a bikini top and a short skirt, Yukari in a bikini top and denim shorts."
+  },
+  {
+   "at": 3.0,
+   "text": "The three of them chat among themselves, too quietly to hear. Junpei turns to you with a grin and walks over."
+  },
+  {
+   "at": 16.67,
+   "text": "Junpei sprints off toward the sea."
+  },
+  {
+   "at": 18.97,
+   "text": "Junpei splashes into the water. Akihiko races after him and splashes in too. You stand on the sand beside a float ring lying at your feet, the girls a little way behind you."
+  },
+  {
+   "at": 32.77,
+   "text": "You walk off toward the water, leaving the float ring on the sand."
+  }
+ ]
+}

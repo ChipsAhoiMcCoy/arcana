@@ -2,4 +2,4 @@
 1.400	4.519	00.mp3	In your dorm room, you lie in bed. Aigis stands beside it, looking down at you.
 10.050	5.778	01.mp3	Sitting up in bed, you watch Aigis walk to the door and open it. Yukari stands in the hall outside.
 19.700	2.067	02.mp3	You get out of bed and join them at the door.
-38.200	2.309	03.mp3	Yukari turns and walks off down the hall.
+38.200	4.938	03.mp3	Aigis stands with a hand pressed to her chest. Yukari turns and walks off down the hall.
