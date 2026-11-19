@@ -119,7 +119,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 
 F2 (or triggers + View) opens the settings from anywhere; the game's Config screen lists them too. The game gets none of your keys while they are open, and while you are exploring it stands still, as under the camp menu: Shadows, characters and the field's sounds wait until you close the settings.
 
-They work like any other menu: up and down choose (at either end a further press repeats the row), Home and End jump, left and right change the value, Space or Enter (A) steps through values, F1 (Menu) reads these keys, and Escape, Backspace or F2 (B or View) closes. Tab and Shift+Tab (Page Down / Page Up, RB / LB) switch category, wrapping. Each row says what it does after its name, value and position. Changes are saved at once to `%LOCALAPPDATA%\Arcana\settings.ini`. The menu plays the game's own menu sounds.
+They work like any other menu: up and down choose (at either end a further press repeats the row), Home and End jump, left and right change the value, Space or Enter (A) steps through values, F1 (Menu) reads these keys, and Escape, Backspace or F2 (B or View) closes (on the Mod keys page, Escape, Backspace and B go back to the settings). Tab and Shift+Tab (Page Down / Page Up, RB / LB) switch category, wrapping. Each row says what it does after its name, value and position. Changes are saved at once to `%LOCALAPPDATA%\Arcana\settings.ini`. The menu plays the game's own menu sounds.
 
 **Exploring**
 
@@ -168,7 +168,9 @@ They work like any other menu: up and down choose (at either end a further press
 - Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; 100, 250 or off
 - Menu key hints on entry: on, off. Menus say their keys after their first line, besides F1
 - Menu animation speed: 4 times, 8 times, 16 times, off. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
-- Mod keys: Space reads the mod's keys
+- Mod keys: Space or Enter (A) opens the list of the mod's keys, where you can change them (below)
+
+**Mod keys** lists every keyboard key of the mod as a row: what it does, then its key ("Walk to the selected point of interest, Apostrophe"). Enter (A) on a row, then press the new key, with Shift if you like: it is said and saved at once to `%LOCALAPPDATA%\Arcana\keys.ini`. A key another of the mod's actions already uses swaps with it (that action takes your old key, and you hear where it went). The keys the game needs (W A S D and the arrows, Space, Enter, Escape, Backspace, Tab) and Ctrl or Alt chords are refused with the game's buzz, and the row waits for another key. Escape (B) cancels. Delete (X) puts the focused key back on its default; the last row, Reset all keys to default, puts every one back. The first row, Read all keys, reads them all at once, as Shift+F1 does. Escape or Backspace (B) goes back to the settings, on Mod keys; F2 (View) closes the settings. This document names the default keys. The controller's keys (both triggers held) are fixed.
 
 **Sound test** plays each of the mod's sounds with Space or Enter (A), whatever is switched off, and says what it means: each sonar sound (and one played from behind you), the Shadow's growl (plain and hunting), the Shadow alarm and losing you, the two strike-reach rings, the four wall tones and the controller tick.
 

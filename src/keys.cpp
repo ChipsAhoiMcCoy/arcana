@@ -3,6 +3,7 @@
 #include "input.h"
 #include "core/strings.h"
 #include "log.h"
+#include "mod.h"
 #include "msg.h"
 #include "speech.h"
 #include "seh.h"
@@ -12,14 +13,17 @@
 #include <format>
 #include <vector>
 #include <atomic>
+#include <algorithm>
+#include <cstdio>
 
 namespace p3a::keys {
-struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; uint16_t pad = 0; };
+// vk/mods: the key now (the player's, from the keys file); def_vk/def_mods: the mod's own.
+struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; bool in_help; uint32_t def_vk; int def_mods; uint16_t pad = 0; };
 static std::vector<Binding> g_bindings;
 static bool g_swallowing[256];   // a bound key's down was swallowed: swallow its char and up too
 
-void bind(uint32_t vk, int mods, const char* name, const char* help, Handler h, bool repeat) {
-  g_bindings.push_back(Binding{vk, mods, name, help, std::move(h), repeat});
+void bind(uint32_t vk, int mods, const char* name, const char* help, Handler h, bool repeat, bool in_help) {
+  g_bindings.push_back(Binding{vk, mods, name, help, std::move(h), repeat, in_help, vk, mods});
 }
 
 static Handler g_on_layer;
@@ -193,12 +197,112 @@ std::string help() {
     for (auto& b : g_bindings) if (b.pad) s += std::string(pad_name(b.pad)) + ": " + b.help + ". ";
     return s + strings::kPadScanKeys;
   }
-  // vk 0: a controller-only binding; no help: a Shift variant its plain key's help speaks for.
-  for (auto& b : g_bindings) if (b.vk && !b.help.empty()) s += key_name(b.vk, b.mods) + ": " + b.help + ". ";
+  // vk 0: a controller-only binding. A binding out of the help (a Shift variant its plain key's help speaks for) is
+  // listed once the player has moved either of them, when that help no longer says where it is.
+  for (auto& b : g_bindings) {
+    if (!b.vk) continue;
+    if (!b.in_help && b.vk == b.def_vk && b.mods == b.def_mods) {
+      auto plain = std::ranges::find_if(g_bindings, [&](const Binding& o) { return o.in_help && o.def_vk == b.def_vk && o.def_mods == None; });
+      if (plain != g_bindings.end() && plain->vk == plain->def_vk && plain->mods == plain->def_mods) continue;
+    }
+    s += key_name(b.vk, b.mods) + ": " + b.help + ". ";
+  }
   return s;
 }
 
+// ---- the player's own keys (the mod menu's Mod keys page): saved by binding name, only those moved from the
+// default, in keys.ini beside settings.ini (keys-dev.ini for dev launches, as settings-dev.ini). ----
+static std::wstring keys_file() {
+  std::wstring p = log::path();
+  return p.substr(0, p.find_last_of(L'\\') + 1) + (env_flag(L"P3A_NOFOCUS") ? L"keys-dev.ini" : L"keys.ini");
+}
+
+static void save_keys() {
+  FILE* f = _wfopen(keys_file().c_str(), L"w");
+  if (!f) { log::write("keys: cannot write the keys file"); return; }
+  for (auto& b : g_bindings)
+    if (b.def_vk && (b.vk != b.def_vk || b.mods != b.def_mods)) fprintf(f, "%s=%u,%d\n", b.name.c_str(), b.vk, b.mods);
+  fclose(f);
+}
+
+static void load_keys() {
+  FILE* f = _wfopen(keys_file().c_str(), L"r");
+  if (!f) return;
+  char line[256];
+  int moved = 0;
+  while (fgets(line, sizeof line, f)) {
+    char name[128];
+    unsigned vk = 0;
+    int mods = 0;
+    if (sscanf_s(line, "%127[^=]=%u,%d", name, (unsigned)sizeof name, &vk, &mods) != 3 || !vk || vk > 0xFE || (mods & ~(Shift | Ctrl | Alt))) continue;
+    for (auto& b : g_bindings)
+      if (b.def_vk && b.name == name) { b.vk = vk; b.mods = mods; ++moved; }
+  }
+  fclose(f);
+  // A hand edit that gave two bindings one key: the later one goes back to its default.
+  for (size_t i = 0; i < g_bindings.size(); ++i)
+    for (size_t j = 0; j < i; ++j)
+      if (g_bindings[i].vk && g_bindings[i].vk == g_bindings[j].vk && g_bindings[i].mods == g_bindings[j].mods) {
+        g_bindings[i].vk = g_bindings[i].def_vk;
+        g_bindings[i].mods = g_bindings[i].def_mods;
+      }
+  if (moved) log::writef("keys: {} of the player's keys loaded", moved);
+}
+
+std::vector<int> keyboard_bindings() {
+  std::vector<int> v;
+  for (int i = 0; i < (int)g_bindings.size(); ++i) if (g_bindings[(size_t)i].def_vk) v.push_back(i);
+  return v;
+}
+static bool valid(int i) { return i >= 0 && i < (int)g_bindings.size() && g_bindings[(size_t)i].def_vk; }
+std::string binding_help(int i) { return valid(i) ? g_bindings[(size_t)i].help : std::string(); }
+std::string binding_key(int i) { return valid(i) ? key_name(g_bindings[(size_t)i].vk, g_bindings[(size_t)i].mods) : std::string(); }
+bool binding_default(int i) {
+  return !valid(i) || (g_bindings[(size_t)i].vk == g_bindings[(size_t)i].def_vk && g_bindings[(size_t)i].mods == g_bindings[(size_t)i].def_mods);
+}
+std::string key_label(uint32_t vk, int mods) { return key_name(vk, mods); }
+bool is_key(const char* name, uint32_t vk, int mods) {
+  for (auto& b : g_bindings) if (b.name == name) return b.vk == vk && b.mods == mods;
+  return false;
+}
+
+// The game's keys a mod binding may not take: walking, Space / Enter (act, confirm), Escape / Backspace (back), Tab
+// (the menu). The game's other defaults (Q, E, F, C...) are allowed: the player may have moved them in the game.
+bool reserved(uint32_t vk, int mods) {
+  if (mods & (Ctrl | Alt)) return true;   // Ctrl is the game's (attack, messages); Alt goes to Windows
+  switch (vk) {
+    case 'W': case 'A': case 'S': case 'D': case VK_UP: case VK_DOWN: case VK_LEFT: case VK_RIGHT:
+    case VK_SPACE: case VK_RETURN: case VK_ESCAPE: case VK_BACK: case VK_TAB: return true;
+    default: return false;
+  }
+}
+
+int rebind(int i, uint32_t vk, int mods) {
+  if (!valid(i)) return -1;
+  Binding& b = g_bindings[(size_t)i];
+  int other = -1;
+  for (int j = 0; j < (int)g_bindings.size(); ++j)
+    if (j != i && g_bindings[(size_t)j].vk == vk && g_bindings[(size_t)j].mods == mods) other = j;
+  if (other >= 0) { g_bindings[(size_t)other].vk = b.vk; g_bindings[(size_t)other].mods = b.mods; }   // they trade keys
+  b.vk = vk;
+  b.mods = mods;
+  save_keys();
+  return other;
+}
+
+int reset_binding(int i) {
+  if (!valid(i)) return -1;
+  const Binding& b = g_bindings[(size_t)i];
+  return rebind(i, b.def_vk, b.def_mods);
+}
+
+void reset_all() {
+  for (auto& b : g_bindings) { b.vk = b.def_vk; b.mods = b.def_mods; }
+  save_keys();
+}
+
 void install() {
+  load_keys();
   hooks::set_key_filter(&filter);
   hooks::set_focus_lost(&focus_lost);
 }

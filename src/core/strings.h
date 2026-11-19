@@ -330,7 +330,7 @@ inline constexpr Hint kTartarusKeys{"In Tartarus: Y Auto-Recover, N the navigato
                                     "In Tartarus: RB Auto-Recover, View the navigator's support skills, such as Escape Route."};
 // The help keys (F1 = this screen's keys, Shift+F1 = the mod's own keys, F2 its settings; on a controller, the mod
 // layer's Menu, and View for the settings, whose last row reads the keys).
-inline constexpr Hint kModKeysHint{"Shift+F1 lists the mod's keys, F2 opens its settings.", "Both triggers and View open the mod's settings; its last row lists the mod's keys."};
+inline constexpr Hint kModKeysHint{"Shift+F1 lists the mod's keys, F2 opens its settings, where Mod keys changes them.", "Both triggers and View open the mod's settings; Mod keys there lists the mod's keys."};
 inline constexpr const char* kNoKeys = "No keys to tell here.";
 inline constexpr const char* kModKeys = "Mod keys";
 inline constexpr const char* kPadLayer = "Hold both triggers, then";
@@ -382,7 +382,21 @@ inline constexpr const char* kHelpSceneDescription = "What is on screen in the s
 inline constexpr const char* kHelpSceneVoice = "Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.";
 inline constexpr const char* kHelpDescriptionWait = "In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions are fitted between the lines while it plays. Animated movies never wait: their descriptions are timed between the lines.";
 inline constexpr const char* kHelpDescriptionVolume = "How loud the narrator of movies and scenes is.";
-inline constexpr const char* kHelpModKeys = "Reads the list of the mod's keys.";
+inline constexpr const char* kHelpModKeys = "Lists the mod's keys, to change them.";
+// The Mod keys page (settings.cpp): a row per key, what it does then its key.
+inline constexpr const char* kKeysReadAll = "Read all keys";
+inline constexpr const char* kHelpKeysReadAll = "Reads every mod key at once.";
+inline constexpr const char* kKeysResetAll = "Reset all keys to default";
+inline constexpr const char* kKeysResetDone = "Every mod key is back on its default.";
+inline constexpr const char* kKeysPress = "Press the new key for";   // + what it does
+inline constexpr Hint kKeysPressCancel{"Escape cancels.", "Press it on the keyboard; B cancels."};
+inline constexpr const char* kKeysCancelled = "Cancelled";   // + the key it keeps
+inline constexpr const char* kKeysReserved = "is the game's. Press another key, or Escape.";   // after the key
+inline constexpr const char* kKeysMovesTo = "moves to";   // "<what the other key does> moves to Apostrophe"
+inline constexpr const char* kKeysBackToDefault = "back on its default";
+inline constexpr const char* kKeysAlreadyDefault = "already its default";
+inline constexpr Hint kModKeysPageKeys{"Up and down arrows choose, Enter changes the key: then press the new one. Delete puts a key back on its default, Escape goes back to the settings.",
+                                       "Up and down choose, A changes the key: then press the new one on the keyboard. X puts a key back on its default, B goes back to the settings."};
 // The sound test: each row plays one of the mod's sounds (name, then what it means). The sonar's rows are named by
 // their kind alone (the user's call, 2026-11-17: no "Sonar:" before every row); the description says what it is.
 struct SoundTest { const char* name; const char* help; };
@@ -799,6 +813,7 @@ inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points o
 inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";
 // A number key's category ("Shadows: the nearest, again the next; Shift goes back").
 inline constexpr const char* kKeyHelpPoiCatKey = "the nearest, again the next; Shift goes back";
+inline constexpr const char* kKeyHelpPoiCatBack = "back toward the nearest; first, the farthest";
 inline constexpr const char* kKeyHelpPoiAgain = "The selected point of interest again: where it is now, and its sound";
 inline constexpr const char* kKeyHelpArea = "Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks; on a Social Link, its picture";
 // A key's name in that list: its modifiers, then the key as Windows names it (kKeyUnnamed and its code when it has

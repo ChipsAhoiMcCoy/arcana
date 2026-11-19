@@ -131,11 +131,12 @@ void install() {
   bind(VK_OEM_COMMA, Shift, "poi.nearest.prev", strings::kKeyHelpPoiNearestPrev, [] { poi::cycle_nearest(-1); }, true);   // Shift+,
   // 1 to 7: one category each, in the bracket keys' order (Grim Dark's per-kind review keys; a player asked,
   // 2026-11-18). Letters are mostly the game's (Q E R T F Z X C B M N H), the number row is not. Shift goes back;
-  // the Shift binding has no help of its own (keys::help skips it), the plain one's says so.
+  // F1 leaves the Shift binding out while both are on their own keys: the plain one's help says so.
   for (int c = 0; c < 7; ++c) {
     const std::string name = std::format("poi.cat.{}", c + 1), help = std::format("{}: {}", strings::kPoiCategory[c], strings::kKeyHelpPoiCatKey);
     bind('1' + c, None, name.c_str(), help.c_str(), [c] { poi::cycle_category(c, 1); }, true);
-    bind('1' + c, Shift, (name + ".prev").c_str(), "", [c] { poi::cycle_category(c, -1); }, true);
+    const std::string back = std::format("{}: {}", strings::kPoiCategory[c], strings::kKeyHelpPoiCatBack);
+    bind('1' + c, Shift, (name + ".prev").c_str(), back.c_str(), [c] { poi::cycle_category(c, -1); }, true, false);
   }
   // Period walks to the selection, beside Comma that chooses it; Shift+Period walks and uses it (Grim Dark's
   // walk-there-and-use, Shift+Enter until 2026-11-14; the user's call). The game binds neither Comma nor Period

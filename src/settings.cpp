@@ -24,6 +24,7 @@
 #include <xinput.h>
 #include <algorithm>
 #include <cstdio>
+#include <cstdlib>
 #include <format>
 #include <memory>
 #include <optional>
@@ -225,6 +226,7 @@ static void play_test(int i) {
   }
 }
 
+static void open_keys();
 struct Menu : ui::Screen {
   std::string_view key() const override { return "mod_settings"; }
   std::string screen_name() const override { return strings::kModSettings; }
@@ -252,7 +254,7 @@ struct Menu : ui::Screen {
         auto v = std::make_shared<ui::NodeVtable>();
         v->announcements = {ui::NodeAnnouncement([] { return std::string(strings::kModKeys); }, false, k::kLabel),
                             ui::NodeAnnouncement([] { return std::string(strings::kHelpModKeys); }, false, k::kTooltip)};
-        v->on_activate = [] { voice::play_system_sound(voice::CueDecide); speech::speak(keys::help(), true); };
+        v->on_activate = [] { open_keys(); };
         b.add_item(ui::ControlId::structural("mod_keys"), v);
       }
       b.pop_context();
@@ -273,6 +275,66 @@ struct Menu : ui::Screen {
   }
 };
 static Menu g_menu;
+
+// ---- the Mod keys page (Mod keys in Controls, Enter): one row per keyboard binding (what it does, then its key),
+// "Read all keys" first and "Reset all keys to default" last. Enter (A) on a binding waits for the next key: it takes
+// it (a binding already there trades keys with it), Escape (B) cancels, a key the game needs buzzes and waits on.
+// Delete (X) puts the focused one back on its own key. Escape (B) goes back to the settings, on Mod keys. ----
+enum class Page { Main, Keys };
+static Page g_page = Page::Main;
+static int g_capture = -1;   // the binding waiting for its new key, else -1
+constexpr int kCueBuzzer = 8;   // the game's refusal (a list entry that cannot be chosen; FUN_141286af0(8))
+
+static void start_capture(int i) {
+  g_capture = i;
+  voice::play_system_sound(voice::CueDecide);
+  speech::speak(std::format("{} {}. {}", strings::kKeysPress, keys::binding_help(i), strings::kKeysPressCancel()), true);
+}
+
+static void reset_one(int i) {
+  if (keys::binding_default(i)) { voice::play_system_sound(kCueBuzzer); speech::speak(std::format("{}, {}", keys::binding_key(i), strings::kKeysAlreadyDefault), true); return; }
+  const std::string was = keys::binding_key(i);
+  const int other = keys::reset_binding(i);
+  voice::play_system_sound(voice::CueOption);
+  std::string s = std::format("{}, {}", keys::binding_key(i), strings::kKeysBackToDefault);
+  if (other >= 0) s += std::format(". {} {} {}", keys::binding_help(other), strings::kKeysMovesTo, was);
+  speech::speak(s, true);
+}
+
+struct KeysMenu : ui::Screen {
+  std::string_view key() const override { return "mod_keys"; }
+  std::string screen_name() const override { return strings::kModKeys; }
+  bool wrap() const override { return true; }
+  void build(ui::GraphBuilder& b) override {
+    namespace k = ui::announcement_kinds;
+    b.begin_stop("keys");
+    {
+      auto v = std::make_shared<ui::NodeVtable>();
+      v->announcements = {ui::NodeAnnouncement([] { return std::string(strings::kKeysReadAll); }, false, k::kLabel),
+                          ui::NodeAnnouncement([] { return std::string(strings::kHelpKeysReadAll); }, false, k::kTooltip)};
+      v->on_activate = [] { voice::play_system_sound(voice::CueDecide); speech::speak(keys::help(), true); };
+      b.add_item(ui::ControlId::structural("read_all"), v);
+    }
+    for (int i : keys::keyboard_bindings()) {
+      auto v = std::make_shared<ui::NodeVtable>();
+      v->announcements = {ui::NodeAnnouncement([i] { return keys::binding_help(i); }, false, k::kLabel),
+                          ui::NodeAnnouncement([i] { return keys::binding_key(i); }, false, k::kValue)};
+      v->on_activate = [i] { start_capture(i); };
+      b.add_item(ui::ControlId::structural(std::format("bind{}", i)), v);
+    }
+    {
+      auto v = std::make_shared<ui::NodeVtable>();
+      v->announcements = {ui::NodeAnnouncement([] { return std::string(strings::kKeysResetAll); }, false, k::kLabel)};
+      v->on_activate = [] {
+        keys::reset_all();
+        voice::play_system_sound(voice::CueOption);
+        speech::speak(strings::kKeysResetDone, true);
+      };
+      b.add_item(ui::ControlId::structural("reset_all"), v);
+    }
+  }
+};
+static KeysMenu g_keys_menu;
 static std::optional<ui::ControlId> g_move_from;   // the focus before the key being handled
 static ui::GraphNavigator& nav();
 // The cursor sound, unless the press moved nothing: at a list's first or last row the row is said again without it,
@@ -297,8 +359,87 @@ static void action(std::string_view a) {
   g_move_from.reset();
 }
 
+static int held_mods() {
+  int m = keys::None;
+  if (GetKeyState(VK_SHIFT) & 0x8000) m |= keys::Shift;
+  if (GetKeyState(VK_CONTROL) & 0x8000) m |= keys::Ctrl;
+  if (GetKeyState(VK_MENU) & 0x8000) m |= keys::Alt;
+  return m;
+}
+
+static void open_keys() {
+  g_page = Page::Keys;
+  g_capture = -1;
+  voice::play_system_sound(voice::CueDecide);
+  nav().screen_closed(&g_keys_menu);   // every visit starts on its first row
+  nav().attach(&g_keys_menu);
+  nav().settle_silently();
+  speech::speak(strings::kModKeys, true);
+  nav().announce_current();
+}
+
+// Back to the settings, on the Mod keys row (the navigator kept the settings' own focus).
+static void close_keys() {
+  g_page = Page::Main;
+  g_capture = -1;
+  voice::play_system_sound(voice::CueCancel);
+  nav().screen_closed(&g_keys_menu);
+  nav().attach(&g_menu);
+  nav().settle_silently();
+  nav().announce_current();
+}
+
+static int focused_binding() {
+  auto f = nav().focused_id();
+  if (!f || !f->structural_key().is_string()) return -1;
+  const std::string s = f->structural_key().text();
+  return s.starts_with("bind") ? std::atoi(s.c_str() + 4) : -1;
+}
+
+// The key a binding waits for. Modifiers alone wait on (Shift+1 is Shift, then 1).
+static void capture_key(uint32_t vk, bool repeat) {
+  if (repeat) return;
+  switch (vk) {
+    case VK_SHIFT: case VK_CONTROL: case VK_MENU: case VK_LSHIFT: case VK_RSHIFT: case VK_LCONTROL: case VK_RCONTROL:
+    case VK_LMENU: case VK_RMENU: case VK_LWIN: case VK_RWIN: case VK_CAPITAL: case VK_NUMLOCK: case VK_SCROLL: return;
+    default: break;
+  }
+  const int mods = held_mods();
+  const int i = g_capture;
+  if (vk == VK_ESCAPE && mods == keys::None) {
+    g_capture = -1;
+    voice::play_system_sound(voice::CueCancel);
+    speech::speak(std::format("{}, {}", strings::kKeysCancelled, keys::binding_key(i)), true);
+    return;
+  }
+  if (keys::reserved(vk, mods)) {
+    voice::play_system_sound(kCueBuzzer);
+    speech::speak(std::format("{} {}", keys::key_label(vk, mods), strings::kKeysReserved), true);
+    return;   // still waiting
+  }
+  g_capture = -1;
+  const std::string was = keys::binding_key(i);
+  const int other = keys::rebind(i, vk, mods);
+  voice::play_system_sound(voice::CueOption);   // the game's Config: a value changed
+  std::string s = keys::binding_key(i);
+  if (other >= 0) s += std::format(". {} {} {}", keys::binding_help(other), strings::kKeysMovesTo, was);
+  speech::speak(s, true);
+}
+
 static void on_key(uint32_t vk, bool repeat) {
   using namespace ui::ui_actions;
+  if (g_capture >= 0) { capture_key(vk, repeat); return; }
+  // The settings key (F2, or where the player put it) closes the whole menu, from either page.
+  if (!repeat && keys::is_key("settings", vk, held_mods())) { close(); return; }
+  if (g_page == Page::Keys) {
+    switch (vk) {
+      case VK_ESCAPE: case VK_BACK: if (!repeat) close_keys(); return;
+      case VK_DELETE: if (!repeat && focused_binding() >= 0) reset_one(focused_binding()); return;
+      case VK_F1: if (!repeat) speech::speak(strings::kModKeysPageKeys(), true); return;
+      case VK_LEFT: case VK_RIGHT: return;
+      default: break;
+    }
+  }
   switch (vk) {
     case VK_UP: action(Up); break;
     case VK_DOWN: action(Down); break;
@@ -310,7 +451,7 @@ static void on_key(uint32_t vk, bool repeat) {
     case VK_NEXT: action(Next); break;
     case VK_PRIOR: action(Prev); break;
     case VK_SPACE: case VK_RETURN: if (!repeat) action(Activate); break;
-    case VK_ESCAPE: case VK_BACK: case VK_F2: if (!repeat) close(); break;
+    case VK_ESCAPE: case VK_BACK: if (!repeat) close(); break;
     case VK_F1: if (!repeat) speech::speak(strings::kModSettingsKeys(), true); break;
     default: break;
   }
@@ -318,6 +459,25 @@ static void on_key(uint32_t vk, bool repeat) {
 
 static void on_pad(uint16_t button, bool repeat) {
   using namespace ui::ui_actions;
+  if (g_capture >= 0) {   // the new key comes from the keyboard; B cancels
+    if (button == XINPUT_GAMEPAD_B && !repeat) {
+      const int i = g_capture;
+      g_capture = -1;
+      voice::play_system_sound(voice::CueCancel);
+      speech::speak(std::format("{}, {}", strings::kKeysCancelled, keys::binding_key(i)), true);
+    }
+    return;
+  }
+  if (g_page == Page::Keys) {
+    switch (button) {
+      case XINPUT_GAMEPAD_B: if (!repeat) close_keys(); return;
+      case XINPUT_GAMEPAD_BACK: if (!repeat) close(); return;
+      case XINPUT_GAMEPAD_X: if (!repeat && focused_binding() >= 0) reset_one(focused_binding()); return;
+      case XINPUT_GAMEPAD_START: if (!repeat) speech::speak(strings::kModKeysPageKeys(), true); return;
+      case XINPUT_GAMEPAD_DPAD_LEFT: case XINPUT_GAMEPAD_DPAD_RIGHT: return;
+      default: break;
+    }
+  }
   switch (button) {
     case XINPUT_GAMEPAD_DPAD_UP: action(Up); break;
     case XINPUT_GAMEPAD_DPAD_DOWN: action(Down); break;
@@ -339,6 +499,8 @@ void open() {
   // under a mod modal).
   bool still = world::exploring();
   g_open = true;
+  g_page = Page::Main;
+  g_capture = -1;
   if (still) screens::hold_pause(true);
   keys::set_modal(on_key, on_pad);
   input::set_modal(true);
@@ -354,6 +516,8 @@ void open() {
 void close() {
   if (!g_open) return;
   g_open = false;
+  g_capture = -1;
+  if (g_page == Page::Keys) { g_page = Page::Main; nav().screen_closed(&g_keys_menu); }
   screens::hold_pause(false);
   keys::set_modal(nullptr, nullptr);
   input::set_modal(false);
@@ -371,15 +535,19 @@ void install() {
   std::wstring f = file();
   log::writef("settings: loaded {}", log::utf8(std::u16string(f.begin(), f.end())));
   dev::route("/settings", [](const dev::Request& r, int&) {
-    // /settings?set=poi_range&v=40 | ?open=1 | ?close=1
+    // /settings?set=poi_range&v=40 | ?open=1 | ?close=1 | ?keys=1 (the Mod keys page) | ?vk=N[&shift=1] (a key to the
+    // open menu, as the keyboard sends it: posted keys reach the game's own handlers instead)
     std::string key = dev::arg(r, "set");
     int v = (int)dev::arg_int(r, "v", 0);
-    bool op = dev::has(r, "open"), cl = dev::has(r, "close");
+    bool op = dev::has(r, "open"), cl = dev::has(r, "close"), kp = dev::has(r, "keys");
+    uint32_t vk = (uint32_t)dev::arg_int(r, "vk", 0);
     return dev::on_game([=] {
       for (int i = 0; i < Count; ++i) if (!key.empty() && key == kDefs[i].key) set((Id)i, v);
       if (op) open();
+      if (kp && g_open) open_keys();
+      if (vk && g_open) on_key(vk, false);
       if (cl) close();
-      std::string s = std::format("open={} focus={}\n", g_open, focused_key());
+      std::string s = std::format("open={} page={} capture={} focus={}\n", g_open, g_page == Page::Keys ? "keys" : "main", g_capture, focused_key());
       for (int i = 0; i < Count; ++i) s += std::format("{}={} ({})\n", kDefs[i].key, g_value[i], label((Id)i));
       return s;
     });
