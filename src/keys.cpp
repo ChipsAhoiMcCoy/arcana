@@ -19,7 +19,9 @@
 
 namespace p3a::keys {
 // vk/mods: the key now (the player's, from the keys file); def_vk/def_mods: the mod's own.
-struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; bool in_help; uint32_t def_vk; int def_mods; uint16_t pad = 0; };
+// plain / back: a Shift "go back" binding and the plain one it follows (shift_back): the back is not listed on the Mod
+// keys page and is always Shift with its plain key's key.
+struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; bool in_help; uint32_t def_vk; int def_mods; uint16_t pad = 0; int plain = -1, back = -1; };
 static std::vector<Binding> g_bindings;
 static bool g_swallowing[256];   // a bound key's down was swallowed: swallow its char and up too
 
@@ -199,14 +201,11 @@ std::string help() {
     for (auto& b : g_bindings) if (b.pad) s += std::string(pad_name(b.pad)) + ": " + b.help + ". ";
     return s + strings::kPadScanKeys;
   }
-  // vk 0: a controller-only binding. A binding out of the help (a Shift variant its plain key's help speaks for) is
-  // listed once the player has moved either of them, when that help no longer says where it is.
+  // vk 0: a controller-only binding. A binding out of the help is a Shift variant its plain key's help speaks for
+  // ("Shift goes back"): it moves with that key, so the help stays true.
   for (auto& b : g_bindings) {
     if (!b.vk) continue;
-    if (!b.in_help && b.vk == b.def_vk && b.mods == b.def_mods) {
-      auto plain = std::ranges::find_if(g_bindings, [&](const Binding& o) { return o.in_help && o.def_vk == b.def_vk && o.def_mods == None; });
-      if (plain != g_bindings.end() && plain->vk == plain->def_vk && plain->mods == plain->def_mods) continue;
-    }
+    if (!b.in_help) continue;
     s += key_name(b.vk, b.mods) + ": " + b.help + ". ";
   }
   return s;
@@ -241,6 +240,8 @@ static void load_keys() {
       if (b.def_vk && b.name == name) { b.vk = vk; b.mods = mods; ++moved; }
   }
   fclose(f);
+  for (auto& b : g_bindings)   // a back follows its plain key, whatever the file says
+    if (b.plain >= 0) { b.vk = g_bindings[(size_t)b.plain].vk; b.mods = g_bindings[(size_t)b.plain].mods | Shift; }
   // A hand edit that gave two bindings one key: the later one goes back to its default.
   for (size_t i = 0; i < g_bindings.size(); ++i)
     for (size_t j = 0; j < i; ++j)
@@ -253,8 +254,19 @@ static void load_keys() {
 
 std::vector<int> keyboard_bindings() {
   std::vector<int> v;
-  for (int i = 0; i < (int)g_bindings.size(); ++i) if (g_bindings[(size_t)i].def_vk) v.push_back(i);
+  for (int i = 0; i < (int)g_bindings.size(); ++i) if (g_bindings[(size_t)i].def_vk && g_bindings[(size_t)i].plain < 0) v.push_back(i);
   return v;
+}
+
+void shift_back(const char* back_name, const char* plain_name) {
+  int bi = -1, pi = -1;
+  for (int i = 0; i < (int)g_bindings.size(); ++i) {
+    if (g_bindings[(size_t)i].name == back_name) bi = i;
+    if (g_bindings[(size_t)i].name == plain_name) pi = i;
+  }
+  if (bi < 0 || pi < 0) { log::writef("keys: shift_back {} / {}: no such binding", back_name, plain_name); return; }
+  g_bindings[(size_t)bi].plain = pi;
+  g_bindings[(size_t)pi].back = bi;
 }
 static bool valid(int i) { return i >= 0 && i < (int)g_bindings.size() && g_bindings[(size_t)i].def_vk; }
 std::string binding_help(int i) { return valid(i) ? g_bindings[(size_t)i].help : std::string(); }
@@ -298,23 +310,53 @@ bool reserved(uint32_t vk, int mods) {
   }
 }
 
-int rebind(int i, uint32_t vk, int mods) {
-  if (!valid(i)) return -1;
-  Binding& b = g_bindings[(size_t)i];
-  int other = -1;
+static int holder(uint32_t vk, int mods, int not_a, int not_b) {
   for (int j = 0; j < (int)g_bindings.size(); ++j)
-    if (j != i && g_bindings[(size_t)j].vk == vk && g_bindings[(size_t)j].mods == mods) other = j;
-  if (other >= 0) { g_bindings[(size_t)other].vk = b.vk; g_bindings[(size_t)other].mods = b.mods; }   // they trade keys
-  b.vk = vk;
-  b.mods = mods;
+    if (j != not_a && j != not_b && g_bindings[(size_t)j].vk == vk && g_bindings[(size_t)j].mods == mods) return j;
+  return -1;
+}
+static void put(int j, uint32_t vk, int mods) { g_bindings[(size_t)j].vk = vk; g_bindings[(size_t)j].mods = mods; }
+
+// A binding moves with its Shift back, if it has one; whatever held the keys it takes gets the keys it leaves:
+//   the plain key's holder O (with O's own back) takes the old plain key (and old+Shift);
+//   a lone binding on the new Shift key (not O's back) takes the old Shift key; one on the old Shift key, when O's
+//   back needs it, takes the new Shift key.
+// Every case leaves each key with one binding. Refused: a Shift key for a binding with a back (its back would be
+// Shift+Shift), and another binding's back key (it belongs to that pair).
+Rebind rebind(int i, uint32_t vk, int mods, std::vector<int>& moved) {
+  moved.clear();
+  if (!valid(i) || g_bindings[(size_t)i].plain >= 0) return Rebind::Refused;
+  const int bk = g_bindings[(size_t)i].back;
+  if (bk >= 0 && (mods & Shift)) return Rebind::NeedsNoShift;
+  const int at = holder(vk, mods, i, bk);
+  if (at >= 0 && g_bindings[(size_t)at].plain >= 0) return Rebind::BackKey;
+  const uint32_t old_vk = g_bindings[(size_t)i].vk;
+  const int old_mods = g_bindings[(size_t)i].mods;
+  if (old_vk == vk && old_mods == mods) return Rebind::Done;
+  const int o_back = at >= 0 ? g_bindings[(size_t)at].back : -1;
+  const int y_new = bk >= 0 ? holder(vk, mods | Shift, at, o_back) : -1;   // a lone binding on the new Shift key
+  const int y_old = o_back >= 0 && bk < 0 ? holder(old_vk, old_mods | Shift, i, o_back) : -1;   // one on the old Shift key
+  put(i, vk, mods);
+  if (bk >= 0) put(bk, vk, mods | Shift);
+  if (at >= 0) { put(at, old_vk, old_mods); moved.push_back(at); }
+  if (o_back >= 0) put(o_back, old_vk, old_mods | Shift);
+  if (y_new >= 0) { put(y_new, old_vk, old_mods | Shift); moved.push_back(y_new); }
+  if (y_old >= 0) { put(y_old, vk, mods | Shift); moved.push_back(y_old); }
   save_keys();
-  return other;
+  return Rebind::Done;
 }
 
-int reset_binding(int i) {
-  if (!valid(i)) return -1;
+Rebind reset_binding(int i, std::vector<int>& moved) {
+  moved.clear();
+  if (!valid(i)) return Rebind::Refused;
   const Binding& b = g_bindings[(size_t)i];
-  return rebind(i, b.def_vk, b.def_mods);
+  return rebind(i, b.def_vk, b.def_mods, moved);
+}
+
+int back_of(int i) { return valid(i) ? g_bindings[(size_t)i].back : -1; }
+int plain_of(uint32_t vk, int mods) {
+  for (auto& b : g_bindings) if (b.vk == vk && b.mods == mods && b.plain >= 0) return b.plain;
+  return -1;
 }
 
 void reset_all() {

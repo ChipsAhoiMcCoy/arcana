@@ -405,6 +405,9 @@ inline constexpr const char* kKeysPress = "Press the new key for";   // + what i
 inline constexpr Hint kKeysPressCancel{"Escape cancels.", "Press it on the keyboard; B cancels."};
 inline constexpr const char* kKeysCancelled = "Cancelled";   // + the key it keeps
 inline constexpr const char* kKeysReserved = "is the game's. Press another key, or Escape.";   // after the key
+inline constexpr const char* kKeysNeedsNoShift = "has Shift: Shift with this key goes back. Press a key without Shift, or Escape.";   // after the key
+inline constexpr const char* kKeysBackOf = "goes back for";   // "Shift+1 goes back for Exits: ..."
+inline constexpr const char* kKeysPressAnother = "Press another key, or Escape.";
 inline constexpr const char* kKeysMovesTo = "moves to";   // "<what the other key does> moves to Apostrophe"
 inline constexpr const char* kKeysBackToDefault = "back on its default";
 inline constexpr const char* kKeysAlreadyDefault = "already its default";

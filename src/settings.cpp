@@ -291,14 +291,19 @@ static void start_capture(int i) {
   speech::speak(std::format("{} {}. {}", strings::kKeysPress, keys::binding_help(i), strings::kKeysPressCancel()), true);
 }
 
+// ". Next point of interest moves to Period": each listed binding a change moved.
+static std::string moved_text(const std::vector<int>& moved) {
+  std::string s;
+  for (int j : moved) s += std::format(". {} {} {}", keys::binding_help(j), strings::kKeysMovesTo, keys::binding_key(j));
+  return s;
+}
+
 static void reset_one(int i) {
   if (keys::binding_default(i)) { voice::play_system_sound(kCueBuzzer); speech::speak(std::format("{}, {}", keys::binding_key(i), strings::kKeysAlreadyDefault), true); return; }
-  const std::string was = keys::binding_key(i);
-  const int other = keys::reset_binding(i);
+  std::vector<int> moved;
+  if (keys::reset_binding(i, moved) != keys::Rebind::Done) { voice::play_system_sound(kCueBuzzer); return; }
   voice::play_system_sound(voice::CueOption);
-  std::string s = std::format("{}, {}", keys::binding_key(i), strings::kKeysBackToDefault);
-  if (other >= 0) s += std::format(". {} {} {}", keys::binding_help(other), strings::kKeysMovesTo, was);
-  speech::speak(s, true);
+  speech::speak(std::format("{}, {}{}", keys::binding_key(i), strings::kKeysBackToDefault, moved_text(moved)), true);
 }
 
 struct KeysMenu : ui::Screen {
@@ -319,7 +324,7 @@ struct KeysMenu : ui::Screen {
       auto v = std::make_shared<ui::NodeVtable>();
       v->announcements = {ui::NodeAnnouncement([i] { return keys::binding_help(i); }, false, k::kLabel),
                           ui::NodeAnnouncement([i] { return keys::binding_key(i); }, false, k::kValue)};
-      v->on_activate = [i] { start_capture(i); };
+      v->on_activate = [i] { start_capture(i); };   // its Shift back, if any, moves with it
       b.add_item(ui::ControlId::structural(std::format("bind{}", i)), v);
     }
     {
@@ -417,13 +422,22 @@ static void capture_key(uint32_t vk, bool repeat) {
     speech::speak(std::format("{} {}", keys::key_label(vk, mods), strings::kKeysReserved), true);
     return;   // still waiting
   }
+  std::vector<int> moved;
+  switch (keys::rebind(i, vk, mods, moved)) {
+    case keys::Rebind::NeedsNoShift:   // still waiting
+      voice::play_system_sound(kCueBuzzer);
+      speech::speak(std::format("{} {}", keys::key_label(vk, mods), strings::kKeysNeedsNoShift), true);
+      return;
+    case keys::Rebind::BackKey:
+      voice::play_system_sound(kCueBuzzer);
+      speech::speak(std::format("{} {} {}. {}", keys::key_label(vk, mods), strings::kKeysBackOf, keys::binding_help(keys::plain_of(vk, mods)), strings::kKeysPressAnother), true);
+      return;
+    case keys::Rebind::Refused: g_capture = -1; voice::play_system_sound(kCueBuzzer); return;
+    case keys::Rebind::Done: break;
+  }
   g_capture = -1;
-  const std::string was = keys::binding_key(i);
-  const int other = keys::rebind(i, vk, mods);
   voice::play_system_sound(voice::CueOption);   // the game's Config: a value changed
-  std::string s = keys::binding_key(i);
-  if (other >= 0) s += std::format(". {} {} {}", keys::binding_help(other), strings::kKeysMovesTo, was);
-  speech::speak(s, true);
+  speech::speak(keys::binding_key(i) + moved_text(moved), true);
 }
 
 static void on_key(uint32_t vk, bool repeat) {

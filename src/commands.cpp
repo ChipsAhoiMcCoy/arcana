@@ -143,6 +143,9 @@ void install() {
   // (Config/DefaultInput.ini has them only in its unused pad emulation, PM_R2 / PM_R3).
   bind(VK_OEM_PERIOD, None, "nav.walk.period", strings::kKeyHelpWalk, walk_selected);                             // .
   bind(VK_OEM_PERIOD, Shift, "nav.use", strings::kKeyHelpWalkUse, walk_and_use);                                  // Shift+.
+  // Shift goes back: those move with their plain key and are not listed on the Mod keys page.
+  keys::shift_back("poi.nearest.prev", "poi.nearest");
+  for (int c = 1; c <= 7; ++c) keys::shift_back(std::format("poi.cat.{}.prev", c).c_str(), std::format("poi.cat.{}", c).c_str());
   // The same keys on a controller: hold both triggers, then (input.cpp keeps these buttons from the game meanwhile).
   struct PadKey { const char* name; uint16_t button; };
   const PadKey pad[] = {

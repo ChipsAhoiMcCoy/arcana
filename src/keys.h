@@ -26,9 +26,16 @@ std::string key_of(const char* name);     // that binding's key now ("Period"), 
 std::string fill(std::string_view text);
 bool is_key(const char* name, uint32_t vk, int mods);   // that binding is on this key now
 bool reserved(uint32_t vk, int mods);     // the game's own (walking, act, back, menu) or a Ctrl / Alt chord
-// Moves binding i to the key and saves; a binding already on that key takes i's old one (returned, else -1).
-int rebind(int i, uint32_t vk, int mods);
-int reset_binding(int i);                 // back to the mod's key, as rebind
+// A Shift "go back" binding that follows a plain one (Shift+Comma after Comma): left off the Mod keys page, always
+// Shift with its plain key's key. After both are bound.
+void shift_back(const char* back_name, const char* plain_name);
+int back_of(int i);                       // binding i's Shift back, or -1
+int plain_of(uint32_t vk, int mods);      // the plain binding whose back is on this key, or -1
+// Moves binding i (and its back) to the key and saves; bindings already there take the keys it left (`moved`:
+// the listed ones that moved). NeedsNoShift: i has a back, so its key takes no Shift. BackKey: another pair's back.
+enum class Rebind { Done, NeedsNoShift, BackKey, Refused };
+Rebind rebind(int i, uint32_t vk, int mods, std::vector<int>& moved);
+Rebind reset_binding(int i, std::vector<int>& moved);   // back to the mod's key, as rebind
 void reset_all();
 std::string help();   // every binding: keyboard keys, or the controller's mod layer while the player is on a pad
 // The controller's mod layer (both triggers held, input.cpp): a binding's button there (XINPUT_GAMEPAD_* mask).
