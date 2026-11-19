@@ -20,6 +20,7 @@
 #include "core/strings.h"
 #include "input.h"
 #include "keys.h"
+#include "items.h"
 #include "msg.h"
 #include "party.h"
 #include "persona.h"
@@ -30,6 +31,7 @@
 #include "bmdfile.h"
 #include "hooks.h"
 #include "log.h"
+#include "seh.h"
 #include <windows.h>
 #include <xinput.h>
 #include <format>
@@ -173,14 +175,41 @@ class BattleScreen : public Screen {
   // AI_ACT_WAIT2(msg) turn ("Supreme Hand is waiting..."), "... ran away...", stat changes, "Insufficient SP!".
   // BP_BtlGuiIcon makes one actor per banner and removes it once shown: SetParam (live names, which differ in case
   // from the decompile: genus, ID, msgNo, var1, var2, renderTime, DelayTime, flags), then Start() (IsStart) builds
-  // MsgObj and MsgObj2, UBtlGuiDrawObjectMsgs whose Data (FBtlGuiDrawMsg) holds the file (bmd), msgNo and pageNo;
-  // SetVariableJyokyoHelp fills the page's variables: slot 0 a unit's name (genus 1 a party member, 2 an enemy; ID its
-  // unit id: 207 for a Supreme Hand, 2026-11-18), slot 1 an item or an amount (var1). The words are the page as the
-  // game draws it (msg::visible), else the file's own page with slot 0 filled from the unit the game named. Each
-  // message object is said once.
+  // MsgObj or MsgObj2, a UBtlGuiDrawObjectMsg whose Data (FBtlGuiDrawMsg) holds the file (bmd), msgNo and pageNo, and
+  // SetVariableJyokyoHelp (exe+0x1004f80) puts the banner's own values in the message's variables: slot 0 a name (genus
+  // 1 a party member by ID; else flags & 2 a Persona, flags & 4 something of var1, otherwise an enemy by ID: 207 for a
+  // Supreme Hand, 2026-11-18), slot 1 var1 (an item's name with flags & 1, else the number), slot 2 var2. The draw
+  // object builds its own page once, at its first draw (exe+0xff3c70), and keeps it: Data +0x48 the FBmdPage, +0x54
+  // and +0x60 the msgNo and pageNo it was built for (the draw rebuilds while they differ from +0x50 / +0x58). That
+  // page, rendered, is the banner's words: its own, whatever other banner of the same message is up. Each message
+  // object is said once, when its page is built.
   int helps_ = watch::want("BP_BtlGuiJyokyoHelp_C", true);
-  struct HelpSeen { uint64_t first_frame = 0; bool said = false; };
-  std::map<WeakObj::Key, HelpSeen> helps_seen_;
+  std::set<WeakObj::Key> helps_said_;
+  // A banner's message as its draw object holds it; page null until the game built it.
+  struct HelpMsg { UObject* bmd = nullptr; int dialog = -1, page_no = 0; void* page = nullptr; };
+  static bool help_msg(UObject* m, HelpMsg& out) {
+    static UStruct* data_struct = nullptr;
+    static int32_t o_bmd = -1, o_no = -1, o_page = -1;
+    static bool logged = false;
+    if (!data_struct)
+      if (FField* p = find_prop(class_of(m), "Data")) {
+        data_struct = (UStruct*)prop_inner_object(p);
+        if (data_struct) { o_bmd = offset_of(data_struct, "bmd"); o_no = offset_of(data_struct, "msgNo"); o_page = offset_of(data_struct, "pageNo"); }
+      }
+    uint8_t* data = field<uint8_t>(m, "Data");
+    if (!data || o_bmd < 0 || o_no < 0 || o_page < 0) {
+      if (!logged) log::writef("battle: banner message layout not found (Data {}, bmd {}, msgNo {}, pageNo {})", (void*)data, o_bmd, o_no, o_page);
+      logged = true;
+      return false;
+    }
+    out.bmd = *(UObject**)(data + o_bmd);
+    out.dialog = *(int32_t*)(data + o_no);
+    out.page_no = *(int32_t*)(data + o_page);
+    void* page = *(void**)(data + o_no - 8);
+    bool built = page && *(int32_t*)(data + o_no + 4) == out.dialog && *(int32_t*)(data + o_page + 8) == out.page_no;
+    out.page = built ? page : nullptr;
+    return true;
+  }
   // A variable function's slot (BMD function table 2, its one argument stored as two bytes each plus 1: 01 01 slot 0,
   // 02 01 slot 1).
   static int var_slot(const core::bmd::Function& f) {
@@ -188,28 +217,46 @@ class BattleScreen : public Screen {
     int a = f.args[0] & 0xFF, b = f.args[0] >> 8;
     return (a == 1 ? b : a) - 1;
   }
-  // The unit a banner names: the side its genus says (1 the party) with that unit id, else the one acting.
-  UObject* help_unit(UObject* btl, int genus, int id, UObject* action_now) {
+  // The name a banner's slot 0 holds, from the banner's own genus, ID and flags as SetVariableJyokyoHelp reads them:
+  // the unit of that side with that unit id, a Persona; "" when the mod cannot tell.
+  std::string help_name(UObject* btl, UObject* help) {
+    int genus = get<int32_t>(help, "genus"), id = get<int32_t>(help, "ID"), flags = get<int32_t>(help, "flags");
+    if (genus != 1 && (flags & 2)) return persona::name(id);
+    if (genus != 1 && (flags & 4)) return {};
     auto* a = field<TArray<UObject*>>(btl, genus == 1 ? "PlayerList" : "EnemyList");
     for (int i = 0; a && i < a->num; ++i)
-      if (a->data[i] && w_.unit_int("GetUnitID", a->data[i]) == id) return a->data[i];
-    return action_now;
+      if (a->data[i] && w_.unit_int("GetUnitID", a->data[i]) == id) return w_.unit_name(a->data[i]);
+    return genus == 1 ? party::name(id) : std::string();
   }
-  // The banner's words from the file: its page with the name put in, or "" when it needs a value only the game has.
-  std::string help_from_file(UObject* bmd, int dialog, int page, UObject* help, UObject* btl, UObject* action_now) {
-    auto f = bmdfile::load(bmd);
-    if (!f || dialog < 0 || dialog >= (int)f->dialogs.size()) return {};
-    auto& d = f->dialogs[dialog];
+  // The hero's last name as the player entered it (UGlobalWork +0xC768, UTF-8; the first name is at +0xC728, the two
+  // joined at +0xC7A8): message function 4 1 ("Tank-Form Shadow is targeting yuki!", jyokyohelp_BOSS015, 2026-11-18;
+  // 4 2 is the first name).
+  static std::string hero_last_name() {
+    uint8_t* g = party::global_work();
+    std::string s;
+    if (g) guarded([&] { const char* p = (const char*)g + 0xC768; size_t n = strnlen(p, 32); if (n < 32) s.assign(p, n); });
+    return s;
+  }
+  // The banner's words from the file, its variables filled from the banner's own values (message functions 4 1 and
+  // 4 2 the hero's names); "" when one of them is something the mod cannot name.
+  std::string help_from_file(const core::bmd::File& f, int dialog, int page, UObject* help, UObject* btl) {
+    if (dialog < 0 || dialog >= (int)f.dialogs.size()) return {};
+    auto& d = f.dialogs[dialog];
     if (page < 0 || page >= (int)d.pages.size()) return {};
     core::bmd::Page pg = d.pages[page];
     for (auto it = pg.functions.rbegin(); it != pg.functions.rend(); ++it) {
-      int slot = var_slot(*it);
-      if (slot < 0 || it->pos > pg.text.size()) continue;
-      if (slot != 0) return {};
-      UObject* u = help_unit(btl, get<int32_t>(help, "genus"), get<int32_t>(help, "ID"), action_now);
-      std::string name = u ? w_.unit_name(u) : std::string();
-      if (name.empty()) return {};
-      pg.text.insert(it->pos, name);
+      if (it->pos > pg.text.size()) continue;
+      std::string v;
+      if (int slot = var_slot(*it); slot == 0) v = help_name(btl, help);
+      else if (slot == 1 || slot == 2) {
+        int n = get<int32_t>(help, slot == 1 ? "var1" : "var2");
+        if (n == -1) return {};
+        v = slot == 1 && (get<int32_t>(help, "flags") & 1) ? items::name_of(n) : std::to_string(n);
+      } else if (it->table == 4 && it->index == 2) v = party::name(1);
+      else if (it->table == 4 && it->index == 1) v = hero_last_name();
+      else continue;
+      if (v.empty()) return {};
+      pg.text.insert(it->pos, v);
     }
     return core::clean_text(core::bmd::plain(pg));
   }
@@ -219,48 +266,31 @@ class BattleScreen : public Screen {
     return name.starts_with("jyokyohelp_SET_BAD_") || name.starts_with("jyokyohelp_BLANK") ||
            name.starts_with("jyokyohelp_LOCALIZATION");
   }
-  void watch_help(UObject* btl, UObject* action_now) {
-    std::map<WeakObj::Key, HelpSeen> live;
-    uint64_t now = hooks::frame();
+  void watch_help(UObject* btl) {
+    std::set<WeakObj::Key> live;
     for (UObject* h : watch::all(helps_)) {
       UObject* m = get<UObject*>(h, "MsgObj");
       if (!m) m = get<UObject*>(h, "MsgObj2");
       if (!m || !get_bool(h, "IsStart")) continue;   // not started: nothing drawn yet
       auto key = WeakObj::of(m).key();
-      HelpSeen seen = helps_seen_.count(key) ? helps_seen_[key] : HelpSeen{now, false};
-      if (!seen.said) {
-        static UStruct* data_struct = nullptr;
-        if (!data_struct)
-          if (FField* p = find_prop(class_of(m), "Data")) data_struct = (UStruct*)prop_inner_object(p);
-        uint8_t* data = field<uint8_t>(m, "Data");
-        int32_t o_bmd = data_struct ? offset_of(data_struct, "bmd") : -1, o_no = data_struct ? offset_of(data_struct, "msgNo") : -1,
-                o_page = data_struct ? offset_of(data_struct, "pageNo") : -1;
-        UObject* bmd = data && o_bmd >= 0 ? *(UObject**)(data + o_bmd) : nullptr;
-        int dialog = data && o_no >= 0 ? *(int32_t*)(data + o_no) : -1;
-        int page = data && o_page >= 0 ? *(int32_t*)(data + o_page) : 0;
-        auto file = bmd ? bmdfile::load(bmd) : nullptr;
-        std::string name = file && dialog >= 0 && dialog < (int)file->dialogs.size() ? file->dialogs[dialog].name : "";
-        if (!file || help_said_elsewhere(name)) seen.said = true;
-        else {
-          // The page the game draws for this banner: from this file, this message, on screen now.
-          std::string text;
-          auto* buf = field<TArray<uint8_t>>(bmd, "mBuf");
-          if (buf && buf->data)
-            for (auto& p : msg::visible(2))
-              if (p.buf == buf->data && p.dialog == dialog && p.page == page && core::has_words(p.text)) text = p.text;
-          // Not drawn within two frames of being seen: read from the file.
-          bool from_file = text.empty() && now >= seen.first_frame + 2;
-          if (from_file) text = help_from_file(bmd, dialog, page, h, btl, action_now);
-          if (!text.empty()) {
-            log::writef("battle: banner {}{}", name, from_file ? " (from the file)" : "");
-            speech::speak(core::clean_text(text), false);
-          }
-          if (!text.empty() || now >= seen.first_frame + 2) seen.said = true;
-        }
-      }
-      live[key] = seen;
+      live.insert(key);
+      if (helps_said_.count(key)) continue;
+      HelpMsg d;
+      if (!help_msg(m, d) || !d.page || !d.bmd) continue;   // not drawn yet: its page comes with its first draw
+      auto file = bmdfile::load(d.bmd);
+      if (!file) continue;   // the file not read yet: a later tick
+      helps_said_.insert(key);
+      std::string name = d.dialog >= 0 && d.dialog < (int)file->dialogs.size() ? file->dialogs[d.dialog].name : "";
+      if (help_said_elsewhere(name)) continue;
+      std::string text = msg::page_string(d.page);   // rendered and cleaned
+      // The page the game built renders to nothing (no page renderer in this build): the file's page, filled in.
+      bool from_file = !core::has_words(text);
+      if (from_file) text = help_from_file(*file, d.dialog, d.page_no, h, btl);
+      if (!core::has_words(text)) continue;
+      log::writef("battle: banner {}{}", name, from_file ? " (from the file)" : "");
+      speech::speak(text, false);
     }
-    helps_seen_.swap(live);
+    std::erase_if(helps_said_, [&](const WeakObj::Key& k) { return !live.count(k); });
   }
   void say_banner(UObject* actor, const std::string& b) {
     if (actor && WeakObj::of(actor) == picked_) { picked_ = {}; return; }
@@ -277,7 +307,7 @@ class BattleScreen : public Screen {
     UObject* action_now = get<UObject*>(core, "CurrentAction");
     watch_commands(st, action_now);
     watch_banner(action_now);
-    watch_help(core, action_now);
+    watch_help(core);
     hit_words(action_now, st);
     watch_units(core, st, action_now);
   }
@@ -335,8 +365,11 @@ class BattleScreen : public Screen {
   // the skill's row, not damage (the user's call, 2026-11-16). Only the acting unit's own drop by exactly its skill's
   // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
   WeakObj paid_;
-  // The enemies that ran away: their own action an escape (GetActionType 4, BTL_ACT_ESCAPE). One leaves with its HP at
-  // 0 and was said as defeated after the game's "Supreme Hand ran away..." (2026-11-18).
+  // The enemies that ran away: their own action an escape (GetActionType 4, BTL_ACT_ESCAPE: AI_ACT_ESCAPE sets it, and
+  // so does a Fear turn's flee roll, exe+0xfd4200). One leaves with its HP at 0 and was said as defeated after the
+  // game's "Supreme Hand ran away..." (2026-11-18). The enemy's escape has no failing branch (exe+0xfe4740 raises the
+  // banner and nothing else; ESCAPE_FAILUR and ESCAPE_IMPOSS are the party's), but one that acts again with another
+  // action is still here and fights on: it is no longer counted as fled.
   std::set<WeakObj::Key> fled_;
   bool paid_cost(UObject* u, UObject* action_now, int d) {
     if (!action_now || u != action_now || d >= 0 || WeakObj::of(u) == paid_) return false;
@@ -348,7 +381,12 @@ class BattleScreen : public Screen {
   }
   void watch_units(UObject* core, int st, UObject* action_now) {
     if (st != 0 || !action_now || !(WeakObj::of(action_now) == paid_)) paid_ = {};
-    if (action_now && call_ret<uint8_t>(action_now, "GetActionType") == 4) fled_.insert(WeakObj::of(action_now).key());
+    if (action_now) {
+      auto k = WeakObj::of(action_now).key();
+      uint8_t type = call_ret<uint8_t>(action_now, "GetActionType");
+      if (type == 4) fled_.insert(k);
+      else if (type != 0) fled_.erase(k);   // 0: no action set (the turn's start clears it), not a new one
+    }
     say_advantage(core);
     UObject* deal = shuffle_ui();
     int picks = deal ? get<int32_t>(deal, "EnableSelectNum") : 0;
@@ -589,7 +627,7 @@ class BattleScreen : public Screen {
     bool target_pressed = target_press();
     UObject* core = battle_core();
     end_pad(core ? gui_state() : 0);
-    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_seen_.clear(); fled_.clear(); countdown_on_ = false; return; }
+    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); countdown_on_ = false; return; }
     watch();
     countdown_tick(core);
     int st = gui_state();
