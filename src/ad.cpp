@@ -326,7 +326,11 @@ Clock clock() {
     c.playing = true;
     c.event = true;
     c.paused = call_ret<bool>(ev, "IsPaused");
-    c.movie = name_of(actor);
+    // Keyed by the LevelSequence the player runs (UMovieSceneSequencePlayer::Sequence), not by the actor: 30 Social
+    // Link levels name their actor after another scene (009_055's is LS_Event_Cmmu_009_053_C, the _600s' a _610) or
+    // with a _2 (the _717/_737 hangouts), and their descriptions never played.
+    UObject* seq = get<UObject*>(ev, "Sequence");
+    c.movie = seq && is_live(seq) ? name_of(seq) : name_of(actor);
     c.time = event_seconds(ev);
     return c;
   }
