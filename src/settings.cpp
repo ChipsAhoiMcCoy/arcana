@@ -214,9 +214,9 @@ static void play_test(int i) {
     case 7: sonar::demo(2, true); break;
     case 8: case 9: case 10: shadow::demo(i - 8); break;
     case 11: audio::signal((int)SignalCue::Lost, 1.1f, ahead); break;
-    case 12: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
-    case 13: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
-    case 14: case 15: case 16: case 17: case 18: sight::demo(i - 14); break;
+    case 12: case 13: case 14: case 15: case 16: sight::demo(i - 12); break;   // right under the Shadow's own sounds
+    case 17: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
+    case 18: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
     case 19: case 20: case 21: case 22: walltones::demo(i - 19); break;
     case 23: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
   }
