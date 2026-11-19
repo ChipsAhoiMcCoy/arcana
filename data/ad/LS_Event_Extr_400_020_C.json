@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_020_C", "title": "The hospital checkup", "cues": [{"at": 0.05, "text": "A room at the hospital. You sit while Ikutsuki walks over to you."}, {"at": 13.40, "text": "Ikutsuki turns away and walks a few steps off to take a call."}]}
+{
+ "movie": "LS_Event_Extr_400_020_C",
+ "title": "The hospital checkup",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "A room at the hospital. You sit while Ikutsuki walks over to you."
+  },
+  {
+   "at": 13.4,
+   "text": "Ikutsuki's phone beeps. He turns away and walks off out of sight to take the call, leaving you sitting alone at the table."
+  }
+ ]
+}

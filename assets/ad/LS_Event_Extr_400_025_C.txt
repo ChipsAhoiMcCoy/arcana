@@ -1,2 +1,3 @@
 #scene LS_Event_Extr_400_025_C
-0.000	3.865	00.mp3	On the Moonlight Bridge, you and Takaya stand facing a giant Shadow.
+0.000	11.598	00.mp3	On the Moonlight Bridge, a giant Shadow crouches beside a stopped truck, its huge mouth gaping with rows of teeth. Takaya stands facing it. You run up and stop a few steps behind him.
+3.100	2.760	01.mp3	You drop into a fighting stance, facing the Shadow.

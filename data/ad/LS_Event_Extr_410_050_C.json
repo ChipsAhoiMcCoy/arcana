@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_410_050_C", "title": "Gearing up in Tartarus", "cues": [{"at": 0.00, "text": "Tartarus's entrance hall. All six of you stand together in new combat gear, each outfit a little different."}, {"at": 22.33, "text": "Fuuka closes her eyes. Her Persona appears and closes around her."}]}
+{
+ "movie": "LS_Event_Extr_410_050_C",
+ "title": "Gearing up in Tartarus",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Tartarus's entrance hall. All six of you stand together in new combat gear, each outfit a little different."
+  },
+  {
+   "at": 22.33,
+   "text": "Fuuka closes her eyes. Her Persona rises around her: a towering figure of a woman with her arms spread wide, the lower half of her a great dome that closes over Fuuka."
+  }
+ ]
+}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_410_020_C", "title": "Yukari visits Fuuka", "cues": [{"at": 0.00, "text": "Fuuka's room in the dorm. Fuuka sits at a low table, typing on a laptop. There is a knock at the door."}, {"at": 2.67, "text": "Yukari opens the door and walks in."}]}
+{
+ "movie": "LS_Event_Extr_410_020_C",
+ "title": "Yukari visits Fuuka",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Fuuka's room in the dorm. Fuuka sits at a low table, typing on a laptop. There is a knock at the door."
+  },
+  {
+   "at": 2.67,
+   "text": "Yukari opens the door, walks in and stops by the low table, looking down at Fuuka. As they talk, she clasps her hands behind her back."
+  }
+ ]
+}

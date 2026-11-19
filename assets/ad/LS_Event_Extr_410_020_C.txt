@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_410_020_C
 0.000	5.974	00.mp3	Fuuka's room in the dorm. Fuuka sits at a low table, typing on a laptop. There is a knock at the door.
-2.670	2.059	01.mp3	Yukari opens the door and walks in.
+2.670	8.377	01.mp3	Yukari opens the door, walks in and stops by the low table, looking down at Fuuka. As they talk, she clasps her hands behind her back.
