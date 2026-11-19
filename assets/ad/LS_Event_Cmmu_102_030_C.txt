@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_102_030_C
-1.900	5.402	00.mp3	The teacher walks off. You walk up to Hidetoshi, Chihiro and the student council secretary.
+1.900	12.898	00.mp3	The teacher walks off. You walk up to Hidetoshi, Chihiro and the student council secretary. Chihiro stands with a hand pressed to her chest; Hidetoshi, an armband on his sleeve, folds his arms as he talks.
 20.400	3.881	01.mp3	Hidetoshi turns and walks away, and the secretary runs after him.
 29.300	1.371	02.mp3	Chihiro hurries off.

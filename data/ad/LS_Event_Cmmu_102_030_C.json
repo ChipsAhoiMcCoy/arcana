@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_102_030_C", "title": "The cigarette butt", "cues": [{"at": 1.90, "text": "The teacher walks off. You walk up to Hidetoshi, Chihiro and the student council secretary."}, {"at": 20.40, "text": "Hidetoshi turns and walks away, and the secretary runs after him."}, {"at": 29.30, "text": "Chihiro hurries off."}]}
+{
+ "movie": "LS_Event_Cmmu_102_030_C",
+ "title": "The cigarette butt",
+ "cues": [
+  {
+   "at": 1.9,
+   "text": "The teacher walks off. You walk up to Hidetoshi, Chihiro and the student council secretary. Chihiro stands with a hand pressed to her chest; Hidetoshi, an armband on his sleeve, folds his arms as he talks."
+  },
+  {
+   "at": 20.4,
+   "text": "Hidetoshi turns and walks away, and the secretary runs after him."
+  },
+  {
+   "at": 29.3,
+   "text": "Chihiro hurries off."
+  }
+ ]
+}

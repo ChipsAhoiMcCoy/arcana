@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_110_030_C
-1.400	4.870	00.mp3	At Naganaki Shrine, by the see-saw, a thin young man walks up to you and Maiko.
+1.400	8.967	00.mp3	At Naganaki Shrine, Maiko and you stand by a climbing frame. A thin young man in a striped suit walks up to you, one hand gripping his other arm.
 9.700	2.657	01.mp3	Maiko huffs and runs a few steps away from him.
-17.700	1.687	02.mp3	Maiko comes running back to you.
+17.700	3.185	02.mp3	Maiko comes running back and stops beside the young man.
 23.000	2.115	03.mp3	The thin young man turns and walks away.
 39.330	5.196	04.mp3	The thin young man turns and walks away. A moment later, Maiko comes running back to you.

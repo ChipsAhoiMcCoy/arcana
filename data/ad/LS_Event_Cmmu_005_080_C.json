@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_005_080_C", "title": "Mitsuru's fiancé", "cues": [{"at": 0.0, "text": "In the plaza outside the cinema at Port Island Station, Mitsuru walks out ahead of you, stops and turns to you."}, {"at": 26.8, "text": "A well-dressed man walks up to you and Mitsuru."}, {"at": 76.2, "text": "The man turns and runs off across the plaza."}, {"at": 104.2, "text": "The man turns and runs off across the plaza."}, {"at": 108.5, "text": "Mitsuru turns away from you and runs off, leaving you standing there."}]}
+{
+ "movie": "LS_Event_Cmmu_005_080_C",
+ "title": "Mitsuru's fiancé",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the plaza outside the cinema at Port Island Station, Mitsuru walks out ahead of you, stops and turns to you."
+  },
+  {
+   "at": 26.8,
+   "text": "A well-dressed man walks up to you and Mitsuru."
+  },
+  {
+   "at": 76.2,
+   "text": "The man turns and runs off across the plaza."
+  },
+  {
+   "at": 104.2,
+   "text": "Sweating, the man turns and runs off across the plaza."
+  },
+  {
+   "at": 108.5,
+   "text": "Mitsuru turns away from you and runs off, leaving you standing there."
+  }
+ ]
+}

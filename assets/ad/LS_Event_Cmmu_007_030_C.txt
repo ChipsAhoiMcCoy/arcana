@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_007_030_C
-2.170	9.115	00.mp3	You and Aigis have just come into Iwatodai Station when two dogs, one of them a black Shiba Inu, and a brown cat run up and plant themselves in your way.
-16.670	4.467	01.mp3	Aigis steps toward the animals, and the Shiba Inu lunges and bites her hand.
+2.170	9.714	00.mp3	You and Aigis come down the steps outside Iwatodai Station when two dogs, one of them a black Shiba Inu, and a brown cat run up and plant themselves in your way.
+16.670	4.766	01.mp3	Aigis steps toward the animals, and the black Shiba Inu lunges and bites her hand.
 20.670	2.252	02.mp3	The two dogs and the cat turn and run off.
 36.830	3.373	03.mp3	Aigis turns and walks away, leaving you alone at the station.

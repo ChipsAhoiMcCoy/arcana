@@ -4,7 +4,7 @@
  "cues": [
   {
    "at": 1.4,
-   "text": "At Naganaki Shrine, by the see-saw, a thin young man walks up to you and Maiko."
+   "text": "At Naganaki Shrine, Maiko and you stand by a climbing frame. A thin young man in a striped suit walks up to you, one hand gripping his other arm."
   },
   {
    "at": 9.7,
@@ -12,7 +12,7 @@
   },
   {
    "at": 17.7,
-   "text": "Maiko comes running back to you."
+   "text": "Maiko comes running back and stops beside the young man."
   },
   {
    "at": 23.0,
