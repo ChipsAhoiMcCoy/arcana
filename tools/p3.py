@@ -441,6 +441,11 @@ def apply_caps():
     fps = os.environ.get("P3A_FPS", "")
     if fps.isdigit():
         http(f"/ue/call?cdo=KismetSystemLibrary&fn=ExecuteConsoleCommand&args=Command:str:t.MaxFPS%20{fps}", check=False)
+    # Six capture games filled a 16 GB card (~2.3 GB each, texture pool 1000 MB) and games died loading with no
+    # crash line: a capture game (P3A_RES set) gets a smaller texture pool, P3A_TEXPOOL MB (default 600).
+    pool = os.environ.get("P3A_TEXPOOL", "600" if os.environ.get("P3A_RES") else "")
+    if pool.isdigit():
+        http(f"/ue/call?cdo=KismetSystemLibrary&fn=ExecuteConsoleCommand&args=Command:str:r.Streaming.PoolSize%20{pool}", check=False)
     # P3A_RES=1280x720: the window is sized to it (the game's -ResX flags were ignored; it renders at its window's
     # size, borderless, so the client area is exactly this). Never activated; no settings file written.
     # A dev game's window was found minimized with several running (2026-11-18): minimized, it played no scene and
