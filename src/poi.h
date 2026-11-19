@@ -27,6 +27,9 @@ bool selected(Poi& out);
 // the next ones move by dir while the selection is still this list's. Said as the list says it; its category becomes
 // the list's. Out of the field or with nothing near, that is said.
 void cycle_nearest(int dir);
+// One category (0 Exits .. 6 Shadows, as next_category orders them): the first press selects its nearest (dir < 0: its
+// farthest), the next ones move by dir while the selection is in it. Its name is not said; an empty one says so.
+void cycle_category(int cat, int dir);
 bool in_selected_category(const Poi& p);   // p belongs to the category the review keys are on
 std::string hit_name(ue::UObject* hit);   // a hit actor's display name ("Bed"), or ""
 bool breakable(ue::UObject* dungeon_object);   // a FldDungeonObjectActor a strike can still break (not broken yet)

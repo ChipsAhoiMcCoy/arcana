@@ -519,6 +519,7 @@ inline constexpr const char* kPoiCategory[7] = {"Exits", "Doors", "People", "Sho
 inline constexpr const char* kShadowBackTurned = "Shadow close, back turned";
 inline constexpr const char* kShadowFacingYou = "Shadow close, facing you";
 inline constexpr const char* kNothingNearbyFull = "Nothing nearby";
+inline constexpr const char* kPoiNoneOf = "No";   // "No Shadows": a category key with nothing in its category
 inline constexpr const char* kNothingSelected = "Nothing selected";
 inline constexpr const char* kOClock = "o'clock";                 // after the hour, a direction by the clock face: "2 o'clock"
 // The compass in the top-down mode (north fixed): a bearing's eight points, from north clockwise.
@@ -796,6 +797,8 @@ inline constexpr const char* kKeyHelpWalk = "Walk to the selected point of inter
 inline constexpr const char* kKeyHelpPoiNearest = "Select the nearest point of interest of any kind; again, the next nearest";
 inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points of interest of any kind, toward the nearest";
 inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";
+// A number key's category ("Shadows: the nearest, again the next; Shift goes back").
+inline constexpr const char* kKeyHelpPoiCatKey = "the nearest, again the next; Shift goes back";
 inline constexpr const char* kKeyHelpPoiAgain = "The selected point of interest again: where it is now, and its sound";
 inline constexpr const char* kKeyHelpArea = "Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks; on a Social Link, its picture";
 // A key's name in that list: its modifiers, then the key as Windows names it (kKeyUnnamed and its code when it has

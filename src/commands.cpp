@@ -129,6 +129,14 @@ void install() {
   bind(VK_OEM_1, Shift, "poi.again", strings::kKeyHelpPoiAgain, selected_again);                                // Shift+;
   bind(VK_OEM_COMMA, None, "poi.nearest", strings::kKeyHelpPoiNearest, [] { poi::cycle_nearest(1); }, true);      // ,
   bind(VK_OEM_COMMA, Shift, "poi.nearest.prev", strings::kKeyHelpPoiNearestPrev, [] { poi::cycle_nearest(-1); }, true);   // Shift+,
+  // 1 to 7: one category each, in the bracket keys' order (Grim Dark's per-kind review keys; a player asked,
+  // 2026-11-18). Letters are mostly the game's (Q E R T F Z X C B M N H), the number row is not. Shift goes back;
+  // the Shift binding has no help of its own (keys::help skips it), the plain one's says so.
+  for (int c = 0; c < 7; ++c) {
+    const std::string name = std::format("poi.cat.{}", c + 1), help = std::format("{}: {}", strings::kPoiCategory[c], strings::kKeyHelpPoiCatKey);
+    bind('1' + c, None, name.c_str(), help.c_str(), [c] { poi::cycle_category(c, 1); }, true);
+    bind('1' + c, Shift, (name + ".prev").c_str(), "", [c] { poi::cycle_category(c, -1); }, true);
+  }
   // Period walks to the selection, beside Comma that chooses it; Shift+Period walks and uses it (Grim Dark's
   // walk-there-and-use, Shift+Enter until 2026-11-14; the user's call). The game binds neither Comma nor Period
   // (Config/DefaultInput.ini has them only in its unused pad emulation, PM_R2 / PM_R3).

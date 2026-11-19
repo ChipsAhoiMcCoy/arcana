@@ -193,7 +193,8 @@ std::string help() {
     for (auto& b : g_bindings) if (b.pad) s += std::string(pad_name(b.pad)) + ": " + b.help + ". ";
     return s + strings::kPadScanKeys;
   }
-  for (auto& b : g_bindings) if (b.vk) s += key_name(b.vk, b.mods) + ": " + b.help + ". ";   // vk 0: a controller-only binding
+  // vk 0: a controller-only binding; no help: a Shift variant its plain key's help speaks for.
+  for (auto& b : g_bindings) if (b.vk && !b.help.empty()) s += key_name(b.vk, b.mods) + ": " + b.help + ". ";
   return s;
 }
 
