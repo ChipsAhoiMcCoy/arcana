@@ -28,6 +28,7 @@
 #include "poi.h"
 #include "seh.h"
 #include "settings.h"
+#include "sight.h"
 #include "speech.h"
 #include "watch.h"
 #include "world.h"
@@ -459,7 +460,9 @@ void tick() {
   bool hunted = hunting(nearest->actor);
   bool behind = std::cos(world::bearing(me, nearest->at) * kPi / 180.0f) < -0.2f && settings::on(settings::BehindPitch);
   float off = off_front(*nearest, me);
-  audio::hold(kDroneId, drone, 0.3f + 1.0f * closeness + (hunted ? 0.2f : 0.0f), world::spot(me, nearest->at),
+  // While its sight zone sounds (sight.cpp), the snarl is halved so the zone is heard over it.
+  float duck = sight::sounding(WeakObj::of(nearest->actor).index) ? 0.5f : 1.0f;
+  audio::hold(kDroneId, drone, (0.3f + 1.0f * closeness + (hunted ? 0.2f : 0.0f)) * duck, world::spot(me, nearest->at),
               (behind ? 0.7f : 1.0f) * (hunted ? 1.3f : 1.0f), 1.0f - off / 180.0f, off > kBackTurnedDeg ? 0.75f : 0.0f);
   // Its facing, logged as it crosses the game's line (to compare with what was heard).
   static WeakObj facing_of;

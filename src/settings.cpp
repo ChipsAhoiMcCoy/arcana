@@ -64,7 +64,7 @@ static const Def kDefs[Count] = {
   {"shadow_sight", strings::kSetShadowSight, CatExploring, strings::kHelpShadowSight, Unit::Toggle, {1, 0}, 1},
   // how far from the edge of a Shadow's sight its zone is heard, in meters (a new key: the old warning distance meant
   // something else)
-  {"sight_range", strings::kSetSightRange, CatExploring, strings::kHelpSightRange, Unit::Meters, {2, 4, 6, 8, 10, 12}, 6},
+  {"sight_range", strings::kSetSightRange, CatExploring, strings::kHelpSightRange, Unit::Meters, {2, 4, 6, 8, 10, 12, 14, 16}, 10},
   // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
   {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {1, 0}, 1},
   // every nearby point of interest sounds (sonar.cpp)

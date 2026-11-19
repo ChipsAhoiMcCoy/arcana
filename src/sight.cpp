@@ -23,8 +23,10 @@
 //
 // The sound: each nearby wandering Shadow's sight is a zone on the ground, its cones cut by the walls that block its
 // view, and the zone sizzles from its point nearest the hero (held, placed in the world, heard through the HRTF like
-// the growl) for as long as that point is within the Shadow sight range: quiet across the range, steeply louder over
-// the last metres, loudest at the edge. The nearest few zones sound at once. The point is the cones' own nearest
+// the growl) for as long as that point is within the Shadow sight range: louder and higher by an even step for every
+// metre nearer, loudest at the edge (it was a quiet floor rising only over the last two metres, and the player barely
+// heard it under the growl, 2026-11-19). The nearest few zones sound at once; the growl of a Shadow whose zone sounds
+// is lowered (shadow.cpp). The point is the cones' own nearest
 // point when the Shadow sees it; when a wall hides that point, a fan of rays around the hero's bearing is traced to
 // find where the view really ends.
 #include "sight.h"
@@ -66,7 +68,7 @@ constexpr int kTickTraces = 40;               // traces in all, a tick (past it,
 constexpr float kBehindRate = 0.84f;          // "Lower pitch behind you", as the sonar
 
 // knobs (dev route /sight)
-float g_gain = 0.8f;        // a zone's loudness at its edge
+float g_gain = 1.0f;        // a zone's loudness at its edge
 float g_bed_gain = 0.45f;   // the hidden hum's (Grim Dark's 0.45)
 float g_bed_tone = 0.25f;   // its brightness: muffled (audio::hold's tone)
 float g_bed_spread = 0.5f;  // its two halves, left and right
@@ -93,6 +95,7 @@ constexpr int kFalseFrames = 10;   // "seen" this many ticks running and no noti
 struct Heard { bool on = false; float closest = 1e9f; float level_at = 0; int meters = 1000; bool kept = false; };
 std::map<WeakObj::Key, Heard> g_heard;
 std::map<WeakObj::Key, int> g_slot;   // the zone's hold slot (0..kZones-1), kept while it sounds
+std::vector<int> g_sounding;          // the object indexes of the Shadows whose zones sound now
 
 std::string sound_dir() { return audio::module_dir() + "assets\\audio\\sight\\"; }
 audio::Pcm load(const std::string& file) {
@@ -124,6 +127,7 @@ void silence() {
   audio::release_hold(kBedHold);
   audio::release_hold(kBedHold + 1);
   g_slot.clear();
+  g_sounding.clear();
 }
 
 UObject* first_object(UObject* o, const char* prop) {
@@ -353,10 +357,12 @@ void log_heard(int index, const WeakObj::Key& key, bool on, float dist, float le
 
 }  // namespace
 
+bool sounding(int index) { return std::find(g_sounding.begin(), g_sounding.end(), index) != g_sounding.end(); }
+
 void demo(int which) {
   // 1.2 s: the sound test's own length, not a wait on anything.
-  if (which == 0) audio::hold(kDemoHold, zone_pcm(), core::zone_level(400, 600) * 2.0f * g_gain, toward(0, 1, 4), 1.0f, 1.0f, 0.0f, 1200);
-  else if (which == 1) audio::hold(kDemoHold, zone_pcm(), g_gain, toward(0, 1, 1), 1.0f, 1.0f, 0.0f, 1200);
+  if (which == 0) audio::hold(kDemoHold, zone_pcm(), core::zone_level(500, 1000) * g_gain, toward(0, 1, 5), core::zone_rate(500, 1000), 1.0f, 0.0f, 1200);
+  else if (which == 1) audio::hold(kDemoHold, zone_pcm(), g_gain, toward(0, 1, 1), core::zone_rate(0, 1000), 1.0f, 0.0f, 1200);
   else if (which == 2) play_bed(g_bed_gain, kDemoHold + 1, 1200);
 }
 
@@ -405,7 +411,7 @@ static void tick_body() {
   g_blind = unseen ? "not searched by enemies" : party::flag(kReaperBit) ? "the Reaper is on the floor" : "";
   std::vector<bool> seen_now(all.size(), false);
   g_shadows.clear();
-  struct Heard1 { WeakObj::Key key; int index; Zone z; float level; };
+  struct Heard1 { WeakObj::Key key; int index; Zone z; float level, rate; };
   std::vector<Heard1> zones;
   // Nearest Shadows first: the trace budget goes to them.
   std::vector<size_t> order(all.size());
@@ -427,7 +433,7 @@ static void tick_body() {
       }
       if (inside && clear) { z = Zone{me, 0, "seen"}; has_zone = true; }
       else has_zone = zone_of(e, me, inside, z);
-      if (has_zone && z.dist < range) zones.push_back(Heard1{WeakObj::of(e.actor).key(), e.index, z, core::zone_level(z.dist, range)});
+      if (has_zone && z.dist < range) zones.push_back(Heard1{WeakObj::of(e.actor).key(), e.index, z, core::zone_level(z.dist, range), core::zone_rate(z.dist, range)});
     }
     std::string cones;
     for (const SightCone& c : e.cones) cones += std::format(" {:.0f}/{:.0f}", c.range, c.angle);
@@ -451,10 +457,12 @@ static void tick_body() {
   for (int s = 0; s < kZones; ++s) if (!used[s]) audio::release_hold(kZoneHold + s);
   for (const Heard1& h : zones) {
     audio::Spot at = world::spot(mef, FVector{h.z.at.x, h.z.at.y, me.z});
-    float rate = at.ahead < -0.2f && settings::on(settings::BehindPitch) ? kBehindRate : 1.0f;
+    float rate = h.rate * (at.ahead < -0.2f && settings::on(settings::BehindPitch) ? kBehindRate : 1.0f);
     audio::hold(kZoneHold + slots[h.key], zone_pcm(), h.level * g_gain, at, rate, 1.0f, 0.0f);
   }
   g_slot.swap(slots);
+  g_sounding.clear();
+  for (const Heard1& h : zones) g_sounding.push_back(h.index);
   // The log: each zone as it starts, nears and stops.
   for (auto& [key, h] : g_heard) h.kept = false;
   for (const Heard1& h : zones) log_heard(h.index, h.key, true, h.z.dist, h.level);

@@ -59,12 +59,20 @@ TEST_CASE("fan_nearest: a wall cuts the rays on one side") {
   CHECK_FALSE(fan_nearest(Vec3{0, 0, 0}, none, Vec3{100, 0, 0}, q, d));
 }
 
-TEST_CASE("zone_level: a floor across the range, steep near the edge") {
-  CHECK(zone_level(0, 600) == doctest::Approx(1.0f));
-  CHECK(zone_level(600, 600) == doctest::Approx(0.0f));
-  CHECK(zone_level(900, 600) == doctest::Approx(0.0f));
-  CHECK(zone_level(400, 600) == doctest::Approx(0.12f));        // far: the floor
-  CHECK(zone_level(550, 600) == doctest::Approx(0.06f));        // the floor fading in at the range's end
-  CHECK(zone_level(100, 600) == doctest::Approx(0.5787f).epsilon(0.01));
-  CHECK(zone_level(100, 600) > 2.0f * zone_level(250, 600));    // the last metres rise steeply
+TEST_CASE("zone_level: an even rise in decibels across the range") {
+  CHECK(zone_level(0, 1000) == doctest::Approx(1.0f));
+  CHECK(zone_level(1000, 1000) == doctest::Approx(0.0f));
+  CHECK(zone_level(1500, 1000) == doctest::Approx(0.0f));
+  CHECK(zone_level(500, 1000) == doctest::Approx(0.398f).epsilon(0.01));   // halfway: -8 dB
+  CHECK(zone_level(900, 1000) == doctest::Approx(0.191f).epsilon(0.01));   // heard well out in the range
+  CHECK(zone_level(975, 1000) < zone_level(940, 1000));                    // the floor fading in at the range's end
+  // Every metre is the same step: the ratio of neighbouring metres does not change.
+  CHECK(zone_level(200, 1000) / zone_level(300, 1000) == doctest::Approx(zone_level(700, 1000) / zone_level(800, 1000)));
+}
+
+TEST_CASE("zone_rate: higher as the edge nears") {
+  CHECK(zone_rate(0, 1000) == doctest::Approx(1.2f));
+  CHECK(zone_rate(1000, 1000) == doctest::Approx(0.85f));
+  CHECK(zone_rate(2000, 1000) == doctest::Approx(0.85f));
+  CHECK(zone_rate(300, 1000) > zone_rate(600, 1000));
 }

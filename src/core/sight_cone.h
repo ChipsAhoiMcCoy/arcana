@@ -36,8 +36,12 @@ struct SightRay { float theta = 0, len = 0; };
 // sees.
 bool fan_nearest(const Vec3& eye, const std::vector<SightRay>& rays, const Vec3& p, Vec3& out, float& dist);
 
-// How loud a Shadow's sight is with its edge `dist` cm away, heard from `range` cm out: a quiet floor across the
-// range (faded in over its outer metre), rising steeply over the last metres to 1 at the edge; 0 past the range.
+// How loud a Shadow's sight is with its edge `dist` cm away, heard from `range` cm out: an even rise in decibels, from
+// kZoneFloorDb at the range's end to 1 at the edge, so every metre nearer or farther is heard as the same step (the
+// floor fades in over the range's outer half metre); 0 past the range.
+inline constexpr float kZoneFloorDb = -16.0f;
 float zone_level(float dist, float range);
+// Its playback rate: higher as the edge nears, from 0.85 at the range's end to 1.2 at the edge.
+float zone_rate(float dist, float range);
 
 }  // namespace p3a::core

@@ -128,8 +128,8 @@ They work like any other menu: up and down choose (at either end a further press
 - Wall tones: only while moving; continuous (standing still too) or off
 - Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
 - Shadow alerts: on, off. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
-- Shadow sight: on, off. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, and a muffled hum plays while a wall hides you from one
-- Shadow sight range: 6 meters; 2 to 12 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
+- Shadow sight: on, off. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder and higher as you near it (its snarl drops while it does), and a muffled hum plays while a wall hides you from one
+- Shadow sight range: 10 meters; 2 to 16 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
 - Strike assist: on, off. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
 
 **Sonar**

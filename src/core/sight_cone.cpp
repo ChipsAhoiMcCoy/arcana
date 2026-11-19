@@ -82,10 +82,15 @@ bool fan_nearest(const Vec3& eye, const std::vector<SightRay>& rays, const Vec3&
 
 float zone_level(float dist, float range) {
   if (range <= 0 || dist >= range) return 0.0f;
-  constexpr float kFloor = 0.12f;   // heard across the whole range
-  float closeness = 1.0f - std::max(dist, 0.0f) / range;
-  float fade = std::min(1.0f, (range - dist) / 100.0f);   // the floor comes in over the range's outer metre
-  return std::max(kFloor * fade, closeness * closeness * closeness);
+  float out = std::max(dist, 0.0f) / range;   // how far out along the range, 0..1
+  float fade = std::min(1.0f, (range - dist) / 50.0f);   // the floor comes in over the range's outer half metre
+  return std::pow(10.0f, kZoneFloorDb * out / 20.0f) * fade;
+}
+
+float zone_rate(float dist, float range) {
+  if (range <= 0) return 1.0f;
+  float closeness = 1.0f - std::clamp(dist / range, 0.0f, 1.0f);
+  return 0.85f + 0.35f * closeness;
 }
 
 }  // namespace p3a::core
