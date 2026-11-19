@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_113_100_C", "title": "President Tanaka: the donation", "cues": [{"at": 4.67, "text": "At Port Island Station, Tanaka holds out a letter, and you take it."}, {"at": 17.17, "text": "Tanaka turns and walks away."}]}
+{
+ "movie": "LS_Event_Cmmu_113_100_C",
+ "title": "President Tanaka: the donation",
+ "cues": [
+  {
+   "at": 4.67,
+   "text": "By the fountain outside Port Island Station, you hold a letter Tanaka has given you out in front of you, reading it."
+  },
+  {
+   "at": 17.17,
+   "text": "Tanaka turns and walks away."
+  }
+ ]
+}

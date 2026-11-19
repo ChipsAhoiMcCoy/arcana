@@ -8,11 +8,15 @@
   },
   {
    "at": 14.0,
-   "text": "You follow him further into the shrine grounds, and Koromaru runs to meet you."
+   "text": "Further into the shrine grounds, Koromaru trots ahead of you to a stone guardian-dog statue and stops, facing you, then lowers his nose to the ground."
+  },
+  {
+   "at": 17.4,
+   "text": "You crouch down in front of Koromaru. A small collar lies on the stones at his feet."
   },
   {
    "at": 24.7,
-   "text": "Koromaru gives you a collar."
+   "text": "You pick up the collar. Koromaru turns away toward the shrine and lifts his head."
   }
  ]
 }

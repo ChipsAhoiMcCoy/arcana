@@ -2,6 +2,6 @@
 2.330	8.704	00.mp3	Outside the dorm, you sit on the front steps with Koromaru sitting at your side. The girl in the floral shirt and the naughty-looking boy run up to him.
 12.000	4.108	01.mp3	The children run off, and the woman who knew Koromaru at the shrine walks up.
 28.170	3.348	02.mp3	The woman has gone. An old man walks up the street toward you.
-38.330	9.599	03.mp3	You and the old man now sit on the dorm steps with a shogi board between you, Koromaru sitting by the board. Mitsuru walks up from the street, her school bag in hand.
-52.670	7.049	04.mp3	The game over, the old man walks off down the street, leaving you standing at the foot of the steps with Mitsuru and Koromaru.
+38.330	14.064	03.mp3	You and the old man now sit on the dorm steps with a shogi board between you, you leaning forward over it, Koromaru sitting just behind the board and the old man's tote bag beside him. Mitsuru walks up from the street, her school bag in hand.
+52.670	10.335	04.mp3	The game over, the old man walks off down the street, stooped, his bag on his shoulder, leaving you standing at the foot of the steps, hands in your pockets, with Mitsuru and Koromaru.
 64.830	3.596	05.mp3	Koromaru runs off toward the old man's voice, and you follow.

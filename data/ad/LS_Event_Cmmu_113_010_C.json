@@ -4,7 +4,7 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Outside Port Island Station, among the passers-by, a man in a suit stands facing you, smiling."
+   "text": "Outside Port Island Station, by a fountain and a bench, a man in a suit stands facing you among the passers-by, smiling."
   },
   {
    "at": 6.5,
@@ -12,7 +12,11 @@
   },
   {
    "at": 14.0,
-   "text": "President Tanaka turns his back on you, walks a few steps away and stops, scowling. Tanaka turns around and starts at the sight of you, still standing there. He stomps right up to you, glaring."
+   "text": "President Tanaka turns his back on you, walks a few steps toward the fountain and stops there, his back still to you."
+  },
+  {
+   "at": 19.5,
+   "text": "Tanaka turns around and starts at the sight of you, still standing there. Then he stomps right up to you, glaring."
   }
  ]
 }

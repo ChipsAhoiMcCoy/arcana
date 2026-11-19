@@ -4,11 +4,15 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "A deserted back street. Nozomi walks in with two men, and a bitter-looking middle-aged man stands waiting there."
+   "text": "A deserted back alley, graffiti on the walls and trash bags and bins along one side. Nozomi walks in with two young men behind him, and a bitter-looking middle-aged man in a suit and glasses stands waiting by the bins."
   },
   {
    "at": 6.5,
-   "text": "Nozomi turns around to find the two men closing in on him. You come running up."
+   "text": "Nozomi turns around to find the two men closing in on him. He backs away, arms spread, trembling."
+  },
+  {
+   "at": 13.33,
+   "text": "You come running into the alley. Nozomi spots you and stumbles toward you, arms out."
   },
   {
    "at": 20.83,
@@ -16,7 +20,7 @@
   },
   {
    "at": 27.5,
-   "text": "The bitter-looking man walks away, leaving you with Nozomi, who is still crying."
+   "text": "The bitter-looking man walks past you and out of the alley, leaving you with Nozomi, who is still crying and wiping his face."
   }
  ]
 }

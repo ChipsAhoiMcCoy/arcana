@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_106_080_C", "title": "Snacks at Yuko's place", "cues": [{"at": 0.00, "text": "Yuko's home. You sit facing Yuko, the two of you alone."}]}
+{
+ "movie": "LS_Event_Cmmu_106_080_C",
+ "title": "Snacks at Yuko's place",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Yuko's bedroom. You and Yuko sit side by side on the edge of her bed, the two of you alone, her hands folded in her lap."
+  },
+  {
+   "at": 15.83,
+   "text": "Yuko takes out her phone, flips it open and looks at it."
+  }
+ ]
+}

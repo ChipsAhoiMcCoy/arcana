@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_009_720_C", "title": "The last wolf special", "cues": [{"at": 0.17, "text": "In the dorm lounge, you and Koromaru sit side by side in front of the TV."}]}
+{
+ "movie": "LS_Event_Cmmu_009_720_C",
+ "title": "The last wolf special",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "In the dorm lounge, you sit on the sofa and Koromaru sits up on the armchair beside it, the two of you watching the TV."
+  }
+ ]
+}

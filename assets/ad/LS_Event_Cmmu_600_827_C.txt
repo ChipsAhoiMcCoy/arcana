@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_827_C
-0.030	4.916	00.mp3	The dorm lounge. You sit at the dining table, studying with Mitsuru and Akihiko.
+0.030	10.309	00.mp3	The dorm lounge. You sit at the dining table, studying with Mitsuru and Akihiko. Mitsuru presses a hand to her brow, then sits with her arms folded, not writing.
