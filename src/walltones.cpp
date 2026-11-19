@@ -15,7 +15,8 @@
 // In the top-down mode (topdown.cpp) the four directions are the compass, fixed, so a room had a wall within reach in
 // three or four of them all the time and turning no longer quietened them (the user, 2026-11-12). There they reached 3 m
 // (5 m again since 2026-11-17, and a setting since: Wall tone range, 1 to 10 m, either mode), and while the player moves the hero (the movement input, so the stick, the keys and the auto-walk alike, even into a
-// wall) the direction behind the walk is left out. In either mode the tones sound only while the player moves (pushes a
+// wall) the direction behind the walk was left out, until 2026-11-19: a wall you stepped away from fell silent at once,
+// and the user wants every wall heard where it is. In either mode the tones sound only while the player moves (pushes a
 // way, or the hero moves), as Dark Vision's "when moving"; standing still they are quiet (the user, 2026-11-14; for a
 // day, 2026-11-13, they played all the time).
 #include "walltones.h"
@@ -34,7 +35,6 @@ namespace p3a::walltones {
 using world::FVector;
 static float g_range = 500.0f;        // cm, the setting Wall tone range (5 m by default, both modes)
 constexpr float kMovingCmS = 30.0f;       // the hero moves: faster than this on the ground (a walk is ~250)
-constexpr float kBehindDeg = 100.0f;      // top-down: a direction more than this from the walk's is behind it
 static bool g_moving = false;
 static bool g_predict = true;             // dev: /walltones?predict=0 probes from the last frame's place
 static float g_ahead_cm = 0;              // dev: how far ahead the last probe looked
@@ -202,18 +202,14 @@ void tick() {
       p = q;
     }
   }
-  // Top-down: the direction behind the walk is left out (standing still, with no walk, all four sound).
-  const bool leave_behind = top && g_moving;
-  if (leave_behind) {
+  // Top-down: every direction sounds, the one behind the walk too, so a wall you walk away from is still heard where
+  // it is (the user, 2026-11-19; from 2026-11-12 the direction behind the walk was left out, and stepping off a wall
+  // cut its tone at once). The heading is kept for /walltones.
+  if (top && g_moving) {
     const FVector& d = g_asking ? in : vel;
     g_heading = std::atan2(d.y, d.x) * 180.0f / 3.14159265f - topdown::north_yaw();
   }
   for (int i = 0; i < 4; ++i) {
-    if (leave_behind && std::fabs(std::remainder(90.0f * i - g_heading, 360.0f)) > kBehindDeg) {
-      g_dist[i] = range;
-      audio::set_loop_volume(kToneId + i, 0.0f);
-      continue;
-    }
     float d = probe(p, i, range);
     g_dist[i] = d;
     float v = d >= range ? 0.0f : 1.0f - d / range;

@@ -296,7 +296,7 @@ The game's camera sits behind the hero and turns, so a sound "ahead" kept changi
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
 - North is the corner map's up, place by place: where the game draws a map turned (Port Island Station, your room, the Command Room), north turns with it.
 - Where the game moves you into a room turned around, that room is turned so the way you walked in stays up (the Keep your heading through passages setting, on by default). The back alley to the Velvet Room: walk north up the passage from Fountain Square, and up keeps leading along the alley to the door while down leads back out. The school rooftop: its stairs turn back on themselves, so on the roof up leads away from the stairwell door and down leads back to it. Compass words in a turned room follow the turn. Only rooms with a single way in whose turn the game's own data gives exactly are turned.
-- The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). While you move, the direction behind your walk stays silent; standing still with Wall tones on Continuous, all four sound.
+- The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). All four sound while you move, the wall behind you too; standing still, they sound with Wall tones on Continuous.
 - Points of interest give compass directions ("north-east"), and the right stick scans (see On a controller).
 
 Conversations, story scenes, menus and battles keep the game's own camera and sound. Turn the setting off to play with the game's camera.
