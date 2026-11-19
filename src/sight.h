@@ -10,8 +10,6 @@ namespace p3a::sight {
 // cone for the hero's pace, the trace walls block). Shadows already hunting the hero are left out.
 void tick();      // game thread, with no screen or message up; plays only while the player walks the field
 void install();   // dev route /sight
-// The Shadow (by object index) has a sight zone sounding now (its growl is lowered under it).
-bool sounding(int index);
 // The sound test: 1.2 s of one sound. 0: a zone halfway through the range; 1: at its edge; 2: hidden.
 void demo(int which);
 }  // namespace p3a::sight

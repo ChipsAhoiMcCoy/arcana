@@ -25,8 +25,8 @@
 // view, and the zone sizzles from its point nearest the hero (held, placed in the world, heard through the HRTF like
 // the growl) for as long as that point is within the Shadow sight range: louder and higher by an even step for every
 // metre nearer, loudest at the edge (it was a quiet floor rising only over the last two metres, and the player barely
-// heard it under the growl, 2026-11-19). The nearest few zones sound at once; the growl of a Shadow whose zone sounds
-// is lowered (shadow.cpp). The point is the cones' own nearest
+// heard it under the growl, 2026-11-19). The nearest few zones sound at once. The growl is left as loud as it is
+// (the user's call, 2026-11-19: no lowering it under a zone). The point is the cones' own nearest
 // point when the Shadow sees it; when a wall hides that point, a fan of rays around the hero's bearing is traced to
 // find where the view really ends.
 #include "sight.h"
@@ -95,7 +95,6 @@ constexpr int kFalseFrames = 10;   // "seen" this many ticks running and no noti
 struct Heard { bool on = false; float closest = 1e9f; float level_at = 0; int meters = 1000; bool kept = false; };
 std::map<WeakObj::Key, Heard> g_heard;
 std::map<WeakObj::Key, int> g_slot;   // the zone's hold slot (0..kZones-1), kept while it sounds
-std::vector<int> g_sounding;          // the object indexes of the Shadows whose zones sound now
 
 std::string sound_dir() { return audio::module_dir() + "assets\\audio\\sight\\"; }
 audio::Pcm load(const std::string& file) {
@@ -127,7 +126,6 @@ void silence() {
   audio::release_hold(kBedHold);
   audio::release_hold(kBedHold + 1);
   g_slot.clear();
-  g_sounding.clear();
 }
 
 UObject* first_object(UObject* o, const char* prop) {
@@ -357,8 +355,6 @@ void log_heard(int index, const WeakObj::Key& key, bool on, float dist, float le
 
 }  // namespace
 
-bool sounding(int index) { return std::find(g_sounding.begin(), g_sounding.end(), index) != g_sounding.end(); }
-
 void demo(int which) {
   // 1.2 s: the sound test's own length, not a wait on anything.
   if (which == 0) audio::hold(kDemoHold, zone_pcm(), core::zone_level(500, 1000) * g_gain, toward(0, 1, 5), core::zone_rate(500, 1000), 1.0f, 0.0f, 1200);
@@ -461,8 +457,6 @@ static void tick_body() {
     audio::hold(kZoneHold + slots[h.key], zone_pcm(), h.level * g_gain, at, rate, 1.0f, 0.0f);
   }
   g_slot.swap(slots);
-  g_sounding.clear();
-  for (const Heard1& h : zones) g_sounding.push_back(h.index);
   // The log: each zone as it starts, nears and stops.
   for (auto& [key, h] : g_heard) h.kept = false;
   for (const Heard1& h : zones) log_heard(h.index, h.key, true, h.z.dist, h.level);
