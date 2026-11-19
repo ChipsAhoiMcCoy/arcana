@@ -1,3 +1,3 @@
 #scene LS_Event_Main_140_330_C
-0.550	4.089	00.mp3	In a lounge at the house, everyone stands in a circle around Ikutsuki.
+0.550	5.006	00.mp3	In a lounge at the house, everyone stands in a loose circle with Ikutsuki, the chairman.
 4.300	10.740	01.mp3	The girl from the pier walks in and joins the circle. The dress is gone: her body is plainly a machine's, with jointed limbs and armoured plating, under a girl's face and short hair.

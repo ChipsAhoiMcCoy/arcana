@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_160_090_C", "title": "Pharos's warning", "cues": [
-  {"at": 0.05, "text": "Your room at the dorm. You lie asleep in bed."},
-  {"at": 2.85, "text": "You open your eyes and prop yourself up on the bed. Pharos, the boy in striped pyjamas, stands by the window at the foot of the bed."},
-  {"at": 5.70, "text": "Pharos breaks apart into black flecks that scatter and are gone."}
-]}
+{
+ "movie": "LS_Event_Main_160_090_C",
+ "title": "Pharos's warning",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Your room at the dorm. You lie asleep in bed."
+  },
+  {
+   "at": 2.85,
+   "text": "You open your eyes and prop yourself up on the bed. Pharos, the boy in striped pyjamas, stands by the window at the foot of the bed."
+  },
+  {
+   "at": 5.7,
+   "text": "Pharos breaks apart into flecks that scatter and are gone."
+  }
+ ]
+}

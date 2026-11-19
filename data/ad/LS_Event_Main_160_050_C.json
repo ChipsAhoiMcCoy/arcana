@@ -1,7 +1,26 @@
-{"movie": "LS_Event_Main_160_050_C", "title": "Shinjiro outside the ramen shop", "cues": [
-  {"at": 0.05, "text": "Outside Hagakure, the ramen shop in the strip mall. Shinjiro steps out through the shop's sliding door and stops facing Akihiko, who stands waiting with a hand on his hip."},
-  {"at": 3.40, "text": "Shinjiro shakes his head, shoves his hands in his pockets, turns away and takes a few steps off. Akihiko turns after him."},
-  {"at": 8.80, "text": "At the far end of the walkway, Ken comes into view and stops."},
-  {"at": 12.12, "text": "Ken's eyes widen. He hurries a few steps closer and stands quietly by a signboard, listening, unseen by the two of them."},
-  {"at": 18.20, "text": "Shinjiro turns and walks away down the walkway, leaving Akihiko standing outside the shop."}
-]}
+{
+ "movie": "LS_Event_Main_160_050_C",
+ "title": "Shinjiro outside the ramen shop",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Outside Hagakure, the ramen shop in the strip mall. Shinjiro steps out through the shop's sliding door and stops facing Akihiko, who stands waiting with a hand on his hip."
+  },
+  {
+   "at": 3.4,
+   "text": "Shinjiro shakes his head, shoves his hands in his pockets, turns away and takes a few steps off. Akihiko turns after him."
+  },
+  {
+   "at": 8.8,
+   "text": "Shinjiro stands with his head lowered. At the far end of the walkway, Ken comes into view and stops."
+  },
+  {
+   "at": 12.12,
+   "text": "Ken's eyes widen. He hurries a few steps closer and stands quietly by a signboard, listening, unseen by the two of them."
+  },
+  {
+   "at": 18.2,
+   "text": "Shinjiro turns and walks away down the walkway, leaving Akihiko standing outside the shop."
+  }
+ ]
+}

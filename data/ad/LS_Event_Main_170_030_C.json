@@ -1,10 +1,38 @@
-{"movie": "LS_Event_Main_170_030_C", "title": "Chidori's Persona goes berserk", "cues": [
-{"at": 0.0, "text": "Chidori's hospital room. Chidori sits up in bed, and Junpei stands beside her holding a new sketchbook."},
-{"at": 6.5, "text": "Junpei sets the sketchbook on the bedside table and sits down on the stool next to her. Across the room, Mitsuru sits in a chair with her arms crossed, and Akihiko stands near her, watching."},
-{"at": 8.5, "text": "Shinjiro walks in."},
-{"at": 16.17, "text": "In a burst of sparks, a figure rises out of Chidori: a long-limbed shape with a mane of fiery hair. It crouches over her on the bed with its arms around her. Akihiko, Mitsuru and Shinjiro hurry to the bedside."},
-{"at": 22.83, "text": "Shinjiro pushes past to Chidori, takes out a syringe and injects her arm. The figure fades away, and Chidori slumps, gasping for breath."},
-{"at": 31.67, "text": "Shinjiro walks out of the room."},
-{"at": 34.83, "text": "Akihiko runs out after him."},
-{"at": 38.0, "text": "Mitsuru leaves the room too, and Junpei is left alone with Chidori."}
-]}
+{
+ "movie": "LS_Event_Main_170_030_C",
+ "title": "Chidori's Persona goes berserk",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Chidori's hospital room. Chidori sits up in bed, and Junpei stands beside her holding a new sketchbook."
+  },
+  {
+   "at": 6.5,
+   "text": "Junpei sets the sketchbook on the bedside table and sits down on the stool next to her. Across the room, Mitsuru sits in a chair with her arms crossed, and Akihiko stands near her, watching."
+  },
+  {
+   "at": 8.5,
+   "text": "Shinjiro walks in."
+  },
+  {
+   "at": 16.17,
+   "text": "In a burst of sparks, a figure rises out of Chidori: a long-limbed shape with a mane of hair like flames. It crouches over her on the bed with its arms around her. Akihiko, Mitsuru and Shinjiro hurry to the bedside."
+  },
+  {
+   "at": 22.83,
+   "text": "Shinjiro pushes past to Chidori, takes out a syringe and injects her arm. The figure fades away, and Chidori slumps, gasping for breath."
+  },
+  {
+   "at": 31.67,
+   "text": "Shinjiro walks out of the room."
+  },
+  {
+   "at": 34.83,
+   "text": "Akihiko runs out after him."
+  },
+  {
+   "at": 38.0,
+   "text": "Mitsuru leaves the room too, and Junpei is left alone with Chidori."
+  }
+ ]
+}

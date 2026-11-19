@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_170_090_C", "title": "Pharos: a week to the full moon", "cues": [
-{"at": 0.0, "text": "Your room at the dorm. You lie asleep in bed."},
-{"at": 2.83, "text": "You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed."},
-{"at": 8.17, "text": "Pharos smiles, then breaks apart into a cloud of dark specks and is gone."}
-]}
+{
+ "movie": "LS_Event_Main_170_090_C",
+ "title": "Pharos: a week to the full moon",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Your room at the dorm. You lie asleep in bed."
+  },
+  {
+   "at": 2.83,
+   "text": "You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed."
+  },
+  {
+   "at": 8.17,
+   "text": "Pharos smiles, then breaks apart into a cloud of specks and is gone."
+  }
+ ]
+}

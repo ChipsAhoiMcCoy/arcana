@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_150_030_C", "title": "Shinjiro and the strangers", "cues": [
-  {"at": 0.80, "text": "In a back alley, Shinjiro sits on a flight of stairs. A pale young man with long hair, a boy with glasses carrying a metal case and a girl in a long, frilled dress walk up to him."},
-  {"at": 8.75, "text": "The boy with glasses tosses the pills to Shinjiro, who catches them."},
-  {"at": 18.40, "text": "Shinjiro, on his feet now, walks past the three."}
-]}
+{
+ "movie": "LS_Event_Main_150_030_C",
+ "title": "Shinjiro and the strangers",
+ "cues": [
+  {
+   "at": 0.8,
+   "text": "In a back alley, Shinjiro sits on a flight of stairs. A long-haired young man with tattooed arms, a boy with glasses carrying a metal case and a girl in a long, frilled dress walk up to him."
+  },
+  {
+   "at": 8.75,
+   "text": "The boy with glasses tosses the pills to Shinjiro, who catches them."
+  },
+  {
+   "at": 18.4,
+   "text": "Shinjiro, on his feet now, walks past the three."
+  }
+ ]
+}

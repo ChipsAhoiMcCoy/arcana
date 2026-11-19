@@ -1,3 +1,4 @@
 #scene LS_Event_Main_160_070_C
-0.050	11.530	00.mp3	The command room on the dorm's top floor. You sit on the sofas with Yukari, Junpei, Fuuka, Mitsuru and Akihiko, Aigis standing nearby, as the chairman, Ikutsuki, walks in.
+0.050	15.945	00.mp3	The command room on the dorm's top floor. You, Yukari and Junpei sit on stools around the low table; Mitsuru, Fuuka and Akihiko sit on the sofa, Akihiko with his arms folded, and Aigis stands beside it. The chairman, Ikutsuki, walks in.
 3.900	7.220	01.mp3	The door opens and Ken walks in to stand beside the chairman. Akihiko, Mitsuru and Fuuka stare at him in surprise.
+7.330	5.350	02.mp3	Akihiko gets up from the sofa and stands facing Ken and the chairman, a hand on his hip.
