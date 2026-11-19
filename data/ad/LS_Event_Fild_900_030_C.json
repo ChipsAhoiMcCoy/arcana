@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_900_030_C", "title": "Into the Velvet Room with Elizabeth", "cues": [{"at": 0.00, "text": "Elizabeth waits at the Velvet Room door. She steps aside, and you walk in with her behind you."}]}
+{
+ "movie": "LS_Event_Fild_900_030_C",
+ "title": "Into the Velvet Room with Elizabeth",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Elizabeth waits at the Velvet Room door with a large book in her arms. She steps aside and gestures to the door, and you walk in with her behind you."
+  }
+ ]
+}

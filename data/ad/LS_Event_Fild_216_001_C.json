@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Fild_216_001_C", "title": "A reward from the chairman", "cues": [{"at": 0.05, "text": "You come in through the dorm's front door. Junpei hurries over to you; the chairman, Ikutsuki, is in the lounge."}, {"at": 3.33, "text": "Ikutsuki walks up to the two of you, and Junpei turns to him."}, {"at": 6.53, "text": "Ikutsuki holds something out, and you take it."}]}
+{
+ "movie": "LS_Event_Fild_216_001_C",
+ "title": "A reward from the chairman",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "You come in through the dorm's front door. Junpei hurries over to you; the chairman, Ikutsuki, is in the lounge."
+  },
+  {
+   "at": 3.33,
+   "text": "Ikutsuki walks up to the two of you and folds his arms, and Junpei turns to him."
+  },
+  {
+   "at": 6.53,
+   "text": "Ikutsuki gives you something."
+  }
+ ]
+}

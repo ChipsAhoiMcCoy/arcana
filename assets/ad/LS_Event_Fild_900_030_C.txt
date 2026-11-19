@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_030_C
-0.000	5.460	00.mp3	Elizabeth waits at the Velvet Room door. She steps aside, and you walk in with her behind you.
+0.000	8.530	00.mp3	Elizabeth waits at the Velvet Room door with a large book in her arms. She steps aside and gestures to the door, and you walk in with her behind you.
