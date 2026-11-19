@@ -1,3 +1,0 @@
-#scene LS_Event_Cmmu_003_737_C_2
-0.130	5.833	00.mp3	The dorm rooftop. You and Junpei crouch side by side at the vegetable planters, working the soil.
-5.670	3.803	01.mp3	Later, you both stand at the planters, and Junpei strikes a pose.

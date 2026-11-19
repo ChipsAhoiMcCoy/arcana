@@ -1,3 +1,14 @@
-{"movie": "LS_Event_Cmmu_007_717_C", "title": "Reading with Aigis: the classroom", "cues": [
-{"at": 0.23, "text": "The dorm lounge. You and Aigis sit reading together again, Aigis with her novel."}
-]}
+{
+ "movie": "LS_Event_Cmmu_007_717_C",
+ "title": "Reading with Aigis: the classroom",
+ "cues": [
+  {
+   "at": 0.23,
+   "text": "The dorm lounge. You and Aigis sit facing each other across a low table, reading again, Aigis with her novel held up in both hands."
+  },
+  {
+   "at": 9.17,
+   "text": "Aigis now sits with her closed book in her lap, your own book set on the table, and lays a hand on her chest."
+  }
+ ]
+}

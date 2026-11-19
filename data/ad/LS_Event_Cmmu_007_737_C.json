@@ -1,3 +1,14 @@
-{"movie": "LS_Event_Cmmu_007_737_C", "title": "Aigis at the planters: the ladybug", "cues": [
-{"at": 0.17, "text": "The dorm rooftop. You and Aigis work together at the vegetable planters."}
-]}
+{
+ "movie": "LS_Event_Cmmu_007_737_C",
+ "title": "Aigis at the planters: the ladybug",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm rooftop. You and Aigis crouch side by side at the vegetable planters, garden tools on the ground beside you."
+  },
+  {
+   "at": 9.5,
+   "text": "Later, you and Aigis stand facing each other by the planters; Aigis lays a hand on her chest."
+  }
+ ]
+}

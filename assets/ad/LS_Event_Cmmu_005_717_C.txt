@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_005_717_C
-0.000	3.679	00.mp3	The lounge of the dorm. You and Mitsuru sit together with her books.
+0.000	6.025	00.mp3	The dorm lounge. You and Mitsuru sit on benches on either side of a low table, each reading a book.
+6.600	4.963	01.mp3	Later, Mitsuru has closed her book and laid it on the table; she sits with her arms folded.
