@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_180_150_B", "title": "Strega jumps", "cues": [{"at": 0.20, "text": "The walkway along the bridge's railing, after the battle. Takaya kneels on the pavement, doubled over; Jin crouches against the railing beside his briefcase. You and the others stand over them."}, {"at": 9.17, "text": "Takaya has got to his feet and pressed the muzzle of his revolver to his own temple. Jin lunges up and seizes his wrist."}, {"at": 15.50, "text": "Still gripping Takaya's wrist, Jin throws himself backward over the railing and drags Takaya over with him. They drop from the bridge. You, Yukari and Junpei run to the railing."}]}
+{
+ "movie": "LS_Event_Main_180_150_B",
+ "title": "Strega jumps",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "The walkway along the bridge's railing, after the battle. Takaya kneels on the pavement, doubled over; Jin sits slumped against the low railing, his briefcase at his feet. You and the others stand a few steps away."
+  },
+  {
+   "at": 9.17,
+   "text": "Takaya has got to his feet and pressed the muzzle of his revolver to his own temple. Jin lunges up and seizes his wrist, forcing the gun up into the air."
+  },
+  {
+   "at": 15.5,
+   "text": "Still gripping Takaya's wrist, Jin swings up his briefcase in his other hand and throws himself backward over the railing, dragging Takaya over with him. They drop from the bridge. You, Yukari and Junpei run to the railing."
+  }
+ ]
+}

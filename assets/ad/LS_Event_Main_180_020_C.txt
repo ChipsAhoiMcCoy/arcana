@@ -1,3 +1,3 @@
 #scene LS_Event_Main_180_020_C
 0.000	7.512	00.mp3	Your classroom. You and Junpei sit at your desks, Yukari standing beside you. Mitsuru walks in and comes over to Yukari.
-7.670	2.366	01.mp3	Mitsuru turns and walks out of the classroom.
+7.670	5.088	01.mp3	Yukari lowers her eyes and touches her hair. Mitsuru turns and walks out of the classroom.

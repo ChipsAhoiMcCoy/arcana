@@ -1,3 +1,3 @@
 #scene LS_Event_Main_190_180_C
 0.000	7.702	00.mp3	Your classroom. You, Yukari, Junpei and Aigis sit at your desks while a new boy stands at the front of the room beside the teacher.
-12.500	4.641	01.mp3	Ryoji walks between the desks and stops beside Aigis. She glares up at him.
+12.500	7.345	01.mp3	Ryoji walks between the desks and stops beside Aigis. She glares up at him; later he rubs the back of his head and smiles.

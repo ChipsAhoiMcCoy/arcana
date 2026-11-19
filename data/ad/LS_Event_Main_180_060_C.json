@@ -4,7 +4,7 @@
  "cues": [
   {
    "at": 0.1,
-   "text": "The dorm lounge. You sit with Yukari, Junpei, Fuuka and Mitsuru, Koromaru among you. Aigis stands nearby."
+   "text": "The dorm lounge. You sit with Yukari, Junpei, Fuuka and Mitsuru, Koromaru among you; Mitsuru sits with her arms folded. Aigis stands nearby."
   },
   {
    "at": 7.7,
@@ -16,7 +16,7 @@
   },
   {
    "at": 15.15,
-   "text": "Everyone gets up and gathers around Ken."
+   "text": "Everyone gets up and gathers around Ken, who keeps his head lowered. Fuuka presses her hands together at her chest."
   }
  ]
 }

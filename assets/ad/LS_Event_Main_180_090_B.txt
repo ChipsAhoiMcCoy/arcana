@@ -4,6 +4,6 @@
 29.220	5.729	02.mp3	Natsuki walks past Fuuka to the door and leaves. The door closes behind her, and Fuuka is alone.
 35.900	2.440	03.mp3	Fuuka takes out her phone and reads a message.
 44.200	3.093	04.mp3	Fuuka clasps her hands at her chest and closes her eyes.
-46.500	18.266	05.mp3	Fuuka's Persona, Lucia, appears: a masked woman with long flowing hair, arms spread wide, rising from a glassy dome. In a flash of light it changes into a new Persona, Juno: its mask covered in eyes, great wings set with rows of ringed discs spreading from its shoulders.
-59.450	3.705	06.mp3	Back on the rooftop, a ball of light sinks into Fuuka's cupped hands.
+46.500	20.669	05.mp3	Fuuka's Persona, Lucia, appears: a masked woman with long flowing hair, arms spread wide, rising from a glassy dome. It changes into a new Persona, Juno: its mask covered in eyes, great wings set with rows of ringed discs spreading from its shoulders. Juno crosses its arms over its face, then spreads them wide.
+59.450	6.268	06.mp3	Back on the rooftop, a small orb rests in Fuuka's cupped hands and sinks into them. Her eyes stay closed.
 63.450	5.552	07.mp3	The rooftop door opens. You come out with Yukari, Junpei and Aigis and walk over to Fuuka.

@@ -1,2 +1,3 @@
 #scene LS_Event_Main_190_050_C
-0.100	16.896	00.mp3	A clock's hands meet at midnight. In the lounge, the Dark Hour has fallen again: where Mitsuru's father's two aides stood by the windows, two upright coffins now stand. Everyone around the table stares at them, Koromaru growls on the sofa, and Junpei jumps to his feet.
+0.100	15.028	00.mp3	The lounge. Two upright coffins now stand where Mitsuru's father's two aides stood. Mitsuru's father sits in an armchair by the table; everyone around it stares at the coffins, Koromaru growls on the sofa, and Junpei jumps to his feet.
+13.500	2.336	01.mp3	Mitsuru's father rises from his armchair.

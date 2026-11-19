@@ -1,7 +1,26 @@
-{"movie": "LS_Event_Main_160_180_C", "title": "Junpei is missing", "cues": [
-{"at": 0.00, "text": "In the dorm's command room, among the consoles and wall screens, everyone stands in a ring around Fuuka: she is enclosed inside her Persona, a towering woman with outstretched arms whose wide, glowing skirt surrounds Fuuka like a dome. Ikutsuki, the chairman, stands with them, and Koromaru sits at their feet."},
-{"at": 5.33, "text": "The door opens and Ken hurries in, out of breath. Everyone turns to him."},
-{"at": 11.33, "text": "Fuuka's Persona breaks apart into drifting sparks and is gone, leaving Fuuka standing among the others."},
-{"at": 17.00, "text": "Everyone turns and heads out after Mitsuru, Koromaru trotting along. Shinjiro stays behind, turns to you and steps closer."},
-{"at": 26.60, "text": "Shinjiro walks past you after the others."}
-]}
+{
+ "movie": "LS_Event_Main_160_180_C",
+ "title": "Junpei is missing",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the dorm's command room, among the consoles and wall screens, everyone stands in a ring around Fuuka: she is enclosed inside her Persona, a towering woman with outstretched arms whose wide skirt surrounds Fuuka like a dome. Ikutsuki, the chairman, stands with them, arms folded, and Koromaru stands among them."
+  },
+  {
+   "at": 5.33,
+   "text": "The door opens and Ken hurries in, out of breath. Everyone turns to him."
+  },
+  {
+   "at": 11.33,
+   "text": "Fuuka's Persona breaks apart into drifting sparks and is gone, leaving Fuuka standing among the others."
+  },
+  {
+   "at": 17.0,
+   "text": "The others turn and head out after Mitsuru, Koromaru trotting along, while Ikutsuki stays by the consoles. Shinjiro stays behind too, turns to you and steps closer, rubbing the back of his head."
+  },
+  {
+   "at": 26.6,
+   "text": "Shinjiro walks past you after the others."
+  }
+ ]
+}

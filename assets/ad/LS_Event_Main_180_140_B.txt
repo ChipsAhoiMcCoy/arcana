@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_140_B
-1.400	17.264	00.mp3	The Moonlight Bridge, during the Dark Hour. A huge Shadow hangs in the arch of one of the bridge's towers, a figure dangling in the air. On the roadway below, Takaya, shirtless, his long hair down his back, stands looking up at it beside a young man in glasses holding a briefcase.
+1.400	16.752	00.mp3	The Moonlight Bridge, during the Dark Hour. A huge Shadow hangs in the arch of one of the bridge's towers, its body spread inside a great ring. On the roadway below, Takaya, shirtless, his long hair down his back, stands looking up at it beside Jin, who holds a briefcase.
 7.000	7.820	01.mp3	You and the others run up the roadway and stop a few metres behind them, taking up fighting stances. Takaya turns around to face you.
-16.330	2.632	02.mp3	The young man with the briefcase squares up to fight.
+16.330	2.748	02.mp3	Jin squares up to fight, his briefcase in hand.

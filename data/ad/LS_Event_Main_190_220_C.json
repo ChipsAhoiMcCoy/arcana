@@ -1,5 +1,22 @@
-{"movie": "LS_Event_Main_190_220_C", "title": "Arriving at the Kyoto inn", "cues": [
-{"at": 1.17, "text": "The entrance hall of a traditional inn in Kyoto. Two staff women bow as you walk in carrying your bags, with Junpei, Yukari, Aigis, Fuuka and Ryoji."},
-{"at": 21.50, "text": "Aigis hurries off down the hall with her bag, and the rest of you follow her to tall windows that look out on a garden courtyard, where she stops."},
-{"at": 55.07, "text": "Aigis walks over to stand with you, Junpei and Ryoji, smiling."}
-]}
+{
+ "movie": "LS_Event_Main_190_220_C",
+ "title": "Arriving at the Kyoto inn",
+ "cues": [
+  {
+   "at": 1.17,
+   "text": "The entrance hall of a traditional inn in Kyoto. Two staff women bow as you walk in carrying your bags, with Junpei, Yukari, Aigis, Fuuka and Ryoji."
+  },
+  {
+   "at": 21.5,
+   "text": "Aigis hurries off down the hall with her bag, and the rest of you follow her to tall windows that look out on a garden courtyard, where she stops."
+  },
+  {
+   "at": 52.4,
+   "text": "Junpei walks over to stand with Yukari and Fuuka."
+  },
+  {
+   "at": 55.07,
+   "text": "Aigis walks over to stand with you and Ryoji, smiling."
+  }
+ ]
+}

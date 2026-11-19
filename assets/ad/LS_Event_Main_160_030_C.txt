@@ -1,5 +1,5 @@
 #scene LS_Event_Main_160_030_C
 0.000	7.228	00.mp3	You, Junpei, Yukari, Fuuka and Aigis come into the dorm's command room, where Mitsuru and Akihiko stand waiting.
-4.670	8.183	01.mp3	Between Mitsuru and Akihiko sits Koromaru, the white dog, a metal collar fitted around his neck. You all walk over to him.
+4.670	7.666	01.mp3	Between Mitsuru and Akihiko sits Koromaru the dog, a metal collar fitted around his neck. You all walk over to him.
 12.670	2.269	02.mp3	Fuuka crouches down beside Koromaru.
 26.330	3.885	03.mp3	Fuuka gets up from beside Koromaru and turns to face the others.

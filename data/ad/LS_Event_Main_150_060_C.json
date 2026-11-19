@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_150_060_C", "title": "Koromaru at the shrine", "cues": [
-  {"at": 0.00, "text": "At the shrine, at the foot of the stone steps below the torii gate, Koromaru, the white dog, lies wounded on the ground, bleeding. Akihiko kneels beside him. The rest of you run up and stop short."},
-  {"at": 4.50, "text": "Fuuka runs to Koromaru and kneels over him. Yukari hurries after her and kneels at his other side."},
-  {"at": 23.83, "text": "Koromaru lifts his head."}
-]}
+{
+ "movie": "LS_Event_Main_150_060_C",
+ "title": "Koromaru at the shrine",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At the shrine, at the foot of the stone steps below the torii gate, Koromaru the dog lies wounded on the ground, bleeding. Akihiko crouches near him, beside a bouquet of flowers laid against the stone wall. The rest of you run up and stop short."
+  },
+  {
+   "at": 4.5,
+   "text": "Fuuka runs to Koromaru and kneels over him. Yukari hurries after her and kneels at his other side."
+  },
+  {
+   "at": 23.83,
+   "text": "Koromaru lifts his head."
+  }
+ ]
+}
