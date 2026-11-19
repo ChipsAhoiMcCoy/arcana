@@ -13,6 +13,7 @@
 #include "log.h"
 #include "mod.h"
 #include "shadow.h"
+#include "sight.h"
 #include "sonar.h"
 #include "speech.h"
 #include "voice.h"
@@ -59,6 +60,10 @@ static const Def kDefs[Count] = {
   // how far each wall tone reaches, in meters, in either mode (walltones.cpp; Dark Vision's is 15 ft, 1 to 40)
   {"wall_range", strings::kSetWallRange, CatExploring, strings::kHelpWallRange, Unit::Meters, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, 5},
   {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {1, 0}, 1},
+  // the edge of each Shadow's sight, and the hum while a wall hides the hero from one (sight.cpp)
+  {"shadow_sight", strings::kSetShadowSight, CatExploring, strings::kHelpShadowSight, Unit::Toggle, {1, 0}, 1},
+  // how far before that edge its sound starts, in meters
+  {"sight_band", strings::kSetSightBand, CatExploring, strings::kHelpSightBand, Unit::Meters, {1, 2, 3, 4, 5}, 2},
   // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
   {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {1, 0}, 1},
   // every nearby point of interest sounds (sonar.cpp)
@@ -211,8 +216,9 @@ static void play_test(int i) {
     case 11: audio::signal((int)SignalCue::Lost, 1.1f, ahead); break;
     case 12: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
     case 13: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
-    case 14: case 15: case 16: case 17: walltones::demo(i - 14); break;
-    case 18: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
+    case 14: case 15: case 16: case 17: case 18: sight::demo(i - 14); break;
+    case 19: case 20: case 21: case 22: walltones::demo(i - 19); break;
+    case 23: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
   }
 }
 

@@ -45,6 +45,10 @@ FVector dir_vector(int dir);
 // and the trace runs again past it. Keep one list across a tick's traces so each person costs one retry.
 Hit sweep(const FVector& from, const FVector& to, float radius, float half_height, std::vector<ue::UObject*>* people = nullptr);
 Hit line(const FVector& from, const FVector& to, const char* profile = "Pawn", std::vector<ue::UObject*>* people = nullptr);
+// The line a Tartarus Shadow sees the hero along, as the game traces it: the FldAttackSight trace type
+// (TraceTypeQuery3, GameTraceChannel6), which walls and breakable objects block and other Shadows do not. `self` (the
+// Shadow) and the player are passed through.
+Hit sight_line(const FVector& from, const FVector& to, ue::UObject* self);
 std::string status();
 ue::FVector actor_location(ue::UObject* a);
 float yaw_of(ue::UObject* actor);   // the actor's yaw (K2_GetActorRotation)

@@ -16,6 +16,7 @@ Zip layout (the player copies dsound.dll and Arcana into P3R\\Binaries\\Win64):
       assets/ad/                     audio description cue lists and clips (src/ad.cpp)
       assets/audio/walltones/2/      the wall tones (src/walltones.cpp)
       assets/audio/sonar/, signals/  the sonar's and the Shadow's sound files (src/sonar.cpp, src/audio.cpp)
+      assets/audio/sight/            Grim Dark's harmful-ground sounds, for the Shadows' sight (src/sight.cpp)
       assets/audio/review_*.wav      Grim Dark's route pings, played when something is focused (src/sonar.cpp)
       docs/                          the same readme and install steps, known issues, changelog, credits
       licenses/                      every license and notice
@@ -41,7 +42,8 @@ TONES = ("north.wav", "east.wav", "south.wav", "west.wav")
 # Grim Dark's sonar sounds (src/sonar.cpp, src/audio.cpp: a missing one falls back to a made sound, so check() insists)
 # and its route pings (src/sonar.cpp: a missing one is silent).
 CUE_FILES = ("sonar/exit.wav", "sonar/object.wav", "sonar/event.wav", "sonar/fragment.wav", "signals/shadow.wav",
-             "review_straight.wav", "review_path.wav", "review_unreachable.wav")
+             "review_straight.wav", "review_path.wav", "review_unreachable.wav",
+             "sight/north.wav", "sight/east.wav", "sight/south.wav", "sight/west.wav", "sight/hidden_left.wav", "sight/hidden_right.wav")
 FORBIDDEN = re.compile(r"\.(map|pdb|lib|exp|ilk|log|ini|obj|sav|pak|uasset|usm)$|live\d+\.dll$", re.I)
 
 

@@ -26,6 +26,7 @@
 #include "social.h"
 #include "sonar.h"
 #include "shadow.h"
+#include "sight.h"
 #include "bmdfile.h"
 #include "audio.h"
 #include "devserver.h"
@@ -128,6 +129,7 @@ void init(bool speech_ok) {
   topdown::install();
   menuspeed::install();
   shadow::install();
+  sight::install();
   area::install();
   portrait::install();
   nav::install();

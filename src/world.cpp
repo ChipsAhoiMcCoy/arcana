@@ -214,7 +214,7 @@ struct TraceFn {
   uint64_t frame = ~0ull;   // the frame the rest was read in
   UFunction* fn = nullptr;
   UObject* cdo = nullptr;
-  int32_t o_world = -1, o_start = -1, o_end = -1, o_profile = -1, o_ignore = -1, o_hit = -1, o_ignore_self = -1, o_ret = -1, o_radius = -1, o_half = -1;
+  int32_t o_world = -1, o_start = -1, o_end = -1, o_profile = -1, o_ignore = -1, o_hit = -1, o_ignore_self = -1, o_ret = -1, o_radius = -1, o_half = -1, o_channel = -1;
   int32_t h_distance = -1, h_point = -1, h_actor = -1, h_location = -1, h_normal = -1;
   FField* h_blocking = nullptr; FField* h_penetrating = nullptr;
   bool ok = false;
@@ -230,7 +230,7 @@ struct TraceFn {
     o_world = offset_of(fn, "WorldContextObject"); o_start = offset_of(fn, "Start"); o_end = offset_of(fn, "End");
     o_profile = offset_of(fn, "ProfileName"); o_ignore = offset_of(fn, "ActorsToIgnore"); o_hit = offset_of(fn, "OutHit");
     o_ignore_self = offset_of(fn, "bIgnoreSelf"); o_ret = offset_of(fn, "ReturnValue");
-    o_radius = offset_of(fn, "Radius"); o_half = offset_of(fn, "HalfHeight");
+    o_radius = offset_of(fn, "Radius"); o_half = offset_of(fn, "HalfHeight"); o_channel = offset_of(fn, "TraceChannel");
     UStruct* hs = prop_inner_object(find_prop(fn, "OutHit"));
     h_distance = offset_of(hs, "Distance"); h_point = offset_of(hs, "ImpactPoint"); h_actor = offset_of(hs, "Actor"); h_location = offset_of(hs, "Location"); h_normal = offset_of(hs, "ImpactNormal");
     h_blocking = find_prop(hs, "bBlockingHit"); h_penetrating = find_prop(hs, "bStartPenetrating");
@@ -246,8 +246,10 @@ static bool is_person(UObject* a) {
   return is_a(a, find_class("FldHitCharacter")) || is_a(a, find_class("Pawn")) || is_a(a, find_class("FldCrowdNpcBase"));
 }
 
+// `profile` names the collision profile (the ...ByProfile functions); without one, `channel` is the trace type
+// (ETraceTypeQuery, for LineTraceSingle). `also_ignore`: one more actor the trace passes through.
 static Hit run_trace(TraceFn& t, const FVector& from, const FVector& to, const char* profile, float radius, float half,
-                     std::vector<UObject*>* people = nullptr) {
+                     std::vector<UObject*>* people = nullptr, int channel = -1, UObject* also_ignore = nullptr) {
   Hit h;
   t.refresh();
   if (!t.ok) return h;
@@ -255,16 +257,18 @@ static Hit run_trace(TraceFn& t, const FVector& from, const FVector& to, const c
   std::vector<uint8_t> buf(params_size(t.fn), 0);
   uint8_t* b = buf.data();
   static int32_t name_idx = -1; static std::string name_for;
-  if (name_for != profile) { name_idx = fname_index(profile); name_for = profile; }
+  if (profile && name_for != profile) { name_idx = fname_index(profile); name_for = profile; }
   std::vector<UObject*> ignore;
   if (p) ignore.push_back(p);
+  if (also_ignore) ignore.push_back(also_ignore);
   if (people) ignore.insert(ignore.end(), people->begin(), people->end());
   for (int attempt = 0;; ++attempt) {
     std::fill(buf.begin(), buf.end(), uint8_t{0});
     *(UObject**)(b + t.o_world) = p ? p : gworld();
     *(FVector*)(b + t.o_start) = from;
     *(FVector*)(b + t.o_end) = to;
-    *(FName*)(b + t.o_profile) = FName{name_idx, 0};
+    if (profile && t.o_profile >= 0) *(FName*)(b + t.o_profile) = FName{name_idx, 0};
+    else if (!profile && t.o_channel >= 0) b[t.o_channel] = (uint8_t)channel;
     if (!ignore.empty()) *(TArray<UObject*>*)(b + t.o_ignore) = TArray<UObject*>{ignore.data(), (int32_t)ignore.size(), (int32_t)ignore.size()};
     b[t.o_ignore_self] = 1;
     if (t.o_radius >= 0) *(float*)(b + t.o_radius) = radius;
@@ -296,6 +300,10 @@ Hit sweep(const FVector& from, const FVector& to, float radius, float half_heigh
 Hit line(const FVector& from, const FVector& to, const char* profile, std::vector<UObject*>* people) {
   static TraceFn t("LineTraceSingleByProfile");
   return run_trace(t, from, to, profile, 0, 0, people);
+}
+Hit sight_line(const FVector& from, const FVector& to, UObject* self) {
+  static TraceFn t("LineTraceSingle");
+  return run_trace(t, from, to, nullptr, 0, 0, nullptr, 2, self);   // TraceTypeQuery3: FldAttackSight
 }
 
 std::string status() {
@@ -481,6 +489,7 @@ void register_routes() {
     // /tp?obj=N beside an actor (150 cm short of it, on its level) | /tp?x=&y=&z= to a place
     int obj = (int)dev::arg_int(r, "obj", -1);
     FVector to{(float)dev::arg_num(r, "x", 0), (float)dev::arg_num(r, "y", 0), (float)dev::arg_num(r, "z", 0)};
+    const bool snap = dev::arg(r, "nav") == "1";
     return dev::on_game([=]() mutable {
       UObject* hero = player();
       FVector me;
@@ -493,6 +502,11 @@ void register_routes() {
         if (d > 1) { to.x += dx / d * 150.0f; to.y += dy / d * 150.0f; }
         to.z += 100.0f;
       }
+      if (snap) {   // onto the navmesh within 3 m, the hero's centre ~90 cm above it; refused off it
+        FVector on;
+        if (!project_to_nav(to, 300.0f, on)) return std::string("no navmesh there\n");
+        to = FVector{on.x, on.y, on.z + 95.0f};
+      }
       UFunction* f = ue::find_function(ue::class_of(hero), "K2_TeleportTo");
       if (!f) return std::string("no K2_TeleportTo\n");
       ue::Params p(f);
@@ -500,7 +514,7 @@ void register_routes() {
       ue::call(hero, p);
       return std::format("teleported to ({:.0f}, {:.0f}, {:.0f}): {}\n", to.x, to.y, to.z, p.ret<bool>());
     });
-  }, "?obj=N | ?x=&y=&z= teleport the hero (dev)");
+  }, "?obj=N | ?x=&y=&z=[&nav=1: onto the navmesh, refused off it] teleport the hero (dev)");
   dev::route("/near", [](const dev::Request& r, int&) {
     // /near?class=FldHitCore&r=3000 actors of a class within r cm of the player, nearest first
     std::string cls = dev::arg(r, "class", "FldHitCore");

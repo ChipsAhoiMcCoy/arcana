@@ -22,6 +22,7 @@
 #include "seh.h"
 #include "settings.h"
 #include "shadow.h"
+#include "sight.h"
 #include "world.h"
 #include <windows.h>
 #include <algorithm>
@@ -305,6 +306,7 @@ void tick() {
   // The field's sounds only while the player walks it: a battle between turns has no screen up, and a story scene
   // no blocking window, yet neither is the place for them.
   shadow::tick();   // it checks that the player walks the field itself, after logging how a battle begins
+  sight::tick();    // the edge of the Shadows' sight (it checks the same)
   prompt_tick();
   arrival_tick();
 }
