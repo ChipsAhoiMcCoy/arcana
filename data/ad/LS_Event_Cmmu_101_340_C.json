@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_101_340_C", "title": "Kenji: a question about kissing", "cues": [{"at": 0.00, "text": "Paulownia Mall, Fountain Square, with shoppers passing through. You and Kenji walk out into the square together."}]}
+{
+ "movie": "LS_Event_Cmmu_101_340_C",
+ "title": "Kenji: a question about kissing",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside the arcade beside a crane game. Kenji steps over to stand with you."
+  }
+ ]
+}

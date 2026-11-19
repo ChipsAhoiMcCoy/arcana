@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_050_C", "title": "Running laps", "cues": [{"at": 0.00, "text": "On the athletic field, you run down the track with the other runners while Yuko watches from the side. Kazushi is not among them."}]}
+{
+ "movie": "LS_Event_Cmmu_105_050_C",
+ "title": "Running laps",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the athletic field, Yuko stands by the track as you run past her ahead of the other runners. Kazushi is not among them. Afterwards you stand beside Yuko as the others run past."
+  }
+ ]
+}

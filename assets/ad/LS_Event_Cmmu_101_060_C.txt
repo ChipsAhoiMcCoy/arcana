@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_101_060_C
-0.000	3.946	00.mp3	At the school gate, among students heading home, Kenji walks over to you.
+0.000	5.973	00.mp3	At the school gate, among students heading home, you and Kenji walk out side by side and stop to talk.
+19.000	2.816	01.mp3	Kenji turns and runs off, leaving you at the gate.

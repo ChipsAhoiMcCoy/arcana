@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_105_080_C", "title": "The coach finds out", "cues": [{"at": 0.00, "text": "On the athletic field, you and Yuko stand near Kazushi and a few teammates, one of them sitting on the ground."}, {"at": 1.20, "text": "Kazushi turns around as the track team advisor strides up to him."}, {"at": 11.05, "text": "Kazushi walks off. Yuko frowns after him, then comes over to you."}]}
+{
+ "movie": "LS_Event_Cmmu_105_080_C",
+ "title": "The coach finds out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the athletic field, you and Yuko stand with Kazushi and a few teammates; another sits on a bench nearby."
+  },
+  {
+   "at": 1.2,
+   "text": "Kazushi turns around as the track team advisor strides up to him."
+  },
+  {
+   "at": 11.05,
+   "text": "With the advisor gone, Kazushi walks off. Yuko frowns after him, then comes over to you."
+  }
+ ]
+}

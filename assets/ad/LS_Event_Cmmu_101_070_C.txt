@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_101_070_C
-0.000	3.890	00.mp3	At Wilduck Burger, you sit at a table with Kenji, who looks downcast.
+0.000	10.275	00.mp3	At Wilduck Burger, you sit across a small table from Kenji, trays of burgers and drinks between you, untouched. He sits slumped with his head down, then folds his arms.

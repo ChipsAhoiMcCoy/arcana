@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_101_060_C", "title": "Kenji heads to cram school", "cues": [{"at": 0.00, "text": "At the school gate, among students heading home, Kenji walks over to you."}]}
+{
+ "movie": "LS_Event_Cmmu_101_060_C",
+ "title": "Kenji heads to cram school",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At the school gate, among students heading home, you and Kenji walk out side by side and stop to talk."
+  },
+  {
+   "at": 19.0,
+   "text": "Kenji turns and runs off, leaving you at the gate."
+  }
+ ]
+}

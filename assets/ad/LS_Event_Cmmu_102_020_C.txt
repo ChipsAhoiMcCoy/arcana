@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_102_020_C
-3.900	3.581	00.mp3	In the student council room, Hidetoshi walks over to where you sit.
+0.000	9.691	00.mp3	The student council room. Mitsuru and a few other members sit around the long table while Hidetoshi stands at the front with his arms folded, then gestures to the room.
+3.900	6.538	01.mp3	The others have gone. You sit at the table beside your bag as Hidetoshi walks over and stands with his arms folded.

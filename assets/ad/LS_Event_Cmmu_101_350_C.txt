@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_101_350_C
-0.000	5.193	00.mp3	The plaza at Port Island Station. You and Kenji walk out together, Kenji frowning.
+0.000	7.234	00.mp3	Outside the cinema at Port Island Station, by the movie posters. Kenji walks up beside you and stops, facing you.

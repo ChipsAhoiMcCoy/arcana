@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_101_070_C", "title": "Kenji wants to marry Emiri", "cues": [{"at": 0.00, "text": "At Wilduck Burger, you sit at a table with Kenji, who looks downcast."}]}
+{
+ "movie": "LS_Event_Cmmu_101_070_C",
+ "title": "Kenji wants to marry Emiri",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Wilduck Burger, you sit across a small table from Kenji, trays of burgers and drinks between you, untouched. He sits slumped with his head down, then folds his arms."
+  }
+ ]
+}

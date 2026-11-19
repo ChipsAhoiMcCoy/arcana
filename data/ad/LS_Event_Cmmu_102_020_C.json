@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_102_020_C", "title": "Hidetoshi on uniforms", "cues": [{"at": 3.90, "text": "In the student council room, Hidetoshi walks over to where you sit."}]}
+{
+ "movie": "LS_Event_Cmmu_102_020_C",
+ "title": "Hidetoshi on uniforms",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The student council room. Mitsuru and a few other members sit around the long table while Hidetoshi stands at the front with his arms folded, then gestures to the room."
+  },
+  {
+   "at": 3.9,
+   "text": "The others have gone. You sit at the table beside your bag as Hidetoshi walks over and stands with his arms folded."
+  }
+ ]
+}

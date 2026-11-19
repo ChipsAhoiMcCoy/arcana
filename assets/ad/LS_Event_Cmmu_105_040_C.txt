@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_105_040_C
-0.000	6.350	00.mp3	On the athletic field, the runners come in off the track and gather by you and Yuko. Kazushi is not among them.
+0.000	8.569	00.mp3	On the athletic field, you and Yuko stand with the advisor as the runners sprint in off the track and line up together. Kazushi is not among them.
+13.530	6.222	01.mp3	The advisor has already walked off, and now the other members leave too, until only you and Yuko are left.

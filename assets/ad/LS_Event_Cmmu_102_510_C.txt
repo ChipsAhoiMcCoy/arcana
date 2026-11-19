@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_102_510_C
-0.000	3.322	00.mp3	In the student council room, you stand talking with Hidetoshi.
+0.000	7.035	00.mp3	In the student council room, you stand talking with Hidetoshi, gesturing as you speak while he listens with his arms folded.

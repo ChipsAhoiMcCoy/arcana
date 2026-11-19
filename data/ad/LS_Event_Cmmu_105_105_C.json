@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_105_105_C", "title": "Kazushi wants to talk", "cues": [{"at": 2.40, "text": "At the school entranceway, among students heading home, you turn around as Kazushi walks up to you, his bag over his shoulder."}, {"at": 9.40, "text": "Kazushi leads the way, and you follow him off."}]}
+{
+ "movie": "LS_Event_Cmmu_105_105_C",
+ "title": "Kazushi wants to talk",
+ "cues": [
+  {
+   "at": 2.4,
+   "text": "Outside the school gate, you turn around as Kazushi walks up to you, his bag over his shoulder."
+  },
+  {
+   "at": 9.4,
+   "text": "Kazushi leads the way, and you follow him off."
+  }
+ ]
+}

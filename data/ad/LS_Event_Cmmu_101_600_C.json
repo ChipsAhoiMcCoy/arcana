@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_101_600_C", "title": "Movies with Kenji", "cues": [{"at": 0.00, "text": "The movie theater at Port Island Station. You and Kenji walk in together."}, {"at": 1.00, "text": "In the screening room, you and Kenji sit side by side among the audience, watching the film."}, {"at": 7.67, "text": "Afterwards, you and Kenji stand facing each other outside the screening room."}]}
+{
+ "movie": "LS_Event_Cmmu_101_600_C",
+ "title": "Movies with Kenji",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The lobby of the movie theater at Port Island Station. You and Kenji stand by the snack counter."
+  },
+  {
+   "at": 1.0,
+   "text": "In the screening room, you and Kenji sit side by side among the audience, watching the film, Kenji with his arms folded."
+  },
+  {
+   "at": 7.67,
+   "text": "Afterwards, you and Kenji stand back by the snack counter in the lobby, Kenji rubbing the back of his head."
+  }
+ ]
+}

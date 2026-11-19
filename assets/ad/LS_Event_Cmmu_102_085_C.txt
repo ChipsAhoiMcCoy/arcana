@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_102_085_C
 0.000	4.360	00.mp3	You stop in the hallway outside the faculty office. Voices carry from inside.
-5.400	3.770	01.mp3	Hidetoshi comes out of the faculty office and finds you standing there.
+5.400	5.866	01.mp3	Hidetoshi comes out of the faculty office, stops short when he sees you standing there, and folds his arms.
+15.030	2.943	02.mp3	Hidetoshi walks past you down the hallway and is gone.
