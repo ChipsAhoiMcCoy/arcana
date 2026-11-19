@@ -1,4 +1,4 @@
 #scene LS_Event_Main_200_060_C
 0.050	7.699	00.mp3	Junpei lies asleep in a hospital bed. Chidori sits on a stool beside it, watching him. He wakes and sits up with a start.
 7.700	4.601	01.mp3	Chidori stands, leans over the bed and takes Junpei's hand in both of hers.
-16.050	1.571	02.mp3	A bright flash fills the room.
+16.050	5.830	02.mp3	Still holding Junpei's hands, Chidori smiles at him. Then the whole room is swallowed up at once.

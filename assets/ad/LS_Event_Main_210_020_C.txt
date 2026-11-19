@@ -1,3 +1,3 @@
 #scene LS_Event_Main_210_020_C
 0.100	12.956	00.mp3	Naganaki Shrine, crowded with New Year visitors and food stalls. You arrive with Akihiko, Junpei, Ken and Koromaru. Yukari, Mitsuru, Fuuka and Aigis stand waiting, all four in kimonos.
-24.400	5.004	01.mp3	Yukari turns and marches toward Junpei. Everything goes black, and a kick lands.
+24.400	4.577	01.mp3	Yukari turns and marches toward Junpei. A moment later, a kick lands.

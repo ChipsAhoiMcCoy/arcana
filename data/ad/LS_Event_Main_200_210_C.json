@@ -1,3 +1,14 @@
-{"movie": "LS_Event_Main_200_210_C", "title": "Junpei and Fuuka at the bench", "cues": [
-{"at": 0.52, "text": "Junpei sits alone on a bench among flowerbeds, a sketchbook lying beside him. Fuuka walks up."}
-]}
+{
+ "movie": "LS_Event_Main_200_210_C",
+ "title": "Junpei and Fuuka at the bench",
+ "cues": [
+  {
+   "at": 0.52,
+   "text": "Junpei sits alone on a bench among flowerbeds, a sketchbook lying beside him. Fuuka walks up."
+  },
+  {
+   "at": 8.33,
+   "text": "Junpei gets up from the bench and stands facing Fuuka."
+  }
+ ]
+}

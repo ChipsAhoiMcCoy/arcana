@@ -1,7 +1,7 @@
 #scene LS_Event_Main_200_080_B
 2.050	9.653	00.mp3	Junpei lays Chidori down on the paving and bows over her. Junpei gets to his feet and turns toward Takaya. Chidori lies still on the ground behind him.
 9.700	2.622	01.mp3	Junpei puts his Evoker to his head and fires.
-11.250	15.660	02.mp3	Junpei's Persona hovers face to face with Chidori's Persona, Medea, a pale figure with blade-like wings, and the two draw together. In a burst of light they become one new Persona: a slender masked figure with great jagged wings spread wide.
+11.250	14.211	02.mp3	Junpei's Persona hovers face to face with Chidori's Persona, Medea, a figure with blade-like wings, and the two draw together and merge into one new Persona: a slender masked figure with great jagged wings spread wide.
 27.650	5.560	03.mp3	The Persona hurls a blast of fire up the steps. Jin runs in front of Takaya and takes it.
 30.400	4.652	04.mp3	Jin drops to one knee. Junpei sinks to his hands and knees beside Chidori.
 35.850	6.207	05.mp3	Jin pulls the pin from a grenade and throws it. Thick smoke rolls over the steps and everyone below them.

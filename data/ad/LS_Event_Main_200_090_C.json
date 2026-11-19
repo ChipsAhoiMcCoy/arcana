@@ -1,5 +1,22 @@
-{"movie": "LS_Event_Main_200_090_C", "title": "Chidori's sketchbook", "cues": [
-{"at": 0.55, "text": "In a meeting room at the dorm, the others wait around a long table with a sketchbook on it. Junpei walks in."},
-{"at": 9.70, "text": "Yukari opens the sketchbook on the table and turns its pages."},
-{"at": 14.70, "text": "The open page shows a pencil sketch of Junpei in his cap, his chin resting on his hand."}
-]}
+{
+ "movie": "LS_Event_Main_200_090_C",
+ "title": "Chidori's sketchbook",
+ "cues": [
+  {
+   "at": 0.55,
+   "text": "At the dining table on the dorm's first floor, the others wait, some seated and some standing, with a sketchbook lying on the table. Junpei walks in."
+  },
+  {
+   "at": 9.7,
+   "text": "Yukari opens the sketchbook on the table and turns its pages."
+  },
+  {
+   "at": 14.7,
+   "text": "The open page shows a pencil sketch of Junpei in his cap, his chin resting on his hand."
+  },
+  {
+   "at": 17.0,
+   "text": "Junpei sits down at the table, bends over the sketchbook and bows his head low over it. After a while he stands back up and wipes his eyes with his arm."
+  }
+ ]
+}

@@ -2,6 +2,6 @@
 0.040	4.895	00.mp3	The dorm lounge. Aigis is back, sitting with everyone on the sofas around the table.
 22.550	1.626	01.mp3	Aigis springs up from her seat.
 39.850	2.200	02.mp3	Aigis sits back down with a small smile.
-44.200	9.354	03.mp3	Aigis closes her eyes. Her Persona, Palladion, floats in empty space, a helmeted figure in flowing robes with shards of light drifting around it.
-51.700	9.121	04.mp3	Palladion is gone. In its place stands Athena, a helmeted woman holding a long lance and a huge round shield, rays bursting out behind her.
+44.200	9.352	03.mp3	Aigis closes her eyes. Her Persona, Palladion, floats in empty space, a helmeted figure in flowing robes with small shards drifting around it.
+51.700	8.757	04.mp3	Palladion is gone. In its place stands Athena, a helmeted woman holding a long lance and a huge round shield, a wide hoop circling her.
 59.800	3.423	05.mp3	The lounge again, everyone seated around Aigis as before.

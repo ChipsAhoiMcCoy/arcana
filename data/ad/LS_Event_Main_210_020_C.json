@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Main_210_020_C", "title": "Kimonos at the shrine", "cues": [
-{"at": 0.10, "text": "Naganaki Shrine, crowded with New Year visitors and food stalls. You arrive with Akihiko, Junpei, Ken and Koromaru. Yukari, Mitsuru, Fuuka and Aigis stand waiting, all four in kimonos."},
-{"at": 24.40, "text": "Yukari turns and marches toward Junpei. Everything goes black, and a kick lands."}
-]}
+{
+ "movie": "LS_Event_Main_210_020_C",
+ "title": "Kimonos at the shrine",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Naganaki Shrine, crowded with New Year visitors and food stalls. You arrive with Akihiko, Junpei, Ken and Koromaru. Yukari, Mitsuru, Fuuka and Aigis stand waiting, all four in kimonos."
+  },
+  {
+   "at": 24.4,
+   "text": "Yukari turns and marches toward Junpei. A moment later, a kick lands."
+  }
+ ]
+}
