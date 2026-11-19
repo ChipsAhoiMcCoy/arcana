@@ -1,4 +1,4 @@
 #scene LS_Event_Main_120_220_C
-0.000	5.810	00.mp3	Still in Tartarus, Junpei runs up to a huge window in the wall and stops dead, staring out of it.
+0.000	9.226	00.mp3	Still in Tartarus, Junpei runs up to a huge window in the wall and stops dead, staring out of it. Akihiko, Fuuka and you walk up behind him.
 18.350	3.643	01.mp3	Akihiko breaks into a run. Fuuka and you run after him.
 22.700	2.587	02.mp3	Junpei turns and runs after the rest of you.

@@ -1,7 +1,7 @@
 #scene LS_Event_Main_120_230_B
 0.000	9.865	00.mp3	You run into the entrance hall of Tartarus with Akihiko, Junpei and Fuuka and stop short. You, Akihiko and Junpei raise your fists, ready to fight.
-3.040	17.962	01.mp3	A motorcycle lies smoking on the floor. At the foot of the great staircase stand two giant Shadows: one tall and thin, with long dangling arms and a cross down its body; the other round, with a fan of feathers behind its head. Mitsuru and Yukari are down on the floor near the stairs.
-14.700	6.591	02.mp3	A girl in a school uniform walks into the hall, toward the Shadows. You, Akihiko and Junpei rush forward.
+3.040	22.196	01.mp3	A motorcycle lies on its side, smoking, at the foot of the great staircase. Before the stairs stand two giant Shadows: one with a huge round body marked by a cross, on thin legs, its long arms hanging; the other round, with a fan of feathers behind its head, a cape and a raised scepter. Yukari sits on the floor near the stairs, propped on her hands, and Mitsuru lies beside her.
+14.700	4.028	02.mp3	A girl in a school uniform walks slowly into the hall, toward the Shadows.
 20.480	2.118	03.mp3	Fuuka runs across the hall to Natsuki.
 22.700	5.797	04.mp3	Natsuki sinks to her knees in front of Fuuka. Behind them, the two Shadows turn toward the girls.
 28.790	4.074	05.mp3	Fuuka turns around to face the Shadows, with Natsuki kneeling behind her.

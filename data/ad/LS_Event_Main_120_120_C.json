@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_120_120_C", "title": "No answer from the chairman", "cues": [{"at": 0.00, "text": "In the dorm's command room. Mitsuru stands at the bank of monitors with her back to the rest of you."}, {"at": 9.83, "text": "Akihiko and Mitsuru turn and walk out of the room; a door opens and shuts behind them. You, Yukari and Junpei stay where you are."}]}
+{
+ "movie": "LS_Event_Main_120_120_C",
+ "title": "No answer from the chairman",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the dorm's command room. Mitsuru stands at the bank of monitors with her back to the rest of you: Akihiko, you, Yukari and Junpei stand behind her, Akihiko and Junpei with their hands on their hips."
+  },
+  {
+   "at": 9.83,
+   "text": "Akihiko and Mitsuru turn and walk out of the room; a door opens and shuts behind them. You, Yukari and Junpei stay where you are."
+  }
+ ]
+}

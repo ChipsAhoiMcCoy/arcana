@@ -3,4 +3,4 @@
 4.350	1.864	01.mp3	You and the others walk over to them.
 7.700	1.682	02.mp3	Fuuka turns around to Natsuki.
 11.520	6.936	03.mp3	Fuuka's eyes close and she collapses to the floor. You and Akihiko kneel beside her, and Natsuki crawls to her side.
-22.700	3.208	04.mp3	Natsuki bows her head to the floor beside Fuuka, crying.
+22.700	4.850	04.mp3	Natsuki kneels beside Fuuka, sitting back on her heels with her head bowed, crying.

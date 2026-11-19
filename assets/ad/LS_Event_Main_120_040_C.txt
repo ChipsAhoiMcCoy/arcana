@@ -1,5 +1,5 @@
 #scene LS_Event_Main_120_040_C
 0.000	10.006	00.mp3	At the dorm's dining table, Mitsuru, Akihiko and you sit; Akihiko has his arms folded. Yukari and Junpei stand at the table, Junpei grinning.
-9.500	7.579	01.mp3	The room's lights go out. In the dark, Junpei switches on a flashlight and holds it under his chin, lighting his face from below.
-15.900	4.342	02.mp3	When the story is over, the flashlight clicks off and the room's lights come back on.
+9.500	8.731	01.mp3	The room's lights go out. In the dark, Junpei switches on a flashlight and holds it in front of his chest, pointed up so it lights his face from below.
+15.900	10.297	02.mp3	When the story is over, the flashlight clicks off and the room's lights come back on. Junpei stands with his hands on his hips, and everyone around the table stares back at him blankly.
 24.830	4.597	03.mp3	Yukari plants both hands on the table and leans across it at Junpei, scowling.

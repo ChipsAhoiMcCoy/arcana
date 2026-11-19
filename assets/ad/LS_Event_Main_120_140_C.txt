@@ -1,2 +1,3 @@
 #scene LS_Event_Main_120_140_C
-14.830	2.514	00.mp3	Junpei's shoulders slump and he hangs his head.
+0.000	9.902	00.mp3	Inside the school, among rows of tall lockers, the five of you stand in a loose circle: Junpei and Akihiko, hands on their hips, face Mitsuru, you and Yukari.
+14.830	2.514	01.mp3	Junpei's shoulders slump and he hangs his head.

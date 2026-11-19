@@ -1,7 +1,26 @@
-{"movie": "LS_Event_Main_130_060_C", "title": "Koromaru at the steps", "cues": [
-  {"at": 0.05, "text": "Outside the dorm, at the foot of its front steps, Fuuka crouches in front of a white dog with her hand held out, and Yukari stands watching. You walk up behind them with your school bag on your shoulder."},
-  {"at": 2.20, "text": "The dog lifts a paw and sets it in Fuuka's hand."},
-  {"at": 8.55, "text": "The dog gets up and trots over to you. You crouch and hold out your hand, and it sniffs it. You pat the dog's head."},
-  {"at": 15.40, "text": "A woman walks up behind Yukari and Fuuka and looks at the dog. They turn to her."},
-  {"at": 25.60, "text": "The woman hurries off. Yukari goes over to Koromaru, crouches in front of him and pets him."}
-]}
+{
+ "movie": "LS_Event_Main_130_060_C",
+ "title": "Koromaru at the steps",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Outside the dorm, at the foot of its front steps, Fuuka crouches in front of a white dog with her hand held out, and Yukari stands watching. You walk up behind them with your school bag on your shoulder."
+  },
+  {
+   "at": 2.2,
+   "text": "The dog lifts a paw and sets it in Fuuka's hand."
+  },
+  {
+   "at": 8.55,
+   "text": "The dog gets up and trots over to you. You crouch and hold out your hand, and it sniffs it. You pat the dog's head."
+  },
+  {
+   "at": 15.4,
+   "text": "A woman walks up behind Yukari and Fuuka and looks at the dog. They turn to her. As she talks, Yukari folds her arms and Fuuka holds a hand to her chest."
+  },
+  {
+   "at": 25.6,
+   "text": "The woman hurries off. Yukari goes over to Koromaru, crouches in front of him and pets him."
+  }
+ ]
+}

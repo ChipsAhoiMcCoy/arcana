@@ -1,5 +1,18 @@
-{"movie": "LS_Event_Main_130_090_C", "title": "Akihiko visits Shinjiro", "cues": [
-  {"at": 0.05, "text": "In Hagakure, the ramen shop at the Iwatodai strip mall, Shinjiro sits alone at the counter eating from a bowl. Akihiko walks in and sits down one stool away from him."},
-  {"at": 11.85, "text": "The server sets a steaming bowl in front of Akihiko, and he starts to eat."},
-  {"at": 25.70, "text": "Shinjiro puts down his bowl, gets up from his stool and walks out behind Akihiko, leaving the empty bowl on the counter."}
-]}
+{
+ "movie": "LS_Event_Main_130_090_C",
+ "title": "Akihiko visits Shinjiro",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In Hagakure, the ramen shop at the Iwatodai strip mall, Shinjiro sits alone at the counter eating from a bowl. Akihiko walks in and sits down one stool away from him."
+  },
+  {
+   "at": 11.85,
+   "text": "The server sets a steaming bowl in front of Akihiko, and he starts to eat."
+  },
+  {
+   "at": 25.7,
+   "text": "Shinjiro puts down his bowl, gets up from his stool and, hands in his coat pockets, walks out behind Akihiko, leaving the empty bowl on the counter."
+  }
+ ]
+}
