@@ -116,7 +116,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 
 ## Mod settings
 
-F2 (or triggers + View) opens the settings from anywhere; the game's Config screen lists them too. The game gets none of your keys while they are open, but keeps running: in Tartarus, open them from the camp menu's Config to be safe.
+F2 (or triggers + View) opens the settings from anywhere; the game's Config screen lists them too. The game gets none of your keys while they are open, and while you are exploring it stands still, as under the camp menu: Shadows, characters and the field's sounds wait until you close the settings.
 
 They work like any other menu: up and down choose (at either end a further press repeats the row), Home and End jump, left and right change the value, Space or Enter (A) steps through values, F1 (Menu) reads these keys, and Escape, Backspace or F2 (B or View) closes. Tab and Shift+Tab (Page Down / Page Up, RB / LB) switch category, wrapping. Each row says what it does after its name, value and position. Changes are saved at once to `%LOCALAPPDATA%\Arcana\settings.ini`. The menu plays the game's own menu sounds.
 

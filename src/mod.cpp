@@ -32,6 +32,7 @@
 #include "devserver.h"
 #include "doors.h"
 #include "screens/screen.h"
+#include "screens/camp.h"
 #include "speech.h"
 #include "textcap.h"
 #include "topdown.h"
@@ -57,7 +58,7 @@ struct Section { const char* name; void (*fn)(); bool layouts = false; uint64_t 
 static Section g_sections[] = {
   {"watch", watch::tick}, {"probe", ue::probe_tick}, {"input", input::tick}, {"world", world::tick}, {"doors", doors::tick},
   {"voice", voice::tick}, {"msg", msg::tick}, {"screens", screens::tick},
-  {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"audio", audio::tick},
+  {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
   {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
@@ -163,6 +164,7 @@ void shutdown() {
   msg::save_history();   // after the last tick: the game thread no longer adds to it
   topdown::shutdown();
   menuspeed::shutdown();
+  screens::hold_pause(false);   // the mod menu's pause, if it is up
   audio::shutdown();
   watch::remove();
   textcap::remove();

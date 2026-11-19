@@ -18,6 +18,8 @@
 #include "speech.h"
 #include "voice.h"
 #include "walltones.h"
+#include "world.h"
+#include "screens/camp.h"
 #include <windows.h>
 #include <xinput.h>
 #include <algorithm>
@@ -332,7 +334,12 @@ static void on_pad(uint16_t button, bool repeat) {
 
 void open() {
   if (g_open) return;
+  // In free roam the field stands still while the menu is up, as under the camp menu (asked by a player,
+  // 2026-11-19): the camp's own pause on the game's stack. Asked before the menu takes the keys (exploring() is false
+  // under a mod modal).
+  bool still = world::exploring();
   g_open = true;
+  if (still) screens::hold_pause(true);
   keys::set_modal(on_key, on_pad);
   input::set_modal(true);
   voice::play_system_sound(voice::CueMenuOpen);
@@ -347,6 +354,7 @@ void open() {
 void close() {
   if (!g_open) return;
   g_open = false;
+  screens::hold_pause(false);
   keys::set_modal(nullptr, nullptr);
   input::set_modal(false);
   voice::play_system_sound(voice::CueMenuClose);

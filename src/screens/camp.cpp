@@ -6,6 +6,7 @@
 #include "screens/camp.h"
 #include "core/strings.h"
 #include "hooks.h"
+#include "log.h"
 #include "party.h"
 
 namespace p3a::screens {
@@ -13,15 +14,66 @@ using namespace ue;
 
 // The innermost pause: AppPauseManagerSubsystem.PauseFlow is a stack of EAppPauseType ({None, TownMap} while the
 // town map is up; IsPause(type) answers true for every type once anything pauses, measured 2026-10-27).
-int pause_top() {
+static UObject* pause_manager() {
   static const int id = watch::want("AppPauseManagerSubsystem");
-  UObject* m = watch::get(id);
-  if (!m) return 0;
-  auto* flow = field<TArray<uint8_t>>(m, "PauseFlow");
-  if (!flow || flow->num <= 0 || !flow->data) return 0;
+  return watch::get(id);
+}
+static TArray<uint8_t>* pause_flow(UObject* m) {
+  auto* flow = m ? field<TArray<uint8_t>>(m, "PauseFlow") : nullptr;
+  return flow && flow->num > 0 && flow->data ? flow : nullptr;
+}
+
+// The mod's own pause (the mod menu, hold_pause): the stack's length once the camp entry it pushed was on it, or 0.
+// Pause(Camp) runs what the camp's opening runs (FUN_1411b76f0 -> FUN_1410a8ad0(1)): every pauseable whose flags meet
+// 0x6e (characters, the field's local actors, the system UI, field sounds, crowds) stops. It pushes only when the top
+// is another type, and UnPause (FUN_1410af740) takes every entry of the top's type off: so the mod pushes only over no
+// pause at all, and pops only while its entry is the top (a pause the game put over it is waited out).
+static int g_held_at = 0;
+static bool g_release = false;
+
+int pause_top() {
+  auto* flow = pause_flow(pause_manager());
+  if (!flow) return 0;
+  // The mod's own entry is not a menu of the game's: the one under it is the innermost pause.
+  if (g_held_at && flow->num == g_held_at && flow->num >= 2) return flow->data[flow->num - 2];
   return flow->data[flow->num - 1];
 }
 bool camp_open() { return pause_top() == 1; }   // EAppPauseType::Camp
+
+static void release_pause(const char* why) {
+  UObject* m = pause_manager();
+  auto* flow = pause_flow(m);
+  if (!flow) { g_held_at = 0; g_release = false; return; }   // the subsystem is gone (a load): its stack with it
+  int i = g_held_at - 1;
+  if (i >= flow->num || flow->data[i] != 1) {   // an UnPause of the game's took it off already
+    log::writef("pause: the mod's hold was taken off by the game ({})", why);
+    g_held_at = 0; g_release = false; return;
+  }
+  if (flow->num != g_held_at) { g_release = true; return; }   // a pause of the game's over it: popped once it ends
+  call(m, "UnPause");
+  log::writef("pause: released ({})", why);
+  g_held_at = 0; g_release = false;
+}
+
+void hold_pause(bool on) {
+  if (!on) { if (g_held_at) release_pause("menu closed"); return; }
+  if (g_held_at) { g_release = false; return; }
+  UObject* m = pause_manager();
+  auto* flow = pause_flow(m);
+  if (!flow || flow->data[flow->num - 1] != 0) return;   // only over no pause: a menu of the game's already holds one
+  Params p(find_function(class_of(m), "Pause"));
+  if (!p.fn || !p.set<uint8_t>("InPauseType", 1)) return;
+  call(m, p);
+  flow = pause_flow(m);
+  if (flow && flow->data[flow->num - 1] == 1) {
+    g_held_at = flow->num;
+    log::writef("pause: held (stack {})", flow->num);
+  }
+}
+
+void pause_tick() {
+  if (g_release) release_pause("after the game's pause");
+}
 
 // Whether one of the root's submenus is open. Each submenu is one object for the whole session (all ten exist from
 // boot, measured 2026-11-01) whose state is 0 while it is closed: Skill +0x3C, Item / Equip / Persona +0x38, Stats
