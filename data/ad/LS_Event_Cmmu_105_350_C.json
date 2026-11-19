@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_350_C", "title": "After the scuffle", "cues": [{"at": 0.00, "text": "Paulownia Mall's fountain square, with shoppers passing by. Kazushi stalks over to you, still scowling."}]}
+{
+ "movie": "LS_Event_Cmmu_105_350_C",
+ "title": "After the scuffle",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside the arcade by a crane game. You and Kazushi walk up and stop side by side, Kazushi scowling, hands on his hips."
+  }
+ ]
+}

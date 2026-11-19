@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_105_090_C", "title": "The coach's warning", "cues": [{"at": 0.00, "text": "On the athletic field, you run down the track with Kazushi and the other runners and come in to where the track team advisor sits on a folding chair, with Yuko beside him."}]}
+{
+ "movie": "LS_Event_Cmmu_105_090_C",
+ "title": "The coach's warning",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the athletic field, you run down the track with Kazushi and the other runners and come in to a tent where the track team advisor sits on a folding chair, with Yuko standing beside him."
+  },
+  {
+   "at": 10.1,
+   "text": "The other runners walk off, leaving you and Kazushi with Yuko and the advisor."
+  }
+ ]
+}

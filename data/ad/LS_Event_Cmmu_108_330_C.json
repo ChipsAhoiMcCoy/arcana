@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_108_330_C", "title": "Keisuke at Fountain Square", "cues": [{"at": 0.0, "text": "Fountain Square in Paulownia Mall. You and Keisuke walk up together and stop to talk."}]}
+{
+ "movie": "LS_Event_Cmmu_108_330_C",
+ "title": "Keisuke at Fountain Square",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside the arcade beside a crane game. You and Keisuke walk out together and stop to talk."
+  }
+ ]
+}

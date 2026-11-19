@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_106_653_C", "title": "Christmas at Paulownia Mall", "cues": [{"at": 0.00, "text": "Paulownia Mall, decorated for Christmas and crowded with people. You and Yuko walk in together."}, {"at": 11.67, "text": "Later, you and Yuko sit side by side."}, {"at": 14.33, "text": "Yuko holds out a medicated patch she made herself, and you take it."}]}
+{
+ "movie": "LS_Event_Cmmu_106_653_C",
+ "title": "Christmas at Paulownia Mall",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, decorated for Christmas and crowded with people. You and Yuko walk in together."
+  },
+  {
+   "at": 11.67,
+   "text": "Later, you and Yuko sit side by side on a bench beside the fountain."
+  },
+  {
+   "at": 14.33,
+   "text": "Yuko holds out a medicated patch she made herself, and you take it."
+  }
+ ]
+}

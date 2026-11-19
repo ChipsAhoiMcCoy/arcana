@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_520_C", "title": "Kazushi runs all out", "cues": [{"at": 0.00, "text": "The school athletic field. Kazushi sprints down the track, the other runners behind him, while Yuko watches him go."}]}
+{
+ "movie": "LS_Event_Cmmu_105_520_C",
+ "title": "Kazushi runs all out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school athletic field. You stand beside the track as runners sprint past, Kazushi among them, while Yuko watches from the side."
+  }
+ ]
+}

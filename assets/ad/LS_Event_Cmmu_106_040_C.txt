@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_106_040_C
 0.000	3.764	00.mp3	You and Yuko stand together in the fountain square of Paulownia Mall.
-5.900	3.787	01.mp3	A small boy comes running across the square and crashes into Yuko.
+5.900	9.490	01.mp3	A small boy comes running across the square and crashes into Yuko, knocking them both to the ground. Yuko picks herself up while the boy stays sprawled on the ground.
 9.850	1.924	02.mp3	Two little girls run up behind him.

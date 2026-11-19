@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_015_C", "title": "Walking Chihiro home", "cues": [{"at": 0.00, "text": "You and Chihiro walk side by side down a quiet street, both carrying your bags, and stop in front of an old brick building."}]}
+{
+ "movie": "LS_Event_Cmmu_109_015_C",
+ "title": "Walking Chihiro home",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk up to the front steps of an old brick building, your bag over your shoulder, with Chihiro trailing a few steps behind. She stops a little way off, holding her bag in front of her with both hands."
+  }
+ ]
+}

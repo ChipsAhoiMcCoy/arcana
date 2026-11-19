@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_105_070_C", "title": "Whispers on the team", "cues": [{"at": 0.00, "text": "On the athletic field, you stand beside Yuko as the runners come down the track, Kazushi among them. Two club members stand off to one side, watching him."}, {"at": 10.70, "text": "The two club members turn and hurry back to practice."}]}
+{
+ "movie": "LS_Event_Cmmu_105_070_C",
+ "title": "Whispers on the team",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the athletic field, you stand with two club members as runners race past down the track, Kazushi among them. The two club members watch him go by."
+  },
+  {
+   "at": 8.2,
+   "text": "Yuko walks up behind the two club members."
+  },
+  {
+   "at": 10.7,
+   "text": "The two club members turn and hurry back to practice."
+  }
+ ]
+}

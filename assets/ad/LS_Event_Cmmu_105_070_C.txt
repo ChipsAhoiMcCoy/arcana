@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_105_070_C
-0.000	9.529	00.mp3	On the athletic field, you stand beside Yuko as the runners come down the track, Kazushi among them. Two club members stand off to one side, watching him.
-10.700	2.824	01.mp3	The two club members turn and hurry back to practice.
+0.000	9.102	00.mp3	On the athletic field, you stand with two club members as runners race past down the track, Kazushi among them. The two club members watch him go by.
+8.200	2.374	01.mp3	Yuko walks up behind the two club members.
+10.700	2.824	02.mp3	The two club members turn and hurry back to practice.

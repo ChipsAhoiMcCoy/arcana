@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_106_600_C
-1.000	6.281	00.mp3	The cinema at Port Island Station. You and Yuko sit side by side in the audience while the film plays.
+1.000	8.692	00.mp3	The cinema at Port Island Station. From the snack counter in the lobby, you and Yuko go in and sit side by side in the audience while the film plays.
+6.400	3.934	01.mp3	When the film ends, you and Yuko are back in the lobby by the snack counter.

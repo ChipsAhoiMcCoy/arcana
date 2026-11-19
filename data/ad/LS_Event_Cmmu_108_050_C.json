@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_108_050_C", "title": "Art club: a guaranteed award", "cues": [{"at": 1.0, "text": "The art club is at work in the art room when the club advisor walks to the front of the room."}, {"at": 4.83, "text": "The club members get up and gather to listen."}]}
+{
+ "movie": "LS_Event_Cmmu_108_050_C",
+ "title": "Art club: a guaranteed award",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "The art room. You sit painting at an easel among the art club, Fuuka and Keisuke among them, when the club advisor walks to the front of the room."
+  },
+  {
+   "at": 4.83,
+   "text": "The club members get up and gather to listen."
+  }
+ ]
+}

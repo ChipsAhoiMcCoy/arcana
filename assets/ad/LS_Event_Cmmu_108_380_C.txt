@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_108_380_C
-0.000	4.293	00.mp3	Iwatodai Strip Mall. You and Keisuke walk up together and stop to talk.
+0.000	6.514	00.mp3	Iwatodai Strip Mall, in front of a Japanese sweets shop. You and Keisuke walk up together and stop to talk.
