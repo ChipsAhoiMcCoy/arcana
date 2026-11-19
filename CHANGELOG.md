@@ -8,6 +8,10 @@
 - The scenes that repeat are described again, for a first look: the job shifts at Chagall Café, Be Blue V and the cinema, coffee, meals, karaoke, the arcade and films on your own, studying, school mornings and lessons, the fusion animation, the Velvet Room door and Elizabeth's calls, the dorm's deliveries, and Tartarus's golden hand, chests, clocks, Monad doors and the Reaper. With suppress repeated descriptions on, each is read the first time only.
 - About 30 Social Link scenes never played their descriptions, because the game names the scene after another one: the evening hangouts in the dorm with the team, the films at the cinema with Yukari, Akihiko, Mitsuru, Yuko, Chihiro and others, and two of Koromaru's scenes (the angry dog, and the collar at the shrine). Descriptions are now found by the scene the game plays, whatever it is called.
 
+### Battle
+- The box the game slides in during a turn is read: a boss's warnings before a big attack ("is charging up...", "has set its sights!", "is targeting Mitsuru!", "'s glare sharpens!", "is almost done charging up...!"), stat changes and their end ("Attack up!", "Defense reverted!"), what an enemy does instead of attacking ("Supreme Hand is waiting...", "ran away..."), and why a command did nothing ("Insufficient SP!", "No effect!"). Ailments are left to the line that names who took them.
+- An enemy that runs away is no longer called defeated.
+
 ### Field
 - Characters the game lets you talk to but who have no model of their own in their spot are listed again: the Weak Cat at the Station Outskirts was left off the list and the radar.
 - A few named characters the game places without a name of their own are called by their name instead of "Person": Officer Kurosawa outside the Paulownia Mall police station, and Mitsuru, Junpei, Akihiko, the bartender and others on certain days.
