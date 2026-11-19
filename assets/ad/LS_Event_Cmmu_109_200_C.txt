@@ -2,3 +2,4 @@
 0.000	7.486	00.mp3	In the student council room, Chihiro stands with you, her hands clasped in front of her; as she thanks you, you rub the back of your head.
 12.200	3.226	01.mp3	Chihiro holds out a book of manga to you, and you take it.
 19.000	4.779	02.mp3	The door opens, and a boy and a girl, both students, come in and walk up to Chihiro.
+31.830	7.616	03.mp3	Chihiro holds an open hand out toward the two students and steps over to them, and you turn and walk away, hands in your pockets.
