@@ -1,5 +1,5 @@
 #scene LS_Event_Main_130_060_C
-0.050	11.201	00.mp3	Outside the dorm, at the foot of its front steps, Fuuka crouches in front of a white dog with her hand held out, and Yukari stands watching. You walk up behind them with your school bag on your shoulder.
+0.050	10.903	00.mp3	Outside the dorm, at the foot of its front steps, Fuuka crouches in front of a dog with her hand held out, and Yukari stands watching. You walk up behind them with your school bag on your shoulder.
 2.200	2.591	01.mp3	The dog lifts a paw and sets it in Fuuka's hand.
 8.550	6.279	02.mp3	The dog gets up and trots over to you. You crouch and hold out your hand, and it sniffs it. You pat the dog's head.
 15.400	9.428	03.mp3	A woman walks up behind Yukari and Fuuka and looks at the dog. They turn to her. As she talks, Yukari folds her arms and Fuuka holds a hand to her chest.

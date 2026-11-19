@@ -1,4 +1,4 @@
 #scene LS_Event_Main_110_200_C
 0.100	3.308	00.mp3	In your dorm room, you lie asleep in bed. Your eyes open.
 2.900	4.407	01.mp3	You push yourself up on the bed. The boy in striped pyjamas stands beside it.
-9.400	2.820	02.mp3	The boy breaks apart into black specks and is gone.
+9.400	2.453	02.mp3	The boy breaks apart into specks and is gone.
