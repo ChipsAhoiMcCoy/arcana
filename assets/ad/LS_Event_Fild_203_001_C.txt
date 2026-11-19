@@ -1,2 +1,3 @@
 #scene LS_Event_Fild_203_001_C
-3.350	2.531	00.mp3	Junpei walks over to join you and Mitsuru.
+0.000	4.459	00.mp3	The dorm lounge. You come in through the front door, and Mitsuru walks over to meet you.
+3.350	2.531	01.mp3	Junpei walks over to join you and Mitsuru.

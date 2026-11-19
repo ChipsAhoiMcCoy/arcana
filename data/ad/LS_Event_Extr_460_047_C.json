@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_460_047_C", "title": "Ken at Be Blue V", "cues": [{"at": 0.03, "text": "Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Ken stands facing you."}, {"at": 4.5, "text": "Ken turns and walks off for the treatment, leaving you waiting by the sign."}, {"at": 8.83, "text": "Later, Ken walks back to you."}]}
+{
+ "movie": "LS_Event_Extr_460_047_C",
+ "title": "Ken at Be Blue V",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Inside Be Blue V, the healing shop in Paulownia Mall, by its display counters beneath the shop's sign. You stand with your hands in your pockets; Ken stands facing you."
+  },
+  {
+   "at": 4.5,
+   "text": "Ken turns and walks off past the counters, deeper into the shop, leaving you waiting by the sign."
+  },
+  {
+   "at": 8.83,
+   "text": "Later, Ken walks back to you."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_050_C
-0.030	9.439	00.mp3	Hagakure Ramen in the Iwatodai Strip Mall. You sit at the counter, raise a steaming bowl and slurp your noodles. Two customers talk at a table behind you.
+0.030	10.681	00.mp3	Hagakure Ramen in the Iwatodai Strip Mall. You sit at the counter, bent over a steaming bowl, eating your noodles with chopsticks. Two customers talk at a table behind you.

@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_400_055_C
 0.000	4.959	00.mp3	Takaya waits by some steps in a deserted street. He turns as you walk up to him.
 9.860	8.156	01.mp3	A still image: a monstrous creature with a gaping, tooth-lined maw rears over a long-haired girl and a boy, who braces in front of it.
-31.200	4.989	02.mp3	Takaya walks past you and away, a revolver tucked in his belt. You are left alone.
+31.200	6.007	02.mp3	Takaya turns his back on you and walks away, a revolver tucked in his belt. You are left standing alone.

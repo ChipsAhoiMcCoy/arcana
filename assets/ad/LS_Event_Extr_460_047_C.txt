@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_047_C
-0.030	7.882	00.mp3	Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Ken stands facing you.
-4.500	3.971	01.mp3	Ken turns and walks off for the treatment, leaving you waiting by the sign.
+0.030	10.316	00.mp3	Inside Be Blue V, the healing shop in Paulownia Mall, by its display counters beneath the shop's sign. You stand with your hands in your pockets; Ken stands facing you.
+4.500	5.637	01.mp3	Ken turns and walks off past the counters, deeper into the shop, leaving you waiting by the sign.
 8.830	1.661	02.mp3	Later, Ken walks back to you.

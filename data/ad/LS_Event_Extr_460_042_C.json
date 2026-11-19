@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_460_042_C", "title": "Junpei at Be Blue V", "cues": [{"at": 0.03, "text": "Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Junpei stands facing you."}, {"at": 4.5, "text": "Junpei turns and walks off for the treatment, leaving you waiting by the sign."}, {"at": 8.83, "text": "Later, Junpei walks back to you."}]}
+{
+ "movie": "LS_Event_Extr_460_042_C",
+ "title": "Junpei at Be Blue V",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Paulownia Mall, inside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Junpei stands facing you, a hand on his hip."
+  },
+  {
+   "at": 4.5,
+   "text": "Junpei turns and walks off for the treatment, leaving you waiting by the sign."
+  },
+  {
+   "at": 8.83,
+   "text": "Later, Junpei walks back to you."
+  }
+ ]
+}

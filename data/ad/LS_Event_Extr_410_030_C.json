@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_410_030_C", "title": "The chairman brings new gear", "cues": [{"at": 0.00, "text": "The dorm's command room. You sit around the table with Yukari, Junpei, Akihiko, Mitsuru, Fuuka and Ikutsuki, the chairman."}, {"at": 1.67, "text": "Ikutsuki gets up, steps over to a metal case and opens it: inside are an armband and a set of cartridges."}, {"at": 19.83, "text": "Ikutsuki stands and leaves through the door."}]}
+{
+ "movie": "LS_Event_Extr_410_030_C",
+ "title": "The chairman brings new gear",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm's command room. You sit around the table with Yukari, Junpei, Akihiko, Mitsuru, Fuuka and Ikutsuki, the chairman."
+  },
+  {
+   "at": 1.67,
+   "text": "Ikutsuki gets up, steps over to a metal case on the table and opens it: inside are folded combat gear, an armband and a row of cartridges."
+  },
+  {
+   "at": 19.83,
+   "text": "Ikutsuki stands and leaves through the door."
+  }
+ ]
+}
