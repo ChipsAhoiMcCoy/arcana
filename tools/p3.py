@@ -432,6 +432,51 @@ def launch(args):
     if t is None:
         sys.exit("the game exited" if not pids() else "no /health after 120 s")
     print(t.splitlines()[0])
+    apply_caps()
+
+
+def apply_caps():
+    """P3A_FPS=30: cap this dev game's frame rate by console variable (not saved to the player's settings file).
+    Applied after launch and again after a save loads, in case the game reapplies its own limit."""
+    fps = os.environ.get("P3A_FPS", "")
+    if fps.isdigit():
+        http(f"/ue/call?cdo=KismetSystemLibrary&fn=ExecuteConsoleCommand&args=Command:str:t.MaxFPS%20{fps}", check=False)
+    # P3A_RES=1280x720: the window is sized to it (the game's -ResX flags were ignored; it renders at its window's
+    # size, borderless, so the client area is exactly this). Never activated; no settings file written.
+    # A dev game's window was found minimized with several running (2026-11-18): minimized, it played no scene and
+    # gave empty screenshots. It is restored without activation. The game puts its own size back after a save loads,
+    # so capture calls this before every scene (`p3.py caps`).
+    hwnd = game_window()
+    if hwnd and u32.IsIconic(hwnd):
+        u32.ShowWindow(hwnd, 4)   # SW_SHOWNOACTIVATE
+    res = os.environ.get("P3A_RES", "")
+    if hwnd and re.fullmatch(r"\d+x\d+", res):
+        x, y = (int(v) for v in res.split("x"))
+        w, c = wt.RECT(), wt.RECT()
+        u32.GetWindowRect(hwnd, ctypes.byref(w))
+        u32.GetClientRect(hwnd, ctypes.byref(c))
+        if (c.right, c.bottom) != (x, y):
+            bx, by = (w.right - w.left) - c.right, (w.bottom - w.top) - c.bottom   # the frame around the client area
+            u32.SetWindowPos(hwnd, None, 0, 0, x + bx, y + by, 0x0016)   # SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE
+
+
+def game_window():
+    hwnd = None
+    pid_set = set(pids())
+
+    @ctypes.WINFUNCTYPE(wt.BOOL, wt.HWND, wt.LPARAM)
+    def cb(h, _):
+        nonlocal hwnd
+        pid = wt.DWORD()
+        u32.GetWindowThreadProcessId(h, ctypes.byref(pid))
+        cls = ctypes.create_unicode_buffer(64)
+        u32.GetClassNameW(h, cls, 64)
+        if pid.value in pid_set and cls.value == "UnrealWindow":
+            hwnd = h
+            return False
+        return True
+    u32.EnumWindows(cb, 0)
+    return hwnd
 
 
 def reload(args):
@@ -543,25 +588,12 @@ def up(args):
     launch(([] if "--build" in args else ["--nobuild"]) + [a for a in args if a in ("--speak", "--sound")])
     if "--slot" in args:
         flow_load(args[args.index("--slot") + 1])
+        apply_caps()
 
 
 def shot(out):
     from PIL import Image
-    hwnd = None
-    pid_set = set(pids())
-
-    @ctypes.WINFUNCTYPE(wt.BOOL, wt.HWND, wt.LPARAM)
-    def cb(h, _):
-        nonlocal hwnd
-        pid = wt.DWORD()
-        u32.GetWindowThreadProcessId(h, ctypes.byref(pid))
-        cls = ctypes.create_unicode_buffer(64)
-        u32.GetClassNameW(h, cls, 64)
-        if pid.value in pid_set and cls.value == "UnrealWindow":
-            hwnd = h
-            return False
-        return True
-    u32.EnumWindows(cb, 0)
+    hwnd = game_window()
     if not hwnd:
         sys.exit("no game window")
     r = wt.RECT()
@@ -765,6 +797,8 @@ def main():
                 print("no /health:", e)
     elif cmd == "kill":
         kill_all()
+    elif cmd == "caps":   # restore a minimized dev window, P3A_RES size, P3A_FPS cap
+        apply_caps()
     elif cmd == "build":
         build()
     elif cmd == "deploy":
