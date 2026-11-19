@@ -1,5 +1,5 @@
 // After Grim Dark's harmful ground (GD Access, by Austin Hicks): its sounds (assets/audio/sight, zlib, see LICENSES/)
-// and its design, a lane for each way the player can walk and a bed while he stands in it, put to a Shadow's sight.
+// and its idea, a sound for ground that hurts and a bed while you stand in it, put to a Shadow's sight.
 //
 // How a Shadow notices the hero (the game's own test, P3R.exe 0x113bb40 and its callers, one per mood):
 //  - from the Shadow's centre (its root component) to the hero's: the distance in space, and the hero's yaw off the
@@ -20,6 +20,13 @@
 // 5 (waiting between moves). Noticing is step 6 (the mark, ~0.75 s), the chase 7, contact 8 (watched on floor 2,
 // 2026-11-19); a floor's Shadows stand at another step until the player first moves. Every other step is left out.
 // The mark and TrackingTarget stay set after a Shadow gives up and wanders again: they say nothing of now.
+//
+// The sound: each nearby wandering Shadow's sight is a zone on the ground, its cones cut by the walls that block its
+// view, and the zone sizzles from its point nearest the hero (held, placed in the world, heard through the HRTF like
+// the growl) for as long as that point is within the Shadow sight range: quiet across the range, steeply louder over
+// the last metres, loudest at the edge. The nearest few zones sound at once. The point is the cones' own nearest
+// point when the Shadow sees it; when a wall hides that point, a fan of rays around the hero's bearing is traced to
+// find where the view really ends.
 #include "sight.h"
 #include "audio.h"
 #include "core/sight_cone.h"
@@ -44,29 +51,27 @@ namespace p3a::sight {
 namespace {
 using namespace ue;
 using core::SightCone;
+using core::SightRay;
 using core::Vec3;
 using world::FVector;
 
-constexpr int kLaneHold = 20;   // audio::hold ids 20..23: the edge ahead, right, behind, left
-constexpr int kBedHold = 24;    // 24 left, 25 right: hidden
-constexpr int kDemoHold = 26;  // 26 an edge, 27 and 28 the hum
-constexpr const char* kLaneFile[4] = {"north.wav", "east.wav", "south.wav", "west.wav"};   // ahead, right, behind, left
+constexpr int kZoneHold = 20;    // audio::hold ids 20..22: the nearest zones
+constexpr int kZones = 3;
+constexpr int kBedHold = 24;     // 24 left, 25 right: hidden
+constexpr int kDemoHold = 26;    // 26 a zone, 27 and 28 the hum
 constexpr uint32_t kReaperBit = 0x20000582;   // BIT 1410: set as the Reaper appears on the floor
-constexpr int kMaxTraces = 6;                 // per Shadow and direction, inside its sight
-constexpr float kTraceStep = 25.0f;           // cm between them at least
-constexpr int kTickTraces = 32;               // and in all, a tick (two Shadows behind walls)
+constexpr float kFanStep = 5.0f;              // degrees between the fan's rays
+constexpr int kFanHalf = 6;                   // rays to each side of the hero's bearing (60 degrees in all)
+constexpr int kTickTraces = 40;               // traces in all, a tick (past it, rays count as unblocked)
+constexpr float kBehindRate = 0.84f;          // "Lower pitch behind you", as the sonar
 
 // knobs (dev route /sight)
-float g_gain = 0.8f;        // the edge's loudness at the edge
+float g_gain = 0.8f;        // a zone's loudness at its edge
 float g_bed_gain = 0.45f;   // the hidden hum's (Grim Dark's 0.45)
 float g_bed_tone = 0.25f;   // its brightness: muffled (audio::hold's tone)
 float g_bed_spread = 0.5f;  // its two halves, left and right
-float g_band_dev = 0;       // cm; 0: the setting
+float g_range_dev = 0;      // cm; 0: the setting
 
-// What the last tick found, for /sight.
-struct Lane { float dist = 0; int shadow = -1; };
-Lane g_lane[4];
-float g_room[4] = {-1, -1, -1, -1};   // how far each way went before a wall (-1: not traced)
 bool g_hidden = false;
 int g_hidden_by = -1;
 bool g_dashing = false;
@@ -77,12 +82,17 @@ double g_busy_us = 0, g_max_us = 0;
 int g_busy_ticks = 0, g_max_traces = 0;
 std::string g_shadows;        // one line per Shadow considered
 
-// The mod's prediction against the game's mark, per Shadow.
+// The mod's prediction against the game's noticing, per Shadow.
 struct Watch { int seen_ago = 1000; int seen_run = 0; bool alarm_counted = false; int step = -1; };
 std::map<WeakObj::Key, Watch> g_watch;
 int g_match = 0, g_missed = 0, g_false = 0;
-constexpr int kMatchFrames = 3;    // the mark goes up within this many ticks of the mod saying "seen"
-constexpr int kFalseFrames = 10;   // "seen" this many ticks running and no mark: the mod was wrong
+constexpr int kMatchFrames = 3;    // the game notices within this many ticks of the mod saying "seen"
+constexpr int kFalseFrames = 10;   // "seen" this many ticks running and no noticing: the mod was wrong
+
+// What the player hears of each Shadow's zone, for the log: when it starts and stops, how close the edge came.
+struct Heard { bool on = false; float closest = 1e9f; float level_at = 0; int meters = 1000; bool kept = false; };
+std::map<WeakObj::Key, Heard> g_heard;
+std::map<WeakObj::Key, int> g_slot;   // the zone's hold slot (0..kZones-1), kept while it sounds
 
 std::string sound_dir() { return audio::module_dir() + "assets\\audio\\sight\\"; }
 audio::Pcm load(const std::string& file) {
@@ -90,23 +100,19 @@ audio::Pcm load(const std::string& file) {
   if (!audio::decode_mono(sound_dir() + file, *v)) log::writef("sight: cannot load {}", file);
   return v;
 }
-const audio::Pcm& lane_pcm(int d) {
-  static audio::Pcm p[4] = {load(kLaneFile[0]), load(kLaneFile[1]), load(kLaneFile[2]), load(kLaneFile[3])};
-  return p[d];
+const audio::Pcm& zone_pcm() {
+  static audio::Pcm p = load("zone.wav");
+  return p;
 }
 const audio::Pcm& bed_pcm(int side) {
   static audio::Pcm p[2] = {load("hidden_left.wav"), load("hidden_right.wav")};
   return p[side];
 }
 // A direction from the player (no place in the world: it turns with him).
-audio::Spot toward(float right, float ahead) {
+audio::Spot toward(float right, float ahead, float dist_m = 1.0f) {
   audio::Spot s;
-  s.right = right; s.ahead = ahead; s.dist_m = 1.0f; s.pan = right;
+  s.right = right; s.ahead = ahead; s.dist_m = dist_m; s.pan = right;
   return s;
-}
-audio::Spot lane_spot(int d) {
-  static const float r[4] = {0, 1, 0, -1}, a[4] = {1, 0, -1, 0};
-  return toward(r[d], a[d]);
 }
 void play_bed(float vol, int id = kBedHold, int hold_ms = 250) {
   float side = g_bed_spread, front = std::sqrt(1.0f - side * side);
@@ -114,9 +120,10 @@ void play_bed(float vol, int id = kBedHold, int hold_ms = 250) {
   audio::hold(id + 1, bed_pcm(1), vol, toward(side, front), 1.0f, g_bed_tone, 0.0f, hold_ms);
 }
 void silence() {
-  for (int i = 0; i < 4; ++i) audio::release_hold(kLaneHold + i);
+  for (int i = 0; i < kZones; ++i) audio::release_hold(kZoneHold + i);
   audio::release_hold(kBedHold);
   audio::release_hold(kBedHold + 1);
+  g_slot.clear();
 }
 
 UObject* first_object(UObject* o, const char* prop) {
@@ -216,7 +223,7 @@ float reach_of(const Eye& e) {
   return r;
 }
 
-// The Shadow sees this point (the hero's centre there): inside a cone and the line clear.
+// The line from the Shadow's centre to a point is clear (the game's sight trace).
 bool sees(const Eye& e, const Vec3& p) {
   ++g_traces;
   world::Hit h = world::sight_line(FVector{e.at.x, e.at.y, e.at.z}, FVector{p.x, p.y, p.z}, e.actor);
@@ -225,6 +232,63 @@ bool sees(const Eye& e, const Vec3& p) {
 bool in_sight(const Eye& e, const Vec3& p) {
   for (const SightCone& c : e.cones) if (core::cone_holds(c, p)) return true;
   return false;
+}
+
+// Where a Shadow's zone is nearest the hero, walls counted. `how`: "clear" (the cones' own nearest point, seen),
+// "walls" (a fan of traced rays), "" (none).
+struct Zone { Vec3 at; float dist = 0; const char* how = ""; };
+bool zone_of(const Eye& e, const Vec3& me, bool hero_inside, Zone& z) {
+  // The cones' own nearest point; seen from the Shadow, that is the edge.
+  Vec3 best{};
+  float bd = 1e30f;
+  for (const SightCone& c : e.cones) {
+    Vec3 q; float d;
+    if (core::sector_nearest(c, me, q, d) && d < bd) { bd = d; best = q; }
+  }
+  if (bd >= 1e29f) return false;
+  if (!hero_inside && sees(e, best)) { z = Zone{best, bd, "clear"}; return true; }
+  // A wall hides it (or the hero stands inside the cones, hidden): the view's real end, ray by ray, on a fan around
+  // the hero's bearing, or around the nearest edge of the cones when he is outside their angle.
+  float phi = std::atan2(me.y - e.at.y, me.x - e.at.x) * 180.0f / core::kPi;
+  float centre = phi;
+  if (core::reach_at(e.cones, me.z, phi) <= 0) {
+    float bestoff = 1e9f;
+    for (const SightCone& c : e.cones)
+      for (float side : {-0.5f, 0.5f}) {
+        float edge = c.yaw + side * c.angle - side * 2.0f;   // just inside the edge
+        float off = std::fabs(std::remainder(edge - phi, 360.0f));
+        if (off < bestoff) { bestoff = off; centre = edge; }
+      }
+  }
+  std::vector<float> offs;
+  for (int k = -kFanHalf; k <= kFanHalf; ++k) offs.push_back(k * kFanStep);
+  for (const SightCone& c : e.cones)   // the cones' sides inside the fan, so a side is where the view ends
+    for (float side : {-0.5f, 0.5f}) {
+      float off = std::remainder(c.yaw + side * c.angle - centre, 360.0f);
+      if (std::fabs(off) < kFanHalf * kFanStep) { offs.push_back(off - 0.3f); offs.push_back(off + 0.3f); }
+    }
+  std::sort(offs.begin(), offs.end());
+  std::vector<SightRay> rays;
+  for (float off : offs) {
+    float theta = centre + off;
+    float reach = core::reach_at(e.cones, me.z, theta);
+    float len = reach;
+    if (reach > 0 && g_traces < kTickTraces) {
+      float a = theta * core::kPi / 180.0f;
+      FVector to{e.at.x + std::cos(a) * reach, e.at.y + std::sin(a) * reach, me.z};
+      ++g_traces;
+      world::Hit h = world::sight_line(FVector{e.at.x, e.at.y, e.at.z}, to, e.actor);
+      if (h.hit) {
+        float full = std::sqrt(reach * reach + (me.z - e.at.z) * (me.z - e.at.z));
+        len = full > 0 ? reach * std::clamp(h.distance / full, 0.0f, 1.0f) : 0.0f;
+      }
+    }
+    rays.push_back(SightRay{theta, len});
+  }
+  Vec3 q; float d;
+  if (!core::fan_nearest(e.at, rays, me, q, d)) return false;
+  z = Zone{q, d, "walls"};
+  return true;
 }
 
 void log_prediction(const std::vector<Eye>& all, const std::vector<bool>& seen_now, const Vec3& me) {
@@ -264,12 +328,36 @@ void log_prediction(const std::vector<Eye>& all, const std::vector<bool>& seen_n
   g_watch.swap(next);
 }
 
+// What the player hears of each zone, logged: it starts, its edge comes within each whole metre, it stops (with the
+// closest it came and how loud it was then).
+void log_heard(int index, const WeakObj::Key& key, bool on, float dist, float level) {
+  Heard& h = g_heard[key];
+  h.kept = true;
+  if (on && !h.on) {
+    h = Heard{true, dist, level, (int)std::floor(dist / 100.0f), true};
+    log::writef("sight: #{} zone sounds, its edge {:.1f} m away (volume {:.2f}, dashing {})", index, dist / 100.0f, level, g_dashing);
+    return;
+  }
+  if (!on) {
+    if (h.on) log::writef("sight: #{} zone quiet; its edge came within {:.1f} m (volume {:.2f})", index, h.closest / 100.0f, h.level_at);
+    h.on = false;
+    return;
+  }
+  if (dist < h.closest) { h.closest = dist; h.level_at = level; }
+  int m = (int)std::floor(dist / 100.0f);
+  if (m < h.meters) {
+    h.meters = m;
+    log::writef("sight: #{} edge within {} m (volume {:.2f}{})", index, m + 1, level, g_dashing ? ", dashing" : "");
+  }
+}
+
 }  // namespace
 
 void demo(int which) {
   // 1.2 s: the sound test's own length, not a wait on anything.
-  if (which >= 0 && which < 4) audio::hold(kDemoHold, lane_pcm(which), 0.6f * g_gain, lane_spot(which), 1.0f, 1.0f, 0.0f, 1200);
-  else if (which == 4) play_bed(g_bed_gain, kDemoHold + 1, 1200);
+  if (which == 0) audio::hold(kDemoHold, zone_pcm(), core::zone_level(400, 600) * 2.0f * g_gain, toward(0, 1, 4), 1.0f, 1.0f, 0.0f, 1200);
+  else if (which == 1) audio::hold(kDemoHold, zone_pcm(), g_gain, toward(0, 1, 1), 1.0f, 1.0f, 0.0f, 1200);
+  else if (which == 2) play_bed(g_bed_gain, kDemoHold + 1, 1200);
 }
 
 static void tick_body();
@@ -287,13 +375,16 @@ void tick() {
 static void tick_body() {
   g_traces = 0;
   g_hidden = false; g_hidden_by = -1;
-  for (Lane& l : g_lane) l = Lane{};
-  for (float& r : g_room) r = -1;
-  if (!settings::on(settings::ShadowSight) || !world::exploring()) { silence(); g_watch.clear(); return; }
+  auto quiet_all = [] {
+    silence();
+    for (auto& [key, h] : g_heard) if (h.on) log::writef("sight: #{} zone quiet; its edge came within {:.1f} m (volume {:.2f})", std::get<0>(key), h.closest / 100.0f, h.level_at);
+    g_heard.clear();
+  };
+  if (!settings::on(settings::ShadowSight) || !world::exploring()) { quiet_all(); g_watch.clear(); return; }
   FVector mef;
-  if (!world::player_location(mef)) { silence(); return; }
+  if (!world::player_location(mef)) { quiet_all(); return; }
   const Vec3 me{mef.x, mef.y, mef.z};
-  const float band = g_band_dev > 0 ? g_band_dev : settings::get(settings::SightBand) * 100.0f;
+  const float range = g_range_dev > 0 ? g_range_dev : settings::get(settings::SightRange) * 100.0f;
   UObject* hc = hero_comp();
   FVector vel{};
   g_dashing = false;
@@ -310,70 +401,68 @@ static void tick_body() {
     if (moving && speed && speed[2] > speed[1] && std::hypot(vel.x, vel.y) > (speed[1] + speed[2]) * 0.5f) g_dashing = true;
   });
   std::vector<Eye> all = eyes(g_dashing, jamming);
-  if (all.empty()) { silence(); g_shadows.clear(); g_blind.clear(); return; }   // not on a Tartarus floor
+  if (all.empty()) { quiet_all(); g_shadows.clear(); g_blind.clear(); return; }   // not on a Tartarus floor
   g_blind = unseen ? "not searched by enemies" : party::flag(kReaperBit) ? "the Reaper is on the floor" : "";
   std::vector<bool> seen_now(all.size(), false);
   g_shadows.clear();
-  // How far each way the hero could go before a wall: sight past it is out of his reach (Grim Dark's lanes stop at the
-  // wall too). One line at his centre's height per way, traced once a tick when a Shadow is near enough to matter.
-  float room[4] = {-1, -1, -1, -1};
-  std::vector<UObject*> people;
-  auto room_of = [&](int d) {
-    if (room[d] < 0) {
-      FVector v = world::dir_vector(d);
-      world::Hit h = world::line(mef, FVector{mef.x + v.x * band, mef.y + v.y * band, mef.z}, "Pawn", &people);
-      ++g_traces;
-      room[d] = h.hit && !h.start_inside ? h.distance : band;
-      g_room[d] = room[d];
-    }
-    return room[d];
-  };
-  for (size_t i = 0; i < all.size(); ++i) {
+  struct Heard1 { WeakObj::Key key; int index; Zone z; float level; };
+  std::vector<Heard1> zones;
+  // Nearest Shadows first: the trace budget goes to them.
+  std::vector<size_t> order(all.size());
+  for (size_t i = 0; i < order.size(); ++i) order[i] = i;
+  std::sort(order.begin(), order.end(), [&](size_t a, size_t b) { return core::dist3(all[a].at, me) < core::dist3(all[b].at, me); });
+  for (size_t i : order) {
     Eye& e = all[i];
     bool counts = !e.skip && !e.hunting && g_blind.empty();
     float dist = core::dist3(e.at, me);
     bool inside = false, clear = false;
-    if (counts && dist <= reach_of(e) + band) {
+    Zone z;
+    bool has_zone = false;
+    if (counts && dist <= reach_of(e) + range) {
       inside = in_sight(e, me);
       if (inside) {
         clear = sees(e, me);
         if (clear) seen_now[i] = true;
         else if (!g_hidden) { g_hidden = true; g_hidden_by = e.index; }
       }
-      // Each way the player can push: the first point within the band that this Shadow would see.
-      for (int d = 0; d < 4; ++d) {
-        if (g_lane[d].shadow >= 0 && g_lane[d].dist == 0) continue;
-        FVector v = world::dir_vector(d);
-        std::vector<std::pair<float, float>> spans;
-        const float reach = room_of(d);
-        for (const SightCone& c : e.cones) for (auto& s : core::cone_spans(c, me, v.x, v.y, reach)) spans.push_back(s);
-        spans = core::merge_spans(std::move(spans));
-        int traces = 0;
-        float found = -1;
-        for (auto [a, b] : spans) {
-          float step = std::max(kTraceStep, (b - a) / kMaxTraces);
-          for (float s = a; s <= b + 0.01f && traces < kMaxTraces && g_traces < kTickTraces; s += step) {
-            if (s == 0 && inside) { if (clear) { found = 0; break; } continue; }   // the hero's own place, traced above
-            ++traces;
-            if (sees(e, Vec3{me.x + v.x * s, me.y + v.y * s, me.z})) { found = s; break; }
-          }
-          if (found >= 0 || traces >= kMaxTraces) break;
-        }
-        if (found >= 0 && (g_lane[d].shadow < 0 || found < g_lane[d].dist)) g_lane[d] = Lane{found, e.index};
-      }
+      if (inside && clear) { z = Zone{me, 0, "seen"}; has_zone = true; }
+      else has_zone = zone_of(e, me, inside, z);
+      if (has_zone && z.dist < range) zones.push_back(Heard1{WeakObj::of(e.actor).key(), e.index, z, core::zone_level(z.dist, range)});
     }
     std::string cones;
     for (const SightCone& c : e.cones) cones += std::format(" {:.0f}/{:.0f}", c.range, c.angle);
-    g_shadows += std::format("  step {} #{} {:.1f} m at ({:.0f}, {:.0f}, {:.0f}) yaw {:.0f}, {} block, cones{}{}{}{}{}{}\n", e.step, e.index, dist / 100.0f, e.at.x, e.at.y, e.at.z,
-                             e.cones.empty() ? 0.0f : e.cones[0].yaw, e.block, cones, e.hunting ? ", not searching" : "",
+    g_shadows += std::format("  step {} #{} {:.1f} m at ({:.0f}, {:.0f}, {:.0f}) yaw {:.0f}, {} block, cones{}{}{}{}{}{}{}\n", e.step, e.index, dist / 100.0f, e.at.x,
+                             e.at.y, e.at.z, e.cones.empty() ? 0.0f : e.cones[0].yaw, e.block, cones, e.hunting ? ", not searching" : "",
                              e.skip ? std::string(", skipped: ") + e.why : std::string(), inside ? ", hero inside its sight" : "",
-                             inside ? (clear ? ", line clear (SEEN)" : ", line blocked (hidden)") : "", counts ? "" : ", left out");
+                             inside ? (clear ? ", line clear (SEEN)" : ", line blocked (hidden)") : "", counts ? "" : ", left out",
+                             has_zone ? std::format(", edge {:.0f} cm ({}) at ({:.0f}, {:.0f})", z.dist, z.how, z.at.x, z.at.y) : std::string());
   }
   log_prediction(all, seen_now, me);
-  for (int d = 0; d < 4; ++d) {
-    float v = g_lane[d].shadow >= 0 ? core::edge_level(g_lane[d].dist, band) : 0.0f;
-    if (v <= 0) { audio::release_hold(kLaneHold + d); continue; }
-    audio::hold(kLaneHold + d, lane_pcm(d), v * g_gain, lane_spot(d), 1.0f, 1.0f, 0.0f);
+  // The nearest few zones sound, each in a slot it keeps while it sounds.
+  std::sort(zones.begin(), zones.end(), [](const Heard1& a, const Heard1& b) { return a.z.dist < b.z.dist; });
+  if ((int)zones.size() > kZones) zones.resize(kZones);
+  std::map<WeakObj::Key, int> slots;
+  bool used[kZones] = {};
+  for (const Heard1& h : zones)
+    if (auto it = g_slot.find(h.key); it != g_slot.end()) { slots[h.key] = it->second; used[it->second] = true; }
+  for (const Heard1& h : zones)
+    if (!slots.count(h.key))
+      for (int s = 0; s < kZones; ++s) if (!used[s]) { slots[h.key] = s; used[s] = true; break; }
+  for (int s = 0; s < kZones; ++s) if (!used[s]) audio::release_hold(kZoneHold + s);
+  for (const Heard1& h : zones) {
+    audio::Spot at = world::spot(mef, FVector{h.z.at.x, h.z.at.y, me.z});
+    float rate = at.ahead < -0.2f && settings::on(settings::BehindPitch) ? kBehindRate : 1.0f;
+    audio::hold(kZoneHold + slots[h.key], zone_pcm(), h.level * g_gain, at, rate, 1.0f, 0.0f);
+  }
+  g_slot.swap(slots);
+  // The log: each zone as it starts, nears and stops.
+  for (auto& [key, h] : g_heard) h.kept = false;
+  for (const Heard1& h : zones) log_heard(h.index, h.key, true, h.z.dist, h.level);
+  for (auto it = g_heard.begin(); it != g_heard.end();) {
+    if (!it->second.kept) {
+      if (it->second.on) log_heard(std::get<0>(it->first), it->first, false, 0, 0);
+      it = g_heard.erase(it);
+    } else ++it;
   }
   if (g_hidden) play_bed(g_bed_gain);
   else { audio::release_hold(kBedHold); audio::release_hold(kBedHold + 1); }
@@ -386,31 +475,31 @@ static void tick_body() {
 }
 
 void install() {
-  // Decoded now, not on the first sound: six files took ~10 ms in the field's tick.
-  for (int d = 0; d < 4; ++d) lane_pcm(d);
+  // Decoded now, not on the first sound: the files took ~10 ms in the field's tick.
+  zone_pcm();
   bed_pcm(0);
   dev::route("/sight", [](const dev::Request& r, int&) {
     if (dev::has(r, "gain")) g_gain = std::clamp((float)dev::arg_num(r, "gain", g_gain), 0.0f, 1.0f);
     if (dev::has(r, "bed")) g_bed_gain = std::clamp((float)dev::arg_num(r, "bed", g_bed_gain), 0.0f, 1.0f);
     if (dev::has(r, "tone")) g_bed_tone = std::clamp((float)dev::arg_num(r, "tone", g_bed_tone), 0.0f, 1.0f);
     if (dev::has(r, "spread")) g_bed_spread = std::clamp((float)dev::arg_num(r, "spread", g_bed_spread), 0.0f, 1.0f);
-    if (dev::has(r, "band")) g_band_dev = std::max(0.0f, (float)dev::arg_num(r, "band", g_band_dev));
+    if (dev::has(r, "range")) g_range_dev = std::max(0.0f, (float)dev::arg_num(r, "range", g_range_dev));
     if (dev::has(r, "reset")) { g_match = g_missed = g_false = 0; g_busy_us = g_max_us = 0; g_busy_ticks = g_max_traces = 0; }
     if (dev::has(r, "demo")) { int w = (int)dev::arg_num(r, "demo", 0); return dev::on_game([w] { demo(w); return std::string("ok\n"); }); }
     return dev::on_game([] {
-      static const char* dir[4] = {"ahead", "right", "behind", "left"};
-      std::string s = std::format("on={} band={:.0f} cm dashing={} blind={} hidden={}{} traces={} gain={:.2f} bed={:.2f} tone={:.2f} spread={:.2f}\n",
-                                  settings::on(settings::ShadowSight), g_band_dev > 0 ? g_band_dev : settings::get(settings::SightBand) * 100.0f, g_dashing,
+      std::string s = std::format("on={} range={:.0f} cm dashing={} blind={} hidden={}{} traces={} gain={:.2f} bed={:.2f} tone={:.2f} spread={:.2f}\n",
+                                  settings::on(settings::ShadowSight), g_range_dev > 0 ? g_range_dev : settings::get(settings::SightRange) * 100.0f, g_dashing,
                                   g_blind.empty() ? "-" : g_blind, g_hidden, g_hidden ? std::format(" (#{})", g_hidden_by) : "", g_traces, g_gain, g_bed_gain,
                                   g_bed_tone, g_bed_spread);
-      for (int d = 0; d < 4; ++d)
-        s += (g_lane[d].shadow >= 0 ? std::format("  {}: edge at {:.0f} cm (#{})", dir[d], g_lane[d].dist, g_lane[d].shadow) : std::format("  {}: none", dir[d])) +
-             (g_room[d] >= 0 ? std::format(", room {:.0f} cm\n", g_room[d]) : std::string("\n"));
-      s += std::format("prediction vs the game's mark: {} matched, {} missed, {} false alarms\n", g_match, g_missed, g_false);
+      for (auto& [key, slot] : g_slot) {
+        auto h = g_heard.find(key);
+        s += std::format("  sounding: #{} in slot {}, closest {:.0f} cm\n", std::get<0>(key), slot, h != g_heard.end() ? h->second.closest : -1.0f);
+      }
+      s += std::format("prediction vs the game's noticing: {} matched, {} missed, {} false alarms\n", g_match, g_missed, g_false);
       s += std::format("cost with a Shadow near: {:.1f} us a tick on average over {} ticks, worst {:.0f} us, most traces {}\n",
                        g_busy_ticks ? g_busy_us / g_busy_ticks : 0.0, g_busy_ticks, g_max_us, g_max_traces);
       return s + g_shadows;
     });
-  }, "?gain=&bed=&tone=&spread=&band=cm&reset=1&demo=0..4 Shadow sight: each way's edge, hidden, the prediction's score");
+  }, "?gain=&bed=&tone=&spread=&range=cm&reset=1&demo=0..2 Shadow sight: each Shadow's zone edge, hidden, the prediction's score");
 }
 }  // namespace p3a::sight

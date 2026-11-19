@@ -358,8 +358,8 @@ inline constexpr const char* kHelpSonarScope = "Which points the sonar plays: ev
 inline constexpr const char* kHelpSonarRange = "How far away a thing can be and still sound.";
 inline constexpr const char* kHelpSonarKind = "Whether this kind of thing sounds. Changing it plays its sound.";
 inline constexpr const char* kHelpSonarVolume = "How loud the sonar's sounds are. Changing it plays one.";
-inline constexpr const char* kHelpShadowSight = "In Tartarus: a sizzle ahead, behind, left or right when a Shadow's sight is that way, louder as its edge nears. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.";
-inline constexpr const char* kHelpSightBand = "How far before the edge of a Shadow's sight its sizzle starts.";
+inline constexpr const char* kHelpShadowSight = "In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.";
+inline constexpr const char* kHelpSightRange = "How far from the edge of a Shadow's sight you start to hear it.";
 inline constexpr const char* kHelpShadowAlerts = "In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.";
 inline constexpr const char* kHelpTopDown = "While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.";
 inline constexpr const char* kHelpTurnedRooms = "In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.";
@@ -399,10 +399,8 @@ inline constexpr SoundTest kSoundTests[] = {
     {"Shadow, hunting you", "The snarl of a Shadow that has noticed you: higher and louder."},
     {"Shadow, back turned", "Muffled and wobbling: its back is to you, and a strike now brings the advantage. It grows duller as it turns away."},
     {"Shadow lost you", "A Shadow that was hunting you has lost you."},
-    {"Shadow sight ahead", "A sizzle: a Shadow's sight is ahead of you, louder the closer its edge. Walk into it and the Shadow notices you."},
-    {"Shadow sight to the right", "A Shadow's sight is to your right."},
-    {"Shadow sight behind", "A Shadow's sight is behind you."},
-    {"Shadow sight to the left", "A Shadow's sight is to your left."},
+    {"Shadow sight", "A sizzle from the edge of a Shadow's sight, from its point nearest you: you can walk up to it but not into it, or the Shadow notices you. Quiet while the edge is far."},
+    {"Shadow sight, at the edge", "The same sizzle with the edge right beside you: one more step and the Shadow notices you."},
     {"Hidden from a Shadow", "A muffled hum: you stand where a Shadow would see you, but a wall blocks its view."},
     {"Strike reach", "A Shadow or a breakable object is within reach of your strike. In the game it repeats quickly while you stay in reach."},
     {"Strike reach, behind the Shadow", "Within reach and behind the Shadow: the strike brings the advantage."},
@@ -431,7 +429,7 @@ inline constexpr const char* kSonarOn = "Sonar on";
 inline constexpr const char* kSonarOff = "Sonar off";
 inline constexpr const char* kSetShadowAlerts = "Shadow alerts";
 inline constexpr const char* kSetShadowSight = "Shadow sight";
-inline constexpr const char* kSetSightBand = "Shadow sight warning distance";
+inline constexpr const char* kSetSightRange = "Shadow sight range";
 inline constexpr const char* kSetTopDown = "Top-down exploration";
 inline constexpr const char* kSetTurnedRooms = "Keep your heading through passages";
 inline constexpr const char* kSetStrikeAssist = "Strike assist";

@@ -1,5 +1,4 @@
 #pragma once
-#include <utility>
 #include <vector>
 #include "core/boxes.h"
 
@@ -19,13 +18,26 @@ struct SightCone {
 
 // The point is inside the cone (range and angle; no line of sight).
 bool cone_holds(const SightCone& c, const Vec3& p);
-// The stretches of the walk from `from` along the ground direction (dx, dy) (a unit vector), out to `len`, that lie
-// inside the cone: sorted, each [start, end] in cm along the walk. The walk keeps `from`'s height.
-std::vector<std::pair<float, float>> cone_spans(const SightCone& c, const Vec3& from, float dx, float dy, float len);
-// The union of several sets of spans, sorted and merged.
-std::vector<std::pair<float, float>> merge_spans(std::vector<std::pair<float, float>> spans);
-// How loud the edge is at `dist` cm from it, in a warning band `band` cm wide: 0 at the band's far end (and past it),
-// 1 at the edge, rising steeply over the last part ((1 - d/band) squared).
-float edge_level(float dist, float band);
+
+// The cone cut at `p`'s height is a sector on the ground plane (its range shrunk by the height between). The point
+// of that sector nearest `p`, at `p`'s height, and the distance to it on the ground (0: `p` is inside). False when
+// the cone does not reach that height.
+bool sector_nearest(const SightCone& c, const Vec3& p, Vec3& out, float& dist);
+
+// How far a set of cones (one Shadow's) reaches along ground bearing `theta` (degrees from the eye) at height `z`:
+// the longest range, at that height, of the cones holding that bearing; 0 when none does.
+float reach_at(const std::vector<SightCone>& cones, float z, float theta);
+
+// One ray of a fan from the eye: its ground bearing and how far it sees along it (0: not at all).
+struct SightRay { float theta = 0, len = 0; };
+// The region a fan of rays (bearings ascending, a few degrees apart) sweeps out from `eye`: the point of its edge
+// nearest `p` (at `p`'s height) and the ground distance to it. The edge runs from tip to tip of neighbouring rays, and
+// from the eye out to the first and last ray that sees, and to either side of a ray that sees none. False: no ray
+// sees.
+bool fan_nearest(const Vec3& eye, const std::vector<SightRay>& rays, const Vec3& p, Vec3& out, float& dist);
+
+// How loud a Shadow's sight is with its edge `dist` cm away, heard from `range` cm out: a quiet floor across the
+// range (faded in over its outer metre), rising steeply over the last metres to 1 at the edge; 0 past the range.
+float zone_level(float dist, float range);
 
 }  // namespace p3a::core

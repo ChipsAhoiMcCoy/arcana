@@ -43,7 +43,7 @@ TONES = ("north.wav", "east.wav", "south.wav", "west.wav")
 # and its route pings (src/sonar.cpp: a missing one is silent).
 CUE_FILES = ("sonar/exit.wav", "sonar/object.wav", "sonar/event.wav", "sonar/fragment.wav", "signals/shadow.wav",
              "review_straight.wav", "review_path.wav", "review_unreachable.wav",
-             "sight/north.wav", "sight/east.wav", "sight/south.wav", "sight/west.wav", "sight/hidden_left.wav", "sight/hidden_right.wav")
+             "sight/zone.wav", "sight/hidden_left.wav", "sight/hidden_right.wav")
 FORBIDDEN = re.compile(r"\.(map|pdb|lib|exp|ilk|log|ini|obj|sav|pak|uasset|usm)$|live\d+\.dll$", re.I)
 
 

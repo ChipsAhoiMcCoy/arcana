@@ -3,73 +3,89 @@
 #include <cmath>
 
 namespace p3a::core {
+namespace {
+float rad(float deg) { return deg * kPi / 180.0f; }
+// The nearest point of segment a-b to p on the ground plane (p's height kept), and the distance.
+float seg_nearest(float ax, float ay, float bx, float by, const Vec3& p, Vec3& out) {
+  float dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy;
+  float t = l2 > 0 ? std::clamp(((p.x - ax) * dx + (p.y - ay) * dy) / l2, 0.0f, 1.0f) : 0.0f;
+  out = Vec3{ax + dx * t, ay + dy * t, p.z};
+  return std::hypot(p.x - out.x, p.y - out.y);
+}
+float slice_radius(const SightCone& c, float z) {
+  float dz = z - c.eye.z;
+  return std::fabs(dz) > c.range ? -1.0f : std::sqrt(c.range * c.range - dz * dz);
+}
+bool holds_bearing(const SightCone& c, float theta) { return c.angle >= 360.0f || angle_diff(theta, c.yaw) <= c.angle * 0.5f; }
+}  // namespace
 
 bool cone_holds(const SightCone& c, const Vec3& p) {
   if (dist3(c.eye, p) > c.range) return false;
   if (c.angle >= 360.0f) return true;
   float dx = p.x - c.eye.x, dy = p.y - c.eye.y;
   if (dx == 0 && dy == 0) return true;   // straight above or below: the game's yaw of a zero vector is 0
-  float to = std::atan2(dy, dx) * 180.0f / kPi;
-  return angle_diff(to, c.yaw) <= c.angle * 0.5f;
+  return holds_bearing(c, std::atan2(dy, dx) * 180.0f / kPi);
 }
 
-std::vector<std::pair<float, float>> cone_spans(const SightCone& c, const Vec3& from, float dx, float dy, float len) {
-  std::vector<std::pair<float, float>> out;
-  if (len <= 0 || c.range <= 0) return out;
-  // Where the walk's line can cross the cone's boundary: the range's circle at this height, and the two side rays.
-  float dz = from.z - c.eye.z;
-  if (std::fabs(dz) > c.range) return out;
-  float r = std::sqrt(c.range * c.range - dz * dz);
-  float ox = from.x - c.eye.x, oy = from.y - c.eye.y;
-  std::vector<float> cut{0.0f, len};
-  float b = ox * dx + oy * dy, cc = ox * ox + oy * oy - r * r;
-  float disc = b * b - cc;
-  if (disc < 0) return out;   // the line misses the circle: never inside
-  float sq = std::sqrt(disc);
-  cut.push_back(-b - sq);
-  cut.push_back(-b + sq);
-  if (c.angle < 360.0f) {
-    for (float side : {-0.5f, 0.5f}) {
-      float a = (c.yaw + side * c.angle) * kPi / 180.0f;
-      float ex = std::cos(a), ey = std::sin(a);
-      // from + s*d = eye + t*e  ->  s*d - t*e = -o
-      float det = dx * (-ey) - dy * (-ex);
-      if (std::fabs(det) < 1e-6f) continue;
-      float s = ((-ox) * (-ey) - (-oy) * (-ex)) / det;
-      cut.push_back(s);
+bool sector_nearest(const SightCone& c, const Vec3& p, Vec3& out, float& dist) {
+  float r = slice_radius(c, p.z);
+  if (r < 0) return false;
+  float vx = p.x - c.eye.x, vy = p.y - c.eye.y, d = std::hypot(vx, vy);
+  bool in_wedge = d < 1e-3f || holds_bearing(c, std::atan2(vy, vx) * 180.0f / kPi);
+  if (in_wedge) {
+    if (d <= r) { out = p; dist = 0; return true; }
+    out = Vec3{c.eye.x + vx / d * r, c.eye.y + vy / d * r, p.z};
+    dist = d - r;
+    return true;
+  }
+  dist = 1e30f;
+  for (float side : {-0.5f, 0.5f}) {
+    float a = rad(c.yaw + side * c.angle);
+    Vec3 q;
+    float e = seg_nearest(c.eye.x, c.eye.y, c.eye.x + std::cos(a) * r, c.eye.y + std::sin(a) * r, p, q);
+    if (e < dist) { dist = e; out = q; }
+  }
+  return true;
+}
+
+float reach_at(const std::vector<SightCone>& cones, float z, float theta) {
+  float best = 0;
+  for (const SightCone& c : cones)
+    if (holds_bearing(c, theta)) best = std::max(best, slice_radius(c, z));
+  return best;
+}
+
+bool fan_nearest(const Vec3& eye, const std::vector<SightRay>& rays, const Vec3& p, Vec3& out, float& dist) {
+  dist = 1e30f;
+  bool any = false;
+  auto tip = [&](const SightRay& r, float& x, float& y) { x = eye.x + std::cos(rad(r.theta)) * r.len; y = eye.y + std::sin(rad(r.theta)) * r.len; };
+  auto consider = [&](float ax, float ay, float bx, float by) {
+    Vec3 q;
+    float e = seg_nearest(ax, ay, bx, by, p, q);
+    if (e < dist) { dist = e; out = q; }
+    any = true;
+  };
+  for (size_t i = 0; i < rays.size(); ++i) {
+    if (rays[i].len <= 0) continue;
+    float x, y;
+    tip(rays[i], x, y);
+    bool open_before = i == 0 || rays[i - 1].len <= 0, open_after = i + 1 == rays.size() || rays[i + 1].len <= 0;
+    if (open_before || open_after) consider(eye.x, eye.y, x, y);   // a side of the region: from the eye out
+    if (i + 1 < rays.size() && rays[i + 1].len > 0) {
+      float x2, y2;
+      tip(rays[i + 1], x2, y2);
+      consider(x, y, x2, y2);
     }
   }
-  std::vector<float> pts;
-  for (float s : cut) if (s >= 0 && s <= len) pts.push_back(s);
-  std::sort(pts.begin(), pts.end());
-  pts.erase(std::unique(pts.begin(), pts.end()), pts.end());
-  auto at = [&](float s) { return Vec3{from.x + dx * s, from.y + dy * s, from.z}; };
-  for (size_t i = 0; i + 1 < pts.size(); ++i) {
-    float a = pts[i], e = pts[i + 1];
-    if (e - a < 1e-3f) continue;
-    if (!cone_holds(c, at((a + e) * 0.5f))) continue;
-    if (!out.empty() && std::fabs(out.back().second - a) < 1e-3f) out.back().second = e;
-    else out.push_back({a, e});
-  }
-  // A walk that starts on the boundary and runs out of the cone: the start alone is inside.
-  if (out.empty() && cone_holds(c, from)) out.push_back({0.0f, 0.0f});
-  return out;
+  return any;
 }
 
-std::vector<std::pair<float, float>> merge_spans(std::vector<std::pair<float, float>> spans) {
-  std::sort(spans.begin(), spans.end());
-  std::vector<std::pair<float, float>> out;
-  for (auto& s : spans) {
-    if (!out.empty() && s.first <= out.back().second + 1e-3f) out.back().second = std::max(out.back().second, s.second);
-    else out.push_back(s);
-  }
-  return out;
-}
-
-float edge_level(float dist, float band) {
-  if (band <= 0 || dist >= band) return 0.0f;
-  float v = 1.0f - std::max(dist, 0.0f) / band;
-  return v * v;
+float zone_level(float dist, float range) {
+  if (range <= 0 || dist >= range) return 0.0f;
+  constexpr float kFloor = 0.12f;   // heard across the whole range
+  float closeness = 1.0f - std::max(dist, 0.0f) / range;
+  float fade = std::min(1.0f, (range - dist) / 100.0f);   // the floor comes in over the range's outer metre
+  return std::max(kFloor * fade, closeness * closeness * closeness);
 }
 
 }  // namespace p3a::core

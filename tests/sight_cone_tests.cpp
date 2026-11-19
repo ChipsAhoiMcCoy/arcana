@@ -1,5 +1,6 @@
 #include "doctest.h"
 #include "core/sight_cone.h"
+#include <cmath>
 
 using namespace p3a::core;
 
@@ -21,47 +22,49 @@ TEST_CASE("cone_holds: range in space, angle on the ground") {
   CHECK(cone_holds(all, Vec3{-300, 0, 0}));
 }
 
-TEST_CASE("cone_spans: walking straight at the Shadow from in front") {
+TEST_CASE("sector_nearest: in front, beside and behind the Shadow") {
   SightCone c = walk_cone();
-  auto s = cone_spans(c, Vec3{1200, 0, 0}, -1, 0, 600);
-  REQUIRE(s.size() == 1);
-  CHECK(s[0].first == doctest::Approx(345.0f));
-  CHECK(s[0].second == doctest::Approx(600.0f));
+  Vec3 q; float d;
+  REQUIRE(sector_nearest(c, Vec3{1200, 0, 0}, q, d));       // straight ahead, out of range: the arc
+  CHECK(d == doctest::Approx(345.0f));
+  CHECK(q.x == doctest::Approx(855.0f));
+  REQUIRE(sector_nearest(c, Vec3{0, 1000, 0}, q, d));       // 90 degrees off: still the arc
+  CHECK(d == doctest::Approx(145.0f));
+  REQUIRE(sector_nearest(c, Vec3{-500, 0, 0}, q, d));       // in the blind wedge: the nearer side ray
+  CHECK(d == doctest::Approx(500.0f * 0.70710678f).epsilon(0.001));
+  REQUIRE(sector_nearest(c, Vec3{400, 0, 0}, q, d));        // inside
+  CHECK(d == 0.0f);
+  CHECK_FALSE(sector_nearest(c, Vec3{0, 0, 900}, q, d));    // a floor above, out of reach
+  REQUIRE(sector_nearest(c, Vec3{1200, 0, 300}, q, d));     // 3 m higher: the slice is smaller
+  CHECK(d == doctest::Approx(1200.0f - std::sqrt(855.0f * 855.0f - 300.0f * 300.0f)));
 }
 
-TEST_CASE("cone_spans: walking away out of range") {
-  auto s = cone_spans(walk_cone(), Vec3{800, 0, 0}, 1, 0, 300);
-  REQUIRE(s.size() == 1);
-  CHECK(s[0].first == doctest::Approx(0.0f));
-  CHECK(s[0].second == doctest::Approx(55.0f));
+TEST_CASE("reach_at: the longest cone holding the bearing") {
+  std::vector<SightCone> cones{walk_cone(), SightCone{Vec3{0, 0, 0}, 0.0f, 370.0f, 352.0f}};
+  CHECK(reach_at(cones, 0, 0) == doctest::Approx(855.0f));
+  CHECK(reach_at(cones, 0, 170) == doctest::Approx(370.0f));   // behind: the close cone only
+  CHECK(reach_at(cones, 0, 179) == doctest::Approx(0.0f));     // its 8-degree blind wedge
 }
 
-TEST_CASE("cone_spans: walking past behind the Shadow crosses the blind wedge") {
-  // Along y at x = -300: inside the cone until the side ray at 135 degrees (y = 300), blind between, inside again.
-  auto s = cone_spans(walk_cone(), Vec3{-300, -600, 0}, 0, 1, 1200);
-  REQUIRE(s.size() == 2);
-  CHECK(s[0].second == doctest::Approx(300.0f).epsilon(0.01));    // y = -300
-  CHECK(s[1].first == doctest::Approx(900.0f).epsilon(0.01));      // y = +300
+TEST_CASE("fan_nearest: a wall cuts the rays on one side") {
+  // Rays from the origin every 10 degrees, -20..20; the two on the left see only 200 cm (a wall), the rest 855.
+  std::vector<SightRay> rays{{-20, 855}, {-10, 855}, {0, 855}, {10, 200}, {20, 200}};
+  Vec3 q; float d;
+  REQUIRE(fan_nearest(Vec3{0, 0, 0}, rays, Vec3{1200, 0, 0}, q, d));
+  CHECK(d == doctest::Approx(345.0f).epsilon(0.02));          // ahead: the far tips
+  REQUIRE(fan_nearest(Vec3{0, 0, 0}, rays, Vec3{300, 100, 0}, q, d));   // inside the cone, but behind the wall
+  CHECK(d < 100.0f);                                           // the edge where the wall cuts in, just below
+  CHECK(q.y < 60.0f);
+  std::vector<SightRay> none{{0, 0}, {10, 0}};
+  CHECK_FALSE(fan_nearest(Vec3{0, 0, 0}, none, Vec3{100, 0, 0}, q, d));
 }
 
-TEST_CASE("cone_spans: a walk that never enters") {
-  CHECK(cone_spans(walk_cone(), Vec3{-500, -100, 0}, -1, 0, 500).empty());   // behind, walking further back
-  CHECK(cone_spans(walk_cone(), Vec3{2000, 0, 0}, 0, 1, 500).empty());       // far off, walking across
-  CHECK(cone_spans(walk_cone(), Vec3{100, 0, 900}, 1, 0, 500).empty());      // a floor above, out of range
-}
-
-TEST_CASE("merge_spans: overlapping cones of one Shadow are one stretch") {
-  auto m = merge_spans({{300, 500}, {0, 100}, {80, 320}});
-  REQUIRE(m.size() == 1);
-  CHECK(m[0].first == doctest::Approx(0.0f));
-  CHECK(m[0].second == doctest::Approx(500.0f));
-  auto two = merge_spans({{0, 10}, {50, 60}});
-  CHECK(two.size() == 2);
-}
-
-TEST_CASE("edge_level: steep near the edge, nothing past the band") {
-  CHECK(edge_level(0, 200) == doctest::Approx(1.0f));
-  CHECK(edge_level(100, 200) == doctest::Approx(0.25f));
-  CHECK(edge_level(200, 200) == doctest::Approx(0.0f));
-  CHECK(edge_level(500, 200) == doctest::Approx(0.0f));
+TEST_CASE("zone_level: a floor across the range, steep near the edge") {
+  CHECK(zone_level(0, 600) == doctest::Approx(1.0f));
+  CHECK(zone_level(600, 600) == doctest::Approx(0.0f));
+  CHECK(zone_level(900, 600) == doctest::Approx(0.0f));
+  CHECK(zone_level(400, 600) == doctest::Approx(0.12f));        // far: the floor
+  CHECK(zone_level(550, 600) == doctest::Approx(0.06f));        // the floor fading in at the range's end
+  CHECK(zone_level(100, 600) == doctest::Approx(0.5787f).epsilon(0.01));
+  CHECK(zone_level(100, 600) > 2.0f * zone_level(250, 600));    // the last metres rise steeply
 }

@@ -62,8 +62,9 @@ static const Def kDefs[Count] = {
   {"shadow_alerts", strings::kSetShadowAlerts, CatExploring, strings::kHelpShadowAlerts, Unit::Toggle, {1, 0}, 1},
   // the edge of each Shadow's sight, and the hum while a wall hides the hero from one (sight.cpp)
   {"shadow_sight", strings::kSetShadowSight, CatExploring, strings::kHelpShadowSight, Unit::Toggle, {1, 0}, 1},
-  // how far before that edge its sound starts, in meters
-  {"sight_band", strings::kSetSightBand, CatExploring, strings::kHelpSightBand, Unit::Meters, {1, 2, 3, 4, 5}, 2},
+  // how far from the edge of a Shadow's sight its zone is heard, in meters (a new key: the old warning distance meant
+  // something else)
+  {"sight_range", strings::kSetSightRange, CatExploring, strings::kHelpSightRange, Unit::Meters, {2, 4, 6, 8, 10, 12}, 6},
   // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
   {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {1, 0}, 1},
   // every nearby point of interest sounds (sonar.cpp)
@@ -214,11 +215,11 @@ static void play_test(int i) {
     case 7: sonar::demo(2, true); break;
     case 8: case 9: case 10: shadow::demo(i - 8); break;
     case 11: audio::signal((int)SignalCue::Lost, 1.1f, ahead); break;
-    case 12: case 13: case 14: case 15: case 16: sight::demo(i - 12); break;   // right under the Shadow's own sounds
-    case 17: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
-    case 18: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
-    case 19: case 20: case 21: case 22: walltones::demo(i - 19); break;
-    case 23: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
+    case 12: case 13: case 14: sight::demo(i - 12); break;   // right under the Shadow's own sounds
+    case 15: audio::signal_here((int)SignalCue::Reach, 1.2f); break;
+    case 16: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
+    case 17: case 18: case 19: case 20: walltones::demo(i - 17); break;
+    case 21: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
   }
 }
 
