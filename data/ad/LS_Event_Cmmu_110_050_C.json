@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "Naganaki Shrine. Maiko is crying. You sit down with her on a bench."
+   "text": "Naganaki Shrine, by the jungle gym in its playground. Maiko stands with her backpack on, crying and rubbing her eyes with both hands. You stand beside her, your bag over your shoulder."
+  },
+  {
+   "at": 2.0,
+   "text": "You sit down together on a bench. Maiko hunches forward, hands on her knees, head bowed."
   }
  ]
 }

@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_109_070_C", "title": "The missing fee money", "cues": [{"at": 0.00, "text": "In the school's main lobby, Chihiro turns back to you with a smile."}, {"at": 5.97, "text": "Two boys and a girl from her class walk up and stop in front of Chihiro."}, {"at": 21.56, "text": "The three students walk off, leaving Chihiro with you."}]}
+{
+ "movie": "LS_Event_Cmmu_109_070_C",
+ "title": "The missing fee money",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school's main lobby, by the shoe lockers, Chihiro turns back to you with a smile."
+  },
+  {
+   "at": 5.97,
+   "text": "Three boys and a girl walk up and stop in front of Chihiro and you."
+  },
+  {
+   "at": 21.56,
+   "text": "The students walk off, leaving Chihiro with you. She stands with her head lowered, clutching her bag in both hands."
+  }
+ ]
+}

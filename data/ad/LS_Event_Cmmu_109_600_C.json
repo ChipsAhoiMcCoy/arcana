@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_109_600_C", "title": "At the cinema with Chihiro", "cues": [{"at": 0.0, "text": "At the cinema at Port Island Station, Chihiro walks up to you, her bag in hand."}, {"at": 1.0, "text": "You and Chihiro sit side by side among the audience in the theatre as the films play."}]}
+{
+ "movie": "LS_Event_Cmmu_109_600_C",
+ "title": "At the cinema with Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At the cinema at Port Island Station, you stand with Chihiro by the snack counter."
+  },
+  {
+   "at": 1.0,
+   "text": "You and Chihiro sit side by side among the audience in the theatre as the films play."
+  }
+ ]
+}

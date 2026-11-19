@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_510_C
-0.000	4.134	00.mp3	In the school library, you sit at a table with Chihiro. She smiles at you.
+0.000	7.293	00.mp3	In the school library, you sit at a long table with Chihiro, notebooks and papers spread out in front of you. She smiles at you.

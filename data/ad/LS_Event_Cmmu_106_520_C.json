@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_106_520_C", "title": "Yuko's room", "cues": [{"at": 0.00, "text": "Yuko's room. You sit facing Yuko, the two of you alone."}]}
+{
+ "movie": "LS_Event_Cmmu_106_520_C",
+ "title": "Yuko's room",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Yuko's room. You sit beside Yuko on the edge of her bed, the two of you alone, her hands folded in her lap."
+  }
+ ]
+}

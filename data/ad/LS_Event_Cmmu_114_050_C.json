@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_114_050_C", "title": "Mutatsu on money", "cues": [{"at": 0.00, "text": "The bar at Club Escapade. You sit beside Mutatsu at the counter, his bottle and glass in front of him."}]}
+{
+ "movie": "LS_Event_Cmmu_114_050_C",
+ "title": "Mutatsu on money",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Club Escapade. You sit with Mutatsu on a long sofa in a booth, a low round table in front of you with his bottle, a glass and a small dish. He has a cigarette between his fingers and draws on it as he talks."
+  }
+ ]
+}

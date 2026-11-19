@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_109_653_C", "title": "Christmas Eve with Chihiro", "cues": [{"at": 0.0, "text": "In Paulownia Mall's Fountain Square, decorated for Christmas, you and Chihiro walk in side by side among the shoppers, both carrying your bags."}, {"at": 11.33, "text": "You and Chihiro walk on to look around, and stop together at another spot in the square."}, {"at": 16.67, "text": "Chihiro holds out a small handmade gift to you, and you take it."}]}
+{
+ "movie": "LS_Event_Cmmu_109_653_C",
+ "title": "Christmas Eve with Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Paulownia Mall's Fountain Square, decorated for Christmas, you and Chihiro walk in side by side among the shoppers, both carrying your bags."
+  },
+  {
+   "at": 11.33,
+   "text": "You and Chihiro walk on to look around, and stop together by the fountain."
+  },
+  {
+   "at": 16.67,
+   "text": "Chihiro holds out a small handmade gift to you, and you take it."
+  },
+  {
+   "at": 23.2,
+   "text": "Chihiro steps in close to your side and stands there, her hands clasped on her bag."
+  }
+ ]
+}

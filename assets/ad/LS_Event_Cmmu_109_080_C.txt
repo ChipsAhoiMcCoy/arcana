@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_109_080_C
 0.000	5.500	00.mp3	In the school library, you sit at a table with Chihiro. A library staff member sits nearby.
 2.330	6.294	01.mp3	Chihiro gets up and walks off among the bookshelves. Two students walk in, talking, and stop near your table.
-21.000	6.685	02.mp3	The two students leave the library. Chihiro comes back from the shelves, watching them go, and stops beside you.
+21.000	8.456	02.mp3	The two students leave the library. Chihiro comes back from the shelves, watching them go, and stands across the table from you, her head bowed.

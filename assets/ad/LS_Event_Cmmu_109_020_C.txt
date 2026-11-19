@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_020_C
-0.000	5.308	00.mp3	Chihiro steps out of the used bookstore in Iwatodai Strip Mall and turns to face you.
+0.000	6.445	00.mp3	Chihiro steps out of the used bookstore in Iwatodai Strip Mall and turns to face you. She keeps her head lowered.

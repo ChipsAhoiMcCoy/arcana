@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_109_030_C
-0.000	6.183	00.mp3	In the school library, you sit at a table with Chihiro. Nearby, a boy and a girl sit studying together.
-7.330	5.847	01.mp3	The boy and the girl get up from their chairs together, facing each other. Chihiro stares at them, frowning.
+0.000	7.954	00.mp3	In the school library, you sit at a long table with Chihiro. At the same table, beside her, a boy and a girl sit studying together.
+7.330	7.796	01.mp3	The girl leans in close to the boy, then the two of them get up together and walk away from the table. Chihiro stares after them, frowning.

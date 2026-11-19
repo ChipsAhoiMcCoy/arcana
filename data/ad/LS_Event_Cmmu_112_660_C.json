@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_660_C", "title": "A letter from Bebe", "cues": [{"at": 0.00, "text": "The school rooftop. You read a letter from Bebe."}]}
+{
+ "movie": "LS_Event_Cmmu_112_660_C",
+ "title": "A letter from Bebe",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school rooftop. You sit alone on a curved stone bench, your bag beside you, reading a letter from Bebe."
+  }
+ ]
+}

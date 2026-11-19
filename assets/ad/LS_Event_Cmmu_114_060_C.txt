@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_114_060_C
-0.000	6.638	00.mp3	The bar at Club Escapade. You sit beside Mutatsu at the counter. He winces at you over his bottle and glass.
+0.000	10.048	00.mp3	Club Escapade. You sit beside Mutatsu on a long sofa in a booth, a bottle and a glass on the low table in front of him. He sits hunched forward, wincing at you.

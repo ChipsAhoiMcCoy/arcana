@@ -2,4 +2,5 @@
 0.000	4.939	00.mp3	At school, two women teachers stand talking. You are nearby, your bag over your shoulder.
 8.000	6.917	01.mp3	You turn to go, and your phone slips out of your pocket and falls open on the floor. Ms. Toriumi turns toward you.
 12.900	3.995	02.mp3	Ms. Toriumi walks over, picks up your phone and looks at its screen.
-27.600	2.389	03.mp3	Mrs. Terauchi runs off to fetch help.
+23.830	5.360	03.mp3	Ms. Toriumi clutches her head in both hands and doubles over, your phone still in her hand.
+27.600	2.389	04.mp3	Mrs. Terauchi runs off to fetch help.

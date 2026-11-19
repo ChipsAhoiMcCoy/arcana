@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Iwatodai Strip Mall. You and Maiko sit side by side on a bench near the takoyaki stand, eating takoyaki, while shoppers pass by."
+   "text": "Iwatodai Strip Mall. You and Maiko sit side by side on a bench near the takoyaki stand, trays of takoyaki on the bench between you. Maiko still has her school backpack on, and as she talks she leans forward with her hands in her lap."
+  },
+  {
+   "at": 8.33,
+   "text": "Maiko gets down from the bench and walks off, her backpack on her back."
   }
  ]
 }

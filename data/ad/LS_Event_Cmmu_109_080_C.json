@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_109_080_C", "title": "Rumours in the library", "cues": [{"at": 0.00, "text": "In the school library, you sit at a table with Chihiro. A library staff member sits nearby."}, {"at": 2.33, "text": "Chihiro gets up and walks off among the bookshelves. Two students walk in, talking, and stop near your table."}, {"at": 21.0, "text": "The two students leave the library. Chihiro comes back from the shelves, watching them go, and stops beside you."}]}
+{
+ "movie": "LS_Event_Cmmu_109_080_C",
+ "title": "Rumours in the library",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school library, you sit at a table with Chihiro. A library staff member sits nearby."
+  },
+  {
+   "at": 2.33,
+   "text": "Chihiro gets up and walks off among the bookshelves. Two students walk in, talking, and stop near your table."
+  },
+  {
+   "at": 21.0,
+   "text": "The two students leave the library. Chihiro comes back from the shelves, watching them go, and stands across the table from you, her head bowed."
+  }
+ ]
+}

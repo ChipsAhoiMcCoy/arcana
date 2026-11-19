@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_010_C", "title": "Chihiro asks for your help", "cues": [{"at": 0.00, "text": "In the school's main lobby, with students passing through, a girl in glasses walks up to you, holding her school bag."}]}
+{
+ "movie": "LS_Event_Cmmu_109_010_C",
+ "title": "Chihiro asks for your help",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school's main lobby, with students passing through, you and a girl in glasses walk up to each other. She holds her school bag in front of her with both hands and keeps a little distance from you."
+  }
+ ]
+}

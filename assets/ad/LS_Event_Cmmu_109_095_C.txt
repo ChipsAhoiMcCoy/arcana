@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_109_095_C
 0.000	7.139	00.mp3	In the faculty office, Chihiro stands at the desk of a male teacher sitting in his chair. You and Mitsuru walk up beside her.
+11.000	6.892	01.mp3	Mr. Takenozuka slumps forward in his chair, head hanging. Chihiro turns from his desk to face you and Mitsuru.

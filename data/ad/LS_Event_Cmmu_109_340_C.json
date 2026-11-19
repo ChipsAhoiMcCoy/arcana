@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_340_C", "title": "Hanging out with Chihiro", "cues": [{"at": 0.00, "text": "At Port Island Station, among the crowd, you and Chihiro walk out into the plaza and stop."}]}
+{
+ "movie": "LS_Event_Cmmu_109_340_C",
+ "title": "Hanging out with Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Port Island Station, you and Chihiro walk out past the cinema's film posters and stop. Chihiro keeps her head bowed."
+  }
+ ]
+}

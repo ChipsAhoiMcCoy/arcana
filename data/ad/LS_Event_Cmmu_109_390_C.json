@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_390_C", "title": "After the arcade", "cues": [{"at": 0.0, "text": "In Paulownia Mall's Fountain Square, with shoppers passing by, you and Chihiro walk out together and stop. She turns to you, smiling."}]}
+{
+ "movie": "LS_Event_Cmmu_109_390_C",
+ "title": "After the arcade",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Paulownia Mall's Fountain Square, you and Chihiro walk out of the arcade past its claw machine and stop. She turns to you, smiling."
+  }
+ ]
+}

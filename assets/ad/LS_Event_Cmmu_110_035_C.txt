@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_110_035_C
-0.000	8.710	00.mp3	Iwatodai Strip Mall. You and Maiko sit side by side on a bench near the takoyaki stand, eating takoyaki, while shoppers pass by.
+0.000	14.512	00.mp3	Iwatodai Strip Mall. You and Maiko sit side by side on a bench near the takoyaki stand, trays of takoyaki on the bench between you. Maiko still has her school backpack on, and as she talks she leans forward with her hands in her lap.
+8.330	3.745	01.mp3	Maiko gets down from the bench and walks off, her backpack on her back.

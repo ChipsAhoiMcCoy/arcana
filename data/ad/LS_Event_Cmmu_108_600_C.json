@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_108_600_C", "title": "Keisuke at the cinema", "cues": [{"at": 1.1, "text": "At the cinema in Port Island Station, Keisuke meets you, and the two of you take seats among the audience as the film begins."}]}
+{
+ "movie": "LS_Event_Cmmu_108_600_C",
+ "title": "Keisuke at the cinema",
+ "cues": [
+  {
+   "at": 1.1,
+   "text": "In the lobby of the cinema at Port Island Station, Keisuke meets you by the snack counter. Then the two of you sit side by side among the audience as the film begins."
+  },
+  {
+   "at": 8.0,
+   "text": "After the film, you and Keisuke stand by the snack counter again."
+  }
+ ]
+}

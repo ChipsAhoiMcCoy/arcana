@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_115_030_C
-0.030	3.727	00.mp3	The Iwatodai Strip Mall. You and Mamoru meet up to eat together.
-1.330	4.236	01.mp3	Later, done eating, the two of you walk a few steps together and stop to talk.
+0.030	6.671	00.mp3	The Iwatodai Strip Mall, outside the beef bowl shop. You and Mamoru stand at its door, about to eat together.
+1.330	3.807	01.mp3	Later, done eating, the two of you walk out of the shop and stop to talk.
 17.000	1.647	02.mp3	Mamoru turns and runs off.

@@ -1,4 +1,5 @@
 #scene LS_Event_Cmmu_108_055_C
 0.000	6.222	00.mp3	In the school lobby, you and Fuuka wait outside the faculty office while the advisor talks with Keisuke inside.
-5.790	7.271	01.mp3	A student comes running up behind you and Fuuka. The faculty office door opens, and Keisuke comes out with the advisor.
+5.790	10.871	01.mp3	A girl comes running up behind you and Fuuka, and Fuuka holds a hand to her chest. The faculty office door opens, and Keisuke comes out with the advisor, a woman with short hair.
 12.830	1.814	02.mp3	Keisuke runs off with the student.
+18.000	4.298	03.mp3	The advisor walks away down the hall, leaving you and Fuuka by the office door.

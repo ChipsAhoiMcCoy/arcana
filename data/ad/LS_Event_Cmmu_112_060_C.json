@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_060_C", "title": "Bebe: cannot focus", "cues": [{"at": 0.00, "text": "In the home economics room, you and Bebe sew at machines facing each other. Bebe looks downcast."}]}
+{
+ "movie": "LS_Event_Cmmu_112_060_C",
+ "title": "Bebe: cannot focus",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the home economics room, among dress forms, you and Bebe sit at sewing machines facing each other, a heap of cloth piled beside Bebe's machine. Bebe slumps and lets out a heavy sigh."
+  }
+ ]
+}

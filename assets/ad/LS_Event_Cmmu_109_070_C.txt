@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_109_070_C
-0.000	3.614	00.mp3	In the school's main lobby, Chihiro turns back to you with a smile.
-5.970	4.100	01.mp3	Two boys and a girl from her class walk up and stop in front of Chihiro.
-21.560	2.838	02.mp3	The three students walk off, leaving Chihiro with you.
+0.000	4.920	00.mp3	In the school's main lobby, by the shoe lockers, Chihiro turns back to you with a smile.
+5.970	3.456	01.mp3	Three boys and a girl walk up and stop in front of Chihiro and you.
+21.560	6.277	02.mp3	The students walk off, leaving Chihiro with you. She stands with her head lowered, clutching her bag in both hands.
