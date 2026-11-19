@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_240_C
 0.100	4.324	00.mp3	You, Yukari and Junpei stand on the tracks beside a stopped monorail.
-10.400	6.325	01.mp3	Yukari turns to a ladder on the monorail's side and starts to climb. Junpei stays at the bottom with you.
+10.400	8.671	01.mp3	Yukari turns to a ladder on the monorail's side and starts to climb; partway up she stops and looks down. Junpei stays at the bottom with you.

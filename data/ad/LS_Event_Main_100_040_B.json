@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_100_040_B", "title": "The boy at the front desk", "cues": [{"at": 0.03, "text": "Inside, a lobby with sofas and a front desk. You walk up to the desk."}, {"at": 7.07, "text": "A boy in striped pyjamas peers over the top of the front desk. He snaps his fingers and is gone, and you turn around."}, {"at": 12.63, "text": "The boy stands in the hall beside you. He breaks apart into black specks and appears again by the front desk, next to the sofas. A book lies open on the desk."}, {"at": 20.3, "text": "On the desk lie the open book, a quill pen and a bell. You walk to the desk and pick up the pen."}]}
+{
+ "movie": "LS_Event_Main_100_040_B",
+ "title": "The boy at the front desk",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Inside, a lobby with sofas and a front desk. You walk up to the desk."
+  },
+  {
+   "at": 7.07,
+   "text": "A boy in striped pyjamas peers over the top of the front desk. He snaps his fingers and is gone, and you turn around."
+  },
+  {
+   "at": 12.63,
+   "text": "The boy stands in the hall in front of you. He breaks apart into black specks and appears again at the end of the front desk, by the sofas. A closed book lies on the desk."
+  },
+  {
+   "at": 20.3,
+   "text": "The boy has opened the book on the desk; beside it lie a quill pen and a bell. You step up to the desk and pick up the pen."
+  }
+ ]
+}

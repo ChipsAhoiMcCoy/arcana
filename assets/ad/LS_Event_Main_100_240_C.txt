@@ -1,5 +1,5 @@
 #scene LS_Event_Main_100_240_C
-0.050	11.423	00.mp3	The dorm's front lobby. Akihiko staggers in through the front door, clutching his side, and slumps to the floor against the wall. Mitsuru and Yukari come running, Ikutsuki close behind.
+0.050	11.273	00.mp3	The dorm's front lobby. Akihiko staggers in through the front door, holding one arm, and slumps to the floor against the wall. Mitsuru and Yukari come running, Ikutsuki close behind.
 3.050	3.176	01.mp3	Yukari runs to Akihiko and kneels beside him.
 8.250	6.783	02.mp3	A heavy crash shakes the building. Everyone startles; Ikutsuki whirls around, and Yukari jumps to her feet.
 15.050	2.085	03.mp3	Yukari runs off toward the stairs.

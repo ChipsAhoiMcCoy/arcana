@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_070_C", "title": "The room at the end of the hall", "cues": [{"at": 0.03, "text": "Yukari leads you up the stairs and along a hallway on the second floor, to the door at its far end."}, {"at": 16.0, "text": "Yukari walks a few steps down the hall, then stops and turns back to you."}]}
+{
+ "movie": "LS_Event_Main_100_070_C",
+ "title": "The room at the end of the hall",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Yukari leads you up the stairs and along a hallway on the second floor, to the door at its far end."
+  },
+  {
+   "at": 16.0,
+   "text": "Yukari walks back past you down the hall while you step over to your door; then she stops and turns back to you."
+  }
+ ]
+}

@@ -1,5 +1,5 @@
 #scene LS_Event_Main_100_040_B
 0.030	4.277	00.mp3	Inside, a lobby with sofas and a front desk. You walk up to the desk.
 7.070	6.893	01.mp3	A boy in striped pyjamas peers over the top of the front desk. He snaps his fingers and is gone, and you turn around.
-12.630	9.669	02.mp3	The boy stands in the hall beside you. He breaks apart into black specks and appears again by the front desk, next to the sofas. A book lies open on the desk.
-20.300	5.497	03.mp3	On the desk lie the open book, a quill pen and a bell. You walk to the desk and pick up the pen.
+12.630	10.286	02.mp3	The boy stands in the hall in front of you. He breaks apart into black specks and appears again at the end of the front desk, by the sofas. A closed book lies on the desk.
+20.300	6.914	03.mp3	The boy has opened the book on the desk; beside it lie a quill pen and a bell. You step up to the desk and pick up the pen.

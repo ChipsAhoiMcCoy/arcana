@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_120_C
-0.000	8.607	00.mp3	The school auditorium, during the opening ceremony. You sit among the students, facing the stage. Beside you, a classmate leans over to whisper.
+0.000	12.105	00.mp3	The school auditorium, during the opening ceremony: a man speaks from a podium on the stage. You sit among the students, facing the stage. In the row behind you, a classmate leans forward to whisper.
