@@ -43,3 +43,12 @@ TEST_CASE("log_record_index counts a log row from the newest record") {
   CHECK(log_record_index(0, 1, 0, 0) == -1);
   CHECK(log_record_index(6, 6, 0, 6) == -1);
 }
+
+TEST_CASE("punct_key_name: punctuation keys by name, others left to Windows") {
+  using p3a::core::punct_key_name;
+  CHECK(std::string(punct_key_name(0xBE)) == "Period");
+  CHECK(std::string(punct_key_name(0xDE)) == "Apostrophe");
+  CHECK(std::string(punct_key_name(0xDB)) == "Left bracket");
+  CHECK(punct_key_name('K') == nullptr);
+  CHECK(punct_key_name(0x70) == nullptr);   // F1
+}

@@ -244,7 +244,7 @@ struct Menu : ui::Screen {
         // keys in this menu).
         v->announcements = {ui::NodeAnnouncement([id] { return std::string(kDefs[id].name); }, false, k::kLabel),
                             ui::NodeAnnouncement([id] { return label(id); }, true, k::kValue),
-                            ui::NodeAnnouncement([id] { return std::string(kDefs[id].help); }, false, k::kTooltip)};
+                            ui::NodeAnnouncement([id] { return keys::fill(kDefs[id].help); }, false, k::kTooltip)};
         v->on_adjust = [id](int sign, bool) { change(id, sign); };
         v->on_activate = [id] { change(id, 0); };
         v->state_text = [id] { return label(id); };

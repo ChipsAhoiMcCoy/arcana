@@ -6,4 +6,7 @@ namespace p3a::core {
 // in keyboard rows from 431 (Q..P 431-440, A..L 441-449, Z..M 450-456) and Space is 469. Any other code is said as
 // "key code N".
 std::string config_key_name(int code);
+// A punctuation key by its name ("Period" for VK_OEM_PERIOD), or nullptr for any other key: Windows names them by
+// their character (".", "'"), which screen readers often leave silent.
+const char* punct_key_name(unsigned vk);
 }  // namespace p3a::core

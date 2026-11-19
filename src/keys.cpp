@@ -1,6 +1,7 @@
 #include "keys.h"
 #include "hooks.h"
 #include "input.h"
+#include "core/key_name.h"
 #include "core/strings.h"
 #include "log.h"
 #include "mod.h"
@@ -161,6 +162,7 @@ static std::string key_name(uint32_t vk, int mods) {
   if (mods & Ctrl) s += strings::kModCtrl;
   if (mods & Alt) s += strings::kModAlt;
   if (mods & Shift) s += strings::kModShift;
+  if (const char* punct = core::punct_key_name(vk)) return s + punct;
   UINT sc = MapVirtualKeyW(vk, MAPVK_VK_TO_VSC);
   wchar_t buf[64] = {};
   LONG lp = (LONG)(sc << 16);
@@ -261,6 +263,25 @@ bool binding_default(int i) {
   return !valid(i) || (g_bindings[(size_t)i].vk == g_bindings[(size_t)i].def_vk && g_bindings[(size_t)i].mods == g_bindings[(size_t)i].def_mods);
 }
 std::string key_label(uint32_t vk, int mods) { return key_name(vk, mods); }
+std::string key_of(const char* name) {
+  for (auto& b : g_bindings) if (b.name == name) return key_name(b.vk, b.mods);
+  return {};
+}
+std::string fill(std::string_view text) {
+  std::string out;
+  size_t at = 0;
+  while (at < text.size()) {
+    size_t open = text.find('{', at), close = open == std::string_view::npos ? open : text.find('}', open);
+    if (close == std::string_view::npos) break;
+    out.append(text.substr(at, open - at));
+    const std::string name(text.substr(open + 1, close - open - 1));
+    std::string key = key_of(name.c_str());
+    out += key.empty() ? std::string(text.substr(open, close - open + 1)) : key;
+    at = close + 1;
+  }
+  out.append(text.substr(std::min(at, text.size())));
+  return out;
+}
 bool is_key(const char* name, uint32_t vk, int mods) {
   for (auto& b : g_bindings) if (b.name == name) return b.vk == vk && b.mods == mods;
   return false;

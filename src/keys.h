@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <functional>
 #include <string>
+#include <string_view>
 #include <vector>
 
 namespace p3a::keys {
@@ -19,6 +20,10 @@ std::string binding_help(int i);          // what it does
 std::string binding_key(int i);           // its key now ("Shift+1")
 bool binding_default(int i);              // still on the mod's own key
 std::string key_label(uint32_t vk, int mods);
+std::string key_of(const char* name);     // that binding's key now ("Period"), or "" for no such binding
+// A hint naming the mod's keys: each {binding.name} becomes that binding's key now, so a moved key is said where it
+// is (strings.h writes the hints with them: "{nav.walk.period} walks to..."). An unknown name stays as written.
+std::string fill(std::string_view text);
 bool is_key(const char* name, uint32_t vk, int mods);   // that binding is on this key now
 bool reserved(uint32_t vk, int mods);     // the game's own (walking, act, back, menu) or a Ctrl / Alt chord
 // Moves binding i to the key and saves; a binding already on that key takes i's old one (returned, else -1).

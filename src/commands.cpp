@@ -66,11 +66,11 @@ static void screen_keys() {
   else if (world::player()) {
     k = std::string(strings::kFieldKeys()) + " " + (poi::tartarus_floor() > 0 ? std::string(strings::kTartarusKeys()) + " " : std::string());
     // The mod's walk that uses its point: Shift+Period, or on a controller RT on the top-down scan's point.
-    if (!strings::pad_hints()) k += std::string(strings::kFieldWalkUseKeys) + " ";
+    if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkUseKeys) + " ";
     else if (topdown::active()) k += std::string(strings::kPadScanKeys) + " ";
-    k += strings::kModKeysHint();
+    k += keys::fill(strings::kModKeysHint());
   }
-  if (k.empty()) k = std::string(strings::kNoKeys) + " " + strings::kModKeysHint();
+  if (k.empty()) k = std::string(strings::kNoKeys) + " " + keys::fill(strings::kModKeysHint());
   speech::speak(k, true);
 }
 

@@ -9,6 +9,7 @@
 #include "core/key_name.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
+#include "keys.h"
 #include "log.h"
 #include "msg.h"
 #include "ue/scan.h"
@@ -227,7 +228,7 @@ class ConfigScreen : public MenuScreen {
   }
   std::string title() override { return strings::kConfig; }
   void on_enter() override {
-    screens::set_keys([this] { return std::string(bgm_mode() ? strings::kBgmKeys() : tabs_ ? strings::kConfigTabKeys() : strings::kConfigKeys()); });
+    screens::set_keys([this] { return keys::fill(bgm_mode() ? strings::kBgmKeys() : tabs_ ? strings::kConfigTabKeys() : strings::kConfigKeys()); });
     rows_.clear();
     state_seen_ = -1;
     state_settled_ = false;

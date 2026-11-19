@@ -317,6 +317,18 @@ inline constexpr const char* kIconAssistBattle = "F";   // 117 (RB) for an Assis
 inline constexpr const char* kIconTheurgyBattle = "T";  // 118 (RT)
 inline constexpr const char* kIconItemsBattle = "R";    // 111 (X) in battle; the field's strike is Ctrl
 inline constexpr const char* kKeySpace = "Space";       // the key configuration's Space
+// The punctuation keys by name (core::punct_key_name), as the README names them.
+inline constexpr const char* kKeySemicolon = "Semicolon";
+inline constexpr const char* kKeyEquals = "Equals";
+inline constexpr const char* kKeyComma = "Comma";
+inline constexpr const char* kKeyMinus = "Minus";
+inline constexpr const char* kKeyPeriod = "Period";
+inline constexpr const char* kKeySlash = "Slash";
+inline constexpr const char* kKeyGrave = "Grave accent";
+inline constexpr const char* kKeyLeftBracket = "Left bracket";
+inline constexpr const char* kKeyBackslash = "Backslash";
+inline constexpr const char* kKeyRightBracket = "Right bracket";
+inline constexpr const char* kKeyApostrophe = "Apostrophe";
 inline constexpr const char* kTitleScreen = "Title screen";
 inline constexpr Hint kTutorialKeys{"Q and E turn the pages, Space goes on.", "LB and RB turn the pages, A goes on."};
 inline constexpr Hint kDialogueKeys{"Conversation keys: Space next, B log, Shift auto, Tab fast-forwards.",
@@ -330,14 +342,15 @@ inline constexpr Hint kTartarusKeys{"In Tartarus: Y Auto-Recover, N the navigato
                                     "In Tartarus: RB Auto-Recover, View the navigator's support skills, such as Escape Route."};
 // The help keys (F1 = this screen's keys, Shift+F1 = the mod's own keys, F2 its settings; on a controller, the mod
 // layer's Menu, and View for the settings, whose last row reads the keys).
-inline constexpr Hint kModKeysHint{"Shift+F1 lists the mod's keys, F2 opens its settings, where Mod keys changes them.", "Both triggers and View open the mod's settings; Mod keys there lists the mod's keys."};
+// Every {name} is a binding's key now (keys::fill): the player may have moved it.
+inline constexpr Hint kModKeysHint{"{help.mod} lists the mod's keys, {settings} opens its settings, where Mod keys changes them.", "Both triggers and View open the mod's settings; Mod keys there lists the mod's keys."};
 inline constexpr const char* kNoKeys = "No keys to tell here.";
 inline constexpr const char* kModKeys = "Mod keys";
 inline constexpr const char* kPadLayer = "Hold both triggers, then";
 // The top-down mode's right stick, after the layer's buttons in the controller's list of mod keys and in F1's field keys.
 inline constexpr const char* kPadScanKeys = "Without the triggers, in top-down mode: the right stick finds the nearest point of interest that way; RT while it is on one walks there and uses it.";
 // F1 in the field: the walk that uses its point (Shift+Period; RT on the right stick's point in top-down mode).
-inline constexpr const char* kFieldWalkUseKeys = "Period walks to the selected point of interest, Shift+Period walks there and uses it; Comma selects the nearest one, then the next nearest, Shift+Comma goes back; Shift+Semicolon says the selected one again.";
+inline constexpr const char* kFieldWalkUseKeys = "{nav.walk.period} walks to the selected point of interest, {nav.use} walks there and uses it; {poi.nearest} selects the nearest one, then the next nearest, {poi.nearest.prev} goes back; {poi.again} says the selected one again.";
 // The mod settings menu (settings.cpp)
 inline constexpr const char* kModSettings = "Mod settings";
 inline constexpr const char* kModSettingsClosed = "Mod settings closed";
@@ -353,7 +366,7 @@ inline constexpr const char* kCatControls = "Controls and help";
 inline constexpr const char* kCatSoundTest = "Sound test";
 // What each setting does: read with its row, after the position.
 inline constexpr const char* kHelpWallTones = "A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer. They play all the time, only while you move, or not at all.";
-inline constexpr const char* kHelpSonar = "Every point of interest near you repeats its own sound from where it is, faster and louder the closer it is. F3 also switches it.";
+inline constexpr const char* kHelpSonar = "Every point of interest near you repeats its own sound from where it is, faster and louder the closer it is. {sonar} also switches it.";
 inline constexpr const char* kHelpSonarScope = "Which points the sonar plays: everything nearby, only the category the points of interest list is on, or only the point you selected there, at any distance.";
 inline constexpr const char* kHelpSonarRange = "How far away a thing can be and still sound.";
 inline constexpr const char* kHelpSonarKind = "Whether this kind of thing sounds. Changing it plays its sound.";
@@ -626,9 +639,9 @@ inline constexpr const char* kOn = "on";
 inline constexpr const char* kOff = "off";
 inline constexpr const char* kUnavailable = "unavailable";
 inline constexpr const char* kUnsupportedBuild = "This copy of Persona 3 Reload is not the version Arcana was made for, such as the demo or an older update. To keep the game from freezing, menus are not read. Messages and the field still are.";
-inline constexpr Hint kConfigTabKeys{"Up and down arrows choose, Space opens, Escape back. F2 opens the mod's settings.", "Up and down choose, A opens, B back. Both triggers and View open the mod's settings."};
+inline constexpr Hint kConfigTabKeys{"Up and down arrows choose, Space opens, Escape back. {settings} opens the mod's settings.", "Up and down choose, A opens, B back. Both triggers and View open the mod's settings."};
 inline constexpr Hint kBgmKeys{"Up and down arrows choose, Tab and Shift Tab jump between modes and tracks, Space sets it, F plays or stops a track, E marks or unmarks a favorite, Escape back.", "Up and down choose, RT and LT jump between modes and tracks, A sets it, X plays or stops a track, RB marks or unmarks a favorite, B back."};
-inline constexpr Hint kConfigKeys{"Up and down arrows choose, left and right arrows change, Space saves changes, H restores defaults, Escape back. F2 opens the mod's settings.", "Up and down choose, left and right change, A saves changes, Menu button restores defaults, B back. Both triggers and View open the mod's settings."};
+inline constexpr Hint kConfigKeys{"Up and down arrows choose, left and right arrows change, Space saves changes, H restores defaults, Escape back. {settings} opens the mod's settings.", "Up and down choose, left and right change, A saves changes, Menu button restores defaults, B back. Both triggers and View open the mod's settings."};
 inline constexpr const char* kKeyCode = "key code";
 inline constexpr const char* kPlaylist = "Playlist";   // when the BGM row's own title is not known
 inline constexpr const char* kBgmModes = "Modes";
