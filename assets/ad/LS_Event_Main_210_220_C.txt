@@ -1,6 +1,7 @@
 #scene LS_Event_Main_210_220_C
-0.300	5.282	00.mp3	Takaya stumbles across the platform alone, hunched over, one hand clutching his chest.
+0.300	9.143	00.mp3	Takaya stumbles across the platform alone, hunched over, one hand clutching his chest. Then he straightens and stares upward, arms hanging loose.
 16.100	10.091	01.mp3	A crushing force slams down from above. You and the others are thrown onto your hands and knees, Koromaru pressed flat against the floor, and Takaya is knocked off his feet.
 22.760	2.629	02.mp3	Takaya collapses onto his back and lies still.
-29.450	4.689	03.mp3	Junpei strains to push himself up off the floor, then the weight drives him back down.
-36.100	1.570	04.mp3	You sink lower under the weight.
+27.070	4.252	03.mp3	High above, the winged figure looks down on you all where you lie pinned to the floor.
+29.450	4.689	04.mp3	Junpei strains to push himself up off the floor, then the weight drives him back down.
+36.100	1.570	05.mp3	You sink lower under the weight.

@@ -1,5 +1,5 @@
 #scene LS_Event_Extr_450_065_C
-0.030	5.217	00.mp3	Wilduck Burger. You sit at a table, staring wide-eyed at a tray piled high with burgers.
+0.030	6.137	00.mp3	Wilduck Burger. You sit at a table before a tray piled high with burgers, eating one held in both hands.
 9.500	2.033	01.mp3	You sit hunched over the tray, wincing.
 14.000	2.033	02.mp3	You sit hunched over the tray, wincing.
 18.500	2.033	03.mp3	You sit hunched over the tray, wincing.

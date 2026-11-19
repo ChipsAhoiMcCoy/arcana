@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_330_030_C", "title": "Junpei asks for help", "cues": [{"at": 0.03, "text": "A lesson in your classroom. You sit at your desk, Junpei at the desk beside you and Yukari nearby, while the teacher talks at the front."}, {"at": 3.63, "text": "Junpei twists around in his seat toward you."}]}
+{
+ "movie": "LS_Event_Extr_330_030_C",
+ "title": "Junpei asks for help",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "A lesson in your classroom. You sit at your desk, Junpei at the desk beside you and Yukari nearby, while the teacher talks at the front."
+  },
+  {
+   "at": 3.63,
+   "text": "Junpei, a bead of sweat on his brow, turns his head toward you."
+  }
+ ]
+}

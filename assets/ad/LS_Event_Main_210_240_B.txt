@@ -1,5 +1,5 @@
 #scene LS_Event_Main_210_240_B
 0.100	5.364	00.mp3	The Velvet Room. Igor sits at his table, hands folded, Elizabeth standing beside him.
-10.650	6.299	01.mp3	The room flashes white. When it clears, a card spins in the air before you, circled by streams of light.
-19.750	3.248	02.mp3	The card bursts in a flash, and everything goes white again.
-23.550	10.757	03.mp3	Above the room's doors, the hands of a clock spin wildly, then slow and stop. The doors slide open onto a blank white void, with Igor and Elizabeth waiting before it.
+10.650	11.327	01.mp3	A sphere of energy swells in the air above Igor's table, shooting out rays until it fills the room. When it fades, a card spins in the air before you, ringed by swirling bands.
+19.750	3.532	02.mp3	The card bursts apart, and the burst swallows the whole room again.
+23.550	13.424	03.mp3	Above the room's doors, the hands of a clock spin wildly, then slow and stop at twelve. The great doors slide open onto an empty, featureless void, with Igor at his table and Elizabeth beside him in front of it.

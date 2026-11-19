@@ -1,3 +1,4 @@
 #scene LS_Event_Extr_400_037_C
-26.360	5.583	00.mp3	Takaya walks over to stand at your shoulder, leans in close and hands you a folded piece of paper.
-34.530	3.876	01.mp3	Takaya turns and walks away. You take out your phone and look at it.
+0.000	7.333	00.mp3	Naganaki Shrine, among the torii gates. You stand with Koromaru at your side, facing Takaya a few steps away.
+26.360	5.583	01.mp3	Takaya walks over to stand at your shoulder, leans in close and hands you a folded piece of paper.
+34.530	3.876	02.mp3	Takaya turns and walks away. You take out your phone and look at it.

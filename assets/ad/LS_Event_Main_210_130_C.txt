@@ -1,3 +1,3 @@
 #scene LS_Event_Main_210_130_C
-0.000	10.207	00.mp3	The dorm lounge. You sit on the sofas with Mitsuru, Akihiko, Junpei, Yukari, Fuuka and Ken, with Koromaru sitting among you and Aigis standing nearby.
+0.000	17.076	00.mp3	The command room on the dorm's fourth floor. You sit on the sofas and chairs around a long low table with Mitsuru, Akihiko, Junpei, Yukari, Fuuka and Ken, Koromaru sitting among you and Aigis standing nearby. Akihiko and Mitsuru sit with their arms crossed.
 27.400	3.015	01.mp3	You get up from your seat, and everyone turns to look at you.

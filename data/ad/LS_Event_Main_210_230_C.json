@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Main_210_230_C", "title": "Natsuki at the shrine", "cues": [
-  {"at": 0.1, "text": "Naganaki Shrine. Natsuki stands in the shrine grounds among other people, all of them awake and on their feet."}
-]}
+{
+ "movie": "LS_Event_Main_210_230_C",
+ "title": "Natsuki at the shrine",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Naganaki Shrine. Natsuki stands in the shrine grounds with a hand on her hip, among other people, all of them awake and on their feet."
+  }
+ ]
+}

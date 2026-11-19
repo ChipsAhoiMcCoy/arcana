@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_350_010_C
-0.000	3.060	00.mp3	The nurse's office. The school nurse stands waiting for you.
-1.200	2.416	01.mp3	He sets a cup of some steaming brew in front of you.
+0.000	3.128	00.mp3	The nurse's office. The school nurse leans in toward you.
+1.200	3.105	01.mp3	After a moment, you are holding a steaming cup of his brew.
 9.700	4.211	02.mp3	You raise the steaming cup and drink it down in one go, your face screwing up.

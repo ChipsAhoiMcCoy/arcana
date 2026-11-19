@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Main_210_130_C", "title": "A promise to meet again", "cues": [
-{"at": 0.00, "text": "The dorm lounge. You sit on the sofas with Mitsuru, Akihiko, Junpei, Yukari, Fuuka and Ken, with Koromaru sitting among you and Aigis standing nearby."},
-{"at": 27.40, "text": "You get up from your seat, and everyone turns to look at you."}
-]}
+{
+ "movie": "LS_Event_Main_210_130_C",
+ "title": "A promise to meet again",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The command room on the dorm's fourth floor. You sit on the sofas and chairs around a long low table with Mitsuru, Akihiko, Junpei, Yukari, Fuuka and Ken, Koromaru sitting among you and Aigis standing nearby. Akihiko and Mitsuru sit with their arms crossed."
+  },
+  {
+   "at": 27.4,
+   "text": "You get up from your seat, and everyone turns to look at you."
+  }
+ ]
+}

@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_043_C
-0.030	8.411	00.mp3	Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Akihiko stands facing you.
+0.030	7.946	00.mp3	Paulownia Mall, inside the shop Be Blue V, by its counter. You stand with your hands in your pockets; Akihiko stands facing you.
 4.500	4.475	01.mp3	Akihiko turns and walks off for the treatment, leaving you waiting by the sign.
 8.830	2.119	02.mp3	Later, Akihiko walks back to you.

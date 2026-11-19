@@ -1,7 +1,30 @@
-{"movie": "LS_Event_Main_210_220_C", "title": "Takaya's last moment", "cues": [
-  {"at": 0.3, "text": "Takaya stumbles across the platform alone, hunched over, one hand clutching his chest."},
-  {"at": 16.1, "text": "A crushing force slams down from above. You and the others are thrown onto your hands and knees, Koromaru pressed flat against the floor, and Takaya is knocked off his feet."},
-  {"at": 22.76, "text": "Takaya collapses onto his back and lies still."},
-  {"at": 29.45, "text": "Junpei strains to push himself up off the floor, then the weight drives him back down."},
-  {"at": 36.1, "text": "You sink lower under the weight."}
-]}
+{
+ "movie": "LS_Event_Main_210_220_C",
+ "title": "Takaya's last moment",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "Takaya stumbles across the platform alone, hunched over, one hand clutching his chest. Then he straightens and stares upward, arms hanging loose."
+  },
+  {
+   "at": 16.1,
+   "text": "A crushing force slams down from above. You and the others are thrown onto your hands and knees, Koromaru pressed flat against the floor, and Takaya is knocked off his feet."
+  },
+  {
+   "at": 22.76,
+   "text": "Takaya collapses onto his back and lies still."
+  },
+  {
+   "at": 27.07,
+   "text": "High above, the winged figure looks down on you all where you lie pinned to the floor."
+  },
+  {
+   "at": 29.45,
+   "text": "Junpei strains to push himself up off the floor, then the weight drives him back down."
+  },
+  {
+   "at": 36.1,
+   "text": "You sink lower under the weight."
+  }
+ ]
+}

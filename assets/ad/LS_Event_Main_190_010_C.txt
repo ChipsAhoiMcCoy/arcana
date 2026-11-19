@@ -2,4 +2,4 @@
 0.050	6.950	00.mp3	Your room in the dorm. You lie asleep under the covers. Pharos, the boy in striped pyjamas, stands by the window.
 2.200	6.260	01.mp3	You push yourself up on your elbows and look at him. Then you sit on the edge of the bed, and Pharos stands in front of you.
 12.850	4.533	02.mp3	Pharos holds out his hand. You reach out and take it, and the two of you hold hands.
-17.670	8.412	03.mp3	Pharos has let go and stands back from you. A white flash fills the room. When it fades, he is gone, and you sit alone on the edge of the bed.
+17.670	8.204	03.mp3	Pharos has let go and stands back from you. Everything fades out, and when the room comes back, he is gone; you sit alone on the edge of the bed.

@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_460_046_C", "title": "Koromaru at Be Blue V", "cues": [{"at": 0.03, "text": "Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Koromaru, the white dog, stands facing you."}, {"at": 2.67, "text": "Koromaru turns and trots off for the treatment, leaving you waiting by the sign."}, {"at": 7.5, "text": "Later, Koromaru trots back to you."}]}
+{
+ "movie": "LS_Event_Extr_460_046_C",
+ "title": "Koromaru at Be Blue V",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Paulownia Mall, inside the shop Be Blue V, by its counter. You stand with your hands in your pockets; Koromaru stands facing you."
+  },
+  {
+   "at": 2.67,
+   "text": "Koromaru turns and trots off for the treatment, leaving you waiting by the sign."
+  },
+  {
+   "at": 7.5,
+   "text": "Later, Koromaru trots back to you."
+  }
+ ]
+}

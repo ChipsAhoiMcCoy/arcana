@@ -1,3 +1,3 @@
 #scene LS_Event_Main_210_260_B
-0.300	8.750	00.mp3	A white haze clears to endless stars on every side. Far off, the team stands together on nothing, Koromaru with them. You are not among them.
+0.300	8.364	00.mp3	A haze clears to endless stars on every side. Far off, the team stands together on nothing, Koromaru with them. You are not among them.
 22.700	4.633	01.mp3	They spread out into a loose ring, looking all around, and everyone starts at once.

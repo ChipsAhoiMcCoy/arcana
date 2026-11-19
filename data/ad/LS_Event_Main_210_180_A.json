@@ -1,7 +1,30 @@
-{"movie": "LS_Event_Main_210_180_A", "title": "The top of Tartarus", "cues": [
-  {"at": 0.6, "text": "The top of Tartarus: a wide, round platform under the open sky, ringed by tall pillars, each crowned with a bird statue. You walk out onto it with the whole team, Koromaru among you, and everyone looks around and up."},
-  {"at": 12.1, "text": "Black feathers peel away from the bird statues and swirl upward."},
-  {"at": 27.9, "text": "Streams of feathers rise from every statue, higher and higher, and converge on a huge full moon, knotting together at its centre."},
-  {"at": 58.85, "text": "In front of the moon the feathers churn into a tangled mass, and something bursts out of it, spreading great feathered wings."},
-  {"at": 69.3, "text": "A slender figure with several pairs of wings spread wide grips a long blade. Its face is a mask with hollow eyes and a wide, fixed smile. It hovers high above you and the team, who stand small among the pillars."}
-]}
+{
+ "movie": "LS_Event_Main_210_180_A",
+ "title": "The top of Tartarus",
+ "cues": [
+  {
+   "at": 0.6,
+   "text": "The top of Tartarus: a wide, round platform ringed by tall pillars, each crowned with a bird statue. You walk out onto it with the whole team, Koromaru among you; everyone looks around and up, Junpei shading his eyes with a hand."
+  },
+  {
+   "at": 12.1,
+   "text": "Feathers peel away from the bird statues and swirl upward."
+  },
+  {
+   "at": 27.9,
+   "text": "Streams of feathers rise from every statue, higher and higher, and converge on a huge full moon, knotting together at its centre."
+  },
+  {
+   "at": 44.9,
+   "text": "Koromaru crouches low beside Ken, and you stare upward with the others."
+  },
+  {
+   "at": 58.85,
+   "text": "In front of the moon the feathers churn into a tangled mass, and something bursts out of it, spreading great feathered wings."
+  },
+  {
+   "at": 69.3,
+   "text": "A slender figure with several pairs of wings spread wide grips a long blade. Its face is a mask with hollow eyes and a wide, fixed smile. It hovers high above you and the team, who stand small among the pillars."
+  }
+ ]
+}

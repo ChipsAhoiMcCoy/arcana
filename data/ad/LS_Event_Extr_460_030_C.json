@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_460_030_C", "title": "Shift at the cinema snack bar", "cues": [{"at": 0.03, "text": "The snack bar at the cinema in Port Island Station: popcorn machines and a hot snack case behind the counter. In a staff shirt, you serve a line of customers beside a coworker."}, {"at": 3.50, "text": "At the end of the shift, a coworker in an apron walks over to you by the popcorn fridge and talks with you."}]}
+{
+ "movie": "LS_Event_Extr_460_030_C",
+ "title": "Shift at the cinema snack bar",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The snack bar at the cinema in Port Island Station: popcorn machines and a hot snack case behind the counter. In a staff shirt, you serve a line of customers beside a coworker."
+  },
+  {
+   "at": 3.5,
+   "text": "At the end of the shift, a man in an apron walks over to you beside a case of boxed popcorn by the swing doors and talks with you."
+  }
+ ]
+}

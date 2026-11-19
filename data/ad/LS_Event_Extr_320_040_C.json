@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Extr_320_040_C", "title": "Whispers in the hallway", "cues": [{"at": 0.03, "text": "A school hallway. Bag over your shoulder, hands in your pockets, you stop near two students talking together by the wall."}]}
+{
+ "movie": "LS_Event_Extr_320_040_C",
+ "title": "Whispers in the hallway",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "By the shoe lockers at school. Bag over your shoulder, hands in your pockets, you stop near two girls whispering together by the lockers, one with a hand raised to her mouth."
+  }
+ ]
+}

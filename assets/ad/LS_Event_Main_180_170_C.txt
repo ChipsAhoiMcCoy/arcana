@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_170_C
-0.200	13.381	00.mp3	The Moonlight Bridge, after the battle. You and the others stand in a row on the empty roadway, looking up toward the bridge's far tower, Koromaru among your feet. Then everyone turns and gathers in a loose circle around you.
+0.200	13.168	00.mp3	The Moonlight Bridge, after the battle. You and the others stand in a row on the empty roadway, looking up toward the bridge's far tower, Koromaru among you. Then everyone turns and gathers in a loose circle around you.
 30.100	5.769	01.mp3	Junpei slumps and wails. Yukari nods, smiling, and Fuuka, Akihiko and Ken laugh.
 37.200	6.346	02.mp3	You turn away from the circle. The whole team stands side by side, looking out along the bridge toward its tower.
