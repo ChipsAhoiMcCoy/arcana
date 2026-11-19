@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_115_080_C", "title": "Mom is coming home", "cues": [{"at": 0.00, "text": "The takoyaki stand at the Iwatodai Strip Mall. You and Mamoru eat takoyaki side by side."}, {"at": 16.33, "text": "Mamoru runs off."}]}
+{
+ "movie": "LS_Event_Cmmu_115_080_C",
+ "title": "Mom is coming home",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The takoyaki stand at the Iwatodai Strip Mall. You and Mamoru sit side by side on a bench, eating takoyaki. Once the food is gone, Mamoru sits hunched forward, elbows on his knees, as he talks."
+  },
+  {
+   "at": 16.33,
+   "text": "Mamoru, already on his feet, turns and runs off."
+  }
+ ]
+}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_117_040_C", "title": "Akinari on books", "cues": [{"at": 0.00, "text": "Naganaki Shrine. You sit beside Akinari, who smiles at you."}]}
+{
+ "movie": "LS_Event_Cmmu_117_040_C",
+ "title": "Akinari on books",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You sit beside Akinari on a bench; he sits with his legs crossed and smiles at you."
+  }
+ ]
+}

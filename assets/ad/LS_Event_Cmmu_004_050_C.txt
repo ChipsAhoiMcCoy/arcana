@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_004_050_C
 5.830	7.938	00.mp3	Kurosawa walks up to you and Akihiko with another police officer. He has a quick word with the officer, who nods and moves off.
-37.670	3.688	01.mp3	Akihiko steps up to you and hands you a pair of his hand wraps.
+37.670	5.909	01.mp3	Akihiko, who turned aside for a moment, steps back up to you and hands you a pair of his hand wraps.
