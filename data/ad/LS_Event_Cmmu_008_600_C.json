@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_008_600_C", "title": "Ken: at the movies", "cues": [{"at": 0.00, "text": "In the movie theater, Ken stops in front of a poster."}, {"at": 4.40, "text": "You and Ken sit side by side in the theater as the film starts."}, {"at": 10.40, "text": "The film is over. You and Ken stand up, and Ken stares at you, wide-eyed."}]}
+{
+ "movie": "LS_Event_Cmmu_008_600_C",
+ "title": "Ken: at the movies",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the lobby of the movie theater, you and Ken stand by the snack counter."
+  },
+  {
+   "at": 4.4,
+   "text": "You and Ken sit side by side in the theater as the film starts."
+  },
+  {
+   "at": 10.4,
+   "text": "The film is over. Back in the lobby by the snack counter, Ken looks up at you, wide-eyed."
+  }
+ ]
+}

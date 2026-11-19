@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_510_C", "title": "Fuuka: something from a book", "cues": [{"at": 0.00, "text": "You and Fuuka sit together in a classroom at school."}]}
+{
+ "movie": "LS_Event_Cmmu_006_510_C",
+ "title": "Fuuka: something from a book",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Fuuka sit side by side on a curved bench on the school rooftop, your bags at your feet."
+  }
+ ]
+}

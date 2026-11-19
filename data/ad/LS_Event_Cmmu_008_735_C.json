@@ -1,3 +1,14 @@
-{"movie": "LS_Event_Cmmu_008_735_C", "title": "Ken's first coffee", "cues": [
-{"at": 0.00, "text": "The dorm kitchen. You and Ken sit together over cups of coffee Ken has just brewed."}
-]}
+{
+ "movie": "LS_Event_Cmmu_008_735_C",
+ "title": "Ken's first coffee",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm's dining table. You and Ken, both in aprons, sit at the table over cups of coffee Ken has just brewed."
+  },
+  {
+   "at": 6.4,
+   "text": "Later, you and Ken stand together in the kitchen by the sink, cleaning up."
+  }
+ ]
+}

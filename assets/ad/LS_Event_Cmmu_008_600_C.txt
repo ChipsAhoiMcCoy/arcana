@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_008_600_C
-0.000	2.836	00.mp3	In the movie theater, Ken stops in front of a poster.
+0.000	4.063	00.mp3	In the lobby of the movie theater, you and Ken stand by the snack counter.
 4.400	3.750	01.mp3	You and Ken sit side by side in the theater as the film starts.
-10.400	4.293	02.mp3	The film is over. You and Ken stand up, and Ken stares at you, wide-eyed.
+10.400	5.125	02.mp3	The film is over. Back in the lobby by the snack counter, Ken looks up at you, wide-eyed.

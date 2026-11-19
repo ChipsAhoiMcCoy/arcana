@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_380_C", "title": "Fuuka: music and taste", "cues": [{"at": 0.00, "text": "You and Fuuka stop in Paulownia Mall's busy square, shoppers milling around you."}]}
+{
+ "movie": "LS_Event_Cmmu_006_380_C",
+ "title": "Fuuka: music and taste",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Paulownia Mall, you and Fuuka walk out of a music shop and stop outside it, your hands in your pockets."
+  }
+ ]
+}

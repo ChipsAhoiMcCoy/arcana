@@ -1,10 +1,10 @@
 {
-  "movie": "LS_Event_Cmmu_007_010_C",
-  "title": "Aigis at the shrine",
-  "cues": [
-    {
-      "at": 0.0,
-      "text": "Naganaki Shrine. Aigis walks up to you."
-    }
-  ]
+ "movie": "LS_Event_Cmmu_007_010_C",
+ "title": "Aigis at the shrine",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You and Aigis walk up to the foot of the stone steps and stop side by side."
+  }
+ ]
 }

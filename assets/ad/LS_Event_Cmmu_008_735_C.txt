@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_008_735_C
-0.000	4.959	00.mp3	The dorm kitchen. You and Ken sit together over cups of coffee Ken has just brewed.
+0.000	7.086	00.mp3	The dorm's dining table. You and Ken, both in aprons, sit at the table over cups of coffee Ken has just brewed.
+6.400	3.873	01.mp3	Later, you and Ken stand together in the kitchen by the sink, cleaning up.

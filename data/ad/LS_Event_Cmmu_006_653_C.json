@@ -1,6 +1,22 @@
-{"movie": "LS_Event_Cmmu_006_653_C", "title": "Fuuka: Christmas Eve", "cues": [
-{"at": 0.00, "text": "Fountain Square, decorated for Christmas and busy with people. You and Fuuka walk in side by side and stop to take in the decorations."},
-{"at": 13.33, "text": "You go inside together. Fuuka stops and turns to you, smiling."},
-{"at": 18.17, "text": "Fuuka holds out the cookies she baked herself, and you take them."},
-{"at": 25.50, "text": "Fuuka steps a little closer to you."}
-]}
+{
+ "movie": "LS_Event_Cmmu_006_653_C",
+ "title": "Fuuka: Christmas Eve",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Fountain Square, decorated for Christmas and busy with people. You and Fuuka walk in side by side and stop to take in the decorations."
+  },
+  {
+   "at": 13.33,
+   "text": "The two of you walk on to a quieter spot by the doors of a café, people passing now and then. Fuuka stops and turns to you, smiling."
+  },
+  {
+   "at": 18.17,
+   "text": "Fuuka holds out the cookies she baked herself, and you take them."
+  },
+  {
+   "at": 25.5,
+   "text": "Fuuka steps a little closer to you."
+  }
+ ]
+}

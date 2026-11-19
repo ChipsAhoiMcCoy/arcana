@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_007_090_C
-0.000	3.866	00.mp3	The school rooftop. You stand with Aigis, who is gazing out at the view.
-33.330	3.136	01.mp3	Aigis hurries away, leaving you alone on the rooftop.
+0.000	5.274	00.mp3	The school rooftop. You and Aigis stand side by side at the railing, gazing out at the view.
+15.500	2.000	01.mp3	Aigis brings her hands up to her chest.
+33.330	3.136	02.mp3	Aigis hurries away, leaving you alone on the rooftop.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_010_C
-0.000	2.649	00.mp3	Naganaki Shrine. Aigis walks up to you.
+0.000	5.643	00.mp3	Naganaki Shrine. You and Aigis walk up to the foot of the stone steps and stop side by side.

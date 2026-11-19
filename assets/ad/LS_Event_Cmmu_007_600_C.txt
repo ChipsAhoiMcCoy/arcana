@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_007_600_C
-0.000	4.483	00.mp3	The movie theater at Port Island Station. You arrive with Aigis for the screening.
+0.000	5.499	00.mp3	In the lobby of the movie theater at Port Island Station, you stand with Aigis by the snack counter.
 1.830	3.178	01.mp3	You sit beside Aigis among the audience and watch the film.

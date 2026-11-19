@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_007_070_C
 0.000	5.327	00.mp3	Fountain Square in Paulownia Mall. You are walking with Aigis when an old woman comes toward you.
-21.500	3.538	01.mp3	The old woman leaves. Aigis turns to you, her face serious.
+13.500	2.898	01.mp3	The old woman bows to you both and turns to walk away.
+21.500	3.538	02.mp3	The old woman leaves. Aigis turns to you, her face serious.

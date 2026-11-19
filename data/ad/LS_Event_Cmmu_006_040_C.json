@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_040_C", "title": "Fuuka's secret ingredient", "cues": [{"at": 0.0, "text": "You wait in the fountain square of Paulownia Mall. Fuuka comes back over to you, her school bag on her arm, looking downcast."}]}
+{
+ "movie": "LS_Event_Cmmu_006_040_C",
+ "title": "Fuuka's secret ingredient",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You wait outside a shop in Paulownia Mall. Fuuka comes back over to you, holding her school bag in front of her with both hands, looking downcast, and you scratch the back of your head as she talks."
+  }
+ ]
+}

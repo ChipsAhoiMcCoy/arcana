@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_007_515_C", "title": "Aigis and the animals", "cues": [{"at": 0.0, "text": "Iwatodai Station. Aigis smiles at a stray cat while you watch; a dog sits nearby."}]}
+{
+ "movie": "LS_Event_Cmmu_007_515_C",
+ "title": "Aigis and the animals",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Station, by the bicycle racks. Aigis crouches holding a cat in her arms, two dogs and another cat gathered around her, while you stand watching."
+  }
+ ]
+}

@@ -1,10 +1,10 @@
 {
-  "movie": "LS_Event_Cmmu_007_047_C",
-  "title": "No trace of her",
-  "cues": [
-    {
-      "at": 0.0,
-      "text": "Naganaki Shrine. Aigis walks back over to you from across the grounds."
-    }
-  ]
+ "movie": "LS_Event_Cmmu_007_047_C",
+ "title": "No trace of her",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You crouch near the steps, searching the ground, then stand and turn as Aigis walks back over to you from across the grounds."
+  }
+ ]
 }
