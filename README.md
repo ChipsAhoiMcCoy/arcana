@@ -47,7 +47,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+Right / Shift+Left bracket: Next / previous category, read from its nearest
 - Apostrophe: Walk to the selected point of interest (press again, or move, to stop)
 - 1 to 7: One category each: 1 Exits, 2 Doors, 3 People, 4 Shops, 5 Objects, 6 Events, 7 Shadows. The first press selects that category's nearest, each press after it the next one out, wrapping round; the category is not said ("No Shadows" when there are none near). Shift+number goes back; as the first press, the farthest. The selection and the bracket keys' category follow it
-- Comma: Select the nearest point of interest of any category, said as the bracket keys say it with its place among all of them and its category last ("Vending Machine, 3 meters, north, 1 of 9, Objects"; the category is said only when it changes). Press again for the next nearest, wrapping round. It does not walk: Apostrophe or Period then goes there
+- Comma: Select the nearest point of interest of any category, said as the bracket keys say it with its place among all of them, without its category ("Vending Machine, 3 meters, north, 1 of 9"). Press again for the next nearest, wrapping round. It does not walk: Apostrophe or Period then goes there
 - Shift+Comma: Back through the same list, toward the nearest; as the first press, the farthest
 - Period: Walk to the selected point of interest, as Apostrophe does (press again, or move, to stop)
 - Shift+Period: Walk to the selected point and use it: Space is pressed for you once its prompt (check, talk, open) comes up. Nothing is pressed where no prompt comes, as at an exit
