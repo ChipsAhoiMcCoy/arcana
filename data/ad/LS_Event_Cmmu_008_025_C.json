@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_008_025_C", "title": "Ken: a favour in his room", "cues": [{"at": 0.03, "text": "You follow Ken into his room in the dorm. He crosses to the far side, then turns back to face you."}, {"at": 28.10, "text": "You turn and walk out of Ken's room, and the door closes behind you."}]}
+{
+ "movie": "LS_Event_Cmmu_008_025_C",
+ "title": "Ken: a favour in his room",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "You follow Ken into his room in the dorm: a desk with a small cage on it, a bed, a ball on the floor. He crosses to the foot of the bed, then turns back to face you, looking sheepish."
+  },
+  {
+   "at": 28.1,
+   "text": "You turn and walk out of Ken's room, leaving him standing alone by his bed, and the door closes behind you."
+  }
+ ]
+}

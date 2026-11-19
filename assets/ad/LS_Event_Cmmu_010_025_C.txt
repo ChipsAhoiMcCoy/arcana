@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_010_025_C
-0.030	4.907	00.mp3	Outside the dorm, you and Shinjiro walk up to the entrance, where Mitsuru stands waiting.
+0.030	7.575	00.mp3	Outside the dorm, at the foot of its front steps. You and Shinjiro walk up just as Mitsuru steps over to meet you, her bag in hand.
 25.170	2.173	01.mp3	Akihiko walks up to the three of you.
 33.330	6.764	02.mp3	Shinjiro turns away and goes up the steps into the dorm; the door shuts behind him. Mitsuru hurries in after him.
 52.500	4.525	03.mp3	You turn and walk past Akihiko into the dorm, leaving him standing outside.

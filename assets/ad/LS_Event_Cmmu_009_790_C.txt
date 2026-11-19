@@ -1,5 +1,6 @@
 #scene LS_Event_Cmmu_009_790_C
-1.000	12.836	00.mp3	Footage from a security camera looks down on a lounge in the dorm. Koromaru walks up toward the camera and turns around beneath it. Fuuka, Yukari and Aigis walk into view and gather around Koromaru.
-13.330	3.335	01.mp3	Aigis steps away from the others and looks straight up at the camera.
-20.130	2.869	02.mp3	Yukari and Fuuka spin around and stare up at the camera.
-28.170	7.668	03.mp3	Yukari, furious, turns on her heel and storms off, and Fuuka hurries after her, leaving Aigis and Koromaru under the camera.
+1.000	10.630	00.mp3	Footage from a security camera looks down on a lounge in the dorm, with tables, chairs and a vending machine. Koromaru trots out into the room and turns around to face the camera.
+9.000	4.917	01.mp3	Fuuka, Aigis and Yukari walk into view and stop a few steps from Koromaru.
+13.330	4.165	02.mp3	Aigis walks over to stand beside Koromaru and looks straight up at the camera.
+20.130	2.869	03.mp3	Yukari and Fuuka spin around and stare up at the camera.
+28.170	7.668	04.mp3	Yukari, furious, turns on her heel and storms off, and Fuuka hurries after her, leaving Aigis and Koromaru under the camera.

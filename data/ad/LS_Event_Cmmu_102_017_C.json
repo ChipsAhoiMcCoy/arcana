@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_102_017_C", "title": "Meeting the student council", "cues": [{"at": 0.00, "text": "In the student council room, Mitsuru stands with two council members, a boy and a girl, who turn to look at you."}]}
+{
+ "movie": "LS_Event_Cmmu_102_017_C",
+ "title": "Meeting the student council",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the student council room, Mitsuru stands with two council members, a boy with his arms folded and a girl with her hands clasped in front of her, who turn to look at you."
+  }
+ ]
+}

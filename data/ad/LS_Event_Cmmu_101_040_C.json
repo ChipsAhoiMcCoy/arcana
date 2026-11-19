@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_101_040_C", "title": "Kenji asks Ms. Kanou out", "cues": [{"at": 0.00, "text": "In the outdoor corridor behind the school, Kenji stops and turns to you."}, {"at": 7.20, "text": "Kenji walks off down the corridor, leaving you to wait. Some time later, he comes running back."}]}
+{
+ "movie": "LS_Event_Cmmu_101_040_C",
+ "title": "Kenji asks Ms. Kanou out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Behind the school, beside a brick flower bed, Kenji waits for you, glancing at his watch."
+  },
+  {
+   "at": 7.2,
+   "text": "Kenji pumps his fist and walks off past you, leaving you to wait. Some time later, he comes running back."
+  }
+ ]
+}

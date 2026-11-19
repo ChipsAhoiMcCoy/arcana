@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_010_050_C", "title": "The form in Shinjiro's desk", "cues": [
-{"at": 0.00, "text": "Shinjiro's room. You stand at his desk, holding a form you found there, when the door opens and Mitsuru walks in."}
-]}
+{
+ "movie": "LS_Event_Cmmu_010_050_C",
+ "title": "The form in Shinjiro's desk",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Shinjiro's room. You stand at his desk, a sheet of paper lying on it, when the door opens and Mitsuru walks in."
+  }
+ ]
+}

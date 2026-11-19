@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_010_660_C", "title": "The old photo", "cues": [
-{"at": 0.03, "text": "In the dorm lounge, you look through a photo album."}
-]}
+{
+ "movie": "LS_Event_Cmmu_010_660_C",
+ "title": "The old photo",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "In the dorm lounge, you stand behind the front counter with Yukari. A photo album lies on the counter, an old photo of three students resting on its cover."
+  }
+ ]
+}

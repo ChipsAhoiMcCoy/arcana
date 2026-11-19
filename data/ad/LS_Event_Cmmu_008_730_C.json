@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_008_730_C", "title": "Coffee with Ken again", "cues": [
-{"at": 1.00, "text": "The dorm kitchen. You and Ken sit down together over cups of coffee he has brewed, and Ken takes a long sip with his eyes closed."}
-]}
+{
+ "movie": "LS_Event_Cmmu_008_730_C",
+ "title": "Coffee with Ken again",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "The dorm kitchen. Ken stands at the counter brewing coffee while you watch from behind him. Then the two of you sit at the long dining table over cups of his coffee, and Ken sips with his eyes closed."
+  }
+ ]
+}

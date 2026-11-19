@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_010_660_C
-0.030	2.641	00.mp3	In the dorm lounge, you look through a photo album.
+0.030	9.681	00.mp3	In the dorm lounge, you stand behind the front counter with Yukari. A photo album lies on the counter, an old photo of three students resting on its cover.

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_009_910_C", "title": "Koromaru's resolve", "cues": [{"at": 0.00, "text": "In Tartarus, you stand with Junpei and Aigis, Koromaru at your feet looking up at you."}, {"at": 10.17, "text": "Koromaru looks at Aigis, then turns away and trots off ahead without a sound. Aigis and Junpei turn to watch him go."}]}
+{
+ "movie": "LS_Event_Cmmu_009_910_C",
+ "title": "Koromaru's resolve",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Tartarus, at the foot of the great staircase, you stand facing Junpei and Aigis, with Koromaru between you; he turns to look up at you."
+  },
+  {
+   "at": 10.17,
+   "text": "Koromaru looks at Aigis, then turns away and trots off ahead without a sound. Aigis and Junpei turn to watch him go."
+  }
+ ]
+}

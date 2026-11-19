@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_010_710_C", "title": "Gardening with Shinjiro", "cues": [
-{"at": 0.17, "text": "The dorm rooftop. You and Shinjiro work in the vegetable garden."}
-]}
+{
+ "movie": "LS_Event_Cmmu_010_710_C",
+ "title": "Gardening with Shinjiro",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm rooftop. You and Shinjiro crouch side by side at the vegetable planters, tending them."
+  }
+ ]
+}

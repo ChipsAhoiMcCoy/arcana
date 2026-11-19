@@ -4,11 +4,15 @@
  "cues": [
   {
    "at": 1.0,
-   "text": "Footage from a security camera looks down on a lounge in the dorm. Koromaru walks up toward the camera and turns around beneath it. Fuuka, Yukari and Aigis walk into view and gather around Koromaru."
+   "text": "Footage from a security camera looks down on a lounge in the dorm, with tables, chairs and a vending machine. Koromaru trots out into the room and turns around to face the camera."
+  },
+  {
+   "at": 9.0,
+   "text": "Fuuka, Aigis and Yukari walk into view and stop a few steps from Koromaru."
   },
   {
    "at": 13.33,
-   "text": "Aigis steps away from the others and looks straight up at the camera."
+   "text": "Aigis walks over to stand beside Koromaru and looks straight up at the camera."
   },
   {
    "at": 20.13,

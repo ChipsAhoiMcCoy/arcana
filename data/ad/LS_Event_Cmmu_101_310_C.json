@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_101_310_C", "title": "Kenji: dressing better", "cues": [{"at": 0.00, "text": "Paulownia Mall, Fountain Square, with shoppers passing through. Kenji walks over to meet you."}]}
+{
+ "movie": "LS_Event_Cmmu_101_310_C",
+ "title": "Kenji: dressing better",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside a music shop, with shoppers passing by. You and Kenji walk away from the shop front together and stop to talk."
+  },
+  {
+   "at": 3.17,
+   "text": "Kenji folds his arms and looks you up and down."
+  }
+ ]
+}

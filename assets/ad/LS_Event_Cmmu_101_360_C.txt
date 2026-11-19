@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_101_360_C
-0.000	4.434	00.mp3	The Iwatodai strip mall. You and Kenji walk up together and stop to talk.
+0.000	10.748	00.mp3	The Iwatodai strip mall. You and Kenji step out of the beef bowl shop and stop by its doors to talk. A man in a suit leans against a post nearby, his head in his hand.

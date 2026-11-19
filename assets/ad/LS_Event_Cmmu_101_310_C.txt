@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_101_310_C
-0.000	5.254	00.mp3	Paulownia Mall, Fountain Square, with shoppers passing through. Kenji walks over to meet you.
+0.000	8.182	00.mp3	Paulownia Mall, outside a music shop, with shoppers passing by. You and Kenji walk away from the shop front together and stop to talk.
+3.170	2.713	01.mp3	Kenji folds his arms and looks you up and down.

@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_101_040_C
-0.000	4.113	00.mp3	In the outdoor corridor behind the school, Kenji stops and turns to you.
-7.200	5.445	01.mp3	Kenji walks off down the corridor, leaving you to wait. Some time later, he comes running back.
+0.000	4.942	00.mp3	Behind the school, beside a brick flower bed, Kenji waits for you, glancing at his watch.
+7.200	6.063	01.mp3	Kenji pumps his fist and walks off past you, leaving you to wait. Some time later, he comes running back.

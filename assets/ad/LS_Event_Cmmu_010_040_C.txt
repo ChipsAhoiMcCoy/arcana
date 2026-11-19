@@ -1,3 +1,5 @@
 #scene LS_Event_Cmmu_010_040_C
-0.000	4.144	00.mp3	The student council room. Mitsuru sits on a folding chair, facing you.
-3.670	4.502	01.mp3	A flash, and a still picture from those early days fills the screen while she talks.
+0.000	6.341	00.mp3	The student council room. Mitsuru sits on a folding chair beside a long table, arms folded, facing you.
+3.670	15.550	01.mp3	A still picture fills the screen while she talks: a younger Akihiko, a bandage across his nose, shouts as he charges forward; behind him a younger Mitsuru points ahead and Shinjiro holds a long weapon, a Shadow looming behind them in a street.
+17.000	10.699	02.mp3	Another still picture: the three of them younger, standing together in front of a staircase, Shinjiro with a hand in his pocket, Akihiko in the middle, Mitsuru with her arms folded.
+25.830	2.747	03.mp3	Mitsuru gets up from her chair and stands facing you.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_009_717_C", "title": "The wolf documentary again", "cues": [{"at": 0.00, "text": "In the dorm lounge, you and Koromaru sit side by side in front of the TV."}]}
+{
+ "movie": "LS_Event_Cmmu_009_717_C",
+ "title": "The wolf documentary again",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the dorm lounge, Koromaru sits up on an armchair and you sit on the sofa beside him, both facing the TV."
+  }
+ ]
+}

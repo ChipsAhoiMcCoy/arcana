@@ -4,7 +4,11 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "At Naganaki Shrine, you and Koromaru walk up to the woman who knew him there."
+   "text": "At Naganaki Shrine, you walk up alone to the woman who knew Koromaru. She stands beside bouquets of flowers laid at the foot of a stone post."
+  },
+  {
+   "at": 9.37,
+   "text": "You start as Koromaru trots up and stands beside you, wagging his tail."
   },
   {
    "at": 15.67,
