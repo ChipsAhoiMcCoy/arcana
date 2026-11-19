@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_048_C
-0.030	8.351	00.mp3	Paulownia Mall, outside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Shinjiro stands facing you.
+0.030	11.585	00.mp3	Paulownia Mall, inside the shop Be Blue V, beside its big sign. You stand with your bag over your shoulder; Shinjiro faces you, hands in his coat pockets, and soon rubs the back of his head.
 5.170	4.339	01.mp3	Shinjiro turns and walks off for the treatment, leaving you waiting by the sign.
 9.500	2.011	02.mp3	Later, Shinjiro walks back to you.

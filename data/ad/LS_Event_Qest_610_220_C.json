@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Qest_610_220_C", "title": "After the battle with Elizabeth", "cues": [{"at": 3.67, "text": "Elizabeth lifts a hand toward you, and a small sparkle of light settles into your hand."}, {"at": 10.61, "text": "Elizabeth sweeps an arm out and bows to you."}]}
+{
+ "movie": "LS_Event_Qest_610_220_C",
+ "title": "After the battle with Elizabeth",
+ "cues": [
+  {
+   "at": 3.67,
+   "text": "Elizabeth lifts a hand toward you, and a Platinum Bookmark appears in your outstretched hand."
+  },
+  {
+   "at": 10.61,
+   "text": "Elizabeth sweeps an arm out and bows to you."
+  }
+ ]
+}

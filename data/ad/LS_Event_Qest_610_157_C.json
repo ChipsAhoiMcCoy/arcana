@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_610_157_C", "title": "Elizabeth says goodbye", "cues": [{"at": 0.0, "text": "Outside the dorm, Elizabeth stands facing you."}]}
+{
+ "movie": "LS_Event_Qest_610_157_C",
+ "title": "Elizabeth says goodbye",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Outside the dorm, Elizabeth stands facing you, her eyes lowered."
+  }
+ ]
+}

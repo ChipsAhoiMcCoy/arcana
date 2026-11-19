@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_211_001_C
-2.830	3.998	00.mp3	You walk over to your bed. A small shard lies on it, shining faintly.
+2.830	3.314	00.mp3	You walk over to your bed. A small shard lies on the pillow.
 7.670	1.130	01.mp3	You pick up the shard.

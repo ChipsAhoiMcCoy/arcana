@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Fild_211_001_C", "title": "Something on the bed", "cues": [{"at": 2.83, "text": "You walk over to your bed. A small shard lies on it, shining faintly."}, {"at": 7.67, "text": "You pick up the shard."}]}
+{
+ "movie": "LS_Event_Fild_211_001_C",
+ "title": "Something on the bed",
+ "cues": [
+  {
+   "at": 2.83,
+   "text": "You walk over to your bed. A small shard lies on the pillow."
+  },
+  {
+   "at": 7.67,
+   "text": "You pick up the shard."
+  }
+ ]
+}

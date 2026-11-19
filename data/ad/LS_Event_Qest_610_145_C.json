@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_610_145_C", "title": "Elizabeth at the piano", "cues": [{"at": 1.17, "text": "Elizabeth, seated at the music room's piano, starts to play and sings along with her eyes closed."}]}
+{
+ "movie": "LS_Event_Qest_610_145_C",
+ "title": "Elizabeth at the piano",
+ "cues": [
+  {
+   "at": 1.17,
+   "text": "Elizabeth, seated at the music room's piano, starts to play and sings along with her eyes closed, while you stand beside the piano with your hands in your pockets."
+  }
+ ]
+}

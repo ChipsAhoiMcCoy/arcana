@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_650_050_C
-0.000	8.054	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, grumbling to herself, and comes over to you.
+0.000	11.701	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, grumbling to herself, and comes over to you; as she talks on, a drop of sweat runs down your head.
