@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_600_550_C", "title": "The Myouou Cup", "cues": [{"at": 1.0, "text": "At the stadium for the track meet, you sit on a bench beside Kazushi and Yuko, waiting for your race."}, {"at": 16.67, "text": "The race: you sprint down the track against four runners from other schools, while Yuko and Kazushi cheer from the side."}, {"at": 28.67, "text": "A runner from another school walks up to you."}]}
+{
+ "movie": "LS_Event_Cmmu_600_550_C",
+ "title": "The Myouou Cup",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "At the stadium for the track meet, you sit on a bench beside Kazushi and Yuko, waiting for your race."
+  },
+  {
+   "at": 16.67,
+   "text": "The race: you sprint down the track against four runners from other schools, while Yuko and Kazushi cheer from the side."
+  },
+  {
+   "at": 28.67,
+   "text": "A runner from another school walks up to you."
+  },
+  {
+   "at": 38.67,
+   "text": "Hayase turns and walks away."
+  }
+ ]
+}

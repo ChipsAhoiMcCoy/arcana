@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_110_085_C
-0.000	3.706	00.mp3	Wilduck Burger. You and Maiko sit across a table from each other.
+0.000	6.160	00.mp3	Wilduck Burger. You and Maiko sit across a table from each other, trays of burgers and drinks between you.

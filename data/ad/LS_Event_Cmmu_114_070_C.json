@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_114_070_C", "title": "Mutatsu watches the dancers", "cues": [{"at": 0.00, "text": "The bar at Club Escapade, above the dance floor. Mutatsu sits at the counter with his drink, and you stand beside him."}]}
+{
+ "movie": "LS_Event_Cmmu_114_070_C",
+ "title": "Mutatsu watches the dancers",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Club Escapade, above the dance floor. Mutatsu sits on a long couch at a low table with his bottle and glass; you stand beside him, then sit down next to him."
+  },
+  {
+   "at": 9.0,
+   "text": "Mutatsu slumps forward, his head bowed."
+  }
+ ]
+}

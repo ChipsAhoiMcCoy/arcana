@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_115_660_C
-0.000	2.475	00.mp3	The school rooftop. You stand reading a letter.
+0.000	5.044	00.mp3	The school rooftop. You sit on a bench, your bag beside you, hunched over a letter in your lap.

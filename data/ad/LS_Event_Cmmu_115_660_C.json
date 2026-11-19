@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_115_660_C", "title": "A letter from Mamoru", "cues": [{"at": 0.00, "text": "The school rooftop. You stand reading a letter."}]}
+{
+ "movie": "LS_Event_Cmmu_115_660_C",
+ "title": "A letter from Mamoru",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school rooftop. You sit on a bench, your bag beside you, hunched over a letter in your lap."
+  }
+ ]
+}

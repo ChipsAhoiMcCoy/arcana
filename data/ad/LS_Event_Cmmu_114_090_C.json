@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_114_090_C", "title": "Mutatsu means to find his family", "cues": [{"at": 0.00, "text": "The bar at Club Escapade. Mutatsu sits at the counter and looks away as you walk up beside him."}]}
+{
+ "movie": "LS_Event_Cmmu_114_090_C",
+ "title": "Mutatsu means to find his family",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Club Escapade. Mutatsu sits on a long couch at a low table with no bottle on it, and looks away as you walk up. You sit down beside him."
+  }
+ ]
+}

@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_114_070_C
-0.000	6.810	00.mp3	The bar at Club Escapade, above the dance floor. Mutatsu sits at the counter with his drink, and you stand beside him.
+0.000	9.856	00.mp3	Club Escapade, above the dance floor. Mutatsu sits on a long couch at a low table with his bottle and glass; you stand beside him, then sit down next to him.
+9.000	2.272	01.mp3	Mutatsu slumps forward, his head bowed.

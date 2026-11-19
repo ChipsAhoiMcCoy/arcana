@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_600_860_C", "title": "Walking Koromaru, meeting a friend", "cues": [{"at": 0.17, "text": "Naganaki Shrine. You are walking Koromaru when someone you know comes up to you."}, {"at": 2.67, "text": "Koromaru wanders off to play while the two of you talk."}]}
+{
+ "movie": "LS_Event_Cmmu_600_860_C",
+ "title": "Walking Koromaru, meeting a friend",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "Naganaki Shrine. You are walking Koromaru when someone you know comes up to you."
+  },
+  {
+   "at": 2.67,
+   "text": "Koromaru wanders off to play while the two of you talk."
+  },
+  {
+   "at": 5.0,
+   "text": "Koromaru comes running back down the shrine steps and sits beside you, panting."
+  }
+ ]
+}

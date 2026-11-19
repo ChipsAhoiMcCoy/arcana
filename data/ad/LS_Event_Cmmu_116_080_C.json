@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_116_080_C", "title": "A hired thug", "cues": [{"at": 0.03, "text": "Paulownia Mall, Fountain Square. Nozomi sits on a bench, scowling, and gets to his feet as you come up."}, {"at": 10.00, "text": "Nozomi walks off. Soon after, two men stop nearby, unaware of you: a bitter-looking middle-aged man and a rough-looking man."}, {"at": 23.00, "text": "The two men walk off together."}]}
+{
+ "movie": "LS_Event_Cmmu_116_080_C",
+ "title": "A hired thug",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Paulownia Mall, Fountain Square. Nozomi sits on a bench, scowling, and gets to his feet as you come up."
+  },
+  {
+   "at": 10.0,
+   "text": "Nozomi hurries off. Soon after, two men stop right beside you, unaware of you: a bitter-looking middle-aged man with glasses and a rough-looking younger man."
+  },
+  {
+   "at": 23.0,
+   "text": "The two men walk off together."
+  }
+ ]
+}

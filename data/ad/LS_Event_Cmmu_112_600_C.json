@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_112_600_C", "title": "A movie with Bebe", "cues": [{"at": 0.00, "text": "The cinema at Port Island Station. You and Bebe walk up to each other."}, {"at": 1.00, "text": "You and Bebe sit side by side in the theater among the rest of the audience, watching the movie. Afterwards, you stand together outside the theater again."}]}
+{
+ "movie": "LS_Event_Cmmu_112_600_C",
+ "title": "A movie with Bebe",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The cinema at Port Island Station. You and Bebe stand by the concession counter."
+  },
+  {
+   "at": 1.0,
+   "text": "You and Bebe sit side by side in the theater among the rest of the audience, watching the movie. Afterwards, you stand together by the concession counter again."
+  }
+ ]
+}

@@ -2,3 +2,4 @@
 1.000	5.632	00.mp3	At the stadium for the track meet, you sit on a bench beside Kazushi and Yuko, waiting for your race.
 16.670	6.721	01.mp3	The race: you sprint down the track against four runners from other schools, while Yuko and Kazushi cheer from the side.
 28.670	2.161	02.mp3	A runner from another school walks up to you.
+38.670	1.614	03.mp3	Hayase turns and walks away.

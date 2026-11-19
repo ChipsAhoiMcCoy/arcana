@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_114_010_C", "title": "A drink for the monk", "cues": [{"at": 0.00, "text": "The bar at Club Escapade, above the dance floor. A monk with a shaved head sits at the counter with a bottle and a glass, cigar smoke curling around him. You stand beside him, having just bought him a drink."}]}
+{
+ "movie": "LS_Event_Cmmu_114_010_C",
+ "title": "A drink for the monk",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Club Escapade. A monk with a shaved head sits on a booth sofa with a cigar in his fingers, a bottle and glasses on the low table in front of him. You stand beside him, having just bought him a drink."
+  },
+  {
+   "at": 6.0,
+   "text": "You sit down on the sofa beside the monk and lean forward, hands clasped between your knees."
+  }
+ ]
+}

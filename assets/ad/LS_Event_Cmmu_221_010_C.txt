@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_221_010_C
-0.000	6.437	00.mp3	In your classroom, you and Ryoji sit at your desks. Three students hurry over and gather around Ryoji.
-4.330	4.245	01.mp3	A teacher comes in through the classroom door and walks over to Ryoji's desk.
+0.000	6.350	00.mp3	In your classroom, you and Ryoji sit at your desks. Three girls hurry over and gather around Ryoji.
+4.330	5.376	01.mp3	A teacher comes in through the classroom door and stops beside the girls around Ryoji's desk.

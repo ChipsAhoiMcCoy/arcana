@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_390_C", "title": "Umiushi with Bebe", "cues": [{"at": 0.00, "text": "Iwatodai Strip Mall, after a meal at Umiushi. Bebe comes over to you."}]}
+{
+ "movie": "LS_Event_Cmmu_112_390_C",
+ "title": "Umiushi with Bebe",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Strip Mall. You and Bebe step out of Umiushi together and stop outside its door."
+  }
+ ]
+}

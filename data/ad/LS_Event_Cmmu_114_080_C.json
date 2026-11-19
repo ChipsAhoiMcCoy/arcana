@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_114_080_C", "title": "Mutatsu mistakes you for his son", "cues": [{"at": 0.00, "text": "The bar at Club Escapade. Mutatsu sits at the counter with his bottle and glass, and you walk up beside him."}]}
+{
+ "movie": "LS_Event_Cmmu_114_080_C",
+ "title": "Mutatsu mistakes you for his son",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Club Escapade. Mutatsu sits on a booth sofa with his bottle and glass on the low table in front of him, a cigar in his fingers. You walk over and sit down beside him."
+  },
+  {
+   "at": 12.0,
+   "text": "Mutatsu peers at you, then slumps forward over the table, head hanging."
+  }
+ ]
+}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_117_050_C", "title": "A sleepless night", "cues": [{"at": 0.00, "text": "Naganaki Shrine. Akinari is short of breath, his face tight with pain, as you join him."}]}
+{
+ "movie": "LS_Event_Cmmu_117_050_C",
+ "title": "A sleepless night",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You sit beside Akinari on a bench; he presses a hand to his chest, short of breath, his face tight with pain."
+  }
+ ]
+}
