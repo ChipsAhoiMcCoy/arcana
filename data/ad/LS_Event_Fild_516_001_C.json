@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_516_001_C", "title": "A valuable chest", "cues": [{"at": 0.00, "text": "On a small table beside a lantern sits a large chest shaped like a briefcase, a column of glowing motes rising from its lid."}]}
+{
+ "movie": "LS_Event_Fild_516_001_C",
+ "title": "A valuable chest",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On a small table beside a lantern sits a large chest shaped like a briefcase, a column of sparks rising from its lid."
+  }
+ ]
+}

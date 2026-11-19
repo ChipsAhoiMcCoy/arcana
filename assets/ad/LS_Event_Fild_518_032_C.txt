@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_518_032_C
-0.100	7.616	00.mp3	At the end of a hall, up a short flight of steps, stands an arched door sealed by a glowing lattice. You and your party walk up to it.
+0.100	7.722	00.mp3	At the end of a hall, up a short flight of steps, stands an arched door sealed by a jagged lattice. You and your party walk up to it.

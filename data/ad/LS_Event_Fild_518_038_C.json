@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_518_038_C", "title": "A confused Shadow", "cues": [{"at": 0.20, "text": "Across the floor, a Shadow, a black mass of clawed arms, wanders in an aimless zigzag, lurching this way and that."}]}
+{
+ "movie": "LS_Event_Fild_518_038_C",
+ "title": "A confused Shadow",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "Across the floor, a Shadow, a mass of clawed arms, wanders in an aimless zigzag, lurching this way and that."
+  }
+ ]
+}

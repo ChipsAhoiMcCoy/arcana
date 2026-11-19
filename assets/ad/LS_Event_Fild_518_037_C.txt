@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_518_037_C
-0.200	6.546	00.mp3	You run across the floor. Ahead crouches a Shadow, a black mass of clawed arms, with a flickering aura around it.
+0.200	6.349	00.mp3	You run across the floor, sword in hand. Ahead crouches a Shadow, a mass of clawed arms around a mask.
 1.400	3.990	01.mp3	It charges wildly past you, then stops and casts about, searching.

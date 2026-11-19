@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_001_C
-0.000	7.947	00.mp3	On a small table beside a lantern sits a large chest shaped like a briefcase, a column of glowing motes rising from its lid.
+0.000	7.441	00.mp3	On a small table beside a lantern sits a large chest shaped like a briefcase, a column of sparks rising from its lid.

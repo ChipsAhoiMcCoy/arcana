@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_025_C
-0.000	4.894	00.mp3	A door opens at the end of the Velvet Room hall, and you step back out into the back alley.
+0.000	4.041	00.mp3	The door at the end of the back alley opens, and you step out of the Velvet Room.

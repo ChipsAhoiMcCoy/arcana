@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_520_018_C
-6.830	4.668	00.mp3	Standing before the sealed chest, you hold out a small fragment that glows in your hand.
+6.830	4.523	00.mp3	Standing before the sealed chest, you hold out a small fragment in your open hand.

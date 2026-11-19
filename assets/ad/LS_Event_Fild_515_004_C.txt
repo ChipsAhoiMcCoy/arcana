@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_515_004_C
-0.370	8.597	00.mp3	In Tartarus, the masked golden hand scuttles in on its fingertips and wanders about, turning this way and that, while you and your teammates watch.
+0.370	8.836	00.mp3	In Tartarus, a Shadow shaped like a giant hand, a mask at its wrist, scuttles in on its fingertips and wanders about, turning this way and that.
 6.330	3.988	01.mp3	You and your teammates charge at it. The hand spins around and spots you.
