@@ -134,8 +134,11 @@ void body_of(UObject* shadow, float& radius, float& half_height) {
 bool box_holds(const Box& b, const FVector& p, float radius, float half_height) {
   return core::box_meets_body(b, world::vec3(p), radius, half_height);
 }
-// The strike would connect with this Shadow now. `known` false: the game's hit area could not be read.
-bool in_reach(UObject* shadow, const FVector& at, bool& known) {
+// The strike would connect with this Shadow now. `known` false: the game's hit area could not be read. With strike
+// assist on, a swing turns the hero to a Shadow it would reach on any side, so the reach is the box turned round him
+// to face the Shadow, the assist's own test: the ring sounds for a Shadow closing in from behind too (the user's
+// call, 2026-11-19: one reached him from behind with no ring until his second swing had turned him).
+bool in_reach(UObject* shadow, const FVector& at, const FVector& me, bool& known) {
   UObject* dc = dungeon_comp();
   known = false;
   if (!dc) return false;
@@ -145,7 +148,10 @@ bool in_reach(UObject* shadow, const FVector& at, bool& known) {
   known = true;
   float r, hh;
   body_of(shadow, r, hh);
-  return box_holds(b, at, r, hh);
+  if (box_holds(b, at, r, hh)) return true;
+  if (!settings::on(settings::StrikeAssist)) return false;
+  float yaw = std::atan2(at.y - me.y, at.x - me.x) * 180.0f / kPi;
+  return core::box_meets_body(core::turned_about(b, world::vec3(me), yaw), world::vec3(at), r, hh);
 }
 
 // A breakable thing (Tartarus' Shadow remains) the strike would break now: the game's hit test takes them from the
@@ -177,7 +183,7 @@ bool breakable_in_reach(const FVector& me, FVector& at) {
 
 // Within 4 m the nearest Shadow's heading is spoken ("back turned" / "facing you"): each of the two lines at most
 // once per approach, however often the Shadow turns meanwhile. An approach ends when that Shadow is more than 6 m
-// off, or when another Shadow becomes the close one. In reach of the strike a blade's ring repeats; from behind it
+// off, or when another Shadow becomes the close one. In reach of the strike (any side with strike assist) a blade's ring repeats; from behind it
 // (the battle then starts with the advantage) two rising ticks instead: the ring follows its facing as it is now.
 // Returns the ring's cue while the Shadow is in reach, else -1.
 int close_cues(const Seen& s, const FVector& me) {
@@ -198,7 +204,7 @@ int close_cues(const Seen& s, const FVector& me) {
   }
   if (s.dist > 800.0f) return -1;
   bool known = false;
-  bool reach = in_reach(s.actor, s.at, known);
+  bool reach = in_reach(s.actor, s.at, me, known);
   if (!known) {
     // No hit area to read: the old estimate, close behind it and facing it.
     UObject* hero = world::player();
@@ -514,7 +520,7 @@ void install() {
       if (FVector at; breakable_in_reach(me, at)) s += "  a breakable is in the strike's reach\n";
       for (const Seen& e : look(me)) {
         bool known = false;
-        bool reach = in_reach(e.actor, e.at, known);
+        bool reach = in_reach(e.actor, e.at, me, known);
         float r, hh;
         body_of(e.actor, r, hh);
         bool engine = false;
