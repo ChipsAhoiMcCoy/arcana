@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_005_320_C", "title": "Beef bowls with Mitsuru", "cues": [{"at": 0.05, "text": "At the Iwatodai strip mall, you and Mitsuru step out of the door of the beef bowl shop and stop outside it to talk."}]}
+{
+ "movie": "LS_Event_Cmmu_005_320_C",
+ "title": "Beef bowls with Mitsuru",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "At the Iwatodai strip mall, you and Mitsuru step out of the door of the beef bowl shop and stop outside it to talk, a man leaning on a post nearby. Mitsuru touches a hand to her cheek."
+  }
+ ]
+}

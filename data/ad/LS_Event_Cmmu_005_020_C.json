@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_005_020_C", "title": "Mitsuru at Wilduck Burger", "cues": [{"at": 0.0, "text": "In Wilduck Burger, you sit at a table with Mitsuru, your food in front of you."}]}
+{
+ "movie": "LS_Event_Cmmu_005_020_C",
+ "title": "Mitsuru at Wilduck Burger",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Wilduck Burger, you sit at a table across from Mitsuru, trays of burgers and drinks between you. Mitsuru sits with her arms crossed, the food untouched."
+  }
+ ]
+}

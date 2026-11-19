@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_005_100_C
-0.000	2.244	00.mp3	You sit with Mitsuru in her room at the dorm.
-6.700	2.268	01.mp3	Mitsuru holds out a key, and you take it.
+0.000	3.855	00.mp3	You sit side by side with Mitsuru on a sofa in her room at the dorm.
+6.700	4.393	01.mp3	Mitsuru glances away, then leans over and holds out a key, and you take it.
+18.330	3.757	02.mp3	Mitsuru closes her eyes, turns her face aside and touches her hair.

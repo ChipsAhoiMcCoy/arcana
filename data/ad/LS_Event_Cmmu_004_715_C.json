@@ -1,3 +1,10 @@
-{"movie": "LS_Event_Cmmu_004_715_C", "title": "Pro boxing on TV with Akihiko", "cues": [
-{"at": 0.17, "text": "You and Akihiko sit side by side in the dorm lounge, watching a professional boxing match on the TV."}
-]}
+{
+ "movie": "LS_Event_Cmmu_004_715_C",
+ "title": "Pro boxing on TV with Akihiko",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "You and Akihiko sit side by side on the sofa in the dorm lounge, watching a professional boxing match on the TV. Akihiko sits with his arms and legs crossed."
+  }
+ ]
+}

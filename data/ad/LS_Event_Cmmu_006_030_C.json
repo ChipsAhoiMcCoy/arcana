@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_030_C", "title": "Fuuka asks about salt", "cues": [{"at": 0.0, "text": "You walk home through the Iwatodai strip mall with Fuuka, school bags in hand. She stops and turns to you."}]}
+{
+ "movie": "LS_Event_Cmmu_006_030_C",
+ "title": "Fuuka asks about salt",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk home through the Iwatodai strip mall with Fuuka, school bags in hand. She stops and turns to you, holding her bag in front of her with both hands."
+  }
+ ]
+}

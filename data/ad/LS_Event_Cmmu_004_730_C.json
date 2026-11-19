@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Cmmu_004_730_C", "title": "Cooking chicken with Akihiko", "cues": [
-{"at": 0.17, "text": "You stand with Akihiko in the dorm kitchen, raw food laid out by the cutting board."},
-{"at": 2.67, "text": "Later, the cooking is done and the food sits portioned out on the counter."}
-]}
+{
+ "movie": "LS_Event_Cmmu_004_730_C",
+ "title": "Cooking chicken with Akihiko",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "You stand with Akihiko at the dorm kitchen counter, a bowl of eggs and packs of raw meat laid out, and Akihiko gestures at them."
+  },
+  {
+   "at": 2.67,
+   "text": "Later, the cooking is done: plates of sliced chicken sit on the counter, and Akihiko folds his arms."
+  }
+ ]
+}

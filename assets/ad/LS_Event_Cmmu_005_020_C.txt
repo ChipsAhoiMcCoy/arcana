@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_020_C
-0.000	4.073	00.mp3	In Wilduck Burger, you sit at a table with Mitsuru, your food in front of you.
+0.000	9.262	00.mp3	In Wilduck Burger, you sit at a table across from Mitsuru, trays of burgers and drinks between you. Mitsuru sits with her arms crossed, the food untouched.

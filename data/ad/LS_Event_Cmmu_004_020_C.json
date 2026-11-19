@@ -1,6 +1,22 @@
-{"movie": "LS_Event_Cmmu_004_020_C", "title": "Akihiko runs from a fight", "cues": [
-{"at": 0.00, "text": "You and Akihiko stand together outside Iwatodai Station."},
-{"at": 4.00, "text": "Akihiko remembers something Yukari once said to him."},
-{"at": 16.67, "text": "The men from the strip mall walk up with three more of their gang and spread out around you and Akihiko. Akihiko turns to face them, scowling."},
-{"at": 29.33, "text": "Akihiko raises his fists, then glances at you. The two of you turn and run, and the gang gives chase."}
-]}
+{
+ "movie": "LS_Event_Cmmu_004_020_C",
+ "title": "Akihiko runs from a fight",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Akihiko stand together outside Iwatodai Station."
+  },
+  {
+   "at": 4.0,
+   "text": "Akihiko remembers a moment in the dorm lounge: the others seated on the sofas while Yukari stands and speaks to him."
+  },
+  {
+   "at": 16.67,
+   "text": "The men from the strip mall walk up with three more of their gang and spread out around you and Akihiko. Akihiko turns to face them, scowling."
+  },
+  {
+   "at": 29.33,
+   "text": "Akihiko raises his fists, and you reach a hand out to him. Then the two of you turn and run, leaving the gang standing."
+  }
+ ]
+}

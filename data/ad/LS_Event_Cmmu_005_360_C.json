@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_005_360_C", "title": "Coffee with Mitsuru", "cues": [{"at": 0.05, "text": "You and Mitsuru sit together at an outdoor café table, steaming cups of coffee in front of you, other customers at the tables around you."}]}
+{
+ "movie": "LS_Event_Cmmu_005_360_C",
+ "title": "Coffee with Mitsuru",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "You and Mitsuru sit across from each other at a café table, steaming cups of coffee in front of you; a woman sits at the next table. Mitsuru sits with her arms folded."
+  }
+ ]
+}

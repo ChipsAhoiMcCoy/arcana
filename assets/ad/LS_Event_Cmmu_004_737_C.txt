@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_004_737_C
 0.000	5.201	00.mp3	You stand with Akihiko in the dorm kitchen, the ingredients laid out by the cutting board.
-3.670	4.756	01.mp3	Time passes while the two of you cook; then the finished stir-fry is ready on the counter.
+3.670	7.506	01.mp3	Time passes while the two of you cook; then the finished stir-fry sits on plates on the counter, and Akihiko folds his arms.

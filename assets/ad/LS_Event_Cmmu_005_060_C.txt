@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_005_060_C
-0.000	5.287	00.mp3	In the school library, you stand with Mitsuru. After a moment, she turns partly away from you.
-36.200	3.491	01.mp3	Mitsuru turns and walks away, leaving you alone in the library.
+0.000	9.064	00.mp3	In the school library, you stand beside Mitsuru, both facing the shelves; another student stands farther off. After a moment, she turns around to face you.
+36.200	6.100	01.mp3	Mitsuru lowers the hand she has held to her chest, turns and walks away, leaving you alone in the library.

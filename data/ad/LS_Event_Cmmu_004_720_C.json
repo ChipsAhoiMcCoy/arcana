@@ -1,4 +1,14 @@
-{"movie": "LS_Event_Cmmu_004_720_C", "title": "Akihiko's first match on tape", "cues": [
-{"at": 0.17, "text": "You and Akihiko sit side by side in the dorm lounge, facing the TV, where he has put on a video."},
-{"at": 1.17, "text": "What plays is not a champion's bout but an old recording of a small boxing match, the crowd's voices coming through the speakers. Akihiko stares at the screen."}
-]}
+{
+ "movie": "LS_Event_Cmmu_004_720_C",
+ "title": "Akihiko's first match on tape",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "You and Akihiko sit side by side on the sofa in the dorm lounge, facing the TV, where he has put on a video. Akihiko sits with his arms and legs crossed; you lean forward, hands clasped between your knees."
+  },
+  {
+   "at": 1.17,
+   "text": "What plays is not a champion's bout but an old recording of a small boxing match, the crowd's voices coming through the speakers. Akihiko stares at the screen."
+  }
+ ]
+}

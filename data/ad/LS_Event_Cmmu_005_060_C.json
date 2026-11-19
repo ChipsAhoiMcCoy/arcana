@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_060_C", "title": "Mitsuru's engagement", "cues": [{"at": 0.0, "text": "In the school library, you stand with Mitsuru. After a moment, she turns partly away from you."}, {"at": 36.2, "text": "Mitsuru turns and walks away, leaving you alone in the library."}]}
+{
+ "movie": "LS_Event_Cmmu_005_060_C",
+ "title": "Mitsuru's engagement",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school library, you stand beside Mitsuru, both facing the shelves; another student stands farther off. After a moment, she turns around to face you."
+  },
+  {
+   "at": 36.2,
+   "text": "Mitsuru lowers the hand she has held to her chest, turns and walks away, leaving you alone in the library."
+  }
+ ]
+}

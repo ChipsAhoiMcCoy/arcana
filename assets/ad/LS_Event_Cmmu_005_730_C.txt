@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_005_730_C
-0.170	6.601	00.mp3	The dorm kitchen. Mitsuru has a teapot, two cups on saucers and a plate of karume-yaki set out for the two of you.
-2.670	3.996	01.mp3	Later, you sit with Mitsuru on the sofa, and she sips the tea you blended.
+0.170	6.537	00.mp3	The dorm kitchen. You and Mitsuru stand at the counter, a teapot and two cups on saucers set out by the sink.
+2.670	10.610	01.mp3	Later, you sit with Mitsuru on the lounge sofa, a plate of karume-yaki on the low table. She sips the tea you blended, eyes closed, while you lean forward with your hands clasped.
