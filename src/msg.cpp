@@ -343,10 +343,7 @@ static bool read_window(Tick& tk, Seen& s, UObject* item, UObject* sel) {
   if (echo) s.page = page;
   // System questions answer with the key-help buttons, not a choice list (TODO: the window's own yes/no flag).
   auto hinted = [&](const std::string& t) {
-    // A question may end in a note: "...keep these changes? (Settings will revert in 10 seconds.)".
-    size_t q = !t.empty() && t.back() == ')' ? t.rfind(" (") : std::string::npos;
-    bool ask = !t.empty() && (t.back() == '?' || (q != std::string::npos && q > 0 && t[q - 1] == '?'));
-    return !sel && cur.kind == "System" && ask ? t + " " + strings::kYesNoHint() : t;
+    return !sel && cur.kind == "System" && is_question(t) ? t + " " + strings::kYesNoHint() : t;
   };
   // A tutorial turns its pages (Q and E) without replacing CurrentPage: the window keeps the shown page's index
   // (MsgProcWindow_Tutorial +0x74, the one before at +0x70, the page count at +0xA4; measured 2026-10-29), and
@@ -622,6 +619,12 @@ bool window_session_open() {
   return false;
 }
 ue::UObject* sel_item() { return g_sel.resolve(); }
+// A question may end in a note: "...keep these changes? (Settings will revert in 10 seconds.)".
+bool is_question(const std::string& t) {
+  size_t q = !t.empty() && t.back() == ')' ? t.rfind(" (") : std::string::npos;
+  return !t.empty() && (t.back() == '?' || (q != std::string::npos && q > 0 && t[q - 1] == '?'));
+}
+
 void repeat() {
   Current c = current();
   if (!c.open) { speech::speak(strings::kNoMessage, true); return; }

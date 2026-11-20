@@ -162,7 +162,8 @@ class RankUpScreen : public Screen {
   bool active() override { return draw_.get() != nullptr; }
   void enter() override {
     WeakObj d = WeakObj::of(draw_.get());
-    screens::set_keys(strings::kSpaceContinues);
+    // Back over the same draw (a message window closed over it): the Game Over poem's keys are still its own.
+    screens::set_keys(d == spoken_ && mode_ == 5 ? strings::kGameOverKeys : strings::kSpaceContinues);
     if (d == spoken_) return;
     spoken_ = d;
     rank_ = -1; arcana_ = 0;

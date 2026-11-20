@@ -56,8 +56,12 @@ static void screen_keys() {
   std::string k;
   // A screen opened over a message window (the log over a conversation) has the keys.
   bool over = screens::current() && screens::current()->over_messages();
+  // A System notice, or a page a screen opened itself (a dictionary term), has no log, Auto or fast-forward; a System
+  // question is answered yes or no.
+  bool own = screens::current() && screens::current()->own_messages();
   if (m.blocking && !over) k = m.kind == "Tutorial" ? strings::kTutorialKeys() : !m.choices.empty() ? strings::kChooseKeys()
-                    : m.kind == "System" ? strings::kSpaceContinues() : strings::kDialogueKeys();
+                    : m.kind == "System" && msg::is_question(m.text) ? strings::kYesNoHint()
+                    : m.kind == "System" || own ? strings::kSpaceContinues() : strings::kDialogueKeys();
   else if (screens::current()) {
     k = screens::keys();
     // Wherever the detail buffer has something to read (a battle's units, a row with a description kept off it).

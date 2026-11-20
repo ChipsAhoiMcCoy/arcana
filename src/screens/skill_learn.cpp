@@ -112,6 +112,7 @@ class SkillLearnScreen : public MenuScreen {
     shown_ = *(uint16_t*)(e + 2);
     if (!(WeakObj::of(p) == page_)) skill_ = 0;
     if (int sid = new_skill(p)) { skill_ = sid; page_ = WeakObj::of(p); screens::set_keys(strings::kLearnSkillKeys); }
+    else screens::set_keys(strings::kCBack);   // back on the page after the skill was learned
   }
   // A skill change offered after a fusion (the fusion rolls it, UICombineCalc: CombineMiscDataAsset's
   // SkillChangeBaseRate and the fusion count, COUNT 351): a PersonaStatusChangeSkillSeq holding the pairs it drew, old

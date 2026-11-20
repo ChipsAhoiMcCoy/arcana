@@ -275,7 +275,7 @@ class VelvetScreen : public MenuScreen {
     if (!id || id == page_) return;
     // A new page, or Q / E paging to another Persona: its name line, read from the top.
     if (!page_ && fusion_page()) result_id_ = id;
-    if (!page_) screens::set_keys(fusion_page() ? strings::kFusionConfirmKeys : scene() == 4 ? strings::kPersonaStatusKeys
+    if (!page_) screens::set_keys(fusion_page() ? strings::kFusionConfirmKeys : scene() == 4 ? strings::kVelvetPersonaKeys
                                : scene() == 5 ? strings::kCompendiumPageKeys : strings::kStatusConfirmKeys);
     else focus(status_name_id(id));
     page_ = id;

@@ -208,12 +208,15 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
     return true;
   }
   // Escape is Back / Cancel in every menu and on the battle screens (the user's call, 2026-11-02): the game's own key
-  // for it is C, which still works. Elsewhere Escape stays the game's (a movie, name entry, the field).
+  // for it is C, which still works. Elsewhere Escape stays the game's (a movie, name entry, the field). A menu that
+  // has handed its keys to the game (a quantity, a page, the calendar's jobs) still takes Escape as C; a message
+  // window over it keeps its own keys.
   if (vk == VK_ESCAPE && mods == keys::None) {
     Screen* cur = screens::current();
     bool back = false;
     if (cur) guarded([&] { back = cur->escape_is_back(); });
-    if ((has_focus_now() && back) || (back && !dynamic_cast<MenuScreen*>(cur))) {
+    bool handed_back = g_active && cur == g_active && !(msg::current().blocking && !g_active->over_messages());
+    if (back && (has_focus_now() || handed_back || !dynamic_cast<MenuScreen*>(cur))) {
       if (has_focus_now()) { player_moved(); armed_press(); cancel_pressed(); }
       if (!repeat) input::inject_key('C');
       return true;

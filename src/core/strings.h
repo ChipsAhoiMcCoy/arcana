@@ -90,9 +90,9 @@ inline constexpr const char* kMailEmpty = "No messages";
 inline constexpr Hint kMailKeys{"Up and down arrows choose, Space reads, Escape closes.", "Up and down choose, A reads, B closes."};
 inline constexpr const char* kTownMapWhere = "Where should I go?";   // the game's own entrance-list title, matched
 inline constexpr const char* kAreaMap = "Area map";
-inline constexpr Hint kAreaMapKeys{"Tab zooms, C closes.", "Y zooms, B closes."};
-inline constexpr Hint kTownMapHelp{"The arrow keys go through the list, the stick moves on the map, Space travels, F town info, Escape closes.",
-                                   "The D-pad goes through the list, the stick moves on the map, A travels, X town info, B closes."};
+inline constexpr Hint kAreaMapKeys{"Tab zooms, Escape closes.", "Y zooms, B closes."};
+inline constexpr Hint kTownMapHelp{"Up and down arrows choose, Space opens its entrances, F town info, Escape closes.",
+                                   "The D-pad goes through the list, the stick moves on the map, A opens its entrances, X town info, B closes."};
 inline constexpr const char* kSocialStats[] = {"Academics", "Charm", "Courage"};
 inline constexpr const char* kRank = "rank";
 inline constexpr const char* kRankUp = "up to rank";
@@ -101,7 +101,7 @@ inline constexpr const char* kStatsUp = "Stats up.";
 inline constexpr Hint kSpaceContinues{"Space continues.", "A continues."};
 inline constexpr Hint kGameOverKeys{"Space skips to the choices.", "A skips to the choices."};
 inline constexpr const char* kGameOver = "Game Over";   // the game's own words, when its message file is not loaded
-inline constexpr Hint kResultKeys{"The up and down arrows go through the results, Space continues.", "The D-pad goes through the results, A continues."};
+inline constexpr Hint kResultKeys{"The up and down arrows go through the results, Space continues.", "Up and down go through the results, A continues."};
 // Battle
 inline constexpr const char* kBattle = "Battle";
 inline constexpr const char* kHP = "HP";
@@ -179,9 +179,9 @@ inline constexpr const char* kNewSkill = "New skill";
 inline constexpr const char* kNextSkill = "Next skill";
 inline constexpr const char* kLearned = "Learned";
 inline constexpr const char* kWouldBecome = "would become";   // a skill change offered after a level up: "Agi would become Agilao"
-inline constexpr Hint kCBack{"C goes back", "B goes back"};
+inline constexpr Hint kCBack{"Escape goes back.", "B goes back."};
 inline constexpr const char* kEmptySlot = "Empty slot";
-inline constexpr Hint kLearnSkillKeys{"Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back", "LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back"};
+inline constexpr Hint kLearnSkillKeys{"Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.", "LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back."};
 inline constexpr const char* kShuffleTime = "Shuffle Time";
 inline constexpr Hint kShuffleKeys{"Left and right arrows choose a card, Space takes it.", "Left and right choose a card, A takes it."};
 inline constexpr const char* kChoose = "choose";
@@ -190,7 +190,7 @@ inline constexpr const char* kArcanaBurst = "Arcana Burst";
 inline constexpr const char* kPersonaOverstock = "Persona overstock. Choose a Persona to release";
 inline constexpr const char* kGain = "Gain";                   // the overstock list's new Persona: "Gain: Apsaras, ..."
 inline constexpr Hint kOverstockKeys{"Up and down arrows choose a Persona, Space releases it, F shows its stats.",
-                                     "Up and down choose a Persona, A releases it, the Persona button shows its stats."};
+                                     "Up and down choose a Persona, A releases it, X shows its stats."};
 inline constexpr Hint kSkillKeys{"Space confirms, Q and E change Persona, F Persona stats, Escape back.", "A confirms, LB and RB change Persona, X Persona stats, B back."};
 inline constexpr Hint kKeyAttack{"Space attack", "A attack"};
 inline constexpr Hint kKeySkills{"E skills", "Y skills"};
@@ -205,7 +205,8 @@ inline constexpr Hint kKeyTheurgy{"T Theurgy", "RT Theurgy"};
 inline constexpr Hint kKeyShift{"B shift", "LT shift"};
 inline constexpr Hint kKeyAssist{"F assist", "RB assist"};
 inline constexpr Hint kChangeTargetKeys{"A and D or the left and right arrows change target.", "Left and right change target."};
-inline constexpr Hint kAnalyzeKeys{"A and D change target, Escape closes.", "LB and RB change target, B closes."};
+inline constexpr Hint kAnalyzeKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E change target, Escape closes.",
+                                   "Up and down go through the lines, RT and LT jump between sections, LB and RB change target, B closes."};
 inline constexpr Hint kTargetKeys{"Left and right arrows choose a target, Space confirms, Q analyzes it, Escape back.", "Left and right choose a target, A confirms, LB analyzes it, B back."};
 inline constexpr Hint kTheurgyKeys{"Left and right arrows choose, Space uses it, Escape back.", "Left and right choose, A uses it, B back."};
 inline constexpr Hint kShiftKeys{"Left and right arrows choose who takes the turn, Space passes it, F Persona stats, Escape back.", "Left and right choose who takes the turn, A passes it, X Persona stats, B back."};
@@ -277,7 +278,9 @@ inline constexpr const char* kAntiqueShop = "Mayoido Antiques";
 inline constexpr const char* kAntiqueMenu[] = {"Fuse Equipment", "Trade Card", "Trade Item"};
 inline constexpr const char* kNeeds = "needs";
 inline constexpr const char* kYouHave = "you have";
-inline constexpr Hint kHowMany{"How many? W and S change, Space confirms.", "How many? Up and down change, A confirms."};
+inline constexpr Hint kHowMany{"How many? Up and down change it by one, left and right by ten, Space confirms, Escape back.",
+                               "How many? Up and down change it by one, left and right by ten, A confirms, B back."};
+inline constexpr Hint kShopListBackKeys{"Up and down arrows choose, Space buys, Escape back.", "Up and down choose, A buys, B back."};
 inline constexpr Hint kShopListKeys{"Up and down arrows choose, Space buys, Escape leaves.", "Up and down choose, A buys, B leaves."};
 inline constexpr Hint kShopTopKeys{"Up and down arrows choose, Space opens, Escape leaves.", "Up and down choose, A opens, B leaves."};
 inline constexpr Hint kShopWeaponKeys{"Up and down arrows choose, Space buys, Q and E switch member, Escape back.", "Up and down choose, A buys, LB and RB switch member, B back."};
@@ -293,7 +296,7 @@ inline constexpr const char* kTutorials = "Tutorials";
 inline constexpr const char* kTutorialTabs[5] = {"Battle", "Dungeon", "Daily Life", "Fusion", "System"};   // drawn as pictures
 inline constexpr const char* kNoMessage = "No message";
 inline constexpr const char* kAKey = "a key";
-inline constexpr Hint kYesNoHint{"Confirm for yes, cancel for no.", "A for yes, B for no."};
+inline constexpr Hint kYesNoHint{"Space for yes, C for no.", "A for yes, B for no."};
 inline constexpr const char* kThinking = "Thinking";
 // The buttons a message page draws as icons (tutorials), by the game's icon id: the key on the keyboard (the game's
 // default) and the controller's button. The keyboard has other keys for some of them by place: in battle, and in the
@@ -514,7 +517,7 @@ inline constexpr Hint kListKeys{"Up and down arrows choose, Space confirms, Esca
 inline constexpr Hint kTutorialListKeys{"Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.", "Up and down choose, LB and RB switch tabs, A opens, B back."};
 inline constexpr Hint kNoticeKeys{"Space continues.", "A continues."};
 inline constexpr Hint kChooseKeys{"Up and down arrows choose, Space confirms.", "Up and down choose, A confirms."};
-inline constexpr Hint kCampKeys{"Space opens, Escape closes.", "A opens, B closes."};
+inline constexpr Hint kCampKeys{"Up and down arrows choose, Space opens, Escape closes.", "Up and down choose, A opens, B closes."};
 // Points of interest
 // A way into another area: said by its name alone, which is where it leads ("Gekkoukan High School exit" was taken
 // for the way out of the school; the players' call, 2026-11-09). This is the one with no name.
@@ -601,11 +604,11 @@ inline constexpr const char* kCompendium = "Compendium. Select a Persona.";
 inline constexpr const char* kRegister = "Who shall you register?";
 inline constexpr const char* kRegisterThis = "Register this Persona?";
 inline constexpr const char* kSummonThis = "Summon this Persona?";
-inline constexpr Hint kStatusConfirmKeys{"Space registers it, Page Down and Page Up jump between sections, F skills and affinities, Tab registered stats, Escape back.", "A registers it, RT and LT jump between sections, X skills and affinities, Y registered stats, B back."};
+inline constexpr Hint kStatusConfirmKeys{"Space registers it, Page Down and Page Up jump between sections, Q and E switch Persona, F skills and affinities, Tab registered stats, Escape back.", "A registers it, RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, Y registered stats, B back."};
 inline constexpr Hint kRegisterKeys{"Up and down arrows choose, Space opens its status, Tab marks it, F registers the marked ones or all, Escape back.", "Up and down choose, A opens its status, Y marks it, X registers the marked ones or all, B back."};
-inline constexpr Hint kCompendiumPageKeys{"Space summons, Tab and Shift Tab jump between sections, F skills and affinities, Escape back.", "A summons, RT and LT jump between sections, X skills and affinities, B back."};
+inline constexpr Hint kCompendiumPageKeys{"Space summons, Tab and Shift Tab jump between sections, Q and E switch Persona, F skills and affinities, Escape back.", "A summons, RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, B back."};
 inline constexpr Hint kLevelUpKeys{"Tab and Shift Tab jump between sections, Space continues.", "RT and LT jump between sections, A continues."};
-inline constexpr Hint kCompendiumKeys{"Space summons, Q and E sort, Tab registered only, F lock, Escape back.", "A summons, LB and RB sort, Y registered only, X lock, B back."};
+inline constexpr Hint kCompendiumKeys{"Up and down arrows choose, Space opens its page, Q and E sort, Tab registered only, F lock, Escape back.", "Up and down choose, A opens its page, LB and RB sort, Y registered only, X lock, B back."};
 inline constexpr const char* kFusionGives = "makes";
 inline constexpr const char* kFusionImpossible = "cannot fuse";
 inline constexpr const char* kAboveYourLevel = "above your level";
@@ -679,16 +682,18 @@ inline constexpr const char* kUnknown = "unknown";
 inline constexpr const char* kMissingFound = "found";
 inline constexpr const char* kMissingDiscontinued = "discontinued";
 inline constexpr const char* kMissingSearching = "searching";
-inline constexpr Hint kRequestKeys{"Up and down arrows choose, Space accepts or reports at the Velvet Room, F info, X sorts, Escape closes", "Up and down choose, A accepts or reports at the Velvet Room, X info, RT sorts, B closes"};
-inline constexpr Hint kPersonaStatusKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, Escape back", "RT and LT jump between sections, LB and RB switch Persona, B back"};
+inline constexpr Hint kRequestKeys{"Up and down arrows choose, Space accepts or reports, F info, X sorts, Escape closes.", "Up and down choose, A accepts or reports, X info, RT sorts, B closes."};
+inline constexpr Hint kPersonaStatusKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, B back."};
+// The Velvet Room's Persona page (F on a fusion list): the result page's skills and affinities switch works there too.
+inline constexpr Hint kVelvetPersonaKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, F skills and affinities, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, B back."};
 inline constexpr const char* kTacticsHeading = "Tactics";
 inline constexpr const char* kTerminal = "Terminal. Where do you want to go?";
-inline constexpr Hint kTerminalKeys{"Up and down arrows choose, Space travels, Escape closes", "Up and down choose, A travels, B closes"};
+inline constexpr Hint kTerminalKeys{"Up and down arrows choose, Space travels, Escape closes.", "Up and down choose, A travels, B closes."};
 inline constexpr const char* kEntrance = "Entrance";
 inline constexpr const char* kFloorTitle = "Floor";
 inline constexpr const char* kYouAreHere = "furthest floor reached";
-inline constexpr Hint kSelectKeys{"Up and down arrows choose, Space confirms, Escape closes", "Up and down choose, A confirms, B closes"};
-inline constexpr Hint kLogKeys{"Up and down arrows scroll, Space replays the voice, Escape closes", "Up and down scroll, A replays the voice, B closes"};
+inline constexpr Hint kSelectKeys{"Up and down arrows choose, Space confirms, Escape closes.", "Up and down choose, A confirms, B closes."};
+inline constexpr Hint kLogKeys{"Up and down arrows scroll, Space replays the voice, Escape closes.", "Up and down scroll, A replays the voice, B closes."};
 inline constexpr const char* kLogEarlier = "An earlier line, from before this session";
 inline constexpr const char* kShift = "Shift. Pass the turn to";
 inline constexpr const char* kRewind = "Rewind. Choose a day to go back to";
@@ -704,12 +709,12 @@ inline constexpr const char* kSuitWands = "Wands";
 inline constexpr Hint kItemListKeys{"Up and down arrows choose, Q and E switch category, Space uses, Escape back.", "Up and down choose, LB and RB switch category, A uses, B back."};
 inline constexpr Hint kEquipSlotKeys{"Up and down arrows choose a slot, Space changes it, Q and E switch member, Escape back.", "Up and down choose a slot, A changes it, LB and RB switch member, B back."};
 inline constexpr Hint kEquipGearKeys{"Up and down arrows choose, Space equips, Q and E switch member, F reads it again, Escape back.", "Up and down choose, A equips, LB and RB switch member, X reads it again, B back."};
-inline constexpr Hint kCampPersonaKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, Space on its name equips it, H releases, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, A on its name equips it, Menu button releases, B back."};
+inline constexpr Hint kCampPersonaKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch Persona, Space on its name equips it, F reads it again, H releases, Escape back.", "Up and down go through the lines, RT and LT jump between sections, LB and RB switch Persona, A on its name equips it, X reads it again, Menu button releases, B back."};
 inline constexpr Hint kCampPersonaStatusKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, Space equips it, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, A equips it, B back."};
 inline constexpr Hint kStatsKeys{"Up and down arrows choose, Space opens their page, Q and E tactics, F joins or leaves the party, Escape back.", "Up and down choose, A opens their page, LB and RB tactics, X joins or leaves the party, B back."};
-inline constexpr Hint kTacticsListKeys{"Up and down arrows choose, Space changes their tactic, Q and E back to stats, Escape back.", "Up and down choose, A changes their tactic, LB and RB back to stats, B back."};
+inline constexpr Hint kTacticsListKeys{"Up and down arrows choose, Space changes their tactic, Q and E back to stats, F joins or leaves the party, Escape back.", "Up and down choose, A changes their tactic, LB and RB back to stats, X joins or leaves the party, B back."};
 // The triggers are the game's on this page (Theurgy, Persona status): on a pad the D-pad walks its lines.
-inline constexpr Hint kStatsPageKeys{"Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.", "Up and down go through the lines, LB and RB switch member, RT Persona status, LT Theurgy, X joins or leaves the party, B back."};
+inline constexpr Hint kStatsPageKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.", "Up and down go through the lines, LB and RB switch member, RT Persona status, LT Theurgy, X joins or leaves the party, B back."};
 inline constexpr Hint kCampRequestKeys{"Up and down arrows choose, F info, X sorts, Q and E switch tabs, Escape closes.", "Up and down choose, X info, RT sorts, LB and RB switch tabs, B closes."};
 inline constexpr Hint kMissingPersonsKeys{"Up and down arrows choose, F reads it again, X sorts, Q and E switch tabs, Escape closes.", "Up and down choose, X reads it again, RT sorts, LB and RB switch tabs, B closes."};
 inline constexpr Hint kMissingBoardKeys{"Up and down arrows choose, F reads it again, X sorts, Escape closes.", "Up and down choose, X reads it again, RT sorts, B closes."};

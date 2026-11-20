@@ -113,7 +113,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 - Fusion Search: Q and E sort.
 - Shops: Q and E switch member or category.
 - Area map: Tab zooms.
-- Battle: Q on the target list analyzes; A and D switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections.
+- Battle: Q on the target list analyzes; Q and E (LB and RB) switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections.
 
 ## Mod settings
 
@@ -206,7 +206,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Items and money gained or spent ("Got Bead times 3, 500 yen"), and party HP or SP changing outside battle.
 - Describe the area (Semicolon, or triggers + B): a written description of where you stand: every area of the town, the school, the dorm, Yakushima, Kyoto, the full-moon operations, Tartarus and the Abyss of Time. Outdoors it follows the time of day, the season and story changes (the Dark Hour, Christmas, January).
 - The town map ("Go Elsewhere") is a numbered list in map order ("Paulownia Mall, 2 of 3"), opening on where you are; the stick still moves around the map and the list follows. Each destination says who is there ("Social Links here: Kenji Tomochika (Magician), rank 1, ready to rank up"). Space picks it, then its entrances (a closed one says so). F lists its shops and places, saying which are unavailable.
-- M in town, school and the dorm: "Where should I go?" with the area's destinations and "Town Map" first. Where the story allows no travel, M opens the area map instead (C closes it). Other town keys: H saves anywhere, Ctrl opens messages, B the log.
+- M in town, school and the dorm: "Where should I go?" with the area's destinations and "Town Map" first. Where the story allows no travel, M opens the area map instead (Escape or C closes it). Other town keys: H saves anywhere, Ctrl opens messages, B the log.
 - SELECT lists (the shrine's fortune and the like): the activity and question, then each entry. The rooftop garden lists each seedling with how many you own and what it grows, in how many days.
 
 ### Points of interest
@@ -287,7 +287,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 
 ### Shops
 
-- Weapon and item shops: items with price and stats, descriptions, how many you own, why a row can't be bought ("not enough yen", "out of stock"), "How many?" with the total as you change it (W and S), and the buy and equip prompts.
+- Weapon and item shops: items with price and stats, descriptions, how many you own, why a row can't be bought ("not enough yen", "out of stock"), "How many?" with the total as you change it (up and down by one, left and right by ten), and the buy and equip prompts.
 - Mayoido Antiques (from July): Fuse Equipment, Trade Card, Trade Item, each entry with how many you own, its stats and what the trade needs ("needs Topaz 3, you have 1").
 - Vending machines say how many are left. Be Blue V's job is read as choices.
 

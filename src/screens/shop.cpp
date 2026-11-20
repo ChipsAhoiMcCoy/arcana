@@ -190,7 +190,8 @@ class ShopScreen : public MenuScreen {
   std::string keys() {
     int st = state();
     if (st == 5) return strings::kShopTopKeys();
-    if (st == 7) return member() ? strings::kShopWeaponKeys() : strings::kShopListKeys();
+    // A shop of several modes goes back to its top menu on cancel; one of a single mode leaves (+0x2C0, the modes).
+    if (st == 7) return member() ? strings::kShopWeaponKeys() : *(int32_t*)(s() + 0x2C0) >= 2 ? strings::kShopListBackKeys() : strings::kShopListKeys();
     if (st == 0x14) return strings::kShopSellKeys();
     if (st == 0x11 || st == 0x13) return strings::kShopTradeKeys();
     if (st == 9 || st == 0x16) return strings::kHowMany();

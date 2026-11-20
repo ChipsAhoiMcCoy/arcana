@@ -20,7 +20,7 @@ class UmgDialogScreen : public Screen {
   const char* id() const override { return "umg_dialog"; }
   int priority() const override { return 100; }   // a system notice covers everything
   bool active() override { UObject* d = dialog_.get(); return d && umg::in_viewport(d) && umg::visible(d); }
-  void enter() override { text_.clear(); }
+  void enter() override { text_.clear(); screens::set_keys(strings::kPressAnyKey); }   // WBP_UmgDialog4: "Push any key!"
   void tick() override {
     std::string s = read();
     if (s.empty() || s == text_) return;

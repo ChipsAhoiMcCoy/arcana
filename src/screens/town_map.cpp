@@ -325,6 +325,7 @@ class AreaMapScreen : public Screen {
     auto* list = sel ? (TArray<uint8_t>*)(sel + 0xD0) : nullptr;
     return list && list->num == 0 && world::player();
   }
+  bool escape_is_back() override { return true; }   // Escape is C here, as in every menu
   void enter() override { screens::set_keys(strings::kAreaMapKeys); speech::speak(describe(), true); }
   std::string describe() override {
     std::string a = poi::area_name();
