@@ -1,5 +1,5 @@
 #scene LS_Event_Main_130_150_C
 0.400	7.085	00.mp3	A room in the love hotel, with a large round bed in the middle. You sit alone on its edge, bent forward, holding your head.
 14.550	6.833	01.mp3	You get up from the bed. Yukari comes out of the bathroom wrapped in a towel and walks slowly toward you, her eyes lowered.
-23.500	10.821	02.mp3	Swaying on her feet, Yukari has laid a hand on your chest. She snaps out of it, jerks her hand back, clutches the towel to herself and runs back into the bathroom. The door shuts.
+23.500	7.272	02.mp3	Yukari has a hand pressed to your chest. She snaps out of it, clutches the towel to herself and dashes off toward the bathroom.
 30.400	6.042	03.mp3	The bathroom door opens and Yukari comes out again, dressed in her school uniform, and stops in front of you.
