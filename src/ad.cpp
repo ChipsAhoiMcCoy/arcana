@@ -251,8 +251,8 @@ void stop_all() {
 }
 
 // ---- the description box (setting DescriptionWait; 3D scenes only) ----
-// A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the window-open sound, the description (the narrator, then the
-// line-end cue the voiced lines get; or the screen reader), and Enter, Space or A goes on with the sound a message
+// A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the window-open sound, the description (the narrator or the
+// screen reader), then the cue a page that waits gets ("Next" or the VoiceEndSound sound), and Enter, Space or A goes on with the sound a message
 // window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
 // plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
 // never reaches the game (keys::set_prompt, input::set_swallow_prompt). With the game's Auto on it goes on by itself
@@ -700,11 +700,25 @@ void tick() {
         if (!c.paused) hold_source(true);   // the game let it go meanwhile: hold it again
         sc.paused = false;
         sc.held = true;
-        // the narrator finished: the cue a voiced line gets when it ends and waits ("Next", or the chosen sound)
-        if (!reader && ours && n.ended && !g_box_ended) {
-          g_box_ended = true;
-          if (settings::get(settings::VoiceEndSound) == settings::EndNext) speech::speak(strings::kNext, false);
-          else voice::play_end_sound();
+        // The description is said and the box waits: the cue a message window's page gets then (msg's end_cue_tick),
+        // "Next" or the chosen sound; none under Auto, which goes on by itself. The narrator: once its clip ended.
+        // The screen reader: "Next" is speech, queued behind the description at once; a sound waits until the reader
+        // has reported it under way and then quiet (one that cannot tell, NVDA: at once).
+        if (!g_box_ended && !msg::auto_on() && !voice::playing()) {
+          const bool next = settings::get(settings::VoiceEndSound) == settings::EndNext;
+          bool said = false;
+          if (reader) {
+            const int sp = speech::speaking();
+            if (sp == 1) g_box_spoke = true;
+            said = next || sp == -1 || (sp == 0 && g_box_spoke);
+          } else {
+            said = ours && n.ended;
+          }
+          if (said) {
+            g_box_ended = true;
+            if (next) speech::speak(strings::kNext, false);
+            else voice::play_end_sound();
+          }
         }
       }
     }
