@@ -10,5 +10,5 @@
 79.370	10.244	08.mp3	You scoop Junpei's rubber duck out of the water and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash, and Yukari grabs Fuuka's arm.
 85.000	2.560	09.mp3	Mitsuru and Aigis walk over toward the splash.
 96.500	2.586	10.mp3	The four of you flinch and drop low in the water.
-104.830	3.857	11.mp3	Aigis looks straight at the spot where you are hiding, and the four of you flinch.
+104.830	3.016	11.mp3	Startled, the four of you flinch and shrink low in the water.
 111.330	2.891	12.mp3	You lead the way, and the four of you creep toward the exit.
