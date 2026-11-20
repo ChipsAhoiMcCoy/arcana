@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_002_600_C", "title": "Movies with Yukari", "cues": [{"at": 0.05, "text": "The movie theater. You and Yukari walk in together, Yukari with her bag in hand."}, {"at": 3.05, "text": "In the screening room, you and Yukari sit side by side among the audience, watching the film."}, {"at": 8.85, "text": "Afterwards, you and Yukari stand facing each other outside the screening room."}]}
+{
+ "movie": "LS_Event_Cmmu_002_600_C",
+ "title": "Movies with Yukari",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The movie theater lobby. You and Yukari stand by the snack counter, Yukari with her bag in hand."
+  },
+  {
+   "at": 3.05,
+   "text": "In the screening room, you and Yukari sit side by side among the audience, watching the film."
+  },
+  {
+   "at": 8.85,
+   "text": "Afterwards, you and Yukari stand at the snack counter in the lobby again."
+  }
+ ]
+}

@@ -1,13 +1,13 @@
 #scene LS_Event_Main_190_295_C
 0.100	5.950	00.mp3	You and the other three stand in the water beside a large rock. Beyond it, the girls are searching the bath.
-14.830	6.923	01.mp3	Yukari and Fuuka come around the rock and find the four of you standing in the open. They stare, and Yukari turns away.
-22.670	2.466	02.mp3	You lead the others through the water toward the rock.
-35.830	7.758	03.mp3	You lead the others a few steps across the water, and the four of you hold still. Yukari and Fuuka walk up close, Fuuka peering your way.
+14.830	9.104	01.mp3	Yukari and Fuuka stand in the open water past the rock, facing the four of you caught in plain view. You all freeze in surprise, and the girls stare back.
+22.670	6.273	02.mp3	You lead the others through the water toward the rock, and the four of you end up standing in a row against it, stock-still.
+35.830	9.184	03.mp3	You lead the others a few steps across the water into the steam, and the four of you hold still. Fuuka wades up to the rock alone and peers into the steam toward you.
 51.000	5.360	04.mp3	You break from cover and run for the exit with Junpei and Ryoji, Akihiko behind you.
 56.300	2.015	05.mp3	Mitsuru and Aigis turn round and see you.
 63.970	2.377	06.mp3	All four of you dash through the water for the exit.
 70.300	2.015	07.mp3	Mitsuru and Aigis turn round and see you.
-79.370	7.414	08.mp3	You take Junpei's rubber duck and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash.
+79.370	10.244	08.mp3	You scoop Junpei's rubber duck out of the water and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash, and Yukari grabs Fuuka's arm.
 85.000	2.560	09.mp3	Mitsuru and Aigis walk over toward the splash.
 96.500	3.857	10.mp3	Aigis looks straight at the spot where you are hiding, and the four of you flinch.
 104.830	3.857	11.mp3	Aigis looks straight at the spot where you are hiding, and the four of you flinch.

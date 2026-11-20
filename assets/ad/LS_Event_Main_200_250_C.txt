@@ -9,4 +9,4 @@
 72.200	4.053	07.mp3	You sit a moment with your head bowed, then get up and walk over to Ryoji.
 80.050	7.409	08.mp3	Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple, and the scene fades away.
 98.200	4.326	09.mp3	The masked figure bursts apart in an instant, and Ryoji stands there again.
-112.750	3.059	10.mp3	Ryoji holds out a small music box, and you take it.
+112.750	5.192	10.mp3	Ryoji walks over to where you sit on the bed, holds out a small music box, and you take it.

@@ -1,15 +1,58 @@
-{"movie": "LS_Event_Main_190_295_C", "title": "Sneaking out of the hot spring", "cues": [
-{"at": 0.10, "text": "You and the other three stand in the water beside a large rock. Beyond it, the girls are searching the bath."},
-{"at": 14.83, "text": "Yukari and Fuuka come around the rock and find the four of you standing in the open. They stare, and Yukari turns away."},
-{"at": 22.67, "text": "You lead the others through the water toward the rock."},
-{"at": 35.83, "text": "You lead the others a few steps across the water, and the four of you hold still. Yukari and Fuuka walk up close, Fuuka peering your way."},
-{"at": 51.00, "text": "You break from cover and run for the exit with Junpei and Ryoji, Akihiko behind you."},
-{"at": 56.30, "text": "Mitsuru and Aigis turn round and see you."},
-{"at": 63.97, "text": "All four of you dash through the water for the exit."},
-{"at": 70.30, "text": "Mitsuru and Aigis turn round and see you."},
-{"at": 79.37, "text": "You take Junpei's rubber duck and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash."},
-{"at": 85.00, "text": "Mitsuru and Aigis walk over toward the splash."},
-{"at": 96.50, "text": "Aigis looks straight at the spot where you are hiding, and the four of you flinch."},
-{"at": 104.83, "text": "Aigis looks straight at the spot where you are hiding, and the four of you flinch."},
-{"at": 111.33, "text": "You lead the way, and the four of you creep toward the exit."}
-]}
+{
+ "movie": "LS_Event_Main_190_295_C",
+ "title": "Sneaking out of the hot spring",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "You and the other three stand in the water beside a large rock. Beyond it, the girls are searching the bath."
+  },
+  {
+   "at": 14.83,
+   "text": "Yukari and Fuuka stand in the open water past the rock, facing the four of you caught in plain view. You all freeze in surprise, and the girls stare back."
+  },
+  {
+   "at": 22.67,
+   "text": "You lead the others through the water toward the rock, and the four of you end up standing in a row against it, stock-still."
+  },
+  {
+   "at": 35.83,
+   "text": "You lead the others a few steps across the water into the steam, and the four of you hold still. Fuuka wades up to the rock alone and peers into the steam toward you."
+  },
+  {
+   "at": 51.0,
+   "text": "You break from cover and run for the exit with Junpei and Ryoji, Akihiko behind you."
+  },
+  {
+   "at": 56.3,
+   "text": "Mitsuru and Aigis turn round and see you."
+  },
+  {
+   "at": 63.97,
+   "text": "All four of you dash through the water for the exit."
+  },
+  {
+   "at": 70.3,
+   "text": "Mitsuru and Aigis turn round and see you."
+  },
+  {
+   "at": 79.37,
+   "text": "You scoop Junpei's rubber duck out of the water and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash, and Yukari grabs Fuuka's arm."
+  },
+  {
+   "at": 85.0,
+   "text": "Mitsuru and Aigis walk over toward the splash."
+  },
+  {
+   "at": 96.5,
+   "text": "Aigis looks straight at the spot where you are hiding, and the four of you flinch."
+  },
+  {
+   "at": 104.83,
+   "text": "Aigis looks straight at the spot where you are hiding, and the four of you flinch."
+  },
+  {
+   "at": 111.33,
+   "text": "You lead the way, and the four of you creep toward the exit."
+  }
+ ]
+}

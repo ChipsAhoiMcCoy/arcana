@@ -4,3 +4,4 @@
 73.000	2.804	02.mp3	Yuko comes into the room and walks over to the group.
 85.670	3.502	03.mp3	Chihiro hurries in, looking flustered, and comes over to you.
 89.700	1.781	04.mp3	Yuko and Yukari both frown.
+108.330	9.537	05.mp3	Chihiro turns and hurries out. Yukari and Junpei have gone off across the room and Yuko has left too: only Kenji, Kazushi and Aigis stay with you.
