@@ -1,0 +1,2 @@
+#scene LS_Event_Fild_518_036_C
+0.000	3.141	00.mp3	The Great Clock's face opens, and gears turn inside it.
