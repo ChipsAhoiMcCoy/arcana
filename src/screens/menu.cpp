@@ -140,6 +140,7 @@ bool sections() { return nav().section_count() > 1; }
 bool tab_is_game() { bool t = false; guarded([&] { t = g_active->game_tab(); }); return t; }
 bool triggers_are_game() { bool t = false; guarded([&] { t = g_active->game_triggers(); }); return t; }
 bool bumpers() { bool t = false; guarded([&] { t = g_active->takes_bumpers(); }); return t; }
+bool game_a_d() { bool t = false; guarded([&] { t = g_active->game_a_d(); }); return t; }
 void bumper(int dir) { guarded([&] { g_active->on_bumper(dir); }); }
 bool status_blocked() { bool t = false; guarded([&] { t = g_active->blocks_status(); }); return t; }
 // Where the game's details key is blocked (the details are read with each row), it reads the focused row again,
@@ -266,7 +267,8 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
         reread();
         return true;
       // The game's D-pad keys would move its cursor behind the navigator's back (wrapping at the ends).
-      case 'W': case 'A': case 'S': case 'D': return true;
+      case 'W': case 'S': return true;
+      case 'A': case 'D': return !game_a_d();
       case 'Q': case 'E':
         if (!bumpers()) return false;
         bumper(vk == 'E' ? 1 : -1);

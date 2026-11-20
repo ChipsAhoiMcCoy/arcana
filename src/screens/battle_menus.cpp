@@ -498,6 +498,8 @@ class BattleAnalyze : public BattleList {
  public:
   BattleAnalyze() : BattleList(8, "BP_BtlGuiAnalyze_C", strings::kAnalyzeKeys) {}
   const char* id() const override { return "battle_analyze"; }
+  // A and D are the keyboard's L1 / R1 here, as Q and E are (the target change; the battle screen keeps it from wrapping).
+  bool game_a_d() override { return true; }
   std::string title() override { return strings::kAnalyze; }
   bool active() override { return BattleList::active() && w_.analyze_comp() && cursor_target(); }
   void on_enter() override { BattleList::on_enter(); shown_ = cursor_target(); }

@@ -205,7 +205,7 @@ inline constexpr Hint kKeyTheurgy{"T Theurgy", "RT Theurgy"};
 inline constexpr Hint kKeyShift{"B shift", "LT shift"};
 inline constexpr Hint kKeyAssist{"F assist", "RB assist"};
 inline constexpr Hint kChangeTargetKeys{"A and D or the left and right arrows change target.", "Left and right change target."};
-inline constexpr Hint kAnalyzeKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E change target, Escape closes.",
+inline constexpr Hint kAnalyzeKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E or A and D change target, Escape closes.",
                                    "Up and down go through the lines, RT and LT jump between sections, LB and RB change target, B closes."};
 inline constexpr Hint kTargetKeys{"Left and right arrows choose a target, Space confirms, Q analyzes it, Escape back.", "Left and right choose a target, A confirms, LB analyzes it, B back."};
 inline constexpr Hint kTheurgyKeys{"Left and right arrows choose, Space uses it, Escape back.", "Left and right choose, A uses it, B back."};

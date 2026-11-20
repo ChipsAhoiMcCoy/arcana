@@ -107,6 +107,8 @@ class MenuScreen : public Screen, public ui::Screen {
   // Whether Q / E and LB / RB are the screen's (on_bumper, -1 / +1; the game never sees them): a page that shows one
   // entry of a list at a time (the camp's Persona list).
   virtual bool takes_bumpers() { return false; }
+  // Whether A / D are the game's on this screen, where they are not its D-pad (Analyze: the keyboard's L1 / R1).
+  virtual bool game_a_d() { return false; }
   virtual void on_bumper(int) {}
   // Whether F and X (the game's Persona status page) do nothing: a screen that already is that page.
   virtual bool blocks_status() { return false; }
