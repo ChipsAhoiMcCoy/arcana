@@ -259,6 +259,9 @@ class VelvetScreen : public MenuScreen {
     // The animation runs 20 seconds with nothing to read until the Persona speaks: say it started (Tab skips it).
     if (scene() == 4 && (step() == 7 || step() == 8)) {
       if (!fusing_) { fusing_ = true; screens::set_keys(strings::kFusingKeys); say(strings::kFusing, true); }
+    } else if (scene() == 4 && (step() == 9 || step() == 10)) {
+      // The result's page opening (FUN_141574cd0: 10 opens the status page, 9 waits for it, then 11): no keys.
+      if (fusing_) { fusing_ = false; screens::set_keys([] { return std::string(); }); }
     } else if (scene() != 4 || step() < 7) {
       fusing_ = false;
       memset(before_, 0, sizeof before_);   // a later fusion of the same Persona compares with its own values

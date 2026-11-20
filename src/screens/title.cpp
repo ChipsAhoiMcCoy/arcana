@@ -97,8 +97,8 @@ class TitleScreen : public Screen {
       cursor_ = -1;
       notice_pressed_ = false;
       if (st == "Caution" || st == "PhotosensitiveCaution") voice::play_system_sound(voice::CueWindowOpen);
-      if (st == "Caution") { screens::set_keys(strings::kNoticeKeys); speech::speak(strings::kTitleCaution, true); }
-      else if (st == "PhotosensitiveCaution") { screens::set_keys(strings::kNoticeKeys); speech::speak(strings::kTitlePhotosensitive, true); }
+      if (st == "Caution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitleCaution, true); }
+      else if (st == "PhotosensitiveCaution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitlePhotosensitive, true); }
     }
     if (st == "Caution" || st == "PhotosensitiveCaution") hold_notice(s, st == "Caution", g_title_actor.get(), notice_pressed_);
     // The logos before the opening movie (about 13 s with nothing else on screen): UTitleStateLogo +0x44 is the one
@@ -149,7 +149,7 @@ class TitleMenuScreen : public MenuScreen {
     return s && title_state_is("Select") && *(int32_t*)(s + 0x18) == 2;   // the menu's step: ATitleActor +0x490
   }
   std::string title() override { return strings::kTitleMenu; }
-  void on_enter() override { screens::set_keys(strings::kChooseKeys); }
+  void on_enter() override { screens::set_keys(strings::kTitleMenuKeys); }
   void build(ui::GraphBuilder& b) override {
     b.begin_stop("title");
     int n = title_count(title_state_obj());

@@ -228,7 +228,11 @@ class ConfigScreen : public MenuScreen {
   }
   std::string title() override { return strings::kConfig; }
   void on_enter() override {
-    screens::set_keys([this] { return keys::fill(bgm_mode() ? strings::kBgmKeys() : tabs_ ? strings::kConfigTabKeys() : strings::kConfigKeys()); });
+    screens::set_keys([this] {
+      int c = list_.cursor ? list_.cursor() : -1;
+      bool bgm_row = !tabs_ && c >= 0 && c < (int)rows_.size() && rows_[c].type == kTypeBgm;
+      return keys::fill(bgm_mode() ? strings::kBgmKeys() : tabs_ ? strings::kConfigTabKeys() : bgm_row ? strings::kConfigBgmRowKeys() : strings::kConfigKeys());
+    });
     rows_.clear();
     state_seen_ = -1;
     state_settled_ = false;

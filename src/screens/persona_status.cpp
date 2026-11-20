@@ -101,6 +101,7 @@ void build_status_page(ui::GraphBuilder& b, const uint8_t* e, const std::string&
 class PersonaStatusScreen : public MenuScreen {
   Finder ps_{"PersonaStatus"};
   Finder gui_{"BtlGuiStateManager"};
+  Finder bp_{"BP_BtlGuiPersonaStatus_C"};   // IsStrategy: opened from Shift, Survey or a target, not a skill list
   bool battle_;   // the battle's own (GUI state 12: F from a skill list)
   int shown_ = 0;
  public:
@@ -113,7 +114,11 @@ class PersonaStatusScreen : public MenuScreen {
     return persona::status_page_up(ps_.get());
   }
   std::string title() override { return strings::kPersonaStatus; }
-  void on_enter() override { screens::set_keys(battle_ ? strings::kPersonaStatusKeys : strings::kCampPersonaStatusKeys); shown_ = 0; }
+  void on_enter() override {
+    if (!battle_) screens::set_keys(strings::kCampPersonaStatusKeys);
+    else screens::set_keys([this] { UObject* b = bp_.get(); return std::string(b && get_bool(b, "IsStrategy") ? strings::kBattleMemberStatusKeys() : strings::kPersonaStatusKeys()); });
+    shown_ = 0;
+  }
   void on_tick() override {
     const uint8_t* e = persona::shown_status();
     int id = e ? *(uint16_t*)(e + 2) : 0;

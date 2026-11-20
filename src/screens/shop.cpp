@@ -180,10 +180,11 @@ class ShopScreen : public MenuScreen {
   int priority() const override { return 18; }
   bool active() override {
     int st = state();
-    return st == 5 || st == 6 || list_state(st) || st == 9 || st == 0x16 || yes_no(st) || st == 0x10 || st == 0x11 || st == 0x12;
+    return st == 5 || st == 6 || list_state(st) || st == 8 || st == 9 || st == 0x16 || yes_no(st) || st == 0x10 || st == 0x11 || st == 0x12;
   }
   // The quantity is the game's (up and down change it): the menu stands aside, its number is read as it changes.
-  bool holds_keys() override { int st = state(); return st != 9 && st != 0x16 && st != 0x12; }
+  // A list's second view (F: 8 a buy list's, 0x12 the fusion list's who-can-equip) is the game's too, for its keys.
+  bool holds_keys() override { int st = state(); return st != 8 && st != 9 && st != 0x16 && st != 0x12; }
   // The money is not said on entry (the status key reads it; the user's call, 2026-11-17).
   std::string title() override { return antique() ? strings::kAntiqueShop : strings::kShop; }
   // F1: the keys of the state in front (the weapon shop's lists switch member with Q / E, the sell list category).
@@ -193,7 +194,10 @@ class ShopScreen : public MenuScreen {
     // A shop of several modes goes back to its top menu on cancel; one of a single mode leaves (+0x2C0, the modes).
     if (st == 7) return member() ? strings::kShopWeaponKeys() : *(int32_t*)(s() + 0x2C0) >= 2 ? strings::kShopListBackKeys() : strings::kShopListKeys();
     if (st == 0x14) return strings::kShopSellKeys();
-    if (st == 0x11 || st == 0x13) return strings::kShopTradeKeys();
+    if (st == 8) return member() ? strings::kShopDetailWeaponKeys() : strings::kShopDetailKeys();
+    if (st == 0x11) return strings::kShopFuseKeys();
+    if (st == 0x12) return strings::kShopFuseDetailKeys();
+    if (st == 0x13) return strings::kShopTradeKeys();
     if (st == 9 || st == 0x16) return strings::kHowMany();
     if (yes_no(st)) return s()[0x3B8] ? strings::kChooseKeys() : strings::kShopYesNoKeys();
     return st == 6 || st == 0x10 ? strings::kListKeys() : "";

@@ -1,4 +1,5 @@
-// Story movies (BP_MoviePlayer_C, CRI Mana). Enter pauses and resumes a movie and Tab skips it; a paused movie is
+// Story movies (BP_MoviePlayer_C, CRI Mana). Enter pauses and resumes a movie; Tab skips it only while it is paused (a
+// first press of any of the game's keys pauses: FUN_141256c50, so Tab twice skips). A paused movie is
 // silent and looks like a hang, so the pause is announced. Subtitles are BMD pages: msg speaks them.
 #include "screens/screen.h"
 #include "screens/util.h"

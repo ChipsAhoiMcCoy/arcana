@@ -182,7 +182,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Choices: the highlighted answer and its position, as the list appears and on every move ("Go with this, 1 of 2"). A script that asks you to pay (the late-night TV shopping) says the price and your money first ("Price 2980 yen, you have 4800 yen").
 - The log (B, in the field or a conversation): each line as you scroll, opening on the newest; Space replays its voice. Lines from before this session are said to be earlier. Closing it in a conversation reads the line on screen again.
 - The party's voiced chatter while exploring, and the navigator's and party's remarks in battle, are not read over the voices; they stay in the log. Unvoiced lines are read.
-- Movies: "Movie paused" (Enter pauses and resumes, Tab skips). Every animated story movie (the anime scenes, both openings, both credit rolls) has audio description: a narrator describes what is on screen between lines, never over dialogue. During the credits, Backslash reads the names on screen. The credits Z (L1) opens from the title menu are announced too: Enter (A) pauses them, and Tab (the Menu button) skips them while they are paused.
+- Movies: "Movie paused" (Enter or A pauses and resumes; Tab or the Menu button skips while paused, so twice from a playing movie). Every animated story movie (the anime scenes, both openings, both credit rolls) has audio description: a narrator describes what is on screen between lines, never over dialogue. During the credits, Backslash reads the names on screen. The credits Z (L1) opens from the title menu are announced too: Enter (A) pauses them, and Tab (the Menu button) skips them while they are paused.
 - 3D story scenes (the main story, Social Links, outings, Elizabeth's requests, moments in the field and Tartarus) are described too, in the second person ("You walk into the lounge"): a description pauses the scene like a message window until you go on. Scenes whose dialogue already says everything are left quiet. Scenes that repeat (job shifts, meals, studying, the Velvet Room door, Tartarus's golden hand and chests) are described for a first look; set Audio description in 3D scenes to suppress repeated descriptions to hear each of them only once.
 - Cut-ins: a close-up flashed to stress a line is described before it ("Close-up: Yukari, glaring.").
 - Pictures shown full screen are described as they appear (a class question's chalkboard, a sketch in the story).
@@ -250,7 +250,7 @@ Tab opens and closes it; Escape backs out of a submenu. Each entry reads with it
 - Calendar: left and right move a day, up and down a week, each day read with its weekday and plans; Q and E change month; F opens the part-time jobs, each with its time, pay, place and whether that day takes it.
 - System: Config (each page, then each setting with its value and position, "Vibration: on, 1 of 24"; left and right change it; Space saves, H restores defaults; Key Configuration reads each binding; BGM rows open a playlist with Space or the right arrow, in two sections that Tab and Shift+Tab jump between: Modes (Default, Random, Favorited, each said with what it does) and Tracks; Space sets one, said as "current"; F (X) plays or stops a track, said as "playing" and "stopped"; E (RB) marks or unmarks a favorite), Dictionary, Tutorial (tabs Q and E switch; button icons read as key names), Save and load, and Rewind (each day you can go back to).
 - Save and load: each slot with name, date, time of day, level, location and play time; a clear save says so ("Slot 9: Makoto Yuki, Clear data, start a new game, play time 46 hours 16 minutes").
-- Learning a skill (a skill card, or a level up): the skill, then the Persona with its stats and skills; Q and E switch Persona, Space learns. When the eight slots are full the arrows move over them (two columns of four), each read with its cost; Space forgets it, Escape goes back. If a skill is about to change, each change is said ("Bufu would become Spirit Drain").
+- Learning a skill (a skill card, or a level up): the skill, then the Persona with its stats and skills; Q and E switch Persona on a skill card's page (a level up keeps its Persona), Space learns. When the eight slots are full the arrows move over them (two columns of four), each read with its cost; Space forgets it, Escape goes back. If a skill is about to change, each change is said ("Bufu would become Spirit Drain").
 
 ### Social stats and Social Links
 
@@ -267,13 +267,13 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 - What enemies and members acting on their own used, damage, healing and defeats ("2 Cowardly Maya defeated"); on a target you chose, the number alone ("14 damage"). Your own choices are not read back.
 - Details of whoever is in focus (Ctrl+Down, right stick): name and level, HP, SP, ailments and buffs with turns left, guarding, affinities found, and for a party member their Persona, stats and Theurgy gauge. In Analyze also its arcana, level, maximum HP and SP, affinities, attack type, skills and drops, as far as the game shows.
 - "S.E.E.S. advantage" or "Shadow advantage" at the start; "1 More! Shift available", after which B (Shift) passes the turn; the All-Out Attack prompt once with its buttons.
-- Tactics (W): "Give an order?", each member's order, and the orders. Rush (Tab) lets the party fight alone.
+- Tactics (W): "Give an order?", each member's order, and the orders. Rush (Tab) lets the party fight alone; Tab or C (the Menu button or B) stops it.
 - A battle against the clock (the Priestess on the monorail) says the time left at the start, with each of your turns, every 5 minutes, at 1 minute, 30 and 10 seconds, and when the story cuts it short.
 
 ### After battles
 
 - Shuffle Time reads every card's effect as they are dealt, with its position, and says when you may take more than one ("choose 1 more"). A skill card says how many you own; a Persona card's status page is read. Arcana Burst's row reads the same ("Arcana Burst. choose 2"; C cancels the last pick).
-- Persona Overstock: the new Persona ("Gain: ...") and each one you hold; Space releases the one chosen, F shows its stats.
+- Persona Overstock: the new Persona ("Gain: ...") and each one you hold; Space releases the one chosen, F shows its stats (there Q and E go through them and Space releases the one shown).
 - The victory screen reads each thing as its own line you can go back over with the arrows: EXP, money, items, each level up, the hero's level-up page, and the status page of a Persona that learned a skill. Space or Enter goes on.
 
 ### Velvet Room

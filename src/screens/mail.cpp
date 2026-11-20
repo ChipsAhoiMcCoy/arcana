@@ -165,7 +165,7 @@ class MailScreen : public MenuScreen {
     after_reply_ = false;
     if (!screens::returning()) { reading_ = false; listed_ = false; said_.clear(); }
     else if (reading_) after_reply_ = true;
-    screens::set_keys(strings::kMailKeys);
+    screens::set_keys([this] { UObject* d = draw_.get(); return std::string(d && flag(d, "bIsStartMailAnim") ? strings::kMailOpenKeys() : strings::kMailKeys()); });
   }
   void on_leave() override { if (!active()) { after_reply_ = false; reading_ = false; said_.clear(); } }   // closed, not covered
   void on_tick() override {

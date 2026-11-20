@@ -287,7 +287,7 @@ class LocationListScreen : public MenuScreen {
   void on_enter() override {
     quiet_ = titled_;
     titled_ = true;
-    screens::set_keys(strings::kFastTravelKeys);
+    screens::set_keys([this] { return std::string(town_.get() && pause_top() == 2 ? strings::kEntranceKeys() : strings::kFastTravelKeys()); });
   }
   void build(ui::GraphBuilder& b) override {
     uint8_t* l = list();

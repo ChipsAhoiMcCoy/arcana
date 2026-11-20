@@ -71,6 +71,7 @@ class CampQuest : public MenuScreen {
   }
   void on_enter() override {
     screens::set_keys([this] {
+      if (tab() == 0 && info()) return std::string(velvet() ? strings::kRequestInfoVelvetKeys() : strings::kRequestInfoKeys());
       return std::string(velvet() ? strings::kRequestKeys() : board() ? strings::kMissingBoardKeys()
                          : tab() == 1 ? strings::kMissingPersonsKeys() : strings::kCampRequestKeys());
     });
@@ -85,6 +86,8 @@ class CampQuest : public MenuScreen {
   bool board() { uint8_t* r = missing(); return !open() && r && r[0x531]; }
   int tab() { if (board()) return 1; if (velvet()) return 0; UObject* q = menu_.get(); return q ? i32(q, 0x1C4) : 0; }
   uint8_t* req() { UObject* r = req_.get(); return r && i32(r, 0x34) == 8 ? (uint8_t*)r : nullptr; }
+  // A request's info (F: state 9): the game's keys (up and down switch request, F or cancel back), the screen stays.
+  uint8_t* info() { UObject* r = req_.get(); return r && i32(r, 0x34) == 9 ? (uint8_t*)r : nullptr; }
   uint8_t* missing() { UObject* r = missing_.get(); return r && i32(r, 0x34) == 6 ? (uint8_t*)r : nullptr; }
   Mirror& reqs_ = mirror("requests", [this] { uint8_t* r = req(); return r && tab() == 0 ? ListCursor(r + 0xE0).index() : -1; });
   Mirror& cases_ = mirror("cases", [this] { uint8_t* r = missing(); return r && tab() == 1 ? cursor_at(r, 0x538).index() : -1; });
@@ -106,16 +109,16 @@ class CampQuest : public MenuScreen {
  public:
   const char* id() const override { return "camp_quest"; }
   int priority() const override { return 21; }
-  bool active() override { return (open() || velvet() || board()) && ((tab() == 0 && req()) || (tab() == 1 && missing())); }
+  bool active() override { return (open() || velvet() || board()) && ((tab() == 0 && (req() || info())) || (tab() == 1 && missing())); }
   // A request's prompt (accept? / the report) is a message window over the list: the keys are its.
-  bool holds_keys() override { uint8_t* r = req(); return tab() == 1 || !r || *(int32_t*)(r + 0x5F8) == -1; }
+  bool holds_keys() override { if (tab() == 0 && info()) return false; uint8_t* r = req(); return tab() == 1 || !r || *(int32_t*)(r + 0x5F8) == -1; }
   // A case's profile is read with each row: the game's details key (F / X) does nothing there. A request's info (F)
   // stays the game's: Elizabeth's text names the item only on the page the game builds for that view.
   bool blocks_status() override { return tab() == 1; }
   std::string title() override { return tab() == 1 ? strings::kMissingPersons : strings::kRequests; }
   void build(ui::GraphBuilder& b) override {
     if (tab() == 0) {
-      uint8_t* r = req();
+      uint8_t* r = req() ? req() : info();   // the list stays built under the info view
       auto* list = r ? arr<uint8_t>(r, 0xD0) : nullptr;
       b.begin_stop("requests");
       for (int i = 0; list && i < list->num; ++i) {

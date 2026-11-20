@@ -173,7 +173,10 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     return sc && (is_a(sc, "CmpCharacterStatus") || is_a(sc, "CmpHeroHumanStatus"));
   }
   std::string title() override { return strings::kCampItems[4]; }
-  void on_enter() override { screens::set_keys(strings::kStatsPageKeys); }
+  // X opens the member's Persona status over the page (CmpCharacterStatus +0x48 = 5, FUN_141359990): Q / E switch member.
+  void on_enter() override {
+    screens::set_keys([this] { UObject* sc = scene(); return std::string(sc && is_a(sc, "CmpCharacterStatus") && i32(sc, 0x48) == 5 ? strings::kStatsPersonaKeys() : strings::kStatsPageKeys()); });
+  }
   bool game_triggers() override { return true; }
   void on_tick() override {
     int who = member();

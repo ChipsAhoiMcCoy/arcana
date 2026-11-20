@@ -112,7 +112,11 @@ class GenericSelectScreen : public MenuScreen {
   // The list is read as it opens, before its title and first entry are spoken, and forgotten as it closes: the model
   // kept from the last list spoke the Velvet Room's "Talk. What should I ask about?, Fusion Basics, 1 of 7" over the
   // cafe's coffee (2026-10-31).
-  void on_enter() override { screens::set_keys(strings::kSelectKeys); read(); }
+  // Cancel only when the request allowed it (UIGenericSelect +0x2E4, from the open request's +0x44; FUN_141478620).
+  void on_enter() override {
+    screens::set_keys([this] { auto* a = (uint8_t*)actor_.get(); return std::string(a && !a[0x2E4] ? strings::kChooseKeys() : strings::kSelectKeys()); });
+    read();
+  }
   void on_tick() override { read(); }
   void on_leave() override { names_.clear(); items_.clear(); heading_.clear(); }
   void read() {

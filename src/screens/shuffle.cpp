@@ -323,7 +323,7 @@ class ShuffleScreen : public MenuScreen {
   void on_enter() override {
     UObject* ui = shuffle_ui();
     overstock_ = ui && overstock(ui);   // said by the title on entry
-    screens::set_keys(overstock_ ? strings::kOverstockKeys : strings::kShuffleKeys);
+    screens::set_keys([this] { UObject* u = shuffle_ui(); return std::string(!overstock_ ? strings::kShuffleKeys() : u && overstock_stats(u) ? strings::kOverstockPageKeys() : strings::kOverstockKeys()); });
   }
   // The deal is over: the next battle's deal comes on the same actor (ShowCardsMax set again), so its cards are
   // forgotten here (the next deal was said with the last one's first card until its own were read, 2026-11-02).
@@ -362,8 +362,7 @@ class ShuffleScreen : public MenuScreen {
     }
     persona_.clear();
     if (overstock(ui) != overstock_) {
-      overstock_ = !overstock_;
-      screens::set_keys(overstock_ ? strings::kOverstockKeys : strings::kShuffleKeys);
+      overstock_ = !overstock_;   // the keys follow (on_enter's hint reads overstock_)
       if (overstock_) {
         say(strings::kPersonaOverstock, true);
         focus(slot("release", get<int32_t>(ui, "PersonaSelectCoursorIndex")), false);

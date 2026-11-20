@@ -111,7 +111,7 @@ class SkillLearnScreen : public MenuScreen {
     if (!p || !e) return;
     shown_ = *(uint16_t*)(e + 2);
     if (!(WeakObj::of(p) == page_)) skill_ = 0;
-    if (int sid = new_skill(p)) { skill_ = sid; page_ = WeakObj::of(p); screens::set_keys(strings::kLearnSkillKeys); }
+    if (int sid = new_skill(p)) { skill_ = sid; page_ = WeakObj::of(p); screens::set_keys(name_of(class_of(get<UObject*>(p, "Sequence_"))) == "PersonaStatusSkillCardSeq" ? strings::kLearnSkillKeys : strings::kLearnLevelUpKeys); }
     else screens::set_keys(strings::kCBack);   // back on the page after the skill was learned
   }
   // A skill change offered after a fusion (the fusion rolls it, UICombineCalc: CombineMiscDataAsset's
