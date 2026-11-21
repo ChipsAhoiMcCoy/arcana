@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Online features
+- The game's online statistics are read (they need the game's Network Functions on, and a press of N, or View on a controller, as in the game). In town, N reads what other players did today: the share of daily life, Social Links and Tartarus, with the activities noted for each. On a class question's answers, N reads how other players answered, each answer with its percentage. Until the figures arrive, you hear that they are on the way. F1 names the key where it works.
+
 ### Field
 - The mod's field sounds (sonar, wall tones, Shadow cues and sight zones) now go quiet whenever the game takes the hero from you: opening a door, checking or picking something up, a camera the game moves by itself. They come back the moment you can move again, so silence means wait.
 
