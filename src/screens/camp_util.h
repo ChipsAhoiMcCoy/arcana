@@ -5,16 +5,39 @@
 #include "screens/util.h"
 #include "party.h"
 #include "social.h"
+#include "core/strings.h"
+#include <algorithm>
 #include <string>
 #include <vector>
 
 namespace p3a::screens {
 // `level` false: a member being picked for an item, a skill or gear, where the level tells nothing (the user's call,
 // 2026-11-11).
-inline std::string member_line(int id, bool level = true) {
+// `mark` follows the name (party_marks).
+inline std::string member_line(int id, bool level = true, const std::string& mark = {}) {
   party::Member m;
-  if (party::member(id, m)) return party::line(m, level);
-  return party::name(id);
+  if (party::member(id, m)) { m.name += mark; return party::line(m, level); }
+  return party::name(id) + mark;
+}
+// A member list that holds both the active party and members outside it (the Stats roster, an item or gear picked for
+// anyone): which each row is, ", in party", ", navigator" or ", reserve", in list order. A list of one kind marks
+// nothing (the tester's report, 2026-11-20: the Stats list never said who was in the party). The navigator never
+// fights (party::navigator).
+template <class Id>
+std::vector<std::string> party_marks(const ue::TArray<Id>* ids) {
+  std::vector<std::string> out(ids && ids->data ? ids->num : 0);
+  if (out.empty()) return out;
+  std::vector<int> party = party::ids();
+  auto in = [&](int id) { return std::find(party.begin(), party.end(), id) != party.end(); };
+  int navi = party::navigator();
+  bool any_in = false, any_out = false;
+  for (int i = 0; i < ids->num; ++i) (in(ids->data[i]) ? any_in : any_out) = true;
+  if (any_in && any_out)
+    for (int i = 0; i < ids->num; ++i) {
+      int id = ids->data[i];
+      out[i] = std::string(", ") + (in(id) ? strings::kInParty : id == navi ? strings::kNavigator : strings::kReserve);
+    }
+  return out;
 }
 // The party panel's highlight on `row` and its slide (FUN_14130fed0 + FUN_141307760: Item, Skill, Equip members).
 inline void panel_to(uint8_t* panel, int row, uint8_t* menu) {

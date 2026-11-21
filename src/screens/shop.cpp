@@ -23,6 +23,7 @@
 //          buy list is held (state 7), +0x760 its Buy / Quit panel is (state 10).
 #include "screens/menu.h"
 #include "screens/util.h"
+#include "screens/camp_util.h"
 #include "bmdfile.h"
 #include "core/battle_text.h"
 #include "core/strings.h"
@@ -230,9 +231,10 @@ class ShopScreen : public MenuScreen {
       auto* ids = (TArray<uint16_t>*)(s() + 0x2D0);
       b.begin_stop("shop.member");
       b.push_context(strings::kForWhom);
+      auto marks = party_marks(ids);
       for (int i = 0; ids->data && i < ids->num && i < 16; ++i) {
         int id = ids->data[i];
-        b.add_item(slot("shop.member", i), game_item(who_, i, [id] { return party::name(id); }));
+        b.add_item(slot("shop.member", i), game_item(who_, i, [id, mark = marks[i]] { return party::name(id) + mark; }));
       }
       b.pop_context();
       if (int c = who_.cursor(); c >= 0) b.set_start(slot("shop.member", c));

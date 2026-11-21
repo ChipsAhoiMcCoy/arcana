@@ -112,9 +112,10 @@ class CampEquip : public MenuScreen {
     if (st == 3) {
       auto* ids = arr<int16_t>(s, 0x28);
       b.begin_stop("equip.member");
+      auto marks = party_marks(ids);
       for (int i = 0; ids && i < ids->num; ++i) {
         int id = ids->data[i];
-        b.add_item(slot("equip.member", i), game_item(who_, i, [id] { return member_line(id, false); }));
+        b.add_item(slot("equip.member", i), game_item(who_, i, [id, mark = marks[i]] { return member_line(id, false, mark); }));
       }
       if (int c = who_.cursor(); c >= 0) b.set_start(slot("equip.member", c));
       return;

@@ -94,7 +94,10 @@ class CampStats : public MenuScreen, private CampStatsUi {
   std::vector<std::string> detail_lines() override {
     int id = focused_member();
     if (id < 0) return {};
-    std::vector<std::string> out{member_line(id)};
+    auto* ids = arr<uint16_t>(ui(), 0x28);
+    auto marks = party_marks(ids);
+    int row = focused_row("stats");
+    std::vector<std::string> out{member_line(id, true, row >= 0 && row < (int)marks.size() ? marks[row] : std::string())};
     if (const uint8_t* e = party::persona_entry(id)) {
       if (int pid = *(const uint16_t*)(e + 2)) out.push_back(persona::describe(pid, *(const uint16_t*)(e + 4)));
       for (auto& l : persona::detail_lines(e)) out.push_back(l);
@@ -124,12 +127,14 @@ class CampStats : public MenuScreen, private CampStatsUi {
     list_.key = key;
     b.begin_stop(key);
     if (md == 3) b.push_context(strings::kTacticsHeading);
+    auto marks = party_marks(ids);
     for (int i = 0; ids && i < ids->num; ++i) {
       int id = ids->data[i];
+      std::string mark = marks[i];
       if (md == 3) {
-        b.add_item(slot(key, i), game_item(list_, i, [this, id] {
+        b.add_item(slot(key, i), game_item(list_, i, [this, id, mark] {
           std::string t = tactic_name(tactic(id));
-          return t.empty() ? party::name(id) : std::format("{}: {}", party::name(id), t);
+          return t.empty() ? party::name(id) + mark : std::format("{}{}: {}", party::name(id), mark, t);
         }));
       } else {
         auto persona_line = [id] {
@@ -138,7 +143,7 @@ class CampStats : public MenuScreen, private CampStatsUi {
         };
         // The row names the Persona; its stats, skills and affinities are the detail buffer's lines (detail_lines), and
         // the review key reads them all at once. They were one 40-word line on every move (the user's call, 2026-11-11).
-        auto v = game_item(list_, i, [id] { return member_line(id); }, persona_line);
+        auto v = game_item(list_, i, [id, mark] { return member_line(id, true, mark); }, persona_line);
         describe_with(v, [id] {
           const uint8_t* e = party::persona_entry(id);
           int pid = e ? *(const uint16_t*)(e + 2) : 0;

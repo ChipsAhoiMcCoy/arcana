@@ -108,9 +108,10 @@ class CampItem : public MenuScreen {
       auto* ids = arr<int16_t>(s, 0x768);
       b.begin_stop("item.member");
       b.push_context(strings::kUseOnWhom);
+      auto marks = party_marks(ids);
       for (int i = 0; ids && i < ids->num; ++i) {
         int id = ids->data[i];
-        auto v = game_item(who_, i, [id] { return member_line(id, false); });
+        auto v = game_item(who_, i, [id, mark = marks[i]] { return member_line(id, false, mark); });
         v->announcements[0].live = true;   // the new HP or SP is read once the item lands
         b.add_item(slot("item.member", i), v);
       }

@@ -79,9 +79,10 @@ class CampSkill : public MenuScreen {
       Mirror& mm = st == 3 ? who_ : target_;
       b.begin_stop(mm.key);
       if (st == 5) b.push_context(strings::kUseOnWhom);
+      auto marks = party_marks(ids);
       for (int i = 0; ids && i < ids->num; ++i) {
         int id = ids->data[i];
-        auto v = game_item(mm, i, [id] { return member_line(id, false); });
+        auto v = game_item(mm, i, [id, mark = marks[i]] { return member_line(id, false, mark); });
         v->announcements[0].live = true;   // a healing skill's result (and the caster's SP) once it lands
         b.add_item(slot(mm.key, i), v);
       }

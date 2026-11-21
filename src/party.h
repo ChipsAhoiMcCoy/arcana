@@ -10,6 +10,7 @@ namespace p3a::party {
 struct Member { int id = 0; std::string name; int level = 0, hp = 0, max_hp = 0, sp = 0, max_sp = 0, exp = 0; };
 std::string name(int id);              // first name ("Yukari"); the hero's own as the player entered it
 std::vector<Member> members();         // the active party in order (leader first)
+std::vector<int> ids();                // the active party's character ids, leader first
 bool member(int id, Member& out);
 const uint8_t* persona_entry(int id);  // the member's equipped Persona entry (FDatUnitPersonaEntry), or null
 uint8_t* global_work();                // the UGlobalWork object (the save data), or null
@@ -20,6 +21,8 @@ uint8_t* unit_work(int id);            // its FDatUnitWork for character id 1..1
 ue::Params gwork(const char* fn);
 ue::Params gwork(const char* fn, int index);
 bool flag(int id);                     // a story flag (GlobalWorkBpLib.GWorkFlagChkValue); false for id 0
+bool joined(int id);                   // the character has joined S.E.E.S. (flag 0x3FFFFFFF + id; the hero always)
+int navigator();                       // the navigator's character id: Fuuka (6) once she has joined, else Mitsuru (5)
 std::string line(const Member& m, bool level = true);   // "Yukari, level 2, HP 74 of 80, SP 61 of 65"
 std::string summary();                 // every member's line
 std::vector<std::string> summary_parts();   // the same, a line per member (spoken one utterance each)

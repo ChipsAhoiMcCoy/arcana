@@ -96,15 +96,20 @@ bool member(int id, Member& m) {
   return true;
 }
 
-std::vector<Member> members() {
-  std::vector<Member> out;
+std::vector<int> ids() {
+  std::vector<int> out;
   for (int i = 0; i < 4; ++i) {
     Params p = gwork("GWorkGetPartyID", i);
-    if (!p.fn) return out;
-    int id = p.ret<int32_t>();
-    Member m;
-    if (id > 0 && member(id, m)) out.push_back(m);
+    if (!p.fn) break;
+    if (int id = p.ret<int32_t>(); id > 0) out.push_back(id);
   }
+  return out;
+}
+
+std::vector<Member> members() {
+  std::vector<Member> out;
+  for (int id : ids())
+    if (Member m; member(id, m)) out.push_back(m);
   return out;
 }
 
@@ -177,9 +182,17 @@ void install() {
   g_max_sp = resolve("GetUnitMaxSP");
   log::writef("party: max HP routine {}, max SP routine {}", (void*)g_max_hp, (void*)g_max_sp);
   dev::route("/party", [](const dev::Request&, int&) {
-    return dev::on_game([] { return summary() + "\n"; });
-  }, "the party: level, HP and SP of each member");
+    return dev::on_game([] {
+      std::string s = summary() + "\nids:";
+      for (int id : ids()) s += std::format(" {}", id);
+      for (int id = 1; id <= 10; ++id) s += std::format("\n{} {}{}", id, name(id), joined(id) ? "" : " (not joined)");
+      return s + "\n";
+    });
+  }, "the party: level, HP and SP of each member, its ids, every character id's name and who has not joined");
 }
+bool joined(int id) { return id == 1 || (id >= 2 && id <= 10 && flag(0x3FFFFFFF + id)); }
+// The game keeps no navigator id: Mitsuru navigates until Fuuka joins (p3rpc.slplus reads the same flags).
+int navigator() { return joined(6) ? 6 : 5; }
 bool flag(int id) {
   if (!id) return false;
   Params p = gwork("GWorkFlagChkValue", id);
