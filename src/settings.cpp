@@ -105,6 +105,8 @@ static const Def kDefs[Count] = {
    {strings::kEndNext, strings::kEndPage, strings::kEndMessage, strings::kEndCursor, strings::kOff}},
   // the screen reader reads a cutscene's subtitles (msg.cpp)
   {"subtitles", strings::kSetSubtitles, CatDialogue, strings::kHelpSubtitles, Unit::Toggle, {0, 1}, 0},
+  // the marks drawn over a character's head for a moment: "Question mark over Junpei" (emotes.cpp)
+  {"emote_marks", strings::kSetEmotes, CatDialogue, strings::kHelpEmotes, Unit::Toggle, {0, 1}, 1},
   // the descriptions of the animated story movies and of the story scenes in the 3D engine (ad.cpp): the narrator's
   // voice or the screen reader. A saved 1 from the old on/off toggle is DescAudio.
   {"audio_description", strings::kSetAudioDescription, CatDescription, strings::kHelpAudioDescription, Unit::Choice, {DescOff, DescAudio, DescReader}, DescAudio,

@@ -1,6 +1,7 @@
 #include "mod.h"
 #include "ad.h"
 #include "cutin.h"
+#include "emotes.h"
 #include "picture.h"
 #include "hooks.h"
 #include "log.h"
@@ -61,7 +62,7 @@ static Section g_sections[] = {
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
-  {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
+  {"ad", ad::tick}, {"cutin", cutin::tick}, {"emotes", emotes::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
 };
 static uint64_t g_perf_ticks = 0;
 static void tick() {

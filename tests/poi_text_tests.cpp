@@ -222,6 +222,9 @@ TEST_CASE("icon_state: what the icon over a person says") {
   CHECK(icon_kind("BP_UI_AccessIcon__C").empty());
   CHECK(std::string(icon_state("Talk")) == "something to say");   // the speech bubble
   CHECK(std::string(icon_state("Listen")) == "overhear");
+  CHECK(std::string(icon_state("Buzz_00")) == "overhear, a buzz of chatter");
+  CHECK(std::string(icon_state("Whisper_00")) == "overhear, whispering");
+  CHECK(std::string(icon_state("Whisper_Read_00")) == "heard");
   CHECK(std::string(icon_state("Talk_Read")) == "talked to");
   CHECK(std::string(icon_state("Listen_Read")) == "heard");
   CHECK(std::string(icon_state("Commu")) == std::string(icon_state("Commu_Field")));

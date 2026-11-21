@@ -6,6 +6,7 @@
 - Coming back to a menu from something the game handles itself (a shop's quantity, a page, a prompt) on the same row now reads that row again. Going back from a shop's "Is this what you want?" to the quantity and confirming again brought the prompt back in silence; going back from a quantity to the list was silent too.
 
 ### Dialogue
+- New: Emote marks (F2, Dialogue, on by default). The marks the game draws over a character's head for a moment, with a short sound, are read with whom they are over: "Exclamation mark over Junpei", "Question mark over you", "Sweat drop over Earnest Student". They come in story scenes and in the field: exclamation and question marks, sweat drops, anger marks, an irritated scribble, "Zzz", a knock at a door, Koromaru's woof. A mark over an unnamed extra is read alone. The dialogue line after a mark waits for it.
 - In story scenes, a speaker who goes on is no longer named again when the scene closes and reopens the message window between their lines (Junpei's ghost story named him on each window). A scene's description read between two lines still has the next line name its speaker.
 
 ### Online features
@@ -14,7 +15,7 @@
 ### Field
 - The mod's field sounds (sonar, wall tones, Shadow cues and sight zones) now go quiet whenever the game takes the hero from you: opening a door, checking or picking something up, a camera the game moves by itself. They come back the moment you can move again, so silence means wait.
 
-- The people list now says when the game shows a speech bubble over someone: "something to say" (the students guides tell you to talk to, in an investigation as on any day), and "overhear" for the ear the game puts over people chatting, whom you listen in on. Once heard they read "talked to" and "heard" as before. A name with nothing after it used to stand for the speech bubble, and the ear was not told apart from it.
+- The people list now says when the game shows a speech bubble over someone: "something to say" (the students guides tell you to talk to, in an investigation as on any day), and "overhear" for the ear the game puts over people chatting, whom you listen in on. Once heard they read "talked to" and "heard" as before. A name with nothing after it used to stand for the speech bubble, and the ear was not told apart from it. The game's handwritten word icons are read too: "overhear, a buzz of chatter" over a crowd and "overhear, whispering" over people gossiping.
 
 ### Social Links
 - Mutatsu's order quiz at Club Escapade (Tower): the bartender asks what a customer ordered by where they stand ("that girl by the entrance"), while the field names the customers by their looks. Each question is now followed by who it means ("That's the Unemotional Woman."), and the people list says where each customer stands, in the bartender's words ("Unemotional Woman (by the entrance)").

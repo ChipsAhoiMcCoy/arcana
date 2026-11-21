@@ -121,16 +121,25 @@ std::vector<Poi> scan(float radius) {
   // students chatting) icons are the unread ones: the school hallway, 6/8 after school: six Talk, one Listen.
   static const char* const kIconKinds[] = {"Talk", "Listen", "Talk_Read", "Listen_Read", "Commu", "Commu_Field", "Commu_Reverse", "DormitoryLife",
                                            "MaleQuest", "MaleQuest_Field", "Quest", "StudyGroup", "Walking"};
+  // The handwritten word icons are the same kind of actor (EFldHitCharaIconType WORD_13..16, the kind table's
+  // 13..18): a "buzz" over a crowd and a "whisper" over people gossiping, both listened in on, each with a read
+  // version (FldNpcActor_318_000 in the school; WORD_13 poked onto a student and FLD_RECREATE_MODEL_HEAD_ICON made
+  // BP_UI_Handwriting_Buzz_00_C owned by them, 2026-11-21). Groan and mumble hang over people with no check icon
+  // (the Lost at the station), who are not listed.
+  static const char* const kWordKinds[] = {"Buzz_00", "Buzz_Read_00", "Whisper_00", "Whisper_Read_00"};
   static const std::vector<int> icon_ids = [] {
     std::vector<int> ids;
     for (const char* k : kIconKinds) ids.push_back(watch::want(std::format("BP_UI_AccessIcon_{}_C", k), true));
+    for (const char* k : kWordKinds) ids.push_back(watch::want(std::format("BP_UI_Handwriting_{}_C", k), true));
     return ids;
   }();
+  constexpr size_t kAccessKinds = std::size(kIconKinds);
   std::map<UObject*, const char*> icons;   // a person -> what their icon says
   for (size_t i = 0; i < icon_ids.size(); ++i)
     for (UObject* icon : watch::all(icon_ids[i])) {
       if (!is_live(icon) || get_bool(icon, "bHidden")) continue;
-      if (UObject* owner = get<UObject*>(icon, "Owner")) icons[owner] = core::icon_state(kIconKinds[i]);
+      if (UObject* owner = get<UObject*>(icon, "Owner"))
+        icons[owner] = i < kAccessKinds ? core::icon_state(kIconKinds[i]) : core::icon_state(kWordKinds[i - kAccessKinds]);
     }
   auto add = [&](UObject* a, Kind k, std::string name, bool any_floor = false) {
     world::FVector v{};

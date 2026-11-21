@@ -407,6 +407,7 @@ inline constexpr const char* kHelpMenuSpeed = "Menus open, close and change fast
 inline constexpr const char* kHelpEntryHints = "Menus say their keys after their first line. Off, F1 still reads them.";
 inline constexpr const char* kHelpVoicedLines = "What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.";
 inline constexpr const char* kHelpVoiceEndSound = "What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.";
+inline constexpr const char* kHelpEmotes = "Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.";
 inline constexpr const char* kHelpSubtitles = "The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.";
 inline constexpr const char* kHelpAudioDescription = "What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.";
 inline constexpr const char* kHelpSceneDescription = "What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.";
@@ -506,6 +507,7 @@ inline constexpr const char* kVoicedName = "speaker's name only";
 inline constexpr const char* kVoicedSilent = "not read, the voice plays alone";
 inline constexpr const char* kSetVoiceEndSound = "When a line ends";
 inline constexpr const char* kSetSubtitles = "Read subtitles";
+inline constexpr const char* kSetEmotes = "Emote marks";
 inline constexpr const char* kSetAudioDescription = "Movies";
 inline constexpr const char* kSetSceneDescription = "3D scenes";
 inline constexpr const char* kSetSceneVoice = "3D scenes read by";
@@ -602,6 +604,8 @@ inline constexpr const char* kMonadChambers = "Monad Chambers";   // the same in
 // are said too: a talkable person with no icon at all says nothing.
 inline constexpr const char* kIconTalk = "something to say";
 inline constexpr const char* kIconListen = "overhear";
+inline constexpr const char* kIconBuzz = "overhear, a buzz of chatter";   // the handwritten "buzz" over a crowd
+inline constexpr const char* kIconWhisper = "overhear, whispering";      // the handwritten "whisper"
 inline constexpr const char* kIconTalked = "talked to";
 inline constexpr const char* kIconHeard = "heard";
 inline constexpr const char* kIconLink = "Social Link";
@@ -611,6 +615,26 @@ inline constexpr const char* kIconEpisode = "Linked Episode";
 inline constexpr const char* kIconRequest = "request";
 inline constexpr const char* kIconStudy = "study group";
 inline constexpr const char* kIconWalk = "walk";
+// The marks drawn over a character's head for a moment (emotes.cpp): "Question mark over Junpei". Matched by the
+// start of the effect's kind (BP_Handwriting_Effect_<kind>_C), so ExclamationQuestion comes before Exclamation.
+struct EmoteMark { const char* kind; const char* text; };
+inline constexpr EmoteMark kEmoteMarks[] = {
+    {"ExclamationQuestion", "Exclamation and question mark"},
+    {"DoubleExclamation", "Double exclamation mark"},
+    {"Exclamation", "Exclamation mark"},
+    {"Question", "Question mark"},
+    {"Sweat", "Sweat drop"},
+    {"AngerMark", "Anger mark"},
+    {"Ittitate", "Irritated scribble"},
+    {"Zzz", "Zzz"},
+    {"Woof", "Woof"},
+    {"Whine", "Whine"},
+    {"DoorKnock", "Knock knock"},
+    {"Calling", "Calling out"},
+    {"AccessIcon_Listen", "Listening"},
+};
+inline constexpr const char* kEmoteOver = "over";
+inline constexpr const char* kEmoteYou = "you";
 // Navigation
 inline constexpr const char* kNoPath = "No path";
 inline constexpr const char* kNoPathInRoom = "No path, though it is in this room";

@@ -191,6 +191,10 @@ const char* icon_state(std::string_view kind) {
   if (kind == "Quest") return strings::kIconRequest;
   if (kind == "StudyGroup") return strings::kIconStudy;
   if (kind == "Walking") return strings::kIconWalk;
+  // The handwritten word icons (BP_UI_Handwriting_<kind>_C): a crowd's buzz and people whispering, overheard.
+  if (kind == "Buzz_00") return strings::kIconBuzz;
+  if (kind == "Whisper_00") return strings::kIconWhisper;
+  if (kind == "Buzz_Read_00" || kind == "Whisper_Read_00") return strings::kIconHeard;
   return "";
 }
 
