@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Menus
+- Coming back to a menu from something the game handles itself (a shop's quantity, a page, a prompt) on the same row now reads that row again. Going back from a shop's "Is this what you want?" to the quantity and confirming again brought the prompt back in silence; going back from a quantity to the list was silent too.
+
 ### Dialogue
 - In story scenes, a speaker who goes on is no longer named again when the scene closes and reopens the message window between their lines (Junpei's ghost story named him on each window). A scene's description read between two lines still has the next line name its speaker.
 

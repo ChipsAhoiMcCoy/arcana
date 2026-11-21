@@ -631,6 +631,7 @@ bool MenuScreen::entry_ready() { return (focused() || mirrors_.empty()) && takes
 
 void MenuScreen::say_entry() {
   entry_due_ = false;
+  handed_ = false;   // the opening reads the focused item itself
   if (!entry_title_.empty()) {
     bool cut = true;
     guarded([&] { cut = opening_interrupts(); });
@@ -703,6 +704,7 @@ void MenuScreen::enter() {
   for (auto& m : mirrors_) { m->seen = -1; m->target = -1; m->step_from = -1; }
   pending_confirm_ = -1;
   confirm_mirror_ = nullptr;
+  handed_ = false;
   guarded([&] { on_enter(); });
   g_active = this;
   // Entered again after a message window or a submenu over it: the focus survives (the navigator keeps the screen's
@@ -740,10 +742,19 @@ void MenuScreen::tick() {
   }
   bool keys = true;
   guarded([&] { keys = holds_keys(); });
-  if (!keys) return;   // something of the game's is over the menu: no reads, no driving
+  if (!keys) {   // something of the game's is over the menu: no reads, no driving
+    if (!handed_ && !entry_due_) { handed_ = true; handed_from_ = focused(); }
+    return;
+  }
   if (g_press_armed && g_frame < g_eager_until) nav().invalidate();
   nav().ensure_focus();
   MenuHost::sync(*this);
+  // Back from the game on the item it left: said again, queued (a result line the screen said finishes first). On
+  // another item the landing has spoken for itself.
+  if (handed_ && !entry_due_ && takes_input()) {
+    handed_ = false;
+    if (auto f = focused(); f && f == handed_from_) nav().announce_current();
+  }
 }
 
 void MenuScreen::leave() {

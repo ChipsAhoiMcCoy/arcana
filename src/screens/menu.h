@@ -192,6 +192,11 @@ class MenuScreen : public Screen, public ui::Screen {
   bool entry_due_ = false;
   bool entry_say_ = true;
   std::string entry_title_;
+  // The keys went to the game (a quantity, a page) with the focus on handed_from_: when they come back to that same
+  // item, it is read again once the list takes input (no move announces it: Back from the shop's "Buy?" to the
+  // quantity, then Enter, brought the prompt back silent, 2026-11-21).
+  bool handed_ = false;
+  std::optional<ui::ControlId> handed_from_;
   void say_entry();
   bool entry_ready();
 };
