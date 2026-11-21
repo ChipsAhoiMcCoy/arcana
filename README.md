@@ -113,6 +113,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 - Fusion Search: Q and E sort.
 - Shops: Q and E switch member or category.
 - Area map: Tab zooms.
+- Online features (with the game's Network Functions on): N (View on a controller) in town reads what other players did today, the share of daily life, Social Links and Tartarus with the activities the game notes for each. On a class question's answers, N reads how other players answered, each answer with its percentage. N or C closes either.
 - Battle: Q on the target list analyzes; A and D, or Q and E (LB and RB), switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections.
 
 ## Mod settings

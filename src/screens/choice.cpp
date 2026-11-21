@@ -51,7 +51,14 @@ class ChoiceScreen : public MenuScreen {
   bool announce_entry() override { return false; }
   // F1 over a choice list: the screen is over the message window, so the keys are its own to name (it answered "No
   // keys to tell here", 2026-11-10).
-  void on_enter() override { screens::set_keys(strings::kChooseKeys); }
+  // A class question's answers name the key that shows other players' answers too.
+  void on_enter() override {
+    screens::set_keys([] {
+      std::string k = strings::kChooseKeys();
+      if (net_answer_offered()) k += std::string(" ") + strings::kNetAnswerKey();
+      return k;
+    });
+  }
   // The review key: the question, then the focused answer.
   std::string describe() override {
     msg::Current c = msg::current();

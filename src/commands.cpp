@@ -71,6 +71,9 @@ static void screen_keys() {
   else if (ue::UObject* btl = screens::battle_core(); btl && ue::call_ret<bool>(btl, "CheckRequestRushMode")) k = strings::kRushRunningKeys();
   else if (world::player()) {
     k = std::string(strings::kFieldKeys()) + " " + (poi::tartarus_floor() > 0 ? std::string(strings::kTartarusKeys()) + " " : std::string());
+    // In town with Network Functions on (flag 0x40000068) and past its tutorial's lock (0x4000002D), N (View) shows
+    // what other players did today (screens/net_voice.cpp).
+    if (poi::tartarus_floor() == 0 && party::flag(0x40000068) && !party::flag(0x4000002D)) k += std::string(strings::kNetActionKey()) + " ";
     // The mod's walk that uses its point: Shift+Period, or on a controller RT on the top-down scan's point.
     if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkUseKeys) + " ";
     else if (topdown::active()) k += std::string(strings::kPadScanKeys) + " ";

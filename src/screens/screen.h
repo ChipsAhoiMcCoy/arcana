@@ -67,5 +67,7 @@ bool opening_line_due();
 std::string status();
 void install_routes();   // the dev server's /screen
 std::string perf(bool reset);   // each screen's active() and tick() cost (/perf)
+// A class question's answers can show how other players answered (net_voice.cpp): the game's View action (N) opens it.
+bool net_answer_offered();
 void register_all();       // every screen the mod models (register.cpp)
 }  // namespace p3a::screens

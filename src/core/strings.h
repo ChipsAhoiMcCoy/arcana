@@ -536,6 +536,17 @@ inline constexpr const char* kMilliseconds = "milliseconds";
 inline constexpr Hint kListKeys{"Up and down arrows choose, Space confirms, Escape back.", "Up and down choose, A confirms, B back."};
 inline constexpr Hint kTutorialListKeys{"Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.", "Up and down choose, LB and RB switch tabs, A opens, B back."};
 inline constexpr Hint kChooseKeys{"Up and down arrows choose, Space confirms.", "Up and down choose, A confirms."};
+// The game's online features (Network Functions on; N is the game's View button). Over a class question's answers:
+// how other players answered (Voice Answer). In town: what other players did today (Voice Action).
+inline constexpr Hint kNetAnswerKey{"N shows how other players answered.", "View shows how other players answered."};
+inline constexpr Hint kNetActionKey{"N what other players did today.", "View what other players did today."};
+inline constexpr Hint kNetCloseKeys{"N or C closes.", "View or B closes."};
+inline constexpr const char* kNetAnswerTitle = "Other players' answers";
+inline constexpr const char* kNetActionTitle = "What other players did today";
+inline constexpr const char* kNetWaiting = "Getting other players' data.";
+inline constexpr const char* kNetPercent = "{}, {} percent";   // an answer or kind of activity, then its share
+// The three kinds of activity the game sorts other players' days into, in its own order.
+inline constexpr const char* kNetActionKinds[3] = {"Daily life", "Social Links", "Tartarus"};
 inline constexpr Hint kCampKeys{"Up and down arrows choose, Space opens, Escape closes.", "Up and down choose, A opens, B closes."};
 // Points of interest
 // A way into another area: said by its name alone, which is where it leads ("Gekkoukan High School exit" was taken

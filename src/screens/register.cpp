@@ -50,6 +50,8 @@ namespace p3a::screens {
   X(dictionary) \
   X(backlog) \
   X(choice) \
+  X(net_answer) \
+  X(net_action) \
   X(generic_select) \
   X(terminal) \
   X(persona_status) \
