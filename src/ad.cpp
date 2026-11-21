@@ -673,6 +673,13 @@ void tick() {
   // only 3D scenes wait: an animated movie's descriptions are timed to fit its gaps (the user's call, 2026-11-18)
   const bool wait = c.event && settings::on(settings::DescriptionWait);
   sched::Clock sc{playing, c.paused, c.time, c.fast};
+  // A 3D scene's description waits while someone talks: under the game's Auto the scene runs on through its lines
+  // (without it, it pauses at each line until the player goes on), and its descriptions began over the voice
+  // (2026-11-20, 100_040 in a player's log). A movie's lines are in its own sound: its cues are timed between them.
+  if (c.event) {
+    const msg::Current w = msg::current();
+    sc.talk = (w.open && w.blocking) || voice::playing();
+  }
   if (g_box >= 0) {
     if (!playing || c.fast || !wait) close_box(playing);
     else {

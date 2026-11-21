@@ -22,6 +22,7 @@ void Schedule::load(std::vector<Cue> cues) {
 void Schedule::reset() {
   state_.assign(cues_.size(), State::Pending);
   reason_.assign(cues_.size(), "");
+  waited_.assign(cues_.size(), false);
   cur_ = -1;
   paused_ = false;
   started_ = false;
@@ -46,6 +47,7 @@ void Schedule::resync(double t) {
     } else if (cues_[i].at >= t && state_[i] != State::Playing) {
       state_[i] = State::Pending;
       reason_[i].clear();
+      waited_[i] = false;
     }
   }
 }
@@ -84,10 +86,15 @@ std::vector<Action> Schedule::step(const Clock& c, const Voice& v) {
     else if (!c.paused && paused_) { out.push_back({Act::Resume, cur_}); paused_ = false; }
   }
   if (c.paused || c.held) return out;
+  if (c.talk) {   // a line is spoken: what comes due waits for its end
+    for (size_t i = 0; i < cues_.size(); ++i)
+      if (state_[i] == State::Pending && cues_[i].at <= c.time && c.time - cues_[i].at <= kLate) waited_[i] = true;
+    return out;
+  }
 
   for (size_t i = 0; i < cues_.size(); ++i) {
     if (state_[i] != State::Pending || cues_[i].at > c.time) continue;
-    if (c.time - cues_[i].at > kLate) { state_[i] = State::Missed; reason_[i] = cur_ >= 0 ? "the previous cue still played" : "late"; continue; }
+    if (c.time - cues_[i].at > kLate && !waited_[i]) { state_[i] = State::Missed; reason_[i] = cur_ >= 0 ? "the previous cue still played" : "late"; continue; }
     if (cur_ >= 0) break;   // its moment has come but the narrator is busy: wait (up to kLate)
     out.push_back({Act::Play, (int)i});
     state_[i] = State::Playing;

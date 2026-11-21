@@ -15,7 +15,10 @@ struct Cue { double at = 0; double dur = 0; };
 // cut) and the cues its clock passes are skipped, but the schedule is kept, so the rest play once it runs normally.
 // held: a description's box holds the scene (the mod paused it until the player presses Enter): its cue's narrator is
 // followed as if the scene played (paused stays false), but no further cue starts until the box is closed.
-struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; bool held = false; };
+// talk: someone is talking in the scene (a dialogue window is up, or a voice line plays). No cue starts over it: one
+// that comes due meanwhile waits for the line to end and is not counted late for the wait. Under the game's Auto a
+// scene runs on through its lines (without Auto it pauses at each until the player goes on).
+struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; bool held = false; bool talk = false; };
 // The narrator, as the mixer reports it: a clip is sounding (or held by a pause), or it reached its end.
 struct Voice { bool active = false; bool ended = false; };
 
@@ -53,6 +56,7 @@ class Schedule {
   std::vector<Cue> cues_;
   std::vector<State> state_;
   std::vector<std::string> reason_;
+  std::vector<bool> waited_;   // the cue came due while someone talked: it plays after the line, however late
   int cur_ = -1;
   bool paused_ = false;
   bool started_ = false;

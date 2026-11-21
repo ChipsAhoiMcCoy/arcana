@@ -182,6 +182,32 @@ TEST_CASE("ad: a description's box holds the scene: its narrator plays out, the 
   CHECK(a[0].cue == 1);
 }
 
+TEST_CASE("ad: a cue due while someone talks waits for the line, however long, and the next after it") {
+  Schedule s; s.load({{1.0, 1.0}, {1.5, 1.0}, {9.0, 1.0}});
+  CHECK(s.step({true, false, 0.9}, {}).empty());
+  Clock talk{true, false, 1.0, false, false, true};   // Auto: the scene runs on through a voiced line
+  for (double t = 1.0; t < 4.0; t += 0.1) { talk.time = t; CHECK(s.step(talk, {}).empty()); }
+  CHECK(s.state(0) == State::Pending);
+  CHECK(s.state(1) == State::Pending);
+  auto a = s.step({true, false, 4.0}, {});            // the line ended, 3 s after the cue's moment
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 0);
+  a = s.step({true, false, 4.5}, {true, false});      // the second waits behind the first, not missed
+  CHECK(a.empty());
+  CHECK(s.state(1) == State::Pending);
+  a = s.step({true, false, 5.0}, {false, true});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 1);
+  CHECK(s.state(0) == State::Done);
+  // a cue that was simply late (no line over it) is still missed
+  a = s.step({true, false, 5.5}, {false, true});
+  for (double t = 6.0; t < 8.0; t += 1.0) s.step({true, false, t}, {});
+  s.step({true, false, 8.9}, {});
+  a = s.step({true, false, 9.8}, {});   // a hitch past the cue's moment
+  CHECK(a.empty());
+  CHECK(s.state(2) == State::Missed);
+}
+
 TEST_CASE("ad: every state has a name for the log") {
   CHECK(std::string(state_name(State::Pending)) == "pending");
   CHECK(std::string(state_name(State::Playing)) == "playing");
