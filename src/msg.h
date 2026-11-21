@@ -22,6 +22,9 @@ bool side_by_side(ue::UObject* sel);   // two answers side by side: +0x40 is the
 void repeat();   // speak the current page again
 // A System window's text asks yes or no (ends in "?", or in "?" before a closing note in brackets).
 bool is_question(const std::string& t);
+// A line with who it means, when the game asks about someone by place only (core::bar_customer_asked): the line,
+// then "That's the Unemotional Woman." Any other line comes back as it is.
+std::string with_who_asked(const std::string& line, const std::string& game_text);
 // The player pressed confirm or cancel (Enter, Space, Escape, Backspace; A, B): over a blocking message window the
 // mod's reading stops at once, so a page skipped (or a choice made) feels instant (game thread).
 void player_pressed();

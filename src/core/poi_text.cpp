@@ -110,6 +110,28 @@ std::vector<int> npc_name_rows(int name_index, int major, int minor, std::string
   return rows;
 }
 
+// The questions are fixed, always in this order (BF_Scr_Event_fild_390_001_C: four SELs, no randomness). Each one's
+// answer is that customer's last word on their order, and the NPCs' places agree (683 farthest from the door, 684
+// nearest it, 685 mid-floor; measured 2026-11-21). Matched on the words that place them, so a reworded line after an
+// update names nobody rather than the wrong one.
+int bar_customer_asked(std::string_view line) {
+  if (line.find("girl standing by the table in the back") != std::string_view::npos) return 683;
+  if (line.find("girl by the entrance") != std::string_view::npos) return 684;
+  if (line.find("girl in the middle of the floor") != std::string_view::npos) return 685;
+  if (line.find("that guy over there") != std::string_view::npos && line.find("What does he want") != std::string_view::npos) return 686;
+  return 0;
+}
+
+const char* bar_customer_place(int major, int minor) {
+  if (minor != 700) return nullptr;
+  switch (major) {
+    case 683: return strings::kBarPlaceBack;
+    case 684: return strings::kBarPlaceEntrance;
+    case 685: return strings::kBarPlaceMiddle;
+    default: return nullptr;
+  }
+}
+
 std::string chest_name(const std::string& type, const std::string& game_name) {
   if (type == "TBoxRare") return strings::kPoiChestRare;
   if (type == "TBoxJewelry") return strings::kPoiChestGold;

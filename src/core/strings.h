@@ -559,6 +559,13 @@ inline constexpr const char* kPoiShadowStrong = "Strong Shadow";
 inline constexpr const char* kPoiShadowRare = "Rare Shadow";   // the game's word (Mitsuru: "rare Shadows")
 inline constexpr const char* kPoiReaper = "The Reaper";
 inline constexpr const char* kPoiMissingPerson = "Missing Person";   // the game's own name, when its table has no row
+// Club Escapade's order quiz (Mutatsu's Tower link): where each customer stands, in the bartender's own words, said
+// in brackets after the name ("Unemotional Woman (by the entrance)"); the man has no place in his question.
+inline constexpr const char* kBarPlaceBack = "by the table in the back";
+inline constexpr const char* kBarPlaceEntrance = "by the entrance";
+inline constexpr const char* kBarPlaceMiddle = "in the middle of the floor";
+// After the bartender's question: who it means ("That's the Unemotional Woman.").
+inline constexpr const char* kBarCustomerIs = "That's the {}.";
 inline constexpr const char* kPoiChestRare = "Rare Treasure Chest";
 inline constexpr const char* kPoiChestGold = "Gold Treasure Chest";
 inline constexpr const char* kPoiChestLocked = "Locked Treasure Chest";   // then what it costs: ", 2 Twilight Fragments"

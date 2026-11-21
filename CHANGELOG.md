@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Social Links
+- Mutatsu's order quiz at Club Escapade (Tower): the bartender asks what a customer ordered by where they stand ("that girl by the entrance"), while the field names the customers by their looks. Each question is now followed by who it means ("That's the Unemotional Woman."), and the people list says where each customer stands, in the bartender's words ("Unemotional Woman (by the entrance)").
+
 ## 0.5.0
 
 ### Audio description

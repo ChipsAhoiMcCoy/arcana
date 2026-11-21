@@ -268,7 +268,11 @@ std::vector<Poi> scan(float radius) {
       UObject* w = lvl ? outer_of(lvl) : nullptr;   // a ULevel's outer is its UWorld, named for the level
       sells = core::npc_sells(get<int32_t>(a, "mMajorID_", -1), get<int32_t>(a, "mMinorID_", -1), w ? name_of(w) : std::string());
     }
-    add(a, sells ? Kind::Shop : Kind::Person, npc_name(a));
+    std::string who = npc_name(a);
+    // A bar customer in Mutatsu's order quiz: where they stand, as the bartender will ask about them.
+    if (const char* at = core::bar_customer_place(get<int32_t>(a, "mMajorID_", -1), get<int32_t>(a, "mMinorID_", -1)))
+      who = std::format("{} ({})", who, at);
+    add(a, sells ? Kind::Shop : Kind::Person, who);
   }
   // Tartarus' breakable Shadow remains (BP_DOBJ_Broken*_C; strike them, Ctrl, for items). A broken one stays visible
   // but its Box stops colliding (NoCollision, 2026-10-27).

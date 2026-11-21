@@ -12,6 +12,7 @@
 #include "gametext.h"
 #include "seh.h"
 #include "social.h"
+#include "world.h"
 #include <format>
 
 namespace p3a::poi {
@@ -112,6 +113,13 @@ std::string npc_name(UObject* npc) {
                                      get<int32_t>(npc, "mMinorID_", -1), w ? name_of(w) : std::string()))
     if (std::string n = kin_name({"DT_FldNpcName"}, row); !n.empty()) return n;
   return npc_actor_name(npc);
+}
+
+std::string npc_named(int major, int minor) {
+  for (UObject* a : live("FldNpcActor"))
+    if (get<int32_t>(a, "mMajorID_", -1) == major && get<int32_t>(a, "mMinorID_", -1) == minor && world::actor_visible_level(a))
+      return npc_name(a);
+  return "";
 }
 
 // A hit under the plain Check icon, sorted by the name the game gives it (the lists: core::check_kind).

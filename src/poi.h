@@ -32,6 +32,9 @@ void cycle_nearest(int dir);
 void cycle_category(int cat, int dir);
 bool in_selected_category(const Poi& p);   // p belongs to the category the review keys are on
 std::string hit_name(ue::UObject* hit);   // a hit actor's display name ("Bed"), or ""
+// The name of the person standing in a visible level under these script ids (FldNpcActor mMajorID_ / mMinorID_),
+// as the list names them without any place; "" when nobody is.
+std::string npc_named(int major, int minor);
 bool breakable(ue::UObject* dungeon_object);   // a FldDungeonObjectActor a strike can still break (not broken yet)
 std::string prompt();      // the interaction prompt label showing now ("Treasure Chest"), or ""
 // The story objective last shown in the field ("Head to the faculty office") with the lines stacked under it, or "".

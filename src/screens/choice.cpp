@@ -55,7 +55,7 @@ class ChoiceScreen : public MenuScreen {
   // The review key: the question, then the focused answer.
   std::string describe() override {
     msg::Current c = msg::current();
-    std::string q = core::spoken_line(c.speaker, c.text);
+    std::string q = msg::with_who_asked(core::spoken_line(c.speaker, c.text), c.text);
     std::string a = MenuScreen::describe();
     return q.empty() ? a : a.empty() ? q : q + ". " + a;
   }

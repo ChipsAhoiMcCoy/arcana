@@ -8,7 +8,9 @@
 //   BmdPageToFString(FString* out, first line) renders a page to plain text (the game allocates out's buffer).
 #include "msg.h"
 #include "msg_render.h"
+#include "poi.h"
 #include "core/page_text.h"
+#include "core/poi_text.h"
 #include "core/speech_text.h"
 #include "core/text_clean.h"
 #include "core/strings.h"
@@ -343,7 +345,7 @@ static bool read_window(Tick& tk, Seen& s, UObject* item, UObject* sel) {
   if (echo) s.page = page;
   // System questions answer with the key-help buttons, not a choice list (TODO: the window's own yes/no flag).
   auto hinted = [&](const std::string& t) {
-    return !sel && cur.kind == "System" && is_question(t) ? t + " " + strings::kYesNoHint() : t;
+    return !sel && cur.kind == "System" && is_question(t) ? t + " " + strings::kYesNoHint() : with_who_asked(t, t);
   };
   // A tutorial turns its pages (Q and E) without replacing CurrentPage: the window keeps the shown page's index
   // (MsgProcWindow_Tutorial +0x74, the one before at +0x70, the page count at +0xA4; measured 2026-10-29), and
@@ -625,10 +627,17 @@ bool is_question(const std::string& t) {
   return !t.empty() && (t.back() == '?' || (q != std::string::npos && q > 0 && t[q - 1] == '?'));
 }
 
+std::string with_who_asked(const std::string& line, const std::string& game_text) {
+  int major = core::bar_customer_asked(game_text);
+  if (!major) return line;
+  std::string who = poi::npc_named(major, 700);
+  return who.empty() ? line : line + " " + std::vformat(strings::kBarCustomerIs, std::make_format_args(who));
+}
+
 void repeat() {
   Current c = current();
   if (!c.open) { speech::speak(strings::kNoMessage, true); return; }
-  std::string line = spoken_line(c.speaker, c.text);
+  std::string line = with_who_asked(spoken_line(c.speaker, c.text), c.text);
   if (c.choice >= 0 && c.choice < (int)c.choices.size()) line += ". " + choice_line(c.choices, c.choice);
   speech::speak(line, true);
 }

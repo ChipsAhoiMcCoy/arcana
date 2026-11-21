@@ -51,6 +51,13 @@ bool npc_sells(int major, int minor, std::string_view level);
 // other characters' ids, so they get only the index.
 std::vector<int> npc_name_rows(int name_index, int major, int minor, std::string_view level);
 
+// Club Escapade's order quiz (Mutatsu's Tower link, Event_fild_390_001): the customers are named by their looks
+// ("Temperamental Woman", NPCs 683-686 variant 700) but the bartender asks by where they stand. The customer a
+// question asks about (its NPC major id), 0 for any other line; and where a customer stands in his words, nullptr
+// for anyone else (and for the man, whose question names no place).
+int bar_customer_asked(std::string_view line);
+const char* bar_customer_place(int major, int minor);
+
 // A Tartarus chest's name by its dungeon object type: the rare and the gold ones by the mod's words, a locked one
 // with what it costs ("..., 3 Twilight Fragments"), any other by the game's own name.
 std::string chest_name(const std::string& type, const std::string& game_name);

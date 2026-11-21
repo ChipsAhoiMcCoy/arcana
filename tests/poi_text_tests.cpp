@@ -129,6 +129,23 @@ TEST_CASE("chest_name: by the dungeon object's type") {
   CHECK(chest_name("", "Bed") == "Bed");
 }
 
+TEST_CASE("bar_customer_asked: the bartender's questions name a customer by place") {
+  CHECK(bar_customer_asked("Hey, what does the girl standing by the table in the back want?") == 683);
+  CHECK(bar_customer_asked("What did that girl by the entrance order?") == 684);
+  CHECK(bar_customer_asked("Bartender: And the girl in the middle of the floor?") == 685);
+  CHECK(bar_customer_asked("I see, who else...? Oh, what about that guy over there? What does he want?") == 686);
+  CHECK(bar_customer_asked("Alright, I'll start on the drinks.") == 0);
+  CHECK(bar_customer_asked("Who's that guy over there?") == 0);
+}
+
+TEST_CASE("bar_customer_place: where a customer stands, in the bartender's words") {
+  CHECK(std::string(bar_customer_place(683, 700)) == "by the table in the back");
+  CHECK(std::string(bar_customer_place(684, 700)) == "by the entrance");
+  CHECK(std::string(bar_customer_place(685, 700)) == "in the middle of the floor");
+  CHECK(bar_customer_place(686, 700) == nullptr);
+  CHECK(bar_customer_place(684, 0) == nullptr);
+}
+
 TEST_CASE("is_named: a prompt's label names a point of interest") {
   CHECK(is_named("Bed", "Bed"));
   CHECK(is_named("Nozomi Suemitsu (Moon)", "Nozomi Suemitsu"));
