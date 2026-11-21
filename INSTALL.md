@@ -62,4 +62,4 @@ The crash is recorded in the log. Please report it. The crashed session's log is
 
 ## Finding the log
 
-The log is `%LOCALAPPDATA%\Arcana\arcana.log` (press Windows+R, paste `%LOCALAPPDATA%\Arcana`, press Enter). Settings are in the same folder, in `settings.ini`. The log holds what the mod spoke, including story text, and may show your Windows user name in a path, so look it over before sharing it.
+The log is `%LOCALAPPDATA%\Arcana\arcana.log` (press Windows+R, paste `%LOCALAPPDATA%\Arcana`, press Enter). Settings are in the same folder, in `settings.ini`, and keys you changed in `keys.ini`. The log holds what the mod spoke, including story text, and may show your Windows user name in a path, so look it over before sharing it.
