@@ -139,8 +139,11 @@ static bool g_voiced_done = false;
 static void* g_carried_page = nullptr;
 static bool g_carried_done = false;
 // The speaker is named only when the speaker changes: Junpei's second line in a row is read without "Junpei:". A line
-// with no speaker (narration, a notice) ends the run, and so does the end of the message session (a new conversation).
+// with no speaker (narration, a notice) ends the run, and so do a scene's description read between two lines and the end
+// of the message session outside a story scene (a new conversation). A scene closes its window between two speakers'
+// lines, which ends the session: the run lasts while the scene plays (Junpei named on each of his windows, 2026-11-21).
 static std::string g_last_speaker;
+void end_speaker_run() { g_last_speaker.clear(); }
 static std::string g_last_who;   // the last named speaker in this session: a window titled with it is that window's title
 static bool may_be_voiced(const std::string& kind) {
   return settings::get(settings::VoicedLines) != settings::VoicedRead && kind != "System" && kind != "Tutorial" && kind != "Select";
@@ -552,10 +555,11 @@ void tick() {
   g_seen.swap(next);
   // The notice or conversation is over (no window, no window to follow): its last line, speaker run and titles end.
   bool session = cur.open || session_open();
-  if (!session) { g_last_key.clear(); g_last_speaker.clear(); g_last_who.clear(); }
   // In a conversation: a window shows, another is coming (the message session), or a story scene plays (fast-forward
   // turned on and off between its pages went unsaid, 2026-10-29).
   bool talking = session || world::scene_playing();
+  if (!session) { g_last_key.clear(); g_last_who.clear(); }
+  if (!talking) g_last_speaker.clear();
   // Auto (Shift, or X / Square): the game turns pages by itself once a voice ends. The flag is native, UMsgManager
   // +0x34 (0 off, 1 on; found 2026-10-29 by copying every object after each press).
   uint32_t autov = 0;

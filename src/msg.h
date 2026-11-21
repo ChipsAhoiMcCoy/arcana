@@ -66,6 +66,7 @@ std::string page_string(void* page);   // an FCurrentBmdPage rendered and cleane
 // log lists; game thread).
 const std::vector<std::string>& history();
 void remember_line(const std::string& line);   // a line of the mod's own in that record (a scene's description)
+void end_speaker_run();   // something else was read between two lines (a scene's description): the next one names its speaker
 // A hot reload keeps the record: the unload writes it for the next copy of the mod in this game (install reads it).
 void save_history();
 }  // namespace p3a::msg

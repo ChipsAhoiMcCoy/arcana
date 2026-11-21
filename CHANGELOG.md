@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Dialogue
+- In story scenes, a speaker who goes on is no longer named again when the scene closes and reopens the message window between their lines (Junpei's ghost story named him on each window). A scene's description read between two lines still has the next line name its speaker.
+
 ### Online features
 - The game's online statistics are read (they need the game's Network Functions on, and a press of N, or View on a controller, as in the game). In town, N reads what other players did today: the share of daily life, Social Links and Tartarus, with the activities noted for each. On a class question's answers, N reads how other players answered, each answer with its percentage. Until the figures arrive, you hear that they are on the way. F1 names the key where it works.
 
