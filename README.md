@@ -119,26 +119,26 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 
 F2 (or triggers + View) opens the settings from anywhere; the game's Config screen lists them too. The game gets none of your keys while they are open, and while you are exploring it stands still, as under the camp menu: Shadows, characters and the field's sounds wait until you close the settings.
 
-They work like any other menu: up and down choose (at either end a further press repeats the row), Home and End jump, left and right change the value, Space or Enter (A) steps through values, F1 (Menu) reads these keys, and Escape, Backspace or F2 (B or View) closes (on the Mod keys page, Escape, Backspace and B go back to the settings). Tab and Shift+Tab (Page Down / Page Up, RB / LB) switch category, wrapping. Each row says what it does after its name, value and position. Changes are saved at once to `%LOCALAPPDATA%\Arcana\settings.ini`. The menu plays the game's own menu sounds.
+They work like any other menu: up and down choose (at either end a further press repeats the row), Home and End jump, left and right change the value (every row runs from off, or its least, at the left to on, or its most, at the right), Space or Enter (A) steps through values, F1 (Menu) reads these keys, and Escape, Backspace or F2 (B or View) closes (on the Mod keys page, Escape, Backspace and B go back to the settings). Tab and Shift+Tab (Page Down / Page Up, RB / LB) switch category, wrapping. Each row says what it does after its name, value and position. Changes are saved at once to `%LOCALAPPDATA%\Arcana\settings.ini`. The menu plays the game's own menu sounds.
 
 **Exploring**
 
-- Top-down exploration: on, off (see below)
-- Keep your heading through passages: on, off. In top-down exploration, rooms the game moves you into turned around are turned to match (see below)
+- Top-down exploration: off, on (see below)
+- Keep your heading through passages: off, on. In top-down exploration, rooms the game moves you into turned around are turned to match (see below)
 - Points of interest range: 60 meters; 20, 40, 100 or 150
-- Wall tones: only while moving; continuous (standing still too) or off
+- Wall tones: only while moving; off or continuous (standing still too)
 - Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
-- Shadow alerts: on, off. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
-- Shadow sight: on, off. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder and higher as you near it, and a muffled hum plays while a wall hides you from one
+- Shadow alerts: off, on. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
+- Shadow sight: off, on. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder and higher as you near it, and a muffled hum plays while a wall hides you from one
 - Shadow sight range: 10 meters; 2 to 16 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
-- Strike assist: on, off. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
+- Strike assist: off, on. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
 
 **Sonar**
 
-- Sonar: on, off (also F3)
-- Plays: everything nearby, the list's category only, or the selected point only (at any distance)
+- Sonar: off, on (also F3)
+- Plays: the selected point only (at any distance), the list's category only, or everything nearby
 - Range: 10 meters; 5, 15, 20, 30 or 40
-- Exits, Doors, People, Shops, Objects, Events, Twilight Fragments: on, off, each kind on its own. Changing one plays its sound
+- Exits, Doors, People, Shops, Objects, Events, Twilight Fragments: off, on, each kind on its own. Changing one plays its sound
 
 **Volume** (each 0 to 100 percent in steps of 10)
 
@@ -151,25 +151,25 @@ They work like any other menu: up and down choose (at either end a further press
 **Sound**
 
 - Placement: stereo, 3D for headphones, plain left and right. How the sonar and Shadow cues are placed. Stereo (Dark Vision's model, the default) places them by level and by the moment each ear hears them, and darkens sounds behind you. 3D uses Steam Audio's HRTF, which also gives above and below. Plain only pans
-- Lower pitch behind you: on, off. The sonar and the Shadow pulse play lower from behind (in top-down mode, from the south)
+- Lower pitch behind you: off, on. The sonar and the Shadow pulse play lower from behind (in top-down mode, from the south)
 
 **Dialogue**
 
-- Voiced dialogue: read aloud, speaker's name only, not read (the voice plays alone). Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
-- When a line ends: say Next, page turn sound, message chime sound, cursor tick sound, off. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
-- Read subtitles: on, off. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
+- Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
+- When a line ends: off, say Next, page turn sound, message chime sound, cursor tick sound. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
+- Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
 **Audio description**
 
-- Movies: narrator's voice, screen reader, off. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
-- 3D scenes: on, suppress repeated descriptions, off. The same for the story scenes played in the game's 3D engine. Suppress repeated descriptions reads each description only the first time: a description you have heard is not read again when its scene comes back (a job shift, a meal). What you have heard is kept in seen-descriptions.txt beside settings.ini; delete that file to hear them all again
+- Movies: off, narrator's voice, screen reader. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
+- 3D scenes: off, suppress repeated descriptions, on. The same for the story scenes played in the game's 3D engine. Suppress repeated descriptions reads each description only the first time: a description you have heard is not read again when its scene comes back (a job shift, a meal). What you have heard is kept in seen-descriptions.txt beside settings.ini; delete that file to hear them all again
 - 3D scenes read by: narrator's voice, screen reader
 - Faster narrator in 3D scenes: off, 25 percent, 50 percent, 75 percent. The narrator reads the descriptions of 3D scenes that much faster, at the same pitch. The animated movies keep the normal speed: their descriptions are timed between the lines. Off by default
-- Descriptions wait for Enter: on, off. On, each description in a 3D story scene pauses the scene like a message window, with its sounds, and once it is said you hear "Next" (or the sound chosen in "When a line ends"), whether the narrator or your screen reader reads it; Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. These descriptions are in the log (B). Off, they are fitted between the lines while the scene plays. The animated movies never wait: their descriptions are timed between the lines
+- Descriptions wait for Enter: off, on. On, each description in a 3D story scene pauses the scene like a message window, with its sounds, and once it is said you hear "Next" (or the sound chosen in "When a line ends"), whether the narrator or your screen reader reads it; Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. These descriptions are in the log (B). Off, they are fitted between the lines while the scene plays. The animated movies never wait: their descriptions are timed between the lines
 
 **Controls and help**
 
 - Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; off, 100 or 250
-- Menu key hints on entry: on, off. Menus say their keys after their first line, besides F1
+- Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
 - Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
 - Mod keys: Space or Enter (A) opens the list of the mod's keys, where you can change them (below)
 
