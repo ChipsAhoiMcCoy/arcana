@@ -53,7 +53,9 @@ struct Def {
 static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 // One row per Id, in its order: what the file calls it, what the menu says and where, the values it cycles through.
 // The values run left to right as the game's own Config draws them (the user's call, 2026-11-17): On left of Off
-// (BP_UIConfiguration's ON text at x -96, OFF at +92), Off always at the right end, numbers growing to the right.
+// (BP_UIConfiguration's ON text at x -96, OFF at +92), and a mode's Off at the right end. A scale (a number, a speed,
+// a delay) grows to the right as the game's sliders do (Camera Speed, the volumes), its Off at the left as the least
+// (the user's call, 2026-11-20).
 static const Def kDefs[Count] = {
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {1, 0}, 1},
@@ -114,16 +116,14 @@ static const Def kDefs[Count] = {
   {"scene_voice", strings::kSetSceneVoice, CatDescription, strings::kHelpSceneVoice, Unit::Choice, {DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   // the narrator of 3D scenes reads faster, its pitch kept (core/time_stretch, ad.cpp); movies keep their timing
-  // A slider, so it runs as the game's own sliders do (Camera Speed, the volumes): Off, the least, at the left and
-  // growing to the right (the user's call, 2026-11-20), not the toggles' Off at the right end.
   {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kFaster25, strings::kFaster50, strings::kFaster75}},
   // a 3D scene's description pauses it, like a message window, until Enter (A) (ad.cpp); off: said over it. Movies never wait
   {"description_wait", strings::kSetDescriptionWait, CatDescription, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
-  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {100, 150, 250, 0}, 150},
+  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
   {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {1, 0}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales
-  {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {1, 2, 3, 0}, 0,
+  {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kSpeed4, strings::kSpeed8, strings::kSpeed16}},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
