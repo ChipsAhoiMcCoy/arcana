@@ -251,7 +251,7 @@ void stop_all() {
 }
 
 // ---- the description box (setting DescriptionWait; 3D scenes only) ----
-// A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the window-open sound, the description (the narrator or the
+// A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the description (the narrator or the
 // screen reader), then the cue a page that waits gets ("Next" or the VoiceEndSound sound), and Enter, Space or A goes on with the sound a message
 // window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
 // plays the source again. A press while the narrator still speaks cuts it, as a press skips a voiced line. The press
@@ -286,8 +286,7 @@ void open_box(int cue) {
   g_box_spoke = false;
   g_box_pad = pad_a() != 0;   // an A still down from the last message is not this box's press
   input::set_swallow_prompt(a_mask());
-  hold_source(true);
-  voice::play_system_sound(voice::CueWindowOpen);
+  hold_source(true);   // no opening sound: a dialogue window opens without one (the user's call, 2026-11-20)
 }
 
 // resume: the source is still the one the box held (playing, not replaced): it plays again.
