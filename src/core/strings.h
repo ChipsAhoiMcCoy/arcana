@@ -597,8 +597,11 @@ inline constexpr const char* kCompass[8] = {"north", "north-east", "east", "sout
 inline constexpr const char* kScanNothing = "nothing";            // the right-stick scan: no point anywhere in range
 inline constexpr const char* kMonad = "Monad";                    // the area key's name for the section behind a Monad door
 inline constexpr const char* kMonadChambers = "Monad Chambers";   // the same in Episode Aigis' Abyss of Time
-// What the icon over a person says, after their name in the list ("Akihiko Sanada, talked to"). A plain talk or
-// listen icon says nothing.
+// What the icon over a person says, after their name in the list ("Akihiko Sanada, talked to"). The speech bubble
+// (something new to say, what guides call the students to talk to) and the ear (two people chatting, to listen in on)
+// are said too: a talkable person with no icon at all says nothing.
+inline constexpr const char* kIconTalk = "something to say";
+inline constexpr const char* kIconListen = "overhear";
 inline constexpr const char* kIconTalked = "talked to";
 inline constexpr const char* kIconHeard = "heard";
 inline constexpr const char* kIconLink = "Social Link";

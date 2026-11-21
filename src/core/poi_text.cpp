@@ -180,6 +180,8 @@ std::vector<size_t> near_sides(const std::vector<Place>& sorted) {
 }
 
 const char* icon_state(std::string_view kind) {
+  if (kind == "Talk") return strings::kIconTalk;
+  if (kind == "Listen") return strings::kIconListen;
   if (kind == "Talk_Read") return strings::kIconTalked;
   if (kind == "Listen_Read") return strings::kIconHeard;
   if (kind == "Commu" || kind == "Commu_Field") return strings::kIconLink;

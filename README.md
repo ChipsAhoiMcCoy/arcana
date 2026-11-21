@@ -220,7 +220,7 @@ Points of interest come in categories, each listed nearest first, empty ones ski
 
 - Exits: ways into another area, named for where they lead ("Gekkoukan High School" there is the way into the school).
 - Doors: rooms you check to go in (classrooms, offices, the dorm's bedrooms). A door between two rooms is listed once, by where it leads.
-- People: by name. Social Link partners with their arcana ("Yukari Takeba (Lovers)"), or as the camp describes them before you meet ("Jersey-Wearing Student (Chariot)"). After the name, what the icon over their head says: "talked to", "heard", "Social Link", "Social Link, reversed", "hangout", "Linked Episode", "request", "study group", "walk". Nothing after the name means they have something new to say.
+- People: by name. Social Link partners with their arcana ("Yukari Takeba (Lovers)"), or as the camp describes them before you meet ("Jersey-Wearing Student (Chariot)"). After the name, what the icon over their head says: "something to say" (the game's speech bubble: the students guides tell you to talk to), "overhear" (an ear over people chatting: listen in), "talked to" and "heard" once you have, "Social Link", "Social Link, reversed", "hangout", "Linked Episode", "request", "study group", "walk". Nothing after the name means the game shows no icon over them.
 - Shops: businesses, food, vendors and vending machines.
 - Objects: everything else you can check, including the glowing Twilight Fragments ("Twilight Fragment") and in Tartarus the crystals that give one ("Twilight Fragment crystal"). Picked up or broken ones leave the list.
 - Events: spots that start a fight or scene when you walk into them ("Gatekeeper" on a Gatekeeper's floor until it is beaten).

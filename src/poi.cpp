@@ -117,8 +117,9 @@ std::vector<Poi> scan(float radius) {
   bool beyond = false;   // something past `radius` that the list has
   // The icon the game floats over a person: an actor of its own, BP_UI_AccessIcon_<Kind>_C, whose Owner is the person
   // (the dorm lounge, 2026-11-11: five Talk icons owned by the five people there; Akihiko's became Talk_Read once he
-  // was talked to). Hidden while a conversation runs.
-  static const char* const kIconKinds[] = {"Talk_Read", "Listen_Read", "Commu", "Commu_Field", "Commu_Reverse", "DormitoryLife",
+  // was talked to). Hidden while a conversation runs. The plain Talk (a speech bubble) and Listen (an ear over two
+  // students chatting) icons are the unread ones: the school hallway, 6/8 after school: six Talk, one Listen.
+  static const char* const kIconKinds[] = {"Talk", "Listen", "Talk_Read", "Listen_Read", "Commu", "Commu_Field", "Commu_Reverse", "DormitoryLife",
                                            "MaleQuest", "MaleQuest_Field", "Quest", "StudyGroup", "Walking"};
   static const std::vector<int> icon_ids = [] {
     std::vector<int> ids;
