@@ -38,9 +38,12 @@ enum class Unit { Toggle, Meters, Percent, Ms, Choice };
 // go to the next / previous one, wrapping. A row names its category, so the table's order stays the file's.
 // Regrouped 2026-11-17 (the user's call): every volume in one category, and a row does not repeat its category's name
 // ("Range" under Sonar, "Master" under Volume). The table's order is the menu's order within each category.
-enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatControls, CatCount };
+// 2026-11-20 (the user asked to keep it organized as the narrator speed came in): the descriptions left Dialogue and
+// movies for a category of their own, Audio description; Dialogue keeps the game's lines.
+enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatDescription, CatControls, CatCount };
 static const char* const kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatVolume,
-                                                     strings::kCatSound, strings::kCatDialogue, strings::kCatControls};
+                                                     strings::kCatSound, strings::kCatDialogue, strings::kCatDescription,
+                                                     strings::kCatControls};
 struct Def {
   const char* key; const char* name;
   Category cat;        // where the menu lists it
@@ -102,16 +105,19 @@ static const Def kDefs[Count] = {
   {"subtitles", strings::kSetSubtitles, CatDialogue, strings::kHelpSubtitles, Unit::Toggle, {1, 0}, 0},
   // the descriptions of the animated story movies and of the story scenes in the 3D engine (ad.cpp): the narrator's
   // voice or the screen reader. A saved 1 from the old on/off toggle is DescAudio.
-  {"audio_description", strings::kSetAudioDescription, CatDialogue, strings::kHelpAudioDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
+  {"audio_description", strings::kSetAudioDescription, CatDescription, strings::kHelpAudioDescription, Unit::Choice, {DescAudio, DescReader, DescOff}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   // the 3D scenes: described, described once (a description heard is not read again), or not; and by whom. The saved
   // scene_description=2 of the old row (Off / narrator / screen reader) meant the screen reader: load() moves it.
-  {"scene_description", strings::kSetSceneDescription, CatDialogue, strings::kHelpSceneDescription, Unit::Choice, {SceneOn, SceneOnce, SceneOff}, SceneOn,
+  {"scene_description", strings::kSetSceneDescription, CatDescription, strings::kHelpSceneDescription, Unit::Choice, {SceneOn, SceneOnce, SceneOff}, SceneOn,
    {strings::kOff, strings::kOn, strings::kSceneOnce}},
-  {"scene_voice", strings::kSetSceneVoice, CatDialogue, strings::kHelpSceneVoice, Unit::Choice, {DescAudio, DescReader}, DescAudio,
+  {"scene_voice", strings::kSetSceneVoice, CatDescription, strings::kHelpSceneVoice, Unit::Choice, {DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
+  // the narrator of 3D scenes reads faster, its pitch kept (core/time_stretch, ad.cpp); movies keep their timing
+  {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {1, 2, 3, 0}, 0,
+   {strings::kOff, strings::kFaster25, strings::kFaster50, strings::kFaster75}},
   // a 3D scene's description pauses it, like a message window, until Enter (A) (ad.cpp); off: said over it. Movies never wait
-  {"description_wait", strings::kSetDescriptionWait, CatDialogue, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
+  {"description_wait", strings::kSetDescriptionWait, CatDescription, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
   {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {100, 150, 250, 0}, 150},
   {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {1, 0}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales

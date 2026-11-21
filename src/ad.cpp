@@ -16,10 +16,13 @@
 // A 3D scene's description once heard (its box closed by Enter or Auto, or its narration played to its end) is
 // recorded in seen-descriptions.txt beside the settings (core/heard_cues); with SceneDescription on "suppress repeated
 // descriptions" a scene is loaded without the ones heard. Movies are not recorded.
+// SceneSpeed: a 3D scene's narrator reads faster. Its clips are sped up as they are decoded (core/time_stretch keeps
+// the pitch) and its cues' lengths shortened to match; a movie's clips keep their speed (they are timed to its gaps).
 #include "ad.h"
 #include "audio.h"
 #include "core/ad_schedule.h"
 #include "core/heard_cues.h"
+#include "core/time_stretch.h"
 #include "mod.h"
 #include "core/strings.h"
 #include "devserver.h"
@@ -79,6 +82,7 @@ bool g_was_playing = false;
 std::string g_key;                  // the movie we last set up for (with or without descriptions)
 int g_mode = settings::DescOff;     // how its descriptions are given (settings::Description)
 bool g_once = false;                // it was loaded without the descriptions already heard (settings::SceneOnce)
+int g_speed = 0;                    // its narrator's speed-up (settings::SceneSpeed; 0 for a movie)
 float g_base_volume = -1, g_volume = -1;
 // All of the above is the game thread's: the dev routes read it through dev::on_game.
 
@@ -172,8 +176,9 @@ void mark_heard(const Scene& s, int cue) {
 }
 
 // decode false: the descriptions go to the screen reader, as text; no clip is decoded.
-// scene: a 3D scene (its cues get heard ids); once: the cues already heard are left out.
-std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scene, bool once) {
+// scene: a 3D scene (its cues get heard ids); once: the cues already heard are left out; speed > 1: the clips are
+// sped up by it, their pitch kept, and the cues' lengths with them.
+std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scene, bool once, double speed) {
   FILE* f = fopen((data_dir() + key + ".txt").c_str(), "rb");
   if (!f) return nullptr;
   auto s = std::make_shared<Scene>();
@@ -196,7 +201,7 @@ std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scen
       if (once && heard().heard(key, text)) { ++s->left_out; continue; }   // heard before: left out
       s->heard_ids.push_back(std::move(id));
     }
-    s->cues.push_back({at, dur});
+    s->cues.push_back({at, speed > 1 ? dur / speed : dur});
     s->files.push_back(file);
     s->texts.push_back(text);
   }
@@ -211,10 +216,13 @@ std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scen
     if (it->scene->ready) { it->thread.join(); it = list.erase(it); }
     else ++it;
   }
-  list.push_back(Decoder{std::thread([s] {
+  list.push_back(Decoder{std::thread([s, speed] {
     for (size_t i = 0; i < s->files.size() && !g_unloading; ++i) {
       auto v = std::make_shared<std::vector<float>>();
-      if (audio::decode_mono(data_dir() + s->key + "\\" + s->files[i], *v)) s->pcm[i] = std::move(v);
+      if (audio::decode_mono(data_dir() + s->key + "\\" + s->files[i], *v)) {
+        if (speed > 1) *v = core::time_stretch(*v, audio::sample_rate(), speed);
+        s->pcm[i] = std::move(v);
+      }
       else ++s->failed;
     }
     s->ready = true;
@@ -629,11 +637,13 @@ void tick() {
   // A 3D scene: SceneDescription says whether (and whether once), SceneVoice by whom.
   int mode = g_mode;
   bool once = g_once;
-  if (playing && !c.event) { mode = settings::get(settings::AudioDescription); once = false; }
+  int speed = g_speed;
+  if (playing && !c.event) { mode = settings::get(settings::AudioDescription); once = false; speed = 0; }
   if (playing && c.event) {
     const int scene = settings::get(settings::SceneDescription);
     mode = scene == settings::SceneOff ? settings::DescOff : settings::get(settings::SceneVoice);
     once = scene == settings::SceneOnce;
+    speed = mode == settings::DescAudio ? settings::get(settings::SceneSpeed) : 0;
   }
   if (!playing || !c.paused) g_releasing = false;
   if (mode == settings::DescOff) {
@@ -641,7 +651,7 @@ void tick() {
     if (g_was_playing) { stop_all(); g_was_playing = false; g_scene.reset(); g_key.clear(); }
     return;
   }
-  if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode || once != g_once)) {
+  if (playing && (!g_was_playing || g_key != key_of(c.movie) || mode != g_mode || once != g_once || speed != g_speed)) {
     // a movie starts (or the source changed under a running player, or the setting changed): load its
     // descriptions, if it has any
     close_box(g_key == key_of(c.movie));
@@ -649,15 +659,17 @@ void tick() {
     g_key = key_of(c.movie);
     g_mode = mode;
     g_once = once;
-    auto s = load_scene(g_key, mode == settings::DescAudio, c.event, once);
+    g_speed = speed;
+    auto s = load_scene(g_key, mode == settings::DescAudio, c.event, once, settings::scene_speed_factor(speed));
     g_scene = s;
     g_sched.load(s ? s->cues : std::vector<sched::Cue>{});
     g_runs.assign(g_sched.size(), Run{});
     g_seen.assign(g_sched.size(), sched::State::Pending);
     g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
     g_volume = g_base_volume;
-    log::writef("ad: {} {} ({}), {} descriptions{}", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
-                s && s->left_out ? std::format(", {} heard before left out", s->left_out) : std::string());
+    log::writef("ad: {} {} ({}), {} descriptions{}{}", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
+                s && s->left_out ? std::format(", {} heard before left out", s->left_out) : std::string(),
+                speed ? std::format(", narrator x{:.2f}", settings::scene_speed_factor(speed)) : std::string());
   }
   g_was_playing = playing;
   std::shared_ptr<Scene> s = g_scene;

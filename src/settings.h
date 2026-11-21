@@ -8,7 +8,7 @@ enum Id { TopDown, TurnedRooms, PoiRange, WallTones, WallRange, ShadowAlerts, Sh
           Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
           MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
           Spatial, BehindPitch,
-          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, DescriptionWait,
+          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, SceneSpeed, DescriptionWait,
           TriggerDelay, EntryHints, MenuSpeed, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }
@@ -25,6 +25,8 @@ enum Description { DescOff, DescAudio, DescReader };
 // SceneDescription: whether the 3D scenes are described, and SceneOnce: a description already heard is not read
 // again (core/heard_cues, ad.cpp).
 enum SceneMode { SceneOff, SceneOn, SceneOnce };
+// SceneSpeed: how much faster the narrator reads a 3D scene's descriptions (0 off, then 25, 50, 75 percent; ad.cpp).
+inline double scene_speed_factor(int v) { return 1.0 + 0.25 * v; }
 // Spatial: how the mod's sounds are placed (audio::set_spatial).
 enum SpatialModel { SpatialStereo, SpatialHrtf, SpatialPan };
 // WallTones: when the tones play (walltones::set_mode). A saved 1 from the old on/off toggle is WallMoving.
