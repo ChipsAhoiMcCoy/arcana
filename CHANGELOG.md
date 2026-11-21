@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Field
+- The mod's field sounds (sonar, wall tones, Shadow cues and sight zones) now go quiet whenever the game takes the hero from you: opening a door, checking or picking something up, a camera the game moves by itself. They come back the moment you can move again, so silence means wait.
+
 ### Social Links
 - Mutatsu's order quiz at Club Escapade (Tower): the bartender asks what a customer ordered by where they stand ("that girl by the entrance"), while the field names the customers by their looks. Each question is now followed by who it means ("That's the Unemotional Woman."), and the people list says where each customer stands, in the bartender's words ("Unemotional Woman (by the entrance)").
 

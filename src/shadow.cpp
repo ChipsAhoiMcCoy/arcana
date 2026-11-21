@@ -422,7 +422,7 @@ std::vector<Holder> enemy_holders() {
 
 void tick() {
   log_encounter();   // the battle starts as the field is left, so before the check below
-  if (!world::exploring()) return;
+  if (!world::in_control()) return;
   FVector me;
   if (!world::player_location(me)) return;
   std::vector<Seen> seen = look(me);

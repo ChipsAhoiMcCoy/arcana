@@ -382,7 +382,7 @@ static void tick_body() {
     for (auto& [key, h] : g_heard) if (h.on) log::writef("sight: #{} zone quiet; its edge came within {:.1f} m (volume {:.2f})", std::get<0>(key), h.closest / 100.0f, h.level_at);
     g_heard.clear();
   };
-  if (!settings::on(settings::ShadowSight) || !world::exploring()) { quiet_all(); g_watch.clear(); return; }
+  if (!settings::on(settings::ShadowSight) || !world::in_control()) { quiet_all(); g_watch.clear(); return; }
   FVector mef;
   if (!world::player_location(mef)) { quiet_all(); return; }
   const Vec3 me{mef.x, mef.y, mef.z};

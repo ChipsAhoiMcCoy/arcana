@@ -2,6 +2,7 @@
 #include "devserver.h"
 #include "hooks.h"
 #include "input.h"
+#include "log.h"
 #include "msg.h"
 #include "seh.h"
 #include "screens/screen.h"
@@ -107,6 +108,18 @@ bool field_operator(int& state, int& key_state) {
   state = get<int32_t>(o, "State", -1);
   key_state = get<int32_t>(o, "KeyState", -1);
   return true;
+}
+
+bool in_control() {
+  static uint64_t at = ~0ull;
+  static bool value = false;
+  if (at == g_frame) return value;
+  at = g_frame;
+  int state = 0, keys = 0;
+  bool now = exploring() && (!field_operator(state, keys) || (state == 1 && keys == 3));
+  if (now != value && exploring()) log::writef("world: player {} (operator state {} keys {})", now ? "in control" : "not in control", state, keys);
+  value = now;
+  return value;
 }
 
 bool player_location(FVector& out) {

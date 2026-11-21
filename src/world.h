@@ -28,6 +28,11 @@ std::string not_exploring_reason();   // why exploring() is false (for the log),
 // enabled: for a few frames after the camp closes it is Camp, after a message Disable, and a key then is dropped.
 // False: no operator.
 bool field_operator(int& state, int& key_state);
+// The player has the hero now: exploring(), and the field operator Free with its keys enabled (no operator: true).
+// Opening a door, checking or picking up something, a camera the game moves itself: the operator is busy and the
+// player cannot move. Every field sound the mod makes by itself (sonar, wall tones, Shadow cues) plays only then,
+// so silence means "wait" (the user's call, 2026-11-21).
+bool in_control();
 bool player_location(FVector& out);
 bool player_velocity(FVector& out);   // the hero's velocity (AActor::GetVelocity), cm/s
 // Where the player is asking the hero to go (APawn::GetLastMovementInputVector, world space, length 0..1): the stick,

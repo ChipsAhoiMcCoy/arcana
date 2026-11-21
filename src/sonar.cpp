@@ -170,8 +170,9 @@ void emit(int kind, const FVector& me, const FVector& at, bool focus = false, fl
   ++g_fired;
 }
 
-// The field is heard while the player walks it: a hero, no message window, no menu, no battle, no story scene.
-bool in_field() { return world::exploring(); }
+// The field is heard while the player walks it: a hero, no message window, no menu, no battle, no story scene, and
+// the hero the player's to move (not opening a door or picking something up).
+bool in_field() { return world::in_control(); }
 
 // Which things sound: the nearest of the kinds switched on, a few of each, and the list's selected point whatever
 // its kind. Their places are read here; direction and distance are worked out again at every pulse.

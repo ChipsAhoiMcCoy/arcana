@@ -155,7 +155,7 @@ static float probe(const FVector& p, int d, float range) { return probe_along(p,
 
 // The tones play while the player walks the field with nothing over it (not in a menu, a conversation, a battle or
 // a story scene).
-static bool walking() { return world::exploring(); }
+static bool walking() { return world::in_control(); }
 
 // The sound test's tone: a sound's own length (1.2 s), not a wait on anything.
 static int g_demo = -1;
