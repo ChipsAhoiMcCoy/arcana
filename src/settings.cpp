@@ -114,7 +114,9 @@ static const Def kDefs[Count] = {
   {"scene_voice", strings::kSetSceneVoice, CatDescription, strings::kHelpSceneVoice, Unit::Choice, {DescAudio, DescReader}, DescAudio,
    {strings::kOff, strings::kDescAudio, strings::kDescReader}},
   // the narrator of 3D scenes reads faster, its pitch kept (core/time_stretch, ad.cpp); movies keep their timing
-  {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {1, 2, 3, 0}, 0,
+  // A slider, so it runs as the game's own sliders do (Camera Speed, the volumes): Off, the least, at the left and
+  // growing to the right (the user's call, 2026-11-20), not the toggles' Off at the right end.
+  {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kFaster25, strings::kFaster50, strings::kFaster75}},
   // a 3D scene's description pauses it, like a message window, until Enter (A) (ad.cpp); off: said over it. Movies never wait
   {"description_wait", strings::kSetDescriptionWait, CatDescription, strings::kHelpDescriptionWait, Unit::Toggle, {1, 0}, 1},
