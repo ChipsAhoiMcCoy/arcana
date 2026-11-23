@@ -1,6 +1,6 @@
 // A message window's choice list (USelItem, msg.cpp: +0x28 its state, +0x60 its ListCursor) as a bespoke menu over
 // the window. The window reads the question and then the focused answer with its position (msg's say_after keeps that
-// order around voiced lines), so entering the menu says nothing more; moves and Enter are the menu's, and the game's
+// order around voiced lines), so entering the menu says nothing more (coming back to it says the focused answer); moves and Enter are the menu's, and the game's
 // cursor follows. The answers are the ones msg reads (msg::current().choices).
 #include "screens/menu.h"
 #include "screens/util.h"
@@ -48,7 +48,8 @@ class ChoiceScreen : public MenuScreen {
   int priority() const override { return 35; }   // under the log (40), which opens over it
   bool over_messages() const override { return true; }
   bool active() override { msg::Current c = msg::current(); return c.open && c.choice >= 0 && core::all_filled(c.choices); }
-  bool announce_entry() override { return false; }
+  // Back from a screen over it (other players' answers, the log) nobody reads the list again: the focused answer.
+  bool announce_entry() override { return screens::returning(); }
   // F1 over a choice list: the screen is over the message window, so the keys are its own to name (it answered "No
   // keys to tell here", 2026-11-10).
   // A class question's answers name the key that shows other players' answers too.

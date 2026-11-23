@@ -3,13 +3,17 @@
 //  - Voice Answer: during a class question's answers (Event_Extr_330_020/030: NET_START_ANSWER sets
 //    AAtlEvtEventManager +0x320, the answer list reaching its input state sets +0x321), how other players answered.
 //    AUIVoiceAnswer.pVoiceAnswerDrawActor (+0x340) -> AUIVoiceAnswerDraw: IsGetData (+0x2C8) once the download came,
-//    +0x30C int32[4] each answer's percentage (count * 100 / total, FUN_1414b5360). The answers are the choice list's
+//    +0x9B8 once the figures were copied in (frames later), +0x30C int32[4] each answer's percentage (count * 100 / total, FUN_1414b5360). The answers are the choice list's
 //    own (the draw keeps the same USelItem at +0x2E8), read here as msg reads them.
 //  - Voice Action: in town (not on a Tartarus floor, where the same button is the navigator's), what other players did
-//    today. UFldManagerSubsystem.mVoiceActionDisp_ (the AUIVoiceAction) while it is up; its AUIVoiceActionDraw:
-//    IsGetData (+0x307), u16 percentages at +0x2BA / +0x2BC / +0x2BE (daily life, Social Links, Tartarus; they sum to
-//    100), and each kind's sticky notes, TArray<FBmdPage*> at +0x2C0 / +0x2D0 / +0x2E0 (BMD_ActionRecord pages, up to
-//    five drawn). FUN_1414b4f30 builds them, FUN_1414b8e20 copies them into the draw.
+//    today. UFldManagerSubsystem.mVoiceActionDisp_ (the AUIVoiceAction) while it is up; its pVoiceActionDrawActor
+//    (AUIVoiceActionDraw): IsGetData (+0x307), u16 percentages at +0x2BA / +0x2BC / +0x2BE (daily life, Social Links,
+//    Tartarus; they sum to 100), and each kind's sticky notes, TArray<FBmdPage*> at +0x2C0 / +0x2D0 / +0x2E0
+//    (BMD_ActionRecord pages, up to five drawn). FUN_1414b4f30 builds them, FUN_1414b8e20 copies them into the draw,
+//    but only once the action's opening has gone past its state 4: IsGetData is set when the download answers
+//    (FUN_1414ba* state code), frames before the copy, and not at all when the game had today's data already (then
+//    IsStartGetData, +0x306): the figures are there when the percentages sum to more than 0 (a new draw each open). A download that failed sets the action's +0x41A (its +0x288 part's +0x192) with IsGetData and nothing is
+//    ever copied: the game says so in its own notice.
 #include "screens/screen.h"
 #include "screens/util.h"
 #include "core/strings.h"
@@ -33,6 +37,8 @@ class NetScreen : public Screen {
  protected:
   virtual UObject* draw() = 0;
   virtual bool has_data(UObject* d) = 0;
+  // The download failed: no figures will come (the game's own notice says so).
+  virtual bool failed(UObject*) { return false; }
   virtual std::string figures(UObject* d) = 0;
   virtual const char* title() const = 0;
  public:
@@ -43,6 +49,7 @@ class NetScreen : public Screen {
     UObject* d = draw();
     std::string line = title();
     if (d && has_data(d)) { line += ". " + figures(d); said_ = true; }
+    else if (d && failed(d)) said_ = true;
     else line += ". " + std::string(strings::kNetWaiting);
     speech::speak(line, true);
   }
@@ -50,11 +57,14 @@ class NetScreen : public Screen {
     if (said_) return;
     UObject* d = draw();
     if (d && has_data(d)) { speech::speak(figures(d), false); said_ = true; }
+    else if (d && failed(d)) said_ = true;
   }
   std::string describe() override {
     UObject* d = draw();
     if (!d) return {};
-    return std::string(title()) + ". " + (has_data(d) ? figures(d) : std::string(strings::kNetWaiting));
+    if (has_data(d)) return std::string(title()) + ". " + figures(d);
+    if (failed(d)) return title();
+    return std::string(title()) + ". " + strings::kNetWaiting;
   }
 };
 
@@ -67,7 +77,21 @@ class NetAnswerScreen : public NetScreen {
     UObject* d = get<UObject*>(a, "pVoiceAnswerDrawActor");
     return d && is_live(d) ? d : nullptr;
   }
-  bool has_data(UObject* d) override { return get_bool(d, "IsGetData"); }
+  // The copy (FUN_1414b8fd0, past the answer's state 4) sets +0x9B8 in the same call that writes the percentages.
+  // IsGetData is no sign: it comes frames earlier with a download, and never when the game had the data already
+  // (it sets IsStartGetData, +0x2C7, then).
+  bool has_data(UObject* d) override {
+    bool copied = false;
+    guarded([&] { copied = *((uint8_t*)d + 0x9B8) != 0; });
+    return copied;
+  }
+  // A failed download: the answer's +0x36D (its +0x288 part's +0xE5) with IsGetData; nothing is copied.
+  bool failed(UObject* d) override {
+    UObject* a = answer_.get();
+    bool err = false;
+    if (a && is_live(a)) guarded([&] { err = *((uint8_t*)a + 0x36D) != 0; });
+    return err && get_bool(d, "IsGetData");
+  }
   std::string figures(UObject* d) override {
     int pct[4] = {};
     if (!guarded([&] { for (int i = 0; i < 4; ++i) pct[i] = *(int32_t*)((uint8_t*)d + 0x30C + 4 * i); })) return {};
@@ -76,6 +100,7 @@ class NetAnswerScreen : public NetScreen {
     std::string out;
     for (size_t i = 0; i < n; ++i) {
       std::string what = i < answers.size() ? answers[i] : std::to_string(i + 1);
+      while (!what.empty() && (what.back() == '.' || what.back() == ' ')) what.pop_back();   // "Boneyards." as a list item
       out += (out.empty() ? "" : ". ") + percent_line(what, pct[i]);
     }
     return out + ".";
@@ -89,15 +114,28 @@ class NetAnswerScreen : public NetScreen {
 
 class NetActionScreen : public NetScreen {
   Finder fields_{"FldManagerSubsystem"};
-  Finder draw_{"UIVoiceActionDraw"};
+  UObject* action() {
+    UObject* f = fields_.get();
+    UObject* a = f ? get<UObject*>(f, "mVoiceActionDisp_") : nullptr;
+    return a && is_live(a) ? a : nullptr;
+  }
  protected:
   UObject* draw() override {
-    UObject* f = fields_.get();
-    if (!f || !get<UObject*>(f, "mVoiceActionDisp_")) return nullptr;
-    UObject* d = draw_.get();
+    UObject* a = action();
+    UObject* d = a ? get<UObject*>(a, "pVoiceActionDrawActor") : nullptr;
     return d && is_live(d) ? d : nullptr;
   }
-  bool has_data(UObject* d) override { return get_bool(d, "IsGetData"); }
+  bool has_data(UObject* d) override {
+    int sum = 0;
+    guarded([&] { for (int k = 0; k < 3; ++k) sum += *(uint16_t*)((uint8_t*)d + 0x2BA + 2 * k); });
+    return sum > 0;
+  }
+  bool failed(UObject* d) override {
+    UObject* a = action();
+    bool err = false;
+    if (a) guarded([&] { err = *((uint8_t*)a + 0x41A) != 0; });
+    return err && get_bool(d, "IsGetData");
+  }
   std::string figures(UObject* d) override {
     std::string out;
     for (int k = 0; k < 3; ++k) {
