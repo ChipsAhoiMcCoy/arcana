@@ -23,11 +23,12 @@ struct PadState {
 
 struct PadLayerOptions {
   bool modal = false;         // a mod menu has the controller: the game sees nothing, every new button is an event
+  bool modal_layer = false;   // ...but both triggers still open the layer (its opening is an event; buttons there are layer ones)
   bool claim_taps = false;    // a lone trigger is the caller's (a menu's section jump): reported as a tap, never the game's
   uint64_t grace_ms = 150;    // how long a lone trigger is held back in case the other follows
 };
 
-struct PadLayerEvent { uint16_t button; bool repeat; };   // button 0 = the layer opened
+struct PadLayerEvent { uint16_t button; bool repeat; bool layer; };   // button 0 = the layer opened; layer: both triggers held
 
 // What one filter() call produced, in order.
 struct PadLayerOutput {
@@ -35,7 +36,7 @@ struct PadLayerOutput {
   PadLayerEvent events[kMax];
   int count = 0;
   int tap = 0;                      // a claimed trigger: -1 LT, +1 RT, 0 none
-  void add(uint16_t button, bool repeat) { if (count < kMax) events[count++] = {button, repeat}; }
+  void add(uint16_t button, bool repeat, bool layer = true) { if (count < kMax) events[count++] = {button, repeat, layer}; }
 };
 
 struct PadLayer {

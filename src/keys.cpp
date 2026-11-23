@@ -43,12 +43,12 @@ static MenuKey g_menu;
 void set_menu(MenuKey key) { g_menu = std::move(key); }
 void bind_pad(const char* name, uint16_t button) { for (auto& b : g_bindings) if (b.name == name) b.pad = button; }
 void on_pad_layer(Handler h) { g_on_layer = std::move(h); }
-void pad(uint16_t button, bool repeat) {
+void pad(uint16_t button, bool repeat, bool layer) {
   if (g_modal_pad) {   // a copy: the handler may close the menu, clearing g_modal_pad under itself
     if (button) { ModalPad h = g_modal_pad; if (!guarded([&] { h(button, repeat); })) log::write("keys: modal pad faulted"); }
     return;
   }
-  if (g_pad_capture) {
+  if (g_pad_capture && !layer) {
     if (button) { ModalPad h = g_pad_capture; if (!guarded([&] { h(button, repeat); })) log::write("keys: pad capture faulted"); }
     return;
   }

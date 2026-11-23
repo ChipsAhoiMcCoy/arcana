@@ -77,7 +77,7 @@ static std::string module_of(void* p);
 // reads the pad and the clock for it and hands its events on.
 static core::PadLayer g_layer[4];
 static std::mutex g_layer_mu;
-static std::vector<std::pair<uint16_t, bool>> g_layer_events;   // (button, repeat); button 0 = the layer opened
+static std::vector<core::PadLayerEvent> g_layer_events;   // button 0 = the layer opened
 static std::atomic<bool> g_layer_open{false};
 static std::atomic<bool> g_modal{false};   // a mod menu has the controller (set_modal)
 static std::atomic<bool> g_claim_taps{false};
@@ -110,7 +110,7 @@ void set_modal(bool on) { g_modal = on; }
 bool modal() { return g_modal; }
 static std::atomic<bool> g_pad_capture{false};
 void set_pad_capture(bool on) { g_pad_capture = on; }
-static void layer_event(uint16_t button, bool repeat) { std::lock_guard lk(g_layer_mu); g_layer_events.push_back({button, repeat}); }
+static void layer_event(const core::PadLayerEvent& e) { std::lock_guard lk(g_layer_mu); g_layer_events.push_back(e); }
 
 // One polled state through the layer: the game's copy is rewritten, the layer's buttons become events for tick(),
 // and a lone trigger a menu with sections claimed (slot 0 only) becomes its tap.
@@ -118,11 +118,12 @@ static void layer_filter(core::PadLayer& L, XINPUT_GAMEPAD& g) {
   core::PadState s{g.wButtons, g.bLeftTrigger, g.bRightTrigger, g.sThumbLX, g.sThumbLY, g.sThumbRX, g.sThumbRY};
   core::PadLayerOptions o;
   o.modal = g_modal || g_pad_capture;
+  o.modal_layer = g_pad_capture && !g_modal;
   o.claim_taps = g_claim_taps && &L == &g_layer[0];
   o.grace_ms = (uint64_t)settings::get(settings::TriggerDelay);
   core::PadLayerOutput out;
   L.filter(s, GetTickCount64(), o, out);
-  for (int i = 0; i < out.count; ++i) layer_event(out.events[i].button, out.events[i].repeat);
+  for (int i = 0; i < out.count; ++i) layer_event(out.events[i]);
   if (out.tap) g_tap = out.tap;
   g.wButtons = s.buttons;
   g.bLeftTrigger = s.lt; g.bRightTrigger = s.rt;
@@ -344,9 +345,9 @@ void tick() {
   if (!announced && g_vpad && hooks::game_window()) { announced = true; announce_device_change(); }
   poll_pad();
   inject_tick();
-  std::vector<std::pair<uint16_t, bool>> events;
+  std::vector<core::PadLayerEvent> events;
   { std::lock_guard lk(g_layer_mu); events.swap(g_layer_events); }
-  for (auto [button, repeat] : events) keys::pad(button, repeat);
+  for (auto& e : events) keys::pad(e.button, e.repeat, e.layer);
 }
 bool layer_open() { return g_layer_open; }
 

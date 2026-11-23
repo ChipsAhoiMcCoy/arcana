@@ -4,8 +4,8 @@ namespace p3a::core {
 // Each newly pressed button is an event and becomes the held one; the held one repeats while it stays down.
 void PadLayer::buttons(uint32_t s, uint32_t pressed, uint64_t now, PadLayerOutput& out) {
   for (uint32_t bit = 1; bit <= 0x8000; bit <<= 1)
-    if (pressed & bit) { out.add((uint16_t)bit, false); held = bit; repeat_at = now + 450; }
-  if (held && (s & held) && now >= repeat_at) { out.add((uint16_t)held, true); repeat_at = now + 130; }
+    if (pressed & bit) { out.add((uint16_t)bit, false, on); held = bit; repeat_at = now + 450; }
+  if (held && (s & held) && now >= repeat_at) { out.add((uint16_t)held, true, on); repeat_at = now + 130; }
 }
 
 void PadLayer::filter(PadState& g, uint64_t now, const PadLayerOptions& o, PadLayerOutput& out) {
@@ -19,6 +19,9 @@ void PadLayer::filter(PadState& g, uint64_t now, const PadLayerOptions& o, PadLa
   if (o.modal) {
     // A mod menu: the game sees nothing (sticks included); each new button goes to the menu. Triggers still held
     // when it closes count as the layer already open, so closing it from the layer does not announce the layer again.
+    // With modal_layer (the contract's on-screen keyboard) both triggers still open the layer, so its keys (F1's
+    // hints) work there; its buttons are marked as the layer's.
+    if (o.modal_layer && both && !on) out.add(0, false);
     on = both; pend = 0;
     hidden |= s;
     buttons(s, pressed, now, out);

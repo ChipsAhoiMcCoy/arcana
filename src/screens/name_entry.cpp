@@ -23,8 +23,9 @@
 // box (EditableText.SetText with KismetTextLibrary.Conv_StringToText's FText), B erases the last character, Y capitals,
 // X reads the name, Start commits with an injected Enter (the box's own commit, as the keyboard's: every
 // OnTextCommitted runs Decide). B with the box empty commits it empty: the keyboard closes, the name stays blank.
-// Its sounds are the game's system cues (exe+0x1286af0, as every native menu plays them): the cursor on a move, the
-// buzzer at an edge, decide on a typed key, cancel on an erase, the page turn on capitals.
+// Both triggers still open the mod's layer (keys::pad): its hints (+ Menu) say these buttons; nothing says them unasked.
+// Its sounds are the game's system cues (exe+0x1286af0, as every native menu plays them): the cursor on a move (none at
+// an edge, where the key is said again as in any menu), decide on a typed key, cancel on an erase, the page turn on capitals.
 // Steam's keyboard: opening a field (exe+0x149e4b0) first asks Steam for its gamepad keyboard (exe+0x1272c90:
 // ISteamUtils vtable +0xA0, ShowGamepadTextInput(normal, single line, description, max, existing text); state byte
 // 1 pending, 2 submitted, 3 cancelled, 4 no Steam), which Steam shows only in Big Picture or on a Steam Deck and a
@@ -166,12 +167,11 @@ class NameEntryScreen : public MenuScreen {
     using M = core::VirtualKeyboard::Move;
     using A = core::VirtualKeyboard::Action;
     std::string line;
-    // A move: the cursor sound, or the buzzer at an edge (once: a held D-pad's repeats there are quiet).
+    // A move: the cursor sound. At an edge the key is said again without a sound (a held D-pad's repeats there are quiet).
     auto move = [&](M m) {
       size_t r = kb_.row(), c = kb_.col();
       line = kb_.move(m, repeat);
       if (r != kb_.row() || c != kb_.col()) cursor_sound(voice::CueCursor);
-      else if (!line.empty()) cursor_sound(voice::CueBuzzer);
     };
     auto capitals = [&] { cursor_sound(voice::CuePage); line = kb_.toggle_capitals(); };
     switch (b) {
@@ -191,7 +191,6 @@ class NameEntryScreen : public MenuScreen {
       case XINPUT_GAMEPAD_Y: if (!repeat) capitals(); break;
       case XINPUT_GAMEPAD_X: if (!repeat) { std::string t = field_text(); line = std::format("{}, {}", t.empty() ? strings::kBlank : t, kb_.where()); } break;
       case XINPUT_GAMEPAD_START: if (!repeat) { cursor_sound(voice::CueDecide); commit(); } break;
-      case XINPUT_GAMEPAD_BACK: if (!repeat) speech::speak(strings::kTypeThenEnter(), true); break;
       default: break;
     }
     if (!line.empty()) speech::speak(line, true);
@@ -234,12 +233,13 @@ class NameEntryScreen : public MenuScreen {
     int f = cursor();
     if (!ty) close_keyboard();
     if (ty && (!typed_ || f != typed_field_)) {
-      // A field opened for typing: its name and what is in it; on a controller, the keyboard and its key.
+      // A field opened for typing: its name and what is in it; on a controller, the keyboard and its key. The keys are
+      // the hints key's (the design rule: never said by themselves).
       std::string t = field_text();
       field_.open(t);
       bool pad = input::pad_in_use();
       if (pad) open_keyboard();
-      std::string line = std::format("{}. {}", field_name(f), t.empty() ? strings::kTypeThenEnter() : t);
+      std::string line = std::format("{}. {}", field_name(f), t.empty() ? strings::kBlank : t);
       if (pad) line = std::format("{}. {}. {}", line, strings::kKeyboardOpen, kb_.key_name());
       say(line, true);
     } else if (keys && !kb_open_ && input::pad_in_use()) {
