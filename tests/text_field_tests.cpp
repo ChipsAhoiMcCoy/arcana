@@ -7,13 +7,16 @@ using Key = TextField::Key;
 TEST_CASE("typing and deleting at the end says the character") {
   TextField f;
   f.open("");
-  CHECK(f.edited("M") == "M");
+  CHECK(f.edited("M") == "capital M");
   CHECK(f.edited("Me") == "e");
+  CHECK(f.edited("Me ") == "space");
+  f.pressed(Key::Backspace);
+  CHECK(f.edited("Me") == "space");
   CHECK(f.caret() == 2);
   f.pressed(Key::Backspace);
   CHECK(f.edited("M") == "e");
   f.pressed(Key::Backspace);
-  CHECK(f.edited("") == "M");
+  CHECK(f.edited("") == "capital M");
   CHECK(f.caret() == 0);
 }
 
@@ -24,8 +27,8 @@ TEST_CASE("the arrows read the character the caret lands on") {
   CHECK(f.pressed(Key::Right) == "blank");
   CHECK(f.pressed(Key::Left) == "c");
   CHECK(f.pressed(Key::Left) == "b");
-  CHECK(f.pressed(Key::Home) == "A");
-  CHECK(f.pressed(Key::Left) == "A");
+  CHECK(f.pressed(Key::Home) == "capital A");
+  CHECK(f.pressed(Key::Left) == "capital A");
   CHECK(f.pressed(Key::Right) == "b");
   CHECK(f.pressed(Key::End) == "blank");
 }

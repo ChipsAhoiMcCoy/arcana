@@ -1,6 +1,7 @@
 #include "core/virtual_keyboard.h"
 #include "core/speech_text.h"
 #include "core/strings.h"
+#include "core/text_field.h"
 #include <algorithm>
 #include <cctype>
 #include <format>
@@ -19,7 +20,7 @@ std::string char_name(char c, bool caps) {
     case '-': return strings::kVkDash;
     case '\'': return strings::kVkApostrophe;
     case '.': return strings::kVkPeriod;
-    default: return std::string(1, caps ? (char)std::toupper((unsigned char)c) : c);
+    default: return spoken_char(std::string(1, caps ? (char)std::toupper((unsigned char)c) : c));
   }
 }
 }  // namespace

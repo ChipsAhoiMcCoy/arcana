@@ -10,7 +10,14 @@ using utf8::prev_char;
 bool continuation(const std::string& s, size_t i) { return utf8::is_continuation(s, i); }
 bool one_char(const std::string& s) { return !s.empty() && next_char(s, 0) == s.size(); }
 std::string or_blank(std::string s) { return s.empty() ? std::string(strings::kBlank) : s; }
+std::string one_spoken(const std::string& s) { return s.empty() ? std::string(strings::kBlank) : spoken_char(s); }
 }  // namespace
+
+std::string spoken_char(const std::string& ch) {
+  if (ch == " ") return strings::kVkSpace;
+  if (ch.size() == 1 && ch[0] >= 'A' && ch[0] <= 'Z') return std::string(strings::kCapital) + " " + ch;
+  return ch;
+}
 
 void TextField::open(std::string text) {
   text_ = std::move(text);
@@ -18,7 +25,7 @@ void TextField::open(std::string text) {
   back_ = false;
 }
 
-std::string TextField::at_caret() const { return or_blank(text_.substr(caret_, next_char(text_, caret_) - caret_)); }
+std::string TextField::at_caret() const { return one_spoken(text_.substr(caret_, next_char(text_, caret_) - caret_)); }
 
 std::string TextField::pressed(Key key) {
   back_ = false;
@@ -47,8 +54,8 @@ std::string TextField::edited(const std::string& now) {
   text_ = now;
   caret_ = now.size() - tail;
   back_ = false;
-  if (added.empty() && one_char(removed)) return removed;
-  if (removed.empty() && one_char(added)) return added;
+  if (added.empty() && one_char(removed)) return spoken_char(removed);
+  if (removed.empty() && one_char(added)) return spoken_char(added);
   return or_blank(now);
 }
 

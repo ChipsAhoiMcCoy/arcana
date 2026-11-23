@@ -23,6 +23,8 @@
 // box (EditableText.SetText with KismetTextLibrary.Conv_StringToText's FText), B erases the last character, Y capitals,
 // X reads the name, Start commits with an injected Enter (the box's own commit, as the keyboard's: every
 // OnTextCommitted runs Decide). B with the box empty commits it empty: the keyboard closes, the name stays blank.
+// Its sounds are the game's system cues (exe+0x1286af0, as every native menu plays them): the cursor on a move, the
+// buzzer at an edge, decide on a typed key, cancel on an erase, the page turn on capitals.
 // Steam's keyboard: opening a field (exe+0x149e4b0) first asks Steam for its gamepad keyboard (exe+0x1272c90:
 // ISteamUtils vtable +0xA0, ShowGamepadTextInput(normal, single line, description, max, existing text); state byte
 // 1 pending, 2 submitted, 3 cancelled, 4 no Steam), which Steam shows only in Big Picture or on a Steam Deck and a
@@ -37,6 +39,7 @@
 #include "hooks.h"
 #include "ue/scan.h"
 #include "keys.h"
+#include "voice.h"
 #include "log.h"
 #include "seh.h"
 #include "speech.h"
@@ -151,6 +154,7 @@ class NameEntryScreen : public MenuScreen {
   }
   void erase_or_close() {
     std::string t = field_text();
+    cursor_sound(voice::CueCancel);
     if (t.empty()) { commit(); return; }
     size_t cut = t.size() - 1;
     while (cut > 0 && ((unsigned char)t[cut] & 0xC0) == 0x80) --cut;   // a whole UTF-8 character
@@ -162,23 +166,31 @@ class NameEntryScreen : public MenuScreen {
     using M = core::VirtualKeyboard::Move;
     using A = core::VirtualKeyboard::Action;
     std::string line;
+    // A move: the cursor sound, or the buzzer at an edge (once: a held D-pad's repeats there are quiet).
+    auto move = [&](M m) {
+      size_t r = kb_.row(), c = kb_.col();
+      line = kb_.move(m, repeat);
+      if (r != kb_.row() || c != kb_.col()) cursor_sound(voice::CueCursor);
+      else if (!line.empty()) cursor_sound(voice::CueBuzzer);
+    };
+    auto capitals = [&] { cursor_sound(voice::CuePage); line = kb_.toggle_capitals(); };
     switch (b) {
-      case XINPUT_GAMEPAD_DPAD_UP: line = kb_.move(M::Up, repeat); break;
-      case XINPUT_GAMEPAD_DPAD_DOWN: line = kb_.move(M::Down, repeat); break;
-      case XINPUT_GAMEPAD_DPAD_LEFT: line = kb_.move(M::Left, repeat); break;
-      case XINPUT_GAMEPAD_DPAD_RIGHT: line = kb_.move(M::Right, repeat); break;
+      case XINPUT_GAMEPAD_DPAD_UP: move(M::Up); break;
+      case XINPUT_GAMEPAD_DPAD_DOWN: move(M::Down); break;
+      case XINPUT_GAMEPAD_DPAD_LEFT: move(M::Left); break;
+      case XINPUT_GAMEPAD_DPAD_RIGHT: move(M::Right); break;
       case XINPUT_GAMEPAD_A: {
         auto p = kb_.activate(field_text());
-        if (p.action == A::Type) set_box_text(field_text() + p.text);
+        if (p.action == A::Type) { cursor_sound(voice::CueDecide); set_box_text(field_text() + p.text); }
         else if (p.action == A::Erase) erase_or_close();
-        else if (p.action == A::Capitals && !repeat) line = kb_.toggle_capitals();
-        else if (p.action == A::Done && !repeat) commit();
+        else if (p.action == A::Capitals && !repeat) capitals();
+        else if (p.action == A::Done && !repeat) { cursor_sound(voice::CueDecide); commit(); }
         break;
       }
       case XINPUT_GAMEPAD_B: erase_or_close(); break;
-      case XINPUT_GAMEPAD_Y: if (!repeat) line = kb_.toggle_capitals(); break;
+      case XINPUT_GAMEPAD_Y: if (!repeat) capitals(); break;
       case XINPUT_GAMEPAD_X: if (!repeat) { std::string t = field_text(); line = std::format("{}, {}", t.empty() ? strings::kBlank : t, kb_.where()); } break;
-      case XINPUT_GAMEPAD_START: if (!repeat) commit(); break;
+      case XINPUT_GAMEPAD_START: if (!repeat) { cursor_sound(voice::CueDecide); commit(); } break;
       case XINPUT_GAMEPAD_BACK: if (!repeat) speech::speak(strings::kTypeThenEnter(), true); break;
       default: break;
     }

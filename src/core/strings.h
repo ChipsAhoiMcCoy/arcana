@@ -39,6 +39,7 @@ inline constexpr const char* kLastName = "Last name";
 inline constexpr Hint kTypeThenEnter{"Type it, then press Enter.", "D-pad chooses a key, A types it, B erases, Y capitals, X reads the name, Start confirms. B with nothing typed closes."};
 // The contract's on-screen keyboard (a controller): its keys' spoken names and what it says.
 inline constexpr const char* kVkSpace = "space";
+inline constexpr const char* kCapital = "capital";   // before a capital letter: "capital Q"
 inline constexpr const char* kVkDash = "dash";
 inline constexpr const char* kVkApostrophe = "apostrophe";
 inline constexpr const char* kVkPeriod = "period";

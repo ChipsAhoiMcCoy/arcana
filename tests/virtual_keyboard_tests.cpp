@@ -50,7 +50,9 @@ TEST_CASE("a name's letters: a capital at the start and after a space or dash") 
   CHECK(k.activate("Ab ").text == "Q");
   CHECK(k.activate("Ab-").text == "Q");
   CHECK(k.toggle_capitals() == "Capitals on");
-  CHECK(k.key_name() == "Q");
+  CHECK(k.key_name() == "capital Q");
+  CHECK(k.move(Move::Right, false) == "capital W, 2 of 10");
+  k.move(Move::Left, false);
   CHECK(k.activate("Ab").text == "Q");
   CHECK(k.toggle_capitals() == "Capitals off");
   k.move(Move::Up, false);

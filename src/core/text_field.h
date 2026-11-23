@@ -7,6 +7,9 @@
 
 namespace p3a::core {
 
+// One character as it is spoken: a capital letter as "capital Q", a space as "space", any other as itself.
+std::string spoken_char(const std::string& ch);
+
 class TextField {
  public:
   enum class Key { Left, Right, Home, End, Line, Backspace };
