@@ -108,6 +108,8 @@ void right_stick(float& x, float& y) {
 }
 void set_modal(bool on) { g_modal = on; }
 bool modal() { return g_modal; }
+static std::atomic<bool> g_pad_capture{false};
+void set_pad_capture(bool on) { g_pad_capture = on; }
 static void layer_event(uint16_t button, bool repeat) { std::lock_guard lk(g_layer_mu); g_layer_events.push_back({button, repeat}); }
 
 // One polled state through the layer: the game's copy is rewritten, the layer's buttons become events for tick(),
@@ -115,7 +117,7 @@ static void layer_event(uint16_t button, bool repeat) { std::lock_guard lk(g_lay
 static void layer_filter(core::PadLayer& L, XINPUT_GAMEPAD& g) {
   core::PadState s{g.wButtons, g.bLeftTrigger, g.bRightTrigger, g.sThumbLX, g.sThumbLY, g.sThumbRX, g.sThumbRY};
   core::PadLayerOptions o;
-  o.modal = g_modal;
+  o.modal = g_modal || g_pad_capture;
   o.claim_taps = g_claim_taps && &L == &g_layer[0];
   o.grace_ms = (uint64_t)settings::get(settings::TriggerDelay);
   core::PadLayerOutput out;
@@ -330,7 +332,9 @@ static void poll_pad() {
 bool pad_moving() { return g_pad_moving; }
 
 // Key hints follow the device the player last drove the game with; before any input, a controller that answers.
+static std::atomic<int> g_device_override{-1};   // dev (/pad?device=): 1 a controller, 0 the keyboard, -1 measured
 bool pad_in_use() {
+  if (int d = g_device_override; d >= 0) return d == 1;
   uint64_t pad = g_pad_ms, key = keys::game_key_ms();
   return pad || key ? pad > key : g_pad_seen.load();
 }
@@ -491,6 +495,8 @@ bool install() {
     // /pad?press=down,down,a [&ms=70&gap=90] | ?hold=lt&on=1 | ?stick=0,1&ms=500 | ?clear=1 | ?connect=1|0
     if (dev::has(r, "clear")) clear();
     if (dev::has(r, "connect")) set_vpad_connected(dev::arg(r, "connect") == "1");
+    // ?device=pad|keys|auto: what pad_in_use answers (the dev game has no controller of its own).
+    if (dev::has(r, "device")) { std::string d = dev::arg(r, "device"); g_device_override = d == "pad" ? 1 : d == "keys" ? 0 : -1; }
     unsigned ms = (unsigned)dev::arg_int(r, "ms", 70), gap = (unsigned)dev::arg_int(r, "gap", 90);
     std::string seq = dev::arg(r, "press");
     for (size_t s = 0; s < seq.size();) {
@@ -534,7 +540,7 @@ bool install() {
                             g.bRightTrigger, g.sThumbLX, g.sThumbLY, g.sThumbRX, g.sThumbRY);
     }
     return status() + "\n" + polled + (dev::has(r, "iat") ? iat_report() + callers_report() : std::string());
-  }, "?press=a,down|lb+a[&ms=&gap=] ?hold=x&on=1 ?stick=x,y&ms= ?clear=1 ?connect=1 ?wait=1 ?poll=ms ?raw=1 virtual pad");
+  }, "?press=a,down|lb+a[&ms=&gap=] ?hold=x&on=1 ?stick=x,y&ms= ?clear=1 ?connect=1 ?device=pad|keys|auto ?wait=1 ?poll=ms ?raw=1 virtual pad");
   dev::route("/key", [](const dev::Request& r, int& status) {
     // /key?k=enter,down,a [&ms=60] keyboard messages to the game window.
     // &settle=1: no fixed pauses. Each key is pressed once the last one has done its work (settle_wait), held until

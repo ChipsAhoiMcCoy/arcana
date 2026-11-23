@@ -33,6 +33,8 @@ static Handler g_on_layer;
 static ModalKey g_modal_key;
 static ModalPad g_modal_pad;
 void set_modal(ModalKey key, ModalPad pad) { g_modal_key = std::move(key); g_modal_pad = std::move(pad); }
+static ModalPad g_pad_capture;
+void set_pad_capture(ModalPad pad) { g_pad_capture = std::move(pad); }
 static CaptureKey g_capture;
 void set_capture(CaptureKey key) { g_capture = std::move(key); }
 static CaptureKey g_prompt;
@@ -44,6 +46,10 @@ void on_pad_layer(Handler h) { g_on_layer = std::move(h); }
 void pad(uint16_t button, bool repeat) {
   if (g_modal_pad) {   // a copy: the handler may close the menu, clearing g_modal_pad under itself
     if (button) { ModalPad h = g_modal_pad; if (!guarded([&] { h(button, repeat); })) log::write("keys: modal pad faulted"); }
+    return;
+  }
+  if (g_pad_capture) {
+    if (button) { ModalPad h = g_pad_capture; if (!guarded([&] { h(button, repeat); })) log::write("keys: pad capture faulted"); }
     return;
   }
   if (!button) { if (g_on_layer && !guarded([&] { g_on_layer(); })) log::write("keys: pad layer faulted"); return; }

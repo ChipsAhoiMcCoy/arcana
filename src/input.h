@@ -48,6 +48,9 @@ bool pad_in_use();   // the player is on a controller (pressed it after the keyb
 bool layer_open();   // both triggers held: the controller is the mod's (keys::bind_pad)
 void set_modal(bool on);   // a mod menu is open: the game gets no buttons or sticks, every button goes to keys::pad
 bool modal();
+// A screen of the mod's that takes the controller for a while (the contract's on-screen keyboard): as set_modal, kept
+// apart from it so the settings menu opening and closing over it leaves it on.
+void set_pad_capture(bool on);
 // Trigger presses for a menu with sections: while claimed, one trigger alone (the other not joining it within 50 ms,
 // the mod layer) is the menu's and never reaches the game; take_trigger_tap returns the last one (-1 LT, +1 RT) once.
 void claim_trigger_taps(bool on);

@@ -18,10 +18,17 @@
 // (+0x334, +0x340), so a field opens only on Enter (pad A, which opens the same text field) and the first name's
 // commit leaves the cursor where it was. While typing the game has the keys and core::TextField reads the box like a
 // screen reader's own edit field.
+// On a controller (input::pad_in_use when the field opens, or a pad press while it is open) the mod's own keyboard
+// (core::VirtualKeyboard) takes the pad while the field is open: the D-pad walks a QWERTY grid, A types the key into the
+// box (EditableText.SetText with KismetTextLibrary.Conv_StringToText's FText), B erases the last character, Y capitals,
+// X reads the name, Start commits with an injected Enter (the box's own commit, as the keyboard's: every
+// OnTextCommitted runs Decide). B with the box empty commits it empty: the keyboard closes, the name stays blank.
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "core/strings.h"
 #include "core/text_field.h"
+#include "core/virtual_keyboard.h"
+#include "input.h"
 #include "keys.h"
 #include "log.h"
 #include "seh.h"
@@ -95,6 +102,80 @@ class NameEntryScreen : public MenuScreen {
   bool typed_ = false;      // typing when last ticked
   int typed_field_ = -1;
   core::TextField field_;   // the open field's text and caret
+  core::VirtualKeyboard kb_;
+  bool kb_open_ = false;    // the on-screen keyboard has the pad
+  bool kb_sent_ = false;    // its Enter went: nothing more is typed until the field closes
+
+  // The box's text set to s, as the player's typing would leave it (the echo in on_tick reads the change).
+  bool set_box_text(const std::string& s) {
+    UObject* et = edit_box();
+    UFunction* f = et ? find_function(class_of(et), "SetText") : nullptr;
+    if (!f) return false;
+    std::u16string w = to_u16(s);
+    Params c = call_static("KismetTextLibrary", "Conv_StringToText", [&](Params& p) { p.set<FString>("inString", make_fstring(w)); });
+    FText* t = c.fn ? c.at<FText>("ReturnValue") : nullptr;
+    if (!t) return false;
+    Params p(f);
+    p.set<FText>("InText", *t);
+    call(et, p);
+    release_text(*t);
+    return true;
+  }
+  void open_keyboard() {
+    kb_open_ = true;
+    kb_sent_ = false;
+    kb_.reset();
+    input::set_pad_capture(true);
+    keys::set_pad_capture([this](uint16_t b, bool repeat) { keyboard_pad(b, repeat); });
+    log::write("name_entry: on-screen keyboard open");
+  }
+  void close_keyboard() {
+    if (!kb_open_) return;
+    kb_open_ = false;
+    keys::set_pad_capture(nullptr);
+    input::set_pad_capture(false);
+    log::write("name_entry: on-screen keyboard closed");
+  }
+  void commit() {
+    if (kb_sent_) return;
+    kb_sent_ = true;
+    input::inject_key(VK_RETURN);
+  }
+  void erase_or_close() {
+    std::string t = field_text();
+    if (t.empty()) { commit(); return; }
+    size_t cut = t.size() - 1;
+    while (cut > 0 && ((unsigned char)t[cut] & 0xC0) == 0x80) --cut;   // a whole UTF-8 character
+    field_.pressed(core::TextField::Key::Backspace);
+    set_box_text(t.substr(0, cut));
+  }
+  void keyboard_pad(uint16_t b, bool repeat) {
+    if (!typing() || kb_sent_) return;
+    using M = core::VirtualKeyboard::Move;
+    using A = core::VirtualKeyboard::Action;
+    std::string line;
+    switch (b) {
+      case XINPUT_GAMEPAD_DPAD_UP: line = kb_.move(M::Up, repeat); break;
+      case XINPUT_GAMEPAD_DPAD_DOWN: line = kb_.move(M::Down, repeat); break;
+      case XINPUT_GAMEPAD_DPAD_LEFT: line = kb_.move(M::Left, repeat); break;
+      case XINPUT_GAMEPAD_DPAD_RIGHT: line = kb_.move(M::Right, repeat); break;
+      case XINPUT_GAMEPAD_A: {
+        auto p = kb_.activate(field_text());
+        if (p.action == A::Type) set_box_text(field_text() + p.text);
+        else if (p.action == A::Erase) erase_or_close();
+        else if (p.action == A::Capitals && !repeat) line = kb_.toggle_capitals();
+        else if (p.action == A::Done && !repeat) commit();
+        break;
+      }
+      case XINPUT_GAMEPAD_B: erase_or_close(); break;
+      case XINPUT_GAMEPAD_Y: if (!repeat) line = kb_.toggle_capitals(); break;
+      case XINPUT_GAMEPAD_X: if (!repeat) { std::string t = field_text(); line = std::format("{}, {}", t.empty() ? strings::kBlank : t, kb_.where()); } break;
+      case XINPUT_GAMEPAD_START: if (!repeat) commit(); break;
+      case XINPUT_GAMEPAD_BACK: if (!repeat) speech::speak(strings::kTypeThenEnter(), true); break;
+      default: break;
+    }
+    if (!line.empty()) speech::speak(line, true);
+  }
 
  public:
   NameEntryScreen() {
@@ -120,6 +201,7 @@ class NameEntryScreen : public MenuScreen {
   // The game has the keys only while a field is being typed.
   bool holds_keys() override { return !typing(); }
   std::string title() override { return strings::kContract; }
+  void on_leave() override { close_keyboard(); }
   void on_enter() override {
     typed_ = false; typed_field_ = -1;
     stop_opening_fields();
@@ -130,11 +212,20 @@ class NameEntryScreen : public MenuScreen {
     bool ty = typing();                 // the game's flag: the field is open
     bool keys = ty && box_focused();    // ...and its box still has the keys (not committing)
     int f = cursor();
+    if (!ty) close_keyboard();
     if (ty && (!typed_ || f != typed_field_)) {
-      // A field opened for typing: its name and what is in it.
+      // A field opened for typing: its name and what is in it; on a controller, the keyboard and its key.
       std::string t = field_text();
       field_.open(t);
-      say(std::format("{}. {}", field_name(f), t.empty() ? strings::kTypeThenEnter() : t), true);
+      bool pad = input::pad_in_use();
+      if (pad) open_keyboard();
+      std::string line = std::format("{}. {}", field_name(f), t.empty() ? strings::kTypeThenEnter() : t);
+      if (pad) line = std::format("{}. {}. {}", line, strings::kKeyboardOpen, kb_.key_name());
+      say(line, true);
+    } else if (keys && !kb_open_ && input::pad_in_use()) {
+      // A controller picked up while the field was open from the keyboard.
+      open_keyboard();
+      say(std::format("{}. {}", strings::kKeyboardOpen, kb_.key_name()), true);
     } else if (keys) {
       // The echo of typing is spoken directly, here and in on_game_key: the game has the keys, so a menu's guard
       // against saying a line twice would take the second of two equal echoes (a doubled letter, the same character

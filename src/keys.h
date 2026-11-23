@@ -47,6 +47,9 @@ void pad(uint16_t button, bool repeat); // a button pressed in the layer, or 0 =
 using ModalKey = std::function<void(uint32_t vk, bool repeat)>;
 using ModalPad = std::function<void(uint16_t button, bool repeat)>;
 void set_modal(ModalKey key, ModalPad pad);
+// A screen that takes every controller button for a while (the contract's on-screen keyboard; input::set_pad_capture
+// hides them from the game). The keyboard is left alone; the settings menu's modal goes first. nullptr clears.
+void set_pad_capture(ModalPad pad);
 // A screen that takes some of the game's own keys (unmodified presses only): return true to swallow the key from the
 // game (down, repeat, char and up). Runs before the mod's bindings. nullptr clears.
 using CaptureKey = std::function<bool(uint32_t vk, bool repeat)>;

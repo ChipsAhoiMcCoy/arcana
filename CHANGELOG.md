@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Menus
+- New: the contract can be filled in on a controller. A on a name opens an on-screen keyboard of the mod's: the D-pad walks a QWERTY grid read key by key with its place, A types, B erases the last letter (and, with nothing typed, closes the keyboard), Y toggles capitals, X reads the name, and Start saves it. First letters are capitals by themselves. On the keyboard, the contract is as before.
 - Coming back to a menu from something the game handles itself (a shop's quantity, a page, a prompt) on the same row now reads that row again. Going back from a shop's "Is this what you want?" to the quantity and confirming again brought the prompt back in silence; going back from a quantity to the list was silent too.
 
 ### Dialogue

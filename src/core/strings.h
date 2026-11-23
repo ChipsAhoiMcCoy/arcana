@@ -36,7 +36,19 @@ inline constexpr const char* kDifficulties[] = {"Peaceful", "Easy", "Normal", "H
 inline constexpr const char* kContract = "Contract.";
 inline constexpr const char* kFirstName = "First name";
 inline constexpr const char* kLastName = "Last name";
-inline constexpr Hint kTypeThenEnter{"Type it, then press Enter.", "Type it on the keyboard, then press Enter."};
+inline constexpr Hint kTypeThenEnter{"Type it, then press Enter.", "D-pad chooses a key, A types it, B erases, Y capitals, X reads the name, Start confirms. B with nothing typed closes."};
+// The contract's on-screen keyboard (a controller): its keys' spoken names and what it says.
+inline constexpr const char* kVkSpace = "space";
+inline constexpr const char* kVkDash = "dash";
+inline constexpr const char* kVkApostrophe = "apostrophe";
+inline constexpr const char* kVkPeriod = "period";
+inline constexpr const char* kVkCapitals = "Capitals";
+inline constexpr const char* kVkErase = "Erase";
+inline constexpr const char* kVkDone = "Done";
+inline constexpr const char* kRow = "row";
+inline constexpr const char* kCapitalsOn = "Capitals on";
+inline constexpr const char* kCapitalsOff = "Capitals off";
+inline constexpr const char* kKeyboardOpen = "Keyboard";
 inline constexpr const char* kBlank = "blank";
 inline constexpr const char* kNameDone = "Done";
 inline constexpr const char* kNamesMissing = "Both names are needed first.";

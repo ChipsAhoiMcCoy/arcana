@@ -203,7 +203,7 @@ They work like any other menu: up and down choose (at either end a further press
 
 - The caution and photosensitivity notices stay up until you press Space or A, instead of moving on after 7 seconds.
 - Title screen, title menu and difficulty (with descriptions).
-- The contract is a menu ("First name, blank, 1 of 3", "Last name", "Done"). Enter (A) on a name opens it for typing; each letter typed or deleted is said, the left and right arrows, Home and End read the character they land on, up and down read the whole name, and Enter saves. Enter (A) on Done signs. On a controller the letters still come from a keyboard.
+- The contract is a menu ("First name, blank, 1 of 3", "Last name", "Done"). Enter (A) on a name opens it for typing; each letter typed or deleted is said, the left and right arrows, Home and End read the character they land on, up and down read the whole name, and Enter saves. Enter (A) on Done signs. On a controller, A on a name opens the mod's on-screen keyboard (QWERTY: a row of digits, three rows of letters with dash, apostrophe and period, then Space, Capitals, Erase and Done): the D-pad moves across the keys ("w, 2 of 10"; up and down say the row), A types the key, B erases the last letter, Y turns capitals on or off (a name's first letter, and one after a space or dash, is a capital anyway), X reads the name so far, View reads these buttons, and Start saves the name. B with nothing typed closes the keyboard and leaves the name blank. A keyboard still works while it is open.
 
 ### In the field
 
