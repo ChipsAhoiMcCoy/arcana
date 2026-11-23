@@ -36,7 +36,7 @@ class BacklogScreen : public MenuScreen {
   // and the step to 0. Read before that, the opening line was "An earlier line" (2026-10-29).
   bool settled() {
     UObject* l = log_.get();
-    if (!draw_.get() || !l || !count()) return false;
+    if (!draw_.get() || !l) return false;
     int step = *(int32_t*)((uint8_t*)l + 0x2F4);
     return step >= 0 && step <= 5;
   }
@@ -57,9 +57,16 @@ class BacklogScreen : public MenuScreen {
   // exe+0x12392f0() is the store, +0x08 its count (at most 30), +0x10 its oldest node; a node is {entry, next, prev}.
   // An entry (0x50, built by exe+0x12360d0) holds its speaker's BMD page at +0x38 and its line's at +0x40, the same
   // FCurrentBmdPage the message windows read (null speaker: a thought or narration; a choice's line is the answer).
-  std::map<int, std::string> game_lines_;
-  std::string game_line(int c) {
-    if (auto it = game_lines_.find(c); it != game_lines_.end()) return it->second;
+  // The game's log leaves out lines the mod records: the navigator's and the party's remarks while exploring (in
+  // Tartarus the game's log said "None" with Mitsuru's chest warnings heard, 2026-11-23) and audio descriptions. The
+  // list is both, in the order they were said (core::merge_log), built once per opening: the game adds nothing while
+  // its log is open.
+  std::vector<core::LogRow> rows_;
+  bool merged_ = false;
+  struct GameEntry { std::string who, text; };
+  std::map<int, GameEntry> game_entries_;
+  GameEntry game_entry(int c) {
+    if (auto it = game_entries_.find(c); it != game_entries_.end()) return it->second;
     void* who = nullptr; void* line = nullptr;
     guarded([&] {
       auto* store = (uint8_t*)((void* (*)())(scan::exe_base() + 0x12392f0))();
@@ -71,28 +78,34 @@ class BacklogScreen : public MenuScreen {
       who = *(void**)(e + 0x38);
       line = *(void**)(e + 0x40);
     });
-    std::string text = line ? msg::page_string(line) : std::string();
-    if (text.empty()) return {};
-    // The mod's record of the same line has its wording ("Thinking: ..."): the newest record that ends with it.
-    std::string out;
-    auto& h = msg::history();
-    for (size_t i = h.size(); i-- > 0 && out.empty();) {
-      const std::string& r = h[i];
-      if (r == text || (r.size() > text.size() + 2 && r.ends_with(text) && r.compare(r.size() - text.size() - 2, 2, ": ") == 0)) out = r;
-    }
-    if (out.empty()) {
-      std::string speaker = who ? msg::page_string(who) : std::string();
-      if (speaker.rfind("DEV:", 0) == 0 || speaker.rfind("Internal", 0) == 0) speaker = strings::kThinking;
-      out = core::spoken_line(speaker, text);
-    }
-    game_lines_[c] = out;
-    return out;
+    GameEntry e;
+    e.text = line ? msg::page_string(line) : std::string();
+    if (!e.text.empty() && who) e.who = msg::page_string(who);
+    game_entries_[c] = e;
+    return e;
   }
-  std::string entry(int c, int n) {
-    if (std::string g = game_line(c); !g.empty()) return g;
-    log::writef("backlog: entry {} of {} not readable from the game's log, counted from the mod's record", c, n);
+  void merge(int n) {
+    std::vector<std::string> game;
+    for (int i = 0; i < n; ++i) game.push_back(game_entry(i).text);
+    rows_ = core::merge_log(game, msg::history(), skip_);
+    merged_ = true;
+    int mod_only = 0;
+    for (auto& r : rows_) mod_only += r.game < 0;
+    log::writef("backlog: {} entries in the game's log, {} lines only the mod recorded", n, mod_only);
+  }
+  // A row's line: the mod's record of it has its wording ("Thinking: ..."); an entry without one, the game's speaker
+  // and line.
+  std::string entry(const core::LogRow& r, int n) {
     auto& h = msg::history();
-    int i = core::log_record_index(c, n, skip_, (int)h.size());
+    if (r.record >= 0 && r.record < (int)h.size()) return h[(size_t)r.record];
+    GameEntry e = game_entry(r.game);
+    if (!e.text.empty()) {
+      std::string speaker = e.who;
+      if (speaker.rfind("DEV:", 0) == 0 || speaker.rfind("Internal", 0) == 0) speaker = strings::kThinking;
+      return core::spoken_line(speaker, e.text);
+    }
+    log::writef("backlog: entry {} of {} not readable from the game's log, counted from the mod's record", r.game, n);
+    int i = core::log_record_index(r.game, n, skip_, (int)h.size());
     return i < 0 ? std::string(strings::kLogEarlier) : h[(size_t)i];
   }
  public:
@@ -115,7 +128,9 @@ class BacklogScreen : public MenuScreen {
   bool title_every_entry() override { return true; }
   void on_enter() override {
     skip_ = 0;
-    game_lines_.clear();
+    game_entries_.clear();
+    rows_.clear();
+    merged_ = false;
     screens::set_keys(strings::kLogKeys);
     msg::Current m = msg::current();
     auto& h = msg::history();
@@ -129,9 +144,24 @@ class BacklogScreen : public MenuScreen {
   void build(ui::GraphBuilder& b) override {
     if (!settled()) return;
     int n = count();
+    if (!merged_) merge(n);
     b.begin_stop("log");
-    for (int i = 0; i < n; ++i) b.add_item(slot("log", i), game_item(list_, i, [this, i, n] { return entry(i, n); }));
-    if (int c = list_.cursor(); c >= 0) b.set_start(slot("log", c));
+    // The game's entries are its list's rows (Enter, Space replays a voice); a line only the mod recorded is a plain row
+    // the game's cursor does not go to.
+    for (auto& r : rows_) {
+      if (r.game >= 0 && r.game < n) b.add_item(slot("log", r.game), game_item(list_, r.game, [this, r, n] { return entry(r, n); }));
+      else if (r.game < 0) b.add_item(slot("mod", r.record), item([this, r, n] { return entry(r, n); }));
+    }
+    if (rows_.empty()) b.add_item(slot("none", 0), item([] { return std::string(strings::kLogNone); }));
+    // It opens on the newest line: the game's cursor is on its newest entry, and lines only the mod has may be newer.
+    int c = list_.cursor();
+    if (rows_.empty()) b.set_start(slot("none", 0));
+    else if (c < 0 || c == n - 1) {
+      auto& last = rows_.back();
+      b.set_start(last.game >= 0 ? slot("log", last.game) : slot("mod", last.record));
+    } else {
+      b.set_start(slot("log", c));
+    }
   }
 };
 

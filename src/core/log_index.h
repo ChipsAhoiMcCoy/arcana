@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <vector>
 
 namespace p3a::core {
 // Which of the mod's own records a row of the game's log shows. The game lists `count` entries oldest first (row 0 the
@@ -9,4 +11,24 @@ constexpr int log_record_index(int row, int count, int skip, int records) {
   int from_end = count - 1 - row + skip;   // 0 = the newest record
   return from_end < 0 || from_end >= records ? -1 : records - 1 - from_end;
 }
+
+// A record of the mod's ("Mitsuru Kirijo: Nice work.", "Thinking: ...", an answer) is the game's log entry whose line
+// is `text`: the same line, or the line after a speaker and ": ".
+bool log_record_is(const std::string& record, const std::string& text);
+
+// One row of the log as the mod lists it: an entry of the game's log (`game` its row there, `record` the mod's record
+// of it or -1), or a line only the mod recorded (`game` -1): what the game leaves out of its log (the navigator's and
+// the party's remarks while exploring, audio descriptions).
+struct LogRow {
+  int game = -1;
+  int record = -1;
+};
+// The game's entries (their lines, oldest first; "" for one that could not be read) and the mod's records (oldest
+// first) merged in the order they were said. Each entry is matched to its record from the newest back, looking at
+// most `depth` records past the last match; one that could not be read takes the record before the newer entry's.
+// Records the game did not log go in between where they were said: with the game's log full (`capacity` entries),
+// those newer than its oldest entry's record; otherwise the newest `unanchored` and any after its oldest entry. The
+// newest `skip` records are left out (a page on screen the game has not logged yet).
+std::vector<LogRow> merge_log(const std::vector<std::string>& game, const std::vector<std::string>& records, int skip,
+                              int capacity = 30, int depth = 60, int unanchored = 30);
 }  // namespace p3a::core

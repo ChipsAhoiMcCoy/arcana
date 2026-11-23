@@ -795,6 +795,7 @@ inline constexpr Hint kRequestInfoVelvetKeys{"Up and down arrows switch request,
 inline constexpr Hint kSelectKeys{"Up and down arrows choose, Space confirms, Escape closes.", "Up and down choose, A confirms, B closes."};
 inline constexpr Hint kLogKeys{"Up and down arrows scroll, Space replays the voice, Escape closes.", "Up and down scroll, A replays the voice, B closes."};
 inline constexpr const char* kLogEarlier = "An earlier line, from before this session";
+inline constexpr const char* kLogNone = "None";   // the log has no lines (the game's own word for it)
 inline constexpr const char* kShift = "Shift. Pass the turn to";
 inline constexpr const char* kRewind = "Rewind. Choose a day to go back to";
 inline constexpr const char* kCard = "Card";
