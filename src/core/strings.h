@@ -561,10 +561,13 @@ inline constexpr Hint kChooseKeys{"Up and down arrows choose, Space confirms.", 
 // how other players answered (Voice Answer). In town: what other players did today (Voice Action).
 inline constexpr Hint kNetAnswerKey{"N shows how other players answered.", "View shows how other players answered."};
 inline constexpr Hint kNetActionKey{"N what other players did today.", "View what other players did today."};
-inline constexpr Hint kNetCloseKeys{"N or C closes.", "View or B closes."};
+// The two screens are menus: a row per answer, or per kind of activity with the activities the game notes under it.
+inline constexpr Hint kNetAnswerKeys{"Up and down arrows read the answers, N or Escape closes.", "Up and down read the answers, View or B closes."};
+inline constexpr Hint kNetActionKeys{"Up and down arrows read, Tab jumps to the next kind of activity, N or Escape closes.", "Up and down read, RT jumps to the next kind of activity, View or B closes."};
 inline constexpr const char* kNetAnswerTitle = "Other players' answers";
 inline constexpr const char* kNetActionTitle = "What other players did today";
-inline constexpr const char* kNetWaiting = "Getting other players' data.";
+inline constexpr const char* kNetWaiting = "Getting other players' data.";   // the review key before the figures come
+inline constexpr const char* kNetFailed = "Other players' data could not be fetched.";
 inline constexpr const char* kNetPercent = "{}, {} percent";   // an answer or kind of activity, then its share
 // The three kinds of activity the game sorts other players' days into, in its own order.
 inline constexpr const char* kNetActionKinds[3] = {"Daily life", "Social Links", "Tartarus"};
