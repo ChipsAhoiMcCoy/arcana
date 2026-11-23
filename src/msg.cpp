@@ -139,11 +139,10 @@ static bool g_voiced_done = false;
 static void* g_carried_page = nullptr;
 static bool g_carried_done = false;
 // The speaker is named only when the speaker changes: Junpei's second line in a row is read without "Junpei:". A line
-// with no speaker (narration, a notice) ends the run, and so do a scene's description read between two lines and the end
-// of the message session outside a story scene (a new conversation). A scene closes its window between two speakers'
+// with no speaker (narration, a notice) ends the run, and so does the end of the message session outside a story scene
+// (a new conversation). A scene's description read between two lines does not (the user's call, 2026-11-22). A scene closes its window between two speakers'
 // lines, which ends the session: the run lasts while the scene plays (Junpei named on each of his windows, 2026-11-21).
 static std::string g_last_speaker;
-void end_speaker_run() { g_last_speaker.clear(); }
 static std::string g_last_who;   // the last named speaker in this session: a window titled with it is that window's title
 static bool may_be_voiced(const std::string& kind) {
   return settings::get(settings::VoicedLines) != settings::VoicedRead && kind != "System" && kind != "Tutorial" && kind != "Select";

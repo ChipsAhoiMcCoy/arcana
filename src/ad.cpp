@@ -743,7 +743,6 @@ void tick() {
   }
   for (const sched::Action& a : g_sched.step(sc, v)) {
     if (a.act == sched::Act::Play && wait) msg::remember_line(s->texts[a.cue]);
-    if (a.act == sched::Act::Play) msg::end_speaker_run();
     if (reader) {   // nothing of ours sounds: nothing to pause or stop
       if (a.act == sched::Act::Play) {
         if (wait) open_box(a.cue);
