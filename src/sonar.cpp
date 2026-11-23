@@ -257,7 +257,7 @@ const char* route_kind(const poi::Poi& p, const FVector& me) {
   if (t) {
     doors::Way way = doors::walk_way(t, me, at);
     if (way == doors::Way::behind) return "unreachable";
-    if (way == doors::Way::in_room) return "path";
+    if (way == doors::Way::in_room || way == doors::Way::other_side) return "path";
   }
   bool partial = false;
   FVector beside{};

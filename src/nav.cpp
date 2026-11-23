@@ -461,10 +461,17 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
   // In this room with no path inside it (classroom 2-F's desks): the hero's own body finds the way between the
   // furniture; with none, said so and the player walks the last of it.
   bool plan_body = false;
-  doors::Way way = t ? doors::walk_way(t, me, world::actor_location(t)) : doors::Way::open;
+  FVector via{};
+  doors::Way way = t ? doors::walk_way(t, me, world::actor_location(t), &via) : doors::Way::open;
   if (way == doors::Way::behind) { finish("refused: behind a door"); speech::speak(strings::kNoPath, true); return; }
   if (way == doors::Way::in_room) {
     plan_body = true;
+  } else if (way == doors::Way::other_side) {
+    // Set in a wall, its path ending behind the wall through a closed door (the Printing Room's sign on the school's
+    // 2F): round to the side it is pressed from as to a way in (the path leads there while detour_on), then straight in.
+    g_w.detour = via;
+    g_w.detour_on = true;
+    log::writef("nav: {} is reached from ({:.0f}, {:.0f}), not through the door behind it", name, via.x, via.y);
   } else if (t && flat(me, world::actor_location(t)) < kBodyReach) {
     // No navmesh path, or one that stops short, to something close by: the hero stands in an aisle the navmesh left
     // out (between 2-F's desks), or the thing does. The body's own way, if it has one; else the walk as before.
@@ -492,6 +499,7 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
     log::writef("nav: off the floor's navmesh at ({:.0f}, {:.0f}), out via ({:.0f}, {:.0f})", me.x, me.y, g_w.side.x, g_w.side.y);
   }
   g_walking = true;
+  if (g_w.detour_on) refresh_path(me);   // round to the other side from the first step (refresh_path heads there only once walking)
   restart_progress(me, GetTickCount64());
   // Nothing is said on starting: "Auto-pathing" was (2026-11-14), and was dropped as redundant (the user's call,
   // 2026-11-15). Arriving has no word of its own either: the target's prompt says it.

@@ -20,8 +20,10 @@ bool behind(ue::UObject* a, const ue::FVector& me, const ue::FVector& at);
 // starts from where the hero stands now, and in a room the navmesh splits the answer changes with that (from the back
 // of 2-F the path to the front bookshelf goes through the doors, from the front it does not; a kept answer sent the
 // walk into the back door, 2026-11-12).
-enum class Way { open, in_room, behind };
-Way walk_way(ue::UObject* a, const ue::FVector& me, const ue::FVector& at);
+// other_side: the thing is set in a wall and the path to its spot ends behind the wall, through a closed door, but the
+// floor beside it on another side reaches it with none on the way: `via` (when given) is where to stand.
+enum class Way { open, in_room, behind, other_side };
+Way walk_way(ue::UObject* a, const ue::FVector& me, const ue::FVector& at, ue::FVector* via = nullptr);
 void install();   // dev route
 // Counts the hero changing sides: a door passed, a jump (stairs, an exit), a level coming or going. What was worked
 // out about reaching a thing holds while it stands.

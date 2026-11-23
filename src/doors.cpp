@@ -1,4 +1,5 @@
 #include "doors.h"
+#include "core/boxes.h"
 #include "core/doorway.h"
 #include "devserver.h"
 #include "hooks.h"
@@ -133,8 +134,71 @@ static bool same_room(UObject* thing, const FVector& me, const FVector& at, std:
 }
 
 // What the walking path to a thing meets: a closed door on the way, and whether the thing is in the hero's room all
-// the same (in another part of the map only when both).
-struct Verdict { bool shut = false, same_room = false; };
+// the same (in another part of the map only when both). `via`: no door on the way to the floor beside the thing on
+// another side, where the hero reaches it (see other_side).
+struct Verdict { bool shut = false, same_room = false, has_via = false; FVector via{}; };
+
+// The first closed door on a path to a thing at `to`. A thing at the door itself (the exit that opens it, a hit on the
+// door) is not behind it: its path ends in the door's bounds, a body's width allowed.
+static bool door_on(const std::vector<FVector>& path, const FVector& to, std::string* report) {
+  std::vector<UObject*> people;   // somebody standing in a doorway does not shut it
+  auto at_door = [&](const Door& d) {
+    return to.x > d.lo.x - 30.0f && to.x < d.hi.x + 30.0f && to.y > d.lo.y - 30.0f && to.y < d.hi.y + 30.0f && to.z > d.lo.z - 150.0f && to.z < d.hi.z + 150.0f;
+  };
+  for (size_t i = 1; i < path.size(); ++i)
+    for (const Door& d : g_doors)
+      if (!at_door(d) && shuts(d, path[i - 1], path[i], people)) {
+        if (report) *report += std::format("shut by {} on the leg ({:.0f}, {:.0f}) -> ({:.0f}, {:.0f})\n", ue::name_of(d.obj.resolve()), path[i - 1].x, path[i - 1].y, path[i].x, path[i].y);
+        return true;
+      }
+  return false;
+}
+
+// The hero standing at `p` (a navmesh point, at the floor) reaches the thing: its trigger box (else its spot) is a step
+// away, with nothing solid between at waist height (people are looked past; the thing itself ends the line).
+static bool reaches_from(UObject* thing, const FVector& p, const FVector& at) {
+  core::Box box;
+  bool has_box = world::trigger_box(thing, box);
+  FVector q = at;
+  if (has_box) {
+    core::Vec3 n = core::box_nearest(box, core::Vec3{p.x, p.y, at.z});
+    q = FVector{n.x, n.y, at.z};
+  }
+  float d = std::hypot(q.x - p.x, q.y - p.y);
+  if (d > (has_box ? 100.0f : 150.0f)) return false;
+  float z = p.z + 80.0f;
+  std::vector<UObject*> people;
+  world::Hit hit = world::line(FVector{p.x, p.y, z}, FVector{q.x, q.y, z}, "Pawn", &people);
+  return !hit.hit || hit.actor == thing || hit.distance > d - (has_box ? 15.0f : 40.0f);
+}
+
+// A thing set in a wall has floor on both sides of it, and the navmesh path to its spot can end on the far side: the
+// Printing Room's sign on the school's 2F stands in the corridor's south wall, and the path to it went through the
+// next classroom's closed door to the floor behind the sign (2026-11-23), so it was left out of the list. The hero
+// presses it from the corridor. Tried when the path to the spot is shut: the floor round it, eight ways, at two
+// distances; the nearest walk to a point that reaches the thing with no closed door on the way.
+static bool other_side(UObject* thing, const FVector& me, const FVector& at, FVector& via, std::string* report) {
+  float best = 1e30f;
+  for (float r : {100.0f, 180.0f})
+    for (int k = 0; k < 8; ++k) {
+      float a = k * 3.14159265f / 4.0f;
+      FVector p{};
+      if (!world::project_to_nav(FVector{at.x + std::cos(a) * r, at.y + std::sin(a) * r, at.z}, 60.0f, p, 150.0f)) continue;
+      auto no = [&](const char* why) { if (report) *report += std::format("  ({:.0f}, {:.0f}, {:.0f}): {}\n", p.x, p.y, p.z, why); };
+      if (!reaches_from(thing, p, at)) { no("does not reach it"); continue; }
+      bool partial = false;
+      auto path = world::find_path(world::path_start(me), p, &partial);
+      if (path.empty() || (partial && std::hypot(path.back().x - p.x, path.back().y - p.y) > 50.0f)) { no("no path"); continue; }
+      if (door_on(path, at, nullptr)) { no("a closed door on the way"); continue; }
+      float len = 0;
+      for (size_t i = 1; i < path.size(); ++i) len += std::hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
+      if (len < best) { best = len; via = p; }
+    }
+  if (report) *report += best < 1e30f ? std::format("reached from another side: stand at ({:.0f}, {:.0f}), {:.0f} cm to walk\n", via.x, via.y, best)
+                                      : std::string("no other side reaches it\n");
+  return best < 1e30f;
+}
+
 static Verdict work_out(UObject* thing, const FVector& me, const FVector& at, std::string* report = nullptr) {
   bool partial = false;
   auto path = world::find_path(world::path_start(me), at, &partial);
@@ -142,19 +206,12 @@ static Verdict work_out(UObject* thing, const FVector& me, const FVector& at, st
   FVector beside{};
   if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(world::path_start(me), beside, &partial);
   if (report) *report += std::format("path: {} point(s){}\n", path.size(), partial ? " (partial)" : "");
-  std::vector<UObject*> people;   // somebody standing in a doorway does not shut it
-  // A thing at the door itself (the exit that opens it, a hit on the door) is not behind it: its path ends in the
-  // door's bounds, a body's width allowed.
-  auto at_door = [&](const Door& d) {
-    return at.x > d.lo.x - 30.0f && at.x < d.hi.x + 30.0f && at.y > d.lo.y - 30.0f && at.y < d.hi.y + 30.0f && at.z > d.lo.z - 150.0f && at.z < d.hi.z + 150.0f;
-  };
-  for (size_t i = 1; i < path.size(); ++i)
-    for (const Door& d : g_doors)
-      if (!at_door(d) && shuts(d, path[i - 1], path[i], people)) {
-        if (report) *report += std::format("shut by {} on the leg ({:.0f}, {:.0f}) -> ({:.0f}, {:.0f})\n", ue::name_of(d.obj.resolve()), path[i - 1].x, path[i - 1].y, path[i].x, path[i].y);
-        return Verdict{true, same_room(thing, me, at, report)};
-      }
-  return {};
+  Verdict v;
+  if (!door_on(path, at, report)) return v;
+  if (other_side(thing, me, at, v.via, report)) { v.has_via = true; return v; }
+  v.shut = true;
+  v.same_room = same_room(thing, me, at, report);
+  return v;
 }
 
 static Verdict verdict(UObject* a, const FVector& me, const FVector& at) {
@@ -178,19 +235,37 @@ bool behind(UObject* a, const FVector& me, const FVector& at) { Verdict v = verd
 // Asked afresh: the walk starts from where the hero stands now, and in a room the navmesh splits the answer changes
 // with that (from the back of classroom 2-F the path to the front bookshelf goes through the doors, from the front it
 // does not; the kept answer sent the walk into the back door, 2026-11-12).
-Way walk_way(UObject* a, const FVector& me, const FVector& at) {
+Way walk_way(UObject* a, const FVector& me, const FVector& at, FVector* via) {
   if (g_doors.empty() || !a) return Way::open;
   Verdict v;
   guarded([&] { v = work_out(a, me, at); });
-  return !v.shut ? Way::open : v.same_room ? Way::in_room : Way::behind;
+  if (v.has_via && via) *via = v.via;
+  return v.has_via ? Way::other_side : !v.shut ? Way::open : v.same_room ? Way::in_room : Way::behind;
 }
 
 void install() {
   dev::route("/doors", [](const dev::Request& r, int&) {
     int obj = (int)dev::arg_int(r, "obj", -1);
+    bool all = dev::arg(r, "all") == "1";
     auto out = std::make_shared<std::string>("timeout\n");
-    hooks::run_on_game_thread([out, obj] {
+    hooks::run_on_game_thread([out, obj, all] {
       std::string s = std::format("{} door(s) on the visible levels, side count {}\n", g_doors.size(), g_side);
+      FVector here;
+      if (all && world::player_location(here)) {
+        // Every hit on the visible levels with a closed door on its path from here: behind it, in this room, or
+        // reached from another side.
+        static const int hits = watch::want("FldHitCore", true);
+        for (UObject* t : watch::all(hits)) {
+          if (!world::actor_visible_level(t)) continue;
+          FVector at = world::actor_location(t);
+          Verdict v;
+          guarded([&] { v = work_out(t, here, at); });
+          if (v.has_via) s += std::format("via #{} {} at ({:.0f}, {:.0f}, {:.0f}) from ({:.0f}, {:.0f})\n", ue::index_of(t), ue::name_of(t), at.x, at.y, at.z, v.via.x, v.via.y);
+          else if (v.shut) s += std::format("{} #{} {} at ({:.0f}, {:.0f}, {:.0f})\n", v.same_room ? "room" : "behind", ue::index_of(t), ue::name_of(t), at.x, at.y, at.z);
+        }
+        *out = s;
+        return;
+      }
       for (const Door& d : g_doors) {
         UObject* o = d.obj.resolve();
         s += std::format("  #{} {} ({:.0f}, {:.0f}, {:.0f}) .. ({:.0f}, {:.0f}, {:.0f}){}\n", d.obj.index, o ? ue::name_of(o) : "gone", d.lo.x, d.lo.y, d.lo.z,
@@ -200,7 +275,7 @@ void install() {
       if (UObject* t = obj >= 0 ? ue::object_at(obj) : nullptr; t && world::player_location(me)) {
         std::string why;
         Verdict v = work_out(t, me, world::actor_location(t), &why);
-        s += std::format("{}: {}\n{}", ue::name_of(t), !v.shut ? "not behind a door" : v.same_room ? "in this room; the walking path goes through a closed door" : "behind a closed door", why);
+        s += std::format("{}: {}\n{}", ue::name_of(t), v.has_via ? "reached from another side" : !v.shut ? "not behind a door" : v.same_room ? "in this room; the walking path goes through a closed door" : "behind a closed door", why);
       }
       *out = s;
     });
