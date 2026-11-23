@@ -75,6 +75,8 @@ static const Def kDefs[Count] = {
   {"sight_range", strings::kSetSightRange, CatExploring, strings::kHelpSightRange, Unit::Meters, {2, 4, 6, 8, 10, 12, 14, 16}, 10},
   // the hero turns to the Shadow his strike can reach as the swing starts (shadow.cpp)
   {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
+  // the Reaper's timers on a Tartarus floor run twice as long (shadow.cpp); off is the game's own pace
+  {"relaxed_reaper", strings::kSetRelaxedReaper, CatExploring, strings::kHelpRelaxedReaper, Unit::Toggle, {0, 1}, 0},
   // every nearby point of interest sounds (sonar.cpp)
   {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {0, 1}, 1},
   {"sonar_scope", strings::kSetSonarScope, CatSonar, strings::kHelpSonarScope, Unit::Choice, {ScopeSelected, ScopeCategory, ScopeAll}, ScopeAll,

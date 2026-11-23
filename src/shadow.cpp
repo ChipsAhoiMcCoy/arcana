@@ -24,6 +24,8 @@
 #include "core/sonar_cues.h"
 #include "core/strings.h"
 #include "devserver.h"
+#include "flow.h"
+#include "hooks.h"
 #include "log.h"
 #include "poi.h"
 #include "seh.h"
@@ -489,7 +491,31 @@ void demo(int which) {
   else audio::hold(kDemoId, drone_pcm(), 1.0f, ahead, 1.0f, 0.15f, 0.75f, 1500);
 }
 
+// The Reaper's timer (Relaxed Reaper Rate). A floor's init script (BF_FldInitScript_299_all, SUB_REAPER) calls
+// DUNGEON_REAPER_APPEAR_TIME(n) on arrival: 180 + 5 per part of the floor, 10 + 5 per part where the Reaper already
+// came, 25 for its quick return (BIT 1377, COUNT 231 1-2), 0 at the entrance. The command (FUN_1411a1100) stores n as
+// a float at UFldDungeonReaperController +0x150, which counts down in seconds (FUN_14118b520; Fuuka's warning at
+// COUNT 230 = 20 left, the Reaper spawns at 0). DUNGEON_REAPER_CONTINUE_APPEAR_TIME (+0x154, 2100 or 180) is the
+// second timer, which sets BIT 1377 (the quick return) when it runs out. With the option on, both arguments are
+// doubled before the command reads them, so every timer the scripts set runs twice as long; the warning still comes
+// 20 seconds before. A floor already counting keeps its time until the next floor sets it again.
+static flow::Command g_appear_cmd, g_continue_cmd;
+
+static int64_t relaxed(flow::Command orig, const char* what, uint8_t* ctx) {
+  if (settings::on(settings::RelaxedReaper)) {
+    int before = flow::int_arg(ctx);
+    if (flow::scale_arg(ctx, 2)) log::writef("shadow: {}({}) doubled to {}", what, before, flow::int_arg(ctx));
+  }
+  return orig(ctx);
+}
+static int64_t appear_hook(uint8_t* ctx) { return relaxed(g_appear_cmd, "reaper appear time", ctx); }
+static int64_t continue_hook(uint8_t* ctx) { return relaxed(g_continue_cmd, "reaper continue time", ctx); }
+
 void install() {
+  if ((g_appear_cmd = (flow::Command)flow::command("DUNGEON_REAPER_APPEAR_TIME")))
+    hooks::attach((void**)&g_appear_cmd, (void*)&appear_hook, "DUNGEON_REAPER_APPEAR_TIME");
+  if ((g_continue_cmd = (flow::Command)flow::command("DUNGEON_REAPER_CONTINUE_APPEAR_TIME")))
+    hooks::attach((void**)&g_continue_cmd, (void*)&continue_hook, "DUNGEON_REAPER_CONTINUE_APPEAR_TIME");
   dev::route("/shadows", [](const dev::Request&, int&) {
     return dev::on_game([] {
       FVector me;

@@ -157,6 +157,18 @@ int int_arg(uint8_t* ctx) {
   return v;
 }
 
+bool scale_arg(uint8_t* ctx, int factor) {
+  bool done = false;
+  guarded([&] {
+    int i = *(int32_t*)(ctx + 0x34);
+    if (i < 1 || i > 0x30) return;
+    uint8_t type = ctx[0x37 + i];
+    if (type == 0 || type == 4) { *(int32_t*)(ctx + 0x60 + i * 8) *= factor; done = true; }
+    else if (type == 1) { *(float*)(ctx + 0x60 + i * 8) *= (float)factor; done = true; }
+  });
+  return done;
+}
+
 void tick() {
   if (jobs().empty()) return;
   for (auto& j : jobs())

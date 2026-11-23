@@ -11,6 +11,9 @@ void* command(const char* name);
 // A command's first argument as an int (a float is truncated), read from the script context the command was called
 // with; 0 when there is none or it is a script variable.
 int int_arg(uint8_t* ctx);
+// Multiplies the first argument in place (an int or a float; a script variable is left alone), before the command
+// reads it. False when there was none to change.
+bool scale_arg(uint8_t* ctx, int factor);
 // Dev: `/flow/run` (any command by name, from a script context of the mod's own) and its per-frame driver.
 // Starts a command as a script would (args "1,2,3"; a value with a '.' is a float), on the game thread; it is called
 // again each frame until it finishes. Returns its status line.
