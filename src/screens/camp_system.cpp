@@ -37,13 +37,13 @@ class CampSystem : public MenuScreen {
   const char* id() const override { return "camp_system"; }
   int priority() const override { return 17; }
   bool active() override { return m() != nullptr; }
-  std::string title() override { return strings::kCampItems[8]; }
+  std::string title() override { return strings::kCampItems[8].c_str(); }
   void on_enter() override { screens::set_keys(strings::kListKeys); }
   void build(ui::GraphBuilder& b) override {
     b.begin_stop("system");
     for (int i = 0; i < 7; ++i) {
       bool locked = party::flag(0x40000089 + i);
-      std::string label = strings::kSystemItems[i];
+      std::string label = strings::kSystemItems[i].c_str();
       if (locked) label += std::string(", ") + strings::kUnavailable;
       b.add_item(slot("system", i), game_item(list_, i, [label] { return label; }));
     }

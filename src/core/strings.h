@@ -1,215 +1,264 @@
 #pragma once
-// Every string the mod itself speaks lives here (game text passes through verbatim). English only.
+// Every string the mod itself speaks lives here (game text passes through verbatim). Written in English; each is said
+// in the mod's language (core/lang: looked up by its English text, tools/lang.py makes the tables).
+#include <format>
+#include <string>
+#include <string_view>
+
+#include "core/lang.h"
+
 namespace p3a::strings {
+// A line of the mod's own: the English it is written in, said in the current language. It turns into the translated
+// text where it is used. Never keep the text it turned into across a change of language (a table built at startup
+// keeps the Tr, not its const char*).
+struct Tr {
+  const char* en;
+  operator const char*() const { return core::lang::tr(en); }
+  const char* c_str() const { return core::lang::tr(en); }
+};
+inline std::string operator+(const std::string& a, Tr b) { return a + b.c_str(); }
+inline std::string operator+(std::string&& a, Tr b) { return std::move(a) + b.c_str(); }
+inline std::string operator+(Tr a, const std::string& b) { return a.c_str() + b; }
+inline std::string operator+(Tr a, std::string&& b) { return a.c_str() + std::move(b); }
+inline std::string operator+(const char* a, Tr b) { return std::string(a) + b.c_str(); }
+inline std::string operator+(Tr a, const char* b) { return std::string(a.c_str()) + b; }
+inline bool operator==(const std::string& a, Tr b) { return a == b.c_str(); }
+inline bool operator==(std::string_view a, Tr b) { return a == std::string_view(b.c_str()); }
+// A format string of the mod's own: its "{}" kept in every language.
+template <class... A>
+std::string fmt(Tr f, const A&... a) { return std::vformat(f.c_str(), std::make_format_args(a...)); }
+
+std::string of(long long part, long long whole);   // kOfFormat: "2 of 5" (core/speech_text.cpp)
+// A number and its word: "1 minute", "3 minutes". The plural's translation may hold every form the language needs,
+// "|"-separated ("минута|минуты|минут"); core/speech_text.cpp.
+std::string count(long long n, Tr one, Tr other);
+std::string count(long long n, Tr word);   // a word that keeps one form in English ("3 yen")
+
 // Key hints come in two wordings: kX() names the keyboard keys, or the controller's buttons (Xbox names) while the
 // player is on a controller (input.cpp decides: whichever the game was last driven with).
 bool pad_hints();
 struct Hint {
-  const char* keyboard;
-  const char* pad;
-  const char* operator()() const { return pad_hints() ? pad : keyboard; }
+  Tr keyboard;
+  Tr pad;
+  const char* operator()() const { return pad_hints() ? pad.c_str() : keyboard.c_str(); }
 };
 // Title flow
-inline constexpr const char* kTitlePressAny = "Persona 3 Reload. Press any button.";
-inline constexpr const char* kTitlePressAnyAstrea = "Persona 3 Reload, Episode Aigis. Press any button.";
-inline constexpr const char* kTitleOpening = "Opening movie. Press any button to skip.";
+inline constexpr Tr kTitlePressAny{"Persona 3 Reload. Press any button."};
+inline constexpr Tr kTitlePressAnyAstrea{"Persona 3 Reload, Episode Aigis. Press any button."};
+inline constexpr Tr kTitleOpening{"Opening movie. Press any button to skip."};
 // The title menu's credits (Z or L1 on the title menu).
 inline constexpr Hint kCreditsRolling{"Credits. Tab twice skips them.", "Credits. The Menu button twice skips them."};
 inline constexpr Hint kCreditsPaused{"Credits paused. Tab skips them, Enter resumes.", "Credits paused. The Menu button skips them, A resumes."};
-inline constexpr const char* kCreditsResumed = "Credits resumed.";
+inline constexpr Tr kCreditsResumed{"Credits resumed."};
 inline constexpr Hint kCreditsKeys{"Enter pauses and resumes the credits. Tab, while they are paused, skips them.", "A pauses and resumes the credits. The Menu button, while they are paused, skips them."};
 // The two boot notices are images: what they say, in the mod's own words.
-inline constexpr const char* kTitleCaution =
+inline constexpr Tr kTitleCaution{
     "Caution. The game shows violence, bullying and suicide, so please take care and take breaks when you need "
-    "them. It is fiction: any likeness to real people, groups, events or terms is coincidence.";
-inline constexpr const char* kTitlePhotosensitive =
+    "them. It is fiction: any likeness to real people, groups, events or terms is coincidence."};
+inline constexpr Tr kTitlePhotosensitive{
     "Photosensitivity warning. The game has flashing screens and bright effects. Rarely, strong or flashing light "
     "or a TV screen can cause brief muscle cramps, loss of consciousness or other symptoms in some people. If that "
     "has ever happened to you, ask your doctor before playing. If it happens while you play, stop right away and "
-    "get medical help.";
+    "get medical help."};
 // The boot logos, one name each (the user's call, 2026-10-29: the longer descriptions were too much).
-inline constexpr const char* kTitleLogos[] = {"Atlus", "P-Studio", "Unreal Engine"};
-inline constexpr const char* kTitleMenu = "Title menu";
-inline constexpr const char* kTitleItems[] = {"New Game", "Load Game", "Config", "Change Episode"};
-inline constexpr const char* kSelectDifficulty = "Select game difficulty";
-inline constexpr const char* kDifficulties[] = {"Peaceful", "Easy", "Normal", "Hard", "Merciless"};
-inline constexpr const char* kContract = "Contract.";
-inline constexpr const char* kFirstName = "First name";
-inline constexpr const char* kLastName = "Last name";
+inline constexpr Tr kTitleLogos[] = {"Atlus", "P-Studio", "Unreal Engine"};
+inline constexpr Tr kTitleMenu{"Title menu"};
+inline constexpr Tr kTitleItems[] = {"New Game", "Load Game", "Config", "Change Episode"};
+inline constexpr Tr kSelectDifficulty{"Select game difficulty"};
+inline constexpr Tr kDifficulties[] = {"Peaceful", "Easy", "Normal", "Hard", "Merciless"};
+inline constexpr Tr kContract{"Contract."};
+inline constexpr Tr kFirstName{"First name"};
+inline constexpr Tr kLastName{"Last name"};
 inline constexpr Hint kTypeThenEnter{"Type it, then press Enter.", "D-pad chooses a key, A types it, B erases, Y capitals, X reads the name, Start confirms. B with nothing typed closes."};
 // The contract's on-screen keyboard (a controller): its keys' spoken names and what it says.
-inline constexpr const char* kVkSpace = "space";
-inline constexpr const char* kCapital = "capital";   // before a capital letter: "capital Q"
-inline constexpr const char* kVkDash = "dash";
-inline constexpr const char* kVkApostrophe = "apostrophe";
-inline constexpr const char* kVkPeriod = "period";
-inline constexpr const char* kVkCapitals = "Capitals";
-inline constexpr const char* kVkErase = "Erase";
-inline constexpr const char* kVkDone = "Done";
-inline constexpr const char* kRow = "row";
-inline constexpr const char* kCapitalsOn = "Capitals on";
-inline constexpr const char* kCapitalsOff = "Capitals off";
-inline constexpr const char* kKeyboardOpen = "Keyboard";
-inline constexpr const char* kBlank = "blank";
-inline constexpr const char* kNameDone = "Done";
-inline constexpr const char* kNamesMissing = "Both names are needed first.";
+inline constexpr Tr kVkSpace{"space"};
+inline constexpr Tr kCapital{"capital"};   // before a capital letter: "capital Q"
+inline constexpr Tr kVkDash{"dash"};
+inline constexpr Tr kVkApostrophe{"apostrophe"};
+inline constexpr Tr kVkPeriod{"period"};
+inline constexpr Tr kVkCapitals{"Capitals"};
+inline constexpr Tr kVkErase{"Erase"};
+inline constexpr Tr kVkDone{"Done"};
+inline constexpr Tr kRow{"row"};
+inline constexpr Tr kCapitalsOn{"Capitals on"};
+inline constexpr Tr kCapitalsOff{"Capitals off"};
+inline constexpr Tr kKeyboardOpen{"Keyboard"};
+inline constexpr Tr kBlank{"blank"};
+inline constexpr Tr kNameDone{"Done"};
+inline constexpr Tr kNamesMissing{"Both names are needed first."};
 inline constexpr Hint kPressAnyKey{"Any key continues.", "Any button continues."};
 inline constexpr Hint kNameEntryOptions{"Up and down choose a name or Done. Enter retypes a name, or signs on Done.", "Up and down choose a name or Done. A retypes a name, or signs on Done."};
-inline constexpr const char* kSaveGame = "Save game";
-inline constexpr const char* kLoadGame = "Load game";
-inline constexpr const char* kCarryOverSave = "Choose the save data to carry over";
-inline constexpr const char* kSlot = "Slot";
-inline constexpr const char* kSaved = "Saved";
-inline constexpr const char* kEmpty = "empty";
-inline constexpr const char* kLevel = "level";
-inline constexpr const char* kPlayTime = "play time";
-inline constexpr const char* kClearData = "Clear data, start a new game";   // a slot holding a finished game, as its row says
-inline constexpr const char* kHoursAnd = "hours";
-inline constexpr const char* kMinutes = "minutes";
-inline constexpr const char* kHour = "hour";
-inline constexpr const char* kMinute = "minute";
-inline constexpr const char* kCamp = "Menu";
-inline constexpr const char* kCampItems[] = {"Skill", "Item", "Equip", "Persona", "Stats", "Quest", "Social Link", "Calendar", "System"};
-inline constexpr const char* kCampHelp[] = {"Use a Skill", "View or use items", "View or change equipment", "View or change Personas",
+inline constexpr Tr kSaveGame{"Save game"};
+inline constexpr Tr kLoadGame{"Load game"};
+inline constexpr Tr kCarryOverSave{"Choose the save data to carry over"};
+inline constexpr Tr kSlot{"Slot"};
+inline constexpr Tr kSaved{"Saved"};
+inline constexpr Tr kEmpty{"empty"};
+inline constexpr Tr kLevel{"level"};
+inline constexpr Tr kPlayTime{"play time"};
+inline constexpr Tr kClearData{"Clear data, start a new game"};   // a slot holding a finished game, as its row says
+inline constexpr Tr kHoursAnd{"hours"};
+inline constexpr Tr kMinutes{"minutes"};
+inline constexpr Tr kHour{"hour"};
+inline constexpr Tr kMinute{"minute"};
+inline constexpr Tr kCamp{"Menu"};
+inline constexpr Tr kCampItems[] = {"Skill", "Item", "Equip", "Persona", "Stats", "Quest", "Social Link", "Calendar", "System"};
+inline constexpr Tr kCampHelp[] = {"Use a Skill", "View or use items", "View or change equipment", "View or change Personas",
                                             "View stats or organize the party", "View requests", "View Social Links", "View the calendar",
                                             "View settings"};
 // Calendar: the part-time jobs by ArbeitInfo HelpMSGLabel (their names are images; the places' names as the game's
 // dialogue writes them), and when each takes work (EArbeitOrderableTime: 1 afternoon, 2 evening, 3 both).
-inline constexpr const char* kJobs[] = {"Chagall Caf\xC3\xA9", "Be Blue V", "Screen Shot"};
-inline constexpr const char* kJobTimes[] = {"", "daytime", "evening", "daytime or evening"};
-inline constexpr const char* kJob = "Part-time job";
-inline constexpr const char* kToday = "today";  // the calendar's current day
+inline constexpr Tr kJobs[] = {"Chagall Caf\xC3\xA9", "Be Blue V", "Screen Shot"};
+inline constexpr Tr kJobTimes[] = {"", "daytime", "evening", "daytime or evening"};
+inline constexpr Tr kJob{"Part-time job"};
+inline constexpr Tr kToday{"today"};  // the calendar's current day
 // The day change's moon (ECldMoonAge 0..29: 0 new, 14 full, as the game's full-moon nights).
-inline constexpr const char* kMoonPhases[] = {"New moon", "Waxing crescent moon", "First quarter moon", "Waxing gibbous moon", "Full moon",
+inline constexpr Tr kMoonPhases[] = {"New moon", "Waxing crescent moon", "First quarter moon", "Waxing gibbous moon", "Full moon",
                                               "Waning gibbous moon", "Last quarter moon", "Waning crescent moon"};
-inline constexpr const char* kGot = "Got";
-inline constexpr const char* kTimes = "times";   // a pickup's count: "Got Bead times 3"
-inline constexpr const char* kItemNumber = "item";   // an item with no known name: "item 16387"
-inline constexpr const char* kSpent = "Spent";
+inline constexpr Tr kGot{"Got"};
+// Whole sentences with the game's words in them, so each language puts the pieces in its own order:
+inline constexpr Tr kGotFmt{"Got {}"};                 // "Got Bead x3, Medicine"
+inline constexpr Tr kCountFmt{"{} x{}"};               // an item and how many: "Bead x3"
+inline constexpr Tr kHitOnFmt{"{} on {}"};             // a hit's word and whom: "Weak on Junpei"
+inline constexpr Tr kUseOnFmt{"Use {} on {}?"};        // "Use Agi on all enemies?"
+inline constexpr Tr kUseOnSideFmt{"Use on {}?"};       // "Use on all allies?"
+inline constexpr Tr kEmoteOverFmt{"{} over {}"};       // "Question mark over Junpei"
+inline constexpr Tr kNoneOfFmt{"No {}"};               // "No Shadows": a category key with nothing in its category
+inline constexpr Tr kChooseMoreFmt{"Choose {} more"};  // Shuffle Time: "Choose 1 more"
+inline constexpr Tr kWouldBecomeFmt{"{} would become {}"};   // "Agi would become Agilao"
+inline constexpr Tr kRankUpFmt{"{} up to rank {}"};    // a social stat: "Charm up to rank 3"
+inline constexpr Tr kStatUpFmt{"{} up"};               // "Charm up"
+inline constexpr Tr kUpByFmt{"up {}"};                 // a Persona stat's rise: "St 12, up 2"
+inline constexpr Tr kGoesBackForFmt{"{} goes back for {}"};   // "Shift+1 goes back for Exits: ..."
+inline constexpr Tr kTimes{"times"};   // a pickup's count: "Got Bead times 3"
+inline constexpr Tr kItemNumber{"item"};   // an item with no known name: "item 16387"
+inline constexpr Tr kSpent{"Spent"};
 inline constexpr Hint kGetItemClose{"Space closes it.", "A closes it."};
 inline constexpr Hint kMoviePaused{"Movie paused. Tab skips it, Enter resumes.", "Movie paused. The Menu button skips it, A resumes."};
-inline constexpr const char* kMovieResumed = "Resumed";
-inline constexpr const char* kCredits = "Credits";
+inline constexpr Tr kMovieResumed{"Resumed"};
+inline constexpr Tr kCredits{"Credits"};
 inline constexpr Hint kMovieKeys{"Enter pauses and resumes the movie. Tab, while it is paused, skips it.", "A pauses and resumes the movie. The Menu button, while it is paused, skips it."};
 inline constexpr Hint kOpeningKeys{"Any key skips the movie.", "Any button skips the movie."};
 inline constexpr Hint kMoviePlaying{"Movie playing. Enter pauses, Tab twice skips it.", "Movie playing. A pauses, the Menu button twice skips it."};
-inline constexpr const char* kTownMap = "Town map";
-inline constexpr const char* kTownMapPlaces[] = {"Gekkoukan High School", "Student Dormitory", "Paulownia Mall", "Port Island Station",
+inline constexpr Tr kTownMap{"Town map"};
+inline constexpr Tr kTownMapPlaces[] = {"Gekkoukan High School", "Student Dormitory", "Paulownia Mall", "Port Island Station",
                                                  "Iwatodai Station Strip Mall", "Naganaki Shrine"};
 inline constexpr Hint kFastTravelKeys{"Up and down arrows choose, Space goes, Tab zooms the map, Escape closes.", "Up and down choose, A goes, Y zooms the map, B closes."};
 // The town map's entrance list: cancel goes back to the map (FUN_141454640 case 5).
 inline constexpr Hint kEntranceKeys{"Up and down arrows choose, Space goes, F town info, Escape back to the map.", "Up and down choose, A goes, X town info, B back to the map."};
-inline constexpr const char* kMail = "Mail";
-inline constexpr const char* kMailNew = "new";
-inline constexpr const char* kMailEmpty = "No messages";
+inline constexpr Tr kMail{"Mail"};
+inline constexpr Tr kMailNew{"new"};
+inline constexpr Tr kMailEmpty{"No messages"};
 inline constexpr Hint kMailKeys{"Up and down arrows choose, Space reads, Escape closes.", "Up and down choose, A reads, B closes."};
 // An open text (FUN_141475cb0 case 5): Space replies to one that takes a reply, else goes back like cancel.
 inline constexpr Hint kMailOpenKeys{"Space replies when the text takes a reply, otherwise goes back; Escape goes back.", "A replies when the text takes a reply, otherwise goes back; B goes back."};
-inline constexpr const char* kTownMapWhere = "Where should I go?";   // the game's own entrance-list title, matched
-inline constexpr const char* kAreaMap = "Area map";
+inline constexpr Tr kTownMapWhere{"Where should I go?"};   // the game's own entrance-list title, matched
+inline constexpr Tr kAreaMap{"Area map"};
 // Tartarus' map before the floor's stairs, teleporter, return device or Monad door is found: no shortcut to take yet.
-inline constexpr const char* kNoShortcuts = "No shortcuts found yet. Find the stairs, a teleporter or a return device to travel to it from here.";
+inline constexpr Tr kNoShortcuts{"No shortcuts found yet. Find the stairs, a teleporter or a return device to travel to it from here."};
 inline constexpr Hint kAreaMapKeys{"Tab zooms, Escape closes.", "Y zooms, B closes."};
 inline constexpr Hint kTownMapHelp{"Up and down arrows choose, Space opens its entrances, F town info, Escape closes.",
                                    "The D-pad goes through the list, the stick moves on the map, A opens its entrances, X town info, B closes."};
-inline constexpr const char* kSocialStats[] = {"Academics", "Charm", "Courage"};
-inline constexpr const char* kRank = "rank";
-inline constexpr const char* kRankUp = "up to rank";
-inline constexpr const char* kStatUp = "up";
-inline constexpr const char* kStatsUp = "Stats up.";
+inline constexpr Tr kSocialStats[] = {"Academics", "Charm", "Courage"};
+inline constexpr Tr kRank{"rank"};
+inline constexpr Tr kRankUp{"up to rank"};
+inline constexpr Tr kStatUp{"up"};
+inline constexpr Tr kStatsUp{"Stats up."};
 inline constexpr Hint kSpaceContinues{"Space continues.", "A continues."};
 inline constexpr Hint kGameOverKeys{"Space skips to the choices.", "A skips to the choices."};
-inline constexpr const char* kGameOver = "Game Over";   // the game's own words, when its message file is not loaded
+inline constexpr Tr kGameOver{"Game Over"};   // the game's own words, when its message file is not loaded
 inline constexpr Hint kResultKeys{"The up and down arrows go through the results, Space continues.", "Up and down go through the results, A continues."};
 // Battle
-inline constexpr const char* kBattle = "Battle";
-inline constexpr const char* kHP = "HP";
-inline constexpr const char* kSP = "SP";
-inline constexpr const char* kOf = "of";
+inline constexpr Tr kBattle{"Battle"};
+inline constexpr Tr kHP{"HP"};
+inline constexpr Tr kSP{"SP"};
+inline constexpr Tr kOf{"of"};
+// A count against its whole: "2 of 5" (a position), "HP 30 of 45". strings::of(2, 5) says it in the language's order.
+inline constexpr Tr kOfFormat{"{} of {}"};
 // Punctuation named where a line is nothing else (core::speakable): a screen reader says nothing for "...".
-inline constexpr const char* kPunctEllipsis = "ellipsis";
-inline constexpr const char* kPunctQuestion = "question mark";
-inline constexpr const char* kPunctExclamation = "exclamation mark";
-inline constexpr const char* kPunctPeriod = "period";
-inline constexpr const char* kPunctComma = "comma";
-inline constexpr const char* kPunctDash = "dash";
-inline constexpr const char* kPunctTilde = "tilde";
-inline constexpr const char* kTarget = "Target";
-inline constexpr const char* kSkills = "Skills";
-inline constexpr const char* kItems = "Items";
-inline constexpr const char* kChooseTarget = "Choose target";
+inline constexpr Tr kPunctEllipsis{"ellipsis"};
+inline constexpr Tr kPunctQuestion{"question mark"};
+inline constexpr Tr kPunctExclamation{"exclamation mark"};
+inline constexpr Tr kPunctPeriod{"period"};
+inline constexpr Tr kPunctComma{"comma"};
+inline constexpr Tr kPunctDash{"dash"};
+inline constexpr Tr kPunctTilde{"tilde"};
+inline constexpr Tr kTarget{"Target"};
+inline constexpr Tr kSkills{"Skills"};
+inline constexpr Tr kItems{"Items"};
+inline constexpr Tr kChooseTarget{"Choose target"};
 // A skill or item that takes a whole side at once: a question, "Use Mazio Gem on all enemies?" with its buttons.
-inline constexpr const char* kUse = "Use";
-inline constexpr const char* kAllEnemies = "all enemies";
-inline constexpr const char* kAllAllies = "all allies";
-inline constexpr const char* kAllUnits = "everyone";
+inline constexpr Tr kUse{"Use"};
+inline constexpr Tr kAllEnemies{"all enemies"};
+inline constexpr Tr kAllAllies{"all allies"};
+inline constexpr Tr kAllUnits{"everyone"};
 inline constexpr Hint kAllTargetsKeys{"Space to confirm, Escape to cancel.", "A to confirm, B to cancel."};
 // EBtlDataAnalyze 0..6: normal, null, repel, drain, weak, resist, unknown
-inline constexpr const char* kAttrNames[] = {"Slash", "Strike", "Pierce", "Fire", "Ice", "Elec", "Wind", "Light", "Dark"};
-inline constexpr const char* kAffinity[] = {"", "nulls", "repels", "drains", "weak to", "resists", ""};
+inline constexpr Tr kAttrNames[] = {"Slash", "Strike", "Pierce", "Fire", "Ice", "Elec", "Wind", "Light", "Dark"};
+inline constexpr Tr kAffinity[] = {"", "nulls", "repels", "drains", "weak to", "resists", ""};
 // Analyze's panel (core::analyze_affinities): each affinity a sentence of its own.
-inline constexpr const char* kAffinityCap[] = {"", "Nulls", "Repels", "Drains", "Weak to", "Resists", ""};
-inline constexpr const char* kAffinitiesUnknown = "Affinities unknown";
+inline constexpr Tr kAffinityCap[] = {"", "Nulls", "Repels", "Drains", "Weak to", "Resists", ""};
+inline constexpr Tr kAffinitiesUnknown{"Affinities unknown"};
 // An affinity on its own line, as the icon row shows it: "Fire: weak", "Slash: normal", "Dark: unknown".
-inline constexpr const char* kAffinityShort[] = {"normal", "null", "repel", "drain", "weak", "resist", "unknown"};
-inline constexpr const char* kNoAffinitiesCap = "No weaknesses or resistances";
-inline constexpr const char* kUnknownCap = "Unknown";
-inline constexpr const char* kNormalCap = "Normal";
-inline constexpr const char* kRestNormal = "The rest normal";
-inline constexpr const char* kRestUnknown = "The rest unknown";
-inline constexpr const char* kDamage = "damage";
-inline constexpr const char* kHealed = "healed";
-inline constexpr const char* kDefeated = "defeated";
-inline constexpr const char* kKnockedOut = "knocked out";
-inline constexpr const char* kVictory = "Victory";
-inline constexpr const char* kExp = "EXP";
-inline constexpr const char* kYen = "yen";
+inline constexpr Tr kAffinityShort[] = {"normal", "null", "repel", "drain", "weak", "resist", "unknown"};
+inline constexpr Tr kNoAffinitiesCap{"No weaknesses or resistances"};
+inline constexpr Tr kUnknownCap{"Unknown"};
+inline constexpr Tr kNormalCap{"Normal"};
+inline constexpr Tr kRestNormal{"The rest normal"};
+inline constexpr Tr kRestUnknown{"The rest unknown"};
+inline constexpr Tr kDamage{"damage"};
+inline constexpr Tr kHealed{"healed"};
+inline constexpr Tr kDefeated{"defeated"};
+inline constexpr Tr kKnockedOut{"knocked out"};
+inline constexpr Tr kVictory{"Victory"};
+inline constexpr Tr kExp{"EXP"};
+inline constexpr Tr kYen{"yen"};
 // Before a script's price question ("Buy / Don't buy"): "Price 2980 yen, you have 4800 yen".
-inline constexpr const char* kPrice = "Price";
-inline constexpr const char* kLevelUp = "Level up!";
+inline constexpr Tr kPrice{"Price"};
+inline constexpr Tr kLevelUp{"Level up!"};
 // EBtlDataBadStatus 0..13
-inline constexpr const char* kBadStatus[] = {"is dizzy", "is charmed", "is distressed", "panics", "is afraid", "is enraged", "is frozen", "is shocked",
+inline constexpr Tr kBadStatus[] = {"is dizzy", "is charmed", "is distressed", "panics", "is afraid", "is enraged", "is frozen", "is shocked",
                                             "is poisoned", "", "", "", "", "is down"};
 // A unit's ailments as they stand (EBtlDataBadStatus; empty = not said): on focus and in the details.
-inline constexpr const char* kAilments[] = {"Dizzy", "Charmed", "Distressed", "Panicked", "Afraid", "Enraged", "Frozen", "Shocked",
+inline constexpr Tr kAilments[] = {"Dizzy", "Charmed", "Distressed", "Panicked", "Afraid", "Enraged", "Frozen", "Shocked",
                                             "Poisoned", "Orgia Mode", "Overheated", "Time bomb", "", "Down"};
-inline constexpr const char* kNoAilments = "No ailments";
-inline constexpr const char* kNoEffects = "No buffs or debuffs";
-inline constexpr const char* kGuarding = "Guarding";
-inline constexpr const char* kUpTo = "up to";
-inline constexpr const char* kTurn = "turn";
-inline constexpr const char* kTurns = "turns";
+inline constexpr Tr kNoAilments{"No ailments"};
+inline constexpr Tr kNoEffects{"No buffs or debuffs"};
+inline constexpr Tr kGuarding{"Guarding"};
+inline constexpr Tr kUpTo{"up to"};
+inline constexpr Tr kTurn{"turn"};
+inline constexpr Tr kTurns{"turns"};
 // A battle's countdown (the monorail's, BTL_COUNTDOWN_START): "Time left: 30 minutes", "29 minutes 12 seconds left".
-inline constexpr const char* kTimeLeftStart = "Time left:";
-inline constexpr const char* kTimeLeft = "left";
-inline constexpr const char* kSecond = "second";
-inline constexpr const char* kSeconds = "seconds";
-inline constexpr const char* kPersonaWord = "Persona";
-inline constexpr const char* kTheurgyCharge = "Theurgy gauge";
+inline constexpr Tr kTimeLeftStart{"Time left:"};
+inline constexpr Tr kTimeLeft{"left"};
+inline constexpr Tr kSecond{"second"};
+inline constexpr Tr kSeconds{"seconds"};
+inline constexpr Tr kPersonaWord{"Persona"};
+inline constexpr Tr kTheurgyCharge{"Theurgy gauge"};
 inline constexpr Hint kDetailKeys{"Control and the up and down arrows read the details of what is in focus.", "The right stick, up and down, reads the details of what is in focus."};
-inline constexpr const char* kOneMore = "1 More!";
-inline constexpr const char* kRushOn = "Rush";
-inline constexpr const char* kRushOff = "Rush off";
+inline constexpr Tr kOneMore{"1 More!"};
+inline constexpr Tr kRushOn{"Rush"};
+inline constexpr Tr kRushOff{"Rush off"};
 // The word beside a hit's number (BP_BtlGuiDamage2 types 5 to 9), then "on" and the unit unless the player chose it.
-inline constexpr const char* kHitWords[] = {"Weak", "Critical", "Resist", "Miss", "Block"};
-inline constexpr const char* kPersonaStatus = "Persona status";
-inline constexpr const char* kLearnSkill = "Learn";
-inline constexpr const char* kNewSkill = "New skill";
-inline constexpr const char* kNextSkill = "Next skill";
-inline constexpr const char* kLearned = "Learned";
-inline constexpr const char* kWouldBecome = "would become";   // a skill change offered after a level up: "Agi would become Agilao"
+inline constexpr Tr kHitWords[] = {"Weak", "Critical", "Resist", "Miss", "Block"};
+inline constexpr Tr kPersonaStatus{"Persona status"};
+inline constexpr Tr kLearnSkill{"Learn"};
+inline constexpr Tr kNewSkill{"New skill"};
+inline constexpr Tr kNextSkill{"Next skill"};
+inline constexpr Tr kLearned{"Learned"};
+inline constexpr Tr kWouldBecome{"would become"};   // a skill change offered after a level up: "Agi would become Agilao"
 inline constexpr Hint kCBack{"Escape goes back.", "B goes back."};
-inline constexpr const char* kEmptySlot = "Empty slot";
+inline constexpr Tr kEmptySlot{"Empty slot"};
 // A level up (after a battle, or a fusion's bonus): the Persona is fixed; only a skill card's page switches Persona.
 inline constexpr Hint kLearnLevelUpKeys{"Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.", "A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back."};
 inline constexpr Hint kLearnSkillKeys{"Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.", "LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back."};
-inline constexpr const char* kShuffleTime = "Shuffle Time";
+inline constexpr Tr kShuffleTime{"Shuffle Time"};
 inline constexpr Hint kShuffleKeys{"Left and right arrows choose a card, Space takes it.", "Left and right choose a card, A takes it."};
-inline constexpr const char* kChoose = "choose";
-inline constexpr const char* kMore = "more";                   // "choose 1 more"
-inline constexpr const char* kArcanaBurst = "Arcana Burst";
-inline constexpr const char* kPersonaOverstock = "Persona overstock. Choose a Persona to release";
-inline constexpr const char* kGain = "Gain";                   // the overstock list's new Persona: "Gain: Apsaras, ..."
+inline constexpr Tr kChoose{"choose"};
+inline constexpr Tr kMore{"more"};                   // "choose 1 more"
+inline constexpr Tr kArcanaBurst{"Arcana Burst"};
+inline constexpr Tr kPersonaOverstock{"Persona overstock. Choose a Persona to release"};
+inline constexpr Tr kGain{"Gain"};                   // the overstock list's new Persona: "Gain: Apsaras, ..."
 // The overstock's status page (F): Space releases the Persona shown, Q / E go through the list (FUN_141011540).
 inline constexpr Hint kOverstockPageKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch Persona, Space releases it, Escape back to the list.", "Up and down go through the lines, RT and LT jump between sections, LB and RB switch Persona, A releases it, B back to the list."};
 inline constexpr Hint kOverstockKeys{"Up and down arrows choose a Persona, Space releases it, F shows its stats.",
@@ -236,71 +285,70 @@ inline constexpr Hint kShiftKeys{"Left and right arrows choose who takes the tur
 inline constexpr Hint kSurveyKeys{"Up and down arrows go through everyone, Space analyzes a foe or opens a member's status, Escape back.", "Up and down go through everyone, A analyzes a foe or opens a member's status, B back."};
 inline constexpr Hint kAllOutKeys{"Space to attack, Escape to hold back.", "A to attack, B to hold back."};
 inline constexpr Hint kGuardKeys{"Space to guard, Escape to cancel.", "A to guard, B to cancel."};
-inline constexpr const char* kAnalyze = "Analyze";
+inline constexpr Tr kAnalyze{"Analyze"};
 // Analyze's other panels, in the detail buffer: "Arcana Magician", "Skills: Agi, Rakunda", "Drops: Mask of Cruelty".
-inline constexpr const char* kArcanaWord = "Arcana";
-inline constexpr const char* kDrops = "Drops";
-inline constexpr const char* kMaxWord = "Max";              // "Max HP 83, max SP 20"
-inline constexpr const char* kMaxWordLower = "max";
-inline constexpr const char* kAttackType = "Attack type";   // then the game's name for it: "Attack type Strike Attack"
+inline constexpr Tr kArcanaWord{"Arcana"};
+inline constexpr Tr kDrops{"Drops"};
+inline constexpr Tr kMaxWord{"Max"};              // "Max HP 83, max SP 20"
+inline constexpr Tr kMaxWordLower{"max"};
+inline constexpr Tr kAttackType{"Attack type"};   // then the game's name for it: "Attack type Strike Attack"
 // What Analyze still hides, said where its panel would be (the game draws "??" and "UNKNOWN").
-inline constexpr const char* kStatusUnknown = "Level, HP and SP unknown";
-inline constexpr const char* kSkillsAttackUnknown = "Skills and attack type unknown";
-inline constexpr const char* kSkillsUnknown = "Skills unknown";
-inline constexpr const char* kAttackTypeUnknown = "Attack type unknown";
-inline constexpr const char* kLevelCap = "Level";
-inline constexpr const char* kSkillAttackTitle = "Skill and attack type";   // the panel's own heading, "SKILL & ATTACK TYPE"
-inline constexpr const char* kUnknownCapLine = "Unknown";
-inline constexpr const char* kSurveyTitle = "Survey";
-inline constexpr const char* kAllOutTitle = "All-Out Attack?";
-inline constexpr const char* kGuardTitle = "Guard?";
+inline constexpr Tr kStatusUnknown{"Level, HP and SP unknown"};
+inline constexpr Tr kSkillsAttackUnknown{"Skills and attack type unknown"};
+inline constexpr Tr kSkillsUnknown{"Skills unknown"};
+inline constexpr Tr kAttackTypeUnknown{"Attack type unknown"};
+inline constexpr Tr kLevelCap{"Level"};
+inline constexpr Tr kSkillAttackTitle{"Skill and attack type"};   // the panel's own heading, "SKILL & ATTACK TYPE"
+inline constexpr Tr kUnknownCapLine{"Unknown"};
+inline constexpr Tr kSurveyTitle{"Survey"};
+inline constexpr Tr kAllOutTitle{"All-Out Attack?"};
+inline constexpr Tr kGuardTitle{"Guard?"};
 // Said with a turn's line and after "1 More!", without their keys: F1 names those (kKeyTheurgy, kKeyShift).
 // Who moves first, as the splash at a battle's start shows it (its pictures: S.E.E.S. / Shadow, Advantage).
-inline constexpr const char* kAdvantageParty = "S.E.E.S. advantage";
-inline constexpr const char* kAdvantageEnemy = "Shadow advantage";
+inline constexpr Tr kAdvantageParty{"S.E.E.S. advantage"};
+inline constexpr Tr kAdvantageEnemy{"Shadow advantage"};
 // The wheel's four main commands by name, for the turn line when the game has greyed some out ("Attack, Items, Guard
 // unavailable"): the wheel's slots 0 attack, 2 Persona, 3 item, 1 guard.
-inline constexpr const char* kWheelCommands[] = {"Attack", "Skills", "Items", "Guard"};
-inline constexpr const char* kTheurgyReadyWords = "Theurgy ready";
-inline constexpr const char* kShiftAvailableWords = "Shift available";
+inline constexpr Tr kWheelCommands[] = {"Attack", "Skills", "Items", "Guard"};
+inline constexpr Tr kTheurgyReadyWords{"Theurgy ready"};
+inline constexpr Tr kShiftAvailableWords{"Shift available"};
 // A shop's quantity as it opens, before the number; its keys are kHowMany's (F1).
-inline constexpr const char* kHowManyWords = "How many?";
+inline constexpr Tr kHowManyWords{"How many?"};
 // An item found more than once after a battle, a std::format string: the word, the item, how many ("Got Bead x3").
-inline constexpr const char* kGotMany = "{} {} x{}";
-inline constexpr const char* kTacticsTitle = "Tactics. Give an order?";
-inline constexpr const char* kTacticsOrder = "Order";
-inline constexpr const char* kTacticsEscape = "Escape";
-inline constexpr const char* kTacticsWho = "Whose orders?";
-inline constexpr const char* kTacticsAll = "Everyone";
-inline constexpr const char* kTacticsWhich = "Which order?";
-inline constexpr const char* kArcana[] = {"", "Fool", "Magician", "Priestess", "Empress", "Emperor", "Hierophant", "Lovers", "Chariot",
+inline constexpr Tr kTacticsTitle{"Tactics. Give an order?"};
+inline constexpr Tr kTacticsOrder{"Order"};
+inline constexpr Tr kTacticsEscape{"Escape"};
+inline constexpr Tr kTacticsWho{"Whose orders?"};
+inline constexpr Tr kTacticsAll{"Everyone"};
+inline constexpr Tr kTacticsWhich{"Which order?"};
+inline constexpr Tr kArcana[] = {"", "Fool", "Magician", "Priestess", "Empress", "Emperor", "Hierophant", "Lovers", "Chariot",
                                           "Justice", "Hermit", "Fortune", "Strength", "Hanged Man", "Death", "Temperance", "Devil",
                                           "Tower", "Star", "Moon", "Sun", "Judgement", "Aeon"};
-inline constexpr const char* kSocialLinks = "Social Links";
-inline constexpr const char* kNoSocialLinks = "No Social Links yet";
-inline constexpr const char* kNewSocialLink = "New Social Link";
-inline constexpr const char* kSocialLinkUp = "Social Link rank up";
-inline constexpr const char* kSocialLinkMaxed = "Social Link at max rank";
-inline constexpr const char* kSocialLink = "Social Link";
-inline constexpr const char* kUnknownArcana = "Unknown Arcana";   // a Social Link partner before the link is formed
-inline constexpr const char* kSocialLinkReversed = "Social Link reversed";
-inline constexpr const char* kSocialLinkRestored = "Social Link restored";
-inline constexpr const char* kRankMax = "MAX";
-inline constexpr const char* kReversed = "reversed";
-inline constexpr const char* kReadyToRankUp = "ready to rank up";
-inline constexpr const char* kBondUp = "Bond deepened";
-inline constexpr const char* kPoints = "points";
-inline constexpr const char* kShop = "Shop";
-inline constexpr const char* kBuy = "Buy";
-inline constexpr const char* kQuit = "Quit";
-inline constexpr const char* kEquip = "Equip";
-inline constexpr const char* kDontEquip = "Don't Equip";
-inline constexpr const char* kWeaponShopMenu[] = {"Buy Weapon", "Buy Armor", "Buy Footwear", "Buy Accessory", "Sell Item"};
-inline constexpr const char* kOwned = "owned";
-inline constexpr const char* kAntiqueShop = "Mayoido Antiques";
-inline constexpr const char* kAntiqueMenu[] = {"Fuse Equipment", "Trade Card", "Trade Item"};
-inline constexpr const char* kNeeds = "needs";
-inline constexpr const char* kYouHave = "you have";
+inline constexpr Tr kSocialLinks{"Social Links"};
+inline constexpr Tr kNoSocialLinks{"No Social Links yet"};
+inline constexpr Tr kNewSocialLink{"New Social Link"};
+inline constexpr Tr kSocialLinkUp{"Social Link rank up"};
+inline constexpr Tr kSocialLinkMaxed{"Social Link at max rank"};
+inline constexpr Tr kSocialLink{"Social Link"};
+inline constexpr Tr kUnknownArcana{"Unknown Arcana"};   // a Social Link partner before the link is formed
+inline constexpr Tr kSocialLinkReversed{"Social Link reversed"};
+inline constexpr Tr kSocialLinkRestored{"Social Link restored"};
+inline constexpr Tr kRankMax{"MAX"};
+inline constexpr Tr kReversed{"reversed"};
+inline constexpr Tr kReadyToRankUp{"ready to rank up"};
+inline constexpr Tr kBondUp{"Bond deepened"};
+inline constexpr Tr kPoints{"points"};
+inline constexpr Tr kShop{"Shop"};
+inline constexpr Tr kBuy{"Buy"};
+inline constexpr Tr kQuit{"Quit"};
+inline constexpr Tr kEquip{"Equip"};
+inline constexpr Tr kDontEquip{"Don't Equip"};
+inline constexpr Tr kWeaponShopMenu[] = {"Buy Weapon", "Buy Armor", "Buy Footwear", "Buy Accessory", "Sell Item"};
+inline constexpr Tr kOwned{"owned"};
+inline constexpr Tr kAntiqueShop{"Mayoido Antiques"};
+inline constexpr Tr kAntiqueMenu[] = {"Fuse Equipment", "Trade Card", "Trade Item"};
+inline constexpr Tr kNeeds{"needs"};
+inline constexpr Tr kYouHave{"you have"};
 inline constexpr Hint kHowMany{"How many? Up and down change it by one, left and right by ten, Space confirms, Escape back.",
                                "How many? Up and down change it by one, left and right by ten, A confirms, B back."};
 inline constexpr Hint kShopListBackKeys{"Up and down arrows choose, Space buys, Escape back.", "Up and down choose, A buys, B back."};
@@ -316,52 +364,52 @@ inline constexpr Hint kShopFuseDetailKeys{"Up and down arrows choose, Q and E sw
 inline constexpr Hint kShopDetailKeys{"Up and down arrows choose, Space buys, F or Escape back to the list.", "Up and down choose, A buys, X or B back to the list."};
 inline constexpr Hint kShopDetailWeaponKeys{"Up and down arrows choose, Q and E switch member, Space buys, F or Escape back to the list.", "Up and down choose, LB and RB switch member, A buys, X or B back to the list."};
 inline constexpr Hint kShopYesNoKeys{"Left and right arrows choose, Space confirms.", "Left and right choose, A confirms."};
-inline constexpr const char* kAttack = "attack";
-inline constexpr const char* kAccuracy = "accuracy";
-inline constexpr const char* kDefence = "defense";
-inline constexpr const char* kEvasion = "evasion";
-inline constexpr const char* kSystemItems[] = {"Tutorial", "Config", "Dictionary", "Load Data", "Save Data", "Rewind", "Return to Title"};
-inline constexpr const char* kTutorials = "Tutorials";
-inline constexpr const char* kTutorialTabs[5] = {"Battle", "Dungeon", "Daily Life", "Fusion", "System"};   // drawn as pictures
-inline constexpr const char* kNoMessage = "No message";
-inline constexpr const char* kAKey = "a key";
+inline constexpr Tr kAttack{"attack"};
+inline constexpr Tr kAccuracy{"accuracy"};
+inline constexpr Tr kDefence{"defense"};
+inline constexpr Tr kEvasion{"evasion"};
+inline constexpr Tr kSystemItems[] = {"Tutorial", "Config", "Dictionary", "Load Data", "Save Data", "Rewind", "Return to Title"};
+inline constexpr Tr kTutorials{"Tutorials"};
+inline constexpr Tr kTutorialTabs[5] = {"Battle", "Dungeon", "Daily Life", "Fusion", "System"};   // drawn as pictures
+inline constexpr Tr kNoMessage{"No message"};
+inline constexpr Tr kAKey{"a key"};
 inline constexpr Hint kYesNoHint{"Space for yes, C for no.", "A for yes, B for no."};
-inline constexpr const char* kThinking = "Thinking";
+inline constexpr Tr kThinking{"Thinking"};
 // The buttons a message page draws as icons (tutorials), by the game's icon id: the key on the keyboard (the game's
 // default) and the controller's button. The keyboard has other keys for some of them by place: in battle, and in the
 // field where the sentence around the icon speaks of the menu, the map or recovering.
-struct IconKey { int id; const char* keyboard; const char* pad; };
+struct IconKey { int id; Tr keyboard; Tr pad; };
 inline constexpr IconKey kIconKeys[] = {
   {104, "U", "D-pad up"}, {105, "O", "D-pad down"}, {108, "H", "Menu"}, {109, "N", "View"}, {110, "C", "B"}, {111, "Ctrl", "X"},
   {112, "E", "Y"}, {113, "Space", "A"},
   {114, "Q", "LB"}, {115, "B", "LT"}, {117, "E", "RB"}, {118, "Shift", "RT"}, {119, "R", "the right stick button"},
   {121, "I, J, K and L", "the right stick"}};
-inline constexpr const char* kIconUpBattle = "W";       // 104 in battle
-inline constexpr const char* kIconDownBattle = "S";     // 105 in battle
-inline constexpr const char* kIconMenuField = "Tab";    // 112 in the field: the menu
-inline constexpr const char* kIconMapField = "M";       // 114 in the field: the map
-inline constexpr const char* kIconRecoverField = "Y";   // 117 in the field: Auto-Recover
+inline constexpr Tr kIconUpBattle{"W"};       // 104 in battle
+inline constexpr Tr kIconDownBattle{"S"};     // 105 in battle
+inline constexpr Tr kIconMenuField{"Tab"};    // 112 in the field: the menu
+inline constexpr Tr kIconMapField{"M"};       // 114 in the field: the map
+inline constexpr Tr kIconRecoverField{"Y"};   // 117 in the field: Auto-Recover
 // A battle's own keys for the controller's buttons, where the sentence around the icon speaks of battle (the game draws
 // these on its tutorials even when they are read from the Tutorial list, outside battle; checked against its glyphs,
 // 2026-11-15): Rush, Assist, Theurgy, Items.
-inline constexpr const char* kIconRushBattle = "Tab";   // 108 (Menu)
-inline constexpr const char* kIconAssistBattle = "F";   // 117 (RB) for an Assist; Q / E for Personas stay E
-inline constexpr const char* kIconTheurgyBattle = "T";  // 118 (RT)
-inline constexpr const char* kIconItemsBattle = "R";    // 111 (X) in battle; the field's strike is Ctrl
-inline constexpr const char* kKeySpace = "Space";       // the key configuration's Space
+inline constexpr Tr kIconRushBattle{"Tab"};   // 108 (Menu)
+inline constexpr Tr kIconAssistBattle{"F"};   // 117 (RB) for an Assist; Q / E for Personas stay E
+inline constexpr Tr kIconTheurgyBattle{"T"};  // 118 (RT)
+inline constexpr Tr kIconItemsBattle{"R"};    // 111 (X) in battle; the field's strike is Ctrl
+inline constexpr Tr kKeySpace{"Space"};       // the key configuration's Space
 // The punctuation keys by name (core::punct_key_name), as the README names them.
-inline constexpr const char* kKeySemicolon = "Semicolon";
-inline constexpr const char* kKeyEquals = "Equals";
-inline constexpr const char* kKeyComma = "Comma";
-inline constexpr const char* kKeyMinus = "Minus";
-inline constexpr const char* kKeyPeriod = "Period";
-inline constexpr const char* kKeySlash = "Slash";
-inline constexpr const char* kKeyGrave = "Grave accent";
-inline constexpr const char* kKeyLeftBracket = "Left bracket";
-inline constexpr const char* kKeyBackslash = "Backslash";
-inline constexpr const char* kKeyRightBracket = "Right bracket";
-inline constexpr const char* kKeyApostrophe = "Apostrophe";
-inline constexpr const char* kTitleScreen = "Title screen";
+inline constexpr Tr kKeySemicolon{"Semicolon"};
+inline constexpr Tr kKeyEquals{"Equals"};
+inline constexpr Tr kKeyComma{"Comma"};
+inline constexpr Tr kKeyMinus{"Minus"};
+inline constexpr Tr kKeyPeriod{"Period"};
+inline constexpr Tr kKeySlash{"Slash"};
+inline constexpr Tr kKeyGrave{"Grave accent"};
+inline constexpr Tr kKeyLeftBracket{"Left bracket"};
+inline constexpr Tr kKeyBackslash{"Backslash"};
+inline constexpr Tr kKeyRightBracket{"Right bracket"};
+inline constexpr Tr kKeyApostrophe{"Apostrophe"};
+inline constexpr Tr kTitleScreen{"Title screen"};
 inline constexpr Hint kTutorialKeys{"Q and E turn the pages, Space goes on.", "LB and RB turn the pages, A goes on."};
 inline constexpr Hint kDialogueKeys{"Conversation keys: Space next, B log, Shift auto, Tab fast-forwards.",
                                     "Conversation keys: A next, L3 log, X auto, Menu button fast-forwards."};
@@ -376,83 +424,89 @@ inline constexpr Hint kTartarusKeys{"In Tartarus: Y Auto-Recover, N the navigato
 // layer's Menu, and View for the settings, whose last row reads the keys).
 // Every {name} is a binding's key now (keys::fill): the player may have moved it.
 inline constexpr Hint kModKeysHint{"{help.mod} lists the mod's keys, {settings} opens its settings, where Mod keys changes them.", "Both triggers and View open the mod's settings; Mod keys there lists the mod's keys."};
-inline constexpr const char* kNoKeys = "No keys to tell here.";
-inline constexpr const char* kModKeys = "Mod keys";
-inline constexpr const char* kPadLayer = "Hold both triggers, then";
+inline constexpr Tr kNoKeys{"No keys to tell here."};
+inline constexpr Tr kModKeys{"Mod keys"};
+inline constexpr Tr kPadLayer{"Hold both triggers, then"};
 // The top-down mode's right stick, after the layer's buttons in the controller's list of mod keys and in F1's field keys.
-inline constexpr const char* kPadScanKeys = "Without the triggers, in top-down mode: the right stick finds the nearest point of interest that way; RT while it is on one walks there and uses it.";
+inline constexpr Tr kPadScanKeys{"Without the triggers, in top-down mode: the right stick finds the nearest point of interest that way; RT while it is on one walks there and uses it."};
 // F1 in the field: the walk that uses its point (Shift+Period; RT on the right stick's point in top-down mode).
-inline constexpr const char* kFieldWalkUseKeys = "{nav.walk.period} walks to the selected point of interest, {nav.use} walks there and uses it; {poi.nearest} selects the nearest one, then the next nearest, {poi.nearest.prev} goes back; {poi.again} says the selected one again.";
+inline constexpr Tr kFieldWalkUseKeys{"{nav.walk.period} walks to the selected point of interest, {nav.use} walks there and uses it; {poi.nearest} selects the nearest one, then the next nearest, {poi.nearest.prev} goes back; {poi.again} says the selected one again."};
 // The mod settings menu (settings.cpp)
-inline constexpr const char* kModSettings = "Mod settings";
-inline constexpr const char* kModSettingsClosed = "Mod settings closed";
+inline constexpr Tr kModSettings{"Mod settings"};
+inline constexpr Tr kModSettingsClosed{"Mod settings closed"};
 inline constexpr Hint kModSettingsKeys{"Up and down arrows choose, Tab and Shift+Tab change category, left and right arrows change, Space changes, reads or plays, Escape closes.",
                                        "Up and down choose, LB and RB change category, left and right change, A changes, reads or plays, B closes."};
 // Its categories, in order.
-inline constexpr const char* kCatExploring = "Exploring";
-inline constexpr const char* kCatSonar = "Sonar";
-inline constexpr const char* kCatSound = "Sound";
-inline constexpr const char* kCatVolume = "Volume";
-inline constexpr const char* kCatDialogue = "Dialogue";
-inline constexpr const char* kCatDescription = "Audio description";
-inline constexpr const char* kCatControls = "Controls and help";
-inline constexpr const char* kCatSoundTest = "Sound test";
+inline constexpr Tr kCatExploring{"Exploring"};
+inline constexpr Tr kCatSonar{"Sonar"};
+inline constexpr Tr kCatSound{"Sound"};
+inline constexpr Tr kCatVolume{"Volume"};
+inline constexpr Tr kCatDialogue{"Dialogue"};
+inline constexpr Tr kCatDescription{"Audio description"};
+inline constexpr Tr kCatControls{"Controls and help"};
+// The Language setting (language.cpp): the mod's own lines in another language. The languages are named in their own
+// language (core/lang).
+inline constexpr Tr kCatLanguage{"Language"};
+inline constexpr Tr kSetLanguage{"Language of the mod"};
+inline constexpr Tr kHelpLanguage{"The language of everything the mod says itself: menus, hints and descriptions. The game's language follows the game. In any language but English, descriptions of movies and scenes are read by your screen reader: the narrator's voice speaks English only."};
+inline constexpr Tr kLangGame{"The game's language"};
+inline constexpr Tr kCatSoundTest{"Sound test"};
 // What each setting does: read with its row, after the position.
-inline constexpr const char* kHelpWallTones = "A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer. They play all the time, only while you move, or not at all.";
-inline constexpr const char* kHelpSonar = "Every point of interest near you repeats its own sound from where it is, faster and louder the closer it is. {sonar} also switches it.";
-inline constexpr const char* kHelpSonarScope = "Which points the sonar plays: everything nearby, only the category the points of interest list is on, or only the point you selected there, at any distance.";
-inline constexpr const char* kHelpSonarRange = "How far away a thing can be and still sound.";
-inline constexpr const char* kHelpSonarKind = "Whether this kind of thing sounds. Changing it plays its sound.";
-inline constexpr const char* kHelpSonarVolume = "How loud the sonar's sounds are. Changing it plays one.";
-inline constexpr const char* kHelpShadowSight = "In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.";
-inline constexpr const char* kHelpSightRange = "How far from the edge of a Shadow's sight you start to hear it.";
-inline constexpr const char* kHelpShadowAlerts = "In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.";
-inline constexpr const char* kHelpTopDown = "While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.";
-inline constexpr const char* kHelpTurnedRooms = "In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.";
-inline constexpr const char* kHelpSpatial ="How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.";
-inline constexpr const char* kHelpStrikeAssist = "In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side. Your reach stays the same.";
-inline constexpr const char* kHelpRelaxedReaper = "In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.";
-inline constexpr const char* kHelpAlwaysDash = "Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.";
-inline constexpr const char* kHelpBehindPitch ="Sounds whose source is behind you play lower.";
-inline constexpr const char* kHelpPoiRange = "How far the points of interest list reaches.";
-inline constexpr const char* kHelpMasterVolume = "Every sound the mod plays. The game's own sounds follow the game's settings.";
-inline constexpr const char* kHelpSoundVolume = "The Shadow sounds and the controller layer's tick.";
-inline constexpr const char* kHelpWallVolume = "How loud the wall tones are.";
-inline constexpr const char* kHelpWallRange = "How far away a wall starts to sound. Shorter keeps the tones for walls close by.";
-inline constexpr const char* kHelpTriggerDelay = "How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.";
-inline constexpr const char* kHelpMenuSpeed = "Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. Not in battle, story scenes or conversations.";
-inline constexpr const char* kHelpEntryHints = "Menus say their keys after their first line. Off, F1 still reads them.";
-inline constexpr const char* kHelpVoicedLines = "What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.";
-inline constexpr const char* kHelpVoiceEndSound = "What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.";
-inline constexpr const char* kHelpEmotes = "Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.";
-inline constexpr const char* kHelpSubtitles = "The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.";
-inline constexpr const char* kHelpAudioDescription = "What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.";
-inline constexpr const char* kHelpSceneDescription = "What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.";
-inline constexpr const char* kHelpSceneVoice = "Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.";
-inline constexpr const char* kHelpSceneSpeed = "The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.";
-inline constexpr const char* kHelpDescriptionWait = "In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions are fitted between the lines while it plays. Animated movies never wait: their descriptions are timed between the lines.";
-inline constexpr const char* kHelpDescriptionVolume = "How loud the narrator of movies and scenes is.";
-inline constexpr const char* kHelpModKeys = "Lists the mod's keys, to change them.";
+inline constexpr Tr kHelpWallTones{"A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer. They play all the time, only while you move, or not at all."};
+inline constexpr Tr kHelpSonar{"Every point of interest near you repeats its own sound from where it is, faster and louder the closer it is. {sonar} also switches it."};
+inline constexpr Tr kHelpSonarScope{"Which points the sonar plays: everything nearby, only the category the points of interest list is on, or only the point you selected there, at any distance."};
+inline constexpr Tr kHelpSonarRange{"How far away a thing can be and still sound."};
+inline constexpr Tr kHelpSonarKind{"Whether this kind of thing sounds. Changing it plays its sound."};
+inline constexpr Tr kHelpSonarVolume{"How loud the sonar's sounds are. Changing it plays one."};
+inline constexpr Tr kHelpShadowSight{"In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way."};
+inline constexpr Tr kHelpSightRange{"How far from the edge of a Shadow's sight you start to hear it."};
+inline constexpr Tr kHelpShadowAlerts{"In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you."};
+inline constexpr Tr kHelpTopDown{"While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before."};
+inline constexpr Tr kHelpTurnedRooms{"In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere."};
+inline constexpr Tr kHelpSpatial{"How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only."};
+inline constexpr Tr kHelpStrikeAssist{"In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side. Your reach stays the same."};
+inline constexpr Tr kHelpRelaxedReaper{"In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off."};
+inline constexpr Tr kHelpAlwaysDash{"Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too."};
+inline constexpr Tr kHelpBehindPitch{"Sounds whose source is behind you play lower."};
+inline constexpr Tr kHelpPoiRange{"How far the points of interest list reaches."};
+inline constexpr Tr kHelpMasterVolume{"Every sound the mod plays. The game's own sounds follow the game's settings."};
+inline constexpr Tr kHelpSoundVolume{"The Shadow sounds and the controller layer's tick."};
+inline constexpr Tr kHelpWallVolume{"How loud the wall tones are."};
+inline constexpr Tr kHelpWallRange{"How far away a wall starts to sound. Shorter keeps the tones for walls close by."};
+inline constexpr Tr kHelpTriggerDelay{"How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open."};
+inline constexpr Tr kHelpMenuSpeed{"Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. Not in battle, story scenes or conversations."};
+inline constexpr Tr kHelpEntryHints{"Menus say their keys after their first line. Off, F1 still reads them."};
+inline constexpr Tr kHelpVoicedLines{"What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read."};
+inline constexpr Tr kHelpVoiceEndSound{"What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing."};
+inline constexpr Tr kHelpEmotes{"Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei."};
+inline constexpr Tr kHelpSubtitles{"The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way."};
+inline constexpr Tr kHelpAudioDescription{"What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader."};
+inline constexpr Tr kHelpSceneDescription{"What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only."};
+inline constexpr Tr kHelpSceneVoice{"Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader."};
+inline constexpr Tr kHelpSceneSpeed{"The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines."};
+inline constexpr Tr kHelpDescriptionWait{"In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions are fitted between the lines while it plays. Animated movies never wait: their descriptions are timed between the lines."};
+inline constexpr Tr kHelpDescriptionVolume{"How loud the narrator of movies and scenes is."};
+inline constexpr Tr kHelpModKeys{"Lists the mod's keys, to change them."};
 // The Mod keys page (settings.cpp): a row per key, what it does then its key.
-inline constexpr const char* kKeysReadAll = "Read all keys";
-inline constexpr const char* kHelpKeysReadAll = "Reads every mod key at once.";
-inline constexpr const char* kKeysResetAll = "Reset all keys to default";
-inline constexpr const char* kKeysResetDone = "Every mod key is back on its default.";
-inline constexpr const char* kKeysPress = "Press the new key for";   // + what it does
+inline constexpr Tr kKeysReadAll{"Read all keys"};
+inline constexpr Tr kHelpKeysReadAll{"Reads every mod key at once."};
+inline constexpr Tr kKeysResetAll{"Reset all keys to default"};
+inline constexpr Tr kKeysResetDone{"Every mod key is back on its default."};
+inline constexpr Tr kKeysPress{"Press the new key for"};   // + what it does
 inline constexpr Hint kKeysPressCancel{"Escape cancels.", "Press it on the keyboard; B cancels."};
-inline constexpr const char* kKeysCancelled = "Cancelled";   // + the key it keeps
-inline constexpr const char* kKeysReserved = "is the game's. Press another key, or Escape.";   // after the key
-inline constexpr const char* kKeysNeedsNoShift = "has Shift: Shift with this key goes back. Press a key without Shift, or Escape.";   // after the key
-inline constexpr const char* kKeysBackOf = "goes back for";   // "Shift+1 goes back for Exits: ..."
-inline constexpr const char* kKeysPressAnother = "Press another key, or Escape.";
-inline constexpr const char* kKeysMovesTo = "moves to";   // "<what the other key does> moves to Apostrophe"
-inline constexpr const char* kKeysBackToDefault = "back on its default";
-inline constexpr const char* kKeysAlreadyDefault = "already its default";
+inline constexpr Tr kKeysCancelled{"Cancelled"};   // + the key it keeps
+inline constexpr Tr kKeysReserved{"is the game's. Press another key, or Escape."};   // after the key
+inline constexpr Tr kKeysNeedsNoShift{"has Shift: Shift with this key goes back. Press a key without Shift, or Escape."};   // after the key
+inline constexpr Tr kKeysBackOf{"goes back for"};   // "Shift+1 goes back for Exits: ..."
+inline constexpr Tr kKeysPressAnother{"Press another key, or Escape."};
+inline constexpr Tr kKeysMovesTo{"moves to"};   // "<what the other key does> moves to Apostrophe"
+inline constexpr Tr kKeysBackToDefault{"back on its default"};
+inline constexpr Tr kKeysAlreadyDefault{"already its default"};
 inline constexpr Hint kModKeysPageKeys{"Up and down arrows choose, Enter changes the key: then press the new one. Delete puts a key back on its default, Escape goes back to the settings.",
                                        "Up and down choose, A changes the key: then press the new one on the keyboard. X puts a key back on its default, B goes back to the settings."};
 // The sound test: each row plays one of the mod's sounds (name, then what it means). The sonar's rows are named by
 // their kind alone (the user's call, 2026-11-17: no "Sonar:" before every row); the description says what it is.
-struct SoundTest { const char* name; const char* help; };
+struct SoundTest { Tr name; Tr help; };
 inline constexpr SoundTest kSoundTests[] = {
     {"Exit", "A way into another area."},
     {"Door", "A room's door. One hollow knock."},
@@ -477,83 +531,83 @@ inline constexpr SoundTest kSoundTests[] = {
     {"Wall to the left", "The wall tone for a wall on your left."},
     {"Controller layer", "Both triggers are held: the mod's controller layer is open."},
 };
-inline constexpr const char* kSetWallTones = "Wall tones";
-inline constexpr const char* kSetSonar = "Sonar";
-inline constexpr const char* kSetSonarScope = "Plays";
-inline constexpr const char* kScopeAll = "everything nearby";
-inline constexpr const char* kScopeCategory = "the list's category only";
-inline constexpr const char* kScopeSelected = "the selected point only, at any distance";
-inline constexpr const char* kSetSonarRange = "Range";
-inline constexpr const char* kSetSonarExits = "Exits";
-inline constexpr const char* kSetSonarDoors = "Doors";
-inline constexpr const char* kSetSonarPeople = "People";
-inline constexpr const char* kSetSonarShops = "Shops";
-inline constexpr const char* kSetSonarThings = "Objects";
-inline constexpr const char* kSetSonarEvents = "Events";
-inline constexpr const char* kSetSonarFragments = "Twilight Fragments";
-inline constexpr const char* kSetSonarVolume = "Sonar";
-inline constexpr const char* kSonarOn = "Sonar on";
-inline constexpr const char* kSonarOff = "Sonar off";
-inline constexpr const char* kSetShadowAlerts = "Shadow alerts";
-inline constexpr const char* kSetShadowSight = "Shadow sight";
-inline constexpr const char* kSetSightRange = "Shadow sight range";
-inline constexpr const char* kSetTopDown = "Top-down exploration";
-inline constexpr const char* kSetTurnedRooms = "Keep your heading through passages";
-inline constexpr const char* kSetStrikeAssist = "Strike assist";
-inline constexpr const char* kSetAlwaysDash = "Always dash";
-inline constexpr const char* kSetRelaxedReaper = "Relaxed Reaper rate";
-inline constexpr const char* kSetSpatial = "Placement";
-inline constexpr const char* kSpatialStereo = "stereo";
-inline constexpr const char* kSpatialHrtf = "3D for headphones";
-inline constexpr const char* kSpatialPan = "plain left and right";
-inline constexpr const char* kSetBehindPitch = "Lower pitch behind you";
-inline constexpr const char* kSetPoiRange = "Points of interest range";
-inline constexpr const char* kSetMasterVolume = "Master";
-inline constexpr const char* kSetSoundVolume = "Shadow sounds";
-inline constexpr const char* kSetWallVolume = "Wall tones";
-inline constexpr const char* kSetWallRange = "Wall tone range";
-inline constexpr const char* kWallContinuous = "continuous";
-inline constexpr const char* kWallMoving = "only while moving";
-inline constexpr const char* kSetTriggerDelay = "Trigger delay";
-inline constexpr const char* kSetEntryHints = "Menu key hints on entry";
-inline constexpr const char* kSetMenuSpeed = "Menu animation speed";
-inline constexpr const char* kSpeed4 = "4 times";
-inline constexpr const char* kSpeed8 = "8 times";
-inline constexpr const char* kSpeed16 = "16 times";
-inline constexpr const char* kSetVoicedLines = "Voiced dialogue";
-inline constexpr const char* kVoicedRead = "read aloud";
-inline constexpr const char* kVoicedName = "speaker's name only";
-inline constexpr const char* kVoicedSilent = "not read, the voice plays alone";
-inline constexpr const char* kSetVoiceEndSound = "When a line ends";
-inline constexpr const char* kSetSubtitles = "Read subtitles";
-inline constexpr const char* kSetEmotes = "Emote marks";
-inline constexpr const char* kSetAudioDescription = "Movies";
-inline constexpr const char* kSetSceneDescription = "3D scenes";
-inline constexpr const char* kSetSceneVoice = "3D scenes read by";
-inline constexpr const char* kSetSceneSpeed = "Faster narrator in 3D scenes";
-inline constexpr const char* kFaster25 = "25 percent";
-inline constexpr const char* kFaster50 = "50 percent";
-inline constexpr const char* kFaster75 = "75 percent";
-inline constexpr const char* kSceneOnce = "suppress repeated descriptions";
-inline constexpr const char* kSetDescriptionWait = "Descriptions wait for Enter";
-inline constexpr const char* kDescAudio = "narrator's voice";
-inline constexpr const char* kDescReader = "screen reader";
-inline constexpr const char* kSetDescriptionVolume = "Audio description";
-inline constexpr const char* kEndNext = "say Next";
-inline constexpr const char* kNext = "Next";
-inline constexpr const char* kAutoOn = "Auto on";
-inline constexpr const char* kAutoOff = "Auto off";
-inline constexpr const char* kFastForwardOn = "Fast-forward on";
-inline constexpr const char* kFastForwardOff = "Fast-forward off";
-inline constexpr const char* kEndPage = "page turn sound";
-inline constexpr const char* kEndMessage = "message chime sound";
-inline constexpr const char* kEndCursor = "cursor tick sound";
-inline constexpr const char* kMetersUnit = "meters";
+inline constexpr Tr kSetWallTones{"Wall tones"};
+inline constexpr Tr kSetSonar{"Sonar"};
+inline constexpr Tr kSetSonarScope{"Plays"};
+inline constexpr Tr kScopeAll{"everything nearby"};
+inline constexpr Tr kScopeCategory{"the list's category only"};
+inline constexpr Tr kScopeSelected{"the selected point only, at any distance"};
+inline constexpr Tr kSetSonarRange{"Range"};
+inline constexpr Tr kSetSonarExits{"Exits"};
+inline constexpr Tr kSetSonarDoors{"Doors"};
+inline constexpr Tr kSetSonarPeople{"People"};
+inline constexpr Tr kSetSonarShops{"Shops"};
+inline constexpr Tr kSetSonarThings{"Objects"};
+inline constexpr Tr kSetSonarEvents{"Events"};
+inline constexpr Tr kSetSonarFragments{"Twilight Fragments"};
+inline constexpr Tr kSetSonarVolume{"Sonar"};
+inline constexpr Tr kSonarOn{"Sonar on"};
+inline constexpr Tr kSonarOff{"Sonar off"};
+inline constexpr Tr kSetShadowAlerts{"Shadow alerts"};
+inline constexpr Tr kSetShadowSight{"Shadow sight"};
+inline constexpr Tr kSetSightRange{"Shadow sight range"};
+inline constexpr Tr kSetTopDown{"Top-down exploration"};
+inline constexpr Tr kSetTurnedRooms{"Keep your heading through passages"};
+inline constexpr Tr kSetStrikeAssist{"Strike assist"};
+inline constexpr Tr kSetAlwaysDash{"Always dash"};
+inline constexpr Tr kSetRelaxedReaper{"Relaxed Reaper rate"};
+inline constexpr Tr kSetSpatial{"Placement"};
+inline constexpr Tr kSpatialStereo{"stereo"};
+inline constexpr Tr kSpatialHrtf{"3D for headphones"};
+inline constexpr Tr kSpatialPan{"plain left and right"};
+inline constexpr Tr kSetBehindPitch{"Lower pitch behind you"};
+inline constexpr Tr kSetPoiRange{"Points of interest range"};
+inline constexpr Tr kSetMasterVolume{"Master"};
+inline constexpr Tr kSetSoundVolume{"Shadow sounds"};
+inline constexpr Tr kSetWallVolume{"Wall tones"};
+inline constexpr Tr kSetWallRange{"Wall tone range"};
+inline constexpr Tr kWallContinuous{"continuous"};
+inline constexpr Tr kWallMoving{"only while moving"};
+inline constexpr Tr kSetTriggerDelay{"Trigger delay"};
+inline constexpr Tr kSetEntryHints{"Menu key hints on entry"};
+inline constexpr Tr kSetMenuSpeed{"Menu animation speed"};
+inline constexpr Tr kSpeed4{"4 times"};
+inline constexpr Tr kSpeed8{"8 times"};
+inline constexpr Tr kSpeed16{"16 times"};
+inline constexpr Tr kSetVoicedLines{"Voiced dialogue"};
+inline constexpr Tr kVoicedRead{"read aloud"};
+inline constexpr Tr kVoicedName{"speaker's name only"};
+inline constexpr Tr kVoicedSilent{"not read, the voice plays alone"};
+inline constexpr Tr kSetVoiceEndSound{"When a line ends"};
+inline constexpr Tr kSetSubtitles{"Read subtitles"};
+inline constexpr Tr kSetEmotes{"Emote marks"};
+inline constexpr Tr kSetAudioDescription{"Movies"};
+inline constexpr Tr kSetSceneDescription{"3D scenes"};
+inline constexpr Tr kSetSceneVoice{"3D scenes read by"};
+inline constexpr Tr kSetSceneSpeed{"Faster narrator in 3D scenes"};
+inline constexpr Tr kFaster25{"25 percent"};
+inline constexpr Tr kFaster50{"50 percent"};
+inline constexpr Tr kFaster75{"75 percent"};
+inline constexpr Tr kSceneOnce{"suppress repeated descriptions"};
+inline constexpr Tr kSetDescriptionWait{"Descriptions wait for Enter"};
+inline constexpr Tr kDescAudio{"narrator's voice"};
+inline constexpr Tr kDescReader{"screen reader"};
+inline constexpr Tr kSetDescriptionVolume{"Audio description"};
+inline constexpr Tr kEndNext{"say Next"};
+inline constexpr Tr kNext{"Next"};
+inline constexpr Tr kAutoOn{"Auto on"};
+inline constexpr Tr kAutoOff{"Auto off"};
+inline constexpr Tr kFastForwardOn{"Fast-forward on"};
+inline constexpr Tr kFastForwardOff{"Fast-forward off"};
+inline constexpr Tr kEndPage{"page turn sound"};
+inline constexpr Tr kEndMessage{"message chime sound"};
+inline constexpr Tr kEndCursor{"cursor tick sound"};
+inline constexpr Tr kMetersUnit{"meters"};
 // A spoken distance (core/units.cpp): "1 meter", "6 meters", "less than 1 meter".
-inline constexpr const char* kMeterUnit = "meter";
-inline constexpr const char* kLessThanOneMeter = "less than 1 meter";
-inline constexpr const char* kPercent = "percent";
-inline constexpr const char* kMilliseconds = "milliseconds";
+inline constexpr Tr kMeterUnit{"meter"};
+inline constexpr Tr kLessThanOneMeter{"less than 1 meter"};
+inline constexpr Tr kPercent{"percent"};
+inline constexpr Tr kMilliseconds{"milliseconds"};
 inline constexpr Hint kListKeys{"Up and down arrows choose, Space confirms, Escape back.", "Up and down choose, A confirms, B back."};
 inline constexpr Hint kTutorialListKeys{"Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.", "Up and down choose, LB and RB switch tabs, A opens, B back."};
 inline constexpr Hint kChooseKeys{"Up and down arrows choose, Space confirms.", "Up and down choose, A confirms."};
@@ -564,82 +618,82 @@ inline constexpr Hint kNetActionKey{"N what other players did today.", "View wha
 // The two screens are menus: a row per answer, or per kind of activity with the activities the game notes under it.
 inline constexpr Hint kNetAnswerKeys{"Up and down arrows read the answers, N or Escape closes.", "Up and down read the answers, View or B closes."};
 inline constexpr Hint kNetActionKeys{"Up and down arrows read, Tab jumps to the next kind of activity, N or Escape closes.", "Up and down read, RT jumps to the next kind of activity, View or B closes."};
-inline constexpr const char* kNetAnswerTitle = "Other players' answers";
-inline constexpr const char* kNetActionTitle = "What other players did today";
-inline constexpr const char* kNetWaiting = "Getting other players' data.";   // the review key before the figures come
-inline constexpr const char* kNetFailed = "Other players' data could not be fetched.";
-inline constexpr const char* kNetPercent = "{}, {} percent";   // an answer or kind of activity, then its share
+inline constexpr Tr kNetAnswerTitle{"Other players' answers"};
+inline constexpr Tr kNetActionTitle{"What other players did today"};
+inline constexpr Tr kNetWaiting{"Getting other players' data."};   // the review key before the figures come
+inline constexpr Tr kNetFailed{"Other players' data could not be fetched."};
+inline constexpr Tr kNetPercent{"{}, {} percent"};   // an answer or kind of activity, then its share
 // The three kinds of activity the game sorts other players' days into, in its own order.
-inline constexpr const char* kNetActionKinds[3] = {"Daily life", "Social Links", "Tartarus"};
+inline constexpr Tr kNetActionKinds[3] = {"Daily life", "Social Links", "Tartarus"};
 inline constexpr Hint kCampKeys{"Up and down arrows choose, Space opens, Escape closes.", "Up and down choose, A opens, B closes."};
 // Points of interest
 // A way into another area: said by its name alone, which is where it leads ("Gekkoukan High School exit" was taken
 // for the way out of the school; the players' call, 2026-11-09). This is the one with no name.
-inline constexpr const char* kPoiExit = "Exit";
-inline constexpr const char* kVerbGoTo = "Go to";
-inline constexpr const char* kVerbTalk = "Talk";
-inline constexpr const char* kVerbListen = "Listen";
-inline constexpr const char* kVerbShop = "Shop";
-inline constexpr const char* kVerbAction = "Action";
-inline constexpr const char* kVerbCheck = "Check";
-inline constexpr const char* kPoiPerson = "Person";
-inline constexpr const char* kPoiShop = "Shop";
-inline constexpr const char* kPoiDoor = "Door";
-inline constexpr const char* kPoiThing = "Object";
-inline constexpr const char* kPoiEvent = "Event";
-inline constexpr const char* kPoiGatekeeper = "Gatekeeper";   // the game's word for the boss of a border floor
-inline constexpr const char* kPoiShadow = "Shadow";
-inline constexpr const char* kPoiBreakable = "Breakable object";
-inline constexpr const char* kPoiShadowStrong = "Strong Shadow";
-inline constexpr const char* kPoiShadowRare = "Rare Shadow";   // the game's word (Mitsuru: "rare Shadows")
-inline constexpr const char* kPoiReaper = "The Reaper";
-inline constexpr const char* kPoiMissingPerson = "Missing Person";   // the game's own name, when its table has no row
+inline constexpr Tr kPoiExit{"Exit"};
+inline constexpr Tr kVerbGoTo{"Go to"};
+inline constexpr Tr kVerbTalk{"Talk"};
+inline constexpr Tr kVerbListen{"Listen"};
+inline constexpr Tr kVerbShop{"@verb:Shop"};
+inline constexpr Tr kVerbAction{"Action"};
+inline constexpr Tr kVerbCheck{"Check"};
+inline constexpr Tr kPoiPerson{"Person"};
+inline constexpr Tr kPoiShop{"Shop"};
+inline constexpr Tr kPoiDoor{"Door"};
+inline constexpr Tr kPoiThing{"Object"};
+inline constexpr Tr kPoiEvent{"Event"};
+inline constexpr Tr kPoiGatekeeper{"Gatekeeper"};   // the game's word for the boss of a border floor
+inline constexpr Tr kPoiShadow{"Shadow"};
+inline constexpr Tr kPoiBreakable{"Breakable object"};
+inline constexpr Tr kPoiShadowStrong{"Strong Shadow"};
+inline constexpr Tr kPoiShadowRare{"Rare Shadow"};   // the game's word (Mitsuru: "rare Shadows")
+inline constexpr Tr kPoiReaper{"The Reaper"};
+inline constexpr Tr kPoiMissingPerson{"Missing Person"};   // the game's own name, when its table has no row
 // Club Escapade's order quiz (Mutatsu's Tower link): where each customer stands, in the bartender's own words, said
 // in brackets after the name ("Unemotional Woman (by the entrance)"); the man has no place in his question.
-inline constexpr const char* kBarPlaceBack = "by the table in the back";
-inline constexpr const char* kBarPlaceEntrance = "by the entrance";
-inline constexpr const char* kBarPlaceMiddle = "in the middle of the floor";
+inline constexpr Tr kBarPlaceBack{"by the table in the back"};
+inline constexpr Tr kBarPlaceEntrance{"by the entrance"};
+inline constexpr Tr kBarPlaceMiddle{"in the middle of the floor"};
 // After the bartender's question: who it means ("That's the Unemotional Woman.").
-inline constexpr const char* kBarCustomerIs = "That's the {}.";
-inline constexpr const char* kPoiChestRare = "Rare Treasure Chest";
-inline constexpr const char* kPoiChestGold = "Gold Treasure Chest";
-inline constexpr const char* kPoiChestLocked = "Locked Treasure Chest";   // then what it costs: ", 2 Twilight Fragments"
-inline constexpr const char* kPoiFragments = "Twilight Fragments";
-inline constexpr const char* kPoiFragment = "Twilight Fragment";                  // the game shows "Something Shining"
-inline constexpr const char* kPoiFragmentCrystal = "Twilight Fragment crystal";   // Tartarus: strike it for one
+inline constexpr Tr kBarCustomerIs{"That's the {}."};
+inline constexpr Tr kPoiChestRare{"Rare Treasure Chest"};
+inline constexpr Tr kPoiChestGold{"Gold Treasure Chest"};
+inline constexpr Tr kPoiChestLocked{"Locked Treasure Chest"};   // then what it costs: ", 2 Twilight Fragments"
+inline constexpr Tr kPoiFragments{"Twilight Fragments"};
+inline constexpr Tr kPoiFragment{"Twilight Fragment"};                  // the game shows "Something Shining"
+inline constexpr Tr kPoiFragmentCrystal{"Twilight Fragment crystal"};   // Tartarus: strike it for one
 // One point's type, said after its name when the list lands on it ("Vending Machine, Object, 3 meters"), in the
 // categories' order.
-inline constexpr const char* kPoiCategory[7] = {"Exits", "Doors", "People", "Shops", "Objects", "Events", "Shadows"};
-inline constexpr const char* kShadowBackTurned = "Shadow close, back turned";
-inline constexpr const char* kShadowFacingYou = "Shadow close, facing you";
-inline constexpr const char* kNothingNearbyFull = "Nothing nearby";
-inline constexpr const char* kPoiNoneOf = "No";   // "No Shadows": a category key with nothing in its category
-inline constexpr const char* kNothingSelected = "Nothing selected";
-inline constexpr const char* kOClock = "o'clock";                 // after the hour, a direction by the clock face: "2 o'clock"
+inline constexpr Tr kPoiCategory[7] = {"Exits", "Doors", "People", "Shops", "Objects", "Events", "Shadows"};
+inline constexpr Tr kShadowBackTurned{"Shadow close, back turned"};
+inline constexpr Tr kShadowFacingYou{"Shadow close, facing you"};
+inline constexpr Tr kNothingNearbyFull{"Nothing nearby"};
+inline constexpr Tr kPoiNoneOf{"No"};   // "No Shadows": a category key with nothing in its category
+inline constexpr Tr kNothingSelected{"Nothing selected"};
+inline constexpr Tr kOClock{"o'clock"};                 // after the hour, a direction by the clock face: "2 o'clock"
 // The compass in the top-down mode (north fixed): a bearing's eight points, from north clockwise.
-inline constexpr const char* kCompass[8] = {"north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"};
-inline constexpr const char* kScanNothing = "nothing";            // the right-stick scan: no point anywhere in range
-inline constexpr const char* kMonad = "Monad";                    // the area key's name for the section behind a Monad door
-inline constexpr const char* kMonadChambers = "Monad Chambers";   // the same in Episode Aigis' Abyss of Time
+inline constexpr Tr kCompass[8] = {"north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west"};
+inline constexpr Tr kScanNothing{"nothing"};            // the right-stick scan: no point anywhere in range
+inline constexpr Tr kMonad{"Monad"};                    // the area key's name for the section behind a Monad door
+inline constexpr Tr kMonadChambers{"Monad Chambers"};   // the same in Episode Aigis' Abyss of Time
 // What the icon over a person says, after their name in the list ("Akihiko Sanada, talked to"). The speech bubble
 // (something new to say, what guides call the students to talk to) and the ear (two people chatting, to listen in on)
 // are said too: a talkable person with no icon at all says nothing.
-inline constexpr const char* kIconTalk = "something to say";
-inline constexpr const char* kIconListen = "overhear";
-inline constexpr const char* kIconBuzz = "overhear, a buzz of chatter";   // the handwritten "buzz" over a crowd
-inline constexpr const char* kIconWhisper = "overhear, whispering";      // the handwritten "whisper"
-inline constexpr const char* kIconTalked = "talked to";
-inline constexpr const char* kIconHeard = "heard";
-inline constexpr const char* kIconLink = "Social Link";
-inline constexpr const char* kIconLinkReversed = "Social Link, reversed";
-inline constexpr const char* kIconHangout = "hangout";
-inline constexpr const char* kIconEpisode = "Linked Episode";
-inline constexpr const char* kIconRequest = "request";
-inline constexpr const char* kIconStudy = "study group";
-inline constexpr const char* kIconWalk = "walk";
+inline constexpr Tr kIconTalk{"something to say"};
+inline constexpr Tr kIconListen{"overhear"};
+inline constexpr Tr kIconBuzz{"overhear, a buzz of chatter"};   // the handwritten "buzz" over a crowd
+inline constexpr Tr kIconWhisper{"overhear, whispering"};      // the handwritten "whisper"
+inline constexpr Tr kIconTalked{"talked to"};
+inline constexpr Tr kIconHeard{"heard"};
+inline constexpr Tr kIconLink{"Social Link"};
+inline constexpr Tr kIconLinkReversed{"Social Link, reversed"};
+inline constexpr Tr kIconHangout{"hangout"};
+inline constexpr Tr kIconEpisode{"Linked Episode"};
+inline constexpr Tr kIconRequest{"request"};
+inline constexpr Tr kIconStudy{"study group"};
+inline constexpr Tr kIconWalk{"walk"};
 // The marks drawn over a character's head for a moment (emotes.cpp): "Question mark over Junpei". Matched by the
 // start of the effect's kind (BP_Handwriting_Effect_<kind>_C), so ExclamationQuestion comes before Exclamation.
-struct EmoteMark { const char* kind; const char* text; };
+struct EmoteMark { const char* kind; Tr text; };
 inline constexpr EmoteMark kEmoteMarks[] = {
     {"ExclamationQuestion", "Exclamation and question mark"},
     {"DoubleExclamation", "Double exclamation mark"},
@@ -655,124 +709,125 @@ inline constexpr EmoteMark kEmoteMarks[] = {
     {"Calling", "Calling out"},
     {"AccessIcon_Listen", "Listening"},
 };
-inline constexpr const char* kEmoteOver = "over";
-inline constexpr const char* kEmoteYou = "you";
+inline constexpr Tr kEmoteOver{"over"};
+inline constexpr Tr kEmoteYou{"you"};
 // Navigation
-inline constexpr const char* kNoPath = "No path";
-inline constexpr const char* kNoPathInRoom = "No path, though it is in this room";
-inline constexpr const char* kStuck = "Stuck, stopping";
-inline constexpr const char* kStopped = "Stopped";
-inline constexpr const char* kNotInField = "Not in the field";
-inline constexpr const char* kObjective = "Objective";
-inline constexpr const char* kNoObjective = "No objective shown yet";
-inline constexpr const char* kNothingToReview = "No menu or message to read";
-inline constexpr const char* kNoAreaDescription = "No description for this place:";
-inline constexpr const char* kNoPortraitDescription = "No description for this portrait:";
-inline constexpr const char* kFloor = "floor";
-inline constexpr const char* kTartarus = "Tartarus";
-inline constexpr const char* kUnknownArea = "Unknown area";
+inline constexpr Tr kNoPath{"No path"};
+inline constexpr Tr kNoPathInRoom{"No path, though it is in this room"};
+inline constexpr Tr kStuck{"Stuck, stopping"};
+inline constexpr Tr kStopped{"Stopped"};
+inline constexpr Tr kNotInField{"Not in the field"};
+inline constexpr Tr kObjective{"Objective"};
+inline constexpr Tr kNoObjective{"No objective shown yet"};
+inline constexpr Tr kNothingToReview{"No menu or message to read"};
+inline constexpr Tr kNoAreaDescription{"No description for this place:"};
+inline constexpr Tr kNoPortraitDescription{"No description for this portrait:"};
+inline constexpr Tr kFloor{"floor"};
+inline constexpr Tr kTartarus{"Tartarus"};
+inline constexpr Tr kUnknownArea{"Unknown area"};
 // Velvet Room (the menus are pictures: the mod's own words)
-inline constexpr const char* kVelvetMenu[] = {"Fusion", "Summon from the Compendium", "Register to the Compendium"};
-inline constexpr const char* kVelvetTop = "What do you wish for?";
-inline constexpr const char* kFusionMethods[] = {"Dyad Fusion, two Personas", "Special Fusion", "Fusion Search"};
-inline constexpr const char* kFusionMethod = "Choose a fusion method.";
-inline constexpr const char* kFusionFirst = "Choose the base Persona.";
-inline constexpr const char* kFusionSecond = "Choose the second Persona.";
-inline constexpr const char* kFusionSearch = "Fusion Search. Choose a Persona to fuse.";
-inline constexpr const char* kFusionFrom = "from";
-inline constexpr const char* kFusionAnd = "and";
+inline constexpr Tr kVelvetMenu[] = {"Fusion", "Summon from the Compendium", "Register to the Compendium"};
+inline constexpr Tr kVelvetTop{"What do you wish for?"};
+inline constexpr Tr kFusionMethods[] = {"Dyad Fusion, two Personas", "Special Fusion", "Fusion Search"};
+inline constexpr Tr kFusionMethod{"Choose a fusion method."};
+inline constexpr Tr kFusionFirst{"Choose the base Persona."};
+inline constexpr Tr kFusionSecond{"Choose the second Persona."};
+inline constexpr Tr kFusionSearch{"Fusion Search. Choose a Persona to fuse."};
+inline constexpr Tr kFusionFrom{"from"};
+inline constexpr Tr kFusionAnd{"and"};
 inline constexpr Hint kFusionSearchKeys{"Space confirms, Q and E sort, Escape back.", "A confirms, LB and RB sort, B back."};
-inline constexpr const char* kFusionNone = "No Persona can be fused.";
-inline constexpr const char* kSpecialFusion = "Special Fusion. Choose a Persona to fuse.";
-inline constexpr const char* kSpecialHave = "you have";
-inline constexpr const char* kSpecialReady = "ready to fuse";
-inline constexpr const char* kCompendium = "Compendium. Select a Persona.";
-inline constexpr const char* kRegister = "Who shall you register?";
-inline constexpr const char* kRegisterThis = "Register this Persona?";
-inline constexpr const char* kSummonThis = "Summon this Persona?";
+inline constexpr Tr kFusionNone{"No Persona can be fused."};
+inline constexpr Tr kSpecialFusion{"Special Fusion. Choose a Persona to fuse."};
+inline constexpr Tr kSpecialHave{"you have"};
+inline constexpr Tr kSpecialReady{"ready to fuse"};
+inline constexpr Tr kCompendium{"Compendium. Select a Persona."};
+inline constexpr Tr kRegister{"Who shall you register?"};
+inline constexpr Tr kRegisterThis{"Register this Persona?"};
+inline constexpr Tr kSummonThis{"Summon this Persona?"};
 inline constexpr Hint kStatusConfirmKeys{"Space registers it, Page Down and Page Up jump between sections, Q and E switch Persona, F skills and affinities, Tab registered stats, Escape back.", "A registers it, RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, Y registered stats, B back."};
 inline constexpr Hint kRegisterKeys{"Up and down arrows choose, Space opens its status, Tab marks it, F registers the marked ones or all, Escape back.", "Up and down choose, A opens its status, Y marks it, X registers the marked ones or all, B back."};
 inline constexpr Hint kCompendiumPageKeys{"Space summons, Tab and Shift Tab jump between sections, Q and E switch Persona, F skills and affinities, Escape back.", "A summons, RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, B back."};
 inline constexpr Hint kLevelUpKeys{"Tab and Shift Tab jump between sections, Space continues.", "RT and LT jump between sections, A continues."};
 inline constexpr Hint kCompendiumKeys{"Up and down arrows choose, Space opens its page, Q and E sort, Tab registered only, F lock, Escape back.", "Up and down choose, A opens its page, LB and RB sort, Y registered only, X lock, B back."};
-inline constexpr const char* kFusionGives = "makes";
-inline constexpr const char* kFusionImpossible = "cannot fuse";
-inline constexpr const char* kAboveYourLevel = "above your level";
-inline constexpr const char* kAlreadyOwned = "already in your stock";
+inline constexpr Tr kFusionGives{"makes"};
+inline constexpr Tr kFusionImpossible{"cannot fuse"};
+inline constexpr Tr kAboveYourLevel{"above your level"};
+inline constexpr Tr kAlreadyOwned{"already in your stock"};
 inline constexpr Hint kFusionKeys{"Space confirms, F Persona stats, Escape back.", "A confirms, X Persona stats, B back."};
-inline constexpr const char* kEquipped = "equipped";
-inline constexpr const char* kFusionResult = "Result";
-inline constexpr const char* kFusionMaterial = "Material";
+inline constexpr Tr kEquipped{"equipped"};
+inline constexpr Tr kFusionResult{"Result"};
+inline constexpr Tr kFusionMaterial{"Material"};
 // Persona status pages (camp, Velvet Room, battle)
-inline constexpr const char* kStatNames[] = {"Strength", "Magic", "Endurance", "Agility", "Luck"};
-inline constexpr const char* kStatsTitle = "Stats";
-inline constexpr const char* kAffinitiesTitle = "Affinities";
-inline constexpr const char* kNoAffinities = "no weaknesses or resistances";
-inline constexpr const char* kLearnsTitle = "Learns later";
-inline constexpr const char* kLearnsAt = "at level";
-inline constexpr const char* kSlBonus = "Social Link bonus";
-inline constexpr const char* kSlRank = "rank";
-inline constexpr const char* kExpToNext = "EXP to next level";
-inline constexpr const char* kRaisesTo = "up to level";
-inline constexpr const char* kUp = "up";
-inline constexpr const char* kNew = "new";
-inline constexpr const char* kInheritTitle = "Choose skills to inherit.";
-inline constexpr const char* kInheritUpTo = "Choose skills to inherit, up to";   // then how many: "..., up to 3."
-inline constexpr const char* kPicks = "picks";   // "chosen, 1 of 2 picks": apart from the row's place in the list
-inline constexpr const char* kInherits = "Inherits";
-inline constexpr const char* kNotChosen = "not chosen";
-inline constexpr const char* kFusing = "Fusing.";
+inline constexpr Tr kStatNames[] = {"Strength", "Magic", "Endurance", "Agility", "Luck"};
+inline constexpr Tr kStatsTitle{"Stats"};
+inline constexpr Tr kAffinitiesTitle{"Affinities"};
+inline constexpr Tr kNoAffinities{"no weaknesses or resistances"};
+inline constexpr Tr kLearnsTitle{"Learns later"};
+inline constexpr Tr kLearnsAt{"at level"};
+inline constexpr Tr kSlBonus{"Social Link bonus"};
+inline constexpr Tr kSlRank{"rank"};
+inline constexpr Tr kExpToNext{"EXP to next level"};
+inline constexpr Tr kRaisesTo{"up to level"};
+inline constexpr Tr kUp{"up"};
+inline constexpr Tr kNew{"new"};
+inline constexpr Tr kInheritTitle{"Choose skills to inherit."};
+inline constexpr Tr kInheritUpTo{"Choose skills to inherit, up to"};   // then how many: "..., up to 3."
+inline constexpr Tr kPicks{"picks"};   // "chosen, 1 of 2 picks": apart from the row's place in the list
+inline constexpr Tr kInherits{"Inherits"};
+inline constexpr Tr kNotChosen{"not chosen"};
+inline constexpr Tr kFusing{"Fusing."};
 inline constexpr Hint kFusingKeys{"Tab skips the animation.", "The Menu button skips the animation."};
 inline constexpr Hint kInheritSkill{"Up and down arrows move, Space takes a skill or puts it back, Escape back.", "Up and down move, A takes a skill or puts it back, B back."};
 inline constexpr Hint kFusionConfirmKeys{"Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.", "A fuses, RT and LT jump between sections, LB and RB page through the result and its materials, X skills and affinities, B back."};
 // Config (System > Config, and the title screen's)
-inline constexpr const char* kConfig = "Config";
-inline constexpr const char* kOn = "on";
-inline constexpr const char* kOff = "off";
-inline constexpr const char* kUnavailable = "unavailable";
-inline constexpr const char* kUnsupportedBuild = "This copy of Persona 3 Reload is not the version Arcana was made for, such as the demo or an older update. To keep the game from freezing, menus are not read. Messages and the field still are.";
+inline constexpr Tr kConfig{"Config"};
+inline constexpr Tr kOn{"on"};   // a setting's value
+inline constexpr Tr kOnTarget{"@target:on"};   // "Weak on Junpei", "Use Agi on all enemies?"
+inline constexpr Tr kOff{"off"};
+inline constexpr Tr kUnavailable{"unavailable"};
+inline constexpr Tr kUnsupportedBuild{"This copy of Persona 3 Reload is not the version Arcana was made for, such as the demo or an older update. To keep the game from freezing, menus are not read. Messages and the field still are."};
 inline constexpr Hint kConfigTabKeys{"Up and down arrows choose, Space opens, Escape back. {settings} opens the mod's settings.", "Up and down choose, A opens, B back. Both triggers and View open the mod's settings."};
 inline constexpr Hint kBgmKeys{"Up and down arrows choose, Tab and Shift Tab jump between modes and tracks, Space sets it, F plays or stops a track, E marks or unmarks a favorite, Escape back.", "Up and down choose, RT and LT jump between modes and tracks, A sets it, X plays or stops a track, RB marks or unmarks a favorite, B back."};
 // A music row: Space (or left and right) opens its playlist; the game's confirm would save and leave.
 inline constexpr Hint kConfigBgmRowKeys{"Up and down arrows choose, Space or the left and right arrows open the playlist, H restores defaults, Escape back. {settings} opens the mod's settings.", "Up and down choose, A or left and right open the playlist, Menu button restores defaults, B back. Both triggers and View open the mod's settings."};
 inline constexpr Hint kConfigKeys{"Up and down arrows choose, left and right arrows change, Space saves changes, H restores defaults, Escape back. {settings} opens the mod's settings.", "Up and down choose, left and right change, A saves changes, Menu button restores defaults, B back. Both triggers and View open the mod's settings."};
-inline constexpr const char* kKeyCode = "key code";
-inline constexpr const char* kPlaylist = "Playlist";   // when the BGM row's own title is not known
-inline constexpr const char* kBgmModes = "Modes";
-inline constexpr const char* kBgmTracks = "Tracks";
+inline constexpr Tr kKeyCode{"key code"};
+inline constexpr Tr kPlaylist{"Playlist"};   // when the BGM row's own title is not known
+inline constexpr Tr kBgmModes{"Modes"};
+inline constexpr Tr kBgmTracks{"Tracks"};
 // The playlist's first three rows (Default, Random, Favorited by their BgmId -1, -2, -3): what each does.
-inline constexpr const char* kBgmModeDesc[] = {"The game's own music", "A random track each time", "A random favorite each time"};
-inline constexpr const char* kBgmNoFavorites = "no favorites yet";
-inline constexpr const char* kBgmPlaying = "playing";
-inline constexpr const char* kBgmStopped = "stopped";
-inline constexpr const char* kBgmUnfavorited = "not a favorite";
-inline constexpr const char* kFavorite = "favorite";
-inline constexpr const char* kBgmCurrent = "current";   // the playlist's track now set (the game's SET mark)
-inline constexpr const char* kDictionary = "Dictionary";
-inline constexpr const char* kNoParty = "No party";
-inline constexpr const char* kInParty = "in party";   // a member list that mixes the active party with the rest
-inline constexpr const char* kReserve = "reserve";
-inline constexpr const char* kNavigator = "navigator";
-inline constexpr const char* kTownInfo = "Places here";
-inline constexpr const char* kTownLinks = "Social Links here";
-inline constexpr const char* kTownOthers = "Also here";
-inline constexpr const char* kTheurgy = "Theurgy";
-inline constexpr const char* kBuffs[] = {"attack up", "attack down", "defense up", "defense down", "agility up", "agility down"};
-inline constexpr const char* kCharged = "Charged";
-inline constexpr const char* kConcentrating = "Concentrating";
-inline constexpr const char* kPhysicalShield = "Physical attacks reflected";
-inline constexpr const char* kMagicShield = "Magic attacks reflected";
-inline constexpr const char* kAilmentsDoubled = "Ailments land more easily";
-inline constexpr const char* kWalls[] = {"Fire resisted", "Ice resisted", "Electricity resisted", "Wind resisted"};
-inline constexpr const char* kBreaks[] = {"Fire resistance broken", "Ice resistance broken", "Wind resistance broken", "Electricity resistance broken"};
-inline constexpr const char* kLog = "Log";
-inline constexpr const char* kRequests = "Elizabeth's requests";
-inline constexpr const char* kMissingPersons = "Missing Persons";
-inline constexpr const char* kNumber = "Number";
-inline constexpr const char* kUnknown = "unknown";
-inline constexpr const char* kMissingFound = "found";
-inline constexpr const char* kMissingDiscontinued = "discontinued";
-inline constexpr const char* kMissingSearching = "searching";
+inline constexpr Tr kBgmModeDesc[] = {"The game's own music", "A random track each time", "A random favorite each time"};
+inline constexpr Tr kBgmNoFavorites{"no favorites yet"};
+inline constexpr Tr kBgmPlaying{"playing"};
+inline constexpr Tr kBgmStopped{"stopped"};
+inline constexpr Tr kBgmUnfavorited{"not a favorite"};
+inline constexpr Tr kFavorite{"favorite"};
+inline constexpr Tr kBgmCurrent{"current"};   // the playlist's track now set (the game's SET mark)
+inline constexpr Tr kDictionary{"Dictionary"};
+inline constexpr Tr kNoParty{"No party"};
+inline constexpr Tr kInParty{"in party"};   // a member list that mixes the active party with the rest
+inline constexpr Tr kReserve{"reserve"};
+inline constexpr Tr kNavigator{"navigator"};
+inline constexpr Tr kTownInfo{"Places here"};
+inline constexpr Tr kTownLinks{"Social Links here"};
+inline constexpr Tr kTownOthers{"Also here"};
+inline constexpr Tr kTheurgy{"Theurgy"};
+inline constexpr Tr kBuffs[] = {"attack up", "attack down", "defense up", "defense down", "agility up", "agility down"};
+inline constexpr Tr kCharged{"Charged"};
+inline constexpr Tr kConcentrating{"Concentrating"};
+inline constexpr Tr kPhysicalShield{"Physical attacks reflected"};
+inline constexpr Tr kMagicShield{"Magic attacks reflected"};
+inline constexpr Tr kAilmentsDoubled{"Ailments land more easily"};
+inline constexpr Tr kWalls[] = {"Fire resisted", "Ice resisted", "Electricity resisted", "Wind resisted"};
+inline constexpr Tr kBreaks[] = {"Fire resistance broken", "Ice resistance broken", "Wind resistance broken", "Electricity resistance broken"};
+inline constexpr Tr kLog{"Log"};
+inline constexpr Tr kRequests{"Elizabeth's requests"};
+inline constexpr Tr kMissingPersons{"Missing Persons"};
+inline constexpr Tr kNumber{"Number"};
+inline constexpr Tr kUnknown{"unknown"};
+inline constexpr Tr kMissingFound{"found"};
+inline constexpr Tr kMissingDiscontinued{"discontinued"};
+inline constexpr Tr kMissingSearching{"searching"};
 inline constexpr Hint kRequestKeys{"Up and down arrows choose, Space accepts or reports, F info, X sorts, Escape closes.", "Up and down choose, A accepts or reports, X info, RT sorts, B closes."};
 // The battle's Persona page from a skill list: OK equips the Persona shown (BP_BtlGuiPersonaStatus: CheckPersonaChange,
 // SetEquipPersona); opened from Shift, Survey or a target (IsStrategy) OK does nothing and L1 / R1 switch the member.
@@ -784,12 +839,12 @@ inline constexpr Hint kStatsPersonaKeys{"Up and down arrows go through the lines
 inline constexpr Hint kRushRunningKeys{"Tab or C stops Rush.", "The Menu button or B stops Rush."};
 // The Velvet Room's Persona page (F on a fusion list): the result page's skills and affinities switch works there too.
 inline constexpr Hint kVelvetPersonaKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, F skills and affinities, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, X skills and affinities, B back."};
-inline constexpr const char* kTacticsHeading = "Tactics";
-inline constexpr const char* kTerminal = "Terminal. Where do you want to go?";
+inline constexpr Tr kTacticsHeading{"Tactics"};
+inline constexpr Tr kTerminal{"Terminal. Where do you want to go?"};
 inline constexpr Hint kTerminalKeys{"Up and down arrows choose, Space travels, Escape closes.", "Up and down choose, A travels, B closes."};
-inline constexpr const char* kEntrance = "Entrance";
-inline constexpr const char* kFloorTitle = "Floor";
-inline constexpr const char* kYouAreHere = "furthest floor reached";
+inline constexpr Tr kEntrance{"Entrance"};
+inline constexpr Tr kFloorTitle{"Floor"};
+inline constexpr Tr kYouAreHere{"furthest floor reached"};
 // The title menu: Z opens the credits (UTitleStateSelect: action 0x1a, LT).
 inline constexpr Hint kTitleMenuKeys{"Up and down arrows choose, Space confirms, Z plays the credits.", "Up and down choose, A confirms, LT plays the credits."};
 // Request info (F on a request, UIRequest state 9; FUN_1415a9370): up and down switch request; Space accepts at the Velvet Room.
@@ -797,16 +852,16 @@ inline constexpr Hint kRequestInfoKeys{"Up and down arrows switch request, F or 
 inline constexpr Hint kRequestInfoVelvetKeys{"Up and down arrows switch request, Space accepts, F or Escape back to the list.", "Up and down switch request, A accepts, X or B back to the list."};
 inline constexpr Hint kSelectKeys{"Up and down arrows choose, Space confirms, Escape closes.", "Up and down choose, A confirms, B closes."};
 inline constexpr Hint kLogKeys{"Up and down arrows scroll, Space replays the voice, Escape closes.", "Up and down scroll, A replays the voice, B closes."};
-inline constexpr const char* kLogEarlier = "An earlier line, from before this session";
-inline constexpr const char* kLogNone = "None";   // the log has no lines (the game's own word for it)
-inline constexpr const char* kShift = "Shift. Pass the turn to";
-inline constexpr const char* kRewind = "Rewind. Choose a day to go back to";
-inline constexpr const char* kCard = "Card";
+inline constexpr Tr kLogEarlier{"An earlier line, from before this session"};
+inline constexpr Tr kLogNone{"None"};   // the log has no lines (the game's own word for it)
+inline constexpr Tr kShift{"Shift. Pass the turn to"};
+inline constexpr Tr kRewind{"Rewind. Choose a day to go back to"};
+inline constexpr Tr kCard{"Card"};
 // Shuffle Time's Minor Arcana suits, said with the card's number: "Wands 1".
-inline constexpr const char* kSuitSwords = "Swords";
-inline constexpr const char* kSuitCoins = "Coins";
-inline constexpr const char* kSuitCups = "Cups";
-inline constexpr const char* kSuitWands = "Wands";
+inline constexpr Tr kSuitSwords{"Swords"};
+inline constexpr Tr kSuitCoins{"Coins"};
+inline constexpr Tr kSuitCups{"Cups"};
+inline constexpr Tr kSuitWands{"Wands"};
 // Camp submenus (screens/camp_*.cpp, quest.cpp, theurgy.cpp)
 // Their keys (F1), from each menu's native input function: Q / E LB / RB,
 // F the X button, X RT, Z LT, H the Menu button.
@@ -826,43 +881,43 @@ inline constexpr Hint kCalendarKeys{"Left and right arrows move a day, up and do
 inline constexpr Hint kCalendarPlansKeys{"Up and down arrows go through the jobs, F or Escape closes them.", "Up and down go through the jobs, X or B closes them."};
 inline constexpr Hint kSocialPageKeys{"Up and down arrows choose, Q and E switch link, Escape back.", "Up and down choose, LB and RB switch link, B back."};
 inline constexpr Hint kTheurgyListKeys{"Left and right arrows choose, Q and E switch character, F personality, Escape back.", "Left and right choose, LB and RB switch character, X personality, B back."};
-inline constexpr const char* kItemCategories[] = {"Order Obtained", "Consumable Items", "Skill Cards", "Materials & Valuables", "Event & Misc."};
-inline constexpr const char* kItem = "Item";
-inline constexpr const char* kNoItems = "No items";
-inline constexpr const char* kUseOnWhom = "On whom?";
-inline constexpr const char* kWhichPersona = "Which Persona?";
-inline constexpr const char* kEquipSlots[] = {"Weapon", "Armor", "Footwear", "Accessory", "Outfit"};
-inline constexpr const char* kTactic = "Tactic";
-inline constexpr const char* kChosen = "chosen";
-inline constexpr const char* kTheurgyObtained = "New Theurgy";
-inline constexpr const char* kTheurgyGauge = "Gauge condition";
-inline constexpr const char* kNotEnough = "not enough";
+inline constexpr Tr kItemCategories[] = {"Order Obtained", "Consumable Items", "Skill Cards", "Materials & Valuables", "Event & Misc."};
+inline constexpr Tr kItem{"Item"};
+inline constexpr Tr kNoItems{"No items"};
+inline constexpr Tr kUseOnWhom{"On whom?"};
+inline constexpr Tr kWhichPersona{"Which Persona?"};
+inline constexpr Tr kEquipSlots[] = {"Weapon", "Armor", "Footwear", "Accessory", "Outfit"};
+inline constexpr Tr kTactic{"Tactic"};
+inline constexpr Tr kChosen{"chosen"};
+inline constexpr Tr kTheurgyObtained{"New Theurgy"};
+inline constexpr Tr kTheurgyGauge{"Gauge condition"};
+inline constexpr Tr kNotEnough{"not enough"};
 // Shops (shop.cpp)
-inline constexpr const char* kOption = "Option";
-inline constexpr const char* kCannotBuy = "not now";
-inline constexpr const char* kOutOfStock = "out of stock";
-inline constexpr const char* kCarryingMax = "carrying the maximum";
-inline constexpr const char* kNotEnoughYen = "not enough yen";
-inline constexpr const char* kLeft = "left";
-inline constexpr const char* kForWhom = "For whom?";
-inline constexpr const char* kFor = "for";
-inline constexpr const char* kSell = "Sell";
-inline constexpr const char* kSellAll = "Sell all items";
-inline constexpr const char* kWhichMaterial = "Which material do you want to use?";
-inline constexpr const char* kBuyQuestion = "Is this what you want?";
-inline constexpr const char* kEquipQuestion = "Equip it now?";
-inline constexpr const char* kSellConfirm = "Sell it?";
-inline constexpr const char* kSellOldQuestion = "Sell what they wore before?";
-inline constexpr const char* kKeep = "Keep";
-inline constexpr const char* kMarked = "marked";
-inline constexpr const char* kNoTutorials = "There are no tutorials to display.";
+inline constexpr Tr kOption{"Option"};
+inline constexpr Tr kCannotBuy{"not now"};
+inline constexpr Tr kOutOfStock{"out of stock"};
+inline constexpr Tr kCarryingMax{"carrying the maximum"};
+inline constexpr Tr kNotEnoughYen{"not enough yen"};
+inline constexpr Tr kLeft{"left"};
+inline constexpr Tr kForWhom{"For whom?"};
+inline constexpr Tr kFor{"for"};
+inline constexpr Tr kSell{"Sell"};
+inline constexpr Tr kSellAll{"Sell all items"};
+inline constexpr Tr kWhichMaterial{"Which material do you want to use?"};
+inline constexpr Tr kBuyQuestion{"Is this what you want?"};
+inline constexpr Tr kEquipQuestion{"Equip it now?"};
+inline constexpr Tr kSellConfirm{"Sell it?"};
+inline constexpr Tr kSellOldQuestion{"Sell what they wore before?"};
+inline constexpr Tr kKeep{"Keep"};
+inline constexpr Tr kMarked{"marked"};
+inline constexpr Tr kNoTutorials{"There are no tutorials to display."};
 // The camp's tactics as the game draws them (Stats, E), by the unit's tactic index (unit +0x296; read 2026-10-30)
-inline constexpr const char* kTacticNames[] = {"Direct Commands", "Act Freely", "Full Assault", "Conserve SP", "Heal/Support"};
-inline constexpr const char* kRequestStatus[] = {"not accepted", "accepted", "completed", "expired", "ready to report"};
-inline constexpr const char* kRequestLocked = "???";   // a request not yet open (status 5), as the game lists it
+inline constexpr Tr kTacticNames[] = {"Direct Commands", "Act Freely", "Full Assault", "Conserve SP", "Heal/Support"};
+inline constexpr Tr kRequestStatus[] = {"not accepted", "accepted", "completed", "expired", "ready to report"};
+inline constexpr Tr kRequestLocked{"???"};   // a request not yet open (status 5), as the game lists it
 // Story cut-ins (cutin.cpp): the close-up a scene flashes before a line it stresses, by the game's character id and
 // picture (T_UI_CI_<PC|SC><char>_<pic>, each picture looked at; 2026-11-02).
-struct Cutin { int chara, pic; const char* text; };
+struct Cutin { int chara, pic; Tr text; };
 inline constexpr Cutin kCutins[] = {
   {2, 1, "Close-up: Yukari, smiling."},
   {2, 2, "Close-up: Yukari, glaring."},
@@ -909,7 +964,7 @@ inline constexpr Cutin kCutins[] = {
 // Pictures a scene shows full screen (picture.cpp, AUIMiscPictureDraw; T_UI_Picture_<id>, each looked at 2026-11-03):
 // the chalkboard picture of a class question (UI/Picture/Lesson; never the answer, the teacher names it after) and
 // the story's sketch (UI/Picture/Event). Tutorial/T_UI_Picture_200 is an empty placeholder.
-struct ScenePicture { const char* texture; const char* text; };
+struct ScenePicture { const char* texture; Tr text; };
 inline constexpr ScenePicture kScenePictures[] = {
   {"T_UI_Picture_000", "Picture: a pencil sketch in a spiral-bound sketchbook: Junpei in his baseball cap and a high-collared jacket, a little goatee on his chin, smiling as he looks off to the side."},
   {"T_UI_Picture_100", "Picture: four spirals, each drawn around the origin of x and y axes. A: a spiral that widens fast, each turn far wider than the one inside it, ending in a broad open sweep. B: evenly spaced rings, every turn the same distance from the last. C: rings that crowd together toward the outside, around a small open curl at the centre. D: a few tight turns around the origin that unwind into a long tail, flattening out to the right along the top."},
@@ -919,59 +974,70 @@ inline constexpr ScenePicture kScenePictures[] = {
 };
 
 // The mod's key list (Shift+F1, the settings menu's "Mod keys" row): what each key does, in the order they are bound.
-inline constexpr const char* kKeyHelpScreenKeys = "The keys of this screen";
-inline constexpr const char* kKeyHelpModKeys = "The mod's keys";
-inline constexpr const char* kKeyHelpSettings = "Mod settings";
-inline constexpr const char* kKeyHelpSonar = "Sonar on or off: the sounds of the things around you";
-inline constexpr const char* kKeyHelpWhere = "Where am I: the date, the area, your yen and the objective";
-inline constexpr const char* kKeyHelpStats = "Social stats";
-inline constexpr const char* kKeyHelpSocial = "Social Links and their ranks";
-inline constexpr const char* kKeyHelpReview = "Repeat the current message or describe the current screen";
-inline constexpr const char* kKeyHelpPoiNext = "Next point of interest, farther away";
-inline constexpr const char* kKeyHelpPoiPrev = "Previous point of interest, nearer";
-inline constexpr const char* kKeyHelpPoiCatNext = "Next category of points of interest, from its nearest";
-inline constexpr const char* kKeyHelpPoiCatPrev = "Previous category";
-inline constexpr const char* kKeyHelpParty = "Party: each member's level, HP and SP";
-inline constexpr const char* kKeyHelpWalk = "Walk to the selected point of interest, or stop walking";
-inline constexpr const char* kKeyHelpPoiNearest = "Select the nearest point of interest of any kind; again, the next nearest";
-inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points of interest of any kind, toward the nearest";
-inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";
+inline constexpr Tr kKeyHelpScreenKeys{"The keys of this screen"};
+inline constexpr Tr kKeyHelpModKeys{"The mod's keys"};
+inline constexpr Tr kKeyHelpSettings{"Mod settings"};
+inline constexpr Tr kKeyHelpSonar{"Sonar on or off: the sounds of the things around you"};
+inline constexpr Tr kKeyHelpWhere{"Where am I: the date, the area, your yen and the objective"};
+inline constexpr Tr kKeyHelpStats{"Social stats"};
+inline constexpr Tr kKeyHelpSocial{"Social Links and their ranks"};
+inline constexpr Tr kKeyHelpReview{"Repeat the current message or describe the current screen"};
+inline constexpr Tr kKeyHelpPoiNext{"Next point of interest, farther away"};
+inline constexpr Tr kKeyHelpPoiPrev{"Previous point of interest, nearer"};
+inline constexpr Tr kKeyHelpPoiCatNext{"Next category of points of interest, from its nearest"};
+inline constexpr Tr kKeyHelpPoiCatPrev{"Previous category"};
+inline constexpr Tr kKeyHelpParty{"Party: each member's level, HP and SP"};
+inline constexpr Tr kKeyHelpWalk{"Walk to the selected point of interest, or stop walking"};
+inline constexpr Tr kKeyHelpPoiNearest{"Select the nearest point of interest of any kind; again, the next nearest"};
+inline constexpr Tr kKeyHelpPoiNearestPrev{"Back through the points of interest of any kind, toward the nearest"};
+inline constexpr Tr kKeyHelpWalkUse{"Walk to the selected point of interest and use it: check, talk or open"};
 // A number key's category ("Shadows: the nearest, again the next; Shift goes back").
-inline constexpr const char* kKeyHelpPoiCatKey = "the nearest, again the next; Shift goes back";
-inline constexpr const char* kKeyHelpPoiCatBack = "back toward the nearest; first, the farthest";
-inline constexpr const char* kKeyHelpPoiAgain = "The selected point of interest again: where it is now, and its sound";
-inline constexpr const char* kKeyHelpArea = "Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks; on a Social Link, its picture";
+inline constexpr Tr kKeyHelpPoiCatKey{"the nearest, again the next; Shift goes back"};
+inline constexpr Tr kKeyHelpPoiCatBack{"back toward the nearest; first, the farthest"};
+inline constexpr Tr kKeyHelpPoiAgain{"The selected point of interest again: where it is now, and its sound"};
+inline constexpr Tr kKeyHelpArea{"Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks; on a Social Link, its picture"};
 // A key's name in that list: its modifiers, then the key as Windows names it (kKeyUnnamed and its code when it has
 // no name).
-inline constexpr const char* kModCtrl = "Ctrl+";
-inline constexpr const char* kModAlt = "Alt+";
-inline constexpr const char* kModShift = "Shift+";
-inline constexpr const char* kKeyUnnamed = "key";
+inline constexpr Tr kModCtrl{"Ctrl+"};
+inline constexpr Tr kModAlt{"Alt+"};
+inline constexpr Tr kModShift{"Shift+"};
+inline constexpr Tr kKeyUnnamed{"key"};
 // A controller button's name in that list.
-inline constexpr const char* kPadDpadUp = "D-pad up";
-inline constexpr const char* kPadDpadDown = "D-pad down";
-inline constexpr const char* kPadDpadLeft = "D-pad left";
-inline constexpr const char* kPadDpadRight = "D-pad right";
-inline constexpr const char* kPadMenu = "Menu button";
-inline constexpr const char* kPadView = "View button";
-inline constexpr const char* kPadL3 = "L3";
-inline constexpr const char* kPadR3 = "R3";
-inline constexpr const char* kPadLB = "LB";
-inline constexpr const char* kPadRB = "RB";
-inline constexpr const char* kPadA = "A";
-inline constexpr const char* kPadB = "B";
-inline constexpr const char* kPadX = "X";
-inline constexpr const char* kPadY = "Y";
-inline constexpr const char* kPadUnknown = "?";
+inline constexpr Tr kPadDpadUp{"D-pad up"};
+inline constexpr Tr kPadDpadDown{"D-pad down"};
+inline constexpr Tr kPadDpadLeft{"D-pad left"};
+inline constexpr Tr kPadDpadRight{"D-pad right"};
+inline constexpr Tr kPadMenu{"Menu button"};
+inline constexpr Tr kPadView{"View button"};
+inline constexpr Tr kPadL3{"L3"};
+inline constexpr Tr kPadR3{"R3"};
+inline constexpr Tr kPadLB{"LB"};
+inline constexpr Tr kPadRB{"RB"};
+inline constexpr Tr kPadA{"A"};
+inline constexpr Tr kPadB{"B"};
+inline constexpr Tr kPadX{"X"};
+inline constexpr Tr kPadY{"Y"};
+inline constexpr Tr kPadUnknown{"?"};
 // Said once the mod is up, or when it could not start.
-inline constexpr const char* kModLoaded = "Arcana loaded";
-inline constexpr const char* kModLoadedNoSpeech = "Arcana loaded, no speech backend";
-inline constexpr const char* kNoEngine = "Arcana could not find the game engine. This game version may be unsupported.";
+inline constexpr Tr kModLoaded{"Arcana loaded"};
+inline constexpr Tr kModLoadedNoSpeech{"Arcana loaded, no speech backend"};
+inline constexpr Tr kNoEngine{"Arcana could not find the game engine. This game version may be unsupported."};
 // A date: "April 6, Monday", then ", holiday" on one (the game's own table abbreviates the weekday: "(Su)").
-inline constexpr const char* kWeekdays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-inline constexpr const char* kMonths[13] = {"", "January", "February", "March", "April", "May", "June", "July",
+// A date (calendar_text): {month} the month's name, {day} its number, {th} the English ordinal's ending (st, nd, rd,
+// th); a language without one leaves {th} out: "{day} de {month}".
+inline constexpr Tr kDateFormat{"{month} {day}{th}"};
+inline constexpr Tr kWeekdays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+inline constexpr Tr kMonths[13] = {"", "January", "February", "March", "April", "May", "June", "July",
                                             "August", "September", "October", "November", "December"};
-inline constexpr const char* kHoliday = "holiday";
+inline constexpr Tr kHoliday{"holiday"};
 // A Persona's stats on its one-line status, in kStatNames' order.
-inline constexpr const char* kStatAbbrev[5] = {"St", "Ma", "En", "Ag", "Lu"};
+inline constexpr Tr kStatAbbrev[5] = {"St", "Ma", "En", "Ag", "Lu"};
 }  // namespace p3a::strings
+
+// std::format("{}", strings::kX): the text in the current language.
+template <>
+struct std::formatter<p3a::strings::Tr, char> : std::formatter<std::string_view, char> {
+  auto format(p3a::strings::Tr t, std::format_context& ctx) const {
+    return std::formatter<std::string_view, char>::format(std::string_view(t.c_str()), ctx);
+  }
+};

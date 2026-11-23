@@ -85,17 +85,12 @@ TEST_CASE("numbered_name: what stays one whole name") {
   CHECK(n == -1);
 }
 
-TEST_CASE("check_kind: shops, doors and things by the game's names") {
-  CHECK(check_kind("Be Blue V") == CheckKind::Shop);
-  CHECK(check_kind("Vending Machine") == CheckKind::Shop);
-  CHECK(check_kind("Chagall Caf\xC3\xA9") == CheckKind::Shop);
-  CHECK(check_kind("Police Station") == CheckKind::Shop);
-  CHECK(check_kind("Faculty Office") == CheckKind::Door);
-  CHECK(check_kind("Classroom 2-E") == CheckKind::Door);
-  CHECK(check_kind("School Building 2F") == CheckKind::Door);
-  CHECK(check_kind("Bookshelf") == CheckKind::Thing);
-  CHECK(check_kind("be blue v") == CheckKind::Thing);   // the names are matched exactly
-  CHECK(check_kind("") == CheckKind::Thing);
+TEST_CASE("check_kind: shops, doors and things by their name's row") {
+  CHECK(check_kind(2) == CheckKind::Shop);          // Ramen Shop
+  CHECK(check_kind(3101002) == CheckKind::Shop);
+  CHECK(check_kind(1) == CheckKind::Door);          // Classroom Door
+  CHECK(check_kind(0) == CheckKind::Thing);
+  CHECK(check_kind(-1) == CheckKind::Thing);
 }
 
 TEST_CASE("npc_name_rows: the index first, then the script ids on a field level") {
@@ -155,17 +150,13 @@ TEST_CASE("is_named: a prompt's label names a point of interest") {
   CHECK_FALSE(is_named("Bed", "Desk"));
 }
 
-TEST_CASE("named_as_action: a way onward that says what you do") {
-  CHECK(named_as_action("Go Elsewhere"));
-  CHECK(named_as_action("Head Up"));
-  CHECK(named_as_action("Return to Dorm"));
-  CHECK(named_as_action("Proceed Onward"));
-  CHECK(named_as_action("Enter the Velvet Room"));
-  CHECK(named_as_action("To furthest floor"));
-  CHECK_FALSE(named_as_action("Iwatodai Station"));
-  CHECK_FALSE(named_as_action("Gold Treasure Chest"));   // "Go" is only a word's start here
-  CHECK_FALSE(named_as_action("Tofu Shop"));
-  CHECK_FALSE(named_as_action("Exit"));                  // the verb alone, with nothing after it
+TEST_CASE("named_as_action: a way onward that says what you do, by its name's row") {
+  CHECK(named_as_action(10000001, false));        // Go Elsewhere
+  CHECK(named_as_action(10009017, false));        // Enter the Velvet Room
+  CHECK_FALSE(named_as_action(10009003, false));  // Giant Device ...
+  CHECK(named_as_action(10009003, true));         // ... Go to Another Floor once its flag is on
+  CHECK_FALSE(named_as_action(2102108, false));   // Bulletin Board
+  CHECK_FALSE(named_as_action(-1, false));
 }
 
 TEST_CASE("settle_category: stay, move on past empty ones, wrap, or find none") {

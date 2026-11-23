@@ -69,7 +69,7 @@ class TheurgyMenu : public MenuScreen {
     // Queued: the scene's own line is not cut off (nothing of the player's moved; no screen was entered).
     speech::speak(std::format("{}: {}{}", strings::kTheurgyObtained, persona::skill_name(id), d.empty() ? "" : ". " + d), false);
   }
-  std::string title() override { return strings::kTheurgy; }
+  std::string title() override { return strings::kTheurgy.c_str(); }
   void on_enter() override { screens::set_keys([this] { return std::string(personality() ? strings::kCBack() : strings::kTheurgyListKeys()); }); }
   bool holds_keys() override { return !personality(); }
   void on_tick() override {

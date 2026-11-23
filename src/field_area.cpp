@@ -7,6 +7,7 @@
 //    +0x294, its text the FString at +0x968 (2026-11-03; a DT_FldPlaceName row, finer than the hit-name table's
 //    area), +0xA10 set when it shows a floor number and that number at +0xA14 (drawn as a sprite).
 //  - AFldDungeonControlActor: +0x2A0 the dungeon (299 = Tartarus), +0x2A4 the floor.
+#include "core/lang.h"
 #include "poi_internal.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
@@ -121,11 +122,11 @@ static std::string area_name_now() {
   // the floor (2 and 3 on 2F and 3F, 2026-10-27; the tutorial floor read 264, its design id).
   int floor = tartarus_floor();
   bool tartarus = floor > 0;
-  if (g_banner.empty() && !tartarus) return strings::kUnknownArea;
+  if (g_banner.empty() && !tartarus) return strings::kUnknownArea.c_str();
   // On a floor the last banner can still be the entrance's ("Tartarus: Entrance, floor 2", 2026-10-28): the
   // floor's own banner (the block, "Thebel") comes a moment after the floor is announced.
-  bool stale = tartarus && g_banner.find("Entrance") != std::string::npos;
-  std::string name = g_banner.empty() || stale ? strings::kTartarus : g_banner;
+  bool stale = tartarus && core::lang::names_place(g_banner, "Tartarus: Entrance");
+  std::string name = g_banner.empty() || stale ? strings::kTartarus.c_str() : g_banner;
   if (tartarus) name += std::format(", {} {}", strings::kFloor, floor);
   return name;
 }

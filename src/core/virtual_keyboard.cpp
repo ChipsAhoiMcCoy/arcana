@@ -17,9 +17,9 @@ constexpr size_t kLastRow = VirtualKeyboard::kRows - 1;
 
 std::string char_name(char c, bool caps) {
   switch (c) {
-    case '-': return strings::kVkDash;
-    case '\'': return strings::kVkApostrophe;
-    case '.': return strings::kVkPeriod;
+    case '-': return strings::kVkDash.c_str();
+    case '\'': return strings::kVkApostrophe.c_str();
+    case '.': return strings::kVkPeriod.c_str();
     default: return spoken_char(std::string(1, caps ? (char)std::toupper((unsigned char)c) : c));
   }
 }
@@ -35,10 +35,10 @@ size_t VirtualKeyboard::row_length(size_t r) const {
 std::string VirtualKeyboard::key_name() const {
   if (row_ == kLastRow) {
     switch (kLast[col_]) {
-      case Action::Type: return strings::kVkSpace;
-      case Action::Capitals: return strings::kVkCapitals;
-      case Action::Erase: return strings::kVkErase;
-      default: return strings::kVkDone;
+      case Action::Type: return strings::kVkSpace.c_str();
+      case Action::Capitals: return strings::kVkCapitals.c_str();
+      case Action::Erase: return strings::kVkErase.c_str();
+      default: return strings::kVkDone.c_str();
     }
   }
   return char_name(kGrid[row_][col_], caps_);
@@ -85,7 +85,7 @@ VirtualKeyboard::Press VirtualKeyboard::activate(const std::string& before) {
 
 std::string VirtualKeyboard::toggle_capitals() {
   caps_ = !caps_;
-  return caps_ ? strings::kCapitalsOn : strings::kCapitalsOff;
+  return caps_ ? strings::kCapitalsOn.c_str() : strings::kCapitalsOff.c_str();
 }
 
 }  // namespace p3a::core

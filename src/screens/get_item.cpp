@@ -34,16 +34,16 @@ class GetItemScreen : public Screen {
       for (int i = 0; i < n; ++i, e += 12) {
         int id = *(uint16_t*)e, count = *(int32_t*)(e + 4);
         std::string what;
-        if (e[8]) what = std::format("{} {}", count, strings::kYen);
+        if (e[8]) what = strings::count(count, strings::kYen);
         else {
           what = items::name_of(id);
           if (what.empty()) what = std::format("{} {}", strings::kItemNumber, id);
-          if (count > 1) what += std::format(" {} {}", strings::kTimes, count);
+          if (count > 1) what = strings::fmt(strings::kCountFmt, what, count);
         }
-        s += (s.empty() ? std::string(strings::kGot) + " " : std::string(", ")) + what;
+        s += (s.empty() ? std::string() : std::string(", ")) + what;
       }
     });
-    return s;
+    return s.empty() ? s : strings::fmt(strings::kGotFmt, s);
   }
  public:
   const char* id() const override { return "get_item"; }

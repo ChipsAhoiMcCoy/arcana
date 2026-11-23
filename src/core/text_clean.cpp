@@ -6,6 +6,18 @@
 namespace p3a::core {
 // Punctuation that closes what came before: a space left in front of it by a dropped icon ("Thanks @.") or a row
 // break would leave it alone, and a lone "." is read as "dot" (NVDA at punctuation level some, and eSpeak itself).
+// Japanese and Chinese full stops: 。 ！ ？ (E3 80 82, EF BC 81, EF BC 9F): the bytes of the one at i, or 0.
+static size_t wide_stop(std::string_view s, size_t i) {
+  if (i + 3 > s.size()) return 0;
+  auto b = [&](size_t k) { return (unsigned char)s[i + k]; };
+  if (b(0) == 0xE3 && b(1) == 0x80 && b(2) == 0x82) return 3;
+  if (b(0) == 0xEF && b(1) == 0xBC && (b(2) == 0x81 || b(2) == 0x9F)) return 3;
+  return 0;
+}
+// A Japanese or Chinese character (kana, ideographs, their punctuation: lead bytes E3 to E9, and the full-width forms
+// EF BC / EF BD): text with no spaces between words, where a line break is no word break. Korean (EA to ED) has spaces.
+static bool unspaced(unsigned char lead) { return (lead >= 0xE3 && lead <= 0xE9) || lead == 0xEF; }
+
 static bool closes(std::string_view s, size_t i) {
   auto punct = [](char c) { return c == '.' || c == ',' || c == '!' || c == '?' || c == ';' || c == ':'; };
   if (!punct(s[i])) return false;
@@ -19,10 +31,16 @@ static bool closes(std::string_view s, size_t i) {
 std::string clean_text(std::string_view s) {
   std::string out;
   out.reserve(s.size());
-  bool space = false, line_start = true;
+  bool space = false, line_start = true, real_space = false;
+  size_t last_lead = std::string::npos;   // where the last character written began
   for (size_t i = 0; i < s.size(); ++i) {
     unsigned char c = (unsigned char)s[i];
-    if (c == '\n' || c == '\r' || c == '\t' || c == ' ') { space = true; if (c == '\n') line_start = true; continue; }
+    if (c == '\n' || c == '\r' || c == '\t' || c == ' ') {
+      space = true;
+      if (c == ' ' || c == '\t') real_space = true;
+      if (c == '\n') line_start = true;
+      continue;
+    }
     if (c < 0x20) continue;
     // '@' is what BmdPageToFString leaves for an inline emote icon (a page of just "@" is a speaker's sweat drop or
     // similar, seen 2026-10-27): drop it, so such a page is silent.
@@ -32,9 +50,13 @@ std::string clean_text(std::string_view s) {
     if (line_start && i + 2 < s.size() && c == 0xE3 && (unsigned char)s[i + 1] == 0x83 && (unsigned char)s[i + 2] == 0xBB) { i += 2; space = true; continue; }
     // U+3000 IDEOGRAPHIC SPACE
     if (i + 2 < s.size() && c == 0xE3 && (unsigned char)s[i + 1] == 0x80 && (unsigned char)s[i + 2] == 0x80) { i += 2; space = true; continue; }
-    if (space && !out.empty() && !closes(s, i)) out += ' ';
+    // a line break inside Japanese or Chinese text joins the two lines with nothing between them
+    bool joined = !real_space && last_lead != std::string::npos && unspaced((unsigned char)out[last_lead]) && unspaced(c);
+    if (space && !out.empty() && !closes(s, i) && !joined) out += ' ';
     space = false;
+    real_space = false;
     line_start = false;
+    if ((c & 0xC0) != 0x80) last_lead = out.size();
     out += (char)c;
   }
   return out;
@@ -44,10 +66,29 @@ bool has_words(std::string_view s) {
   return false;
 }
 
+std::string without_last_sentence_naming(std::string_view s, std::string_view who) {
+  std::string_view t = s;
+  while (!t.empty() && t.back() == ' ') t.remove_suffix(1);
+  if (who.empty() || t.empty()) return std::string(s);
+  // the end of the sentence before the last: a stop followed by a space, or a wide stop
+  size_t cut = std::string_view::npos;
+  for (size_t i = 0; i + 1 < t.size(); ++i) {
+    if ((t[i] == '.' || t[i] == '!' || t[i] == '?') && t[i + 1] == ' ') cut = i + 1;
+    else if (size_t n = wide_stop(t, i); n && i + n < t.size()) cut = i + n;
+  }
+  if (cut == std::string_view::npos) return std::string(s);
+  std::string_view last = t.substr(cut);
+  if (last.find(who) == std::string_view::npos) return std::string(s);
+  std::string out(t.substr(0, cut));
+  while (!out.empty() && out.back() == ' ') out.pop_back();
+  return out;
+}
+
 std::string first_sentence(std::string_view s) {
   for (size_t i = 0; i + 1 < s.size(); ++i) {
     if (s[i] == '.' && i > 0 && s[i - 1] == '.') continue;   // an ellipsis does not end a sentence
     if ((s[i] == '.' || s[i] == '!' || s[i] == '?') && s[i + 1] == ' ') return std::string(s.substr(0, i + 1));
+    if (size_t n = wide_stop(s, i); n && i + n < s.size()) return std::string(s.substr(0, i + n));   // 。！？ need no space
   }
   return std::string(s);
 }
@@ -61,6 +102,7 @@ static bool ends_sentence(const std::string& out) {
   if (!j) return false;
   char p = out[j - 1];
   if (p == '.' || p == '!' || p == '?') return true;
+  if (j >= 3 && wide_stop(out, j - 3)) return true;
   return j >= 3 && (unsigned char)out[j - 3] == 0xE2 && (unsigned char)out[j - 2] == 0x80 && (unsigned char)out[j - 1] == 0xA6;   // U+2026
 }
 std::string tidy_joins(std::string_view s) {
@@ -75,7 +117,7 @@ std::string tidy_joins(std::string_view s) {
     if (c == '.') {
       size_t n = 1;
       while (i + n < s.size() && s[i + n] == '.') ++n;
-      bool mark = !out.empty() && (out.back() == '!' || out.back() == '?');
+      bool mark = !out.empty() && (out.back() == '!' || out.back() == '?' || (out.size() >= 3 && wide_stop(out, out.size() - 3)));
       if (n <= 2 && mark) { i += n - 1; continue; }   // "yo!." -> "yo!"
       if (n == 1 && !out.empty() && out.back() != '.' && ends_sentence(out)) {   // "Hm<U+2026>." and "member. . 3 of 4"
         if (out.back() == ' ' && i + 1 < s.size() && s[i + 1] == ' ') ++i;

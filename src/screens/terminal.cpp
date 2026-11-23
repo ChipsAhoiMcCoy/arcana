@@ -38,7 +38,7 @@ class TerminalScreen : public MenuScreen {
   const char* id() const override { return "terminal"; }
   int priority() const override { return 20; }
   bool active() override { uint8_t* p = u(); return p && floors(p) && !msg::current().blocking; }
-  std::string title() override { return strings::kTerminal; }
+  std::string title() override { return strings::kTerminal.c_str(); }
   void on_enter() override { screens::set_keys(strings::kTerminalKeys); }
   void build(ui::GraphBuilder& b) override {
     uint8_t* p = u();

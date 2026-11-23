@@ -15,7 +15,7 @@ const char* emote_mark(std::string_view cls) {
 std::string emote_line(std::string_view mark, std::string_view who) {
   std::string out(mark);
   if (out.empty()) return out;
-  if (!who.empty()) { out += ' '; out += strings::kEmoteOver; out += ' '; out += who; }
+  if (!who.empty()) out = strings::fmt(strings::kEmoteOverFmt, out, who);
   return out;
 }
 

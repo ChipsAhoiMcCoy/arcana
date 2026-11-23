@@ -31,7 +31,7 @@ using namespace ue;
 
 namespace {
 std::string percent_line(const std::string& what, int pct) {
-  return std::vformat(strings::kNetPercent, std::make_format_args(what, pct));
+  return std::vformat(strings::kNetPercent.c_str(), std::make_format_args(what, pct));
 }
 
 // One of the two screens. The figures are read once, when the game has copied them into its draw (they do not change
@@ -187,7 +187,7 @@ class NetActionScreen : public NetMenu {
         for (int i = 0; notes->data && i < notes->num && i < 5; ++i) pages.push_back(notes->data[i]);
       });
       std::string region = std::format("net.k{}", k);
-      rows_.push_back({region, percent_line(strings::kNetActionKinds[k], pct), region});
+      rows_.push_back({region, percent_line(strings::kNetActionKinds[k].c_str(), pct), region});
       for (size_t i = 0; i < pages.size(); ++i)
         if (std::string t = msg::page_string(pages[i]); !t.empty()) rows_.push_back({std::format("{}.{}", region, i), t, region});
     }

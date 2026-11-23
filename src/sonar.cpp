@@ -385,7 +385,7 @@ void tick() {
 
 void toggle() {
   settings::set(settings::Sonar, !settings::on(settings::Sonar));
-  speech::speak(settings::on(settings::Sonar) ? strings::kSonarOn : strings::kSonarOff, true);
+  speech::speak(settings::on(settings::Sonar) ? strings::kSonarOn.c_str() : strings::kSonarOff.c_str(), true);
 }
 
 void ping(const poi::Poi& p) {

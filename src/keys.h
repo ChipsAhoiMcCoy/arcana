@@ -12,6 +12,9 @@ enum Mods : int { None = 0, Shift = 1, Ctrl = 2, Alt = 4 };
 using Handler = std::function<void()>;
 // in_help false: F1 leaves it out while it and its plain key are where the mod put them (a Shift variant the plain
 // key's help speaks for: "Shift goes back").
+// `help`: the English (strings.h's .en); it is said in the mod's language. Two parts joined by kHelpJoin are looked up
+// apiece and said "first: second".
+inline constexpr char kHelpJoin = '\x1F';
 void bind(uint32_t vk, int mods, const char* name, const char* help, Handler h, bool repeat = false, bool in_help = true);
 void install();   // after every bind: loads the player's own keys (keys.ini)
 // The player's own keys (the mod menu's Mod keys page). A binding is an index; only keyboard ones are listed.

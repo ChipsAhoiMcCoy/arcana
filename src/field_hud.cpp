@@ -51,18 +51,22 @@ static std::string verb_for(const std::string& label, WeakObj* of = nullptr) {
     // Velvet Room" read oddly (the user's call, 2026-11-09).
     if (icon == "Goto") {
       bool area_change = enum_prop_name(a, "mType_") == "AreaChange";
-      return area_change && !named_as_action(label) ? strings::kVerbGoTo : "";
+      bool name2 = false;
+      const int idx = get<int32_t>(a, "mNameIndex_", -1);
+      kin_name({"DT_FldDailyHitName", "DT_FldDungeonHitName"}, idx, &name2);
+      return area_change && !named_as_action(idx, name2) ? strings::kVerbGoTo.c_str() : "";
     }
-    if (icon == "Speak") return strings::kVerbTalk;
-    if (icon == "Listen") return strings::kVerbListen;
-    if (icon == "Shop") return strings::kVerbShop;
-    if (icon == "Action") return strings::kVerbAction;
-    return strings::kVerbCheck;
+    if (icon == "Speak") return strings::kVerbTalk.c_str();
+    if (icon == "Listen") return strings::kVerbListen.c_str();
+    if (icon == "Shop") return strings::kVerbShop.c_str();
+    if (icon == "Action") return strings::kVerbAction.c_str();
+    return strings::kVerbCheck.c_str();
   }
   // The party members following the hero are no point of interest, but their prompt is a talk ("Yukari Takeba").
-  std::string first = label.substr(0, label.find(' '));
+  // The label holds the member's name (their first name in English, "Yukari Takeba"; the family name first in
+  // Japanese and Chinese, with no space): it is looked for anywhere in it.
   for (int id = 2; id <= 11; ++id)
-    if (std::string n = party::name(id); !n.empty() && n == first) return strings::kVerbTalk;
+    if (std::string n = party::name(id); !n.empty() && label.find(n) != std::string::npos) return strings::kVerbTalk.c_str();
   return {};
 }
 // The story objective (top right, in corner brackets: "Head to the faculty office") is drawn by DrawFont; it is told
@@ -181,7 +185,7 @@ void pickup_tick() {
     if (shown.count(t.text)) continue;
     std::string name = t.text.substr(0, x), count = t.text.substr(x + 2);
     while (!name.empty() && name.back() == ' ') name.pop_back();
-    speech::speak(count == "1" ? std::format("{} {}", strings::kGot, name) : std::format("{} {}, {}", strings::kGot, name, count), false);
+    speech::speak(strings::fmt(strings::kGotFmt, count == "1" ? name : strings::fmt(strings::kCountFmt, name, count)), false);
   }
   shown.swap(now_shown);
 }

@@ -41,7 +41,7 @@ class CreditsScreen : public Screen {
     return a && ((uint8_t*)a)[0x2b9] && !((uint8_t*)a)[0x2b8];
   }
   std::string state_line() {
-    if (!title_roll()) return strings::kCredits;
+    if (!title_roll()) return strings::kCredits.c_str();
     return title_paused() ? strings::kCreditsPaused() : strings::kCreditsRolling();
   }
 
@@ -56,7 +56,7 @@ class CreditsScreen : public Screen {
   }
   void tick() override {
     if (!title_roll()) {
-      if (paused_ < 0) speech::speak(strings::kCredits, true);
+      if (paused_ < 0) speech::speak(strings::kCredits.c_str(), true);
       paused_ = 0;
       return;
     }

@@ -106,8 +106,8 @@ class BtlWords {
     return v;
   }
   std::string hp_sp(ue::UObject* a) {
-    return std::format("{} {} {} {}, {} {} {} {}", strings::kHP, unit_int("GetUnitHP", a), strings::kOf, unit_int("GetUnitMaxHP", a),
-                       strings::kSP, unit_int("GetUnitSP", a), strings::kOf, unit_int("GetUnitMaxSP", a)) + ailments(a) + buffs(a);
+    return std::format("{} {}, {} {}", strings::kHP, strings::of(unit_int("GetUnitHP", a), unit_int("GetUnitMaxHP", a)),
+                       strings::kSP, strings::of(unit_int("GetUnitSP", a), unit_int("GetUnitMaxSP", a))) + ailments(a) + buffs(a);
   }
   // A turn's opening: "HP 99, SP 17" and what the member is under. The maxima are in their details.
   std::string hp_sp_short(ue::UObject* a) {
@@ -233,7 +233,7 @@ class BtlWords {
     std::vector<std::string> out;
     out.push_back(p.arcana ? std::format("{} {}", strings::kArcanaWord, strings::kArcana[p.arcana]) : std::format("{} {}", strings::kArcanaWord, strings::kUnknown));
     auto num = [&](const std::string& what, int v) { return p.status ? std::format("{} {}", what, v) : std::format("{} {}", what, strings::kUnknown); };
-    out.push_back(num(strings::kLevelCap, p.level));
+    out.push_back(num(strings::kLevelCap.c_str(), p.level));
     out.push_back(num(std::format("{} {}", strings::kMaxWord, strings::kHP), p.max_hp));
     out.push_back(num(std::format("{} {}", strings::kMaxWord, strings::kSP), p.max_sp));
     return out;
@@ -246,13 +246,13 @@ class BtlWords {
     if (!p.up) return out;
     out = panel_status(p);
     for (auto& l : core::analyze_affinities(p.attrs)) out.push_back(l);
-    if (!p.attack_shown && !p.skills_shown) out.push_back(strings::kSkillsAttackUnknown);
+    if (!p.attack_shown && !p.skills_shown) out.push_back(strings::kSkillsAttackUnknown.c_str());
     if (p.attack_shown) out.push_back(p.attack.empty() ? std::string(strings::kAttackTypeUnknown) : std::format("{} {}", strings::kAttackType, p.attack));
     if (p.skills_shown) {
       std::string names;
       for (int id : p.skills) if (std::string n = skill_name(id); !n.empty()) names += (names.empty() ? "" : ", ") + n;
       if (!names.empty()) out.push_back(std::format("{}: {}", strings::kSkills, names));
-    } else if (p.attack_shown) out.push_back(strings::kSkillsUnknown);
+    } else if (p.attack_shown) out.push_back(strings::kSkillsUnknown.c_str());
     if (!p.drops.empty()) {
       std::string names;
       for (auto& n : p.drops) names += (names.empty() ? "" : ", ") + n;
@@ -276,19 +276,19 @@ class BtlWords {
     int hp = unit_int("GetUnitHP", a), mx = unit_int("GetUnitMaxHP", a);
     if (foe) { if (mx > 0) out.push_back(std::format("{} {}%", strings::kHP, core::health_share(hp, mx))); }
     else {
-      out.push_back(std::format("{} {} {} {}", strings::kHP, hp, strings::kOf, mx));
-      out.push_back(std::format("{} {} {} {}", strings::kSP, unit_int("GetUnitSP", a), strings::kOf, unit_int("GetUnitMaxSP", a)));
+      out.push_back(std::format("{} {}", strings::kHP, strings::of(hp, mx)));
+      out.push_back(std::format("{} {}", strings::kSP, strings::of(unit_int("GetUnitSP", a), unit_int("GetUnitMaxSP", a))));
     }
     bool any = false;
-    if (has_ailment(a, 13)) { out.push_back(strings::kAilments[13]); any = true; }
+    if (has_ailment(a, 13)) { out.push_back(strings::kAilments[13].c_str()); any = true; }
     for (int t = 0; t <= 11; ++t) {
       if (!has_ailment(a, t)) continue;
       any = true;
       int n = ailment_turns(a, t);
       out.push_back(n > 0 ? std::format("{}, {} {}", strings::kAilments[t], strings::kUpTo, core::turns_text(n)) : std::string(strings::kAilments[t]));
     }
-    if (!any) out.push_back(strings::kNoAilments);
-    if (ue::call_ret<bool>(a, "IsGuard")) out.push_back(strings::kGuarding);
+    if (!any) out.push_back(strings::kNoAilments.c_str());
+    if (ue::call_ret<bool>(a, "IsGuard")) out.push_back(strings::kGuarding.c_str());
     size_t before = out.size();
     auto effect = [&](bool on, int type, const char* word) {
       if (!on) return;
@@ -304,7 +304,7 @@ class BtlWords {
     for (int i = 0; i < 4; ++i) effect(has_support(a, 15 + i), 15 + i, strings::kWalls[i]);
     for (int i = 0; i < 4; ++i) effect(has_support(a, 10 + i), 10 + i, strings::kBreaks[i]);
     effect(has_support(a, 14), 14, strings::kAilmentsDoubled);
-    if (out.size() == before) out.push_back(strings::kNoEffects);
+    if (out.size() == before) out.push_back(strings::kNoEffects.c_str());
     if (!panel) for (auto& l : affinity_groups(a)) out.push_back(l);
     if (panel) for (auto& l : analysis(a)) out.push_back(l);
     if (!foe) {
@@ -314,7 +314,7 @@ class BtlWords {
       for (int i = 0; i < 5; ++i) line += std::format("{}{} {}", i ? ", " : "", strings::kStatNames[i], unit_int(stats[i], a));
       out.push_back(line);
       int tp = unit_int("GetUnitTP", a), max_tp = unit_int("GetUnitMaxTP", a);
-      if (max_tp > 0) out.push_back(std::format("{} {} {} {}", strings::kTheurgyCharge, tp, strings::kOf, max_tp));
+      if (max_tp > 0) out.push_back(std::format("{} {}", strings::kTheurgyCharge, strings::of(tp, max_tp)));
     }
     return out;
   }

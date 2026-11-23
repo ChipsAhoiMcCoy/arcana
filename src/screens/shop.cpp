@@ -21,6 +21,7 @@
 //   State 0xD (after "Equip it now?", FUN_141400cb0): sell the replaced equipment, its id u16 +0x332, price i32 +0x32C.
 //   Input gates, bool virtuals by vtable offset: +0x648 the shop takes input at all, +0x748 / +0x750 a simple shop's
 //          buy list is held (state 7), +0x760 its Buy / Quit panel is (state 10).
+#include "core/text_clean.h"
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/camp_util.h"
@@ -84,11 +85,11 @@ class ShopScreen : public MenuScreen {
     std::string n = items::name_of(id);
     // The sell list opens with "Sell all items" of the category: an entry with no item of its own, the total as its
     // price (the police station's Valuables, 2026-10-30).
-    if (n.empty() && st == 0x14 && (id & 0xFFF) == 0) return std::format("{}, {} {}", strings::kSellAll, price, strings::kYen);
+    if (n.empty() && st == 0x14 && (id & 0xFFF) == 0) return std::format("{}, {}", strings::kSellAll, strings::count(price, strings::kYen));
     if (n.empty()) n = std::format("{} {:#x}", strings::kItem, id);
     items::Info in;
     bool known = items::find(n, in);
-    if (st != 0x13 && st != 0x11 && price > 0) n += std::format(", {} {}", price, strings::kYen);
+    if (st != 0x13 && st != 0x11 && price > 0) n += ", " + strings::count(price, strings::kYen);
     if (known) {
       if (int o = items::owned(in); o >= 0) n += std::format(", {} {}", o, strings::kOwned);
       n += items::stats(in);
@@ -152,10 +153,9 @@ class ShopScreen : public MenuScreen {
     int id = *(uint16_t*)(rows->data + i * 0x28 + 4);
     std::string d = items::help(id);
     if (d.empty()) d = drawn_help(id);
-    if (int who = member()) {
-      std::string tail = std::format(" For {}.", party::name(who));   // the game's words (BMD_ItemWeaponHelp)
-      if (d.size() > tail.size() && d.ends_with(tail)) d.resize(d.size() - tail.size());
-    }
+    // The help ends in whom the gear is for ("... For Yukari.", BMD_ItemWeaponHelp), said already by the list: its
+    // last sentence is dropped when it names the member, in whatever language the game writes it.
+    if (int who = member()) d = core::without_last_sentence_naming(d, party::name(who));
     return d;
   }
 
@@ -187,7 +187,7 @@ class ShopScreen : public MenuScreen {
   // A list's second view (F: 8 a buy list's, 0x12 the fusion list's who-can-equip) is the game's too, for its keys.
   bool holds_keys() override { int st = state(); return st != 8 && st != 9 && st != 0x16 && st != 0x12; }
   // The money is not said on entry (the status key reads it; the user's call, 2026-11-17).
-  std::string title() override { return antique() ? strings::kAntiqueShop : strings::kShop; }
+  std::string title() override { return antique() ? strings::kAntiqueShop.c_str() : strings::kShop.c_str(); }
   // F1: the keys of the state in front (the weapon shop's lists switch member with Q / E, the sell list category).
   std::string keys() {
     int st = state();
@@ -230,7 +230,7 @@ class ShopScreen : public MenuScreen {
     } else if (st == 6) {
       auto* ids = (TArray<uint16_t>*)(s() + 0x2D0);
       b.begin_stop("shop.member");
-      b.push_context(strings::kForWhom);
+      b.push_context(strings::kForWhom.c_str());
       auto marks = party_marks(ids);
       for (int i = 0; ids->data && i < ids->num && i < 16; ++i) {
         int id = ids->data[i];
@@ -267,7 +267,7 @@ class ShopScreen : public MenuScreen {
     } else if (st == 0x10) {
       auto* ids = (TArray<uint16_t>*)(s() + 0x308);
       b.begin_stop("shop.fuse");
-      b.push_context(strings::kWhichMaterial);
+      b.push_context(strings::kWhichMaterial.c_str());
       for (int i = 0; ids->data && i < ids->num && i < 300; ++i) {
         int id = ids->data[i];
         std::string n = items::name_of(id);
@@ -289,7 +289,7 @@ class ShopScreen : public MenuScreen {
       yn_.keep_edges = yn_.horizontal;   // the game's pair wraps
       std::string key = std::format("shop.yn.{}", st);
       yn_.key = key;
-      std::string q = st == 10 ? strings::kBuyQuestion : st == 0xC ? strings::kEquipQuestion : strings::kSellConfirm;
+      std::string q = st == 10 ? strings::kBuyQuestion.c_str() : st == 0xC ? strings::kEquipQuestion.c_str() : strings::kSellConfirm.c_str();
       if (st == 0xD) {
         q = strings::kSellOldQuestion;
         std::string n = items::name_of(u16(0x332));

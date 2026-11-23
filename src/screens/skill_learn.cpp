@@ -62,7 +62,7 @@ class SkillLearnScreen : public MenuScreen {
     if (!e || !p) return {};
     int n = *(int32_t*)(p + 0x354);
     int sid = n > 0 && n <= 8 ? (i < n ? (int)*(uint32_t*)(p + 0x310 + i * 8 + 4) : 0) : *(uint16_t*)(e + 0xC + i * 2);
-    if (!sid) return strings::kEmptySlot;
+    if (!sid) return strings::kEmptySlot.c_str();
     std::string s = persona::skill_name(sid), cost = persona::skill_cost(sid);
     return cost.empty() ? s : s + ", " + cost;
   }
@@ -138,7 +138,7 @@ class SkillLearnScreen : public MenuScreen {
       for (int i = 0; pairs->data && i < pairs->num && i < 8; ++i) {
         int from = pairs->data[i] & 0xFFFF, to = pairs->data[i] >> 16;
         std::string a = persona::skill_name(from), b = persona::skill_name(to);
-        if (!a.empty() && !b.empty()) line += (line.empty() ? "" : ". ") + std::format("{} {} {}", a, strings::kWouldBecome, b);
+        if (!a.empty() && !b.empty()) line += (line.empty() ? "" : ". ") + strings::fmt(strings::kWouldBecomeFmt, a, b);
       }
     });
     if (line.empty()) return;   // not filled yet: asked again next tick
@@ -200,7 +200,7 @@ class SkillLearnScreen : public MenuScreen {
       for (int c = 0; c < 2; ++c) {
         int i = c * 4 + r;
         // Its place among the eight, not within its row of two.
-        auto v = game_item(slots_, i, [this, i] { return std::format("{}, {} {} {} 8", slot_text(i), strings::kSlot, i + 1, strings::kOf); });
+        auto v = game_item(slots_, i, [this, i] { return std::format("{}, {} {}", slot_text(i), strings::kSlot, strings::of(i + 1, 8)); });
         v->speaks_own_position = true;
         b.add_item(slot("slots", i), v);
       }

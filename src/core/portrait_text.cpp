@@ -1,4 +1,5 @@
 #include "portrait_text.h"
+#include "lang.h"
 #include <cstdlib>
 
 namespace p3a::core::portrait {
@@ -43,10 +44,10 @@ bool parse_texture(std::string_view name, Shown& out) {
 std::string describe(const Shown& s) {
   std::string out;
   for (auto& o : kOutfits)
-    if (o.chara == s.chara && o.clothes == s.clothes) { out = o.text; break; }
+    if (o.chara == s.chara && o.clothes == s.clothes) { out = lang::tr(o.text); break; }
   if (out.empty()) return out;
   for (auto& p : kPoses)
-    if (p.chara == s.chara && p.clothes == s.clothes && p.pose == s.pose) { out += " "; out += p.text; break; }
+    if (p.chara == s.chara && p.clothes == s.clothes && p.pose == s.pose) { out += " "; out += lang::tr(p.text); break; }
   return out;
 }
 

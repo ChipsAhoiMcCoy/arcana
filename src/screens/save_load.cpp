@@ -55,12 +55,12 @@ class SaveLoadScreen : public MenuScreen {
  private:
   bool rewind() { return get<int32_t>(draw_.get(), "BootMode") == 3; }
   std::string title() override {
-    if (rewind()) return strings::kRewind;
-    if (get<bool>(draw_.get(), "bIsInheritanceLoad")) return strings::kCarryOverSave;   // Episode Aigis's new game
+    if (rewind()) return strings::kRewind.c_str();
+    if (get<bool>(draw_.get(), "bIsInheritanceLoad")) return strings::kCarryOverSave.c_str();   // Episode Aigis's new game
     FField* p = find_prop(class_of(draw_.get()), "OpenType");
     std::string t = p ? enum_name(prop_inner_object(p), *((uint8_t*)draw_.get() + prop_offset(p))) : "";
     // BootMode 1 saves and 2 loads when opened from camp's System menu (measured 2026-10-28).
-    return t == "TYPE_TITLE" || get<int32_t>(draw_.get(), "BootMode") == 2 ? strings::kLoadGame : strings::kSaveGame;
+    return t == "TYPE_TITLE" || get<int32_t>(draw_.get(), "BootMode") == 2 ? strings::kLoadGame.c_str() : strings::kSaveGame.c_str();
   }
   int count() {
     if (rewind()) { auto* items = field<TArray<uint8_t>>(draw_.get(), "SaveSlotItems"); return items ? items->num : 0; }
@@ -90,12 +90,12 @@ class SaveLoadScreen : public MenuScreen {
     // GAME" and the play time, no date, level or place (seen on the save made after the credits, 2026-11-11).
     auto flag = [&](const char* n) { int o = offset_of(st, n); return o >= 0 && *(bool*)(it + o); };
     if (flag("bIsGoodEnd") || flag("bIsBadEnd") || flag("bIsAstreaClear") || flag("bIsAstreaManiacsClear"))
-      return std::format("{}{}, {} {} {} {}", who, strings::kClearData, strings::kPlayTime, i32("PTimeHour"),
-                         i32("PTimeHour") == 1 ? strings::kHour : strings::kHoursAnd,
-                         std::format("{} {}", i32("PTimeMin"), i32("PTimeMin") == 1 ? strings::kMinute : strings::kMinutes));
-    return std::format("{}{}, {} {}, {}, {} {} {} {}", who, when, strings::kLevel, i32("PLV"),
-                       str("LocationName"), strings::kPlayTime, i32("PTimeHour"), i32("PTimeHour") == 1 ? strings::kHour : strings::kHoursAnd,
-                       std::format("{} {}", i32("PTimeMin"), i32("PTimeMin") == 1 ? strings::kMinute : strings::kMinutes));
+      return std::format("{}{}, {} {} {}", who, strings::kClearData, strings::kPlayTime,
+                         strings::count(i32("PTimeHour"), strings::kHour, strings::kHoursAnd),
+                         strings::count(i32("PTimeMin"), strings::kMinute, strings::kMinutes));
+    return std::format("{}{}, {} {}, {}, {} {} {}", who, when, strings::kLevel, i32("PLV"),
+                       str("LocationName"), strings::kPlayTime, strings::count(i32("PTimeHour"), strings::kHour, strings::kHoursAnd),
+                       strings::count(i32("PTimeMin"), strings::kMinute, strings::kMinutes));
   }
  public:
   const char* id() const override { return "save_load"; }

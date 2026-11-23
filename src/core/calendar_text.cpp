@@ -7,7 +7,7 @@ std::string moon_phase(int age) {
   // Full at 14: April 6 reads 11, April 7 12, and the full moon is April 9 (measured 2026-10-31).
   if (age < 0 || age > 29) return {};
   int i = age == 29 ? 0 : age < 6 ? 1 : age == 6 ? 2 : age < 14 ? 3 : age == 14 ? 4 : age < 22 ? 5 : age == 22 ? 6 : 7;
-  return strings::kMoonPhases[i];
+  return strings::kMoonPhases[i].c_str();
 }
 
 std::string moon_mark(int age) {
@@ -27,7 +27,15 @@ std::string date_text(int month, int day, int weekday, bool holiday, std::string
   std::string s = weekday_name(weekday);
   if (!time_of_day.empty()) { if (!s.empty()) s += ' '; s += time_of_day; }
   if (!s.empty()) s += ", ";
-  s += std::format("{} {}{}", strings::kMonths[month], day, ordinal_suffix(day));
+  // the date in the language's order: "{month} {day}{th}" in English ({th} the ordinal's ending), "{day} de {month}"
+  std::string d = strings::kDateFormat.c_str();
+  auto put = [&d](std::string_view key, const std::string& v) {
+    if (size_t at = d.find(key); at != std::string::npos) d.replace(at, key.size(), v);
+  };
+  put("{month}", strings::kMonths[month].c_str());
+  put("{day}", std::to_string(day));
+  put("{th}", ordinal_suffix(day));
+  s += d;
   if (holiday) s += std::string(", ") + strings::kHoliday;
   return s;
 }

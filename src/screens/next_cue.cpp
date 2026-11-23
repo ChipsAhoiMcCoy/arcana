@@ -45,7 +45,7 @@ void NextCue::give(const char* why, uintptr_t caller) {
   else log::writef("next: {} takes OK after {} ms ({})", who_, ms, why);
   int end = settings::get(settings::VoiceEndSound);
   if (end == settings::EndOff) return;
-  if (end == settings::EndNext) { speech::speak(strings::kNext, false); return; }   // queued behind any reading
+  if (end == settings::EndNext) { speech::speak(strings::kNext.c_str(), false); return; }   // queued behind any reading
   sound_due_ = true;   // a sound waits for the reading to end
 }
 

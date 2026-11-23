@@ -40,7 +40,7 @@ class DictionaryScreen : public MenuScreen {
   bool own_messages() override { return ui_.get() != nullptr; }   // a term's page closes straight back to the list
   // Reading a term (its message window over the list): the keys are the page's.
   bool holds_keys() override { UObject* u = ui_.get(); return u && *((uint8_t*)u + 0x29D) && !msg::current().open; }
-  std::string title() override { return strings::kDictionary; }
+  std::string title() override { return strings::kDictionary.c_str(); }
   void on_enter() override { screens::set_keys(strings::kListKeys); }
   void build(ui::GraphBuilder& b) override {
     UObject* u = ui_.get();

@@ -10,6 +10,7 @@
 #include "world.h"
 #include "walltones.h"
 #include "settings.h"
+#include "language.h"
 #include "commands.h"
 #include "confirm.h"
 #include "nav.h"
@@ -112,7 +113,7 @@ static bool wait_for_engine() {
 void init(bool speech_ok) {
   if (!wait_for_engine()) {
     log::write("mod: the engine never came up (unknown build?); staying inert");
-    speech::speak(strings::kNoEngine, false);
+    speech::speak(strings::kNoEngine.c_str(), false);
     return;
   }
   ue::install_hooks();
@@ -127,6 +128,7 @@ void init(bool speech_ok) {
   picture::register_routes();
   audio::init();
   walltones::install();
+  language::install();
   settings::install();
   voice::install();
   poi::install();
@@ -162,8 +164,8 @@ void init(bool speech_ok) {
   }, "?reset=1 the mod tick's cost per reader and per screen since the last reset");
   g_ue_up = true;
   hooks::set_tick_callback(&tick);
-  speech::speak(speech_ok ? strings::kModLoaded : strings::kModLoadedNoSpeech, false);
-  if (!ue::known_build()) speech::speak(strings::kUnsupportedBuild, false);
+  speech::speak(speech_ok ? strings::kModLoaded.c_str() : strings::kModLoadedNoSpeech.c_str(), false);
+  if (!ue::known_build()) speech::speak(strings::kUnsupportedBuild.c_str(), false);
 }
 void shutdown() {
   if (!g_ue_up) return;

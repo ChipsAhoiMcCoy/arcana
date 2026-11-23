@@ -53,7 +53,7 @@ class CampPersona : public MenuScreen {
   const char* id() const override { return "camp_persona"; }
   int priority() const override { return 17; }
   bool active() override { uint8_t* l = list(); return l && l[0x40] == 0; }   // mode 1: the status page's screen
-  std::string title() override { return strings::kCampItems[3]; }
+  std::string title() override { return strings::kCampItems[3].c_str(); }
   void on_enter() override { screens::set_keys(strings::kCampPersonaKeys); }
   // Q / E (LB / RB): the previous / next Persona, its page from the top (the game's list does not wrap; ours does).
   bool takes_bumpers() override { return true; }

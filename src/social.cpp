@@ -57,7 +57,7 @@ std::vector<Link> read() {
   return out;
 }
 
-std::string arcana_name(int id) { return id >= 1 && id <= 22 ? strings::kArcana[id] : std::to_string(id); }
+std::string arcana_name(int id) { return id >= 1 && id <= 22 ? strings::kArcana[id].c_str() : std::to_string(id); }
 
 int rank(int id) {
   for (auto& l : read()) if (l.arcana == id) return l.rank;
@@ -66,7 +66,7 @@ int rank(int id) {
 
 // Where a person is named before the player has formed their link (the field, town info), their arcana is not told:
 // the player learns it when the link begins, as the game's own prompt shows it (the user's call, 2026-11-18).
-std::string formed_arcana(int id) { return rank(id) > 0 ? arcana_name(id) : strings::kUnknownArcana; }
+std::string formed_arcana(int id) { return rank(id) > 0 ? arcana_name(id) : strings::kUnknownArcana.c_str(); }
 
 bool reversed(int id) { return id >= 1 && id <= 22 && party::flag(0x1000003F + id); }
 
@@ -100,17 +100,17 @@ std::string partner_rank(const std::string& name) {
   if (name.empty()) return {};
   // The camp names some partners by first name only ("Maiko", "Bebe"): those match the field label's first word. The
   // Old Couple's link names neither of them (their prompt gets nothing).
-  auto first = [](const std::string& s) { return s.substr(0, s.find(' ')); };
+  // Looked for anywhere in the label: Japanese and Chinese write the family name first, with no space.
   for (auto& l : read())
     if (std::string p = l.rank > 0 ? person(l.arcana) : std::string();
-        !p.empty() && (p == name || (p.find(' ') == std::string::npos && p == first(name))))
+        !p.empty() && (p == name || (p.find(' ') == std::string::npos && name.find(p) != std::string::npos)))
       return std::format("{}, {} {}", arcana_name(l.arcana), strings::kRank, l.rank >= 10 ? std::string(strings::kRankMax) : std::to_string(l.rank));
   return {};
 }
 
 static std::string name_rank(int arcana, int rank) {
   std::string p = partner(arcana);
-  std::string r = rank >= 10 ? strings::kRankMax : std::to_string(rank);
+  std::string r = rank >= 10 ? strings::kRankMax.c_str() : std::to_string(rank);
   return std::format("{}{}, {} {}", arcana_name(arcana), p.empty() ? "" : " (" + p + ")", strings::kRank, r);
 }
 
@@ -155,7 +155,7 @@ std::string describe(const Link& l) {
 std::vector<std::string> summary_parts() {
   std::vector<std::string> links;
   for (auto& l : read()) if (l.rank > 0) links.push_back(describe(l));
-  if (links.empty()) return {strings::kNoSocialLinks};
+  if (links.empty()) return {strings::kNoSocialLinks.c_str()};
   links.insert(links.begin(), std::format("{}: {}", strings::kSocialLinks, links.size()));
   return links;
 }
@@ -185,7 +185,7 @@ static bool g_prev_rev[23] = {};
 Card card(int arcana, int rank) {
   if (arcana < 1 || arcana > 22) arcana = g_rankup_arcana;
   if (arcana < 1 || arcana > 22)
-    return {strings::kSocialLinkUp, rank > 0 ? std::format("{} {}", strings::kRank, rank) : strings::kSocialLinks};
+    return {strings::kSocialLinkUp.c_str(), rank > 0 ? std::format("{} {}", strings::kRank.c_str(), rank) : strings::kSocialLinks.c_str()};
   g_card_due[arcana] = true;
   if (rank <= 0) rank = std::max(g_prev[arcana], 1);
   const char* what = reversed(arcana) ? strings::kSocialLinkReversed
@@ -195,7 +195,7 @@ Card card(int arcana, int rank) {
   // The card names the arcana and rank; the partner as the camp's list names them ("Kenji Tomochika", not the
   // "Classmate" of the link's own record).
   std::string p = person(arcana);
-  std::string r = rank >= 10 ? strings::kRankMax : std::to_string(rank);
+  std::string r = rank >= 10 ? strings::kRankMax.c_str() : std::to_string(rank);
   return {what, std::format("{} {}{}, {} {}", arcana_name(arcana), strings::kSocialLink, p.empty() ? "" : ", " + p,
                             strings::kRank, r)};
 }
@@ -244,7 +244,7 @@ void tick() {
         queue(i, std::format("{}: {}", g_prev[i] == 0 ? strings::kNewSocialLink : strings::kSocialLinkUp, name_rank(i, cur[i])));
       } else if (cur[i] == g_prev[i] && cur[i] > 0 && points[i] > prev_points[i]) {
         // The notes over the partner's head after an answer: the points it earned. Said at once (it answers the choice).
-        std::string line = std::format("{}: {}, {} {}", strings::kBondUp, arcana_name(i), points[i] - prev_points[i], strings::kPoints);
+        std::string line = std::format("{}: {}, {}", strings::kBondUp, arcana_name(i), strings::count(points[i] - prev_points[i], strings::kPoints));
         Link l{i, cur[i], points[i]};
         if (ready(l) && !ready(Link{i, cur[i], prev_points[i]})) line += std::string(", ") + strings::kReadyToRankUp;
         log::writef("social: {} (now {} of {})", line, points[i], points_needed(l));

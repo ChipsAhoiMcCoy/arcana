@@ -17,9 +17,10 @@ inline std::vector<ue::UObject*> live(std::string_view cls) { return watch::all(
 const char* kind_name(Kind k);                     // the kind's own word ("exit", "person")
 bool flag_on(const std::string& flag);             // a story flag by name (the game's own check)
 // Row KIN_<idx, 8 digits> of the first of these name tables that has it, "" when none does.
-std::string kin_name(std::initializer_list<const char*> tables, int idx);
+// name2: set when the row's Name2 is the one shown (its story flag is on).
+std::string kin_name(std::initializer_list<const char*> tables, int idx, bool* name2 = nullptr);
 std::string disp_name(ue::UObject* a);              // the name an actor carries itself (mDispName_), or ""
-Kind check_kind(const std::string& name);          // a Check-icon hit by its name: Shop, Door or Thing
+Kind check_kind(ue::UObject* hit);                 // a Check-icon hit by its name's row: Shop, Door or Thing
 std::string icon_of(ue::UObject* hit);             // mCheckIcon_'s value name ("Check", "Goto", "None")
 bool fragment_spot(ue::UObject* hit);              // a Twilight Fragment lying in town
 std::string chest_name(const std::string& type, const std::string& game_name);   // a Tartarus chest by its kind

@@ -1,6 +1,7 @@
 // The area descriptions. Each place has a base description, then lines for what changes it: the light (day,
 // evening, night, the Dark Hour), the season outdoors, Christmas, and January's decline.
 #include "core/area_text.h"
+#include "core/lang.h"
 #include <string_view>
 
 namespace p3a::core::area {
@@ -66,14 +67,15 @@ const Entry* find(const Scene& s) {
     for (const Entry& e : kEntries) if (e.major == major && e.minor == -1) return &e;   // any area of the field
   }
   for (const Entry& e : kEntries)
-    if (e.name && !s.name.empty() && s.name.find(e.name) != std::string::npos) return &e;
+    if (e.name && lang::names_place(s.name, e.name)) return &e;   // the game's name, in the game's language
   return nullptr;
 }
 
+// Each line in the mod's language (core/lang).
 void add(std::string& out, const char* line) {
   if (!line || !*line) return;
   if (!out.empty()) out += ' ';
-  out += line;
+  out += lang::tr(line);
 }
 }  // namespace
 

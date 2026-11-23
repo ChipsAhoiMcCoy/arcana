@@ -25,6 +25,20 @@ struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool 
 static std::vector<Binding> g_bindings;
 static bool g_swallowing[256];   // a bound key's down was swallowed: swallow its char and up too
 
+// A binding's help is kept in English and said in the mod's language when read (the language can change after the
+// keys are bound). Parts joined by kHelpJoin are each looked up, then joined by ": ".
+static std::string said_help(const std::string& en) {
+  std::string out;
+  size_t at = 0;
+  for (;;) {
+    size_t j = en.find(kHelpJoin, at);
+    out += core::lang::tr(std::string_view(en).substr(at, j == std::string::npos ? std::string::npos : j - at));
+    if (j == std::string::npos) return out;
+    out += ": ";
+    at = j + 1;
+  }
+}
+
 void bind(uint32_t vk, int mods, const char* name, const char* help, Handler h, bool repeat, bool in_help) {
   g_bindings.push_back(Binding{vk, mods, name, help, std::move(h), repeat, in_help, vk, mods});
 }
@@ -214,7 +228,7 @@ std::string help() {
   std::string s = std::string(strings::kModKeys) + ". ";
   if (strings::pad_hints()) {
     s += std::string(strings::kPadLayer) + ": ";
-    for (auto& b : g_bindings) if (b.pad) s += std::string(pad_name(b.pad)) + ": " + b.help + ". ";
+    for (auto& b : g_bindings) if (b.pad) s += std::string(pad_name(b.pad)) + ": " + said_help(b.help) + ". ";
     return s + strings::kPadScanKeys;
   }
   // vk 0: a controller-only binding. A binding out of the help is a Shift variant its plain key's help speaks for
@@ -222,7 +236,7 @@ std::string help() {
   for (auto& b : g_bindings) {
     if (!b.vk) continue;
     if (!b.in_help) continue;
-    s += key_name(b.vk, b.mods) + ": " + b.help + ". ";
+    s += key_name(b.vk, b.mods) + ": " + said_help(b.help) + ". ";
   }
   return s;
 }
@@ -285,7 +299,7 @@ void shift_back(const char* back_name, const char* plain_name) {
   g_bindings[(size_t)pi].back = bi;
 }
 static bool valid(int i) { return i >= 0 && i < (int)g_bindings.size() && g_bindings[(size_t)i].def_vk; }
-std::string binding_help(int i) { return valid(i) ? g_bindings[(size_t)i].help : std::string(); }
+std::string binding_help(int i) { return valid(i) ? said_help(g_bindings[(size_t)i].help) : std::string(); }
 std::string binding_key(int i) { return valid(i) ? key_name(g_bindings[(size_t)i].vk, g_bindings[(size_t)i].mods) : std::string(); }
 bool binding_default(int i) {
   return !valid(i) || (g_bindings[(size_t)i].vk == g_bindings[(size_t)i].def_vk && g_bindings[(size_t)i].mods == g_bindings[(size_t)i].def_mods);

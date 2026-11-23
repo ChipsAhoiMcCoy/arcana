@@ -20,7 +20,7 @@ using namespace ue;
 
 // Top-down, the bearing is from north and said by the compass; else by the clock face, from the camera.
 std::string clock(float b) {
-  if (world::north_up()) return strings::kCompass[core::compass_point(b)];
+  if (world::north_up()) return strings::kCompass[core::compass_point(b)].c_str();
   return std::format("{} {}", core::clock_hour(b), strings::kOClock);
 }
 
@@ -79,20 +79,20 @@ static void announce_at(const std::vector<Poi>& list, size_t i, bool with_cat) {
   // A story beat is named "Event: Jin"; in the Events category it said "Event" twice (Adamah, 2026-11-13).
   Poi said = list[i];
   if (std::string head = std::string(strings::kPoiEvent) + ": "; g_cat == Cat::Events && said.name.starts_with(head)) said.name.erase(0, head.size());
-  std::string text = std::format("{}, {} {} {}", describe(said), i + 1, strings::kOf, list.size());
+  std::string text = std::format("{}, {}", describe(said), strings::of(i + 1, list.size()));
   speech::speak(with_cat ? std::format("{}, {}", cat_name(g_cat), text) : text, true);
   sonar::selected(list[i]);   // its sound, from where it is
 }
 
 static void announce_nearest(const std::vector<Poi>& list) {
-  if (list.empty()) { speech::speak(strings::kNothingNearbyFull, true); g_sel = {}; return; }
+  if (list.empty()) { speech::speak(strings::kNothingNearbyFull.c_str(), true); g_sel = {}; return; }
   announce_at(list, 0, true);
 }
 
 // The list is of the field the player is walking: in a menu, a conversation, a battle or a scene its keys say so.
 static bool in_field() {
   if (world::exploring()) return true;
-  speech::speak(strings::kNotInField, true);
+  speech::speak(strings::kNotInField.c_str(), true);
   return false;
 }
 
@@ -108,7 +108,7 @@ void next(int delta) {
   int i = ((cur + delta) % n + n) % n;
   g_sel = list[i].obj;
   g_sel_poi = list[i];
-  speech::speak(std::format("{}, {} {} {}", describe(list[i]), i + 1, strings::kOf, n), true);
+  speech::speak(std::format("{}, {}", describe(list[i]), strings::of(i + 1, n)), true);
   sonar::selected(list[i]);
 }
 
@@ -135,7 +135,7 @@ static WeakObj g_comma;   // what Comma last chose
 void cycle_nearest(int dir) {
   if (!in_field()) return;
   auto all = scan();   // nearest first
-  if (all.empty()) { speech::speak(strings::kNothingNearbyFull, true); g_sel = {}; return; }
+  if (all.empty()) { speech::speak(strings::kNothingNearbyFull.c_str(), true); g_sel = {}; return; }
   const int n = (int)all.size();
   int cur = -1;
   if (g_comma == g_sel) for (int i = 0; i < n; ++i) if (all[(size_t)i].obj == g_sel) cur = i;
@@ -151,7 +151,7 @@ void cycle_nearest(int dir) {
 void cycle_category(int cat, int dir) {
   if (!in_field() || cat < 0 || cat >= (int)Cat::Count) return;
   auto list = in_category(scan(), (Cat)cat);
-  if (list.empty()) { speech::speak(std::format("{} {}", strings::kPoiNoneOf, cat_name((Cat)cat)), true); return; }
+  if (list.empty()) { speech::speak(strings::fmt(strings::kNoneOfFmt, cat_name((Cat)cat)), true); return; }
   const int n = (int)list.size();
   int cur = -1;
   if (g_cat == (Cat)cat) for (int i = 0; i < n; ++i) if (list[(size_t)i].obj == g_sel) cur = i;

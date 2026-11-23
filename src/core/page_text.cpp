@@ -1,4 +1,5 @@
 #include "core/page_text.h"
+#include "core/lang.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
 #include <cctype>
@@ -11,8 +12,9 @@ const char* icon_key(int id, bool pad, bool battle, std::string_view around) {
   if (pad) return key->pad;
   std::string a(around);
   for (auto& ch : a) ch = (char)tolower((unsigned char)ch);
-  auto says = [&](std::string_view w) { return a.find(w) != std::string::npos; };
-  auto nearby = [&](std::string_view w) { return !battle && says(w); };   // a field key: not while the battle is up
+  // the word in English or in the game's language (core/lang, words.tsv)
+  auto says = [&](const char* w) { return lang::says_word(a, w); };
+  auto nearby = [&](const char* w) { return !battle && says(w); };   // a field key: not while the battle is up
   // A battle's keys where the battle screen is up or the sentence is about battle: the game names them so on its
   // battle tutorials wherever they are read (the Tutorial list too, 2026-11-15: "Pressing H during battle will let you
   // Rush" where the game draws Tab).

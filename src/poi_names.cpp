@@ -59,7 +59,8 @@ bool flag_on(const std::string& flag) {
 
 // Row KIN_<idx, 8 digits> of the first of these name tables that has it (FldNpcNameTableRow and the hit-name rows
 // share Name / flag / Name2).
-std::string kin_name(std::initializer_list<const char*> tables, int idx) {
+std::string kin_name(std::initializer_list<const char*> tables, int idx, bool* name2) {
+  if (name2) *name2 = false;
   if (idx < 0) return {};
   std::string row = std::format("KIN_{:08}", idx);
   for (const char* tn : tables) {
@@ -72,7 +73,10 @@ std::string kin_name(std::initializer_list<const char*> tables, int idx) {
     // FLD_NOW_STATION_TO_DORMITORY): that is the name the game shows, and it tells the player where the story goes.
     std::string flag = to_utf8(*(FString*)(r + offset_of(rs, "flag")));
     std::string n2 = to_utf8(*(FString*)(r + offset_of(rs, "Name2")));
-    if (!flag.empty() && !n2.empty() && flag_on(flag)) return n2;
+    if (!flag.empty() && !n2.empty() && flag_on(flag)) {
+      if (name2) *name2 = true;
+      return n2;
+    }
     if (!n.empty()) return n;
   }
   return {};
@@ -122,9 +126,9 @@ std::string npc_named(int major, int minor) {
   return "";
 }
 
-// A hit under the plain Check icon, sorted by the name the game gives it (the lists: core::check_kind).
-Kind check_kind(const std::string& name) {
-  switch (core::check_kind(name)) {
+// A hit under the plain Check icon, sorted by its name's row (the lists: core::check_kind).
+Kind check_kind(ue::UObject* hit) {
+  switch (core::check_kind(get<int32_t>(hit, "mNameIndex_", -1))) {
     case core::CheckKind::Shop: return Kind::Shop;
     case core::CheckKind::Door: return Kind::Door;
     default: return Kind::Thing;

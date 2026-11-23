@@ -14,6 +14,7 @@ Zip layout (the player copies dsound.dll and Arcana into P3R\\Binaries\\Win64):
     Arcana/
       arcana.dll, prism.dll, phonon.dll
       assets/ad/                     audio description cue lists and clips (src/ad.cpp)
+      assets/lang/<code>/            the mod's own lines in the game's other languages (src/core/lang.cpp)
       assets/audio/walltones/2/      the wall tones (src/walltones.cpp)
       assets/audio/sonar/, signals/  the sonar's and the Shadow's sound files (src/sonar.cpp, src/audio.cpp)
       assets/audio/sight/            Grim Dark's harmful-ground sounds, for the Shadows' sight (src/sight.cpp)
@@ -75,7 +76,7 @@ def collect(allow_no_license):
     for name in ("arcana.dll", "prism.dll", "phonon.dll"):
         out["Arcana/" + name] = open(os.path.join(BUILD, name), "rb").read()
 
-    for d, _, files in os.walk(os.path.join(ROOT, "assets", "ad")):
+    for d, _, files in [w for sub in ("ad", "lang") for w in os.walk(os.path.join(ROOT, "assets", sub))]:
         for f in files:
             full = os.path.join(d, f)
             rel = os.path.relpath(full, ROOT).replace(os.sep, "/")

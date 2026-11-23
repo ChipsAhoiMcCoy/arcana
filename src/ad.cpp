@@ -25,6 +25,7 @@
 #include "core/time_stretch.h"
 #include "mod.h"
 #include "core/strings.h"
+#include "core/lang.h"
 #include "devserver.h"
 #include "hooks.h"
 #include "input.h"
@@ -203,7 +204,7 @@ std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scen
     }
     s->cues.push_back({at, speed > 1 ? dur / speed : dur});
     s->files.push_back(file);
-    s->texts.push_back(text);
+    s->texts.push_back(decode ? text : core::lang::tr(std::string_view(text)));   // read by the screen reader: in the mod's language
   }
   fclose(f);
   s->pcm.resize(s->cues.size());
@@ -645,6 +646,9 @@ void tick() {
     once = scene == settings::SceneOnce;
     speed = mode == settings::DescAudio ? settings::get(settings::SceneSpeed) : 0;
   }
+  // The narrator speaks English only: in another language the descriptions are read by the screen reader, translated
+  // (the user's call, 2026-11-23: no generated voices).
+  if (mode == settings::DescAudio && !core::lang::english()) { mode = settings::DescReader; speed = 0; }
   if (!playing || !c.paused) g_releasing = false;
   if (mode == settings::DescOff) {
     close_box(playing);
@@ -734,7 +738,7 @@ void tick() {
           }
           if (said) {
             g_box_ended = true;
-            if (next) speech::speak(strings::kNext, false);
+            if (next) speech::speak(strings::kNext.c_str(), false);
             else voice::play_end_sound();
           }
         }

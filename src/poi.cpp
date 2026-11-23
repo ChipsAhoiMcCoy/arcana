@@ -232,7 +232,7 @@ std::vector<Poi> scan(float radius) {
       // A Gatekeeper's floor: the box that starts its fight (BP_FldHit_Tartarus_GateKeeper, the Abyss of Time's too),
       // off once it is beaten (FLD_BATTLE_DEFEAT_GK_*, checked above). Always listed: it is what the floor is for.
       // The other unnamed boxes were never checked against their flags: a finished one is left out now.
-      if (name_of(get<UObject*>(a, "mOverlapBluePrint_")) == "BP_FldHit_Tartarus_GateKeeper_C") add(a, Kind::Event, strings::kPoiGatekeeper);
+      if (name_of(get<UObject*>(a, "mOverlapBluePrint_")) == "BP_FldHit_Tartarus_GateKeeper_C") add(a, Kind::Event, strings::kPoiGatekeeper.c_str());
       else triggers.push_back(a);
       continue;
     }
@@ -244,18 +244,18 @@ std::vector<Poi> scan(float radius) {
     // A character the story stands in the field as a hit of its own (FldHitCharacter: Yukari on the dorm's escape,
     // 2026-11-16) has no hit name; it carries its own, which the list said as "Person".
     if (nm.empty()) nm = disp_name(a);
-    if (type == "AreaChange" || icon == "Goto") add(a, Kind::Exit, nm.empty() ? strings::kPoiExit : nm);
-    else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop : nm);
+    if (type == "AreaChange" || icon == "Goto") add(a, Kind::Exit, nm.empty() ? strings::kPoiExit.c_str() : nm);
+    else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop.c_str() : nm);
     // A vendor under the Speak icon (a hit named as a shop) is a shop like an NPC vendor (below).
-    else if (icon == "Speak" || icon == "Listen") add(a, !cmm && check_kind(nm) == Kind::Shop ? Kind::Shop : Kind::Person, nm.empty() ? strings::kPoiPerson : nm);
+    else if (icon == "Speak" || icon == "Listen") add(a, !cmm && check_kind(a) == Kind::Shop ? Kind::Shop : Kind::Person, nm.empty() ? strings::kPoiPerson.c_str() : nm);
     // Tartarus' doors are ways onward under the plain Check icon: the Monad door on a floor ("Enter Door", row
     // 10009006; seen on Adamah floors 231 and 243, 2026-11-11), and in the passage "Exit Door", "Proceed Onward" and
     // the way back (10009007-10009009, 10009012; all three seen listed on Adamah floor 255, 2026-11-11).
     else if (int idx = get<int32_t>(a, "mNameIndex_", -1); ((idx >= 10009006 && idx <= 10009009) || idx == 10009012) && !nm.empty()) add(a, Kind::Exit, nm);
-    else if (fragment_spot(a)) add(a, Kind::Fragment, strings::kPoiFragment);
-    else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing);
+    else if (fragment_spot(a)) add(a, Kind::Fragment, strings::kPoiFragment.c_str());
+    else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));
-    else add(a, check_kind(nm), nm);
+    else add(a, check_kind(a), nm);
   }
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
@@ -302,8 +302,8 @@ std::vector<Poi> scan(float radius) {
   // Seen listed on Adamah floor 240 (2026-11-11).
   for (UObject* a : live("FldDungeonObjectActor")) {
     if (!breakable(a)) continue;
-    if (name_of(class_of(a)).find("BrokenFragment") != std::string::npos) add(a, Kind::Fragment, strings::kPoiFragmentCrystal);
-    else add(a, Kind::Thing, strings::kPoiBreakable);
+    if (name_of(class_of(a)).find("BrokenFragment") != std::string::npos) add(a, Kind::Fragment, strings::kPoiFragmentCrystal.c_str());
+    else add(a, Kind::Thing, strings::kPoiBreakable.c_str());
   }
   // Shadows roaming a Tartarus floor (EnemySymbolBaseCore; parked or defeated ones are hidden).
   const std::vector<shadow::Holder> holders = shadow::enemy_holders();
@@ -313,7 +313,7 @@ std::vector<Poi> scan(float radius) {
     for (const shadow::Holder& h : holders) if (h.actor == a) { comp = h.comp; break; }
     add(a, Kind::Enemy, shadow_name(a, comp));
   }
-  if (out.empty() && !beyond) for (UObject* a : triggers) add(a, Kind::Event, strings::kPoiEvent);
+  if (out.empty() && !beyond) for (UObject* a : triggers) add(a, Kind::Event, strings::kPoiEvent.c_str());
   std::sort(out.begin(), out.end(), [](const Poi& a, const Poi& b) { return a.dist < b.dist; });
   // A door between two rooms is two exits a step apart, one on each side, each named for where it leads (the
   // monorail's cars, 1.4 m apart, 2026-10-27): only the one on the player's side, the nearer, counts.

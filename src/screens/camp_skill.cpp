@@ -68,7 +68,7 @@ class CampSkill : public MenuScreen {
   // 6 is the frame after a skill is used, back to 4 (FUN_14133efb0): still this menu, nothing to read.
   bool active() override { int s = state(); return sys() && s >= 3 && s <= 6; }
   bool holds_keys() override { int s = state(); return s == 3 || s == 4 || s == 5; }
-  std::string title() override { return strings::kCampItems[0]; }
+  std::string title() override { return strings::kCampItems[0].c_str(); }
   void on_enter() override { screens::set_keys(strings::kListKeys); }
   void build(ui::GraphBuilder& b) override {
     uint8_t* s = sys();
@@ -78,7 +78,7 @@ class CampSkill : public MenuScreen {
     if (st == 3 || st == 5) {
       Mirror& mm = st == 3 ? who_ : target_;
       b.begin_stop(mm.key);
-      if (st == 5) b.push_context(strings::kUseOnWhom);
+      if (st == 5) b.push_context(strings::kUseOnWhom.c_str());
       auto marks = party_marks(ids);
       for (int i = 0; ids && i < ids->num; ++i) {
         int id = ids->data[i];

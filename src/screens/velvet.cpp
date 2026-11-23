@@ -258,7 +258,7 @@ class VelvetScreen : public MenuScreen {
   void on_tick() override {
     // The animation runs 20 seconds with nothing to read until the Persona speaks: say it started (Tab skips it).
     if (scene() == 4 && (step() == 7 || step() == 8)) {
-      if (!fusing_) { fusing_ = true; screens::set_keys(strings::kFusingKeys); say(strings::kFusing, true); }
+      if (!fusing_) { fusing_ = true; screens::set_keys(strings::kFusingKeys); say(strings::kFusing.c_str(), true); }
     } else if (scene() == 4 && (step() == 9 || step() == 10)) {
       // The result's page opening (FUN_141574cd0: 10 opens the status page, 9 waits for it, then 11): no keys.
       if (fusing_) { fusing_ = false; screens::set_keys([] { return std::string(); }); }
@@ -269,7 +269,7 @@ class VelvetScreen : public MenuScreen {
     {
       auto* p = (uint8_t*)ps_.get();
       int n = inheriting() && p ? ((TArray<uint16_t>*)(p + 0x510))->num : -1;
-      if (n >= 0 && chosen_ >= 0 && n < chosen_) say(strings::kNotChosen, true);
+      if (n >= 0 && chosen_ >= 0 && n < chosen_) say(strings::kNotChosen.c_str(), true);
       chosen_ = n;
     }
     if (!on_page()) { page_ = 0; result_id_ = 0; return; }
@@ -288,14 +288,14 @@ class VelvetScreen : public MenuScreen {
     if (sc == 2 || sc == 3) screens::set_keys(strings::kListKeys);
     if (sc == 2) {
       b.begin_stop("velvet.top");
-      b.push_context(strings::kVelvetTop);
-      for (int i = 0; i < 3; ++i) { std::string l = strings::kVelvetMenu[i]; b.add_item(slot("velvet.top", i), game_item(top_, i, [l] { return l; })); }
+      b.push_context(strings::kVelvetTop.c_str());
+      for (int i = 0; i < 3; ++i) { std::string l = strings::kVelvetMenu[i].c_str(); b.add_item(slot("velvet.top", i), game_item(top_, i, [l] { return l; })); }
       b.pop_context();
       if (int c = top_.cursor(); c >= 0) b.set_start(slot("velvet.top", c));
     } else if (sc == 3) {
       b.begin_stop("velvet.method");
-      b.push_context(strings::kFusionMethod);
-      for (int i = 0; i < 3; ++i) { std::string l = strings::kFusionMethods[i]; b.add_item(slot("velvet.method", i), game_item(method_, i, [l] { return l; })); }
+      b.push_context(strings::kFusionMethod.c_str());
+      for (int i = 0; i < 3; ++i) { std::string l = strings::kFusionMethods[i].c_str(); b.add_item(slot("velvet.method", i), game_item(method_, i, [l] { return l; })); }
       b.pop_context();
       if (int c = method_.cursor(); c >= 0) b.set_start(slot("velvet.method", c));
     } else if (on_page()) {   // before the compendium's and registration's lists: their pages are in the same scene
@@ -312,7 +312,7 @@ class VelvetScreen : public MenuScreen {
       build_regist(b);
     } else if (levelup()) {
       screens::set_keys(strings::kLevelUpKeys);
-      build_status_page(b, levelup_, strings::kLevelUp, "", levelup_before_);
+      build_status_page(b, levelup_, strings::kLevelUp.c_str(), "", levelup_before_);
     } else if (sc == 4) {
       int st = step();
       if (st == 6) build_inherit(b);
@@ -336,7 +336,7 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
   };
   if (st == 3 || st == 4) {
     screens::set_keys(strings::kFusionKeys);
-    b.push_context(st == 4 ? strings::kFusionSecond : strings::kFusionFirst);
+    b.push_context(st == 4 ? strings::kFusionSecond.c_str() : strings::kFusionFirst.c_str());
     auto* rows = (TArray<uint8_t>*)(c + 0x138);
     auto* res = (TArray<uint8_t>*)(c + 0x148);
     int hero = persona::unit_level(1);
@@ -362,7 +362,7 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
     }
   } else if (st == 12) {
     screens::set_keys(strings::kFusionKeys);
-    b.push_context(strings::kSpecialFusion);
+    b.push_context(strings::kSpecialFusion.c_str());
     auto* rs = (TArray<uint8_t>*)(c + 0x188);
     for (int i = 0; rs->data && i < rs->num && i < 200; ++i) {
       uint8_t* r = rs->data + i * kSpecialRow;
@@ -376,7 +376,7 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
         mats += (mats.empty() ? "" : ", ") + persona::name(*(uint16_t*)(x + 0x1A));
       }
       l += std::format(", {} {}", strings::kFusionFrom, mats);
-      l += have == need ? std::format(", {}", strings::kSpecialReady) : std::format(", {} {} {} {}", strings::kSpecialHave, have, strings::kOf, need);
+      l += have == need ? std::format(", {}", strings::kSpecialReady) : std::format(", {} {}", strings::kSpecialHave, strings::of(have, need));
       if (i == fr) walk = persona::detail_lines(r + 0x18);
       n = i + 1;
       auto v = game_item(list_, i, [l] { return l; });
@@ -385,7 +385,7 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
     }
   } else {
     screens::set_keys(strings::kFusionSearchKeys);
-    b.push_context(strings::kFusionSearch);
+    b.push_context(strings::kFusionSearch.c_str());
     auto* rs = (TArray<uint8_t>*)(c + 0x178);
     for (int i = 0; rs->data && i < rs->num && i < 400; ++i) {
       uint8_t* r = rs->data + i * kSearchRow;
@@ -435,7 +435,7 @@ void VelvetScreen::build_inherit(ui::GraphBuilder& b) {
       bool on = ee && ee->data && i < ee->num && *(uint16_t*)(ee->data + i * 8 + 6) == 1;
       if (!on) return std::string();
       int most = picks(0x38), now = picks(0x34);
-      return most > 0 && now > 0 ? std::format("{}, {} {} {} {}", strings::kChosen, now, strings::kOf, most, strings::kPicks) : std::string(strings::kChosen);
+      return most > 0 && now > 0 ? std::format("{}, {} {}", strings::kChosen, strings::of(now, most), strings::kPicks) : std::string(strings::kChosen);
     }, true, ui::announcement_kinds::kSelected));
     buffer_with(v, [id] { return persona::skill_help(id); });
     b.add_item(slot("velvet.inherit", i), v);
@@ -453,7 +453,7 @@ void VelvetScreen::build_book(ui::GraphBuilder& b) {
   std::string key = std::format("velvet.book.{}.{}", rows->num, i32(bk, 0x124));
   book_list_.key = key;
   b.begin_stop(key);
-  b.push_context(strings::kCompendium);
+  b.push_context(strings::kCompendium.c_str());
   auto stock = persona::stock();
   for (int i = 0; rows->data && i < rows->num && i < 600; ++i) {
     uint8_t* e = rows->data + i * kRow;
@@ -480,7 +480,7 @@ void VelvetScreen::build_regist(ui::GraphBuilder& b) {
   std::string key = std::format("velvet.regist.{}", rows->num);   // rebuilt after each registration
   regist_list_.key = key;
   b.begin_stop(key);
-  b.push_context(strings::kRegister);
+  b.push_context(strings::kRegister.c_str());
   for (int i = 0; rows->data && i < rows->num && i < 64; ++i) {
     uint8_t* e = rows->data + i * kRow;
     std::string l = entry_line(e);

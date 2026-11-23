@@ -1,4 +1,5 @@
 #include "social_art.h"
+#include "lang.h"
 #include <algorithm>
 
 namespace p3a::core::social_art {
@@ -130,6 +131,6 @@ int picture(int arcana, int person, int fool_members) {
   return -1;
 }
 
-std::string describe(int pic) { return pic >= 0 && pic < kCount ? kPictures[pic] : ""; }
+std::string describe(int pic) { return pic >= 0 && pic < kCount ? lang::tr(kPictures[pic]) : ""; }   // in the mod's language
 int pictures() { return kCount; }
 }  // namespace p3a::core::social_art

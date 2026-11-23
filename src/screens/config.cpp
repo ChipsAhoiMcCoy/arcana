@@ -132,7 +132,7 @@ class ConfigScreen : public MenuScreen {
     r.type = type;
     switch (type) {
       case 0: r.value = flag ? strings::kOn : strings::kOff; break;                        // DCPT_FLAG
-      case 1: r.value = max > 0 && max != 100 ? std::format("{} {} {}", value, strings::kOf, max) : std::to_string(value); break;   // DCPT_VALUE
+      case 1: r.value = max > 0 && max != 100 ? std::format("{}", strings::of(value, max)) : std::to_string(value); break;   // DCPT_VALUE
       case 2: r.value = call_str(d, "GetSelLangText", flag ? 1 : 0); break;                // DCPT_LANGUAGE: bFlag, as the draw reads it (Value stays 0)
       case 4: r.value = call_str(d, "GetBGMText", value); break;                           // DCPT_BGM: 0 "Default"
       default:
@@ -226,7 +226,7 @@ class ConfigScreen : public MenuScreen {
     on_ = st == 5 || st == 6 || (st >= 11 && st <= 13) || (on_ && st != 19 && st != 24 && st != 0);   // 11-13: the BGM playlists
     return on_;
   }
-  std::string title() override { return strings::kConfig; }
+  std::string title() override { return strings::kConfig.c_str(); }
   void on_enter() override {
     screens::set_keys([this] {
       int c = list_.cursor ? list_.cursor() : -1;
@@ -252,8 +252,8 @@ class ConfigScreen : public MenuScreen {
       int preview = dlg.previewing();
       if (dlg.d && dlg.d == bgm_seen_dialog_) {
         if (set != bgm_set_) { if (c >= 0) say(bgm_entry(d, c), true); }
-        else if (c >= 0 && c == bgm_seen_row_ && fav != bgm_seen_fav_) say(fav ? strings::kFavorite : strings::kBgmUnfavorited, true);
-        else if (preview != bgm_seen_preview_) say(preview >= 0 ? strings::kBgmPlaying : strings::kBgmStopped, true);
+        else if (c >= 0 && c == bgm_seen_row_ && fav != bgm_seen_fav_) say(fav ? strings::kFavorite.c_str() : strings::kBgmUnfavorited.c_str(), true);
+        else if (preview != bgm_seen_preview_) say(preview >= 0 ? strings::kBgmPlaying.c_str() : strings::kBgmStopped.c_str(), true);
       }
       bgm_seen_dialog_ = dlg.d;
       bgm_set_ = set;
@@ -287,7 +287,7 @@ class ConfigScreen : public MenuScreen {
         if (i == 0 || i == kBgmModeRows) {
           if (i) b.pop_context();
           b.set_region(i ? "bgm.tracks" : "bgm.modes");
-          b.push_context(i ? strings::kBgmTracks : strings::kBgmModes);
+          b.push_context(i ? strings::kBgmTracks.c_str() : strings::kBgmModes.c_str());
         }
         auto v = game_item(bgm_, i, [this, i] { UObject* dd = draw(); return dd ? bgm_entry(dd, i) : std::string(); });
         if (i < kBgmModeRows) buffer_with(v, [i] { return std::string(strings::kBgmModeDesc[i]); });

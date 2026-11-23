@@ -10,6 +10,7 @@
 #include "flow.h"
 #include "msg.h"
 #include "core/area_text.h"
+#include "core/lang.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "calendar.h"
@@ -84,8 +85,8 @@ static ca::Scene scene(std::vector<std::string>* levels_out = nullptr) {
       // Episode Aigis calls its hidden sections the Monad Chambers (the Abyss of Time's labyrinths, dungeon 499).
       bool abyss = false;
       for (const char* n : {"Malebolge", "Cocytus", "Caina", "Antenora", "Ptolomea", "Judecca", "Empyrean"})
-        if (s.name.find(n) != std::string::npos) abyss = true;
-      s.name = abyss ? strings::kMonadChambers : strings::kMonad;
+        if (core::lang::names_place(s.name, n)) abyss = true;
+      s.name = abyss ? strings::kMonadChambers.en : strings::kMonad.en;   // the entries' English names
       s.major = 0;
       break;
     }
@@ -119,7 +120,7 @@ void describe() {
   // A message window over a Persona page (a fusion's level up asking which skill to forget): the page's Persona.
   if (screens::MenuScreen* m = screens::menu::under())
     if (std::string a = m->appearance(); !a.empty()) { speech::speak(a, true); return; }
-  if (!world::player()) { speech::speak(strings::kNotInField, true); return; }
+  if (!world::player()) { speech::speak(strings::kNotInField.c_str(), true); return; }
   std::string d = ca::describe(scene());
   speech::speak(d.empty() ? std::string(strings::kNoAreaDescription) + " " + poi::area_name() : d, true);
 }

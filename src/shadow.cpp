@@ -199,7 +199,7 @@ int close_cues(const Seen& s, const FVector& me) {
     int st = back_turned ? 1 : 0;
     if (!said[st]) {
       said[st] = true;
-      speech::speak(back_turned ? strings::kShadowBackTurned : strings::kShadowFacingYou, false);
+      speech::speak(back_turned ? strings::kShadowBackTurned.c_str() : strings::kShadowFacingYou.c_str(), false);
     }
   } else if (s.dist > 600.0f && w.index == told.index) {
     said[0] = said[1] = false;

@@ -32,7 +32,7 @@ static int title_count(UObject* state) {
   int last = state ? *(int*)((uint8_t*)state + 0xa0) : 3;
   return last >= 1 && last <= 5 ? last + 1 : 4;
 }
-static std::string title_item(int i) { return i < 4 ? strings::kTitleItems[i] : std::format("{} {}", strings::kItemNumber, i + 1); }
+static std::string title_item(int i) { return i < 4 ? strings::kTitleItems[i].c_str() : std::format("{} {}", strings::kItemNumber.c_str(), i + 1); }
 
 bool title_opening() { return title_state_is("OP"); }
 // The opening movie takes a press as a skip only once its state has run 1 s (UTitleStateOP +0x44, the time since it
@@ -91,14 +91,14 @@ class TitleScreen : public Screen {
   void tick() override {
     UObject* s = title_state_obj();
     std::string st = title_state(s);
-    if (opening_line_due()) speech::speak(strings::kTitleOpening, true);
+    if (opening_line_due()) speech::speak(strings::kTitleOpening.c_str(), true);
     if (st != state_) {
       state_ = st;
       cursor_ = -1;
       notice_pressed_ = false;
       if (st == "Caution" || st == "PhotosensitiveCaution") voice::play_system_sound(voice::CueWindowOpen);
-      if (st == "Caution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitleCaution, true); }
-      else if (st == "PhotosensitiveCaution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitlePhotosensitive, true); }
+      if (st == "Caution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitleCaution.c_str(), true); }
+      else if (st == "PhotosensitiveCaution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitlePhotosensitive.c_str(), true); }
     }
     if (st == "Caution" || st == "PhotosensitiveCaution") hold_notice(s, st == "Caution", g_title_actor.get(), notice_pressed_);
     // The logos before the opening movie (about 13 s with nothing else on screen): UTitleStateLogo +0x44 is the one
@@ -106,7 +106,7 @@ class TitleScreen : public Screen {
     // Only the first interrupts: a description still running when the next logo comes is finished, not cut.
     if (st == "Logo" || st == "Logo_Astrea") {
       int l = *(int*)((uint8_t*)s + 0x44);
-      if (l != cursor_ && l >= 0 && l < 3) speech::speak(strings::kTitleLogos[l], l == 0);
+      if (l != cursor_ && l >= 0 && l < 3) speech::speak(strings::kTitleLogos[l].c_str(), l == 0);
       cursor_ = l;
     }
     // "Press any button" waits until a press counts: the state plays the banner's animation 1.75 s in (+0x4c set) and
@@ -116,7 +116,7 @@ class TitleScreen : public Screen {
     if ((st == "PressWait" || st == "PressWait_Astrea") && cursor_ < 0 && *((uint8_t*)s + 0x4c) &&
         *((uint8_t*)g_title_actor.get() + 0x3da)) {
       screens::set_keys(strings::kPressAnyKey);
-      speech::speak(st == "PressWait" ? strings::kTitlePressAny : strings::kTitlePressAnyAstrea, true);   // _Astrea: Episode Aigis
+      speech::speak(st == "PressWait" ? strings::kTitlePressAny.c_str() : strings::kTitlePressAnyAstrea.c_str(), true);   // _Astrea: Episode Aigis
       cursor_ = 1;
     }
   }
@@ -148,7 +148,7 @@ class TitleMenuScreen : public MenuScreen {
     uint8_t* s = sel();
     return s && title_state_is("Select") && *(int32_t*)(s + 0x18) == 2;   // the menu's step: ATitleActor +0x490
   }
-  std::string title() override { return strings::kTitleMenu; }
+  std::string title() override { return strings::kTitleMenu.c_str(); }
   void on_enter() override { screens::set_keys(strings::kTitleMenuKeys); }
   void build(ui::GraphBuilder& b) override {
     b.begin_stop("title");
@@ -194,12 +194,12 @@ class DifficultyScreen : public MenuScreen {
     return a && !is_cdo(a) && get<UObject*>(a, "AssetLoader") != nullptr && *(int*)((uint8_t*)a + 0x424) >= 0 &&
            *(int*)((uint8_t*)a + 0x424) < 5 && (step == 1 || step == 2) && title_state_is("NewGame");
   }
-  std::string title() override { return strings::kSelectDifficulty; }
+  std::string title() override { return strings::kSelectDifficulty.c_str(); }
   void on_enter() override { screens::set_keys(strings::kChooseKeys); }
   void build(ui::GraphBuilder& b) override {
     b.begin_stop("difficulty");
     for (int i = 0; i < 5; ++i) {
-      std::string label = strings::kDifficulties[i];
+      std::string label = strings::kDifficulties[i].c_str();
       // On a move, only the part that differs: every description ends with the same "Your choice of difficulty..."
       auto v = game_item(list_, i, [label] { return label; }, [this, i] { return description(i); });
       describe_with(v, [this, i] { return core::first_sentence(description(i)); });

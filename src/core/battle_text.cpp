@@ -5,12 +5,12 @@
 #include <string_view>
 
 namespace p3a::core {
-std::string turns_text(int n) { return std::format("{} {}", n, n == 1 ? strings::kTurn : strings::kTurns); }
+std::string turns_text(int n) { return strings::count(n, strings::kTurn, strings::kTurns); }
 
 std::string countdown_text(float seconds, bool exact) {
   int s = seconds > 0 ? (int)seconds : 0, m = s / 60;
   s %= 60;
-  auto unit = [](int n, const char* one, const char* many) { return std::format("{} {}", n, n == 1 ? one : many); };
+  auto unit = [](int n, strings::Tr one, strings::Tr many) { return strings::count(n, one, many); };
   if (m == 0) return unit(s, strings::kSecond, strings::kSeconds);
   std::string t = unit(m, strings::kMinute, strings::kMinutes);
   if (exact && s > 0) t += " " + unit(s, strings::kSecond, strings::kSeconds);
@@ -42,22 +42,22 @@ std::vector<std::string> analyze_affinities(const std::vector<std::pair<int, std
     return s;
   };
   std::vector<std::string> out;
-  if (by[6].size() == attrs.size()) { out.push_back(strings::kAffinitiesUnknown); return out; }
+  if (by[6].size() == attrs.size()) { out.push_back(strings::kAffinitiesUnknown.c_str()); return out; }
   static const int order[] = {4, 5, 1, 2, 3};   // weak, resists, nulls, repels, drains
   for (int a : order)
     if (!by[a].empty()) out.push_back(std::string(strings::kAffinityCap[a]) + " " + join(by[a]));
   const auto &normal = by[0], &unknown = by[6];
   if (unknown.empty()) {
-    if (out.empty()) out.push_back(strings::kNoAffinitiesCap);
-    else if (!normal.empty()) out.push_back(strings::kRestNormal);
+    if (out.empty()) out.push_back(strings::kNoAffinitiesCap.c_str());
+    else if (!normal.empty()) out.push_back(strings::kRestNormal.c_str());
   } else if (normal.empty()) {
     out.push_back(out.empty() ? std::string(strings::kAffinitiesUnknown) : std::string(strings::kRestUnknown));
   } else if (unknown.size() <= normal.size()) {
     out.push_back(std::string(strings::kUnknownCap) + ": " + join(unknown));
-    out.push_back(strings::kRestNormal);
+    out.push_back(strings::kRestNormal.c_str());
   } else {
     out.push_back(std::string(strings::kNormalCap) + ": " + join(normal));
-    out.push_back(strings::kRestUnknown);
+    out.push_back(strings::kRestUnknown.c_str());
   }
   return out;
 }
@@ -105,11 +105,11 @@ std::string card_face(int type, int rank, int dialog) {
 
 std::string shop_mode_name(int mode) {
   switch (mode) {
-    case 1: case 2: case 3: case 4: return strings::kWeaponShopMenu[mode - 1];
-    case 0xC: return strings::kWeaponShopMenu[4];
-    case 7: return strings::kAntiqueMenu[0];
-    case 9: return strings::kAntiqueMenu[1];
-    case 10: return strings::kAntiqueMenu[2];
+    case 1: case 2: case 3: case 4: return strings::kWeaponShopMenu[mode - 1].c_str();
+    case 0xC: return strings::kWeaponShopMenu[4].c_str();
+    case 7: return strings::kAntiqueMenu[0].c_str();
+    case 9: return strings::kAntiqueMenu[1].c_str();
+    case 10: return strings::kAntiqueMenu[2].c_str();
     default: return std::format("{} {}", strings::kOption, mode);
   }
 }

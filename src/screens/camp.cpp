@@ -153,7 +153,7 @@ class CampScreen : public MenuScreen {
     // more frames behind the black screen, and read "Menu, System, 9 of 9" on the way to the title (2026-11-10).
     return !faded_out();
   }
-  std::string title() override { return strings::kCamp; }
+  std::string title() override { return strings::kCamp.c_str(); }
   void on_enter() override { screens::set_keys(strings::kCampKeys); }
   // Every frame, so the timer is compared with the frame before (ready is asked only now and then).
   void on_tick() override { if (auto* r = (uint8_t*)root_.get()) root_running(r); }
@@ -163,7 +163,7 @@ class CampScreen : public MenuScreen {
     // (exe+0x53b8428).
     static constexpr int kLock[kCount] = {0x40000080, 0x40000081, 0x40000082, 0x40000083, 0x40000084, 0x40000086, 0x40000085, 0x40000087, 0x40000088};
     for (int i = 0; i < kCount; ++i) {
-      std::string label = strings::kCampItems[i], help = strings::kCampHelp[i];
+      std::string label = strings::kCampItems[i].c_str(), help = strings::kCampHelp[i].c_str();
       if (party::flag(kLock[i])) label += std::string(", ") + strings::kUnavailable;
       auto v = game_item(list_, i, [label] { return label; }, [help] { return help; });
       buffer_with(v, [help] { return help; });   // "View or use items": said on every opening and move before

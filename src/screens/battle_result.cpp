@@ -78,7 +78,7 @@ class BattleResultScreen : public MenuScreen {
   std::vector<std::string> top(UObject* ui) {
     UObject* v = view_.get();
     std::vector<std::string> out{std::format("{} {}", v ? get<int64_t>(v, "Exp") : 0, strings::kExp)};
-    if (int64_t m = v ? get<int64_t>(v, "money") : 0) out.push_back(std::format("{} {}", m, strings::kYen));
+    if (int64_t m = v ? get<int64_t>(v, "money") : 0) out.push_back(strings::count(m, strings::kYen));
     int n = 0;
     auto items = array_of(ui, "GetItemParams", 0x18, n);
     for (int i = 0; i < n; ++i) {
@@ -87,7 +87,7 @@ class BattleResultScreen : public MenuScreen {
       std::string name = take(e + 8);
       if (name.empty()) name = items::name_of(id);
       if (name.empty()) continue;
-      out.push_back(num > 1 ? std::format(strings::kGotMany, strings::kGot, name, num) : std::format("{} {}", strings::kGot, name));
+      out.push_back(strings::fmt(strings::kGotFmt, num > 1 ? strings::fmt(strings::kCountFmt, name, num) : name));
     }
     return out;
   }
@@ -138,8 +138,8 @@ class BattleResultScreen : public MenuScreen {
     Params q(lv);
     call(ui, q);
     out.push_back(std::format("{} {}, {} {}", strings::kLevelUp, name, strings::kLevel, q.ret<int32_t>("Level")));
-    out.push_back(std::format("{} {} {} {}", strings::kHP, *(int32_t*)(r + 0x10), strings::kOf, *(int32_t*)(r + 0x14)));
-    out.push_back(std::format("{} {} {} {}", strings::kSP, *(int32_t*)(r + 0x18), strings::kOf, *(int32_t*)(r + 0x1C)));
+    out.push_back(std::format("{} {}", strings::kHP, strings::of(*(int32_t*)(r + 0x10), *(int32_t*)(r + 0x14))));
+    out.push_back(std::format("{} {}", strings::kSP, strings::of(*(int32_t*)(r + 0x18), *(int32_t*)(r + 0x1C))));
     out.push_back(std::format("{} {}", *(int64_t*)(r + 0x20), strings::kExpToNext));
     return out;
   }
@@ -183,7 +183,7 @@ class BattleResultScreen : public MenuScreen {
     if (std::string l = learned_line(now, was); !l.empty()) say(l, false);
     for (int i = 0; i < 5; ++i) {
       int v = persona::stat_total(now, i), up = v - persona::stat_total(was, i);
-      if (up > 0) say(std::format("{} {}, {} {}", strings::kStatNames[i], v, strings::kUp, up), false);
+      if (up > 0) say(std::format("{} {}, {}", strings::kStatNames[i], v, strings::fmt(strings::kUpByFmt, up)), false);
     }
   }
   static ui::ControlId line_id(const std::string& key, int i) { return ui::ControlId::structural(std::format("res.{}.{}", key, i)); }
@@ -352,7 +352,7 @@ class BattleResultScreen : public MenuScreen {
       if (const uint8_t* was = persona_page(ui)) {
         const uint8_t* now = live_entry(*(uint16_t*)(was + 2));
         if (!settled(now, was)) return;
-        build_status_page(b, now ? now : was, strings::kLevelUp, learned_line(now, was), now ? was : nullptr, nullptr, {});
+        build_status_page(b, now ? now : was, strings::kLevelUp.c_str(), learned_line(now, was), now ? was : nullptr, nullptr, {});
       }
       return;
     }

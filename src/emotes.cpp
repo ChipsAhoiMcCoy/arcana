@@ -56,7 +56,7 @@ UObject* char_comp(UObject* actor) {
 // "you", a field person's name, a party member's first name, or "" for anyone else (an extra in a story scene).
 std::string who(UObject* chara) {
   if (!chara) return {};
-  if (chara == world::player()) return strings::kEmoteYou;
+  if (chara == world::player()) return strings::kEmoteYou.c_str();
   // A field person's model (BP_FldNpcMob_C) is owned by its FldNpcActor (FldNpcActor_316_010, 2026-11-21): the
   // name the people list gives them ("Earnest Student").
   if (UObject* owner = get<UObject*>(chara, "Owner"); owner && (is_a(owner, "FldNpcActor") || is_a(owner, "FldCmmActor")))
@@ -66,7 +66,7 @@ std::string who(UObject* chara) {
   int cat = call_ret<uint8_t>(comp, "GetCategoryID");
   int id = call_ret<int32_t>(comp, "GetIndexID");
   if (cat != 1 || id <= 0) return {};
-  if (id == 1) return strings::kEmoteYou;
+  if (id == 1) return strings::kEmoteYou.c_str();
   return party::name(id);
 }
 }  // namespace

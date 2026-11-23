@@ -11,7 +11,7 @@ enum class Season { Spring, Summer, Autumn, Winter };
 
 struct Scene {
   int major = 0, minor = 0;   // field ids (LV_F102_121 = 102, 121); 0 = a place only the banner names (Tartarus)
-  std::string name;           // the game's name for the area ("Thebel", "Tartarus: Entrance")
+  std::string name;           // the game's name for the area ("Thebel", "Tartarus: Entrance"), in its language
   int month = 0, day = 0;     // the calendar; 0 = unknown
   Light light = Light::Day;
   int floor = 0;              // the storey inside a multi-storey area (dorm, school, strip mall, inn); 0 = unknown

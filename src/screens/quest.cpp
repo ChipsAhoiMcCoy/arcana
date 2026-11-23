@@ -115,7 +115,7 @@ class CampQuest : public MenuScreen {
   // A case's profile is read with each row: the game's details key (F / X) does nothing there. A request's info (F)
   // stays the game's: Elizabeth's text names the item only on the page the game builds for that view.
   bool blocks_status() override { return tab() == 1; }
-  std::string title() override { return tab() == 1 ? strings::kMissingPersons : strings::kRequests; }
+  std::string title() override { return tab() == 1 ? strings::kMissingPersons.c_str() : strings::kRequests.c_str(); }
   void build(ui::GraphBuilder& b) override {
     if (tab() == 0) {
       uint8_t* r = req() ? req() : info();   // the list stays built under the info view
@@ -165,7 +165,7 @@ class CampQuest : public MenuScreen {
     b.begin_stop("cases");
     for (int i = 0; list && i < list->num; ++i) {
       int no = (list->data[i] >> 16) & 0xFFFF;
-      std::string name = strings::kUnknown, profile, status;
+      std::string name = strings::kUnknown.c_str(), profile, status;
       const int32_t* fl = flags.count(no) ? flags[no] : nullptr;
       if (fl) status = party::flag(fl[1]) ? strings::kMissingFound : party::flag(fl[2]) ? strings::kMissingDiscontinued : strings::kMissingSearching;
       if ((!fl || party::flag(fl[4])) && f && f->ok && no < (int)f->dialogs.size()) {

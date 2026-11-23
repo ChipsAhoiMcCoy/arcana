@@ -65,8 +65,8 @@ static int64_t plan_hook(uint8_t* ctx) {
 std::string price_line() {
   if (!g_panel || g_plan >= 0) return {};
   int m = money();
-  std::string s = std::format("{} {} {}", strings::kPrice, -g_plan, strings::kYen);
-  if (m >= 0) s += std::format(", {} {} {}", strings::kYouHave, m, strings::kYen);
+  std::string s = std::format("{} {}", strings::kPrice, strings::count(-g_plan, strings::kYen));
+  if (m >= 0) s += std::format(", {} {}", strings::kYouHave, strings::count(m, strings::kYen));
   return s;
 }
 
@@ -127,8 +127,8 @@ void tick() {
   if (m >= 0 && prev_money >= 0 && m != prev_money) g_told_money = 0;
   // Returning to the title empties the wallet a moment before the title shows: not spending.
   if (m >= 0 && prev_money >= 0 && m != prev_money && !load && m != 0 && !told)
-    speech::speak(m > prev_money ? std::format("{} {} {}", strings::kGot, m - prev_money, strings::kYen)
-                                 : std::format("{} {} {}", strings::kSpent, prev_money - m, strings::kYen), false);
+    speech::speak(m > prev_money ? std::format("{} {}", strings::kGot, strings::count(m - prev_money, strings::kYen))
+                                 : std::format("{} {}", strings::kSpent, strings::count(prev_money - m, strings::kYen)), false);
   if (m >= 0) prev_money = m;
   Stats s;
   if (!read(s)) { have = false; return; }
@@ -136,9 +136,9 @@ void tick() {
     for (int i = 0; i < 3; ++i) {
       if (s.points[i] > prev.points[i]) g_last_up = i;
       if (s.level[i] > prev.level[i])
-        speech::speak(std::format("{} {} {}, {}", strings::kSocialStats[i], strings::kRankUp, s.level[i], rank_name(s, i)), false);
+        speech::speak(std::format("{}, {}", strings::fmt(strings::kRankUpFmt, strings::kSocialStats[i].c_str(), s.level[i]), rank_name(s, i)), false);
       else if (s.points[i] > prev.points[i])
-        speech::speak(std::format("{} {}", strings::kSocialStats[i], strings::kStatUp), false);
+        speech::speak(strings::fmt(strings::kStatUpFmt, strings::kSocialStats[i].c_str()), false);
     }
   prev = s;
   have = true;
@@ -155,7 +155,7 @@ std::string describe() {
   if (!read(s)) return {};
   std::string out;
   for (int i = 0; i < 3; ++i) out += std::format("{}{} {}", i ? ", " : "", strings::kSocialStats[i], rank_name(s, i));
-  if (int m = money(); m >= 0) out += std::format(". {} {}", m, strings::kYen);
+  if (int m = money(); m >= 0) out += ". " + strings::count(m, strings::kYen);
   return out;
 }
 

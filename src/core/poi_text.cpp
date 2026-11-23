@@ -1,4 +1,5 @@
 #include "core/poi_text.h"
+#include <algorithm>
 #include "core/strings.h"
 #include <cctype>
 #include <cmath>
@@ -59,30 +60,43 @@ bool numbered_name(const std::string& flag, std::string& base, int& number) {
 // The game marks nearly every hit with the plain Check icon: a business's door (Be Blue V, the police station, Hagakure
 // Ramen) and a classroom's look exactly like a bookshelf; only the Net Cafe and Umiushi carry the Shop icon. Their
 // scripts tell them apart (HIT_SKILL_SHOP, HIT_POLICE_ENTER, CALL_PUBLIC_SHOP; FLD_OPEN_ORD_DOOR_FADE for a room), so
-// these lists sort the Check hits by the name the game gives them (surveyed from every field level's hits and their
-// BF_OBJ flowscripts, 2026-10-31).
-CheckKind check_kind(const std::string& name) {
-  // Somewhere to buy, eat, work or spend time: a business's entrance, a vendor, a vending machine.
-  static const std::set<std::string> shops = {
-    "Aohige Pharmacy", "Azuki Arai Sweets", "Be Blue V", "Bookworms", "Used Bookstore", "Caf\xC3\xA9",
-    "Chagall Caf\xC3\xA9", "Net Caf\xC3\xA9", "Game Parade", "Hagakure Ramen", "Ramen Shop", "Wakatsu Kitchen", "Umiushi Beef Bowls",
-    "Hamburger Shop", "Wilduck Burger", "Kenneth Arnold", "Mahjong Parlor Red Hawk", "Mandragora", "Mayoido",
-    "Mayoido Antiques", "Octopia", "Police Station", "Que Sera Sera", "Screen Shot", "Takoyaki Vendor",
-    "Vending Machine", "Mystery Vending Machine", "Ticket Booth", "Kyoto Souvenirs", "Souvenir Sweets", "Kyoto Crafts",
+// these lists sort the Check hits by their name's row (mNameIndex_, KIN_<n> of DT_FldDailyHitName and
+// DT_FldDungeonHitName; surveyed from every field level's hits and their BF_OBJ flowscripts, 2026-10-31). By row, not
+// by the name: the names are in the game's language (2026-11-23). Every row bearing one of these names in the English
+// tables, the main story's and Episode Aigis's; no row of either means anything else.
+CheckKind check_kind(int name_index) {
+  // Somewhere to buy, eat, work or spend time: a business's entrance, a vendor, a vending machine. The rows named
+  // Ramen Shop, Vending Machine, Chagall Café, Be Blue V, Police Station, Mandragora, Mayoido Antiques, Aohige
+  // Pharmacy, Kenneth Arnold, Game Parade, Screen Shot, Ticket Booth, Café, Mahjong Parlor Red Hawk, Que Sera Sera,
+  // Wilduck Burger, Azuki Arai Sweets, Hagakure Ramen, Wakatsu Kitchen, Net Café, Umiushi Beef Bowls, Bookworms,
+  // Souvenir Sweets, Kyoto Souvenirs, Kyoto Crafts, Hamburger Shop, Used Bookstore, Takoyaki Vendor, Mystery Vending
+  // Machine, Mayoido, Octopia
+  static constexpr int kShops[] = {
+    2, 2102003, 3101002, 3101003, 3101004, 3101005, 3101006, 3101007, 3101008, 3101009, 4101001, 4101003, 4101008,
+    4101010, 4102001, 4102002, 5101001, 5102101, 5102201, 5102202, 5102203, 5102204, 5102205, 5102206, 5102505,
+    8101105, 8101106, 8101109, 8101202, 10001006, 10002000, 10002007, 10002009, 10002010, 10003018, 10003019,
+    10006001, 10006002, 10006004, 10006005, 10006006, 10006007, 10006008, 10006010, 10007001, 10007002, 10007003,
+    10007004, 10007006, 10007007, 10007008, 10007010,
   };
-  // A room's door you check to go in (or find locked): classrooms, offices, restrooms, the dorm's bedrooms.
-  static const std::set<std::string> doors = {
-    "Classroom Door", "Classroom 2-E", "Computer Room", "Faculty Office", "Library", "Nurse's Office", "Laboratory",
-    "Janitor's Room", "Art Room", "Science Room", "Music Room", "Music Prep Room", "Home Ec Prep Room",
-    "Home Economics Room", "PA Room", "Printing Room", "Student Council Room", "Welfare Training Room", "Gym",
-    "Indoor Swimming Pool", "Practice Field", "Men's Room", "Women's Room", "Restroom", "Bathroom", "Storage Room",
-    "Storeroom", "Rooftop Storage", "Emergency Exit", "Rear Entrance", "Kitchen Door", "Locked Gate", "Metal Doors",
-    "Large Door", "Command Room", "Sanada's Room", "Mitsuru's Room", "Yukari's Room", "Vacant Room", "Junpei's Room",
-    "Aragaki's Room", "Amada's Room", "Fuuka's Room", "Aigis's Room", "His Room", "Door to Velvet Room", "Fuji Room", "Inn Exit", "Hot Spring",
-    "School Building 2F", "School Building 3F",   // the school's stairs (a Check hit, HIT_SECOND_FLOOR_STAIRS)
+  // A room's door you check to go in (or find locked): classrooms, offices, restrooms, the dorm's bedrooms, the
+  // school's stairs (a Check hit, HIT_SECOND_FLOOR_STAIRS). The rows named
+  // Classroom Door, School Building 3F, Command Room, Men's Room, Women's Room, Faculty Office, Library, Nurse's
+  // Office, Laboratory, Janitor's Room, Welfare Training Room, Printing Room, Home Ec Prep Room, Music Prep Room,
+  // School Building 2F, Classroom 2-E, Emergency Exit, PA Room, Computer Room, Student Council Room, Art Room,
+  // Science Room, Music Room, Home Economics Room, Locked Gate, Practice Field, Gym, Indoor Swimming Pool, Storage
+  // Room, Rear Entrance, Kitchen Door, Storeroom, Sanada's Room, Vacant Room, His Room, Junpei's Room, Amada's Room,
+  // Mitsuru's Room, Yukari's Room, Fuuka's Room, Large Door, Rooftop Storage, Door to Velvet Room, Restroom, Inn
+  // Exit, Hot Spring, Fuji Room, Bathroom, Metal Doors
+  static constexpr int kDoors[] = {
+    1, 113100, 214100, 1102001, 1102002, 1102102, 1102103, 1102104, 1102107, 1102108, 1102110, 1102111, 1102112,
+    1102113, 1102114, 1102201, 1102202, 1102203, 1102204, 1102504, 1102510, 1102511, 1102512, 1102514, 1103005,
+    1103507, 1103508, 1103509, 1141003, 2102001, 2102002, 2102101, 2102110, 2102114, 2102202, 2102203, 2102204,
+    2102205, 2102220, 2102221, 2102222, 2102301, 2102302, 2102303, 2102304, 2102305, 2102320, 2102402, 2102420,
+    2141003, 2151002, 3101012, 3111001, 4101002, 8101002, 8101101, 8101102, 8101201, 10000108, 10001000, 10001002,
+    10001003, 10001004, 10003023, 10003027, 10005000, 10008002,
   };
-  if (shops.count(name)) return CheckKind::Shop;
-  if (doors.count(name)) return CheckKind::Door;
+  if (std::ranges::binary_search(kShops, name_index)) return CheckKind::Shop;
+  if (std::ranges::binary_search(kDoors, name_index)) return CheckKind::Door;
   return CheckKind::Thing;
 }
 
@@ -133,10 +147,10 @@ const char* bar_customer_place(int major, int minor) {
 }
 
 std::string chest_name(const std::string& type, const std::string& game_name) {
-  if (type == "TBoxRare") return strings::kPoiChestRare;
-  if (type == "TBoxJewelry") return strings::kPoiChestGold;
+  if (type == "TBoxRare") return strings::kPoiChestRare.c_str();
+  if (type == "TBoxJewelry") return strings::kPoiChestGold.c_str();
   int cost = type == "TBoxMedal1" ? 1 : type == "TBoxMedal2" ? 2 : type == "TBoxMedal3" ? 3 : 0;
-  if (cost) return std::format("{}, {} {}", strings::kPoiChestLocked, cost, cost == 1 ? strings::kPoiFragment : strings::kPoiFragments);
+  if (cost) return std::format("{}, {}", strings::kPoiChestLocked, strings::count(cost, strings::kPoiFragment, strings::kPoiFragments));
   return game_name;
 }
 
@@ -145,12 +159,21 @@ bool is_named(const std::string& poi_name, const std::string& label) {
                                poi_name.compare(label.size(), 2, " (") == 0);
 }
 
-// Every such first word in the game's hit-name tables ("Proceed Onward", "Enter the Velvet Room", "To furthest
-// floor").
-bool named_as_action(const std::string& name) {
-  for (const char* verb : {"Go ", "Head ", "Return ", "Proceed ", "Enter ", "Exit ", "To "})
-    if (name.rfind(verb, 0) == 0) return true;
-  return false;
+// The hit-name rows whose name says what you do ("Proceed Onward", "Enter the Velvet Room", "To furthest floor"): by
+// row, as the names are in the game's language (2026-11-23). Every row of the English tables (main story and Episode
+// Aigis) whose Name, or whose Name2 (shown while the row's story flag is on), starts with Go, Head, Return, Proceed,
+// Enter, Exit or To.
+bool named_as_action(int name_index, bool name2_shown) {
+  // Enter Door, Enter the Velvet Room, Exit Door, Go Back, Go Elsewhere, Go elsewhere, Head Downstairs, Head Up, Head Upstairs, Proceed Onward, Return to Dorm, Return to Entrance, Return to the Desert of Doors, To furthest floor
+  static constexpr int kName[] = {
+    900000, 900001, 3101030, 10000001, 10001007, 10001008, 10002012, 10009002, 10009005, 10009006, 10009007,
+    10009008, 10009009, 10009012, 10009017, 10009033, 10009037,
+  };
+  // Go to Another Floor, Go to Tartarus, Head to the Dorm, Return to Dorm, Return to the Desert of Doors
+  static constexpr int kName2[] = {
+    2102108, 2102150, 10002012, 10009003, 10009031,
+  };
+  return name2_shown ? std::ranges::binary_search(kName2, name_index) : std::ranges::binary_search(kName, name_index);
 }
 
 int settle_category(int current, int n, int delta, bool move, const std::function<bool(int)>& has_any) {

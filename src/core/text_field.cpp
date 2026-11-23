@@ -14,7 +14,7 @@ std::string one_spoken(const std::string& s) { return s.empty() ? std::string(st
 }  // namespace
 
 std::string spoken_char(const std::string& ch) {
-  if (ch == " ") return strings::kVkSpace;
+  if (ch == " ") return strings::kVkSpace.c_str();
   if (ch.size() == 1 && ch[0] >= 'A' && ch[0] <= 'Z') return std::string(strings::kCapital) + " " + ch;
   return ch;
 }

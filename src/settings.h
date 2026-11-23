@@ -9,7 +9,7 @@ enum Id { TopDown, TurnedRooms, AlwaysDash, PoiRange, WallTones, WallRange, Shad
           MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
           Spatial, BehindPitch,
           VoicedLines, VoiceEndSound, Subtitles, Emotes, AudioDescription, SceneDescription, SceneVoice, SceneSpeed, DescriptionWait,
-          TriggerDelay, EntryHints, MenuSpeed, Count };
+          TriggerDelay, EntryHints, MenuSpeed, Language, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }
 // VoicedLines: what the screen reader does with a line the game voices.

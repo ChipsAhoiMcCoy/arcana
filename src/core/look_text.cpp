@@ -1,4 +1,5 @@
 #include "look_text.h"
+#include "lang.h"
 #include <cstring>
 
 namespace p3a::core::look {
@@ -15,7 +16,7 @@ const char* text_of(const char* key) {
 template <size_t N>
 std::string find(const Use (&uses)[N], int id) {
   for (auto& u : uses)
-    if (u.id == id) { const char* t = text_of(u.model); return t ? t : ""; }
+    if (u.id == id) { const char* t = text_of(u.model); return t ? lang::tr(t) : ""; }   // in the mod's language
   return {};
 }
 }  // namespace

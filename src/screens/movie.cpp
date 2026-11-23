@@ -32,14 +32,14 @@ class MovieScreen : public Screen {
   void tick() override {
     UObject* m = mana();
     if (!m) return;
-    if (opening_line_due()) speech::speak(strings::kTitleOpening, true);
+    if (opening_line_due()) speech::speak(strings::kTitleOpening.c_str(), true);
     int p = ask(m, "IsPaused") && !ad::holding() ? 1 : 0;   // a description's box is not the player's pause
     if (paused_ >= 0 && p != paused_) speech::speak(p ? strings::kMoviePaused() : strings::kMovieResumed, true);
     paused_ = p;
   }
   // The opening movie is skipped by a press, not Tab, and Enter skips rather than pauses it (seen live, 2026-10-29).
   std::string describe() override {
-    if (paused_ != 1 && title_opening()) return strings::kTitleOpening;
+    if (paused_ != 1 && title_opening()) return strings::kTitleOpening.c_str();
     return paused_ == 1 ? strings::kMoviePaused() : strings::kMoviePlaying();
   }
 };

@@ -23,8 +23,8 @@ class StatsUpScreen : public Screen {
   std::string line(bool rise) {
     stats::Stats s;
     if (!stats::read(s)) return {};
-    std::string out = strings::kStatsUp;
-    if (int up = rise ? stats::last_up() : -1; up >= 0) out += std::format(" {} {}.", strings::kSocialStats[up], strings::kStatUp);
+    std::string out = strings::kStatsUp.c_str();
+    if (int up = rise ? stats::last_up() : -1; up >= 0) out += " " + strings::fmt(strings::kStatUpFmt, strings::kSocialStats[up].c_str()) + ".";
     for (int i = 0; i < 3; ++i) out += std::format(" {} {} {}.", strings::kSocialStats[i], s.level[i], stats::rank_name(s, i));
     return out;
   }

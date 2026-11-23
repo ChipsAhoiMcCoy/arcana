@@ -133,7 +133,7 @@ void stop(bool announce) {
   if (was && g_w.outcome.empty()) finish(announce ? "stopped" : "ended");
   g_walking = false;
   release();
-  if (was && announce) speech::speak(strings::kStopped, true);
+  if (was && announce) speech::speak(strings::kStopped.c_str(), true);
 }
 bool walking() { return g_walking; }
 // A walk that ends by using its target: Space is pressed once the game's prompt is up, until this time.
@@ -454,7 +454,7 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
   g_w.started_at = GetTickCount64();
   FVector me;
   static const int battle = watch::want("BtlCoreComponent");
-  if (!world::player_location(me) || watch::get(battle)) { finish("refused: not in the field"); speech::speak(strings::kNotInField, true); return; }
+  if (!world::player_location(me) || watch::get(battle)) { finish("refused: not in the field"); speech::speak(strings::kNotInField.c_str(), true); return; }
   ue::UObject* t = target.resolve();
   // Past a closed door: the navmesh runs on under it, so there is a path, and it ends against the door ("Stuck",
   // the gym hallway, 2026-11-11).
@@ -463,7 +463,7 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
   bool plan_body = false;
   FVector via{};
   doors::Way way = t ? doors::walk_way(t, me, world::actor_location(t), &via) : doors::Way::open;
-  if (way == doors::Way::behind) { finish("refused: behind a door"); speech::speak(strings::kNoPath, true); return; }
+  if (way == doors::Way::behind) { finish("refused: behind a door"); speech::speak(strings::kNoPath.c_str(), true); return; }
   if (way == doors::Way::in_room) {
     plan_body = true;
   } else if (way == doors::Way::other_side) {
@@ -487,7 +487,7 @@ void walk_to(const WeakObj& target, const std::string& name, bool use) {
     plan_body = path.empty() || (partial && !under);
   }
   g_w.use = use;
-  if (!refresh_path(me)) { finish("refused: no path"); speech::speak(strings::kNoPath, true); return; }
+  if (!refresh_path(me)) { finish("refused: no path"); speech::speak(strings::kNoPath.c_str(), true); return; }
   // The body's own way is planned over the next frames, the hero standing meanwhile (see BodyPlanner).
   if (plan_body) {
     g_w.planner = std::make_shared<BodyPlanner>(goal_of(t), me, false);
@@ -802,7 +802,7 @@ void tick() {
       bool found = r == 1;
       switch (g_w.plan_for) {
         case Walk::PlanFor::StartRoom:
-          if (!found) { finish("refused: no way in the room"); stop(false); speech::speak(strings::kNoPathInRoom, true); return; }
+          if (!found) { finish("refused: no way in the room"); stop(false); speech::speak(strings::kNoPathInRoom.c_str(), true); return; }
           [[fallthrough]];
         case Walk::PlanFor::Start:
           if (found) { g_w.body = true; g_w.path = std::move(pts); g_w.side_on = false; }
@@ -831,7 +831,7 @@ void tick() {
           if (!found) {
             finish("stuck (no body plan)");
             stop(false);
-            speech::speak(strings::kStuck, true);
+            speech::speak(strings::kStuck.c_str(), true);
             return;
           }
           log::writef("nav: at ({:.0f}, {:.0f}) the plan says arrived, no prompt: round to another side", me.x, me.y);
@@ -904,7 +904,7 @@ void tick() {
           if (g_w.body_replans >= 2) {
             finish("stuck (body plan)");
             stop(false);
-            speech::speak(strings::kStuck, true);
+            speech::speak(strings::kStuck.c_str(), true);
             return;
           }
           g_w.planner = std::make_shared<BodyPlanner>(target, me, false);
@@ -978,7 +978,7 @@ void tick() {
         if (!there && to_body()) return;
         finish(there ? "arrived (prompt)" : "stuck");
         stop(false);
-        if (there) arrived_at(); else speech::speak(strings::kStuck, true);
+        if (there) arrived_at(); else speech::speak(strings::kStuck.c_str(), true);
         return;
       }
       restart_progress(me, now);

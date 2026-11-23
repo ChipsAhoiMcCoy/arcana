@@ -55,7 +55,7 @@ class TutorialListScreen : public MenuScreen {
   bool active() override { return loaded() && !msg::current().open; }
   bool loaded() { uint8_t* p = u(); return p && p[0x27D] && *(uint8_t**)(p + 0x338) && *(int32_t*)(p + 0x340) == 5; }
   bool holds_keys() override { uint8_t* p = u(); return p && p[0x27D] && !p[0x27E]; }
-  std::string title() override { return strings::kTutorials; }
+  std::string title() override { return strings::kTutorials.c_str(); }
   void on_enter() override { screens::set_keys(strings::kTutorialListKeys); }
   void build(ui::GraphBuilder& b) override {
     int t = tab();
@@ -63,7 +63,7 @@ class TutorialListScreen : public MenuScreen {
     std::string key = std::format("tutorials.{}", t);
     list_.key = key;
     b.begin_stop(key);
-    b.push_context(strings::kTutorialTabs[t]);
+    b.push_context(strings::kTutorialTabs[t].c_str());
     auto* r = rows();
     for (int i = 0; r && i < r->num; ++i) {
       std::string title = core::clean_text(to_utf8(*(FString*)(r->data + i * 0x30 + 0x10)));

@@ -72,7 +72,7 @@ class CampItem : public MenuScreen {
   // screen, above this one, reads it), 0xB on closing. All of 3-10 is this menu; only 3, 4 and 6 are lists.
   bool active() override { int s = state(); return sys() && s >= 3 && s <= 10; }
   bool holds_keys() override { int s = state(); return s == 3 || s == 4 || s == 6; }
-  std::string title() override { return strings::kCampItems[1]; }
+  std::string title() override { return strings::kCampItems[1].c_str(); }
   void on_enter() override { screens::set_keys([this] { return std::string(state() == 3 ? strings::kItemListKeys() : strings::kListKeys()); }); }
   void build(ui::GraphBuilder& b) override {
     uint8_t* s = sys();
@@ -107,7 +107,7 @@ class CampItem : public MenuScreen {
     } else if (st == 4) {
       auto* ids = arr<int16_t>(s, 0x768);
       b.begin_stop("item.member");
-      b.push_context(strings::kUseOnWhom);
+      b.push_context(strings::kUseOnWhom.c_str());
       auto marks = party_marks(ids);
       for (int i = 0; ids && i < ids->num; ++i) {
         int id = ids->data[i];
@@ -121,7 +121,7 @@ class CampItem : public MenuScreen {
       auto* slots = arr<int32_t>(s, 0x778);
       auto stock = persona::stock();
       b.begin_stop("item.persona");
-      b.push_context(strings::kWhichPersona);
+      b.push_context(strings::kWhichPersona.c_str());
       for (int i = 0; slots && i < slots->num; ++i) {
         int sl = slots->data[i];
         std::string label;

@@ -313,8 +313,8 @@ class ShuffleScreen : public MenuScreen {
   }
   std::string title() override {
     UObject* ui = shuffle_ui();
-    if (ui && overstock(ui)) return strings::kPersonaOverstock;
-    std::string s = strings::kShuffleTime;
+    if (ui && overstock(ui)) return strings::kPersonaOverstock.c_str();
+    std::string s = strings::kShuffleTime.c_str();
     // How many cards there are is the position on each card ("1 of 4"; the player's call, 2026-10-30): only taking
     // more than one is said here.
     if (int k = ui ? get<int32_t>(ui, "EnableSelectNum") : 1; k > 1) s += std::format(". {} {}", strings::kChoose, k);
@@ -364,7 +364,7 @@ class ShuffleScreen : public MenuScreen {
     if (overstock(ui) != overstock_) {
       overstock_ = !overstock_;   // the keys follow (on_enter's hint reads overstock_)
       if (overstock_) {
-        say(strings::kPersonaOverstock, true);
+        say(strings::kPersonaOverstock.c_str(), true);
         focus(slot("release", get<int32_t>(ui, "PersonaSelectCoursorIndex")), false);
       }
     }
@@ -394,7 +394,7 @@ class ShuffleScreen : public MenuScreen {
       if (int c = row_.cursor(); c >= 0) focus(slot("cards", c), false);
     }
     // A card taken with more still to take, or a pick cancelled (C): how many are left (the game's "Draw 1").
-    else if (k > picked_ && left > 0) say(std::format("{} {} {}", strings::kChoose, left, strings::kMore), false);
+    else if (k > picked_ && left > 0) say(strings::fmt(strings::kChooseMoreFmt, left), false);
     else if (k < picked_) say(std::format("{} {}", strings::kChoose, left), false);
     picked_ = k;
   }

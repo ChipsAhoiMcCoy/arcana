@@ -76,7 +76,7 @@ class CampStats : public MenuScreen, private CampStatsUi {
   // The list scene in any mode is this menu (its other modes are the steps between the lists); only 1, 3 and 4 read.
   bool active() override { return mode() >= 1; }
   bool holds_keys() override { int md = mode(); return md == 1 || md == 3 || md == 4; }
-  std::string title() override { return strings::kCampItems[4]; }
+  std::string title() override { return strings::kCampItems[4].c_str(); }
   void on_enter() override {
     screens::set_keys([this] {
       int md = mode();
@@ -112,7 +112,7 @@ class CampStats : public MenuScreen, private CampStatsUi {
     if (md == 4) {
       ListCursor lc = cursor_at(scene(), 0xA0);
       b.begin_stop("stats.order");
-      b.push_context(strings::kTacticsWhich);
+      b.push_context(strings::kTacticsWhich.c_str());
       for (int i = 0; i < lc.count(); ++i)
         b.add_item(slot("stats.order", i), game_item(order_, i, [this, i] {
           std::string n = tactic_name(i);
@@ -126,7 +126,7 @@ class CampStats : public MenuScreen, private CampStatsUi {
     std::string key = md == 3 ? "stats.tactics" : "stats";
     list_.key = key;
     b.begin_stop(key);
-    if (md == 3) b.push_context(strings::kTacticsHeading);
+    if (md == 3) b.push_context(strings::kTacticsHeading.c_str());
     auto marks = party_marks(ids);
     for (int i = 0; ids && i < ids->num; ++i) {
       int id = ids->data[i];
@@ -177,7 +177,7 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     UObject* sc = scene();
     return sc && (is_a(sc, "CmpCharacterStatus") || is_a(sc, "CmpHeroHumanStatus"));
   }
-  std::string title() override { return strings::kCampItems[4]; }
+  std::string title() override { return strings::kCampItems[4].c_str(); }
   // X opens the member's Persona status over the page (CmpCharacterStatus +0x48 = 5, FUN_141359990): Q / E switch member.
   void on_enter() override {
     screens::set_keys([this] { UObject* sc = scene(); return std::string(sc && is_a(sc, "CmpCharacterStatus") && i32(sc, 0x48) == 5 ? strings::kStatsPersonaKeys() : strings::kStatsPageKeys()); });
@@ -203,14 +203,14 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
       look_persona(pv, pid);
       b.add_item(ui::ControlId::structural(k + ".persona"), pv);
       b.set_region(k + ".stats");
-      b.push_context(strings::kStatsTitle);
+      b.push_context(strings::kStatsTitle.c_str());
       for (int i = 0; i < 5; ++i) {
         std::string l = std::format("{} {}", strings::kStatNames[i], persona::stat_total(entry, i));
         b.add_item(ui::ControlId::structural(std::format("{}.stat{}", k, i)), item([l] { return l; }));
       }
       b.pop_context();
       b.set_region(k + ".skills");
-      b.push_context(strings::kSkills);
+      b.push_context(strings::kSkills.c_str());
       for (int i = 0; i < 8; ++i) if (int sid = skill_at(i)) {
         std::string sl = persona::skill_name(sid), cost = persona::skill_cost(sid);
         if (!cost.empty()) sl += ", " + cost;
@@ -221,7 +221,7 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
       b.pop_context();
       if (auto groups = persona::affinity_groups(pid); !groups.empty()) {
         b.set_region(k + ".aff");
-        b.push_context(strings::kAffinitiesTitle);
+        b.push_context(strings::kAffinitiesTitle.c_str());
         for (size_t i = 0; i < groups.size(); ++i) {
           std::string g = groups[i];
           g[0] = (char)toupper((unsigned char)g[0]);

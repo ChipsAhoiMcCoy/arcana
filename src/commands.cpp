@@ -29,11 +29,11 @@ namespace p3a::commands {
 static void where_am_i() {
   // A shop hides the hero: the place is then the one the hero walked in from (poi::area_name).
   std::string area = poi::area_name();
-  if (!world::player() && area == strings::kUnknownArea) { speech::speak(strings::kNotInField, true); return; }
+  if (!world::player() && area == strings::kUnknownArea.c_str()) { speech::speak(strings::kNotInField.c_str(), true); return; }
   // The date first, then the area (the player's order, 2026-11-14); each its own utterance, so the screen reader
   // pauses between them.
   std::vector<std::string> parts{calendar::describe(calendar::now()), area};
-  if (int m = stats::money(); m >= 0) parts.push_back(std::format("{} {}", m, strings::kYen));
+  if (int m = stats::money(); m >= 0) parts.push_back(strings::count(m, strings::kYen));
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();
   parts.push_back(goal.empty() ? std::string(strings::kNoObjective) : std::string(strings::kObjective) + ": " + goal);
@@ -47,7 +47,7 @@ static void review() {
   if (msg::current().open && !over) { msg::repeat(); return; }
   if (s) { std::string d = s->describe(); if (!d.empty()) { speech::speak(d, true); return; } }
   if (msg::current().open) { msg::repeat(); return; }
-  speech::speak(strings::kNothingToReview, true);
+  speech::speak(strings::kNothingToReview.c_str(), true);
 }
 
 // F1: the keys of what is in front of the player (a message window, the current screen, or the field). Screens no
@@ -75,7 +75,7 @@ static void screen_keys() {
     // what other players did today (screens/net_voice.cpp).
     if (poi::tartarus_floor() == 0 && party::flag(0x40000068) && !party::flag(0x4000002D)) k += std::string(strings::kNetActionKey()) + " ";
     // The mod's walk that uses its point: Shift+Period, or on a controller RT on the top-down scan's point.
-    if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkUseKeys) + " ";
+    if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkUseKeys.c_str()) + " ";
     else if (topdown::active()) k += std::string(strings::kPadScanKeys) + " ";
     k += keys::fill(strings::kModKeysHint());
   }
@@ -91,16 +91,16 @@ static void pad_layer() {
 
 // Shift+Period: the walk, then Space at the point once its prompt is up (Grim Dark's "walk there and use it").
 static void walk_and_use() {
-  if (!world::exploring()) { speech::speak(strings::kNotInField, true); return; }
+  if (!world::exploring()) { speech::speak(strings::kNotInField.c_str(), true); return; }
   poi::Poi p;
-  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected, true); return; }
+  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected.c_str(), true); return; }
   nav::walk_to(p.obj, p.name, true);
 }
 
 // Shift+semicolon: the selection again, from where the player is now (Grim Dark's ; re-ping of the reviewed thing).
 static void selected_again() {
   poi::Poi p;
-  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected, true); return; }
+  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected.c_str(), true); return; }
   speech::speak(poi::describe(p), true);
   sonar::selected(p);
 }
@@ -108,50 +108,50 @@ static void selected_again() {
 static void walk_selected() {
   if (nav::walking()) { nav::stop(true); return; }
   poi::Poi p;
-  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected, true); return; }
+  if (!poi::selected(p)) { speech::speak(strings::kNothingSelected.c_str(), true); return; }
   nav::walk_to(p.obj, p.name);
 }
 
 
 void install() {
   using namespace keys;
-  bind(VK_F1, None, "help", strings::kKeyHelpScreenKeys, screen_keys);
-  bind(VK_F1, Shift, "help.mod", strings::kKeyHelpModKeys, [] { speech::speak(keys::help(), true); });
-  bind(VK_F2, None, "settings", strings::kKeyHelpSettings, settings::open);
-  bind(VK_F3, None, "sonar", strings::kKeyHelpSonar, sonar::toggle);
-  bind(VK_OEM_2, None, "where", strings::kKeyHelpWhere, where_am_i);                                             // /
-  bind(VK_OEM_2, Shift, "stats", strings::kKeyHelpStats, [] {                                                    // Shift+/
+  bind(VK_F1, None, "help", strings::kKeyHelpScreenKeys.en, screen_keys);
+  bind(VK_F1, Shift, "help.mod", strings::kKeyHelpModKeys.en, [] { speech::speak(keys::help(), true); });
+  bind(VK_F2, None, "settings", strings::kKeyHelpSettings.en, settings::open);
+  bind(VK_F3, None, "sonar", strings::kKeyHelpSonar.en, sonar::toggle);
+  bind(VK_OEM_2, None, "where", strings::kKeyHelpWhere.en, where_am_i);                                             // /
+  bind(VK_OEM_2, Shift, "stats", strings::kKeyHelpStats.en, [] {                                                    // Shift+/
     std::string s = stats::describe();
-    speech::speak(s.empty() ? strings::kNotInField : s, true);
+    speech::speak(s.empty() ? strings::kNotInField.c_str() : s, true);
   });
-  bind(VK_OEM_5, Shift, "social", strings::kKeyHelpSocial, [] { speech::speak_parts(social::summary_parts(), true); });      // Shift+backslash
-  bind(VK_OEM_5, None, "review", strings::kKeyHelpReview, review);                                               // backslash
-  bind(VK_OEM_6, None, "poi.next", strings::kKeyHelpPoiNext, [] { poi::next(1); }, true);                        // ]
-  bind(VK_OEM_4, None, "poi.prev", strings::kKeyHelpPoiPrev, [] { poi::next(-1); }, true);                       // [
-  bind(VK_OEM_6, Shift, "poi.cat.next", strings::kKeyHelpPoiCatNext, [] { poi::next_category(1); });             // Shift+]
-  bind(VK_OEM_4, Shift, "poi.cat.prev", strings::kKeyHelpPoiCatPrev, [] { poi::next_category(-1); });            // Shift+[
-  bind(VK_OEM_7, Shift, "party", strings::kKeyHelpParty, [] { speech::speak_parts(party::summary_parts(), true); });         // Shift+'
-  bind(VK_OEM_7, None, "nav.walk", strings::kKeyHelpWalk, walk_selected);                                        // '
-  bind(VK_OEM_1, None, "area", strings::kKeyHelpArea, area::describe);                                           // ;
+  bind(VK_OEM_5, Shift, "social", strings::kKeyHelpSocial.en, [] { speech::speak_parts(social::summary_parts(), true); });      // Shift+backslash
+  bind(VK_OEM_5, None, "review", strings::kKeyHelpReview.en, review);                                               // backslash
+  bind(VK_OEM_6, None, "poi.next", strings::kKeyHelpPoiNext.en, [] { poi::next(1); }, true);                        // ]
+  bind(VK_OEM_4, None, "poi.prev", strings::kKeyHelpPoiPrev.en, [] { poi::next(-1); }, true);                       // [
+  bind(VK_OEM_6, Shift, "poi.cat.next", strings::kKeyHelpPoiCatNext.en, [] { poi::next_category(1); });             // Shift+]
+  bind(VK_OEM_4, Shift, "poi.cat.prev", strings::kKeyHelpPoiCatPrev.en, [] { poi::next_category(-1); });            // Shift+[
+  bind(VK_OEM_7, Shift, "party", strings::kKeyHelpParty.en, [] { speech::speak_parts(party::summary_parts(), true); });         // Shift+'
+  bind(VK_OEM_7, None, "nav.walk", strings::kKeyHelpWalk.en, walk_selected);                                        // '
+  bind(VK_OEM_1, None, "area", strings::kKeyHelpArea.en, area::describe);                                           // ;
   // After Grim Dark's review keys: its ; (the reviewed thing again) and Enter (walk there and use it). Shift, as the
   // mod's other second keys: Ctrl is the game's (messages, attack).
-  bind(VK_OEM_1, Shift, "poi.again", strings::kKeyHelpPoiAgain, selected_again);                                // Shift+;
-  bind(VK_OEM_COMMA, None, "poi.nearest", strings::kKeyHelpPoiNearest, [] { poi::cycle_nearest(1); }, true);      // ,
-  bind(VK_OEM_COMMA, Shift, "poi.nearest.prev", strings::kKeyHelpPoiNearestPrev, [] { poi::cycle_nearest(-1); }, true);   // Shift+,
+  bind(VK_OEM_1, Shift, "poi.again", strings::kKeyHelpPoiAgain.en, selected_again);                                // Shift+;
+  bind(VK_OEM_COMMA, None, "poi.nearest", strings::kKeyHelpPoiNearest.en, [] { poi::cycle_nearest(1); }, true);      // ,
+  bind(VK_OEM_COMMA, Shift, "poi.nearest.prev", strings::kKeyHelpPoiNearestPrev.en, [] { poi::cycle_nearest(-1); }, true);   // Shift+,
   // 1 to 7: one category each, in the bracket keys' order (Grim Dark's per-kind review keys; a player asked,
   // 2026-11-18). Letters are mostly the game's (Q E R T F Z X C B M N H), the number row is not. Shift goes back;
   // F1 leaves the Shift binding out while both are on their own keys: the plain one's help says so.
   for (int c = 0; c < 7; ++c) {
-    const std::string name = std::format("poi.cat.{}", c + 1), help = std::format("{}: {}", strings::kPoiCategory[c], strings::kKeyHelpPoiCatKey);
+    const std::string name = std::format("poi.cat.{}", c + 1), help = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatKey.en);
     bind('1' + c, None, name.c_str(), help.c_str(), [c] { poi::cycle_category(c, 1); }, true);
-    const std::string back = std::format("{}: {}", strings::kPoiCategory[c], strings::kKeyHelpPoiCatBack);
+    const std::string back = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatBack.en);
     bind('1' + c, Shift, (name + ".prev").c_str(), back.c_str(), [c] { poi::cycle_category(c, -1); }, true, false);
   }
   // Period walks to the selection, beside Comma that chooses it; Shift+Period walks and uses it (Grim Dark's
   // walk-there-and-use, Shift+Enter until 2026-11-14; the user's call). The game binds neither Comma nor Period
   // (Config/DefaultInput.ini has them only in its unused pad emulation, PM_R2 / PM_R3).
-  bind(VK_OEM_PERIOD, None, "nav.walk.period", strings::kKeyHelpWalk, walk_selected);                             // .
-  bind(VK_OEM_PERIOD, Shift, "nav.use", strings::kKeyHelpWalkUse, walk_and_use);                                  // Shift+.
+  bind(VK_OEM_PERIOD, None, "nav.walk.period", strings::kKeyHelpWalk.en, walk_selected);                             // .
+  bind(VK_OEM_PERIOD, Shift, "nav.use", strings::kKeyHelpWalkUse.en, walk_and_use);                                  // Shift+.
   // Shift goes back: those move with their plain key and are not listed on the Mod keys page.
   keys::shift_back("poi.nearest.prev", "poi.nearest");
   for (int c = 1; c <= 7; ++c) keys::shift_back(std::format("poi.cat.{}.prev", c).c_str(), std::format("poi.cat.{}", c).c_str());

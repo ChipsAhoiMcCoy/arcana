@@ -359,7 +359,7 @@ void scan_pick() {
   const ULONGLONG now = GetTickCount64();
   if (first || now - g_scan_at >= kScanRefreshMs) { g_scan_at = now; g_scan_list = poi::scan(); }   // nearest first
   if (g_scan_list.empty()) {
-    if (first) { speech::speak(strings::kScanNothing, true); sonar::stick(nullptr); }
+    if (first) { speech::speak(strings::kScanNothing.c_str(), true); sonar::stick(nullptr); }
     return;
   }
   const poi::Poi* best = nullptr;
@@ -383,7 +383,7 @@ void scan_tick() {
   const bool go = input::take_stick_trigger() | std::exchange(g_dev_go, false);
   scan_pick();
   if (!go) return;
-  if (!g_scan_held || !g_scan_on.resolve()) { speech::speak(strings::kScanNothing, true); return; }
+  if (!g_scan_held || !g_scan_on.resolve()) { speech::speak(strings::kScanNothing.c_str(), true); return; }
   log::writef("topdown: RT on {}: walking there to use it", g_scan_name);
   nav::walk_to(g_scan_on, g_scan_name, true);
 }

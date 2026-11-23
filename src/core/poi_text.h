@@ -38,7 +38,7 @@ std::string icon_kind(std::string_view class_name);
 // What a hit under the plain Check icon is, by the name the game gives it: somewhere to buy, eat, work or spend
 // time (a business's entrance, a vendor, a vending machine); a room's door to check; or a thing.
 enum class CheckKind { Shop, Door, Thing };
-CheckKind check_kind(const std::string& name);
+CheckKind check_kind(int name_index);   // a hit's mNameIndex_
 
 // A person whose talk opens a shop: an NPC by its script's character and variant (FldNpcActor mMajorID_ /
 // mMinorID_) and the level it stands in (the event-day variant 700 sells only on New Year's, "..._Event_550").
@@ -66,7 +66,7 @@ std::string chest_name(const std::string& type, const std::string& game_name);
 // after it ("Nozomi Suemitsu (Moon)" for the label "Nozomi Suemitsu").
 bool is_named(const std::string& poi_name, const std::string& label);
 // A way onward named as what you do there ("Go Elsewhere", "Head Up", "Return to Dorm"), not as a place.
-bool named_as_action(const std::string& name);
+bool named_as_action(int name_index, bool name2_shown);   // a hit's mNameIndex_, and whether its Name2 shows
 
 // The category a list settles on: `current` when it has something (and `move` is false), else the next one in
 // `delta`'s direction that has, wrapping round `count` categories. -1 when every category is empty.

@@ -42,16 +42,16 @@ void build_status_page(ui::GraphBuilder& b, const uint8_t* e, const std::string&
     b.add_item(ui::ControlId::structural(k + ".exp"), M::item([l] { return l; }));
   }
   b.set_region(k + ".stats");
-  b.push_context(strings::kStatsTitle);
+  b.push_context(strings::kStatsTitle.c_str());
   for (int i = 0; i < 5; ++i) {
     int v = persona::stat_total(e, i), up = before ? v - persona::stat_total(before, i) : 0;
     std::string l = std::format("{} {}", strings::kStatNames[i], v);
-    if (up > 0) l += std::format(", {} {}", strings::kUp, up);
+    if (up > 0) l += ", " + strings::fmt(strings::kUpByFmt, up);
     b.add_item(ui::ControlId::structural(std::format("{}.stat{}", k, i)), M::item([l] { return l; }));
   }
   b.pop_context();
   b.set_region(k + ".skills");
-  b.push_context(strings::kSkills);
+  b.push_context(strings::kSkills.c_str());
   for (int i = 0; i < 8; ++i) {
     int sid = *(uint16_t*)(e + 0xC + i * 2);
     if (!sid) continue;
@@ -72,7 +72,7 @@ void build_status_page(ui::GraphBuilder& b, const uint8_t* e, const std::string&
   for (auto& l : persona::learnset(id)) if (l.level > level) later.push_back(l);
   if (!later.empty()) {
     b.set_region(k + ".learns");
-    b.push_context(strings::kLearnsTitle);
+    b.push_context(strings::kLearnsTitle.c_str());
     for (auto& l : later) {
       std::string t = std::format("{}, {} {}", persona::skill_name(l.skill), strings::kLearnsAt, l.level);
       int sid = l.skill;
@@ -83,7 +83,7 @@ void build_status_page(ui::GraphBuilder& b, const uint8_t* e, const std::string&
     b.pop_context();
   }
   b.set_region(k + ".aff");
-  b.push_context(strings::kAffinitiesTitle);
+  b.push_context(strings::kAffinitiesTitle.c_str());
   // Every icon of the page's row, normal ones too (the user's call, 2026-11-17: a sighted player sees all nine).
   auto lines = persona::affinity_lines(id);
   for (size_t i = 0; i < lines.size(); ++i) {
@@ -113,7 +113,7 @@ class PersonaStatusScreen : public MenuScreen {
     if (battle_) { UObject* g = gui_.get(); return g && get<uint8_t>(g, "nowState") == 12 && persona::shown_status(); }
     return persona::status_page_up(ps_.get());
   }
-  std::string title() override { return strings::kPersonaStatus; }
+  std::string title() override { return strings::kPersonaStatus.c_str(); }
   void on_enter() override {
     if (!battle_) screens::set_keys(strings::kCampPersonaStatusKeys);
     else screens::set_keys([this] { UObject* b = bp_.get(); return std::string(b && get_bool(b, "IsStrategy") ? strings::kBattleMemberStatusKeys() : strings::kPersonaStatusKeys()); });

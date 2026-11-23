@@ -139,7 +139,7 @@ class MailScreen : public MenuScreen {
   }
   // An open mail is read whole when it opens; its keys (reply, next, scroll) are the game's.
   bool holds_keys() override { UObject* d = draw_.get(); return d && !flag(d, "bIsStartMailAnim"); }
-  std::string title() override { return strings::kMail; }
+  std::string title() override { return strings::kMail.c_str(); }
   // Back from the thought and reply choice over an open mail. Accepting (a hangout, a trip) runs CLOSE_MAIL_MENU,
   // which sets bit 0x10 of AMailActor +0x388 (close requested; the actor goes on to state 7, closing). Declining
   // leaves it clear: once the reply's window has closed, the actor is back in state 5 (the open mail taking input,

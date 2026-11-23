@@ -124,7 +124,7 @@ class BacklogScreen : public MenuScreen {
   bool over_messages() const override { return true; }   // B in a conversation opens it over the window
   // Every opening says "Log" first (the user's call): it opens over a conversation, so title_due() (once per opening
   // of what is underneath) would leave it out the second time.
-  std::string title() override { return strings::kLog; }
+  std::string title() override { return strings::kLog.c_str(); }
   bool title_every_entry() override { return true; }
   void on_enter() override {
     skip_ = 0;

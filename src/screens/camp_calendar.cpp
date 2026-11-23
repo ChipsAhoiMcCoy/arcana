@@ -115,7 +115,7 @@ class CampCalendar : public MenuScreen {
       bool lit = fn<bool (*)(void*, uint32_t, char)>(0x104bf20)(nullptr, job, 1);
       *(int32_t*)(cal + 0xC0) = held;
       if (!lit || label < 0 || label >= (int)std::size(strings::kJobs)) continue;
-      out.push_back(times ? std::format("{}, {}", strings::kJobs[label], strings::kJobTimes[times]) : strings::kJobs[label]);
+      out.push_back(times ? std::format("{}, {}", strings::kJobs[label].c_str(), strings::kJobTimes[times].c_str()) : strings::kJobs[label].c_str());
     }
     return out;
   }
@@ -197,7 +197,7 @@ class CampCalendar : public MenuScreen {
     events_.clear(); today_ = calendar::now().total;
     screens::set_keys([this] { uint8_t* a = actor(); return std::string(a && i32(a, 0x2A8) == 1 ? strings::kCalendarPlansKeys() : strings::kCalendarKeys()); });
   }
-  std::string title() override { return strings::kCampItems[7]; }
+  std::string title() override { return strings::kCampItems[7].c_str(); }
   void build(ui::GraphBuilder& b) override {
     int abs; std::chrono::sys_days date;
     uint8_t* c = cursor_obj();

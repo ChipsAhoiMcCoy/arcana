@@ -87,7 +87,7 @@ class BattleSkills : public BattleList {
     };
   }
   const char* id() const override { return "battle_skills"; }
-  std::string title() override { return strings::kSkills; }
+  std::string title() override { return strings::kSkills.c_str(); }
   // The area key: the Persona heading the list (the one Q / E switched to).
   std::string appearance() override { int pid = persona(); return pid > 0 ? core::look::persona(pid) : std::string(); }
   void build(ui::GraphBuilder& b) override {
@@ -142,7 +142,7 @@ class BattleItems : public BattleList {
     };
   }
   const char* id() const override { return "battle_items"; }
-  std::string title() override { return strings::kItems; }
+  std::string title() override { return strings::kItems.c_str(); }
   void build(ui::GraphBuilder& b) override {
     UObject* l = list_.get();
     auto* list = l ? field<TArray<uint8_t>>(l, "ItemList") : nullptr;
@@ -214,7 +214,7 @@ class BattleTargets : public BattleList {
   }
   const char* id() const override { return "battle_targets"; }
   // A whole side is a question, not a choice: it has no "Choose target" before it.
-  std::string title() override { return all() ? std::string() : strings::kChooseTarget; }
+  std::string title() override { return all() ? std::string() : strings::kChooseTarget.c_str(); }
   void on_enter() override {
     screens::set_keys([this] { return std::string(all() ? strings::kAllTargetsKeys() : strings::kTargetKeys()); });
   }
@@ -231,8 +231,8 @@ class BattleTargets : public BattleList {
           if (UObject* t = w.resolve()) enemies += get_bool(t, "EnemyFlag") ? 1 : 0;
         const char* side = enemies == (int)units.size() ? strings::kAllEnemies : enemies == 0 ? strings::kAllAllies : strings::kAllUnits;
         std::string what = command_name();
-        std::string ask = what.empty() ? std::format("{} {} {}?", strings::kUse, strings::kOn, side)
-                                       : std::format("{} {} {} {}?", strings::kUse, what, strings::kOn, side);
+        std::string ask = what.empty() ? strings::fmt(strings::kUseOnSideFmt, side)
+                                       : strings::fmt(strings::kUseOnFmt, what, side);
         return std::format("{} {}", ask, strings::kAllTargetsKeys());
       });
       v->speaks_own_position = true;   // one thing to answer: no "1 of 1"
@@ -277,7 +277,7 @@ class BattleTheurgy : public BattleList {
     };
   }
   const char* id() const override { return "battle_theurgy"; }
-  std::string title() override { return strings::kTheurgy; }
+  std::string title() override { return strings::kTheurgy.c_str(); }
   void build(ui::GraphBuilder& b) override {
     UObject* l = list_.get();
     auto* ids = l ? field<TArray<int32_t>>(l, "ItemList") : nullptr;
@@ -319,7 +319,7 @@ class BattleShift : public BattleList {
     };
   }
   const char* id() const override { return "battle_shift"; }
-  std::string title() override { return strings::kShift; }
+  std::string title() override { return strings::kShift.c_str(); }
   void build(ui::GraphBuilder& b) override {
     auto* list = units("PlayerList");
     if (!list) return;
@@ -365,7 +365,7 @@ class BattleTactics : public BattleList {
   // A row that cannot be chosen now: it says so, and so does confirming it.
   static ui::NodeVtablePtr unavailable(std::function<std::string()> label) {
     return item([label] { return std::format("{}, {}", label(), strings::kUnavailable); },
-                [] { say(strings::kUnavailable, true); });
+                [] { say(strings::kUnavailable.c_str(), true); });
   }
  public:
   BattleTactics() : BattleList(10, "BP_BtlStrategyInstruct_C") {
@@ -384,7 +384,7 @@ class BattleTactics : public BattleList {
     }
   }
   const char* id() const override { return "battle_tactics"; }
-  std::string title() override { return strings::kTacticsTitle; }
+  std::string title() override { return strings::kTacticsTitle.c_str(); }
   void build(ui::GraphBuilder& b) override {
     UObject* s = list_.get();
     if (!s) return;
@@ -411,7 +411,7 @@ class BattleTactics : public BattleList {
       auto* party = field<TArray<UObject*>>(s, "PlayerList");
       if (!party) return;
       b.begin_stop("tactics1");
-      b.push_context(strings::kTacticsWho);
+      b.push_context(strings::kTacticsWho.c_str());
       // Item 0 orders everyone; member i is item i + 1 (CallOK reads PlayerList[CurrentIndex[1] - 1]).
       auto* on = field<TArray<bool>>(s, "Lise1Enable");   // items whose orders can be changed (by item)
       for (int i = 0; i <= party->num; ++i) {
@@ -433,7 +433,7 @@ class BattleTactics : public BattleList {
       auto* names = field<TArray<FString>>(s, "OperationNameList");
       if (!names) return;
       b.begin_stop("tactics2");
-      b.push_context(strings::kTacticsWhich);
+      b.push_context(strings::kTacticsWhich.c_str());
       for (int i = 0; i < names->num; ++i) {
         std::string n = to_utf8(names->data[i]);
         b.add_item(slot("tactics2", i), game_item(m2_, i, [n] { return n; }));
@@ -469,7 +469,7 @@ class BattleSurvey : public BattleList {
     };
   }
   const char* id() const override { return "battle_survey"; }
-  std::string title() override { return strings::kSurveyTitle; }
+  std::string title() override { return strings::kSurveyTitle.c_str(); }
   void build(ui::GraphBuilder& b) override {
     auto* list = units("CursorList");
     if (!list) return;
@@ -500,7 +500,7 @@ class BattleAnalyze : public BattleList {
   const char* id() const override { return "battle_analyze"; }
   // A and D are the keyboard's L1 / R1 here, as Q and E are (the target change; the battle screen keeps it from wrapping).
   bool game_a_d() override { return true; }
-  std::string title() override { return strings::kAnalyze; }
+  std::string title() override { return strings::kAnalyze.c_str(); }
   bool active() override { return BattleList::active() && w_.analyze_comp() && cursor_target(); }
   void on_enter() override { BattleList::on_enter(); shown_ = cursor_target(); }
   void on_tick() override {
@@ -524,15 +524,15 @@ class BattleAnalyze : public BattleList {
     auto top = w_.panel_status(p);
     for (size_t i = 0; i < top.size(); ++i) line(std::format("st{}", i), top[i]);
     b.set_region(k + ".aff");
-    b.push_context(strings::kAffinitiesTitle);
+    b.push_context(strings::kAffinitiesTitle.c_str());
     for (size_t i = 0; i < p.attrs.size(); ++i) {
       int a = p.attrs[i].first;
       line(std::format("aff{}", i), std::format("{}: {}", p.attrs[i].second, strings::kAffinityShort[a >= 0 && a <= 6 ? a : 6]));
     }
     b.pop_context();
     b.set_region(k + ".skills");
-    b.push_context(strings::kSkillAttackTitle);
-    if (!p.attack_shown && !p.skills_shown) line("unknown", strings::kUnknownCapLine);
+    b.push_context(strings::kSkillAttackTitle.c_str());
+    if (!p.attack_shown && !p.skills_shown) line("unknown", strings::kUnknownCapLine.c_str());
     if (p.attack_shown) line("attack", p.attack.empty() ? std::string(strings::kAttackTypeUnknown) : std::format("{} {}", strings::kAttackType, p.attack));
     if (p.skills_shown) {
       for (int sid : p.skills) {
@@ -543,12 +543,12 @@ class BattleAnalyze : public BattleList {
         b.add_item(ui::ControlId::structural(std::format("{}.skill{}", k, sid)), v);
       }
     } else if (p.attack_shown) {
-      line("skills", strings::kSkillsUnknown);
+      line("skills", strings::kSkillsUnknown.c_str());
     }
     b.pop_context();
     if (!p.drops.empty()) {
       b.set_region(k + ".drops");
-      b.push_context(strings::kDrops);
+      b.push_context(strings::kDrops.c_str());
       for (size_t i = 0; i < p.drops.size(); ++i) line(std::format("drop{}", i), p.drops[i]);
       b.pop_context();
     }

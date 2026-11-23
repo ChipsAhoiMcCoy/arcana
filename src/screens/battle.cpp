@@ -72,7 +72,7 @@ class BattleScreen : public Screen {
     std::string s = w_.enemy(t);
     auto* l = wheel_enemies();
     for (int i = 0; l && l->num > 1 && i < l->num; ++i)
-      if (l->data[i] == t) { s += std::format(", {} {} {}", i + 1, strings::kOf, l->num); break; }
+      if (l->data[i] == t) { s += std::format(", {}", strings::of(i + 1, l->num)); break; }
     return s;
   }
   // The wheel's commands, each with the game's key (or button). key_index: BP_BtlTopUI_C.KeyControl's slot, the one
@@ -152,7 +152,7 @@ class BattleScreen : public Screen {
       if (type < 5 || type > 9) continue;
       const char* word = strings::kHitWords[type - 5];
       bool chosen = st == 0 && action_now && commanded_.resolve() == action_now && attacked(action_now) == u;
-      speech::speak(chosen ? std::string(word) : std::format("{} {} {}", word, strings::kOn, w_.unit_name(u)), false);
+      speech::speak(chosen ? std::string(word) : strings::fmt(strings::kHitOnFmt, word, w_.unit_name(u)), false);
     }
     popups_seen_.swap(live);
   }
@@ -316,7 +316,7 @@ class BattleScreen : public Screen {
   void watch_rush(UObject* core) {
     if (bool rush = call_ret<bool>(core, "CheckRequestRushMode"); rush != rush_) {
       rush_ = rush;
-      speech::speak(rush ? strings::kRushOn : strings::kRushOff, rush);
+      speech::speak(rush ? strings::kRushOn.c_str() : strings::kRushOff.c_str(), rush);
     }
   }
   // Whose action is the player's own (picked_, commanded_): set while the wheel or one of its lists is up, dropped
@@ -358,8 +358,8 @@ class BattleScreen : public Screen {
     advantage_of_ = w;
     auto* param = field<uint8_t>(core, "EncountParameter");
     int pre = param && get<int32_t>(core, "EncountIndex") == 0 ? param[4] : 0;
-    if (pre == 2) speech::speak(strings::kAdvantageParty, false);
-    else if (pre == 1) speech::speak(strings::kAdvantageEnemy, false);
+    if (pre == 2) speech::speak(strings::kAdvantageParty.c_str(), false);
+    else if (pre == 1) speech::speak(strings::kAdvantageEnemy.c_str(), false);
   }
   // A physical skill takes its HP cost from the one using it as it lands: that drop is the price the player read on
   // the skill's row, not damage (the user's call, 2026-11-16). Only the acting unit's own drop by exactly its skill's

@@ -18,6 +18,10 @@ std::string first_sentence(std::string_view s);
 // "HP.. Next" -> "HP. Next", "yo!. y'know" -> "yo! y'know"); ellipses stay. Every spoken line goes through it.
 std::string tidy_joins(std::string_view s);
 
+// `s` without its last sentence when that sentence names `who` ("Light armor. For Yukari." -> "Light armor."; the
+// same with 。 in Japanese and Chinese). Anything else comes back as it is.
+std::string without_last_sentence_naming(std::string_view s, std::string_view who);
+
 // Text that is only punctuation ("...", "?", "......!?") with its marks named ("ellipsis", "question mark",
 // "ellipsis, exclamation mark, question mark"): a screen reader says nothing for it, so a page or an answer of "..."
 // sounded empty (the player's report, 2026-11-17). Anything else comes back as it is.

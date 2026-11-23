@@ -75,7 +75,7 @@ class CampSocial : public MenuScreen, private CampSocialUi {
   const char* id() const override { return "camp_social"; }
   int priority() const override { return 17; }
   bool active() override { uint8_t* a = actor(); return a && arr<void*>(a, 0x428) && !details(); }
-  std::string title() override { return strings::kCampItems[6]; }
+  std::string title() override { return strings::kCampItems[6].c_str(); }
   void on_enter() override { screens::set_keys(strings::kListKeys); }
   void build(ui::GraphBuilder& b) override {
     uint8_t* a = actor();

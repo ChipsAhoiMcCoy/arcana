@@ -17,6 +17,8 @@
 #include "sonar.h"
 #include "speech.h"
 #include "voice.h"
+#include "language.h"
+#include "core/lang.h"
 #include "walltones.h"
 #include "world.h"
 #include "screens/camp.h"
@@ -40,15 +42,15 @@ enum class Unit { Toggle, Meters, Percent, Ms, Choice };
 // ("Range" under Sonar, "Master" under Volume). The table's order is the menu's order within each category.
 // 2026-11-20 (the user asked to keep it organized as the narrator speed came in): the descriptions left Dialogue and
 // movies for a category of their own, Audio description; Dialogue keeps the game's lines.
-enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatDescription, CatControls, CatCount };
-static const char* const kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatVolume,
+enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatDescription, CatControls, CatLanguage, CatCount };
+static const strings::Tr kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatVolume,
                                                      strings::kCatSound, strings::kCatDialogue, strings::kCatDescription,
-                                                     strings::kCatControls};
+                                                     strings::kCatControls, strings::kCatLanguage};
 struct Def {
-  const char* key; const char* name;
+  const char* key; strings::Tr name;
   Category cat;        // where the menu lists it
-  const char* help;    // what it does: read with its row, after the position
-  Unit unit; std::vector<int> values; int def; std::vector<const char*> labels = {};
+  strings::Tr help;    // what it does: read with its row, after the position
+  Unit unit; std::vector<int> values; int def; std::vector<strings::Tr> labels = {};
 };
 static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
 // One row per Id, in its order: what the file calls it, what the menu says and where, the values it cycles through.
@@ -56,6 +58,12 @@ static const std::vector<int> kPercents = {0, 10, 20, 30, 40, 50, 60, 70, 80, 90
 // game's Config, which draws ON left of OFF): Off at the left, On to its right; a mode's Off first, then from less to
 // more; a scale (a number, a speed, a delay) from Off or its least at the left, growing to the right. Left is off or
 // less, Right on or more. The game's own Config is left as the game has it.
+// The Language row's choices: the game's language, then every language named in itself (core::lang).
+static std::vector<strings::Tr> language_labels() {
+  std::vector<strings::Tr> v{strings::kLangGame};
+  for (int i = 0; i < core::lang::Count; ++i) v.push_back({core::lang::native_name(i)});
+  return v;
+}
 static const Def kDefs[Count] = {
   // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
@@ -131,6 +139,10 @@ static const Def kDefs[Count] = {
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales
   {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kSpeed4, strings::kSpeed8, strings::kSpeed16}},
+  // the mod's own lines: the game's language, or one chosen (core::lang::Code + 1; language.cpp). Each language named
+  // in itself.
+  {"language", strings::kSetLanguage, CatLanguage, strings::kHelpLanguage, Unit::Choice, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 0,
+   language_labels()},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
 
@@ -159,6 +171,7 @@ static void apply(Id id) {
   if (id == WallVolume) audio::set_bus_volume(audio::Bus::Walls, g_value[id] / 100.0f);
   if (id == DescriptionVolume) audio::set_bus_volume(audio::Bus::Narration, g_value[id] / 100.0f);
   if (id == Spatial) audio::set_spatial(g_value[id]);
+  if (id == Language) language::apply(g_value[id]);
 }
 
 void set(Id id, int value) {
@@ -197,10 +210,13 @@ static void load() {
 static std::string label(Id id) {
   int v = g_value[id];
   switch (kDefs[id].unit) {
-    case Unit::Toggle: return v ? strings::kOn : strings::kOff;
+    case Unit::Toggle: return v ? strings::kOn.c_str() : strings::kOff.c_str();
     case Unit::Meters: return core::meters((float)v);
-    case Unit::Percent: return std::format("{} {}", v, strings::kPercent);
-    case Unit::Choice: return v >= 0 && v < (int)kDefs[id].labels.size() ? kDefs[id].labels[v] : std::to_string(v);
+    case Unit::Percent: return strings::count(v, strings::kPercent);
+    case Unit::Choice:
+      // another language than English has no narrator: its descriptions go to the screen reader (ad.cpp)
+      if (!core::lang::english() && ((id == AudioDescription && v == DescAudio) || id == SceneVoice)) return strings::kDescReader.c_str();
+      return v >= 0 && v < (int)kDefs[id].labels.size() ? std::string(kDefs[id].labels[v].c_str()) : std::to_string(v);
     default: return v ? std::format("{} {}", v, strings::kMilliseconds) : std::string(strings::kOff);
   }
 }
@@ -244,13 +260,13 @@ static void play_test(int i) {
 static void open_keys();
 struct Menu : ui::Screen {
   std::string_view key() const override { return "mod_settings"; }
-  std::string screen_name() const override { return strings::kModSettings; }
+  std::string screen_name() const override { return strings::kModSettings.c_str(); }
   bool wrap() const override { return true; }
   void build(ui::GraphBuilder& b) override {
     namespace k = ui::announcement_kinds;
     for (int c = 0; c < CatCount; ++c) {
       b.begin_stop(std::format("cat{}", c));
-      b.push_context(kCategoryNames[c]);
+      b.push_context(kCategoryNames[c].c_str());
       for (int i = 0; i < Count; ++i) {
         Id id = (Id)i;
         if (kDefs[i].cat != c) continue;
@@ -259,7 +275,7 @@ struct Menu : ui::Screen {
         // keys in this menu).
         v->announcements = {ui::NodeAnnouncement([id] { return std::string(kDefs[id].name); }, false, k::kLabel),
                             ui::NodeAnnouncement([id] { return label(id); }, true, k::kValue),
-                            ui::NodeAnnouncement([id] { return keys::fill(kDefs[id].help); }, false, k::kTooltip)};
+                            ui::NodeAnnouncement([id] { return keys::fill(kDefs[id].help.c_str()); }, false, k::kTooltip)};
         v->on_adjust = [id](int sign, bool) { change(id, sign); };
         v->on_activate = [id] { change(id, 0); };
         v->state_text = [id] { return label(id); };
@@ -277,7 +293,7 @@ struct Menu : ui::Screen {
     // The sound test: Space or A plays the row's sound; the row says what the sound means. No cursor sound on
     // these rows' activation: only the sound asked for is heard.
     b.begin_stop("sound_test");
-    b.push_context(strings::kCatSoundTest);
+    b.push_context(strings::kCatSoundTest.c_str());
     for (int i = 0; i < (int)std::size(strings::kSoundTests); ++i) {
       const strings::SoundTest& t = strings::kSoundTests[i];
       auto v = std::make_shared<ui::NodeVtable>();
@@ -323,7 +339,7 @@ static void reset_one(int i) {
 
 struct KeysMenu : ui::Screen {
   std::string_view key() const override { return "mod_keys"; }
-  std::string screen_name() const override { return strings::kModKeys; }
+  std::string screen_name() const override { return strings::kModKeys.c_str(); }
   bool wrap() const override { return true; }
   void build(ui::GraphBuilder& b) override {
     namespace k = ui::announcement_kinds;
@@ -348,7 +364,7 @@ struct KeysMenu : ui::Screen {
       v->on_activate = [] {
         keys::reset_all();
         voice::play_system_sound(voice::CueOption);
-        speech::speak(strings::kKeysResetDone, true);
+        speech::speak(strings::kKeysResetDone.c_str(), true);
       };
       b.add_item(ui::ControlId::structural("reset_all"), v);
     }
@@ -394,7 +410,7 @@ static void open_keys() {
   nav().screen_closed(&g_keys_menu);   // every visit starts on its first row
   nav().attach(&g_keys_menu);
   nav().settle_silently();
-  speech::speak(strings::kModKeys, true);
+  speech::speak(strings::kModKeys.c_str(), true);
   nav().announce_current();
 }
 
@@ -445,7 +461,7 @@ static void capture_key(uint32_t vk, bool repeat) {
       return;
     case keys::Rebind::BackKey:
       voice::play_system_sound(kCueBuzzer);
-      speech::speak(std::format("{} {} {}. {}", keys::key_label(vk, mods), strings::kKeysBackOf, keys::binding_help(keys::plain_of(vk, mods)), strings::kKeysPressAnother), true);
+      speech::speak(std::format("{}. {}", strings::fmt(strings::kGoesBackForFmt, keys::key_label(vk, mods), keys::binding_help(keys::plain_of(vk, mods))), strings::kKeysPressAnother), true);
       return;
     case keys::Rebind::Refused: g_capture = -1; voice::play_system_sound(kCueBuzzer); return;
     case keys::Rebind::Done: break;
@@ -538,7 +554,7 @@ void open() {
   nav().screen_closed(&g_menu);
   nav().attach(&g_menu);
   nav().settle_silently();   // the focus is read after the title
-  speech::speak(strings::kModSettings, true);
+  speech::speak(strings::kModSettings.c_str(), true);
   nav().announce_current();
 }
 
@@ -551,7 +567,7 @@ void close() {
   keys::set_modal(nullptr, nullptr);
   input::set_modal(false);
   voice::play_system_sound(voice::CueMenuClose);
-  speech::speak(strings::kModSettingsClosed, true);
+  speech::speak(strings::kModSettingsClosed.c_str(), true);
 }
 
 static std::string focused_key() {

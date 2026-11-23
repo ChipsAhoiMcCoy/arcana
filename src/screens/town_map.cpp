@@ -89,7 +89,7 @@ class TownMapScreen : public MenuScreen {
         std::string n = core::clean_text(to_utf8(*(FString*)(e + 0x10)));
         log::writef("town_map: {} link {} rank {} reversed {} '{}'", dest, arcana, rank, e[8], n);
         std::string s = std::format("{} ({})", n.empty() ? social::person(arcana) : n,
-                                    rank > 0 ? social::arcana_name(arcana) : strings::kUnknownArcana);
+                                    rank > 0 ? social::arcana_name(arcana) : strings::kUnknownArcana.c_str());
         if (rank > 0) s += std::format(", {} {}", strings::kRank, rank);
         if (e[8]) s += std::string(", ") + strings::kReversed;
         else for (auto& m : mine) if (m.arcana == arcana && m.rank == rank && social::ready(m)) s += std::string(", ") + strings::kReadyToRankUp;
@@ -201,7 +201,7 @@ class TownMapScreen : public MenuScreen {
     return !p || name_of(class_of(p)).find("DUNGEON") == std::string::npos;
   }
   bool holds_keys() override { int s = step(); return s == 4 || s == 6; }
-  std::string title() override { return strings::kTownMap; }
+  std::string title() override { return strings::kTownMap.c_str(); }
   void on_enter() override { order_.clear(); screens::set_keys(strings::kTownMapHelp); }
   void on_tick() override {
     if (order_.empty()) build_order();
@@ -293,7 +293,7 @@ class LocationListScreen : public MenuScreen {
     if (!trip_open()) titled_ = false;
     return list() != nullptr;
   }
-  std::string title() override { return quiet_ ? std::string() : strings::kTownMapWhere; }
+  std::string title() override { return quiet_ ? std::string() : strings::kTownMapWhere.c_str(); }
   void on_enter() override {
     quiet_ = titled_;
     titled_ = true;

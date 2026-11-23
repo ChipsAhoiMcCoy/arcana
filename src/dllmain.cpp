@@ -8,6 +8,7 @@
 #include "devserver.h"
 #include "hooks.h"
 #include "input.h"
+#include "language.h"
 #include "log.h"
 #include "mod.h"
 #include "nav.h"
@@ -88,6 +89,7 @@ static HANDLE g_quit = nullptr;   // set by unload: ends the init thread's wait 
 static DWORD WINAPI init_thread(LPVOID) {
   log::init();
   log::write("arcana: loaded");
+  language::boot_culture();   // dev (P3A_CULTURE): before the game asks Steam for its language
   crash::install();
   bool mute = env_flag(L"P3A_MUTE");
   speech::set_muted(mute);

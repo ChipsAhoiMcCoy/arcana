@@ -507,7 +507,7 @@ static void end_cue_tick(const Tick& tk, uint32_t autov) {
   // Nor over a scene's description: "Next" fell on "Two Shadows close in from behind" (2026-11-15); it waits for the
   // narrator as it waits for the voice.
   else if (!voice::playing() && !narrating() && (next || reading_done)) {
-    if (next) speech::speak(strings::kNext, false);
+    if (next) speech::speak(strings::kNext.c_str(), false);
     else voice::play_end_sound();
     g_wait_page = nullptr;
   }
@@ -625,21 +625,27 @@ bool window_session_open() {
 }
 ue::UObject* sel_item() { return g_sel.resolve(); }
 // A question may end in a note: "...keep these changes? (Settings will revert in 10 seconds.)".
+// Japanese and Chinese write the full-width ？ and （）: "設定を保存しますか？（10秒後に戻ります）".
 bool is_question(const std::string& t) {
-  size_t q = !t.empty() && t.back() == ')' ? t.rfind(" (") : std::string::npos;
-  return !t.empty() && (t.back() == '?' || (q != std::string::npos && q > 0 && t[q - 1] == '?'));
+  std::string_view s = t;
+  while (!s.empty() && (s.back() == ' ' || s.back() == '\n')) s.remove_suffix(1);
+  // a note in brackets after the question
+  if (s.ends_with(')')) { if (size_t q = s.rfind('('); q != std::string_view::npos) s = s.substr(0, q); }
+  else if (s.ends_with("\xEF\xBC\x89")) { if (size_t q = s.rfind("\xEF\xBC\x88"); q != std::string_view::npos) s = s.substr(0, q); }
+  while (!s.empty() && s.back() == ' ') s.remove_suffix(1);
+  return s.ends_with('?') || s.ends_with("\xEF\xBC\x9F");
 }
 
 std::string with_who_asked(const std::string& line, const std::string& game_text) {
   int major = core::bar_customer_asked(game_text);
   if (!major) return line;
   std::string who = poi::npc_named(major, 700);
-  return who.empty() ? line : line + " " + std::vformat(strings::kBarCustomerIs, std::make_format_args(who));
+  return who.empty() ? line : line + " " + std::vformat(strings::kBarCustomerIs.c_str(), std::make_format_args(who));
 }
 
 void repeat() {
   Current c = current();
-  if (!c.open) { speech::speak(strings::kNoMessage, true); return; }
+  if (!c.open) { speech::speak(strings::kNoMessage.c_str(), true); return; }
   std::string line = with_who_asked(spoken_line(c.speaker, c.text), c.text);
   if (c.choice >= 0 && c.choice < (int)c.choices.size()) line += ". " + choice_line(c.choices, c.choice);
   speech::speak(line, true);

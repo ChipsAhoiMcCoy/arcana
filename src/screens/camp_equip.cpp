@@ -99,7 +99,7 @@ class CampEquip : public MenuScreen {
   // out of an item's details, 0xB): the screen stays, silent, so nothing under it is read in those frames.
   bool active() override { int s = state(); return sys() && s >= 3 && s <= 0xC; }
   bool holds_keys() override { int s = state(); return s == 3 || s == 5 || s == 8 || s == 0xB; }
-  std::string title() override { return strings::kCampItems[2]; }
+  std::string title() override { return strings::kCampItems[2].c_str(); }
   // The gear's details (F / X) are read with each item: the key does nothing (the user's call, 2026-11-01).
   bool blocks_status() override { int s = state(); return s == 8 || s == 0xB; }
   void on_enter() override {

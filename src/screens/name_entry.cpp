@@ -189,7 +189,7 @@ class NameEntryScreen : public MenuScreen {
       }
       case XINPUT_GAMEPAD_B: erase_or_close(); break;
       case XINPUT_GAMEPAD_Y: if (!repeat) capitals(); break;
-      case XINPUT_GAMEPAD_X: if (!repeat) { std::string t = field_text(); line = std::format("{}, {}", t.empty() ? strings::kBlank : t, kb_.where()); } break;
+      case XINPUT_GAMEPAD_X: if (!repeat) { std::string t = field_text(); line = std::format("{}, {}", t.empty() ? strings::kBlank.c_str() : t, kb_.where()); } break;
       case XINPUT_GAMEPAD_START: if (!repeat) { cursor_sound(voice::CueDecide); commit(); } break;
       default: break;
     }
@@ -219,7 +219,7 @@ class NameEntryScreen : public MenuScreen {
   bool escape_is_back() override { return false; }   // Escape is the game's here
   // The game has the keys only while a field is being typed.
   bool holds_keys() override { return !typing(); }
-  std::string title() override { return strings::kContract; }
+  std::string title() override { return strings::kContract.c_str(); }
   void on_leave() override { close_keyboard(); }
   void on_enter() override {
     typed_ = false; typed_field_ = -1;
@@ -239,7 +239,7 @@ class NameEntryScreen : public MenuScreen {
       field_.open(t);
       bool pad = input::pad_in_use();
       if (pad) open_keyboard();
-      std::string line = std::format("{}. {}", field_name(f), t.empty() ? strings::kBlank : t);
+      std::string line = std::format("{}. {}", field_name(f), t.empty() ? strings::kBlank.c_str() : t);
       if (pad) line = std::format("{}. {}. {}", line, strings::kKeyboardOpen, kb_.key_name());
       say(line, true);
     } else if (keys && !kb_open_ && input::pad_in_use()) {
@@ -283,12 +283,12 @@ class NameEntryScreen : public MenuScreen {
       b.add_item(slot("fields", i), game_item(fields_, i, [this, i] { return std::format("{}, {}", field_name(i), name_or_blank(i)); }));
     b.add_item(slot("done", 0), item([] { return std::string(strings::kNameDone); }, [this] {
       if (both_named()) press_game('H', XINPUT_GAMEPAD_START);
-      else say(strings::kNamesMissing, true);
+      else say(strings::kNamesMissing.c_str(), true);
     }));
     b.set_start(slot("fields", cursor()));
   }
   std::string describe() override {
-    if (typing()) { std::string t = field_text(); return std::format("{}: {}", field_name(cursor()), t.empty() ? strings::kBlank : t); }
+    if (typing()) { std::string t = field_text(); return std::format("{}: {}", field_name(cursor()), t.empty() ? strings::kBlank.c_str() : t); }
     return summary();
   }
 };

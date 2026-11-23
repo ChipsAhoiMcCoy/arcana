@@ -122,15 +122,15 @@ const uint8_t* persona_entry(int id) {
 
 std::string line(const Member& m, bool level) {
   std::string s = level ? std::format("{}, {} {}", m.name, strings::kLevel, m.level) : m.name;
-  s += m.max_hp > 0 ? std::format(", {} {} {} {}", strings::kHP, m.hp, strings::kOf, m.max_hp) : std::format(", {} {}", strings::kHP, m.hp);
-  s += m.max_sp > 0 ? std::format(", {} {} {} {}", strings::kSP, m.sp, strings::kOf, m.max_sp) : std::format(", {} {}", strings::kSP, m.sp);
+  s += m.max_hp > 0 ? std::format(", {} {}", strings::kHP, strings::of(m.hp, m.max_hp)) : std::format(", {} {}", strings::kHP, m.hp);
+  s += m.max_sp > 0 ? std::format(", {} {}", strings::kSP, strings::of(m.sp, m.max_sp)) : std::format(", {} {}", strings::kSP, m.sp);
   return s;
 }
 
 std::vector<std::string> summary_parts() {
   std::vector<std::string> out;
   for (auto& m : members()) out.push_back(line(m));
-  if (out.empty()) out.push_back(strings::kNoParty);
+  if (out.empty()) out.push_back(strings::kNoParty.c_str());
   return out;
 }
 std::string summary() {
@@ -160,8 +160,8 @@ void tick() {
       for (auto& p : prev)
         if (p.id == m.id && (p.hp != m.hp || p.sp != m.sp) && p.level == m.level) {
           std::string s = m.name;
-          if (p.hp != m.hp) s += std::format(", {} {} {} {}", strings::kHP, m.hp, strings::kOf, m.max_hp);
-          if (p.sp != m.sp) s += std::format(", {} {} {} {}", strings::kSP, m.sp, strings::kOf, m.max_sp);
+          if (p.hp != m.hp) s += std::format(", {} {}", strings::kHP, strings::of(m.hp, m.max_hp));
+          if (p.sp != m.sp) s += std::format(", {} {}", strings::kSP, strings::of(m.sp, m.max_sp));
           speech::speak(s, false);
         }
   if (story && !usual && !prev.empty())   // logged: a change the story made, not a battle's
