@@ -140,15 +140,21 @@ bool player_velocity(FVector& out) {
   return true;
 }
 
-// The hero's running speed, cm/s: FldCharSpeed{Walk, Run, Dash, Assault} on his field component (Daily: Walk 260,
-// Run 625, measured in the dorm 2026-11-14). The game's own movement sets CharacterMovement.MaxWalkSpeed from it each
+// The hero's speed for a full push, cm/s: FldCharSpeed{Walk, Run, Dash, Assault} on his field component (Daily: Walk
+// 260, Run 640, Dash 910). The game's own movement (FUN_1411302c0) sets CharacterMovement.MaxWalkSpeed from it each
 // frame its input is held, and back to 0 when it is not: input from anyone else, with the speed left at 0, moves
-// nobody (the first try at direct movement, "ignored", 2026-11-14).
-static float run_speed(UObject* p) {
+// nobody (the first try at direct movement, "ignored", 2026-11-14). Its order: Assault while bEnableAssault, Dash
+// while bEnableDash (the Dash key, or the Always dash option: walkmode.cpp), else Run.
+static float push_speed(UObject* p) {
   for (const char* comp : {"FldPlayerDailyComp", "FldPlayerDungeonComp"}) {
     UObject* c = get<UObject*>(p, comp);
-    if (float* s = c ? field<float>(c, "SpeedData") : nullptr)
-      if (s[1] > 0.0f) return s[1];   // Run
+    float* s = c ? field<float>(c, "SpeedData") : nullptr;
+    if (!s) continue;
+    bool* assault = field<bool>(c, "bEnableAssault");
+    bool* dash = field<bool>(c, "bEnableDash");
+    if (assault && *assault && s[3] > 0.0f) return s[3];
+    if (dash && *dash && s[2] > 0.0f) return s[2];
+    if (s[1] > 0.0f) return s[1];   // Run
   }
   return 625.0f;
 }
@@ -159,7 +165,7 @@ bool add_move_input(const FVector& dir, float scale) {
   UFunction* fn = find_function(class_of(p), "AddMovementInput");
   if (!fn) return false;
   if (UObject* cmc = get<UObject*>(p, "CharacterMovement"))
-    if (float* m = field<float>(cmc, "MaxWalkSpeed")) *m = run_speed(p) * std::clamp(scale, 0.0f, 1.0f);
+    if (float* m = field<float>(cmc, "MaxWalkSpeed")) *m = push_speed(p) * std::clamp(scale, 0.0f, 1.0f);
   Params a(fn);
   a.set<FVector>("WorldDirection", dir);
   a.set<float>("ScaleValue", scale);

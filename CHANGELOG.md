@@ -15,6 +15,7 @@
 
 ### Field
 - New: walking on the keyboard. The game's movement keys always run (only a controller's stick could walk). Hold Alt to walk, as you hold Shift to dash; Shift still dashes while you hold Alt. Alt never opens the window's hidden system menu, and the mod's keys work while you hold it. The mod's walk to a point of interest keeps its running pace.
+- New: Always dash (F2, Exploring, off by default). Outside Tartarus you dash whenever you move, as if Shift (RT) were held; holding Shift (RT) then runs, and Alt still walks. The mod's walk to a point of interest dashes too. In Tartarus and Episode Aigis' dungeons it does nothing, since a dash there widens what the Shadows notice. The game's own rule against dashing in some places still holds.
 - The walk to a point of interest got a stress test over the dorm, school, stations, malls, shrine and club, and these fixes:
   - It no longer says "Stuck" from a spot pressed up against furniture. Beside Naganaki Shrine's see-saw, every walk from there failed: the path started on a scrap of walkable ground on the see-saw itself and led back into it. Paths now start from the floor under your feet, also for the door check, the sonar and the points of interest list; standing in the gap round a piece of furniture, the walk first steps out on the open side, and wedged in a corner it can back out the way you came.
   - The Net Cafe at the Iwatodai Strip Mall is reached again: its stairs run over the diner's closed door, which was taken for a door on the way, so the walk said there was no path.

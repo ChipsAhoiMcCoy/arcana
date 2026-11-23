@@ -7,6 +7,8 @@ namespace p3a::walkmode {
 // could only run. While Alt is held, the hero's InputWalkZone is raised past a full push, so the same keys walk;
 // Shift still dashes. The game's value is given back when Alt is let go, during the mod's auto-walk (it keeps its run
 // pace) and at the unload.
+// Always dash (settings::AlwaysDash): the daily hero's Dash flag is the inverse of the Dash key while exploring and
+// Alt is not held (walkmode.cpp, the game's setter hooked), so Shift (RT) runs; never the dungeon hero.
 bool on();         // walking now
 void tick();       // game thread
 void install();    // dev route /walkmode

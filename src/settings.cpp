@@ -61,6 +61,8 @@ static const Def kDefs[Count] = {
   {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
   // in the top-down mode, a room reached by a jump is turned so the way walked in stays up (topdown.cpp kRoomTurns)
   {"turned_rooms", strings::kSetTurnedRooms, CatExploring, strings::kHelpTurnedRooms, Unit::Toggle, {0, 1}, 1},
+  // the daily hero dashes whenever he moves, outside Tartarus; Shift (RT) then runs (walkmode.cpp)
+  {"always_dash", strings::kSetAlwaysDash, CatExploring, strings::kHelpAlwaysDash, Unit::Toggle, {0, 1}, 0},
   {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
   // when the wall tones play: all the time, only while the player moves (the default), or never (walltones.cpp)
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Choice, {WallOff, WallMoving, WallContinuous}, WallMoving,
