@@ -246,9 +246,11 @@ static std::atomic<void (*)()> g_focus_lost{nullptr};
 void set_focus_lost(void (*cb)()) { g_focus_lost = cb; }
 static LRESULT CALLBACK wndproc_hook(HWND h, UINT m, WPARAM w, LPARAM l) {
   if ((m == WM_ACTIVATE && LOWORD(w) == WA_INACTIVE) || (m == WM_ACTIVATEAPP && !w) || m == WM_KILLFOCUS) {
-    if (g_nofocus) return 0;
-    // The keyboard goes to another window: the key-ups of whatever is held go with it.
+    // The keyboard goes to another window: the key-ups of whatever is held go with it. In the dev no-focus mode too
+    // (only the game's pause is kept from it): an Alt press p3.py's focus helper sent, its release going to another
+    // game's window, left Alt held there, the hero walking and Always dash off for the rest of the run (2026-11-23).
     if (auto cb = g_focus_lost.load()) cb();
+    if (g_nofocus) return 0;
   }
   if (m == WM_KEYDOWN || m == WM_SYSKEYDOWN) ++g_key_count;
   if (m == WM_KEYDOWN || m == WM_KEYUP || m == WM_SYSKEYDOWN || m == WM_SYSKEYUP || m == WM_CHAR) {
