@@ -91,6 +91,19 @@ static bool shuts(const Door& d, const FVector& a, const FVector& b, std::vector
   if (std::max(a.z, b.z) + 250.0f < d.lo.z || std::min(a.z, b.z) - 100.0f > d.hi.z) return false;   // another storey's
   core::Vec2 in, out;
   if (!core::clip(core::Vec2{a.x, a.y}, core::Vec2{b.x, b.y}, rect(d), in, out)) return false;
+  // Where the leg crosses the door's bounds, its floor must be within the door's height: a leg up a stairway passes
+  // over a door below it. The Iwatodai Strip Mall's stairs to the Net Cafe run 1.3 m over the diner's closed door
+  // (its top at 651, the steps at 750 to 810, 2026-11-23): the storey test above let it by by a centimetre, the door
+  // shut the way, and the walk said there was none.
+  {
+    float len2 = (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
+    auto z_at = [&](core::Vec2 p) {
+      float t = len2 < 1.0f ? 0.0f : std::clamp(((p.x - a.x) * (b.x - a.x) + (p.y - a.y) * (b.y - a.y)) / len2, 0.0f, 1.0f);
+      return a.z + (b.z - a.z) * t;
+    };
+    float lo = std::min(z_at(in), z_at(out)), hi = std::max(z_at(in), z_at(out));
+    if (lo > d.hi.z - 50.0f || hi + 250.0f < d.lo.z) return false;   // over the door's top, or under it
+  }
   UObject* door = d.obj.resolve();
   if (!door) return false;
   // Playing open (the hero is being walked through it): it is a shut door again when that is over.
@@ -124,10 +137,10 @@ static bool same_room(UObject* thing, const FVector& me, const FVector& at, std:
 struct Verdict { bool shut = false, same_room = false; };
 static Verdict work_out(UObject* thing, const FVector& me, const FVector& at, std::string* report = nullptr) {
   bool partial = false;
-  auto path = world::find_path(me, at, &partial);
+  auto path = world::find_path(world::path_start(me), at, &partial);
   // A thing standing off the navmesh: the path to the navmesh beside it, as the auto-walk takes it.
   FVector beside{};
-  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(me, beside, &partial);
+  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(world::path_start(me), beside, &partial);
   if (report) *report += std::format("path: {} point(s){}\n", path.size(), partial ? " (partial)" : "");
   std::vector<UObject*> people;   // somebody standing in a doorway does not shut it
   // A thing at the door itself (the exit that opens it, a hit on the door) is not behind it: its path ends in the

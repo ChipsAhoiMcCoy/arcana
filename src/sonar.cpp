@@ -261,8 +261,8 @@ const char* route_kind(const poi::Poi& p, const FVector& me) {
   }
   bool partial = false;
   FVector beside{};
-  auto path = world::find_path(me, at, &partial);
-  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(me, beside, &partial);
+  auto path = world::find_path(world::path_start(me), at, &partial);
+  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(world::path_start(me), beside, &partial);
   const bool close_by = flat_cm(me, at) < kRouteBodyCm && std::fabs(me.z - at.z) < kRouteFloorCm;   // on this floor
   if (path.empty() || partial) return close_by ? "path" : "unreachable";
   const FVector& end = path.back();

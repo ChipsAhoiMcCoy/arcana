@@ -1,5 +1,6 @@
 #include "doctest.h"
 #include "core/body_path.h"
+#include <algorithm>
 #include <cmath>
 
 using namespace p3a::core;
@@ -63,4 +64,44 @@ TEST_CASE("body_path: the grid turns with the camera") {
   REQUIRE(plan.points.size() == 2);
   CHECK(plan.points[1].x == doctest::Approx(10).epsilon(0.01));
   CHECK(plan.points[1].y == doctest::Approx(210).epsilon(0.01));
+}
+
+TEST_CASE("body_path: a goal further than the budget carries is refused without a search") {
+  CHECK(body_reach(12000, 10) == doctest::Approx(1854.0).epsilon(0.01));
+  int asked = 0;
+  auto plan = body_path(Vec2{0, 0}, Vec2{2500, 0}, 10, 0, 12000, 2800, [&](Vec2, Vec2) { ++asked; return true; },
+                        [](Vec2 p) { return std::hypot(p.x - 2500, p.y) < 30; });
+  CHECK_FALSE(plan.found);
+  CHECK(plan.expanded == 0);
+  CHECK(asked == 0);
+}
+
+TEST_CASE("body_path: hemmed in, the search stops at the budget's reach") {
+  // Walls all round at 100 cm: nothing arrives; every point tested lies within body_reach of the start.
+  float most = 0;
+  auto clear = [&](Vec2, Vec2 b) { most = std::fmax(most, std::hypot(b.x, b.y)); return std::hypot(b.x, b.y) < 100; };
+  auto plan = body_path(Vec2{0, 0}, Vec2{500, 0}, 10, 0, 500, 5000, clear, [](Vec2 p) { return std::hypot(p.x - 500, p.y) < 30; });
+  CHECK_FALSE(plan.found);
+  CHECK(most <= body_reach(500, 10) + 1);
+}
+
+TEST_CASE("body_path: a search run in slices finds the same plan as one run at once") {
+  auto clear = [](Vec2 a, Vec2 b) { return !crosses_wall(a, b, 100, -500, 150, 26) && !crosses_wall(a, b, 100, 230, 500, 26); };
+  auto arrived = [](Vec2 p) { return std::hypot(p.x - 200, p.y) < 30; };
+  auto whole = body_path(Vec2{0, 0}, Vec2{200, 0}, 25, 0, 5000, 2000, clear, arrived);
+  BodySearch s(Vec2{0, 0}, Vec2{200, 0}, 25, 0, 5000, 2000);
+  int slices = 0, most = 0;
+  for (int last = 0; !s.step(7, clear, arrived); ++slices) {
+    most = std::max(most, s.plan().tested - last);
+    last = s.plan().tested;
+  }
+  REQUIRE(s.plan().found);
+  CHECK(slices > 10);
+  CHECK(most <= 7);   // no slice asks more than its budget
+  REQUIRE(s.plan().points.size() == whole.points.size());
+  for (size_t i = 0; i < whole.points.size(); ++i) {
+    CHECK(s.plan().points[i].x == doctest::Approx(whole.points[i].x));
+    CHECK(s.plan().points[i].y == doctest::Approx(whole.points[i].y));
+  }
+  CHECK(s.plan().expanded == whole.expanded);
 }

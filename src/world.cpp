@@ -465,15 +465,29 @@ std::vector<FVector> find_path(const FVector& from, const FVector& to, bool* par
   return pts;
 }
 
+FVector path_start(const FVector& me) {
+  static uint64_t at = ~0ull;
+  static FVector from{}, start{};
+  if (at == g_frame && from.x == me.x && from.y == me.y && from.z == me.z) return start;
+  at = g_frame;
+  from = me;
+  float radius = 26.5f, half = 85.0f;
+  capsule_of(player(), radius, half);
+  FVector feet{me.x, me.y, me.z - half}, on{};
+  constexpr float kBand = 40.0f;   // a step above or below his feet is still his floor
+  start = project_to_nav(feet, 30.0f, on, kBand) || project_to_nav(feet, 300.0f, on, kBand) ? on : me;
+  return start;
+}
+
 // The nearest navmesh point to `p` within `extent` cm (NavigationSystemV1::K2_ProjectPointToNavigation).
-bool project_to_nav(const FVector& p, float extent, FVector& out) {
+bool project_to_nav(const FVector& p, float extent, FVector& out, float up) {
   UClass* nav = find_class("NavigationSystemV1");
   UFunction* fn = find_function(nav, "K2_ProjectPointToNavigation");
   if (!fn) return false;
   Params q(fn);
   q.set<UObject*>("WorldContextObject", player() ? player() : gworld());
   q.set<FVector>("Point", p);
-  q.set<FVector>("QueryExtent", FVector{extent, extent, extent});
+  q.set<FVector>("QueryExtent", FVector{extent, extent, up < 0 ? extent : up});
   call(cdo_of(nav), q);
   if (!q.ret<bool>()) return false;
   out = *q.at<FVector>("ProjectedLocation");
@@ -484,13 +498,14 @@ void register_routes() {
   dev::route("/path", [](const dev::Request& r, int&) {
     int obj = (int)dev::arg_int(r, "obj", -1);
     auto out = std::make_shared<std::string>("timeout\n");
-    hooks::run_on_game_thread([out, obj] {
+    bool raw = dev::arg(r, "raw") == "1";   // from the hero's middle, as the engine projects it (not path_start)
+    hooks::run_on_game_thread([out, obj, raw] {
       FVector p;
       UObject* t = object_at(obj);
       if (!player_location(p) || !t) { *out = "no player or target\n"; return; }
       FVector to = actor_location(t);
       bool partial = false;
-      auto pts = find_path(p, to, &partial);
+      auto pts = find_path(raw ? p : path_start(p), to, &partial);
       std::string s = std::format("{} points{} to {} ({:.0f} cm straight)\n", pts.size(), partial ? " (PARTIAL)" : "", name_of(t),
                                   std::sqrt((to.x - p.x) * (to.x - p.x) + (to.y - p.y) * (to.y - p.y)));
       for (auto& v : pts) s += std::format("  ({:.0f}, {:.0f}, {:.0f}) bearing {:.0f}\n", v.x, v.y, v.z, bearing(p, v));

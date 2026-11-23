@@ -70,7 +70,13 @@ inline FVector fvec(const core::Vec3& v) { return FVector{v.x, v.y, v.z}; }
 bool actor_visible_level(ue::UObject* a);   // its level is the persistent level or a visible streamed one
 std::vector<std::string> visible_levels();   // the visible levels' map names ("LV_F103_101_BG_Night_Only")
 uint64_t levels_stamp();   // goes up whenever the set of visible levels is found changed
-bool project_to_nav(const ue::FVector& p, float extent, ue::FVector& out);   // nearest navmesh point within extent cm
+// The nearest navmesh point within `extent` cm (`up` cm above and below; -1: `extent` too).
+bool project_to_nav(const ue::FVector& p, float extent, ue::FVector& out, float up = -1.0f);
+// Where a navmesh path from the hero standing at `me` starts: the floor's navmesh under his feet (within 30 cm, or
+// the nearest within 3 m), not whatever navmesh the engine finds nearest his middle. At the Naganaki Shrine's see-saw
+// that was a raised scrap on the see-saw (33 cm from his middle, the floor 77): every path from there came out
+// partial and led back into it (2026-11-17). `me` itself when there is no floor navmesh near. Once per frame and spot.
+ue::FVector path_start(const ue::FVector& me);
 // The navmesh path's points, empty when there is none; `partial`: it stops short of `to`.
 std::vector<ue::FVector> find_path(const ue::FVector& from, const ue::FVector& to, bool* partial = nullptr);
 // Degrees from the listener's facing (north in the top-down mode, else the camera's), 0 ahead, 90 right.

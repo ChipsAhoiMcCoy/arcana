@@ -49,7 +49,7 @@ static bool walkable(UObject* a, const world::FVector& me, const world::FVector&
   auto it = cache.find(key);
   if (it != cache.end()) return it->second;
   bool partial = true;
-  auto path = world::find_path(me, v, &partial);
+  auto path = world::find_path(world::path_start(me), v, &partial);
   bool ok = !path.empty() && std::fabs(path.back().z - v.z) < 250.0f &&
             std::hypot(path.back().x - v.x, path.back().y - v.y) < 300.0f;
   cache[key] = ok;
