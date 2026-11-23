@@ -498,18 +498,43 @@ void demo(int which) {
 // COUNT 230 = 20 left, the Reaper spawns at 0). DUNGEON_REAPER_CONTINUE_APPEAR_TIME (+0x154, 2100 or 180) is the
 // second timer, which sets BIT 1377 (the quick return) when it runs out. With the option on, both arguments are
 // doubled before the command reads them, so every timer the scripts set runs twice as long; the warning still comes
-// 20 seconds before. A floor already counting keeps its time until the next floor sets it again.
+// 20 seconds before. Turning the option on or off on a floor doubles or halves what is left of the timers set
+// before (set_relaxed_reaper); each timer remembers whether it was set doubled, so it is never doubled twice or
+// halved below the game's own time.
 static flow::Command g_appear_cmd, g_continue_cmd;
+static bool g_doubled[2];   // the appear timer (+0x150) and the continue timer (+0x154) were set doubled
 
-static int64_t relaxed(flow::Command orig, const char* what, uint8_t* ctx) {
+static int64_t relaxed(flow::Command orig, int which, const char* what, uint8_t* ctx) {
+  g_doubled[which] = false;
   if (settings::on(settings::RelaxedReaper)) {
     int before = flow::int_arg(ctx);
-    if (flow::scale_arg(ctx, 2)) log::writef("shadow: {}({}) doubled to {}", what, before, flow::int_arg(ctx));
+    if (flow::scale_arg(ctx, 2)) {
+      g_doubled[which] = true;
+      log::writef("shadow: {}({}) doubled to {}", what, before, flow::int_arg(ctx));
+    }
   }
   return orig(ctx);
 }
-static int64_t appear_hook(uint8_t* ctx) { return relaxed(g_appear_cmd, "reaper appear time", ctx); }
-static int64_t continue_hook(uint8_t* ctx) { return relaxed(g_continue_cmd, "reaper continue time", ctx); }
+static int64_t appear_hook(uint8_t* ctx) { return relaxed(g_appear_cmd, 0, "reaper appear time", ctx); }
+static int64_t continue_hook(uint8_t* ctx) { return relaxed(g_continue_cmd, 1, "reaper continue time", ctx); }
+
+void set_relaxed_reaper(bool on) {
+  if (!ue::known_build()) return;   // the controller's layout is this build's
+  static const int id = watch::want("FldDungeonReaperController");
+  UObject* ctrl = watch::get(id);
+  for (int which = 0; which < 2; ++which) {
+    if (g_doubled[which] == on) continue;
+    g_doubled[which] = on;
+    if (!ctrl) continue;
+    guarded([&] {
+      float& left = *(float*)((uint8_t*)ctrl + 0x150 + which * 4);
+      if (left <= 0.0f) return;   // not counting: nothing to change
+      float before = left;
+      left = on ? left * 2.0f : left / 2.0f;
+      log::writef("shadow: reaper {} timer {:.0f} s left, now {:.0f}", which ? "continue" : "appear", before, left);
+    });
+  }
+}
 
 void install() {
   if ((g_appear_cmd = (flow::Command)flow::command("DUNGEON_REAPER_APPEAR_TIME")))

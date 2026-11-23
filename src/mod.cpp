@@ -38,6 +38,7 @@
 #include "textcap.h"
 #include "topdown.h"
 #include "menuspeed.h"
+#include "walkmode.h"
 #include "voice.h"
 #include "watch.h"
 #include "ue/routes.h"
@@ -62,7 +63,7 @@ static Section g_sections[] = {
   {"watch", watch::tick}, {"probe", ue::probe_tick}, {"input", input::tick}, {"world", world::tick}, {"doors", doors::tick},
   {"voice", voice::tick}, {"msg", msg::tick}, {"screens", screens::tick},
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
-  {"walltones", walltones::tick}, {"nav", nav::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
+  {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
   {"ad", ad::tick}, {"cutin", cutin::tick}, {"emotes", emotes::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
 };
@@ -132,6 +133,7 @@ void init(bool speech_ok) {
   sonar::install();
   topdown::install();
   menuspeed::install();
+  walkmode::install();
   shadow::install();
   sight::install();
   area::install();
@@ -169,6 +171,7 @@ void shutdown() {
   msg::save_history();   // after the last tick: the game thread no longer adds to it
   topdown::shutdown();
   menuspeed::shutdown();
+  walkmode::shutdown();
   screens::hold_pause(false);   // the mod menu's pause, if it is up
   audio::shutdown();
   watch::remove();

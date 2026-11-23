@@ -133,7 +133,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Shadow sight: off, on. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder and higher as you near it, and a muffled hum plays while a wall hides you from one
 - Shadow sight range: 10 meters; 2 to 16 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
 - Strike assist: off, on. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is
-- Relaxed Reaper rate: off, on. In Tartarus, you can stay on a floor twice as long before the Reaper comes (about six minutes on a normal floor instead of three); Fuuka's warning still comes shortly before it. Takes effect from the next floor you enter
+- Relaxed Reaper rate: off, on. In Tartarus, you can stay on a floor twice as long before the Reaper comes (about six minutes on a normal floor instead of three); Fuuka's warning still comes shortly before it. Turned on while on a floor, the time left there doubles (and halves when turned off)
 
 **Sonar**
 

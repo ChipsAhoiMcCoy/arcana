@@ -161,6 +161,7 @@ static void apply(Id id) {
 
 void set(Id id, int value) {
   if (id < 0 || id >= Count) return;
+  if (id == RelaxedReaper && (value != 0) != (g_value[id] != 0)) shadow::set_relaxed_reaper(value != 0);
   g_value[id] = value;
   apply(id);
   save();

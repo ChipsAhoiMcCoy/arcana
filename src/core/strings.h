@@ -380,6 +380,7 @@ inline constexpr const char* kPadLayer = "Hold both triggers, then";
 // The top-down mode's right stick, after the layer's buttons in the controller's list of mod keys and in F1's field keys.
 inline constexpr const char* kPadScanKeys = "Without the triggers, in top-down mode: the right stick finds the nearest point of interest that way; RT while it is on one walks there and uses it.";
 // F1 in the field: the walk that uses its point (Shift+Period; RT on the right stick's point in top-down mode).
+inline constexpr const char* kFieldWalkModeKey = "{move.walk} walks or runs.";
 inline constexpr const char* kFieldWalkUseKeys = "{nav.walk.period} walks to the selected point of interest, {nav.use} walks there and uses it; {poi.nearest} selects the nearest one, then the next nearest, {poi.nearest.prev} goes back; {poi.again} says the selected one again.";
 // The mod settings menu (settings.cpp)
 inline constexpr const char* kModSettings = "Mod settings";
@@ -409,7 +410,7 @@ inline constexpr const char* kHelpTopDown = "While you walk freely, the camera s
 inline constexpr const char* kHelpTurnedRooms = "In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.";
 inline constexpr const char* kHelpSpatial ="How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.";
 inline constexpr const char* kHelpStrikeAssist = "In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side. Your reach stays the same.";
-inline constexpr const char* kHelpRelaxedReaper = "In Tartarus: you can stay on a floor twice as long before the Reaper comes. Takes effect from the next floor you enter.";
+inline constexpr const char* kHelpRelaxedReaper = "In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.";
 inline constexpr const char* kHelpBehindPitch ="Sounds whose source is behind you play lower.";
 inline constexpr const char* kHelpPoiRange = "How far the points of interest list reaches.";
 inline constexpr const char* kHelpMasterVolume = "Every sound the mod plays. The game's own sounds follow the game's settings.";
@@ -491,6 +492,8 @@ inline constexpr const char* kSetSonarFragments = "Twilight Fragments";
 inline constexpr const char* kSetSonarVolume = "Sonar";
 inline constexpr const char* kSonarOn = "Sonar on";
 inline constexpr const char* kSonarOff = "Sonar off";
+inline constexpr const char* kWalkOn = "Walking";
+inline constexpr const char* kWalkOff = "Running";
 inline constexpr const char* kSetShadowAlerts = "Shadow alerts";
 inline constexpr const char* kSetShadowSight = "Shadow sight";
 inline constexpr const char* kSetSightRange = "Shadow sight range";
@@ -925,6 +928,7 @@ inline constexpr const char* kKeyHelpPoiCatNext = "Next category of points of in
 inline constexpr const char* kKeyHelpPoiCatPrev = "Previous category";
 inline constexpr const char* kKeyHelpParty = "Party: each member's level, HP and SP";
 inline constexpr const char* kKeyHelpWalk = "Walk to the selected point of interest, or stop walking";
+inline constexpr const char* kKeyHelpWalkMode = "Walk or run: the movement keys walk instead of running, until pressed again; Shift still dashes";
 inline constexpr const char* kKeyHelpPoiNearest = "Select the nearest point of interest of any kind; again, the next nearest";
 inline constexpr const char* kKeyHelpPoiNearestPrev = "Back through the points of interest of any kind, toward the nearest";
 inline constexpr const char* kKeyHelpWalkUse = "Walk to the selected point of interest and use it: check, talk or open";

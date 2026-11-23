@@ -11,6 +11,9 @@ namespace p3a::shadow {
 //    the strike will connect. From behind it, the ring is two rising ticks instead: the strike brings the advantage.
 void tick();      // game thread, with no screen or message up; the cues only while the player walks the field
 void install();   // dev route /shadows
+// The Relaxed Reaper rate option changed: doubles (on) or halves (off) what is left of the Reaper's timers on this
+// floor. Game thread.
+void set_relaxed_reaper(bool on);
 // The sound test: 1.5 s of the nearest Shadow's snarl, ahead. 0 facing the hero, 1 hunting him, 2 its back turned.
 void demo(int which);
 // The enemy manager's list (AFldEnemyManager.Enemies, FFldEnemyHolder): each Shadow's actor beside the component

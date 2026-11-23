@@ -20,6 +20,7 @@
 #include "stats.h"
 #include "social.h"
 #include "sonar.h"
+#include "walkmode.h"
 #include "world.h"
 #include <windows.h>
 #include <xinput.h>
@@ -75,7 +76,7 @@ static void screen_keys() {
     // what other players did today (screens/net_voice.cpp).
     if (poi::tartarus_floor() == 0 && party::flag(0x40000068) && !party::flag(0x4000002D)) k += std::string(strings::kNetActionKey()) + " ";
     // The mod's walk that uses its point: Shift+Period, or on a controller RT on the top-down scan's point.
-    if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkUseKeys) + " ";
+    if (!strings::pad_hints()) k += keys::fill(strings::kFieldWalkModeKey) + " " + keys::fill(strings::kFieldWalkUseKeys) + " ";
     else if (topdown::active()) k += std::string(strings::kPadScanKeys) + " ";
     k += keys::fill(strings::kModKeysHint());
   }
@@ -119,6 +120,8 @@ void install() {
   bind(VK_F1, Shift, "help.mod", strings::kKeyHelpModKeys, [] { speech::speak(keys::help(), true); });
   bind(VK_F2, None, "settings", strings::kKeyHelpSettings, settings::open);
   bind(VK_F3, None, "sonar", strings::kKeyHelpSonar, sonar::toggle);
+  // Walking on the keyboard (a stick walks by itself): G, free in the game's keyboard layout and beside its F and T.
+  bind('G', None, "move.walk", strings::kKeyHelpWalkMode, walkmode::toggle);
   bind(VK_OEM_2, None, "where", strings::kKeyHelpWhere, where_am_i);                                             // /
   bind(VK_OEM_2, Shift, "stats", strings::kKeyHelpStats, [] {                                                    // Shift+/
     std::string s = stats::describe();
