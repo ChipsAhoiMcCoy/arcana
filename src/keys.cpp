@@ -61,11 +61,11 @@ void pad(uint16_t button, bool repeat, bool layer) {
   }
 }
 
+// Alt is the walk key (alt_held), not a modifier: the mod binds no Alt chord (reserved).
 static int current_mods() {
   int m = 0;
   if (GetKeyState(VK_SHIFT) & 0x8000) m |= Shift;
   if (GetKeyState(VK_CONTROL) & 0x8000) m |= Ctrl;
-  if (GetKeyState(VK_MENU) & 0x8000) m |= Alt;
   return m;
 }
 
@@ -82,7 +82,9 @@ bool movement_key_down() {
   for (int i = 0; i < 256; ++i) if (g_movement[i]) return true;
   return false;
 }
-static void focus_lost() { for (bool& held : g_movement) held = false; }
+static bool g_alt = false;
+bool alt_held() { return g_alt; }
+static void focus_lost() { for (bool& held : g_movement) held = false; g_alt = false; }
 
 // Synthetic keys the navigator posts carry this marker in the lParam's reserved bits, so they are neither bound
 // commands nor a "player took over" signal.
@@ -94,6 +96,14 @@ static bool filter(UINT msg, WPARAM w, LPARAM l) {
   // A key the mod pressed for the game (a menu stepping the game's cursor to its focus): the game's, untouched.
   if ((msg == WM_KEYDOWN || msg == WM_KEYUP) && (l & 0xFFFF) == input::kInjectedRepeat) return false;
   bool synthetic = (l & kSyntheticMark) != 0 && is_movement(vk) && vk >= 'A' && vk <= 'Z';
+  // Alt alone, the walk key: Windows opens the window's (invisible) system menu when Alt is let go with no key
+  // between, and the keys after it went to that menu. Neither its down nor its up reaches the window.
+  if (vk == VK_MENU && (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN || msg == WM_KEYUP || msg == WM_SYSKEYUP)) {
+    const bool down = msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN;
+    if (down != g_alt) log::writef("keys: Alt {}", down ? "down" : "up");
+    g_alt = down;
+    return true;
+  }
   if (msg == WM_KEYDOWN || msg == WM_SYSKEYDOWN) {
     if (is_movement(vk) && !synthetic) {
       if (!g_movement[vk]) log::writef("keys: movement key {:#x} down (lParam {:#x})", vk, (uint64_t)l);

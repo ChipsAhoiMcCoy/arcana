@@ -63,6 +63,10 @@ void set_prompt(CaptureKey key);
 using MenuKey = std::function<bool(uint32_t vk, int mods, bool repeat)>;
 void set_menu(MenuKey key);
 // The player's own presses of keys the game gets, as the window procedure sees them (keys the mod posts are not counted).
+// Alt held (the walk key, walkmode.cpp): its own down and up are swallowed, so Windows never opens the window's
+// system menu on its release, and it is no modifier for the mod's keys (they work while walking). Let go when the
+// window loses the keyboard.
+bool alt_held();
 bool movement_key_down();   // W/A/S/D or the arrow keys, from the real keyboard: cancels auto-walk
 uint64_t game_key_ms();     // when the player last pressed a key the game gets (not a mod key), or 0
 uint32_t movement_presses(uint32_t vk);   // how many times that movement key has been pressed (no auto-repeats)

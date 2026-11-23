@@ -39,7 +39,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+F1: The mod's own keys
 - F2: Mod settings
 - F3: Sonar on or off
-- G: Walk or run. The game only runs on the keyboard (a controller's stick walks when pushed gently); with walking on ("Walking"), the movement keys walk until you press G again ("Running"). Holding Shift still dashes, as in the game. The mod's walk to a point of interest keeps its running pace
+- Hold Alt: Walk. The game only runs on the keyboard (a controller's stick walks when pushed gently); while you hold Alt the movement keys walk, as holding Shift dashes. Shift with Alt still dashes. The mod's keys work while you hold it, and the mod's walk to a point of interest keeps its running pace
 - Slash: Where am I: date, area, yen and current objective
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
