@@ -242,6 +242,7 @@ With the sonar on, landing on a point (or Shift+Semicolon) plays its sound alone
 - Chests by kind ("Treasure Chest", "Rare Treasure Chest", "Gold Treasure Chest", "Locked Treasure Chest, 2 Twilight Fragments"); items read as you pick them up; opened chests leave the list.
 - Breakable objects; a missing person under People until rescued, named once the police notice shows it ("Missing Person, Ayako Yoshimoto"; walk into them to rescue them).
 - Terminals: each floor you can travel to, the furthest marked; Space travels.
+- M opens the floor's shortcuts ("Where should I go?"), each once you have found what it leads to: Go to the Next Floor (the stairs; it takes you up from anywhere on the floor), Use the Teleporter (the terminal's floor list), Return to Entrance, Enter Monad. Space takes one; Escape or C closes. With none found yet you hear "No shortcuts found yet" and the floor.
 - Auto-Recover (Y, or RB) and the entrance clock read the new HP and SP. N (View on a controller) is the game's Navi: the navigator's support skills, such as Jamming, Escape Route and Tartarus Search, as the story unlocks them. They and the other helpers speak through messages.
 
 ### Camp menu

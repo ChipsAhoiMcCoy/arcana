@@ -107,6 +107,8 @@ inline constexpr Hint kMailKeys{"Up and down arrows choose, Space reads, Escape 
 inline constexpr Hint kMailOpenKeys{"Space replies when the text takes a reply, otherwise goes back; Escape goes back.", "A replies when the text takes a reply, otherwise goes back; B goes back."};
 inline constexpr const char* kTownMapWhere = "Where should I go?";   // the game's own entrance-list title, matched
 inline constexpr const char* kAreaMap = "Area map";
+// Tartarus' map before the floor's stairs, teleporter, return device or Monad door is found: no shortcut to take yet.
+inline constexpr const char* kNoShortcuts = "No shortcuts found yet. Find the stairs, a teleporter or a return device to travel to it from here.";
 inline constexpr Hint kAreaMapKeys{"Tab zooms, Escape closes.", "Y zooms, B closes."};
 inline constexpr Hint kTownMapHelp{"Up and down arrows choose, Space opens its entrances, F town info, Escape closes.",
                                    "The D-pad goes through the list, the stick moves on the map, A opens its entrances, X town info, B closes."};

@@ -225,6 +225,16 @@ class TownMapScreen : public MenuScreen {
 
 std::unique_ptr<Screen> make_town_map() { return std::make_unique<TownMapScreen>(); }
 
+// The town map is up: its pause (EAppPauseType::TownMap) on top and its actor past opening (+0x294: 4 the map, 5 the
+// entrance list, 6 town info, 11-14 an entrance confirmed). The area map and Tartarus' map (M on a floor, a shortcut
+// list: measured 2026-11-22) raise the same pause with the actor idle at step 0.
+static bool town_map_up(UObject* t) {
+  if (!t || pause_top() != 2) return false;
+  int s = 0;
+  guarded([&] { s = *(int32_t*)((uint8_t*)t + 0x294); });
+  return s >= 4;
+}
+
 // "Where should I go?": the town map's entrance list and the M key's own list in a daily area are both a
 // UILocationSelect: m_aShortcutList (+0xD0) of FShortcutItem (0xF0: +0x8 the name FString,
 // +0x18 mEnable), the cursor at +0x200 (never scrolls, wraps; a write is honoured, the bar animates to it).
@@ -245,7 +255,7 @@ class LocationListScreen : public MenuScreen {
   static bool has_items(uint8_t* u) { auto* a = u ? (TArray<uint8_t>*)(u + 0xD0) : nullptr; return a && a->data && a->num > 0 && a->num < 64; }
   uint8_t* list() {
     uint8_t* t = (uint8_t*)town_.get();
-    if (t && pause_top() == 2) {
+    if (town_map_up(town_.get())) {
       uint8_t* mine = *(uint8_t**)(t + 0x480);
       return *(int32_t*)(t + 0x294) == 5 && has_items(mine) ? mine : nullptr;
     }
@@ -259,7 +269,7 @@ class LocationListScreen : public MenuScreen {
   // are both gone. Every list in it carries the same title, so only the first says it.
   bool titled_ = false, quiet_ = false;
   bool trip_open() {
-    if (town_.get() && pause_top() == 2) return true;
+    if (town_map_up(town_.get())) return true;
     int s = access_.get() ? *(int32_t*)((uint8_t*)access_.get() + 0x294) : -1;
     return s == 5 || s == 6 || s == 9 || s == 10;
   }
@@ -267,7 +277,7 @@ class LocationListScreen : public MenuScreen {
   LocationListScreen() {
     // FUN_1414371e0 case 6: the M list reads nothing until the fade over it ends (FUN_14108e800); an entrance's list has
     // no gate (FUN_141454640 case 5).
-    list_.ready = [this] { return (town_.get() && pause_top() == 2) || ((int (*)())(scan::exe_base() + 0x108e800))() != 0; };
+    list_.ready = [this] { return town_map_up(town_.get()) || ((int (*)())(scan::exe_base() + 0x108e800))() != 0; };
     list_.set = [this](int i) {
       uint8_t* l = list();
       auto* a = l ? (TArray<uint8_t>*)(l + 0xD0) : nullptr;
@@ -287,7 +297,7 @@ class LocationListScreen : public MenuScreen {
   void on_enter() override {
     quiet_ = titled_;
     titled_ = true;
-    screens::set_keys([this] { return std::string(town_.get() && pause_top() == 2 ? strings::kEntranceKeys() : strings::kFastTravelKeys()); });
+    screens::set_keys([this] { return std::string(town_map_up(town_.get()) ? strings::kEntranceKeys() : strings::kFastTravelKeys()); });
   }
   void build(ui::GraphBuilder& b) override {
     uint8_t* l = list();
@@ -313,14 +323,19 @@ std::unique_ptr<Screen> make_fast_travel() { return std::make_unique<LocationLis
 // (the M screen taking input, see LocationListScreen) with no places in its list: FUN_141411ae0 confirms a place only
 // when the list has one, and builds the zoom key help (FUN_14142b1d0) in the same state. The area is the mod's own
 // name for it (poi::area_name, from the hit-name table), not the drawn bar.
+// On a Tartarus floor M opens the same screen as a shortcut list (KW_SHORTCUT_TARTAROS_WARD: Go to the Next Floor,
+// Return to Entrance, Use the Teleporter, Enter Monad, each once the floor's stairs, return device, teleporter or Monad
+// door is found; LocationListScreen reads it). Before any is found the list is empty and the map is only a picture:
+// it says so.
 class AreaMapScreen : public Screen {
   Finder access_{"UIAccessInfoDraw"};
+  Finder town_{"UITownMapActor"};
  public:
   const char* id() const override { return "area_map"; }
   int priority() const override { return 13; }
   bool active() override {
     uint8_t* a = (uint8_t*)access_.get();
-    if (!a || *(int32_t*)(a + 0x294) != 6 || pause_top() == 2) return false;
+    if (!a || *(int32_t*)(a + 0x294) != 6 || town_map_up(town_.get())) return false;
     uint8_t* sel = *(uint8_t**)(a + 0x338);
     auto* list = sel ? (TArray<uint8_t>*)(sel + 0xD0) : nullptr;
     return list && list->num == 0 && world::player();
@@ -329,7 +344,9 @@ class AreaMapScreen : public Screen {
   void enter() override { screens::set_keys(strings::kAreaMapKeys); speech::speak(describe(), true); }
   std::string describe() override {
     std::string a = poi::area_name();
-    return a.empty() || a == strings::kUnknownArea ? std::string(strings::kAreaMap) : std::format("{}, {}", strings::kAreaMap, a);
+    std::string s = a.empty() || a == strings::kUnknownArea ? std::string(strings::kAreaMap) : std::format("{}, {}", strings::kAreaMap, a);
+    if (poi::tartarus_floor() > 0) s += std::string(". ") + strings::kNoShortcuts;
+    return s;
   }
 };
 

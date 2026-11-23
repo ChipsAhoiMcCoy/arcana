@@ -15,6 +15,7 @@
 
 ### Field
 - New: walking on the keyboard. The game's movement keys always run (only a controller's stick could walk). Hold Alt to walk, as you hold Shift to dash; Shift still dashes while you hold Alt. Alt never opens the window's hidden system menu, and the mod's keys work while you hold it. The mod's walk to a point of interest keeps its running pace.
+- The map in Tartarus (M) is read. It is the game's shortcut list, "Where should I go?", and each shortcut appears once you find what it leads to: Go to the Next Floor (the stairs) takes you up from anywhere on the floor, Use the Teleporter opens the terminal's floor list, and Return to Entrance and Enter Monad use the return device and the Monad door. Before you have found any of them, the map says "No shortcuts found yet" with the floor you are on. The mod said nothing on it before.
 - New: Relaxed Reaper rate (F2, Exploring, off by default). In Tartarus, you can stay on a floor twice as long before the Reaper comes: about six minutes on a normal floor instead of three, and its quicker returns take twice as long too. Fuuka still warns you shortly before it arrives. Turned on while you are on a floor, the time left there doubles; turned off, it halves back.
 - The mod's field sounds (sonar, wall tones, Shadow cues and sight zones) now go quiet whenever the game takes the hero from you: opening a door, checking or picking something up, a camera the game moves by itself. They come back the moment you can move again, so silence means wait.
 
