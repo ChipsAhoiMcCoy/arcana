@@ -56,8 +56,8 @@ empty	пусто
 level	уровень
 play time	время игры
 Clear data, start a new game	Пройденная игра, начать новую игру
-hours	часов
-minutes	минут
+hours	час|часа|часов
+minutes	минута|минуты|минут
 hour	час
 minute	минута
 Menu	Меню
@@ -206,7 +206,7 @@ defeated	повержены
 knocked out	без сознания
 Victory	Победа
 EXP	Опыт
-yen	йен
+yen	йена|йены|йен
 Price	Цена
 Level up!	Новый уровень!
 is dizzy	теряет ориентацию
@@ -237,11 +237,11 @@ No buffs or debuffs	Нет усилений и ослаблений
 Guarding	Защита
 up to	до
 turn	ход
-turns	хода
+turns	ход|хода|ходов
 Time left:	Осталось времени:
 left	осталось
 second	секунда
-seconds	секунд
+seconds	секунда|секунды|секунд
 Theurgy gauge	Шкала теургии
 Control and the up and down arrows read the details of what is in focus.	Ctrl со стрелками вверх и вниз читает подробности о том, что в фокусе.
 The right stick, up and down, reads the details of what is in focus.	Правый стик вверх и вниз читает подробности о том, что в фокусе.
@@ -380,7 +380,7 @@ MAX	МАКС
 reversed	перевёрнута
 ready to rank up	можно повысить ранг
 Bond deepened	Связь крепнет
-points	очков
+points	очко|очка|очков
 Shop	Магазин
 Buy	Купить
 Quit	Выйти
@@ -603,7 +603,7 @@ People	Люди
 Shops	Магазины
 Objects	Объекты
 Events	События
-Twilight Fragments	Сумеречные фрагменты
+Twilight Fragments	Сумеречный фрагмент|Сумеречных фрагмента|Сумеречных фрагментов
 Sonar on	Сонар включён
 Sonar off	Сонар выключен
 Shadow alerts	Сигналы Теней
@@ -657,10 +657,10 @@ Fast-forward off	Перемотка выключена
 page turn sound	звук перелистывания
 message chime sound	звук сообщения
 cursor tick sound	щелчок курсора
-meters	метров
+meters	метр|метра|метров
 meter	метр
 less than 1 meter	меньше 1 метра
-percent	процентов
+percent	процент|процента|процентов
 milliseconds	миллисекунд
 Up and down arrows choose, Space confirms, Escape back.	Стрелки вверх и вниз выбирают, Пробел подтверждает, Esc возвращает назад.
 Up and down choose, A confirms, B back.	Вверх и вниз выбирают, A подтверждает, B возвращает назад.

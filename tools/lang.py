@@ -227,7 +227,10 @@ def cmd_check(a):
             if en not in cat:
                 stale += 1
                 continue
-            if sorted(PH.findall(en)) != sorted(PH.findall(tr)) and not (en == "{month} {day}{th}" and set(PH.findall(tr)) <= {"{month}", "{day}", "{th}"} and "{day}" in tr and "{month}" in tr):
+            # "{}" slots may be numbered in a translation to reorder them ("{1} ... {0}"): every slot once
+            numbered = sorted(PH.findall(tr)) == sorted(f"{{{i}}}" for i in range(PH.findall(en).count("{}"))) and \
+                all(p == "{}" for p in PH.findall(en))
+            if not numbered and sorted(PH.findall(en)) != sorted(PH.findall(tr)) and not (en == "{month} {day}{th}" and set(PH.findall(tr)) <= {"{month}", "{day}", "{th}"} and "{day}" in tr and "{month}" in tr):
                 print(f"{code} {f}:{k}: placeholders differ: {en!r} -> {tr!r}"); bad += 1
             if not tr.strip():
                 print(f"{code} {f}:{k}: empty"); bad += 1

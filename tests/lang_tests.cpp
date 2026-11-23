@@ -84,3 +84,10 @@ TEST_CASE("text: Japanese and Chinese punctuation and line breaks") {
   CHECK(without_last_sentence_naming("Light armor. Sturdy.", "Yukari") == "Light armor. Sturdy.");
   CHECK(without_last_sentence_naming("\xE9\x8E\xA7\xE3\x80\x82\xE3\x82\x86\xE3\x81\x8B\xE3\x82\x8A\xE7\x94\xA8", "\xE3\x82\x86\xE3\x81\x8B\xE3\x82\x8A") == "\xE9\x8E\xA7\xE3\x80\x82");
 }
+
+TEST_CASE("lang: a pattern may number its slots to reorder them") {
+  lang::load_text(lang::Tr, "Use {} on {}?\t{1} hedef: {0}?\n");
+  lang::set(lang::Tr);
+  CHECK(strings::fmt(strings::kUseOnFmt, "Agi", "dusmanlar") == "dusmanlar hedef: Agi?");
+  lang::set(lang::En);
+}

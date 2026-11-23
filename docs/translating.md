@@ -41,8 +41,9 @@ Everything is heard through a screen reader, often at speed, by a player who can
   language has them. Menu names as the game's menus call them.
 - **Short and spoken.** Plain words, short sentences, no abbreviations a screen reader would spell out. Keep each
   line's meaning and nothing more: no added explanation, nothing left out.
-- **Placeholders.** `{}`, `{sonar}` and every other `{...}` stay as they are, as many as the English has; their order
-  may change only where the language needs it and the placeholder is named. Numbers come from the mod.
+- **Placeholders.** `{}`, `{sonar}` and every other `{...}` stay as they are, as many as the English has. The `{}` are
+  filled in the English order; to put them in another, number them all from 0 in that order: "Use {} on {}?" can
+  become "{1}: {0}?" (Agi is `{0}`, all enemies `{1}`). Numbers come from the mod.
 - **Fragments.** Some lines are pieces the mod joins with others ("of" in "2 of 5", "times" in "Got Bead times 3",
   a menu name before its position). `src/core/strings.h` shows each line's comment and name: read it to see how a
   piece is used, and translate it so the joined line reads well.

@@ -56,8 +56,8 @@ empty	pusty
 level	poziom
 play time	czas gry
 Clear data, start a new game	Dane po ukończeniu gry, nowa gra
-hours	godzin
-minutes	minut
+hours	godzina|godziny|godzin
+minutes	minuta|minuty|minut
 hour	godzina
 minute	minuta
 Menu	Menu
@@ -206,7 +206,7 @@ defeated	pokonano
 knocked out	traci przytomność
 Victory	Zwycięstwo
 EXP	PD
-yen	jenów
+yen	jen|jeny|jenów
 Price	Cena
 Level up!	Nowy poziom!
 is dizzy	ulega oszołomieniu
@@ -237,11 +237,11 @@ No buffs or debuffs	Brak wzmocnień ani osłabień
 Guarding	Obrona
 up to	do
 turn	tura
-turns	tur
+turns	tura|tury|tur
 Time left:	Pozostały czas:
 left	pozostało
 second	sekunda
-seconds	sekund
+seconds	sekunda|sekundy|sekund
 Theurgy gauge	Miernik teurgii
 Control and the up and down arrows read the details of what is in focus.	Ctrl i strzałki w górę i w dół odczytują szczegóły tego, co jest zaznaczone.
 The right stick, up and down, reads the details of what is in focus.	Prawa gałka, w górę i w dół, odczytuje szczegóły tego, co jest zaznaczone.
@@ -380,7 +380,7 @@ MAX	maksymalna
 reversed	odwrócona
 ready to rank up	gotowa do wzrostu rangi
 Bond deepened	Więź się pogłębiła
-points	punktów
+points	punkt|punkty|punktów
 Shop	Sklep
 Buy	Kup
 Quit	Wyjdź
@@ -603,7 +603,7 @@ People	Osoby
 Shops	Sklepy
 Objects	Obiekty
 Events	Wydarzenia
-Twilight Fragments	Fragmenty Zmierzchu
+Twilight Fragments	Fragment Zmierzchu|Fragmenty Zmierzchu|Fragmentów Zmierzchu
 Sonar on	Sonar włączony
 Sonar off	Sonar wyłączony
 Shadow alerts	Ostrzeżenia o Cieniach
@@ -657,7 +657,7 @@ Fast-forward off	Przewijanie wyłączone
 page turn sound	dźwięk przewracanej strony
 message chime sound	dźwięk powiadomienia o wiadomości
 cursor tick sound	tyknięcie kursora
-meters	metrów
+meters	metr|metry|metrów
 meter	metr
 less than 1 meter	mniej niż 1 metr
 percent	procent
