@@ -23,18 +23,26 @@
 // box (EditableText.SetText with KismetTextLibrary.Conv_StringToText's FText), B erases the last character, Y capitals,
 // X reads the name, Start commits with an injected Enter (the box's own commit, as the keyboard's: every
 // OnTextCommitted runs Decide). B with the box empty commits it empty: the keyboard closes, the name stays blank.
+// Steam's keyboard: opening a field (exe+0x149e4b0) first asks Steam for its gamepad keyboard (exe+0x1272c90:
+// ISteamUtils vtable +0xA0, ShowGamepadTextInput(normal, single line, description, max, existing text); state byte
+// 1 pending, 2 submitted, 3 cancelled, 4 no Steam), which Steam shows only in Big Picture or on a Steam Deck and a
+// screen reader does not read. Only when that fails does it open WBP_NameEntryInput (+0x341). The mod answers the
+// request as the no-Steam path does (state 4, false), so the game's own box always opens and the keyboard here takes it.
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "core/strings.h"
 #include "core/text_field.h"
 #include "core/virtual_keyboard.h"
 #include "input.h"
+#include "hooks.h"
+#include "ue/scan.h"
 #include "keys.h"
 #include "log.h"
 #include "seh.h"
 #include "speech.h"
 #include <windows.h>
 #include <xinput.h>
+#include <cstring>
 #include <format>
 
 namespace p3a::screens {
@@ -272,6 +280,24 @@ class NameEntryScreen : public MenuScreen {
     return summary();
   }
 };
+
+// Steam's gamepad keyboard refused: the request answered as when Steam is not running (its own failure path).
+using ShowSteamKeyboard_t = bool (*)(uint8_t* state, void* description, uint32_t max_chars, void* existing);
+static ShowSteamKeyboard_t g_show_steam_keyboard = nullptr;
+static bool show_steam_keyboard_hook(uint8_t* state, void*, uint32_t, void*) {
+  if (state) *state = 4;
+  log::write("name_entry: Steam's keyboard refused, the game's box opens");
+  return false;
+}
+void install_name_entry() {
+  uintptr_t m = scan::find_unique("48 8B F1 C6 01 01 48 8D 0D ?? ?? ?? ?? 49 8B D9 41 8B E8 48 8B FA FF 15 ?? ?? ?? ?? 4C 8B 30 4D 85 F6");
+  uintptr_t f = m ? m - 0x20 : 0;
+  if (f && memcmp((void*)f, "\x40\x53\x55\x56\x57\x41\x56", 7) != 0) f = 0;   // push rbx, rbp, rsi, rdi, r14
+  log::writef("name_entry: ShowGamepadTextInput call={:#x}", f ? f - scan::exe_base() : 0);
+  if (!f) return;
+  g_show_steam_keyboard = (ShowSteamKeyboard_t)f;
+  hooks::attach((void**)&g_show_steam_keyboard, (void*)&show_steam_keyboard_hook, "ShowGamepadTextInput (contract)");
+}
 
 std::unique_ptr<Screen> make_name_entry() { return std::make_unique<NameEntryScreen>(); }
 }  // namespace p3a::screens

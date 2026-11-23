@@ -150,6 +150,7 @@ void init(bool speech_ok) {
   items::install();
   flow::install();
   screens::install_routes();
+  screens::install_name_entry();
   dev::route("/perf", [](const dev::Request& r, int&) {
     bool reset = dev::has(r, "reset");
     return dev::on_game([reset] { return perf(reset); });
