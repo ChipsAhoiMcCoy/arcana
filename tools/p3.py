@@ -97,12 +97,32 @@ def focus():
     if not m:
         return False
     h = wt.HWND(int(m.group(1), 16))
+    u32.GetForegroundWindow.restype = ctypes.c_void_p
+    prev = u32.GetForegroundWindow()
+    if prev and prev != h.value:
+        focus.prev = prev   # the window the user was in: unfocus() gives it back
     u32.keybd_event(0x12, 0, 0, 0)
     u32.SetForegroundWindow(h)
     u32.keybd_event(0x12, 0, 2, 0)
     time.sleep(0.5)
-    u32.GetForegroundWindow.restype = ctypes.c_void_p
     return u32.GetForegroundWindow() == h.value
+
+
+def unfocus():
+    """Give the foreground back to the window focus() took it from, once the press that needed the game in front has
+    gone through. Left in front, the dev game took the user's typing (WASD walked the hero and answered a navigator's
+    choice, 2026-11-22). Only while the game is still the foreground: a window the user picked since stays."""
+    prev = getattr(focus, "prev", None)
+    m = re.search(r"window=0x([0-9a-f]+)", http("/health", retry=0, check=False) or "")
+    if not prev or not m:
+        return
+    u32.GetForegroundWindow.restype = ctypes.c_void_p
+    if u32.GetForegroundWindow() != int(m.group(1), 16):
+        return
+    u32.keybd_event(0x12, 0, 0, 0)
+    u32.SetForegroundWindow(wt.HWND(prev))
+    u32.keybd_event(0x12, 0, 2, 0)
+    focus.prev = None
 
 
 def http(route, timeout=15.0, body=None, retry=8.0, check=True):
@@ -543,6 +563,7 @@ def flow_load(slot):
                 d = want - int(cur.group(1))
                 keys = (["down"] * d if d > 0 else ["up"] * -d) + ["space"]
                 http(f"/key?k={','.join(keys)}&settle=1&ms=60", 15 + 11 * len(keys), check=False)
+                unfocus()
         print(f"{time.time() - t0:5.1f}", lines[0] if lines else "", "|", (lines[1] if len(lines) > 1 else "")[:70])
         time.sleep(0.4)
     return False
@@ -784,7 +805,7 @@ def scenario(name):
     if not s:
         sys.exit(f"no scenario {name!r}; `p3.py scenario list`")
     t0 = time.time()
-    ctx = {"http": http, "cheat": cheat, "gwork": gwork, "field": field, "goto": goto, "advance": advance, "focus": focus,
+    ctx = {"http": http, "cheat": cheat, "gwork": gwork, "field": field, "goto": goto, "advance": advance, "focus": focus, "unfocus": unfocus,
            "keys": lambda *ks: [time.sleep(float(k[5:])) if k.startswith("wait:") else http(f"/key?k={k}&ms=120")
                                 for k in ks]}
     for step in s["steps"]:
@@ -955,6 +976,7 @@ def main():
                     http("/key?k=enter&ms=120")   # a scene description box holds its scene for Enter
                 # movies and events run on their own; a key here pauses the movie
             print(scr.splitlines()[0], "|", (scr.splitlines()[1] if len(scr.splitlines()) > 1 else "")[:60])
+        unfocus()
     elif cmd == "goto":
         # p3.py goto "Head to the Dorm" [--noact]: auto-walk to the nearest point of interest whose name contains the
         # text, then press the action key (Space) unless --noact.

@@ -772,6 +772,7 @@ def play(choices, secs=120, quiet_polls=4):
                     time.sleep(0.4)
                 p3.http("/key?k=enter&ms=120")
                 time.sleep(1.5)
+                p3.unfocus()
             continue
         scr = p3.http("/screen").splitlines()[0]
         if "screen=movie" in scr or "item=MsgSubtitles" in m:

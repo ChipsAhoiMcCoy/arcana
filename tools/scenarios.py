@@ -14,6 +14,7 @@ Each scenario runs from a dev game already in a daily field (any save; `p3.py up
   advance(secs, stop_at=...)   play through messages; stops at a choice or a screen.
   keys(k, "wait:2", ...)  game keys.
   focus()              bring the dev game to the front: a choice list (SEL) takes Enter only while it is focused.
+  unfocus()            give the front back to the window focus() took it from (else the user's typing reaches the game).
   http(route)          any dev route.
 A date set live lasts until the game's next day change: test within the day.
 Where the game has a script that leads to the thing (a hit, an NPC), prefer walking to it over calling the event
