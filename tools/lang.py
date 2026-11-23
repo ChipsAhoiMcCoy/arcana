@@ -241,7 +241,7 @@ def cmd_check(a):
 
 CJK = {"ja", "ko", "zh-Hans", "zh-Hant"}
 NAMES_KEPT = ("Yukari", "Junpei", "Akihiko", "Mitsuru", "Fuuka", "Aigis", "Koromaru", "Shinjiro", "Elizabeth",
-              "Metis", "Kazushi", "Kenji", "Bebe", "Chihiro", "Hidetoshi", "Ryoji", "Pharos")
+              "Metis", "Kazushi", "Kenji", "Chihiro", "Hidetoshi", "Ryoji", "Pharos")
 
 
 def cmd_align(a):
