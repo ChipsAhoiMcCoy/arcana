@@ -270,6 +270,16 @@ std::vector<Poi> scan(float radius) {
     // child is its talk icon, 2026-11-18) was left out.
     auto* models = field<TArray<uint8_t>>(a, "mCharaModelList_");
     if (models && models->num == 0 && !get<UObject*>(a, "mIconActor_")) continue;
+    // Scenery: someone the game gives no way to talk to. Officer Kurosawa (FldNpcActor_150_000, Paulownia Mall)
+    // stands inside the police station, behind its wall, where no walk reaches him; his menu opens at the station's
+    // door (the Police Station shop). The game gave him no talk icon (mIconType_ None, no mIconActor_), no key-press
+    // blueprint (mKeyPushBluePrint_) and no script (mBfAssetPath_), where the people you talk to have them
+    // (2026-11-23). Listed, the walk to him circled the plaza for 15 s and said "Stuck".
+    auto* icon_type = field<uint8_t>(a, "mIconType_");
+    auto* bf = field<FString>(a, "mBfAssetPath_");
+    if (icon_type && *icon_type == 0 && !get<UObject*>(a, "mIconActor_") && !get<UObject*>(a, "mKeyPushBluePrint_") &&
+        (!bf || bf->num <= 1))
+      continue;
     // A vendor is a shop: talking opens its menu. The game marks most with the Shop icon (Octopia, 2026-11-16: listed
     // as a Person before); the rest by their script (core::npc_sells).
     bool sells = icon_of(a) == "Shop";

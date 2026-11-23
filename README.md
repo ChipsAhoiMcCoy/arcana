@@ -39,7 +39,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+F1: The mod's own keys
 - F2: Mod settings
 - F3: Sonar on or off
-- Hold Alt: Walk. The game only runs on the keyboard (a controller's stick walks when pushed gently); while you hold Alt the movement keys walk, as holding Shift dashes. Shift with Alt still dashes. With Always dash on (F2, Exploring), you dash without Shift outside Tartarus, and holding Shift runs. The mod's keys work while you hold it, and the mod's walk to a point of interest keeps its running pace
+- Hold Alt: Walk. The game only runs on the keyboard (a controller's stick walks when pushed gently); while you hold Alt the movement keys walk, as holding Shift dashes. Shift with Alt still dashes. With Always dash (F2, Exploring, on by default), you dash without Shift outside Tartarus, and holding Shift runs. The mod's keys work while you hold it, and the mod's walk to a point of interest dashes or runs with you
 - Slash: Where am I: date, area, yen and current objective
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
@@ -127,7 +127,7 @@ They work like any other menu: up and down choose (at either end a further press
 
 - Top-down exploration: off, on (see below)
 - Keep your heading through passages: off, on. In top-down exploration, rooms the game moves you into turned around are turned to match (see below)
-- Always dash: off, on. Outside Tartarus you dash whenever you move, without holding Shift (RT). Holding Shift (RT) then runs, and Alt still walks, so all three paces stay. The mod's walk to a point of interest dashes too. In Tartarus and Episode Aigis' dungeons you run as before, since a dash there draws the Shadows' notice
+- Always dash: off, on. Outside Tartarus you dash whenever you move, without holding Shift (RT). Holding Shift (RT) then runs, and Alt still walks, so all three paces stay. The mod's walk to a point of interest dashes too. In Tartarus and Episode Aigis' dungeons you run as before, since a dash there draws the Shadows' notice. On by default
 - Points of interest range: 60 meters; 20, 40, 100 or 150
 - Wall tones: only while moving; off or continuous (standing still too)
 - Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
