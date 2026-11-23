@@ -237,6 +237,8 @@ def cmd_check(a):
 
 
 CJK = {"ja", "ko", "zh-Hans", "zh-Hant"}
+NAMES_KEPT = ("Yukari", "Junpei", "Akihiko", "Mitsuru", "Fuuka", "Aigis", "Koromaru", "Shinjiro", "Elizabeth",
+              "Metis", "Kazushi", "Kenji", "Bebe", "Chihiro", "Hidetoshi", "Ryoji", "Pharos")
 
 
 def cmd_align(a):
@@ -251,6 +253,12 @@ def cmd_align(a):
             lo, hi = (0.12, 0.9) if code in CJK else (0.55, 2.0)
             nums = set(re.findall(r"\d+", en))
             bad = bool(r < lo or r > hi or (nums and not nums <= set(re.findall(r"\d+", tr))))
+            # the cast's names stay in Latin-script languages: a line naming someone the translation does not
+            # (outside Russian and the CJK languages, which write them in their own script)
+            if code not in CJK and code != "ru":
+                for name in NAMES_KEPT:
+                    if re.search(r"\b" + name + r"\b", en) and name not in tr:
+                        bad = True
             by_file.setdefault(f, []).append((k, bad, en, tr))
         for f, rows in sorted(by_file.items()):
             rows.sort()
