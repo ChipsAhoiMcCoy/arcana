@@ -798,6 +798,10 @@ void register_routes() {
                          c.fast ? " fast=1" : "");
     });
   }, "the story movie or scene clock (audio description): movie or scene, time s, frame, pause, voice track");
+  // /ad/box: the description box up (its cue) or -1: the dev flows press Enter on it as on a message page.
+  dev::route("/ad/box", [](const dev::Request&, int&) {
+    return dev::on_game([] { return std::format("box={}\n", g_box); });
+  }, "the scene description box's cue, or -1 (dev flows press Enter on it)");
   dev::route("/ad/status", [](const dev::Request&, int&) {
     return dev::on_game([] {
       std::shared_ptr<Scene> s = g_scene;

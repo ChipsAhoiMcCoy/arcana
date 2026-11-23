@@ -22,7 +22,7 @@ server on P3A_PORT (default 8793). Claude drives and observes it from here witho
   python tools/p3.py jump --list <text> | <row or query> [--bare] [--dry] | --set key=value ...   reach any situation
                                                (tools/jump.py: state, fields, events, battles, gifts), no playing
   python tools/p3.py scenario list | <name>   multi-step test situations (tools/scenarios.py)
-  python tools/p3.py flow load [slot] | newgame [--sign] | sleep   title -> save slot | fresh game | home to bed
+  python tools/p3.py flow load [slot] | newgame [--sign] [--movies] | sleep   title -> save slot | fresh game (movies skipped) | home to bed
   python tools/p3.py shot [name.png]           PrintWindow capture of the game window (bare names go to build/shots)
 
 The game never loads build/ninja/arcana.dll itself but a copy beside it (arcana.live<N>.dll + .map), so a build
@@ -504,16 +504,25 @@ def reload(args):
 
 
 def flow_load(slot):
-    # From a fresh launch through the title menu's Load Game to that save slot.
+    """From a fresh launch to that save slot: /title/skip takes the title from its first notice straight to the save
+    list (no warnings, logo, opening movie or title menu), the slot is reached in one settled key request, then the
+    load's prompts are answered. Without the skip (an older build, or already past the boot screens) the title menu is
+    walked as before."""
     t0 = time.time()
+    armed = False
+    want = int(slot)
     while time.time() - t0 < 240:
-        time.sleep(1.2)
+        if http("/world").startswith("player=BP"):
+            print(f"reached the field in {time.time() - t0:.0f} s")
+            return True
         scr = http("/screen")
         m = http("/msg")
         lines = scr.splitlines()
-        if http("/world").startswith("player=BP"):
-            print("reached the field")
-            return True
+        if not armed and "title" in (lines[0] if lines else ""):
+            r = http("/title/skip?to=load", check=False)
+            armed = r.startswith("armed") or "already past" in r
+            if armed:
+                print("title skip:", r.splitlines()[0])
         if "item=Msg" in m and "page=" in m and "item=MsgSubtitles" not in m:
             # No to online features (Space said yes and turned the shared Network Functions setting on, 2026-10-29);
             # Space for other notices (Enter left them up: the update's song notice, 2026-10-28)
@@ -521,12 +530,21 @@ def flow_load(slot):
         elif "screen=movie" in scr:
             http("/key?k=tab&ms=120")   # the title's idle opening movie
         elif "Title screen" in scr or "Press any" in scr:
-            http("/key?k=space&ms=120")   # Enter did not pass the press-wait screen (2026-10-28)
+            if not armed:
+                http("/key?k=space&ms=120")   # Enter did not pass the press-wait screen (2026-10-28)
         elif "Title menu" in scr:
             http("/key?k=space&ms=120" if len(lines) > 1 and "Load Game" in lines[1] else "/key?k=down&ms=120")   # Enter stopped confirming (2026-10-28)
         elif "save_load" in scr:
-            http("/key?k=space&ms=120" if len(lines) > 1 and (f"Slot {slot}," in lines[1] or f"Slot {slot}:" in lines[1]) else "/key?k=down&ms=120")
-        print(lines[0] if lines else "", "|", (lines[1] if len(lines) > 1 else "")[:70])
+            cur = re.search(r"Slot (\d+)\b", lines[1] if len(lines) > 1 else "")
+            if cur:
+                # The list's confirm (and the load prompt's) is the decide action, which the game reads only while
+                # focused (as a choice list's); moves work unfocused.
+                focus()
+                d = want - int(cur.group(1))
+                keys = (["down"] * d if d > 0 else ["up"] * -d) + ["space"]
+                http(f"/key?k={','.join(keys)}&settle=1&ms=60", 15 + 11 * len(keys), check=False)
+        print(f"{time.time() - t0:5.1f}", lines[0] if lines else "", "|", (lines[1] if len(lines) > 1 else "")[:70])
+        time.sleep(0.4)
     return False
 
 
@@ -645,6 +663,11 @@ def goto(want, act=True):
     return True
 
 
+def ad_box():
+    """A scene description box is up (it holds its 3D scene until Enter, as a message page does)."""
+    return not http("/ad/box", check=False).startswith(("box=-1", "HTTP"))
+
+
 def advance(secs=60, key="enter", choose=False, stop_at=None):
     """Play through dialogue, pressing `key` whenever a message is open; prints what the mod speaks. Stops at a
     choice list (unless choose), at a modelled screen, or once a spoken line contains `stop_at`. Returns the reason."""
@@ -678,7 +701,7 @@ def advance(secs=60, key="enter", choose=False, stop_at=None):
         if "screen=none" not in scr and "item=Msg" not in m:
             print("-- " + scr + ", stopping")
             return "screen"
-        if "item=Msg" in m and "item=MsgSubtitles" not in m:   # subtitles advance on their own
+        if ("item=Msg" in m and "item=MsgSubtitles" not in m) or ad_box():   # subtitles advance on their own
             http(f"/key?k={key}&ms=120")
     return "time"
 
@@ -868,9 +891,17 @@ def main():
         # From a fresh launch to the contract: answers the first-run prompts the way a player would (network off,
         # Peaceful difficulty), driven by what the mod itself reports (/screen, /msg).
         t0 = time.time()
+        armed = False
         while time.time() - t0 < 300:
             time.sleep(1.2)
             scr = http("/screen")
+            if not armed and scr.startswith("screen=title"):
+                # Straight from the first notice to New Game (no warnings, logo, opening movie or title menu).
+                r = http("/title/skip?to=newgame", check=False)
+                armed = r.startswith("armed") or "already past" in r
+                if armed:
+                    print("title skip:", r.splitlines()[0])
+                    focus()   # the difficulty list and the choices after it take Enter only while focused
             m = http("/msg")
             if "name_entry" in scr and "--sign" in rest:
                 # --sign: fill in the contract (test dev) and confirm it; stops at the field after the prologue
@@ -912,12 +943,17 @@ def main():
                     http("/key?k=enter&ms=120")
                 else:
                     http("/key?k=up&ms=120")
+            elif "screen=movie" in scr and "--movies" not in rest:
+                # The prologue's story movies: the first key pauses one, Tab then skips it (screens/movie.cpp).
+                http("/key?k=tab&ms=100"); time.sleep(0.4); http("/key?k=tab&ms=100")
             elif "screen=none" in scr:
                 w = http("/world")
                 if w.startswith("player=BP"):
                     print("reached the field")
                     break
-                pass   # movies and events run on their own; a key here pauses the movie
+                if ad_box():
+                    http("/key?k=enter&ms=120")   # a scene description box holds its scene for Enter
+                # movies and events run on their own; a key here pauses the movie
             print(scr.splitlines()[0], "|", (scr.splitlines()[1] if len(scr.splitlines()) > 1 else "")[:60])
     elif cmd == "goto":
         # p3.py goto "Head to the Dorm" [--noact]: auto-walk to the nearest point of interest whose name contains the

@@ -48,6 +48,8 @@
 #include <memory>
 #include <utility>
 
+namespace p3a::title_skip { void install(); }   // src/title_skip.cpp (dev)
+
 namespace p3a::mod {
 static bool g_ue_up = false;
 
@@ -151,6 +153,7 @@ void init(bool speech_ok) {
   flow::install();
   screens::install_routes();
   screens::install_name_entry();
+  title_skip::install();
   dev::route("/perf", [](const dev::Request& r, int&) {
     bool reset = dev::has(r, "reset");
     return dev::on_game([reset] { return perf(reset); });
