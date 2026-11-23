@@ -14,6 +14,7 @@
 - The game's online statistics are read (they need the game's Network Functions on, and a press of N, or View on a controller, as in the game). In town, N reads what other players did today: the share of daily life, Social Links and Tartarus, with the activities noted for each. On a class question's answers, N reads how other players answered, each answer with its percentage. Until the figures arrive, you hear that they are on the way. F1 names the key where it works.
 
 ### Field
+- New: walking on the keyboard. The game's movement keys always run (only a controller's stick could walk). G turns walking on ("Walking") or off ("Running"); while it is on the movement keys walk, and holding Shift still dashes as in the game. G can be moved on the Mod keys page (F2). The mod's walk to a point of interest keeps its running pace.
 - New: Relaxed Reaper rate (F2, Exploring, off by default). In Tartarus, you can stay on a floor twice as long before the Reaper comes: about six minutes on a normal floor instead of three, and its quicker returns take twice as long too. Fuuka still warns you shortly before it arrives. Turned on while you are on a floor, the time left there doubles; turned off, it halves back.
 - The mod's field sounds (sonar, wall tones, Shadow cues and sight zones) now go quiet whenever the game takes the hero from you: opening a door, checking or picking something up, a camera the game moves by itself. They come back the moment you can move again, so silence means wait.
 
