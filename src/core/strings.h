@@ -207,6 +207,10 @@ inline constexpr Tr kRestNormal{"The rest normal"};
 inline constexpr Tr kRestUnknown{"The rest unknown"};
 inline constexpr Tr kDamage{"damage"};
 inline constexpr Tr kHealed{"healed"};
+// What one action's repeated hits came to on a unit (its first hit was said as it landed): on the unit the player
+// chose, then on anyone else ("Makoto 147 damage in all").
+inline constexpr Tr kDamageInAllFmt{"{} damage in all"};
+inline constexpr Tr kNamedDamageInAllFmt{"{} {} damage in all"};
 inline constexpr Tr kDefeated{"defeated"};
 inline constexpr Tr kKnockedOut{"knocked out"};
 inline constexpr Tr kVictory{"Victory"};

@@ -15,6 +15,9 @@
 - The July full moon's hotel: its staircases are listed under Exits by the floor they lead to ("Stairs to floor 3"), and the auto-walk takes them. Before, they were left out, so the way up to the Shadow on the third floor could not be found. The floor you are on is said with the place ("Hotel Hallway, floor 2"), as the game's banner shows it.
 - On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
 
+### Battle
+- A skill or attack that hits the same unit several times no longer reads every hit: the first hit on each one is said as it lands, then what the rest came to once the action is over ("Makoto 147 damage in all"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now at most eight.
+
 ### Dialogue
 - Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
 

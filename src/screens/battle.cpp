@@ -305,6 +305,7 @@ class BattleScreen : public Screen {
     int st = gui_state();
     watch_rush(core);
     UObject* action_now = get<UObject*>(core, "CurrentAction");
+    if (!hits_.empty() && (st != 0 || !(WeakObj::of(action_now) == hits_by_))) flush_hits();   // that action is over
     watch_commands(st, action_now);
     watch_banner(action_now);
     watch_help(core);
@@ -337,6 +338,7 @@ class BattleScreen : public Screen {
     if (!core::has_words(b)) return;   // made, not filled yet
     banner_panel_ = WeakObj::of(p);
     paid_ = {};   // a new action (the same member again after a 1 More pays again)
+    flush_hits();   // the last action's repeated hits, before this one's name
     // GetActionType (EBtlCommandType): 1 a plain attack has no banner, and a skill's banner is its own skill: any
     // other skill is a passive of the one attacked (a counter: "High Counter" came under the attacker's name,
     // 2026-11-06).
@@ -365,6 +367,27 @@ class BattleScreen : public Screen {
   // the skill's row, not damage (the user's call, 2026-11-16). Only the acting unit's own drop by exactly its skill's
   // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
   WeakObj paid_;
+  // An action that strikes the same unit again (Strength's Mobius Rondo hits each member six times; a weapon that
+  // hits more than once): the first hit on each unit is said as it lands, the rest are added up and said once the
+  // action is over, one line per unit ("Makoto 147 damage in all"), not a line per hit (Mobius Rondo was 24 lines,
+  // 2026-11-24). The action is over when another unit acts, the next banner comes up (the same unit's next action)
+  // or a wheel or list opens; a unit that falls says so instead.
+  struct Hits { WeakObj::Key key; std::string name; int total; int count; bool chosen; };
+  std::vector<Hits> hits_;
+  WeakObj hits_by_;   // the acting unit whose action landed them
+  Hits* hit_on(const WeakObj::Key& k) {
+    for (auto& h : hits_) if (h.key == k) return &h;
+    return nullptr;
+  }
+  void drop_hits(const WeakObj::Key& k) { std::erase_if(hits_, [&](const Hits& h) { return h.key == k; }); }
+  void flush_hits() {
+    for (auto& h : hits_)
+      if (h.count > 1)
+        speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
+                               : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
+    hits_.clear();
+    hits_by_ = {};
+  }
   // The enemies that ran away: their own action an escape (GetActionType 4, BTL_ACT_ESCAPE: AI_ACT_ESCAPE sets it, and
   // so does a Fear turn's flee roll, exe+0xfd4200). One leaves with its HP at 0 and was said as defeated after the
   // game's "Supreme Hand ran away..." (2026-11-18). The enemy's escape has no failing branch (exe+0xfe4740 raises the
@@ -416,15 +439,21 @@ class BattleScreen : public Screen {
         auto it = units_.find(key);
         if (it != units_.end() && cur.hp != it->second.hp && cur.hp >= 0 && it->second.hp >= 0) {
           int d = cur.hp - it->second.hp;
+          Hits* again = d < 0 && st == 0 && action_now && WeakObj::of(action_now) == hits_by_ ? hit_on(key) : nullptr;
           if (paid_cost(u, action_now, d)) {}   // the skill's own HP cost: the skill list already said it
-          else if (cur.hp == 0 && cur.enemy) { if (!fled_.count(key)) defeated.push_back(cur.name); }
-          else if (cur.hp == 0) speech::speak(std::format("{} {}", cur.name, strings::kKnockedOut), false);
+          else if (cur.hp == 0 && cur.enemy) { drop_hits(key); if (!fled_.count(key)) defeated.push_back(cur.name); }
+          else if (cur.hp == 0) { drop_hits(key); speech::speak(std::format("{} {}", cur.name, strings::kKnockedOut), false); }
+          else if (again) { again->total -= d; ++again->count; }   // said with the rest once the action is over
           else {
             // The player's own choice of this one unit: the number alone. Anything else names who it landed on (an
             // enemy's or an ally's own action, a whole side, an attack sent back at the attacker).
             bool chosen = st == 0 && action_now && commanded_.resolve() == action_now && attacked(action_now) == u;
             std::string s = d < 0 ? std::format("{} {}", -d, strings::kDamage) : std::format("{} {}", strings::kHealed, d);
             speech::speak(chosen ? s : std::format("{} {}", cur.name, s), false);
+            if (d < 0 && st == 0 && action_now) {
+              if (!(WeakObj::of(action_now) == hits_by_)) { flush_hits(); hits_by_ = WeakObj::of(action_now); }
+              hits_.push_back({key, cur.name, -d, 1, chosen});
+            }
           }
         }
         if (it != units_.end()) {
@@ -627,7 +656,7 @@ class BattleScreen : public Screen {
     bool target_pressed = target_press();
     UObject* core = battle_core();
     end_pad(core ? gui_state() : 0);
-    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); countdown_on_ = false; return; }
+    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
     watch();
     countdown_tick(core);
     int st = gui_state();
