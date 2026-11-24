@@ -237,8 +237,11 @@ std::vector<Poi> scan(float radius) {
   for (UObject* a : live("FldHitCore")) {
     // The missing person is the floor's objective ("Find missing persons."): listed wherever on the floor they are
     // (a floor's far side was 107 m off, past the list's 60 m, and the list said "No People", 2026-11-24).
-    bool lost_one = missing && name_of(get<UObject*>(a, "mOverlapBluePrint_")) == "BP_FldHit_MISNPC_01_HERO_C";
-    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && out_of_range(a))) continue;
+    // So is 5/9's way into the monorail, 200 m up the overhead bridge from where the party starts.
+    std::string overlap = name_of(get<UObject*>(a, "mOverlapBluePrint_"));
+    bool lost_one = missing && overlap == "BP_FldHit_MISNPC_01_HERO_C";
+    bool way_on = overlap == "BP_FldHitActor_302_101_H1_Play_C";
+    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && !way_on && out_of_range(a))) continue;
     std::string icon = icon_of(a);
     // The missing person's only hit has no icon: a sphere that starts the rescue when walked into
     // (BP_DHIT_MISNPC_C, overlap BP_FldHit_MISNPC_01_HERO_C). Named by the game's hit-name table: "Stray Cat",
@@ -280,6 +283,9 @@ std::vector<Poi> scan(float radius) {
       // A full moon's boss: the box on the way to it (the Moonlight Bridge's, 13 m up the bridge, was not listed
       // while the party stood nearby, 2026-11-24). It goes once the fight is won (the field changes).
       else if (core::boss_trigger(bp)) add(a, Kind::Event, strings::kPoiLargeShadow.c_str());
+      // 5/9's overhead bridge: of its unnamed boxes only this one leads on, into the monorail (CALL_FIELD(302, 102));
+      // the others turn the party back. Listed as an exit (it was one of five "Event" boxes, 2026-11-24).
+      else if (way_on) add(a, Kind::Exit, strings::kPoiIntoMonorail.c_str(), false, true);
       // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
       // 2026-11-24): an exit, by the floor it leads to.
       // Only the ones on the hero's floor (the banner's): another floor's flight, above or below, cannot be walked to

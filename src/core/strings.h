@@ -655,7 +655,8 @@ inline constexpr Tr kPoiThing{"Object"};
 inline constexpr Tr kPoiEvent{"Event"};
 inline constexpr Tr kPoiStairsTo{"Stairs to floor {0}"};   // an unnamed staircase trigger, by the floor it takes you to
 inline constexpr Tr kPoiGatekeeper{"Gatekeeper"};   // the game's word for the boss of a border floor
-inline constexpr Tr kPoiLargeShadow{"Large Shadow"};   // a full moon's boss, as its objective names it
+inline constexpr Tr kPoiLargeShadow{"Large Shadow"};
+inline constexpr Tr kPoiIntoMonorail{"Into the monorail"};   // 5/9: the way from the overhead bridge onto the train   // a full moon's boss, as its objective names it
 inline constexpr Tr kPoiShadow{"Shadow"};
 inline constexpr Tr kPoiBreakable{"Breakable object"};
 inline constexpr Tr kPoiShadowStrong{"Strong Shadow"};
