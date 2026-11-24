@@ -139,7 +139,8 @@ def catalogue():
             add("social-art", s)
     for p in sorted(glob.glob(os.path.join(ROOT, "assets", "ad", "*.txt"))):
         key = os.path.basename(p)[:-4]
-        group = "ad-" + ("movies" if key.startswith("MS_") else key.split("_")[2].lower())
+        # movies, battle scenes (LS_BtlEvent701_000, LS_BtlPc08FirstSummon), story scenes by group (LS_Event_Main_...)
+        group = "ad-" + ("movies" if key.startswith("MS_") else "battle" if key.startswith("LS_Btl") else key.split("_")[2].lower())
         for line in open(p, encoding="utf-8"):
             parts = line.rstrip("\r\n").split("\t", 3)
             if len(parts) == 4 and parts[3].strip():

@@ -1,0 +1,2 @@
+#scene LS_BtlPc08FirstSummon
+0.100	12.191	00.mp3	Ken holds his Evoker in both hands and presses its muzzle to his forehead, eyes squeezed shut. He draws a breath, a small grin tugging at his mouth, then opens his eyes, steady and determined.
