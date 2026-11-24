@@ -8,7 +8,8 @@
 //   ListCursor +0xE0, +0x300 the highlighted request, +0x309 0 at the Velvet Room's counter, +0x5F8 the prompt up
 //   (-1 none), +0xD60 / +0xD61 the list leaving.
 //   UIMissingPerson: +0x34 state (6 list, 7 detail), +0x40 / +0x44 two floats the bar's slide is given, +0x4C /
-//   +0x4D (no move while either is set), +0x531 1 on the board outside the camp, +0x538 a pointer to its ListCursor,
+//   +0x4D (no move while either is set), +0x531 1 from the camp (FUN_14148f9e0) and 0 from a board outside it
+//   (FUN_14147fc20, 2026-11-24), +0x538 a pointer to its ListCursor,
 //   +0x548 the bar, +0x728 the highlighted case, +0xB48 TArray<{u16, u16 case}> (count also at +0xB50).
 //   DisappearDataAsset +0x30: a TMap, elements of 0x30 (key at +0, the case's flags at +8).
 #include "screens/menu.h"
@@ -82,8 +83,10 @@ class CampQuest : public MenuScreen {
   bool open() { UObject* q = camp_open() ? menu_.get() : nullptr; return q && ((uint8_t*)q)[0x3C]; }
   // Elizabeth's own counter in the Velvet Room shows the same list (UIRequest +0x309 = 0 there: accept and report).
   bool velvet() { return !open() && velvet_.get() != nullptr; }
-  // The Missing Persons board on its own (AUIMissingPersonActor: UIMissingPerson +0x531 = 1), outside the camp.
-  bool board() { uint8_t* r = missing(); return !open() && r && r[0x531]; }
+  // The Missing Persons list on its own, outside the camp: a bulletin board's check opens it (Fountain Square's,
+  // 2026-11-24). Outside the camp nothing else shows its list. Its +0x531 is 0 then, not 1: asking for 1 left the
+  // board silent, with the field's checks dead under it until C closed it.
+  bool board() { return !open() && missing(); }
   int tab() { if (board()) return 1; if (velvet()) return 0; UObject* q = menu_.get(); return q ? i32(q, 0x1C4) : 0; }
   uint8_t* req() { UObject* r = req_.get(); return r && i32(r, 0x34) == 8 ? (uint8_t*)r : nullptr; }
   // A request's info (F: state 9): the game's keys (up and down switch request, F or cancel back), the screen stays.
