@@ -279,6 +279,7 @@ inline constexpr Hint kKeySkills{"E skills", "Y skills"};
 inline constexpr Hint kKeyItems{"R items", "X items"};
 inline constexpr Hint kKeyGuard{"C guard", "B guard"};
 inline constexpr Hint kKeyAnalyze{"Q analyze", "LB analyze"};
+inline constexpr Hint kKeyFullAnalysis{"N full analysis", "View full analysis"};   // Fuuka's Full Analysis, once she has it
 // The battle wheel's keys (battle.cpp, F1)
 inline constexpr Hint kKeyTactics{"W tactics", "D-pad up tactics"};
 inline constexpr Hint kKeySurvey{"S survey", "D-pad down survey"};

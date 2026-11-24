@@ -29,6 +29,7 @@
 - On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
 
 ### Battle
+- Analyze in battle: F1 (both triggers + Menu) also names Full Analysis (N, the pad's View) once the page shows it.
 - "1 More!" is said when a weakness hit defeats its target too (the game shows its 1 MORE and you act again); it was only said after a Down.
 - Learning a skill after a battle with all eight slots full: F1 now says how to give the new skill up (up from the top row to the new skill, then Space or A, which asks "Forget ...?"). It said Escape goes back, and Escape does nothing there.
 - A skill or attack that hits the same unit several times no longer reads every hit: the first hit on each one is said as it lands, then what the rest came to once the action is over ("Makoto 147 damage in all"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now at most eight.

@@ -115,7 +115,7 @@ F1 always gives the current screen's keys. These are not described elsewhere her
 - Shops: Q and E switch member or category.
 - Area map: Tab zooms.
 - Online features (with the game's Network Functions on): N (View on a controller) in town opens what other players did today as a menu, with the date: each kind of activity (daily life, Social Links, Tartarus) with its share, then the activities the game notes for it; up and down read them, Tab (RT) jumps to the next kind. On a class question's answers, N opens how other players answered: a row per answer with its percentage, opening on the answer you are on. The first row is read once the figures arrive. N, C or Escape (View or B) closes either.
-- Battle: Q on the target list analyzes; A and D, or Q and E (LB and RB), switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections.
+- Battle: Q on the target list analyzes; A and D, or Q and E (LB and RB), switch target in Analyze. Analyze is a page like a Persona's status: up and down go through the enemy's name, arcana, level, maximum HP and SP, each affinity ("Fire: weak", "Dark: unknown"), its attack type and skills, and its drops; Tab jumps between those sections. Once Fuuka can, N (the pad's View) runs her Full Analysis, as the game shows it.
 
 ## Mod settings
 

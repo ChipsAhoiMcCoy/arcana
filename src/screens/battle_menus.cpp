@@ -502,7 +502,19 @@ class BattleAnalyze : public BattleList {
   bool game_a_d() override { return true; }
   std::string title() override { return strings::kAnalyze.c_str(); }
   bool active() override { return BattleList::active() && w_.analyze_comp() && cursor_target(); }
-  void on_enter() override { BattleList::on_enter(); shown_ = cursor_target(); }
+  // Full Analysis (Fuuka's, the game's touchpad key: N, the pad's View) is the page's own key once she has it:
+  // BP_BtlGuiAnalyze draws its key while isShowHighAnalyze is set (seen on 1/31); it takes it while isEnableHighAnalyze
+  // is (else an error buzz, CheckHighAnalyzeUnlocked).
+  void on_enter() override {
+    BattleList::on_enter();
+    shown_ = cursor_target();
+    screens::set_keys([this] {
+      std::string k = strings::kAnalyzeKeys();
+      UObject* a = list_.get();
+      bool* full = a ? field<bool>(a, "isShowHighAnalyze") : nullptr;
+      return full && *full ? k + " " + strings::kKeyFullAnalysis() + "." : k;
+    });
+  }
   void on_tick() override {
     UObject* t = cursor_target();
     if (t && shown_ && t != shown_) focus(ui::ControlId::structural(key(t) + ".name"));
