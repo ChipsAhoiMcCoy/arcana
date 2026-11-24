@@ -108,6 +108,18 @@ class BattleScreen : public Screen {
   // top while someone acts, BP_BtlSkillNamePanel_C) is spoken with the actor's name. Damage numbers are sprites.
   struct Unit { std::string name; int hp; bool enemy; uint32_t status = 0; };
   bool downed_since_turn_ = false;
+  // The game's own "1 MORE" (BP_BtlGuiOneMore_C, made by BP_BtlGuiIcon.CreateOneMorePanel(IsEnemy, LifeTime) and gone
+  // after its lifetime). A weakness hit that defeats its target gives a 1 More with no Down to see: an Agi that killed
+  // a Cowardly Maya (Thebel floor 4, 2026-11-24) drew the panel and the hero acted again, and nothing was said.
+  int one_more_panels_ = watch::want("BP_BtlGuiOneMore_C");
+  WeakObj one_more_panel_;   // the panel last seen
+  bool one_more_ = false;    // a party member's 1 More panel came up since the last turn
+  void watch_one_more() {
+    UObject* p = watch::get(one_more_panels_);
+    if (!p || WeakObj::of(p) == one_more_panel_) return;
+    one_more_panel_ = WeakObj::of(p);
+    if (!get_bool(p, "IsEnemy")) one_more_ = true;
+  }
   // EBtlDataBadStatus bits the game tracks per unit: 0 dizzy, 1 charm .. 8 poison, 13 down (GetBadStatus).
   uint32_t status_of(UObject* u) {
     uint32_t bits = 0;
@@ -311,6 +323,7 @@ class BattleScreen : public Screen {
     watch_help(core);
     hit_words(action_now, st);
     watch_units(core, st, action_now);
+    watch_one_more();
   }
   // On is said at once, over anything else: it answers the player's own press. Off queues: the game also ends a rush
   // itself (a boss's mid-battle lines: DisableRush), with the last blow's news still being read.
@@ -555,14 +568,16 @@ class BattleScreen : public Screen {
     UObject* t = wheel_target();
     if (a && turn_due_) {   // no acting member (between turns): nothing to say yet
       turn_due_ = false;
-      // The same member acting again right after knocking an enemy down: the game's "1 More".
-      bool again = a == last_actor_.resolve() && downed_since_turn_;
+      // The same member acting again right after knocking an enemy down, or after the game showed its 1 More panel
+      // (a weakness hit that defeated its target): the game's "1 More".
+      bool again = a == last_actor_.resolve() && (downed_since_turn_ || one_more_);
       // After a 1 More the wheel shows Shift (B) once it is unlocked (BP_BtlTopUI_C "Shift" is 1 then, but it
       // stays 1 between turns too, 2026-10-28: only said with the 1 More).
       UObject* top = top_.get();
       bool shift = top && get<float>(top, "Shift") > 0.5f;
       if (again) speech::speak(shift ? std::format("{} {}", strings::kOneMore, strings::kShiftAvailableWords) : std::string(strings::kOneMore), false);
       downed_since_turn_ = false;
+      one_more_ = false;
       last_actor_ = WeakObj::of(a);
       announce_top();
     }
@@ -658,7 +673,7 @@ class BattleScreen : public Screen {
     bool target_pressed = target_press();
     UObject* core = battle_core();
     end_pad(core ? gui_state() : 0);
-    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
+    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; one_more_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
     watch();
     countdown_tick(core);
     int st = gui_state();
