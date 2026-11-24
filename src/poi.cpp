@@ -271,8 +271,9 @@ std::vector<Poi> scan(float radius) {
       else if (core::boss_trigger(bp)) add(a, Kind::Event, strings::kPoiLargeShadow.c_str());
       // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
       // 2026-11-24): an exit, by the floor it leads to.
-      // One that leads to the floor the hero is on is another floor's way here: left out.
-      else if (int floor = core::stairs_floor(name_of(a))) { if (floor != banner_floor()) add(a, Kind::Exit, strings::fmt(strings::kPoiStairsTo, floor)); }
+      // Only the ones on the hero's floor (the banner's): another floor's flight, above or below, cannot be walked to
+      // from here ("Stairs to floor 1" was listed on 3F, and the walk to it stuck, 2026-11-24).
+      else if (int from = 0, to = 0; core::stairs(name_of(a), from, to)) { if (!banner_floor() || from == banner_floor()) add(a, Kind::Exit, strings::fmt(strings::kPoiStairsTo, to)); }
       else triggers.push_back(a);
       continue;
     }
@@ -284,7 +285,12 @@ std::vector<Poi> scan(float radius) {
     // A character the story stands in the field as a hit of its own (FldHitCharacter: Yukari on the dorm's escape,
     // 2026-11-16) has no hit name; it carries its own, which the list said as "Person".
     if (nm.empty()) nm = disp_name(a);
-    if (type == "AreaChange" || icon == "Goto") add(a, Kind::Exit, nm.empty() ? strings::kPoiExit.c_str() : nm);
+    // The July hotel types the things you check on its ground floor (the information panel, the curtained waiting
+    // booths, the reception window, the entrance; scripts that only show a message) as AreaChange hits under the
+    // plain Check icon: listed as exits, they read as ways out (2026-11-24). Every other AreaChange hit in the game is
+    // a FldAreaChange or carries the Go To icon (a survey of the field levels): a FldHitActor under Check is a thing.
+    bool way_out = icon == "Goto" || (type == "AreaChange" && !(icon == "Check" && !is_a(a, "FldAreaChange")));
+    if (way_out) add(a, Kind::Exit, nm.empty() ? strings::kPoiExit.c_str() : nm);
     else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop.c_str() : nm);
     // A vendor under the Speak icon (a hit named as a shop) is a shop like an NPC vendor (below).
     else if (icon == "Speak" || icon == "Listen") add(a, !cmm && check_kind(a) == Kind::Shop ? Kind::Shop : Kind::Person, nm.empty() ? strings::kPoiPerson.c_str() : nm);

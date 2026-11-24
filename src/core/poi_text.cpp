@@ -58,12 +58,15 @@ bool boss_trigger(const std::string& overlap_class) {
   return bosses.count(overlap_class) > 0;
 }
 
-int stairs_floor(const std::string& actor_name) {
+bool stairs(const std::string& actor_name, int& from, int& to) {
   std::vector<std::string> tok = name_parts(actor_name);
-  if (tok.size() < 4 || tok[0] != "FldHitActor" || tok[1] != "304" || tok[2] != "101") return 0;
-  static const std::map<std::string, int> hotel = {{"H0", 2}, {"H1", 1}, {"H2", 3}, {"H3", 2}};
+  if (tok.size() < 4 || tok[0] != "FldHitActor" || tok[1] != "304" || tok[2] != "101") return false;
+  static const std::map<std::string, std::pair<int, int>> hotel = {{"H0", {1, 2}}, {"H1", {2, 1}}, {"H2", {2, 3}}, {"H3", {3, 2}}};
   auto it = hotel.find(tok[3]);
-  return it == hotel.end() ? 0 : it->second;
+  if (it == hotel.end()) return false;
+  from = it->second.first;
+  to = it->second.second;
+  return true;
 }
 
 bool numbered_name(const std::string& flag, std::string& base, int& number) {

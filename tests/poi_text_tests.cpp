@@ -46,13 +46,14 @@ TEST_CASE("person_from_actor_name: the cast by their romanised names, others by 
   CHECK(person_from_actor_name("FldNpcActor").empty());
 }
 
-TEST_CASE("stairs_floor: the hotel's unnamed staircases") {
-  CHECK(stairs_floor("FldHitActor_304_101_H0") == 2);
-  CHECK(stairs_floor("FldHitActor_304_101_H1") == 1);
-  CHECK(stairs_floor("FldHitActor_304_101_H2") == 3);
-  CHECK(stairs_floor("FldHitActor_304_101_H3_1") == 2);
-  CHECK(stairs_floor("FldHitActor_304_101_H24") == 0);
-  CHECK(stairs_floor("FldHitActor_105_101_H0") == 0);
+TEST_CASE("stairs: the hotel's unnamed staircases") {
+  int from = 0, to = 0;
+  CHECK(stairs("FldHitActor_304_101_H0", from, to)); CHECK(from == 1); CHECK(to == 2);
+  CHECK(stairs("FldHitActor_304_101_H1", from, to)); CHECK(from == 2); CHECK(to == 1);
+  CHECK(stairs("FldHitActor_304_101_H2", from, to)); CHECK(from == 2); CHECK(to == 3);
+  CHECK(stairs("FldHitActor_304_101_H3_1", from, to)); CHECK(from == 3); CHECK(to == 2);
+  CHECK_FALSE(stairs("FldHitActor_304_101_H24", from, to));
+  CHECK_FALSE(stairs("FldHitActor_105_101_H0", from, to));
 }
 
 TEST_CASE("story_scene: a trigger named for its scene") {
