@@ -33,6 +33,10 @@ class SkillLearnScreen : public MenuScreen {
     return (c >= 0 && c < 8) || c == 9 || c == 10 ? c : -1;
   });
   int shown_ = 0, skill_ = 0;   // shown_: the Persona id on the page (Q and E switch Personas); skill_: being learned
+  // Where the cursor last was while skill_ waited, and whether the eight slots were full: confirmed on the new skill's
+  // own card (9 or 10) with the slots full, the skill was given up ("Forget Repel Wind?"), not learned.
+  int last_cursor_ = -1;
+  bool full_ = false;
   WeakObj page_;                // the status page skill_ belongs to: a page left without learning never claims a later one
   // The skill being learned: +0x460 (a skill card, a battle's level up), or, in a fusion's level up (the Velvet Room,
   // its Social Link bonus: +0x460 stays 0), the next skill at +0x358 while the cursor offers it (slot 9; seen
@@ -213,12 +217,22 @@ class SkillLearnScreen : public MenuScreen {
         relearn_ = 0;
       }
     }
-    // The new skill's id clears once it is learned (the cursor goes to -1); the page then waits for C.
+    if (skill_ && new_skill(p)) {
+      int c = *(int32_t*)((uint8_t*)p + 0x464);
+      if (c >= 0) last_cursor_ = c;
+      full_ = *(int32_t*)((uint8_t*)p + 0x354) >= 8;
+    }
+    // The new skill's id clears once it is learned (the cursor goes to -1); the page then waits for C. Given up on its
+    // card it clears too: that is not "Learned" (it said "Learned Repel Wind" after "Forget Repel Wind?", 2026-11-24).
     if (skill_ && new_skill(p) == 0) {
       screens::set_keys(strings::kCBack);
-      say(std::format("{} {}", strings::kLearned, persona::skill_name(skill_)), true);
-      g_learned = true;
+      if (!(full_ && (last_cursor_ == 9 || last_cursor_ == 10))) {
+        say(std::format("{} {}", strings::kLearned, persona::skill_name(skill_)), true);
+        g_learned = true;
+      }
       skill_ = 0;
+      last_cursor_ = -1;
+      full_ = false;
     }
   }
   void build(ui::GraphBuilder& b) override {

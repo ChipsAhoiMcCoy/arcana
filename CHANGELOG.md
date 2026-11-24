@@ -32,6 +32,7 @@
 - After escaping (Tactics, Escape) the results page is headed "Escaped", and "The enemies fled" when they ran; both were called "Victory".
 - Analyze in battle: F1 (both triggers + Menu) also names Full Analysis (N, the pad's View) once the page shows it.
 - "1 More!" is said when a weakness hit defeats its target too (the game shows its 1 MORE and you act again); it was only said after a Down.
+- Giving a new skill up when all eight slots are full ("Forget Repel Wind?", yes) no longer says "Learned Repel Wind".
 - Learning a skill after a battle with all eight slots full: F1 now says how to give the new skill up (up from the top row to the new skill, then Space or A, which asks "Forget ...?"). It said Escape goes back, and Escape does nothing there.
 - A skill or attack that hits the same unit several times no longer reads every hit: the first hit on each one is said as it lands, then what the rest came to once the action is over ("Makoto 147 damage in all"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now at most eight.
 
