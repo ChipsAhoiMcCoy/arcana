@@ -10,7 +10,7 @@ namespace p3a::poi {
 // Fragment: a Twilight Fragment, a pickup in town or a crystal to strike in Tartarus: listed among the objects, with
 // a sonar sound of its own.
 enum class Kind { Exit, Person, Shop, Door, Thing, Enemy, Event, Fragment };
-// state: what the icon over a person says ("talked to", "Social Link"), said after the name; "" when it says nothing.
+// state: what the icon over a person says ("already spoken to", "Social Link"), said after the name; "" when it says nothing.
 struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; };
 
 std::vector<Poi> scan(float radius_cm = -1);   // nearest first (game thread); -1 = the range setting

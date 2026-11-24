@@ -675,15 +675,15 @@ inline constexpr Tr kCompass[8] = {"north", "north-east", "east", "south-east", 
 inline constexpr Tr kScanNothing{"nothing"};            // the right-stick scan: no point anywhere in range
 inline constexpr Tr kMonad{"Monad"};                    // the area key's name for the section behind a Monad door
 inline constexpr Tr kMonadChambers{"Monad Chambers"};   // the same in Episode Aigis' Abyss of Time
-// What the icon over a person says, after their name in the list ("Akihiko Sanada, talked to"). The speech bubble
+// What the icon over a person says, after their name in the list ("Akihiko Sanada, already spoken to"). The speech bubble
 // (something new to say, what guides call the students to talk to) and the ear (two people chatting, to listen in on)
 // are said too: a talkable person with no icon at all says nothing.
 inline constexpr Tr kIconTalk{"something to say"};
 inline constexpr Tr kIconListen{"overhear"};
 inline constexpr Tr kIconBuzz{"overhear, a buzz of chatter"};   // the handwritten "buzz" over a crowd
 inline constexpr Tr kIconWhisper{"overhear, whispering"};      // the handwritten "whisper"
-inline constexpr Tr kIconTalked{"talked to"};
-inline constexpr Tr kIconHeard{"heard"};
+inline constexpr Tr kIconTalked{"already spoken to"};
+inline constexpr Tr kIconHeard{"already heard"};
 inline constexpr Tr kIconLink{"Social Link"};
 inline constexpr Tr kIconLinkReversed{"Social Link, reversed"};
 inline constexpr Tr kIconHangout{"hangout"};
