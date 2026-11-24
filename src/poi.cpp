@@ -53,6 +53,11 @@ static bool walkable(UObject* a, const world::FVector& me, const world::FVector&
   auto path = world::find_path(world::path_start(me), v, &partial);
   bool ok = !path.empty() && std::fabs(path.back().z - v.z) < 250.0f &&
             std::hypot(path.back().x - v.x, path.back().y - v.y) < 300.0f;
+  // A path is walked: a leg that rises more than it runs (plus a step) is no walk. Loading slot 9 puts the hero at the
+  // dorm lounge's counter, right under 2F's "Your Room" exit: the path from there was 2 points, partial, 4 m straight
+  // up, and the exit was listed 4 meters away on the lounge until the hero moved (the walk said "Stuck", 2026-11-24).
+  for (size_t i = 1; ok && i < path.size(); ++i)
+    if (std::fabs(path[i].z - path[i - 1].z) > std::hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y) + 100.0f) ok = false;
   cache[key] = ok;
   return ok;
 }
