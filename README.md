@@ -14,7 +14,7 @@ The mod is made for the current Steam version of the full game. On anything else
 
 - Persona 3 Reload, Steam version (app 2161700), on Windows 10 or 11.
 - A screen reader such as NVDA or JAWS. Without one, the mod uses Windows speech.
-- A keyboard. A controller is optional, but typing your name needs a keyboard.
+- A keyboard or a controller.
 - Headphones are recommended.
 
 ## Install and uninstall
