@@ -26,6 +26,7 @@
 #include "screens/util.h"
 #include "screens/camp_util.h"
 #include "bmdfile.h"
+#include "gametext.h"
 #include "core/battle_text.h"
 #include "core/strings.h"
 #include "items.h"
@@ -181,11 +182,13 @@ class ShopScreen : public MenuScreen {
   int priority() const override { return 18; }
   bool active() override {
     int st = state();
-    return st == 5 || st == 6 || list_state(st) || st == 8 || st == 9 || st == 0x16 || yes_no(st) || st == 0x10 || st == 0x11 || st == 0x12;
+    // 0xB is a purchase going through (after Buy, ~30 frames) and 0x19 a sale: the shop stays, else it was entered
+    // again after each one and said "Shop" (measured 2026-11-24). Nothing is built there; the keys are the game's.
+    return st == 5 || st == 6 || list_state(st) || st == 8 || st == 9 || st == 0xB || st == 0x16 || st == 0x19 || yes_no(st) || st == 0x10 || st == 0x11 || st == 0x12;
   }
   // The quantity is the game's (up and down change it): the menu stands aside, its number is read as it changes.
   // A list's second view (F: 8 a buy list's, 0x12 the fusion list's who-can-equip) is the game's too, for its keys.
-  bool holds_keys() override { int st = state(); return st != 8 && st != 9 && st != 0x16 && st != 0x12; }
+  bool holds_keys() override { int st = state(); return st != 8 && st != 9 && st != 0xB && st != 0x16 && st != 0x19 && st != 0x12; }
   // The money is not said on entry (the status key reads it; the user's call, 2026-11-17).
   std::string title() override { return antique() ? strings::kAntiqueShop.c_str() : strings::kShop.c_str(); }
   // F1: the keys of the state in front (the weapon shop's lists switch member with Q / E, the sell list category).
@@ -259,6 +262,14 @@ class ShopScreen : public MenuScreen {
       b.begin_stop(key);
       std::string ctx = st == 0x14 ? std::string(strings::kWeaponShopMenu[4]) : st == 0x11 ? std::string(strings::kAntiqueMenu[0]) : mode ? core::shop_mode_name(mode) : std::string();
       if (int who = member(); who && mode >= 1 && mode <= 4) ctx += std::format(", {} {}", strings::kFor, party::name(who));
+      // The sell list's category, as its tab title shows it: the ids are a TArray<i32> at +0x340 under the category
+      // cursor ([5, 0, 1, 2, 3, 4] at the police station), named by DT_UIUseTextName rows 124-128 (0 Weapons, 1 Armor,
+      // 2 Footwear, 3 Accessories, 4 Consumables) and 123 (5 Valuables), the game's own words (2026-11-24).
+      if (st == 0x14) {
+        auto* cats = (TArray<int32_t>*)(s() + 0x340);
+        int id = cats->data && cat >= 0 && cat < cats->num ? cats->data[cat] : -1;
+        if (std::string n = id >= 0 && id <= 5 ? gametext::ui_text(id == 5 ? 123 : 124 + id) : std::string(); !n.empty()) ctx += ", " + n;
+      }
       b.push_context(ctx);
       std::string worn = worn_now(mode);
       for (int i = 0; rows->data && i < rows->num && i < 300; ++i) {
@@ -269,7 +280,8 @@ class ShopScreen : public MenuScreen {
         describe_with(v, [worn] { return worn; });
         b.add_item(slot(key, i), v);
       }
-      if (!rows->data || rows->num <= 0) b.add_item(ui::ControlId::structural("shop.none"), item([] { return std::string(strings::kNoItems); }));
+      // Its id is the list's own: Q / E from one empty category to another is a new list, read with its title.
+      if (!rows->data || rows->num <= 0) b.add_item(slot(key, 0), item([] { return std::string(strings::kNoItems); }));
       b.pop_context();
       if (int c = list_.cursor(); c >= 0) b.set_start(slot(key, c));
     } else if (st == 0x10) {

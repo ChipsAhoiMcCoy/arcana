@@ -23,6 +23,13 @@ std::string system_text(int row) {
   return text(*(FText*)(r + offset_of(datatable_struct(t), "Name")));   // DatNameTable.Name is an FText
 }
 
+std::string ui_text(int row) {
+  UObject* t = table("DT_UIUseTextName");
+  uint8_t* r = t ? datatable_find(t, std::to_string(row)) : nullptr;
+  if (!r) return {};
+  return text(*(FText*)(r + offset_of(datatable_struct(t), "Name")));
+}
+
 std::string time_zone(int tz, bool holiday) {
   // ECldTimeZone 1..9 -> DT_SystemTextName 120..129. 126 is "Daytime": the afternoon (PM, 5) of a holiday, as the
   // date in the corner and the time change show it (their sprite switch, exe+0x1449480 / exe+0x14542b0: PM is the
