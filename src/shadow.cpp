@@ -199,7 +199,13 @@ int close_cues(const Seen& s, const FVector& me) {
     int st = back_turned ? 1 : 0;
     if (!said[st]) {
       said[st] = true;
-      speech::speak(back_turned ? strings::kShadowBackTurned.c_str() : strings::kShadowFacingYou.c_str(), false);
+      // A Rare Shadow, a Strong one or the Reaper is named as the list names it: "Shadow close" for the Reaper hid
+      // what was on the hero (2026-11-24, Adamah 232, right after Fuuka's warning).
+      std::string kind = poi::shadow_name(s.actor, s.comp);
+      if (kind == strings::kPoiShadow.c_str())
+        speech::speak(back_turned ? strings::kShadowBackTurned.c_str() : strings::kShadowFacingYou.c_str(), false);
+      else
+        speech::speak(strings::fmt(back_turned ? strings::kKindBackTurnedFmt : strings::kKindFacingYouFmt, kind), false);
     }
   } else if (s.dist > 600.0f && w.index == told.index) {
     said[0] = said[1] = false;

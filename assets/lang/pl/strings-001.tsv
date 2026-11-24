@@ -709,6 +709,8 @@ Twilight Fragment crystal	Kryształ Fragmentu Zmierzchu
 Shadows	Cienie
 Shadow close, back turned	Cień blisko, odwrócony plecami
 Shadow close, facing you	Cień blisko, zwrócony do ciebie
+{} close, back turned	{} blisko, tyłem
+{} close, facing you	{} blisko, przodem do ciebie
 Nothing nearby	Nic w pobliżu
 No	Brak:
 Nothing selected	Nic nie wybrano

@@ -709,6 +709,8 @@ Twilight Fragment crystal	黃昏碎片水晶
 Shadows	陰影
 Shadow close, back turned	陰影就在附近，背對你
 Shadow close, facing you	陰影就在附近，面向你
+{} close, back turned	{}就在附近，背對你
+{} close, facing you	{}就在附近，面向你
 Nothing nearby	附近什麼都沒有
 No	沒有
 Nothing selected	尚未選擇

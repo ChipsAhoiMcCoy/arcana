@@ -677,6 +677,9 @@ inline constexpr Tr kPoiFragmentCrystal{"Twilight Fragment crystal"};   // Tarta
 inline constexpr Tr kPoiCategory[7] = {"Exits", "Doors", "People", "Shops", "Objects", "Events", "Shadows"};
 inline constexpr Tr kShadowBackTurned{"Shadow close, back turned"};
 inline constexpr Tr kShadowFacingYou{"Shadow close, facing you"};
+// The same two lines for a Shadow of another kind, named as the list names it ("The Reaper close, facing you").
+inline constexpr Tr kKindBackTurnedFmt{"{} close, back turned"};
+inline constexpr Tr kKindFacingYouFmt{"{} close, facing you"};
 inline constexpr Tr kNothingNearbyFull{"Nothing nearby"};
 inline constexpr Tr kPoiNoneOf{"No"};   // "No Shadows": a category key with nothing in its category
 inline constexpr Tr kNothingSelected{"Nothing selected"};

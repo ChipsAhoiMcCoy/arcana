@@ -709,6 +709,8 @@ Twilight Fragment crystal	薄明の欠片の結晶
 Shadows	シャドウ
 Shadow close, back turned	近くにシャドウ、背中向き
 Shadow close, facing you	近くにシャドウ、こちら向き
+{} close, back turned	近くに{}、背中向き
+{} close, facing you	近くに{}、こちら向き
 Nothing nearby	近くに何もありません
 No	該当なし：
 Nothing selected	何も選択されていません
