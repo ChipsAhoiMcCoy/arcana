@@ -7,6 +7,8 @@
 - "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
 - Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
 
+- The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
+
 ### Dialogue
 - Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
 

@@ -36,10 +36,20 @@ namespace p3a::screens {
 using namespace ue;
 
 class CampCalendar : public MenuScreen {
-  Finder menu_{"CmpCalendar"}, draw_{"UICmpCalendarDraw"};
+  Finder menu_{"CmpCalendar"}, draw_{"UICmpCalendarDraw"}, field_{"UICmpCalendar"};
+  // The same actor opens from the field: the calendar in the hero's dorm room (its check runs CALL_CAMP_CALENDAR,
+  // FUN_141535470) asks the UI contact manager for UI 0x12, which spawns an AUICmpCalendar with no UCmpCalendar and
+  // no camp pause (FUN_141357240 -> FUN_1412b5ef0 -> FUN_1412c2630(actor, 1, null): +0x2A0 1 marks it). Its state
+  // +0x2A4 (FUN_1412b5030): 2 / 3 / 4 the open grid ticking, 6 done (it then asks the manager to close UI 0x12); the
+  // camp closes its own on 6 the same way (FUN_1412cc750).
   uint8_t* actor() {
-    UObject* o = camp_open() ? menu_.get() : nullptr;
-    return o && ((uint8_t*)o)[0x3C] ? *(uint8_t**)((uint8_t*)o + 0x48) : nullptr;
+    if (camp_open()) {
+      UObject* o = menu_.get();
+      return o && ((uint8_t*)o)[0x3C] ? *(uint8_t**)((uint8_t*)o + 0x48) : nullptr;
+    }
+    uint8_t* a = (uint8_t*)field_.get();
+    int st = a && a[0x2A0] == 1 ? i32(a, 0x2A4) : 0;
+    return st >= 1 && st <= 5 ? a : nullptr;
   }
   uint8_t* cursor_obj() { uint8_t* a = actor(); return a ? *(uint8_t**)(a + 0x2F8) : nullptr; }
   Mirror& days_ = mirror("days", [this] { uint8_t* a = actor(); uint8_t* c = cursor_obj(); return a && c && i32(a, 0x2A8) == 0 ? i32(c, 0xDC) : -1; });
