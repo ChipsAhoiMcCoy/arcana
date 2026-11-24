@@ -264,6 +264,8 @@ B goes back.	B 返回。
 Empty slot	空技能栏
 Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.	空格键学习。要求遗忘技能时，用方向键在技能栏间移动，共两列，每列四个；Esc 返回。
 A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back.	A 学习。要求遗忘技能时，用十字键在技能栏间移动，共两列，每列四个；B 返回。
+Space learns. When asked to forget one, the arrows move over the slots, two columns of four; up from the top row is the new skill, where Space gives it up.	空格键学习。要求遗忘技能时，用方向键在技能栏间移动，共两列，每列四个；最上一行再往上是新技能，在那里按空格键放弃学习。
+A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; up from the top row is the new skill, where A gives it up.	A 学习。要求遗忘技能时，用十字键在技能栏间移动，共两列，每列四个；最上一行再往上是新技能，在那里按 A 放弃学习。
 Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.	Q 和 E 切换人格面具，空格键学习。要求遗忘技能时，用方向键在技能栏间移动，共两列，每列四个；Esc 返回。
 LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back.	LB 和 RB 切换人格面具，A 学习。要求遗忘技能时，用十字键在技能栏间移动，共两列，每列四个；B 返回。
 Shuffle Time	洗牌时间

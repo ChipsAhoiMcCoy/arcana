@@ -264,6 +264,8 @@ B goes back.	B로 돌아갑니다.
 Empty slot	빈 슬롯
 Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.	스페이스 습득. 잊을 스킬을 고를 때는 방향키로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. Escape 돌아가기.
 A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back.	A 습득. 잊을 스킬을 고를 때는 방향 패드로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. B 돌아가기.
+Space learns. When asked to forget one, the arrows move over the slots, two columns of four; up from the top row is the new skill, where Space gives it up.	스페이스 습득. 잊을 스킬을 고를 때는 방향키로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. 맨 윗줄에서 위로 가면 새 스킬이 있고, 거기서 스페이스를 누르면 습득을 포기합니다.
+A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; up from the top row is the new skill, where A gives it up.	A 습득. 잊을 스킬을 고를 때는 방향 패드로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. 맨 윗줄에서 위로 가면 새 스킬이 있고, 거기서 A를 누르면 습득을 포기합니다.
 Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.	Q와 E 페르소나 전환, 스페이스 습득. 잊을 스킬을 고를 때는 방향키로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. Escape 돌아가기.
 LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back.	LB와 RB 페르소나 전환, A 습득. 잊을 스킬을 고를 때는 방향 패드로 슬롯 사이를 이동합니다. 슬롯은 4개씩 2열입니다. B 돌아가기.
 Shuffle Time	셔플 타임
