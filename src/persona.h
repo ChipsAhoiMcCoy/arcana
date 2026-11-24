@@ -22,6 +22,7 @@ std::vector<std::string> affinity_groups(int id);
 std::vector<std::string> affinity_lines(int id);   // the same, one entry per kind: {"weak to Elec", "resists Wind"}
 std::string skill_name(int id);           // UDatSkillNameTable.Data[id] ("Agi")
 std::string skill_help(int id);           // its help line (BMD_SkillHelp dialog id), empty if unknown
+bool skill_passive(int id);               // UDatSkillTable.Data[id] (attr, type, targetLv): type 1 a passive (Counter, Regenerate)
 std::string skill_cost(int id);           // "4 SP", "8% HP" or "" (UDatSkillNormalTable.Data[id]: costtype 1 HP%, 2 SP)
 // A Persona entry as the status screens hold it (APersonaStatusDraw +0x34C, FDatUnitPersonaEntry):
 // "Nekomata, Magician, level 3, St 4, Ma 4, En 2, Ag 5, Lu 2. Skills: Agi, Rakunda"

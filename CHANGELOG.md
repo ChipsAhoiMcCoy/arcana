@@ -36,6 +36,7 @@
 - On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
 
 ### Battle
+- An enemy's second action in a turn is named as theirs: Elizabeth's Slash Attack after her Inferno was said as "Makoto: Slash Attack", taken for a counter of the one she hit. Only a passive skill (a Counter) is now said under the name of the one it belongs to.
 - The monorail battle's countdown says "Time's up" when it runs out. After "10 seconds left" nothing more was said until the game over.
 - After escaping (Tactics, Escape) the results page is headed "Escaped", and "The enemies fled" when they ran; both were called "Victory".
 - Analyze in battle: F1 (both triggers + Menu) also names Full Analysis (N, the pad's View) once the page shows it.

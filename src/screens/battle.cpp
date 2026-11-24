@@ -357,7 +357,11 @@ class BattleScreen : public Screen {
     // 2026-11-06).
     int type = action_now ? call_ret<uint8_t>(action_now, "GetActionType") : 0;
     auto* skill = field<int32_t>(p, "Skill ID");
+    // Only a passive skill (the table's type 1: Counter, High Counter) is another unit's: an active one is the actor's
+    // own, even when its action still holds the last one (Elizabeth's second action of a turn: her Slash Attack read
+    // as "Makoto: Slash Attack", 2026-11-24).
     bool theirs = type != 1 && (type != 2 || !skill || *skill == call_ret<int32_t>(action_now, "GetSkillID"));
+    if (!theirs && skill && *skill > 0 && !persona::skill_passive(*skill)) theirs = true;
     say_banner(theirs ? action_now : attacked(action_now), b);
   }
   // HP changes, ailments and defeats. The enemies an All-Out Attack finishes keep their HP until the results take them

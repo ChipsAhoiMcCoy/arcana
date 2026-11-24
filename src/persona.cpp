@@ -137,6 +137,19 @@ std::string skill_name(int id) {
   return s;
 }
 
+bool skill_passive(int id) {
+  static const int table_id = watch::want("DatSkillTable", true);
+  UObject* t = dat::find(table_id, "DatSkillDataAsset");
+  if (!t) return false;
+  TableRows rows = table_rows(t);
+  if (!rows || id <= 0 || id >= rows.num) return false;
+  int oType = offset_of(rows.row, "Type");
+  if (oType < 0) return false;
+  bool passive = false;
+  guarded([&] { passive = rows.at(id)[oType] == 1; });
+  return passive;
+}
+
 std::string skill_cost(int id) {
   static const int table_id = watch::want("DatSkillNormalTable", true);
   UObject* t = dat::find(table_id, "DatSkillNormalDataAsset");
