@@ -139,12 +139,14 @@ bool walking() { return g_walking; }
 // A walk that ends by using its target: Space is pressed once the game's prompt is up, until this time.
 constexpr ULONGLONG kUseWaitMs = 1500;
 static ULONGLONG g_use_until = 0;
+static bool g_use_faced = false;   // turned to the target once he stood still (use_tick)
+static void face(ue::UObject* t, const FVector& me);
 // The walk reached its target: logged only (the player will give arrival its own cue; "Arrived" was spoken until
 // 2026-10-31). A walk to use it waits for its prompt (use_tick). `can_use` false: a teleport next to it (stairs) was
 // the target, already used.
 static void arrived_at(bool can_use = true) {
   log::writef("nav: arrived, {}", g_w.name);
-  if (g_w.use && can_use) g_use_until = GetTickCount64() + kUseWaitMs;
+  if (g_w.use && can_use) { g_use_until = GetTickCount64() + kUseWaitMs; g_use_faced = false; }
 }
 // The prompt came up: Space, as a sighted player presses it. The player moving, or anything over the field, ends the
 // wait; so does the time running out (an exit has no prompt: walking in is using it).
@@ -155,6 +157,14 @@ static void use_tick(bool in_field, ULONGLONG now) {
   // did nothing (the July hotel's mirror and its exit door, at 24 frames a second, 2026-11-24).
   FVector v{};
   bool still = !world::player_velocity(v) || std::hypot(v.x, v.y) < 1.0f;
+  // Turned on arrival while still sliding, the hero turns back to the way he slides (his movement faces him along his
+  // velocity), and the check's facing test (exe+0x11bf590) then fails: Elizabeth ended behind him, her prompt gone,
+  // and the press did nothing (2026-11-24). Once he stands still he is turned to it again, and pressed after that.
+  if (still && !g_use_faced) {
+    g_use_faced = true;
+    FVector me{};
+    if (ue::UObject* t = g_w.target.resolve(); t && world::player_location(me)) { face(t, me); return; }
+  }
   if (!poi::prompt().empty() && poi::prompt_settled() && still) {
     log::writef("nav: using {} (prompt {})", g_w.name, poi::prompt());
     input::inject_key(VK_SPACE, 80);
@@ -763,7 +773,10 @@ void tick() {
     // into the counter for 1.5 s, then circled the store six times). Near the target only: names repeat (2-F's two
     // bookshelves), and the walk to the far one passes the near one's prompt.
     bool near_target = has_box ? inside(box, me, 150.0f) : flat(goal, me) < 300.0f;
-    if (!arrived && near_target && poi::prompt() == g_w.name) { finish("arrived (prompt)"); stop(false); arrived_at(); return; }
+    // Stopped on its prompt, the hero still faces the way he walked: the prompt came up for his heading as he passed, and
+    // as he slowed it could go again (Elizabeth in the back alley: arrived facing the Velvet Room door, 15 cm from her, no
+    // prompt, Space did nothing, 2026-11-24). Turned the way its check asks, as on every other arrival.
+    if (!arrived && near_target && poi::prompt() == g_w.name) { finish("arrived (prompt)"); stop(false); face(t, me); arrived_at(); return; }
     if (arrived) { finish("arrived"); stop(false); face(t, me); arrived_at(); return; }
     Goal target{has_box, box, goal};
     // The next way in: walk round to its standing point (the path leads there while g_w.detour_on), then straight in.
@@ -982,7 +995,7 @@ void tick() {
         if (!there && to_body()) return;
         finish(there ? "arrived (prompt)" : "stuck");
         stop(false);
-        if (there) arrived_at(); else speech::speak(strings::kStuck.c_str(), true);
+        if (there) { face(t, me); arrived_at(); } else speech::speak(strings::kStuck.c_str(), true);
         return;
       }
       restart_progress(me, now);
