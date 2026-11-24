@@ -501,12 +501,27 @@ static void pe_hook(UObject* o, UFunction* f, void* params) {
   g_pe_orig(o, f, params);
 }
 static const volatile bool* g_exit_flag = nullptr;
+static const volatile int32_t* g_gc_counter = nullptr;
 bool install_hooks() {
   // RequestEngineExit (its callers pass "Win RequestExit", "ConsoleCtrl RequestExit"): mov byte ptr [GIsRequestingExit], 1
   // after a call. The one match or nothing: a wrong flag would stop the mod.
   if (uintptr_t a = scan::find_unique("48 83 EC 28 B1 01 E8 ?? ?? ?? ?? C6 05 ?? ?? ?? ?? 01 48 83 C4 28 C3"))
     g_exit_flag = (const volatile bool*)(scan::rip(a + 13) + 1);   // the instruction ends one byte after its rel32
   log::writef("ue: GIsRequestingExit={:#x}", g_exit_flag ? (uintptr_t)g_exit_flag - scan::exe_base() : 0);
+  // The GC lock's counter: StaticFindObject's own check, `lock cmpxchg [counter], reg; je ok; lea r8, [L"Illegal call
+  // to StaticFindObject() while collecting garbage!"]`. Found from that message so it follows the exe; with or
+  // without a REX prefix on the cmpxchg.
+  if (uintptr_t msg = scan::find_wstring(u"Illegal call to StaticFindObject() while collecting garbage!")) {
+    scan::each_match("74 ?? 4C 8D 05", [&](uintptr_t a) {
+      if (scan::rip(a + 5) != msg) return true;
+      const uint8_t* p = (const uint8_t*)a;
+      const bool rex = p[-9] == 0xF0 && (p[-8] & 0xF0) == 0x40 && p[-7] == 0x0F && p[-6] == 0xB1;
+      const bool plain = p[-8] == 0xF0 && p[-7] == 0x0F && p[-6] == 0xB1;
+      if ((rex || plain) && (p[-5] & 0xC7) == 0x05) g_gc_counter = (const volatile int32_t*)scan::rip(a - 4);
+      return !g_gc_counter;
+    });
+  }
+  log::writef("ue: GC lock counter={:#x}", g_gc_counter ? (uintptr_t)g_gc_counter - scan::exe_base() : 0);
   g_pe_orig = g_pe;
   return hooks::attach((void**)&g_pe_orig, (void*)&pe_hook, "UObject::ProcessEvent");
 }
@@ -575,6 +590,7 @@ bool known_build() {
   return known;
 }
 bool exit_requested() { return g_exit_flag && *g_exit_flag; }
+bool collecting_garbage() { return g_gc_counter && *g_gc_counter != 0; }
 
 std::string status() { return std::format("ue ready={} objects={} world={}", g_ready, num_objects(), full_name(gworld())); }
 }  // namespace p3a::ue

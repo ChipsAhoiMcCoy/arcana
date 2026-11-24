@@ -88,6 +88,19 @@ uintptr_t find_string(const char* text) {
   return 0;
 }
 
+uintptr_t find_wstring(const char16_t* text) {
+  init();
+  auto* base = (uint8_t*)g_base;
+  auto* nt = (IMAGE_NT_HEADERS64*)(base + ((IMAGE_DOS_HEADER*)base)->e_lfanew);
+  auto* sec = IMAGE_FIRST_SECTION(nt);
+  size_t len = (std::char_traits<char16_t>::length(text) + 1) * 2;
+  for (int i = 0; i < nt->FileHeader.NumberOfSections; ++i)
+    if (!(sec[i].Characteristics & IMAGE_SCN_MEM_EXECUTE))
+      for (uint8_t *p = base + sec[i].VirtualAddress + 2, *e = base + sec[i].VirtualAddress + sec[i].Misc.VirtualSize - len; p < e; p += 2)
+        if (*(const char16_t*)p == text[0] && memcmp(p, text, len) == 0 && *(const char16_t*)(p - 2) == 0) return (uintptr_t)p;
+  return 0;
+}
+
 uintptr_t find_pointer(uintptr_t value, size_t skip) {
   init();
   auto* base = (uint8_t*)g_base;

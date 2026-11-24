@@ -16,6 +16,8 @@ void each_match(std::string_view pattern, const std::function<bool(uintptr_t)>& 
 // P3R.exe's data (its non-executable sections).
 // A NUL-terminated string that stands whole there (the byte before it is NUL too): its address, or 0.
 uintptr_t find_string(const char* text);
+// The same for a UTF-16 string (the engine's TEXT("...") literals).
+uintptr_t find_wstring(const char16_t* text);
 // The first slot holding `value`, at a multiple of 8 from its section's start and at least `skip` bytes into it:
 // its address, or 0.
 uintptr_t find_pointer(uintptr_t value, size_t skip = 0);

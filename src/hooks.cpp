@@ -3,6 +3,7 @@
 #include "log.h"
 #include "mod.h"
 #include "seh.h"
+#include "ue/ue.h"
 #include <detours.h>
 #include <tlhelp32.h>
 #include <intrin.h>
@@ -123,7 +124,7 @@ static std::atomic<void (*)()> g_tick_cb{nullptr};
 void set_tick_callback(void (*cb)()) { g_tick_cb = cb; }
 // The mod's own cost per frame (it runs inside the game's frame, so a slow tick is a game hitch): totals since load,
 // the worst tick, and the count of ticks over 8 ms (/health).
-static std::atomic<uint64_t> g_tick_us_total{0}, g_tick_us_max{0}, g_slow_ticks{0};
+static std::atomic<uint64_t> g_tick_us_total{0}, g_tick_us_max{0}, g_slow_ticks{0}, g_gc_skips{0};
 void tick() {
   LARGE_INTEGER t0, t1, qpf; QueryPerformanceCounter(&t0); QueryPerformanceFrequency(&qpf);
   struct Timer { LARGE_INTEGER& t0; LARGE_INTEGER& t1; LARGE_INTEGER& qpf; ~Timer() {
@@ -280,6 +281,11 @@ void pump() {
   if (!g_wndproc_hooked) if (HWND w = game_window()) hook_wndproc(w);
   static thread_local bool inside = false;
   if (inside) return;   // a job that pumps messages itself must not re-enter
+  // The game pumps messages in the middle of a garbage collection (one about every 2 s, thousands of pumps while it
+  // waits), and this frame ran there: nothing of the mod may. A UFunction call that finds an object is a fatal error
+  // then (the scene description's Pause, four player crashes), and any read meets objects being freed. That pump is
+  // PM_NOREMOVE | PM_QS_SENDMESSAGE: no key reaches the window procedure meanwhile. The frame after the GC runs.
+  if (ue::collecting_garbage()) { ++g_gc_skips; return; }
   if (!g_qpf.QuadPart) QueryPerformanceFrequency(&g_qpf);
   LARGE_INTEGER now; QueryPerformanceCounter(&now);
   if (now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 120) return;
@@ -326,6 +332,6 @@ bool install() {
 std::string counters() {
   unsigned since = ms_since_tick();
   uint64_t f = g_frame.load();
-  return std::format("frame={} last_tick_ms={} ticking={} game_tid={} window={} tick_avg_us={} tick_max_us={} slow_ticks={}", f, (int)since, since < 2000, g_game_tid.load(), (void*)game_window(), f ? g_tick_us_total.load() / f : 0, g_tick_us_max.load(), g_slow_ticks.load());
+  return std::format("frame={} last_tick_ms={} ticking={} game_tid={} window={} tick_avg_us={} tick_max_us={} slow_ticks={} gc_skips={}", f, (int)since, since < 2000, g_game_tid.load(), (void*)game_window(), f ? g_tick_us_total.load() / f : 0, g_tick_us_max.load(), g_slow_ticks.load(), g_gc_skips.load());
 }
 }  // namespace p3a::hooks

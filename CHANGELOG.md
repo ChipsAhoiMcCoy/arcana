@@ -38,6 +38,9 @@
 ### Social Links
 - Mutatsu's order quiz at Club Escapade (Tower): the bartender asks what a customer ordered by where they stand ("that girl by the entrance"), while the field names the customers by their looks. Each question is now followed by who it means ("That's the Unemotional Woman."), and the people list says where each customer stands, in the bartender's words ("Unemotional Woman (by the entrance)").
 
+### Stability
+- Fixed a crash ("Illegal call to StaticFindObject() while collecting garbage!") that could happen while a 3D scene's description held the scene (Description wait), most likely around a scene's end or with Auto on. The game frees its unused memory about every two seconds and lets other work run in the middle of it, and the mod's own work ran there too. The mod now waits until that cleanup is done.
+
 ## 0.5.0
 
 ### Audio description

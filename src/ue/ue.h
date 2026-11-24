@@ -46,6 +46,11 @@ bool known_build();
 // The engine has been asked to quit (GIsRequestingExit, set by RequestEngineExit; found by signature): from here the
 // game takes its data and objects down around whatever still reads them.
 bool exit_requested();
+// The game thread is inside a garbage collection (the GC lock's counter is held; found by signature from the check
+// StaticFindObject makes). The game pumps window messages in the middle of one, which ran the mod's frame there: a
+// UFunction call that looks an object up is then a fatal error ("Illegal call to StaticFindObject() while collecting
+// garbage!", four player crashes 2026-11-22/23), and objects are being freed under any read. False when not found.
+bool collecting_garbage();
 std::string status();
 
 // ---- names and strings ----
