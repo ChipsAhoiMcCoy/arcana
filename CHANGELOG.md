@@ -48,6 +48,7 @@
 - A 3D scene's first description now waits for the scene to open: its music starts and its fade in from black ends before the description is said (and before its box pauses the scene). Before, most first descriptions came on the scene's first frame, so you heard them over the last scene's music, and the scene's own music only began once you pressed Enter.
 
 ### Social Links
+- The "Personality" card a dorm hangout ends on (cooking, reading, a film with a member) is read: the member, what fills their Theurgy gauge, and the characteristic they gained with its effect ("Characteristic: Buff Boost. Increases the effects of buffs on self."). It was silent and waited for Space.
 - The shrine's fortune ("Who should I think of...?") names each link as the game labels it, then the person, the arcana and the rank, and whether the link is reversed (the fortune can mend it) or ready to rank up: "Track Team, Kazushi Miyamoto, Chariot, rank 5, ready to rank up". Before, only the label was said ("Track Team"), where the game shows the person's portrait.
 - A Social Link reaching its maximum is announced as such: "Social Link at max rank, Justice Social Link, Chihiro Fushimi, rank MAX". The card was read before it turned to MAX, so it said "Social Link rank up ... rank 9".
 - The people list (the scanner) says "ready to rank up" after a Social Link partner whose next hangout will rank the link up, and so does the prompt as you walk up to them (with "reversed" for a reversed link). In the game this shows only on the town map's cards.

@@ -59,7 +59,22 @@ class TheurgyMenu : public MenuScreen {
     int st = o ? i32(o, 0x34) : 0;
     if (st < 2 || st > 0xD) { if (st == 0 || st >= 0x11) obtained_said_ = 0; return; }
     auto* a = arr<uint8_t>(o, 0x140);
-    if (!a) return;
+    // No carousel: the PERSONALITY card a dorm hangout ends on (Akihiko's hotpot, MASTERY_THEURGIA_DRAW(4) after
+    // ADD_SPECIAL_SKILL(4, 907)): the character (+0xCC), their gauge condition and the characteristic the hangout
+    // gave, a passive skill (+0x150: 907 Buff Boost, measured 2026-11-24). It waited for OK in state 5 with nothing
+    // said.
+    if (!a || a->num <= 0) {
+      int who = i32(o, 0xCC), skill = i32(o, 0x150);
+      std::string name = skill > 0 && skill < 0x1000 ? persona::skill_name(skill) : std::string();
+      if (who <= 0 || name.empty() || -(who * 0x10000 + skill) == obtained_said_) return;
+      obtained_said_ = -(who * 0x10000 + skill);
+      std::string s = std::format("{}: {}.", strings::kPersonality, party::name(who));
+      if (std::string g = theurgy_personality(who); !g.empty()) s += std::format(" {}: {}", strings::kTheurgyGauge, g);
+      s += std::format(" {}: {}.", strings::kCharacteristic, name);
+      if (std::string d = persona::skill_help(skill); !d.empty()) s += " " + d;
+      speech::speak(s, false);
+      return;
+    }
     int pick = i32(o, 0x114);
     for (int i = 0; i < a->num; ++i) if (a->data[i * 0xA0 + 0x9E]) pick = i;
     if (pick < 0 || pick >= a->num) return;

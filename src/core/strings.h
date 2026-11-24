@@ -890,6 +890,9 @@ inline constexpr Tr kTactic{"Tactic"};
 inline constexpr Tr kChosen{"chosen"};
 inline constexpr Tr kTheurgyObtained{"New Theurgy"};
 inline constexpr Tr kTheurgyGauge{"Gauge condition"};
+// The card a dorm hangout ends on (MASTERY_THEURGIA_DRAW): the game's "PERSONALITY!!" and "Characteristics".
+inline constexpr Tr kPersonality{"Personality"};
+inline constexpr Tr kCharacteristic{"Characteristic"};
 inline constexpr Tr kNotEnough{"not enough"};
 // Shops (shop.cpp)
 inline constexpr Tr kOption{"Option"};
