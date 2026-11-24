@@ -12,6 +12,7 @@
 #include "seh.h"
 #include "screens/screen.h"
 #include "speech.h"
+#include "world.h"
 #include <windows.h>
 #include "ue/scan.h"
 #include <cstring>
@@ -125,10 +126,26 @@ void tick() {
   // A money notice says its own gain (screens/get_item.cpp); the game pays on its confirm.
   bool told = g_told_money > 0 && m - prev_money == g_told_money;
   if (m >= 0 && prev_money >= 0 && m != prev_money) g_told_money = 0;
-  // Returning to the title empties the wallet a moment before the title shows: not spending.
-  if (m >= 0 && prev_money >= 0 && m != prev_money && !load && m != 0 && !told)
-    speech::speak(m > prev_money ? std::format("{} {}", strings::kGot, strings::count(m - prev_money, strings::kYen))
-                                 : std::format("{} {}", strings::kSpent, strings::count(prev_money - m, strings::kYen)), false);
+  // Returning to the title empties the wallet a moment before the title shows: not spending. Paying everything you
+  // have is (1000 yen of Dis-Charm with 1000 yen went unsaid, 2026-11-24): a wallet that reaches 0 waits to be said
+  // until the game is back in a shop, a list, under a script's money panel or in the field; a load or the title
+  // drops it.
+  static int zero_spent = 0;
+  if (load || (m >= 0 && m != 0)) zero_spent = 0;
+  if (m >= 0 && prev_money >= 0 && m != prev_money && !load && !told) {
+    if (m != 0) speech::speak(m > prev_money ? std::format("{} {}", strings::kGot, strings::count(m - prev_money, strings::kYen))
+                                             : std::format("{} {}", strings::kSpent, strings::count(prev_money - m, strings::kYen)), false);
+    else zero_spent = prev_money;
+  }
+  if (zero_spent > 0) {
+    screens::Screen* cur = screens::current();
+    const char* id = cur ? cur->id() : "";
+    if (!strcmp(id, "title")) zero_spent = 0;
+    else if (g_panel || !strcmp(id, "shop") || !strcmp(id, "velvet") || !strcmp(id, "generic_select") || (!cur && world::exploring())) {
+      speech::speak(std::format("{} {}", strings::kSpent, strings::count(zero_spent, strings::kYen)), false);
+      zero_spent = 0;
+    }
+  }
   if (m >= 0) prev_money = m;
   Stats s;
   if (!read(s)) { have = false; return; }
