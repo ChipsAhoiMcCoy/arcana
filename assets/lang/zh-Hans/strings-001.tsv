@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	菜单在第一行之后说出它的按键。关闭时，F1 仍可读出按键。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	读屏软件如何处理游戏配音的台词：保持安静、只说出说话的人，或朗读出来。无配音的台词总会朗读。
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	用什么提示一句台词已结束并在等你：说出“下一句”、游戏的某个音效，或不提示。
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	读出游戏短暂显示在角色头上的符号，例如表示惊讶的感叹号、问号、汗滴，以及它在谁头上：问号 来自 顺平。
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	读屏软件在动画和过场的字幕出现时朗读它们。无论如何，字幕都会留在记录中。
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	在台词之间描述动画剧情影片中的画面：由旁白语音朗读，或由读屏软件朗读。
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	在台词之间描述用游戏 3D 引擎演出的剧情场景中的画面。不重复描述：已听过的描述不再朗读，所以反复出现的场景，例如打工或吃饭，只在第一次描述。
@@ -636,7 +635,6 @@ speaker's name only	只说说话的人
 not read, the voice plays alone	不朗读，只播放语音
 When a line ends	台词结束时
 Read subtitles	朗读字幕
-Emote marks	头顶符号
 Movies	动画影片
 3D scenes	3D 场景
 3D scenes read by	3D 场景朗读者
@@ -736,30 +734,6 @@ Linked Episode	小支线
 request	委托
 study group	学习会
 walk	散步
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	感叹号和问号
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	双感叹号
-Exclamation	Exclamation
-Exclamation mark	感叹号
-Question	Question
-Question mark	问号
-Sweat	Sweat
-Sweat drop	汗滴
-AngerMark	AngerMark
-Anger mark	怒气符号
-Ittitate	Ittitate
-Irritated scribble	烦躁的涂鸦
-Zzz	呼呼
-Woof	汪汪
-Whine	呜呜
-DoorKnock	DoorKnock
-Knock knock	咚咚
-Calling	Calling
-Calling out	呼喊
-Listening	倾听中
-over	来自
-you	你
 No path	没有路径
 No path, though it is in this room	没有路径，虽然它就在这个房间
 Stuck, stopping	卡住了，停止

@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	選單在第一行之後說出它的按鍵。關閉時，F1 仍可讀出。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	遊戲有配音的台詞，螢幕閱讀器要怎麼處理：保持安靜、只說出說話者，或朗讀出來。沒有配音的台詞一定會朗讀。
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	用什麼告訴你一句台詞已結束並在等你：說出「下一句」、遊戲的某個音效，或什麼都沒有。
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	朗讀遊戲在角色頭上短暫畫出的符號，例如表示驚訝的驚嘆號、問號、汗滴，以及符號出現在誰頭上：問號 出現在 順平。
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	螢幕閱讀器會在影片與過場動畫的字幕出現時朗讀。無論如何，字幕都會記錄在紀錄中。
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	動畫劇情影片的畫面內容，會在對白之間描述：由旁白語音說出，或由螢幕閱讀器朗讀。
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	在遊戲 3D 引擎中演出的劇情場景，畫面內容會在台詞之間描述。不重複描述：已經聽過的描述不會再讀一次，因此重複出現的場景，例如打工或用餐，只在第一次描述。
@@ -636,7 +635,6 @@ speaker's name only	只說說話者的名字
 not read, the voice plays alone	不朗讀，只播放語音
 When a line ends	台詞結束時
 Read subtitles	朗讀字幕
-Emote marks	情緒符號
 Movies	影片
 3D scenes	3D 場景
 3D scenes read by	3D 場景的朗讀者
@@ -736,30 +734,6 @@ Linked Episode	關係插曲
 request	委託
 study group	讀書會
 walk	散步
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	驚嘆號和問號
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	雙驚嘆號
-Exclamation	Exclamation
-Exclamation mark	驚嘆號
-Question	Question
-Question mark	問號
-Sweat	Sweat
-Sweat drop	汗滴
-AngerMark	AngerMark
-Anger mark	怒氣符號
-Ittitate	Ittitate
-Irritated scribble	煩躁的塗鴉
-Zzz	呼呼大睡
-Woof	汪汪
-Whine	嗚嗚哀鳴
-DoorKnock	DoorKnock
-Knock knock	叩叩
-Calling	Calling
-Calling out	呼喚
-Listening	聆聽中
-over	出現在
-you	你
 No path	沒有路徑
 No path, though it is in this room	沒有路徑，但它就在這個房間裡
 Stuck, stopping	卡住了，停止

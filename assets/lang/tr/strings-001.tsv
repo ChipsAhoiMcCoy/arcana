@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	Menüler ilk satırlarından sonra tuşlarını söyler. Kapalıyken F1 onları yine okur.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Oyunun seslendirdiği bir satırla ekran okuyucunun ne yaptığı: sessiz kalır, yalnızca kimin konuştuğunu söyler ya da sesli okur. Seslendirilmemiş satırlar her zaman okunur.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	Bir satırın bittiğini ve seni beklediğini sana neyin bildirdiği: Sonraki sözcüğü, oyunun seslerinden biri ya da hiçbir şey.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	Oyunun bir anlığına bir karakterin başının üstüne çizdiği işaretleri okur, şaşkın bir ünlem işareti, bir soru işareti, bir ter damlası, ve kimin üstünde olduklarını: Soru işareti üstünde: Junpei.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	Ekran okuyucu videoların ve ara sahnelerin altyazılarını göründükçe okur. Her iki durumda da kayıtta yer alırlar.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	Animasyonlu hikâye videolarında ekranda olanlar diyalog satırlarının arasında betimlenir: bir anlatıcının sesiyle ya da ekran okuyucu tarafından okunarak.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Oyunun 3D motorunda oynanan hikâye sahnelerinde ekranda olanlar satırların arasında betimlenir. Tekrarlanan betimlemeleri bastır: daha önce duyduğun bir betimleme yeniden okunmaz, böylece geri gelen bir sahne, bir iş vardiyası ya da bir yemek, yalnızca ilk seferinde betimlenir.
@@ -636,7 +635,6 @@ speaker's name only	yalnızca konuşanın adı
 not read, the voice plays alone	okunmaz, ses tek başına çalar
 When a line ends	Bir satır bittiğinde
 Read subtitles	Altyazıları oku
-Emote marks	Duygu işaretleri
 Movies	Videolar
 3D scenes	3D sahneler
 3D scenes read by	3D sahneleri okuyan
@@ -736,30 +734,6 @@ Linked Episode	Bağlantılı Bölüm
 request	istek
 study group	çalışma grubu
 walk	yürüyüş
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	Ünlem ve soru işareti
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	Çift ünlem işareti
-Exclamation	Exclamation
-Exclamation mark	Ünlem işareti
-Question	Question
-Question mark	Soru işareti
-Sweat	Sweat
-Sweat drop	Ter damlası
-AngerMark	AngerMark
-Anger mark	Öfke işareti
-Ittitate	Ittitate
-Irritated scribble	Sinirli karalama
-Zzz	Zzz
-Woof	Hav
-Whine	İnleme
-DoorKnock	DoorKnock
-Knock knock	Tık tık
-Calling	Calling
-Calling out	Sesleniyor
-Listening	Dinliyor
-over	üstünde:
-you	sen
 No path	Yol yok
 No path, though it is in this room	Yol yok, ama bu odada
 Stuck, stopping	Takıldı, duruyor

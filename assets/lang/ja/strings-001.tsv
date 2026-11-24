@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	メニューを開いたとき、最初の一行の後にキーを伝えます。オフでもF1で読み上げられます。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	ボイス付きのセリフをスクリーンリーダーでどうするか：読まない、話し手の名前だけ読む、読み上げる。ボイスのないセリフは常に読み上げます。
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	セリフが終わって入力待ちになったことを知らせる方法：「次へ」と言う、ゲームの効果音を鳴らす、何もしない。
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	キャラクターの頭上に一瞬出るマーク（驚きの感嘆符、疑問符、汗など）と、それが誰の上かを読み上げます。例：疑問符、順平。
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	ムービーやカットシーンの字幕を、表示されたときにスクリーンリーダーで読み上げます。どちらの設定でもログには残ります。
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	アニメのストーリームービーで、画面の様子をセリフの合間に解説します。ナレーターの声か、スクリーンリーダーで読み上げます。
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	ゲームの3Dで再生されるストーリーシーンで、画面の様子をセリフの合間に解説します。繰り返しの解説を省く：一度聞いた解説は読まないので、アルバイトや食事のように繰り返されるシーンは初回だけ解説されます。
@@ -636,7 +635,6 @@ speaker's name only	話し手の名前だけ
 not read, the voice plays alone	読まない、ボイスのみ
 When a line ends	セリフが終わったとき
 Read subtitles	字幕を読み上げる
-Emote marks	頭上のマーク
 Movies	ムービー
 3D scenes	3Dシーン
 3D scenes read by	3Dシーンを読む声
@@ -736,30 +734,6 @@ Linked Episode	リンクエピソード
 request	依頼
 study group	勉強会
 walk	散歩
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	感嘆符と疑問符
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	二重の感嘆符
-Exclamation	Exclamation
-Exclamation mark	感嘆符
-Question	Question
-Question mark	疑問符
-Sweat	Sweat
-Sweat drop	汗
-AngerMark	AngerMark
-Anger mark	怒りマーク
-Ittitate	Ittitate
-Irritated scribble	イライラのぐるぐる
-Zzz	Zzz
-Woof	ワン
-Whine	クーン
-DoorKnock	DoorKnock
-Knock knock	コンコン
-Calling	Calling
-Calling out	呼びかけ
-Listening	聞き耳
-over	の主は
-you	あなた
 No path	道がありません
 No path, though it is in this room	道がありません。この部屋の中にはあります
 Stuck, stopping	動けないので止まります

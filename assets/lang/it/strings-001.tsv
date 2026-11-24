@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	I menu dicono i loro tasti dopo la prima riga. Disattivato, F1 li legge comunque.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Cosa fa lo screen reader con una battuta doppiata dal gioco: restare in silenzio, dire solo chi parla, o leggerla ad alta voce. Le battute non doppiate sono sempre lette.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	Cosa ti indica che una battuta è finita e ti aspetta: la parola Avanti, uno dei suoni del gioco, o niente.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	Legge i segni che il gioco disegna per un momento sopra la testa di un personaggio, un punto esclamativo di sorpresa, un punto interrogativo, una goccia di sudore, e sopra chi sono: Punto interrogativo sopra Junpei.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	Lo screen reader legge i sottotitoli di filmati e scene d'intermezzo man mano che appaiono. Sono comunque nel registro.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	Ciò che appare sullo schermo nei filmati animati della storia viene descritto tra le battute di dialogo: dalla voce di un narratore, o letto dallo screen reader.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Ciò che appare sullo schermo nelle scene della storia riprodotte nel motore 3D del gioco viene descritto tra le battute. Evita le descrizioni ripetute: una descrizione già sentita non viene letta di nuovo, così una scena che si ripete, un turno di lavoro o un pasto, è descritta solo la prima volta.
@@ -636,7 +635,6 @@ speaker's name only	solo il nome di chi parla
 not read, the voice plays alone	non letti, suona solo la voce
 When a line ends	Quando una battuta finisce
 Read subtitles	Leggi i sottotitoli
-Emote marks	Segni emotivi
 Movies	Filmati
 3D scenes	Scene 3D
 3D scenes read by	Scene 3D lette da
@@ -736,30 +734,6 @@ Linked Episode	Episodio collegato
 request	richiesta
 study group	gruppo di studio
 walk	passeggiata
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	Punto esclamativo e interrogativo
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	Doppio punto esclamativo
-Exclamation	Exclamation
-Exclamation mark	Punto esclamativo
-Question	Question
-Question mark	Punto interrogativo
-Sweat	Sweat
-Sweat drop	Goccia di sudore
-AngerMark	AngerMark
-Anger mark	Segno di rabbia
-Ittitate	Ittitate
-Irritated scribble	Scarabocchio irritato
-Zzz	Zzz
-Woof	Bau
-Whine	Guaito
-DoorKnock	DoorKnock
-Knock knock	Toc toc
-Calling	Calling
-Calling out	Richiamo
-Listening	In ascolto
-over	sopra
-you	te
 No path	Nessun percorso
 No path, though it is in this room	Nessun percorso, anche se è in questa stanza
 Stuck, stopping	Bloccato, mi fermo

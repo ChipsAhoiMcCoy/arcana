@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	Menüs nennen ihre Tasten nach ihrer ersten Zeile. Aus: F1 liest sie weiterhin.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Was der Screenreader mit einer vom Spiel vertonten Zeile macht: still bleiben, nur sagen, wer spricht, oder sie vorlesen. Unvertonte Zeilen werden immer gelesen.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	Was dir sagt, dass eine Zeile zu Ende ist und auf dich wartet: das Wort Weiter, einer der Klänge des Spiels, oder nichts.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	Liest die Zeichen, die das Spiel kurz über dem Kopf einer Figur zeigt, ein überraschtes Ausrufezeichen, ein Fragezeichen, einen Schweißtropfen, und über wem sie sind: Fragezeichen über Junpei.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	Der Screenreader liest die Untertitel von Filmen und Zwischensequenzen, sobald sie erscheinen. Im Verlauf stehen sie so oder so.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	Was in den animierten Story-Filmen zu sehen ist, wird zwischen den Dialogzeilen beschrieben: von einer Erzählerstimme oder vom Screenreader gelesen.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Was in den Story-Szenen der 3D-Engine des Spiels zu sehen ist, wird zwischen den Zeilen beschrieben. Wiederholte Beschreibungen unterdrücken: Eine Beschreibung, die du schon gehört hast, wird nicht noch einmal gelesen, also wird eine wiederkehrende Szene, eine Schicht im Nebenjob oder ein Essen, nur beim ersten Mal beschrieben.
@@ -636,7 +635,6 @@ speaker's name only	nur den Namen des Sprechers
 not read, the voice plays alone	nicht lesen, nur die Stimme spielt
 When a line ends	Wenn eine Zeile endet
 Read subtitles	Untertitel lesen
-Emote marks	Gefühlszeichen
 Movies	Filme
 3D scenes	3D-Szenen
 3D scenes read by	3D-Szenen gelesen von
@@ -736,30 +734,6 @@ Linked Episode	Verbundene Episode
 request	Auftrag
 study group	Lerngruppe
 walk	Spaziergang
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	Ausrufe- und Fragezeichen
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	Doppeltes Ausrufezeichen
-Exclamation	Exclamation
-Exclamation mark	Ausrufezeichen
-Question	Question
-Question mark	Fragezeichen
-Sweat	Sweat
-Sweat drop	Schweißtropfen
-AngerMark	AngerMark
-Anger mark	Zornesader
-Ittitate	Ittitate
-Irritated scribble	Gereiztes Gekritzel
-Zzz	Zzz
-Woof	Wuff
-Whine	Winseln
-DoorKnock	DoorKnock
-Knock knock	Klopf, klopf
-Calling	Calling
-Calling out	Ruft
-Listening	Lauscht
-over	über
-you	dir
 No path	Kein Weg
 No path, though it is in this room	Kein Weg, obwohl es in diesem Raum ist
 Stuck, stopping	Festgefahren, halte an

@@ -122,7 +122,6 @@ inline constexpr Tr kCountFmt{"{} x{}"};               // an item and how many: 
 inline constexpr Tr kHitOnFmt{"{} on {}"};             // a hit's word and whom: "Weak on Junpei"
 inline constexpr Tr kUseOnFmt{"Use {} on {}?"};        // "Use Agi on all enemies?"
 inline constexpr Tr kUseOnSideFmt{"Use on {}?"};       // "Use on all allies?"
-inline constexpr Tr kEmoteOverFmt{"{} over {}"};       // "Question mark over Junpei"
 inline constexpr Tr kNoneOfFmt{"No {}"};               // "No Shadows": a category key with nothing in its category
 inline constexpr Tr kChooseMoreFmt{"Choose {} more"};  // Shuffle Time: "Choose 1 more"
 inline constexpr Tr kWouldBecomeFmt{"{} would become {}"};   // "Agi would become Agilao"
@@ -478,7 +477,6 @@ inline constexpr Tr kHelpMenuSpeed{"Menus open, close and change faster, so they
 inline constexpr Tr kHelpEntryHints{"Menus say their keys after their first line. Off, F1 still reads them."};
 inline constexpr Tr kHelpVoicedLines{"What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read."};
 inline constexpr Tr kHelpVoiceEndSound{"What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing."};
-inline constexpr Tr kHelpEmotes{"Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei."};
 inline constexpr Tr kHelpSubtitles{"The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way."};
 inline constexpr Tr kHelpAudioDescription{"What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader."};
 inline constexpr Tr kHelpSceneDescription{"What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only."};
@@ -580,7 +578,6 @@ inline constexpr Tr kVoicedName{"speaker's name only"};
 inline constexpr Tr kVoicedSilent{"not read, the voice plays alone"};
 inline constexpr Tr kSetVoiceEndSound{"When a line ends"};
 inline constexpr Tr kSetSubtitles{"Read subtitles"};
-inline constexpr Tr kSetEmotes{"Emote marks"};
 inline constexpr Tr kSetAudioDescription{"Movies"};
 inline constexpr Tr kSetSceneDescription{"3D scenes"};
 inline constexpr Tr kSetSceneVoice{"3D scenes read by"};
@@ -691,26 +688,6 @@ inline constexpr Tr kIconEpisode{"Linked Episode"};
 inline constexpr Tr kIconRequest{"request"};
 inline constexpr Tr kIconStudy{"study group"};
 inline constexpr Tr kIconWalk{"walk"};
-// The marks drawn over a character's head for a moment (emotes.cpp): "Question mark over Junpei". Matched by the
-// start of the effect's kind (BP_Handwriting_Effect_<kind>_C), so ExclamationQuestion comes before Exclamation.
-struct EmoteMark { const char* kind; Tr text; };
-inline constexpr EmoteMark kEmoteMarks[] = {
-    {"ExclamationQuestion", "Exclamation and question mark"},
-    {"DoubleExclamation", "Double exclamation mark"},
-    {"Exclamation", "Exclamation mark"},
-    {"Question", "Question mark"},
-    {"Sweat", "Sweat drop"},
-    {"AngerMark", "Anger mark"},
-    {"Ittitate", "Irritated scribble"},
-    {"Zzz", "Zzz"},
-    {"Woof", "Woof"},
-    {"Whine", "Whine"},
-    {"DoorKnock", "Knock knock"},
-    {"Calling", "Calling out"},
-    {"AccessIcon_Listen", "Listening"},
-};
-inline constexpr Tr kEmoteOver{"over"};
-inline constexpr Tr kEmoteYou{"you"};
 // Navigation
 inline constexpr Tr kNoPath{"No path"};
 inline constexpr Tr kNoPathInRoom{"No path, though it is in this room"};

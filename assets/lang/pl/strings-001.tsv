@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	Menu podają swoje klawisze po pierwszym wierszu. Po wyłączeniu F1 nadal je odczytuje.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Co czytnik ekranu robi z kwestią, którą gra wypowiada głosem: milczy, podaje tylko, kto mówi, albo czyta ją na głos. Kwestie bez głosu są zawsze czytane.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	Co mówi ci, że kwestia się skończyła i na ciebie czeka: słowo Dalej, jeden z dźwięków gry albo nic.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	Odczytuje znaki, które gra na chwilę rysuje nad głową postaci, zaskoczony wykrzyknik, znak zapytania, kroplę potu, i nad kim są: Znak zapytania nad Junpei.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	Czytnik ekranu czyta napisy filmów i przerywników, gdy się pojawiają. I tak trafiają do dziennika.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	To, co widać na ekranie w animowanych filmach fabularnych, jest opisywane między kwestiami dialogu: głosem narratora albo przez czytnik ekranu.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	To, co widać na ekranie w scenach fabularnych odgrywanych w silniku 3D gry, jest opisywane między kwestiami. Pomijanie powtórzonych opisów: już usłyszany opis nie jest czytany ponownie, więc scena, która wraca, zmiana w pracy albo posiłek, jest opisana tylko za pierwszym razem.
@@ -636,7 +635,6 @@ speaker's name only	tylko imię mówiącego
 not read, the voice plays alone	nie czytane, gra sam głos
 When a line ends	Gdy kwestia się kończy
 Read subtitles	Czytaj napisy
-Emote marks	Znaki emocji
 Movies	Filmy
 3D scenes	Sceny 3D
 3D scenes read by	Sceny 3D czyta
@@ -736,30 +734,6 @@ Linked Episode	Powiązany odcinek
 request	prośba
 study group	wspólna nauka
 walk	spacer
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	Wykrzyknik i znak zapytania
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	Podwójny wykrzyknik
-Exclamation	Exclamation
-Exclamation mark	Wykrzyknik
-Question	Question
-Question mark	Znak zapytania
-Sweat	Sweat
-Sweat drop	Kropla potu
-AngerMark	AngerMark
-Anger mark	Znak złości
-Ittitate	Ittitate
-Irritated scribble	Bazgroł irytacji
-Zzz	Zzz
-Woof	Hau hau
-Whine	Skomlenie
-DoorKnock	DoorKnock
-Knock knock	Puk puk
-Calling	Calling
-Calling out	Wołanie
-Listening	Nasłuchiwanie
-over	nad
-you	tobą
 No path	Brak drogi
 No path, though it is in this room	Brak drogi, choć to w tym pomieszczeniu
 Stuck, stopping	Utknięcie, zatrzymuję się

@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	Les menus disent leurs touches après leur première ligne. Désactivé, F1 les lit toujours.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Ce que fait le lecteur d'écran d'une réplique doublée par le jeu : rester silencieux, dire seulement qui parle, ou la lire à voix haute. Les répliques non doublées sont toujours lues.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	Ce qui vous indique qu'une réplique est terminée et vous attend : le mot Suite, un des sons du jeu, ou rien.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	Lit les signes que le jeu dessine un instant au-dessus de la tête d'un personnage, un point d'exclamation de surprise, un point d'interrogation, une goutte de sueur, et au-dessus de qui : Point d'interrogation au-dessus de Junpei.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	Le lecteur d'écran lit les sous-titres des vidéos et des cinématiques à mesure qu'ils apparaissent. Ils sont dans l'historique de toute façon.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	Ce qui est à l'écran dans les vidéos animées de l'histoire est décrit entre les répliques : par la voix d'un narrateur, ou lu par le lecteur d'écran.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Ce qui est à l'écran dans les scènes de l'histoire jouées dans le moteur 3D du jeu est décrit entre les répliques. Ne pas répéter les descriptions : une description déjà entendue n'est pas relue, ainsi une scène qui revient, un service au petit boulot ou un repas, n'est décrite que la première fois.
@@ -636,7 +635,6 @@ speaker's name only	nom de qui parle seulement
 not read, the voice plays alone	non lus, la voix joue seule
 When a line ends	Quand une réplique se termine
 Read subtitles	Lire les sous-titres
-Emote marks	Signes d'émotion
 Movies	Vidéos
 3D scenes	Scènes 3D
 3D scenes read by	Scènes 3D lues par
@@ -736,30 +734,6 @@ Linked Episode	Épisode social
 request	requête
 study group	groupe d'étude
 walk	promenade
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	Point d'exclamation et point d'interrogation
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	Double point d'exclamation
-Exclamation	Exclamation
-Exclamation mark	Point d'exclamation
-Question	Question
-Question mark	Point d'interrogation
-Sweat	Sweat
-Sweat drop	Goutte de sueur
-AngerMark	AngerMark
-Anger mark	Signe de colère
-Ittitate	Ittitate
-Irritated scribble	Gribouillis d'agacement
-Zzz	Zzz
-Woof	Ouaf
-Whine	Gémissement
-DoorKnock	DoorKnock
-Knock knock	Toc toc
-Calling	Calling
-Calling out	Appel
-Listening	À l'écoute
-over	au-dessus de
-you	vous
 No path	Aucun chemin
 No path, though it is in this room	Aucun chemin, bien que ce soit dans cette pièce
 Stuck, stopping	Bloqué, arrêt

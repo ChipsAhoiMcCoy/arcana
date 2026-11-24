@@ -522,7 +522,6 @@ Menus open, close and change faster, so they take your keys sooner. The game's m
 Menus say their keys after their first line. Off, F1 still reads them.	메뉴가 첫 줄 다음에 키를 알려 줍니다. 꺼도 F1로 들을 수 있습니다.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	게임이 음성으로 들려주는 대사를 화면 낭독기가 어떻게 할지: 침묵, 화자 이름만, 또는 소리 내어 읽기. 음성이 없는 대사는 항상 읽습니다.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	대사가 끝나고 입력을 기다린다는 것을 알리는 방법: 다음이라는 말, 게임 소리 중 하나, 또는 없음.
-Reads the marks the game draws over a character's head for a moment, a surprised exclamation mark, a question mark, a sweat drop, and who they are over: Question mark over Junpei.	게임이 잠깐 캐릭터 머리 위에 그리는 표시를 읽습니다. 놀란 느낌표, 물음표, 땀방울 등과 누구 위에 있는지: 물음표 위치: 준페이.
 The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way.	영상과 컷신의 자막이 나올 때 화면 낭독기가 읽습니다. 어느 쪽이든 로그에는 남습니다.
 What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader.	애니메이션 스토리 영상에서 화면에 보이는 것을 대사 사이에 해설합니다: 내레이터 음성으로, 또는 화면 낭독기로.
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	게임의 3D 엔진으로 재생되는 스토리 장면에서 화면에 보이는 것을 대사 사이에 해설합니다. 반복 해설 생략: 이미 들은 해설은 다시 읽지 않으므로, 아르바이트나 식사처럼 반복되는 장면은 처음에만 해설합니다.
@@ -636,7 +635,6 @@ speaker's name only	화자 이름만
 not read, the voice plays alone	읽지 않음, 음성만 재생
 When a line ends	대사가 끝날 때
 Read subtitles	자막 읽기
-Emote marks	감정 표시
 Movies	영상
 3D scenes	3D 장면
 3D scenes read by	3D 장면 낭독
@@ -736,30 +734,6 @@ Linked Episode	링크 에피소드
 request	의뢰
 study group	공부 모임
 walk	산책
-ExclamationQuestion	ExclamationQuestion
-Exclamation and question mark	느낌표와 물음표
-DoubleExclamation	DoubleExclamation
-Double exclamation mark	이중 느낌표
-Exclamation	Exclamation
-Exclamation mark	느낌표
-Question	Question
-Question mark	물음표
-Sweat	Sweat
-Sweat drop	땀방울
-AngerMark	AngerMark
-Anger mark	분노 표시
-Ittitate	Ittitate
-Irritated scribble	짜증 난 낙서
-Zzz	쿨쿨
-Woof	멍멍
-Whine	낑낑
-DoorKnock	DoorKnock
-Knock knock	똑똑
-Calling	Calling
-Calling out	부르는 중
-Listening	듣는 중
-over	위치:
-you	당신
 No path	경로 없음
 No path, though it is in this room	경로 없음, 같은 방 안에 있지만 갈 수 없음
 Stuck, stopping	막혀서 멈춤
