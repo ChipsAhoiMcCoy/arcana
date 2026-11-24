@@ -17,6 +17,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- The July hotel's third floor: each room's mirror says whether it shows your reflection ("Large Mirror, shows no reflection"), as a sighted player sees on walking in; the defective mirror is the one with none. Before, the only way to find it was to break each one in turn.
 - A missing person in Tartarus is listed under People wherever they are on the floor ("Missing Person, Ayako Yoshimoto, 120 meters, south-east"), as the floor's objective asks you to find them. Past the list's range they were not listed at all.
 - In Tartarus the "close" line names a Shadow that is not an ordinary one, as the list does: "The Reaper close, facing you", "Rare Shadow close, back turned". The Reaper was "Shadow close", so the line that came right before it caught you did not say what it was.
 - Where am I (Slash) after loading another save no longer says the last game's objective: it says the new one's once it shows (or that none is shown yet).

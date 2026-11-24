@@ -313,6 +313,16 @@ std::vector<Poi> scan(float radius) {
     else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));
     else add(a, check_kind(a), nm);
+    // The July hotel's 3F rooms (7/7, "Break the defective mirror on 3F"): the defective mirror is the one that shows
+    // no reflection, which a sighted player sees as they walk in. Each room's mirror runs its own procedure of
+    // BF_FldHit_HotelDungeon through its key-press blueprint: 53, 56 and 59 (rooms 301-303, SUB_MISTAKE_MIRROR: a
+    // fade back to the hallway) and 62 (room 304, the right one). Said after the mirror's name.
+    if (!out.empty() && out.back().obj == WeakObj::of(a)) {
+      std::string bp = name_of(get<UObject*>(a, "mKeyPushBluePrint_"));
+      if (bp == "BP_FldHitActor_304_114_H62_Play_C") out.back().state = strings::kMirrorNoReflection.c_str();
+      else if (bp == "BP_FldHitActor_304_111_H53_Play_C" || bp == "BP_FldHitActor_304_112_H56_Play_C" || bp == "BP_FldHitActor_304_113_H59_Play_C")
+        out.back().state = strings::kMirrorReflection.c_str();
+    }
     // A named spot that starts a full moon's boss fight (9/5's Club Escapade door, 10/4's way to the station plaza:
     // Fuuka's "Are you ready?"): it says so after its name and Events lists it too, as the objective's mark is.
     if (!out.empty() && out.back().obj == WeakObj::of(a) &&
