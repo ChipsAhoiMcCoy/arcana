@@ -994,7 +994,10 @@ void register_routes() {
   keys::set_prompt([](uint32_t vk, bool repeat) {
     if (g_box < 0 || (vk != VK_RETURN && vk != VK_SPACE)) return false;
     if (!repeat) g_box_go = true;
-    return !g_box_over_msg;   // over a battle line's waiting window the press goes on to it too (open_box)
+    // over a battle line's waiting window the press goes on to it too (open_box), while that window is still up (a
+    // battle line in its forced mode closes itself once said)
+    if (g_box_over_msg) { const msg::Current w = msg::current(); return !(w.open && w.blocking); }
+    return true;
   });
   player_id();
   track_player_id();
