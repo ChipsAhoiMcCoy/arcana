@@ -523,7 +523,13 @@ class BattleScreen : public Screen {
     UObject* c = battle ? get<UObject*>(battle, "Countdown") : nullptr;
     float t = c ? get<float>(c, "Timer") : 0.0f;
     bool cut = c && get_bool(c, "IsAnimation");
-    if (!c || (!cut && !(get_bool(c, "IsPlay") && t > 0))) { countdown_on_ = countdown_cut_ = false; return; }
+    if (!c || (!cut && !(get_bool(c, "IsPlay") && t > 0))) {
+      // Run out (not stopped by a won battle, which leaves time on it): the screen shows 0:00 and the battle is lost
+      // at the turn's end; the last mark said was "10 seconds left" (2026-11-24).
+      if (countdown_on_ && c && !cut && t <= 0) speech::speak(strings::kTimeUp.c_str(), false);
+      countdown_on_ = countdown_cut_ = false;
+      return;
+    }
     if (!countdown_on_) {
       countdown_on_ = true;
       countdown_was_ = t;

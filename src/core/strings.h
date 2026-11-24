@@ -237,6 +237,7 @@ inline constexpr Tr kTurns{"turns"};
 // A battle's countdown (the monorail's, BTL_COUNTDOWN_START): "Time left: 30 minutes", "29 minutes 12 seconds left".
 inline constexpr Tr kTimeLeftStart{"Time left:"};
 inline constexpr Tr kTimeLeft{"left"};
+inline constexpr Tr kTimeUp{"Time's up"};   // a battle's countdown ran out (the monorail's)
 inline constexpr Tr kSecond{"second"};
 inline constexpr Tr kSeconds{"seconds"};
 inline constexpr Tr kPersonaWord{"Persona"};
