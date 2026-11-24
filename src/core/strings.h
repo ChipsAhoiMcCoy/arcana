@@ -215,6 +215,8 @@ inline constexpr Tr kNamedDamageInAllFmt{"{} {} damage in all"};
 inline constexpr Tr kDefeated{"defeated"};
 inline constexpr Tr kKnockedOut{"knocked out"};
 inline constexpr Tr kVictory{"Victory"};
+inline constexpr Tr kEscaped{"Escaped"};              // the results page after the party got away
+inline constexpr Tr kEnemiesFled{"The enemies fled"};  // the results page after every enemy ran
 inline constexpr Tr kExp{"EXP"};
 inline constexpr Tr kYen{"yen"};
 // Before a script's price question ("Buy / Don't buy"): "Price 2980 yen, you have 4800 yen".

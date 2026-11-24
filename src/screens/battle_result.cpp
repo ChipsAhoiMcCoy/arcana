@@ -257,7 +257,17 @@ class BattleResultScreen : public MenuScreen {
   // "Victory" heads the summary pages (states 1-4). A Persona's status page (7) is entered again when the skill-learning
   // list over it closes, and that list's closing can leave the screen inactive for a frame, which starts a new
   // opening: the title would be said again over the page.
-  std::string title() override { return result_state(result_ui()) == 7 ? std::string() : std::string(strings::kVictory); }
+  std::string title() override { return result_state(result_ui()) == 7 ? std::string() : std::string(outcome()); }
+  // How the battle ended (UBtlCoreComponent.BattleResult, EBtlFinishResult: 1 Win, 3 Escape, 5 Trafuli (a Traesto
+  // item), 6 EneEscape): an escape ends on the same results page ("RESULT", 0 EXP, no items), which was headed
+  // "Victory" (Thebel, Tactics > Escape, 2026-11-24).
+  static const char* outcome() {
+    UObject* core = battle_core();
+    uint8_t r = core ? get<uint8_t>(core, "BattleResult") : 0;
+    if (r == 3 || r == 5) return strings::kEscaped.c_str();
+    if (r == 6) return strings::kEnemiesFled.c_str();
+    return strings::kVictory.c_str();
+  }
   bool opening_interrupts() override { return false; }
   // A status page said already, back from a window over it: the line in focus. One not said yet (back from the
   // skill-learning list, the skill now in) is said by on_tick, level first ("Level up! Satan" came twice, 2026-11-12).
