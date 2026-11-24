@@ -256,3 +256,9 @@ TEST_CASE("boss_trigger: named ones too (9/5 Club Escapade, 10/4 station)") {
   CHECK(boss_trigger("BP_FldHitActor_103_101_Shadow_H0_Play_C"));
   CHECK(boss_trigger("BP_FldHitActor_105_102_Shadow_H0_Play_C"));
 }
+
+TEST_CASE("story_start: the box that starts a story scene, not its stopper") {
+  CHECK(story_start("BP_FldHitActor_299_Jin_H0_Play_C"));
+  CHECK_FALSE(story_start("BP_FldHitActor_299_Jin_Stoper_Play_C"));
+  CHECK_FALSE(story_start("BP_FldHitActor_299_Elizabeth_H1_Play_C"));
+}

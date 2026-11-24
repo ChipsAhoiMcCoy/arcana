@@ -209,6 +209,9 @@ std::vector<Poi> scan(float radius) {
   auto story_beat = [](UObject* a) -> std::string {
     std::string w = core::story_scene(name_of(a));
     if (w.empty() || flag_prop_on(a, "mOffFlagName_")) return {};
+    // Only the box that starts the scene: after the 1/31 Jin scene his "stoper" stayed listed as "Event: Jin" and
+    // said "There's no time to look back." (2026-11-24).
+    if (!core::story_start(name_of(get<UObject*>(a, "mOverlapBluePrint_")))) return {};
     return w;
   };
   // A thing farther off than the list's own range cannot be in the result, nor change it: it is passed over before

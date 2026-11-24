@@ -28,6 +28,9 @@ std::string story_scene(const std::string& actor_name);
 // way to the large Shadow (BF_FldHit_MoonLightBridge FLDHIT_000: Fuuka's "Are you ready?", then FLD_START_BOSS(8)),
 // one per operation whose script runs FLD_START_BOSS. A named one (the 10/4 station exit) is listed by its name.
 bool boss_trigger(const std::string& overlap_class);
+// Whether a story trigger's walk-in box starts its scene: the H0 box (BP_FldHitActor_299_Jin_H0_Play_C). Its others
+// only turn the party back (Jin's "stoper": "There's no time to look back."; Elizabeth's H1).
+bool story_start(const std::string& overlap_class);
 // An unnamed staircase trigger: the floor it stands on and the floor it takes you to; false for anything else. The
 // 7/7 operation's hotel (field 304 101) climbs its three floors through walk-in boxes with no name, whose scripts
 // move the party within the field (BF_FldHit_HotelDungeon: FLDHIT_000_Stair1to2 to entry 2001, FLDHIT_001_Stair2to1
