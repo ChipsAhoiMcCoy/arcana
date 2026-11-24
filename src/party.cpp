@@ -15,6 +15,7 @@
 #include "watch.h"
 #include "world.h"
 #include <windows.h>
+#include <algorithm>
 #include <format>
 
 namespace p3a::party {
@@ -131,6 +132,13 @@ std::vector<std::string> summary_parts() {
   std::vector<std::string> out;
   for (auto& m : members()) out.push_back(line(m));
   if (out.empty()) out.push_back(strings::kNoParty.c_str());
+  // The navigator outside the party: her SP pays for Jamming, Sylphid Aura and the rest of her support in Tartarus,
+  // and the game shows it beside her menu (Fuuka's "SP 248", 9/5, 2026-11-24).
+  else if (int nav = navigator(); joined(nav)) {
+    auto in = ids();
+    if (std::find(in.begin(), in.end(), nav) == in.end())
+      if (Member m; member(nav, m)) out.push_back(std::format("{}, {}, {} {}", m.name, strings::kNavigator, strings::kSP, m.max_sp > 0 ? strings::of(m.sp, m.max_sp) : std::to_string(m.sp)));
+  }
   return out;
 }
 std::string summary() {

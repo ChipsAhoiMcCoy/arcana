@@ -114,6 +114,7 @@ class BattleScreen : public Screen {
   int one_more_panels_ = watch::want("BP_BtlGuiOneMore_C");
   WeakObj one_more_panel_;   // the panel last seen
   bool one_more_ = false;    // a party member's 1 More panel came up since the last turn
+  bool shift_pending_ = false;   // a 1 More said before the wheel's Shift came up: said once it does
   void watch_one_more() {
     UObject* p = watch::get(one_more_panels_);
     if (!p || WeakObj::of(p) == one_more_panel_) return;
@@ -575,6 +576,15 @@ class BattleScreen : public Screen {
   void top_tick(bool entering, bool target_pressed) {
     UObject* a = acting_member();
     if (entering || (a && a != actor_.resolve())) turn_due_ = true;
+    // The wheel's Shift slides in after the turn opens (its timeline drives "Shift" 0 -> 1 once ShiftVisible(true)
+    // ran): a 1 More said on the turn's first frame read it as 0, and "Shift available" went unsaid though B worked
+    // (Koromaru's Maragion on a Fire-weak Devoted Cupid, 9/5, 2026-11-24). Said once it shows, while the same member
+    // still holds the turn.
+    if (shift_pending_) {
+      UObject* top = top_.get();
+      if (!a || a != last_actor_.resolve()) shift_pending_ = false;
+      else if (top && get<float>(top, "Shift") > 0.5f) { shift_pending_ = false; speech::speak(strings::kShiftAvailableWords.c_str(), false); }
+    }
     // The turn's target and its place are read from the turn's list. The line said before it was built had no "1 of 2"
     // on a battle's first turn, and the list appearing under it swallowed the player's first move (2026-11-05).
     UObject* g = battle_objects().gui_comp.get();
@@ -590,6 +600,7 @@ class BattleScreen : public Screen {
       UObject* top = top_.get();
       bool shift = top && get<float>(top, "Shift") > 0.5f;
       if (again) speech::speak(shift ? std::format("{} {}", strings::kOneMore, strings::kShiftAvailableWords) : std::string(strings::kOneMore), false);
+      shift_pending_ = again && !shift;
       downed_since_turn_ = false;
       one_more_ = false;
       last_actor_ = WeakObj::of(a);
@@ -687,7 +698,7 @@ class BattleScreen : public Screen {
     bool target_pressed = target_press();
     UObject* core = battle_core();
     end_pad(core ? gui_state() : 0);
-    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; one_more_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
+    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; one_more_ = false; shift_pending_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
     watch();
     countdown_tick(core);
     int st = gui_state();

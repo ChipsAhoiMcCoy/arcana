@@ -52,7 +52,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+Comma: Back through the same list, toward the nearest; as the first press, the farthest
 - Period: Walk to the selected point of interest, as Apostrophe does (press again, or move, to stop)
 - Shift+Period: Walk to the selected point and use it: Space is pressed for you once its prompt (check, talk, open) comes up. Nothing is pressed where no prompt comes, as at an exit
-- Shift+Apostrophe: Party: each member's level, HP and SP
+- Shift+Apostrophe: Party: each member's level, HP and SP, then the navigator's SP
 - Semicolon: Describe the area, or while someone talks, describe them; on a Persona or a Shadow in focus (a battle target, a fusion, the compendium), describe it; on a Social Link in the camp menu, describe its picture
 - Shift+Semicolon: The selected point of interest again, from where you stand, with its sound
 

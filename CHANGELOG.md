@@ -17,6 +17,8 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- "Shift available" is said after a 1 More once the wheel shows Shift: the first 1 More of a battle used to say only "1 More!", as the Shift button was still sliding in.
+- The party key (Shift+Apostrophe) ends with the navigator outside the party and her SP ("Fuuka, navigator, SP 248 of 299"), which pays for her support in Tartarus (Jamming, Sylphid Aura); the game shows it beside her menu.
 - After the 1/31 scene with Jin, "Event: Jin" no longer stays in the list: the spot left there only turns you back ("There's no time to look back."). Only the spot that starts a story scene is listed as its event.
 - The desk in your room is listed as "Desk, Computer": the online game (Innocent Sin Online) is played at it, and only checking it told you so.
 - Walk and use (Shift+Period) turns you to the thing once you stand still, then presses: arriving on someone's prompt while still sliding (Elizabeth in the back alley), you could end up facing away, the prompt gone and the press lost.
