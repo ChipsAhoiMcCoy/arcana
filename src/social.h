@@ -12,6 +12,8 @@ std::string formed_arcana(int id);       // the arcana once the link is formed, 
 std::string person(int id);              // the partner's name as the camp shows it ("Kenji Tomochika")
 std::string partner_rank(const std::string& name);   // "Magician, rank 3" (", ready to rank up") when `name` is an established link's partner
 int partner_arcana(const std::string& name);         // the arcana of the established link whose partner `name` names, else 0
+int community_arcana(const std::string& label);      // the established link the game labels `label` ("Track Team": its CommunityName), else 0
+std::string arcana_rank(int arcana);                 // "Chariot, rank 2" (", reversed" or ", ready to rank up") for an established link, else ""
 bool reversed(int id);                   // the link is reversed (story flag; game thread)
 bool ready(const Link& l);               // the game's own test (the town map's blue card): the next hangout ranks it up
 bool ready(int arcana);

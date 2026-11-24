@@ -15,6 +15,7 @@
 #include "core/text_clean.h"
 #include "items.h"
 #include "msg.h"
+#include "social.h"
 #include <format>
 #include <vector>
 
@@ -144,6 +145,12 @@ class GenericSelectScreen : public MenuScreen {
       if (i < (int)items_.size()) {
         items::Info in;
         if (items::find(name, in)) if (int o = items::owned(in); o >= 0) name += std::format(", {} {}", o, strings::kOwned);
+      } else if (int arcana = social::community_arcana(name)) {
+        // The shrine's fortune lists the links by the game's label for each ("Classmate", "Track Team") beside the
+        // partner's portrait: the person, the arcana and the rank, and whether the link is reversed (the fortune can
+        // mend one) or ready to rank up (2026-11-24).
+        if (std::string who = social::person(arcana); !who.empty() && who != name) name += ", " + who;
+        if (std::string r = social::arcana_rank(arcana); !r.empty()) name += ", " + r;
       }
       auto v = game_item(list_, i, [name] { return name; }, [this, i] { return description(i); });
       // The item's description, once the game has built it: read after the name.

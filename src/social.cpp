@@ -98,8 +98,16 @@ std::string person(int id) {
 // ARCANA_NAME, RANK): "Magician, rank 3" for the person of an established link, else "".
 // The prompt itself shows no readiness; the mod adds it, as the town map's blue card shows it (the user's call,
 // 2026-11-24).
-std::string partner_rank(const std::string& name) {
-  int id = partner_arcana(name);
+std::string partner_rank(const std::string& name) { return arcana_rank(partner_arcana(name)); }
+
+int community_arcana(const std::string& label) {
+  if (label.empty()) return 0;
+  for (auto& l : read())
+    if (l.rank > 0 && partner(l.arcana) == label) return l.arcana;
+  return 0;
+}
+
+std::string arcana_rank(int id) {
   if (!id) return {};
   for (auto& l : read())
     if (l.arcana == id) {
