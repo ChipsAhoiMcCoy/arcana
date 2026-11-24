@@ -32,4 +32,5 @@ void arrival_tick();   // says the area when the hero arrives somewhere
 // ---- field_hud.cpp ----
 void pickup_tick();    // items picked up in the field
 void prompt_tick();    // the objectives panel and the interaction prompt
+void objectives_reset();   // forget the objective panel's lines (a save loading)
 }  // namespace p3a::poi

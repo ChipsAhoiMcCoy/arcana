@@ -17,6 +17,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- Where am I (Slash) after loading another save no longer says the last game's objective: it says the new one's once it shows (or that none is shown yet).
 - Where am I (Slash) says the moon as the date in the corner shows it: "full moon" on a full moon night, else the days to the next one ("full moon in 29 days", the game's LIMIT countdown), with the quarters and the new moon as the calendar marks them.
 - The August full moon's underground base: below about 25 meters the mod lost track of you (no points of interest, no auto-walk, no sonar) on the way down to the Shadow. It took you for one of the game's spare field characters, which it parks under the map; it now tells them apart by where they are parked, not by depth.
 - In that base the number on the place banner is a depth, and is said as one: "Underground, 33 meters" (it was "floor 33"; the game shows 33M, and its exits are named "17m Underground").

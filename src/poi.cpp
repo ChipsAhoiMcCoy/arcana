@@ -389,6 +389,7 @@ std::vector<Poi> scan(float radius) {
 }
 
 void tick() {
+  if (screens::loading()) objectives_reset();   // asked before the early return: the load list is a screen
   if (screens::current() || msg::current().blocking) return;   // a menu, notice or message has the floor
   pickup_tick();
   // The field's sounds only while the player walks it: a battle between turns has no screen up, and a story scene

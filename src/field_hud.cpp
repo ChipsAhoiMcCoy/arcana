@@ -72,6 +72,7 @@ static std::string verb_for(const std::string& label, WeakObj* of = nullptr) {
 // The story objective (top right, in corner brackets: "Head to the faculty office") is drawn by DrawFont; it is told
 // apart by its brackets and spoken once per change.
 static std::string g_objective, g_sub_objective;
+static std::vector<std::string> g_shown;   // the objective panel's lines last time it was drawn
 std::string objectives() {
   if (g_sub_objective.empty() || g_objective.empty()) return g_objective;
   return g_objective + ". " + g_sub_objective;
@@ -97,6 +98,10 @@ bool prompt_settled() {
   if (a && ue::known_build()) guarded([&] { st = *(int32_t*)(a + 0x294); });
   return st == 2;
 }
+// A save loading: the last game's objective is not this one's (Slash said "Return to the dorm" after a load until a
+// new objective showed, 2026-11-24). The new game's panel is read afresh once its field is up.
+void objectives_reset() { g_objective.clear(); g_sub_objective.clear(); g_shown.clear(); }
+
 void prompt_tick() {
   // The objectives (top right, in corner brackets, then stacked lines) are drawn through DrawFont; not while a
   // message window draws through the same routine. Only while the field's panel is up (AUIAccessInfoDraw's state +0x294
@@ -118,7 +123,6 @@ void prompt_tick() {
     // under it: a Tartarus floor showed "Face Nyx", "Defeat Strega" and a second bracketed one, "Explore the floor"
     // (2026-11-11). A line is said when it comes into the panel, not while it stays: with one slot for the bracketed
     // line, two of them took turns in it and were said over and over, every frame.
-    static std::vector<std::string> shown;   // the panel's lines last time it was drawn
     std::vector<std::pair<float, std::string>> lines;
     for (auto& t : textcap::snapshot(12)) {
       if (t.source != 0 || t.seen_frame <= field_since || !core::has_words(t.text) || t.x <= 1400 || t.y >= 420) continue;
@@ -135,9 +139,9 @@ void prompt_tick() {
       std::vector<std::string> now;
       for (auto& l : lines) {
         now.push_back(l.second);
-        if (std::find(shown.begin(), shown.end(), l.second) == shown.end()) speech::speak(std::string(strings::kObjective) + ": " + l.second, false);
+        if (std::find(g_shown.begin(), g_shown.end(), l.second) == g_shown.end()) speech::speak(std::string(strings::kObjective) + ": " + l.second, false);
       }
-      shown = now;
+      g_shown = now;
       g_objective = now[0];
       g_sub_objective.clear();
       for (size_t i = 1; i < now.size(); ++i) g_sub_objective += (i > 1 ? ". " : "") + now[i];
