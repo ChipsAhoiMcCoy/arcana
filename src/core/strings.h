@@ -1016,6 +1016,10 @@ inline constexpr Tr kWeekdays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", 
 inline constexpr Tr kMonths[13] = {"", "January", "February", "March", "April", "May", "June", "July",
                                             "August", "September", "October", "November", "December"};
 inline constexpr Tr kHoliday{"holiday"};
+// Where am I: the days left to the next full moon (the date's "LIMIT" countdown).
+inline constexpr Tr kFullMoonIn{"full moon in {0}"};
+inline constexpr Tr kDayOne{"day"};
+inline constexpr Tr kDays{"days"};
 // A Persona's stats on its one-line status, in kStatNames' order.
 inline constexpr Tr kStatAbbrev[5] = {"St", "Ma", "En", "Ag", "Lu"};
 }  // namespace p3a::strings

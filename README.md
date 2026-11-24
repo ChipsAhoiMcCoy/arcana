@@ -40,7 +40,7 @@ The game's own controls work as usual. The mod adds:
 - F2: Mod settings
 - F3: Sonar on or off
 - Hold Alt: Walk. The game only runs on the keyboard (a controller's stick walks when pushed gently); while you hold Alt the movement keys walk, as holding Shift dashes. Shift with Alt still dashes. With Always dash (F2, Exploring, on by default), you dash without Shift outside Tartarus, and holding Shift runs. The mod's keys work while you hold it, and the mod's walk to a point of interest dashes or runs with you
-- Slash: Where am I: date, area, yen and current objective
+- Slash: Where am I: date (with the moon: "full moon", or the days to the next one, as the date in the corner counts them), area, yen and current objective
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
 - Backslash: Repeat the current message, or describe the current screen

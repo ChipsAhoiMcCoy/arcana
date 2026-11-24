@@ -8,6 +8,7 @@ Now now();
 std::string describe(const Now& n);               // "April 6, Monday, Late Night" (core/calendar_text + the game's time of day)
 std::string moon_phase(int age);                  // ECldMoonAge -> "Full moon"
 std::string moon_mark(int age);                   // the phases the calendar grid marks (quarters, full, new), else ""
+int days_to_full_moon(int total_day);             // days from this one to the next full moon (0 on one), -1 unknown
 void tick();                                      // announces a new day (the day change) or time of day (the time change)
 void install();                                   // /calendar/change dev route
 }  // namespace p3a::calendar

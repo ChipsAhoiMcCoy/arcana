@@ -32,7 +32,16 @@ static void where_am_i() {
   if (!world::player() && area == strings::kUnknownArea.c_str()) { speech::speak(strings::kNotInField.c_str(), true); return; }
   // The date first, then the area (the player's order, 2026-11-14); each its own utterance, so the screen reader
   // pauses between them.
-  std::vector<std::string> parts{calendar::describe(calendar::now()), area};
+  // The moon as the date in the corner shows it: "FULL" on a full moon (an operation night), else the days left to
+  // the next ("LIMIT 29" beside the moon from June 11 on); the quarters and the new moon as the calendar marks them
+  // (2026-11-24: on 7/7 and 7/8 the date said nothing of either).
+  calendar::Now now = calendar::now();
+  std::string date = calendar::describe(now);
+  if (!date.empty()) {
+    if (std::string m = calendar::moon_mark(now.moon); !m.empty()) date += ", " + m;
+    if (int d = calendar::days_to_full_moon(now.total); d > 0) date += ", " + strings::fmt(strings::kFullMoonIn, strings::count(d, strings::kDayOne, strings::kDays));
+  }
+  std::vector<std::string> parts{date, area};
   if (int m = stats::money(); m >= 0) parts.push_back(strings::count(m, strings::kYen));
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();

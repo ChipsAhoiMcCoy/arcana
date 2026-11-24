@@ -14,6 +14,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- Where am I (Slash) says the moon as the date in the corner shows it: "full moon" on a full moon night, else the days to the next one ("full moon in 29 days", the game's LIMIT countdown), with the quarters and the new moon as the calendar marks them.
 - The August full moon's underground base: below about 25 meters the mod lost track of you (no points of interest, no auto-walk, no sonar) on the way down to the Shadow. It took you for one of the game's spare field characters, which it parks under the map; it now tells them apart by where they are parked, not by depth.
 - In that base the number on the place banner is a depth, and is said as one: "Underground, 33 meters" (it was "floor 33"; the game shows 33M, and its exits are named "17m Underground").
 - A full moon's boss can be found: the spot that starts the fight (Fuuka's "Are you ready?") is listed under Events as "Large Shadow". On 11/3 the Moonlight Bridge's was 13 meters up the bridge with nothing listed but the party; the same goes for the monorail, Fuuka's rescue in Tartarus, the July hotel and the August base.
@@ -37,6 +38,7 @@
 - A 3D scene's first description now waits for the scene to open: its music starts and its fade in from black ends before the description is said (and before its box pauses the scene). Before, most first descriptions came on the scene's first frame, so you heard them over the last scene's music, and the scene's own music only began once you pressed Enter.
 
 ### Social Links
+- The shrine's fortune ("Who should I think of...?") names each link as the game labels it, then the person, the arcana and the rank, and whether the link is reversed (the fortune can mend it) or ready to rank up: "Track Team, Kazushi Miyamoto, Chariot, rank 5, ready to rank up". Before, only the label was said ("Track Team"), where the game shows the person's portrait.
 - A Social Link reaching its maximum is announced as such: "Social Link at max rank, Justice Social Link, Chihiro Fushimi, rank MAX". The card was read before it turned to MAX, so it said "Social Link rank up ... rank 9".
 - The people list (the scanner) says "ready to rank up" after a Social Link partner whose next hangout will rank the link up, and so does the prompt as you walk up to them (with "reversed" for a reversed link). In the game this shows only on the town map's cards.
 - "Ready to rank up" now follows the game's own rule everywhere it is said (the town map, the Social Link menu and Shift+backslash): a romance uses its own point table, and a link the game holds back (a social stat or the story gating its next hangout) is not called ready.

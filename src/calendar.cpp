@@ -36,6 +36,14 @@ Now now() {
 std::string moon_phase(int age) { return core::moon_phase(age); }
 std::string moon_mark(int age) { return core::moon_mark(age); }
 
+// The day's moon age from the date table (FUN_141050530, the camp calendar's marks; 14 is full), this build's.
+int days_to_full_moon(int total_day) {
+  if (total_day < 0 || !ue::known_build()) return -1;
+  auto age = (uint8_t (*)(int))(scan::exe_base() + 0x1050530);
+  for (int d = 0; d <= 40; ++d) if (age(total_day + d) == 14) return d;
+  return -1;
+}
+
 std::string describe(const Now& n) {
   if (!n.valid) return {};
   return core::date_text(n.month, n.day, n.weekday, n.holiday, gametext::time_zone(n.time_zone, n.holiday));
