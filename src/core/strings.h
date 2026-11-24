@@ -359,6 +359,7 @@ inline constexpr Tr kAntiqueShop{"Mayoido Antiques"};
 inline constexpr Tr kAntiqueMenu[] = {"Fuse Equipment", "Trade Card", "Trade Item"};
 inline constexpr Tr kNeeds{"needs"};
 inline constexpr Tr kYouHave{"you have"};
+inline constexpr Tr kWalletFmt{"You have {}"};   // a shop list's wallet ("You have 360 yen")
 inline constexpr Hint kHowMany{"How many? Up and down change it by one, left and right by ten, Space confirms, Escape back.",
                                "How many? Up and down change it by one, left and right by ten, A confirms, B back."};
 inline constexpr Hint kShopListBackKeys{"Up and down arrows choose, Space buys, Escape back.", "Up and down choose, A buys, B back."};

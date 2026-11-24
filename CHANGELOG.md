@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Menus
+- Restaurants and other order lists (Hagakure, Wilduck and the like) say each dish's price and, with the list's heading, how much money you have ("Hagakure Ramen. What should I order...? You have 360 yen.", "Pork ramen, 900 yen, 1 of 1"). The screen showed both; neither was said.
 - Spending all your money is said too ("Spent 110 yen" with 110 yen in your wallet): a purchase that left 0 yen was silent.
 - Be Blue V's treatment (a teammate relearns a forgotten skill) works: the list of forgotten skills was silent and took no keys, so the 3000 yen paid left you stuck. Each skill is read with its cost and what it does, then the slots to choose the skill it replaces, and the swap is said ("Learned Garu, in place of Pulinpa").
 - A member's Stats page: RT and LT now jump between its sections, as on every Persona page. They opened the game's Persona status (silently: the page already reads it) and Theurgy list (only once someone knew one). The page gains a Theurgy section with each Theurgy the member knows, its effect, and what fills their gauge. The keyboard's X (Persona status) now says "Persona status" as it opens and "Stats" as it closes.

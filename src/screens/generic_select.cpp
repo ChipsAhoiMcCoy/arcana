@@ -15,7 +15,9 @@
 #include "core/text_clean.h"
 #include "items.h"
 #include "msg.h"
+#include "seh.h"
 #include "social.h"
+#include "stats.h"
 #include <format>
 #include <vector>
 
@@ -57,6 +59,22 @@ class GenericSelectScreen : public MenuScreen {
     UObject* d = draw_.get();
     int c = a ? ListCursor(a + 0x2A4).index() : d ? *(int32_t*)((uint8_t*)d + 0x374) + *(int32_t*)((uint8_t*)d + 0x378) : -1;
     return c >= 0 && c < (int)names_.size() ? c : -1;
+  }
+  // A shop's list (the actor's +0x2E0 is 3: Hagakure's ramen, Wilduck's burgers): entry i's price, as the actor's own
+  // move asks it to fill the money panel (FUN_141478330: the entry's virtual +0x10 with the actor; negative for no
+  // price). -1 for any other list. The screen draws the price beside each entry and the wallet in the money panel;
+  // neither was said (Hagakure with 360 yen and a 900 yen bowl, 2026-11-24).
+  bool shop() {
+    auto* a = (uint8_t*)actor_.get();
+    return a && ue::known_build() && *(int32_t*)(a + 0x2E0) == 3;
+  }
+  int price(int i) {
+    auto* a = (uint8_t*)actor_.get();
+    uint8_t* e = entry(system(), i);
+    if (!e || !shop()) return -1;
+    int p = -1;
+    guarded([&] { p = ((int (*)(void*, void*))((*(void***)e)[2]))(e, a); });
+    return p;
   }
   int item_id(uint8_t* sys, int i) {
     uint8_t* obj = entry(sys, i);
@@ -109,7 +127,12 @@ class GenericSelectScreen : public MenuScreen {
   const char* id() const override { return "generic_select"; }
   int priority() const override { return 20; }
   bool active() override { return system() != nullptr; }
-  std::string title() override { return core::sentence(heading_); }
+  // A shop's list adds the wallet, as its money panel shows it.
+  std::string title() override {
+    std::string t = core::sentence(heading_);
+    if (int m = stats::money(); m >= 0 && shop()) t += " " + core::sentence(strings::fmt(strings::kWalletFmt, strings::count(m, strings::kYen)));
+    return t;
+  }
   // The list is read as it opens, before its title and first entry are spoken, and forgotten as it closes: the model
   // kept from the last list spoke the Velvet Room's "Talk. What should I ask about?, Fusion Basics, 1 of 7" over the
   // cafe's coffee (2026-10-31).
@@ -142,6 +165,7 @@ class GenericSelectScreen : public MenuScreen {
     for (int i = 0; i < (int)names_.size(); ++i) {
       if (names_[i].empty()) continue;
       std::string name = names_[i];
+      if (int p = price(i); p >= 0) name += ", " + strings::count(p, strings::kYen);
       if (i < (int)items_.size()) {
         items::Info in;
         if (items::find(name, in)) if (int o = items::owned(in); o >= 0) name += std::format(", {} {}", o, strings::kOwned);
