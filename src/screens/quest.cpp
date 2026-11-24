@@ -129,8 +129,12 @@ class CampQuest : public MenuScreen {
         int id = *(uint16_t*)e, status = e[2];
         std::string label = status == 5 ? std::string(strings::kRequestLocked) : quest_title(id);
         if (status >= 0 && status < 5) label += std::string(", ") + strings::kRequestStatus[status];
+        // Its details are the file's task only when that text is whole: with a hole for an item's name ("Show
+        // Elizabeth an.") the review key read it after the filled one below (2026-11-24).
         auto v = game_item(reqs_, i, [label] { return label; }, [this, id, status] {
-          return status == 5 ? std::string() : quest_page(id, 1);
+          bool gap = false;
+          std::string t = status == 5 ? std::string() : quest_page(id, 1, &gap);
+          return gap ? std::string() : t;
         });
         // The task after the title, as the game shows it beside the list. The message file's text leaves out what the
         // game fills in (an item's name: "Show Elizabeth a ."); the page the game laid out from BMD_Quest for the
