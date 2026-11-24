@@ -1,0 +1,2 @@
+#scene LS_BtlEvent700_999
+0.100	4.039	00.mp3	You stand in the middle of the rooftop, your sword lowered. The fight is over.
