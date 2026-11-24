@@ -1,0 +1,2 @@
+#scene LS_BtlEvent705_800
+1.000	11.524	00.mp3	A column of light bursts from the tank. Its winged turret lifts off and flies free, its gun hanging beneath it, while the hull rears up on its tracks and stands upright like a body with a face.

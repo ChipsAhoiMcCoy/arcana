@@ -1,0 +1,2 @@
+#scene LS_BtlEvent705_900
+0.100	9.874	00.mp3	The upright hull sways on its tracks, then crashes forward in a cloud of dust and lies flat, its tracks splayed out on the rock, a grinning mouth painted across it.

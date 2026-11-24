@@ -1,0 +1,2 @@
+#scene LS_BtlEvent705_000
+0.100	15.130	00.mp3	An old army tank waits in the cavern, its long gun swinging toward you. Out of its turret rises a knight's helmet with a cross for a visor, a pair of great metal wings and a fan of spikes spread behind it, and an eye is painted on the turret's side.

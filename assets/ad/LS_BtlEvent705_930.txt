@@ -1,0 +1,2 @@
+#scene LS_BtlEvent705_930
+0.100	5.936	00.mp3	The winged turret drops out of the air beside the fallen hull, and both of them crumble away into black flakes.
