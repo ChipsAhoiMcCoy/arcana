@@ -171,7 +171,10 @@ def pids(exe=EXE_NAME):
             port, pid = int(os.path.basename(f)[len("instance-"):-len(".pid")]), int(open(f).read().strip())
         except (OSError, ValueError):
             continue
-        if pid in res:
+        # A file goes only when its game is gone for sure: tasklist under load (six games) sometimes leaves a running
+        # game out, and removing every other instance's file then made each of them unreachable by its port (and
+        # counted as the default port's).
+        if pid in res or alive(pid):
             claimed[port] = pid
         else:
             try:
