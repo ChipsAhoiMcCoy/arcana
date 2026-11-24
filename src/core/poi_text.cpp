@@ -50,6 +50,8 @@ std::string story_scene(const std::string& actor_name) {
 bool boss_trigger(const std::string& overlap_class) {
   static const std::set<std::string> bosses = {
     "BP_FldAreaChange_302_102_H24_Play_C",   // 5/9, the monorail
+    "BP_FldHitActor_103_101_Shadow_H0_Play_C",   // 9/5, Club Escapade's door (named: says it after its name)
+    "BP_FldHitActor_105_102_Shadow_H0_Play_C",   // 10/4, the way to Iwatodai Station's plaza (named)
     "BP_FldHitActor_299_267_H0_Play_C",      // 6/8, Fuuka's rescue in Tartarus
     "BP_FldHitActor_304_101_H24_Play_C",     // 7/7, the hotel
     "BP_FldHitActor_305_101_H17_Play_C",     // 8/6, the base

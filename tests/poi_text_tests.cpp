@@ -251,3 +251,8 @@ TEST_CASE("boss_trigger: the boxes on the way to a full moon's boss") {
   CHECK_FALSE(boss_trigger("BP_FldHit_Tartarus_GateKeeper_C"));
   CHECK_FALSE(boss_trigger(""));
 }
+
+TEST_CASE("boss_trigger: named ones too (9/5 Club Escapade, 10/4 station)") {
+  CHECK(boss_trigger("BP_FldHitActor_103_101_Shadow_H0_Play_C"));
+  CHECK(boss_trigger("BP_FldHitActor_105_102_Shadow_H0_Play_C"));
+}

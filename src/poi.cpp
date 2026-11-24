@@ -307,6 +307,14 @@ std::vector<Poi> scan(float radius) {
     else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));
     else add(a, check_kind(a), nm);
+    // A named spot that starts a full moon's boss fight (9/5's Club Escapade door, 10/4's way to the station plaza:
+    // Fuuka's "Are you ready?"): it says so after its name and Events lists it too, as the objective's mark is.
+    if (!out.empty() && out.back().obj == WeakObj::of(a) &&
+        (core::boss_trigger(name_of(get<UObject*>(a, "mKeyPushBluePrint_"))) || core::boss_trigger(name_of(get<UObject*>(a, "mOverlapBluePrint_"))))) {
+      Poi& p = out.back();
+      p.objective = true;
+      p.state = p.state.empty() ? std::string(strings::kPoiLargeShadow) : p.state + ", " + strings::kPoiLargeShadow.c_str();
+    }
   }
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
