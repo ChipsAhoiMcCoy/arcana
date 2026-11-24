@@ -43,6 +43,7 @@ std::string objectives();
 std::string area_name();   // the current field area ("Iwatodai Station"), from the game's hit-name table
 bool area_ids(int& major, int& minor);   // the field's ids from its visible hit actors' levels (LV_F102_121 = 102, 121)
 int tartarus_floor();      // the Tartarus floor the player is on, else 0
+int banner_floor();        // the floor number the place banner shows (2 for "Hotel Hallway 2F"), else 0
 // Game thread, while no screen or blocking message is up: item pickups, the Shadow cues (shadow::tick, while
 // exploring), the interaction prompt and the objectives, and the area on arrival.
 void tick();

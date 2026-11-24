@@ -24,6 +24,11 @@ std::string person_from_actor_name(const std::string& actor_name);
 // The scene a story trigger is named for: FldHitActor_<major>_<Scene>_H<n> -> "Scene" ("FldHitActor_299_Takaya_H0"
 // -> "Takaya"). "" for an ordinary hit actor (FldHitActor_105_101_H3).
 std::string story_scene(const std::string& actor_name);
+// The floor an unnamed staircase trigger takes you to, else 0. The 7/7 operation's hotel (field 304 101) climbs its
+// three floors through walk-in boxes with no name, whose scripts move the party within the field
+// (BF_FldHit_HotelDungeon: FLDHIT_000_Stair1to2 to entry 2001, FLDHIT_001_Stair2to1 to 1003, FLDHIT_002 to 3001,
+// FLDHIT_003 to 2007; the entry's thousands are the floor). FldHitActor_304_101_H<n>[_k] runs FLDHIT_<n>.
+int stairs_floor(const std::string& actor_name);
 
 // A name that ends in "_<digits>" without a leading zero is, to Unreal, the name before it with a number one
 // higher: "FOO_12" is FOO with number 13. True, with both parts, when `name` is such a name.

@@ -12,6 +12,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- The July full moon's hotel: its staircases are listed under Exits by the floor they lead to ("Stairs to floor 3"), and the auto-walk takes them. Before, they were left out, so the way up to the Shadow on the third floor could not be found. The floor you are on is said with the place ("Hotel Hallway, floor 2"), as the game's banner shows it.
 - On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
 
 ### Dialogue

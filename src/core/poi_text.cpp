@@ -47,6 +47,14 @@ std::string story_scene(const std::string& actor_name) {
   return w;
 }
 
+int stairs_floor(const std::string& actor_name) {
+  std::vector<std::string> tok = name_parts(actor_name);
+  if (tok.size() < 4 || tok[0] != "FldHitActor" || tok[1] != "304" || tok[2] != "101") return 0;
+  static const std::map<std::string, int> hotel = {{"H0", 2}, {"H1", 1}, {"H2", 3}, {"H3", 2}};
+  auto it = hotel.find(tok[3]);
+  return it == hotel.end() ? 0 : it->second;
+}
+
 bool numbered_name(const std::string& flag, std::string& base, int& number) {
   size_t us = flag.find_last_of('_');
   if (us == std::string::npos || us + 1 >= flag.size() || flag.size() - us > 10 ||

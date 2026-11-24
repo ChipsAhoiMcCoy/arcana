@@ -225,7 +225,7 @@ They work like any other menu: up and down choose (at either end a further press
 
 Points of interest come in categories, each listed nearest first, empty ones skipped:
 
-- Exits: ways into another area, named for where they lead ("Gekkoukan High School" there is the way into the school).
+- Exits: ways into another area, named for where they lead ("Gekkoukan High School" there is the way into the school). In the July full moon's hotel, its staircases by the floor they lead to ("Stairs to floor 3").
 - Doors: rooms you check to go in (classrooms, offices, the dorm's bedrooms). A door between two rooms is listed once, by where it leads.
 - People: by name. Social Link partners with their arcana ("Yukari Takeba (Lovers)"), or as the camp describes them before you meet ("Jersey-Wearing Student (Chariot)"). After the name, what the icon over their head says: "something to say" (the game's speech bubble: the students guides tell you to talk to), "overhear" (an ear over people chatting: listen in), "already spoken to" and "already heard" once you have, "Social Link", "Social Link, reversed", "hangout", "Linked Episode", "request", "study group", "walk". Nothing after the name means the game shows no icon over them.
 - Shops: businesses, food, vendors and vending machines.

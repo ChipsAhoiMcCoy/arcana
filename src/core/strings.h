@@ -638,6 +638,7 @@ inline constexpr Tr kPoiShop{"Shop"};
 inline constexpr Tr kPoiDoor{"Door"};
 inline constexpr Tr kPoiThing{"Object"};
 inline constexpr Tr kPoiEvent{"Event"};
+inline constexpr Tr kPoiStairsTo{"Stairs to floor {0}"};   // an unnamed staircase trigger, by the floor it takes you to
 inline constexpr Tr kPoiGatekeeper{"Gatekeeper"};   // the game's word for the boss of a border floor
 inline constexpr Tr kPoiShadow{"Shadow"};
 inline constexpr Tr kPoiBreakable{"Breakable object"};

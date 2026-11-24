@@ -46,6 +46,15 @@ TEST_CASE("person_from_actor_name: the cast by their romanised names, others by 
   CHECK(person_from_actor_name("FldNpcActor").empty());
 }
 
+TEST_CASE("stairs_floor: the hotel's unnamed staircases") {
+  CHECK(stairs_floor("FldHitActor_304_101_H0") == 2);
+  CHECK(stairs_floor("FldHitActor_304_101_H1") == 1);
+  CHECK(stairs_floor("FldHitActor_304_101_H2") == 3);
+  CHECK(stairs_floor("FldHitActor_304_101_H3_1") == 2);
+  CHECK(stairs_floor("FldHitActor_304_101_H24") == 0);
+  CHECK(stairs_floor("FldHitActor_105_101_H0") == 0);
+}
+
 TEST_CASE("story_scene: a trigger named for its scene") {
   CHECK(story_scene("FldHitActor_299_Takaya_H0") == "Takaya");
   CHECK(story_scene("FldHitActor_299_Nyx_H0") == "Nyx");

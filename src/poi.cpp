@@ -245,6 +245,10 @@ std::vector<Poi> scan(float radius) {
       // off once it is beaten (FLD_BATTLE_DEFEAT_GK_*, checked above). Always listed: it is what the floor is for.
       // The other unnamed boxes were never checked against their flags: a finished one is left out now.
       if (name_of(get<UObject*>(a, "mOverlapBluePrint_")) == "BP_FldHit_Tartarus_GateKeeper_C") add(a, Kind::Event, strings::kPoiGatekeeper.c_str());
+      // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
+      // 2026-11-24): an exit, by the floor it leads to.
+      // One that leads to the floor the hero is on is another floor's way here: left out.
+      else if (int floor = core::stairs_floor(name_of(a))) { if (floor != banner_floor()) add(a, Kind::Exit, strings::fmt(strings::kPoiStairsTo, floor)); }
       else triggers.push_back(a);
       continue;
     }

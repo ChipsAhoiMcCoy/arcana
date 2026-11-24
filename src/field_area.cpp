@@ -75,6 +75,8 @@ bool area_ids(int& major, int& minor) {
   return true;
 }
 
+int banner_floor() { return g_banner_floor; }
+
 int tartarus_floor() {
   static const int dcid = watch::want("FldDungeonControlActor");
   UObject* dc = watch::get(dcid);
@@ -113,7 +115,9 @@ static std::string area_name_now() {
         // The banner names the part of it the hero is in ("Iwatodai Dorm, Lounge") when that says more.
         if (!s.empty() && !g_banner.empty() && s.find(g_banner) == std::string::npos && g_banner.find(s) == std::string::npos)
           return s + ", " + g_banner + (g_banner_floor ? std::format(", {} {}", strings::kFloor, g_banner_floor) : "");
-        if (!s.empty()) return s;
+        // The banner's floor number even when its name is the table's (the 7/7 hotel: "Hotel Hallway 2F" was said as
+        // "Hotel Hallway" on every floor, 2026-11-24).
+        if (!s.empty()) return g_banner_floor ? std::format("{}, {} {}", s, strings::kFloor, g_banner_floor) : s;
       }
     }
   }
@@ -128,6 +132,9 @@ static std::string area_name_now() {
   bool stale = tartarus && core::lang::names_place(g_banner, "Tartarus: Entrance");
   std::string name = g_banner.empty() || stale ? strings::kTartarus.c_str() : g_banner;
   if (tartarus) name += std::format(", {} {}", strings::kFloor, floor);
+  // Another place the tables do not name, with the banner's floor number (the 7/7 hotel's "Hotel Hallway 2F" was
+  // said as "Hotel Hallway" on every floor, 2026-11-24).
+  else if (g_banner_floor) name += std::format(", {} {}", strings::kFloor, g_banner_floor);
   return name;
 }
 
