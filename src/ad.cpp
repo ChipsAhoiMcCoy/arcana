@@ -85,6 +85,7 @@ int g_mode = settings::DescOff;     // how its descriptions are given (settings:
 bool g_once = false;                // it was loaded without the descriptions already heard (settings::SceneOnce)
 int g_speed = 0;                    // its narrator's speed-up (settings::SceneSpeed; 0 for a movie)
 float g_base_volume = -1, g_volume = -1;
+double g_opening = 0;               // a 3D scene's opening ends (scene seconds): no description starts before it
 // All of the above is the game thread's: the dev routes read it through dev::on_game.
 
 // The clip decoders: one worker thread per described movie, each owned here until it is joined (once its scene is
@@ -136,6 +137,119 @@ double event_seconds(UObject* player) {
   int32_t frame = *(const int32_t*)r, num = *(const int32_t*)(r + 8), den = *(const int32_t*)(r + 12);
   float sub = *(const float*)(r + 4);
   return num > 0 ? (frame + (double)sub) * den / num : 0;
+}
+
+// ---- a scene's opening ----
+// A scene opens with keys of its own: its music (an MovieSceneEvtAdxSoundSection key, GlobalBGM, Play; mostly in a
+// LS_..._Sound sub-sequence) and a fade in from black (MovieSceneEvtFadeScreenSection, FADE_IN, FadeFrame frames
+// long). A description due before they have played was said over the last scene's music and a black screen, and its box
+// paused the scene before its music could start (2026-11-24: in 630 of 846 described scenes the first description came
+// before the music key, mostly at frame 1). The opening is the first music key and the first fade in's end, of those that
+// come before the scene's first line (MovieSceneEvtDialogueSection): a later one is the scene's own choice to stay
+// quiet or dark. Until the scene's clock passes it no description starts (the schedule's `talk` wait: it starts then).
+// A music track carried over from the last scene does not matter: this is the new scene's own clock against its own keys.
+// Every section's EventData is {Times TArray<FFrameNumber>, KeyValues TArray<payload>}, read by reflection; times are
+// in its MovieScene's TickResolution (24000 in every scene), a sub-sequence's shifted by its SubSection's start.
+int sound_section_id() { static int id = watch::want("MovieSceneEvtAdxSoundSection", true); return id; }
+int fade_section_id() { static int id = watch::want("MovieSceneEvtFadeScreenSection", true); return id; }
+int dialogue_section_id() { static int id = watch::want("MovieSceneEvtDialogueSection", true); return id; }
+
+struct Opening { double music = -1, fade = -1, first_line = -1, end = 0; };
+
+// A frame rate property's {numerator, denominator} in `o`: frames to seconds (-1 without one).
+double frames_to_seconds(UObject* o, const char* prop, double frames) {
+  const int32_t* r = field<int32_t>(o, prop);
+  return r && r[0] > 0 ? frames * r[1] / r[0] : -1;
+}
+
+// Calls f(seconds, payload, payload struct) for each key of a section's EventData; `shift` seconds are added.
+template <typename F>
+void each_key(UObject* section, UObject* scene, double shift, F&& f) {
+  FField* ed = find_prop((UStruct*)class_of(section), "EventData");
+  UStruct* eds = ed ? (UStruct*)prop_inner_object(ed) : nullptr;
+  FField* times = eds ? find_prop(eds, "Times") : nullptr;
+  FField* keys = eds ? find_prop(eds, "KeyValues") : nullptr;
+  FField* inner = keys ? prop_inner_prop(keys) : nullptr;
+  UStruct* payload = inner ? (UStruct*)prop_inner_object(inner) : nullptr;
+  if (!times || !payload) return;
+  const uint8_t* base = (const uint8_t*)section + prop_offset(ed);
+  auto* t = (const TArray<int32_t>*)(base + prop_offset(times));
+  auto* k = (const TArray<uint8_t>*)(base + prop_offset(keys));
+  const int32_t stride = prop_size(inner);
+  if (!t->data || !k->data || stride <= 0) return;
+  for (int32_t i = 0; i < t->num && i < k->num; ++i) {
+    double s = frames_to_seconds(scene, "TickResolution", t->data[i]);
+    if (s >= 0) f(s + shift, k->data + (size_t)i * stride, payload);
+  }
+}
+
+// The enum value's name a payload holds ("EEvtSoundCategoryType::GlobalBGM" or "GlobalBGM").
+bool payload_is(const uint8_t* p, UStruct* payload, const char* prop, std::string_view value) {
+  FField* f = find_prop(payload, prop);
+  UObject* e = f ? prop_inner_object(f) : nullptr;
+  if (!e) return false;
+  return enum_name(e, *(const int8_t*)(p + prop_offset(f))).ends_with(value);
+}
+
+Opening scene_opening(UObject* seq) {
+  Opening o;
+  UObject* ms = seq ? get<UObject*>(seq, "MovieScene") : nullptr;
+  if (!ms || !is_live(ms)) return o;
+  // the scene's MovieScene and its sub-sequences' (the sound), each with where it starts in the scene
+  std::vector<std::pair<UObject*, double>> scenes{{ms, 0.0}};
+  if (auto* tracks = field<TArray<UObject*>>(ms, "MasterTracks"))
+    for (int32_t i = 0; i < tracks->num; ++i) {
+      UObject* tr = tracks->data[i];
+      auto* sections = tr && is_a(tr, "MovieSceneSubTrack") ? field<TArray<UObject*>>(tr, "Sections") : nullptr;
+      for (int32_t j = 0; sections && j < sections->num; ++j) {
+        UObject* sub = sections->data[j];
+        UObject* sseq = sub ? get<UObject*>(sub, "SubSequence") : nullptr;
+        UObject* sms = sseq ? get<UObject*>(sseq, "MovieScene") : nullptr;
+        if (!sms) continue;
+        // SectionRange: TRange<FFrameNumber>, its lower bound {uint8 type (0 open), int32 frame}
+        double start = 0;
+        if (const uint8_t* r = field<uint8_t>(sub, "SectionRange"); r && r[0] != 0)
+          start = std::max(0.0, frames_to_seconds(ms, "TickResolution", *(const int32_t*)(r + 4)));
+        scenes.push_back({sms, start});
+      }
+    }
+  // a section's track's MovieScene: one of ours, and where it starts
+  auto shift_of = [&](UObject* section) -> double {
+    UObject* track = outer_of(section);
+    UObject* owner = track ? outer_of(track) : nullptr;
+    for (auto& [s, at] : scenes) if (s == owner) return at;
+    return -1;
+  };
+  auto first = [](double& slot, double v) { if (slot < 0 || v < slot) slot = v; };
+  auto scene_of = [&](UObject* section) {
+    UObject* track = outer_of(section);
+    return track ? outer_of(track) : nullptr;
+  };
+  for (UObject* sec : watch::all(dialogue_section_id())) {
+    double shift = shift_of(sec);
+    if (shift >= 0) each_key(sec, scene_of(sec), shift, [&](double s, const uint8_t*, UStruct*) { first(o.first_line, s); });
+  }
+  for (UObject* sec : watch::all(sound_section_id())) {
+    double shift = shift_of(sec);
+    if (shift < 0) continue;
+    each_key(sec, scene_of(sec), shift, [&](double s, const uint8_t* p, UStruct* pl) {
+      if (payload_is(p, pl, "EvtSoundCategoryType", "GlobalBGM") && payload_is(p, pl, "EvtAdxSoundOperationType", "Play"))
+        first(o.music, s);
+    });
+  }
+  for (UObject* sec : watch::all(fade_section_id())) {
+    double shift = shift_of(sec);
+    if (shift < 0) continue;
+    each_key(sec, scene_of(sec), shift, [&](double s, const uint8_t* p, UStruct* pl) {
+      if (!payload_is(p, pl, "FadeScreenType", "FADE_IN")) return;
+      FField* ff = find_prop(pl, "FadeFrame");
+      double len = ff ? frames_to_seconds(scene_of(sec), "DisplayRate", *(const int32_t*)(p + prop_offset(ff))) : 0;
+      first(o.fade, s + std::max(0.0, len));   // the fade's frames at the scene's display rate (30 fps)
+    });
+  }
+  for (double v : {o.music, o.fade})
+    if (v >= 0 && (o.first_line < 0 || v < o.first_line)) o.end = std::max(o.end, v);
+  return o;
 }
 
 std::string key_of(std::string name) {
@@ -671,6 +785,15 @@ void tick() {
     g_seen.assign(g_sched.size(), sched::State::Pending);
     g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
     g_volume = g_base_volume;
+    g_opening = 0;
+    if (c.event && s) {
+      UObject* ev = playing_event(nullptr);
+      UObject* seq = ev ? get<UObject*>(ev, "Sequence") : nullptr;
+      Opening o = scene_opening(seq && is_live(seq) ? seq : nullptr);
+      g_opening = o.end;
+      log::writef("ad: {} opens at {:.2f} (music {:.2f}, fade in done {:.2f}, first line {:.2f})", g_key, o.end, o.music,
+                  o.fade, o.first_line);
+    }
     log::writef("ad: {} {} ({}), {} descriptions{}{}", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
                 s && s->left_out ? std::format(", {} heard before left out", s->left_out) : std::string(),
                 speed ? std::format(", narrator x{:.2f}", settings::scene_speed_factor(speed)) : std::string());
@@ -694,6 +817,7 @@ void tick() {
   if (c.event) {
     const msg::Current w = msg::current();
     sc.talk = (w.open && w.blocking) || voice::playing();
+    if (c.time <= g_opening) sc.talk = true;   // its opening (music, fade in) has not played yet: see scene_opening
   }
   if (g_box >= 0) {
     if (!playing || c.fast || !wait) close_box(playing);
@@ -793,6 +917,20 @@ void register_routes() {
   });
   player_id();
   track_player_id();
+  sound_section_id();
+  fade_section_id();
+  dialogue_section_id();
+  // the playing scene's opening (scene_opening), read now
+  dev::route("/ad/opening", [](const dev::Request&, int&) {
+    return dev::on_game([] {
+      UObject* ev = playing_event(nullptr);
+      UObject* seq = ev ? get<UObject*>(ev, "Sequence") : nullptr;
+      if (!seq || !is_live(seq)) return std::string("no scene\n");
+      Opening o = scene_opening(seq);
+      return std::format("{} opens at {:.3f} (music {:.3f}, fade in done {:.3f}, first line {:.3f}); now {:.3f}, gate {:.3f}\n",
+                         name_of(seq), o.end, o.music, o.fade, o.first_line, event_seconds(ev), g_opening);
+    });
+  }, "the playing 3D scene's opening (its music and fade in): no description starts before it");
   dev::route("/ad/clock", [](const dev::Request&, int&) {
     return dev::on_game([] {
       Clock c = clock();
