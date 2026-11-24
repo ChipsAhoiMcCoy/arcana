@@ -161,7 +161,12 @@ class CampStats : public MenuScreen, private CampStatsUi {
 // The scene CmpCharacterStatus (or CmpHeroHumanStatus) on top of the Stats UI's scene stack; the member is the party
 // list's (UUICmpStatus +0x28 ids, ListCursor +0x68, which RB / LB, Q / E, move while the page is up). A page of lines:
 // the member, their Persona's stats and each skill with its description, its affinities; the hero's social stats. In
-// sections (menu.h): the member, their Persona, Stats one per line, Skills, Affinities; Tab / RT and LT jump them.
+// sections (menu.h): the member, their Persona, Stats one per line, Skills, Affinities, Theurgy; Tab / RT and LT jump
+// them (as on every Persona page; the game's own triggers there opened Persona status, which this page already reads,
+// and the Theurgy list, which its Theurgy section reads: the user's call, 2026-11-24). The keyboard's X and Z still
+// open them in the game.
+//   A member's Theurgies: the unit's own skills (unit +0x29E, u16[10]; none while unit +4 is 2, FUN_141202610), the ids
+//   below 699 with the skill table's Theurgy bit (FUN_14120ea30): what the Theurgy list lays out (FUN_141526e40).
 class CampStatsPage : public MenuScreen, private CampStatsUi {
   int member() {
     uint8_t* u = ui();
@@ -170,6 +175,19 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     return ids && c >= 0 && c < ids->num ? ids->data[c] : 0;
   }
   int shown_ = 0;
+  int status_ = -1;   // the Persona status view (scene +0x48 = 5) as last seen
+  bool status_on() { UObject* sc = scene(); return sc && is_a(sc, "CmpCharacterStatus") && i32(sc, 0x48) == 5; }
+  static std::vector<int> theurgies(int who) {
+    std::vector<int> out;
+    uint8_t* u = party::unit_work(who);
+    if (u) guarded([&] {
+      if (*(int16_t*)(u + 4) == 2) return;
+      auto is_theurgy = fn<uint32_t (*)(uint32_t)>(0x120ea30);
+      for (int i = 0; i < 10; ++i)
+        if (int id = *(uint16_t*)(u + 0x29E + i * 2); id && id < 699 && (is_theurgy(id) & 1)) out.push_back(id);
+    });
+    return out;
+  }
  public:
   const char* id() const override { return "camp_stats_page"; }
   int priority() const override { return 17; }
@@ -180,13 +198,17 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
   std::string title() override { return strings::kCampItems[4].c_str(); }
   // X opens the member's Persona status over the page (CmpCharacterStatus +0x48 = 5, FUN_141359990): Q / E switch member.
   void on_enter() override {
-    screens::set_keys([this] { UObject* sc = scene(); return std::string(sc && is_a(sc, "CmpCharacterStatus") && i32(sc, 0x48) == 5 ? strings::kStatsPersonaKeys() : strings::kStatsPageKeys()); });
+    screens::set_keys([this] { return std::string(status_on() ? strings::kStatsPersonaKeys() : strings::kStatsPageKeys()); });
+    status_ = -1;
   }
-  bool game_triggers() override { return true; }
   void on_tick() override {
     int who = member();
     if (who && shown_ && who != shown_) focus(ui::ControlId::structural(std::format("member.{}.line", who)));   // Q / E
     if (who) shown_ = who;
+    // The keyboard's X: the game's Persona status view over the page (the same lines): said, so the press is heard.
+    int st = status_on();
+    if (status_ >= 0 && st != status_) say(st ? std::string(strings::kPersonaStatus.c_str()) : title(), true);
+    status_ = st;
   }
   void build(ui::GraphBuilder& b) override {
     int who = member();
@@ -230,6 +252,25 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
         b.pop_context();
       }
     };
+    // Theurgy: each one the member knows (its description the detail), then what fills their gauge.
+    auto theurgy_section = [&] {
+      auto ids = theurgies(who);
+      if (ids.empty()) return;
+      b.set_region(k + ".theurgy");
+      b.push_context(strings::kTheurgy.c_str());
+      for (size_t i = 0; i < ids.size(); ++i) {
+        int sid = ids[i];
+        std::string n = persona::skill_name(sid);
+        auto v = item([n] { return n; }, {}, [sid] { return persona::skill_help(sid); });
+        buffer_with(v, [sid] { return persona::skill_help(sid); });
+        b.add_item(ui::ControlId::structural(std::format("{}.theurgy{}", k, i)), v);
+      }
+      if (std::string t = theurgy_personality(who); !t.empty()) {
+        std::string l = std::format("{}: {}", strings::kTheurgyGauge, t);
+        b.add_item(ui::ControlId::structural(k + ".gauge"), item([l] { return l; }));
+      }
+      b.pop_context();
+    };
     const uint8_t* e = party::persona_entry(who);
     if (who == 1) {   // the hero's equipped Persona from the stock
       int eq = persona::equipped();
@@ -237,6 +278,7 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     } else if (e && *(uint16_t*)(e + 2)) {
       persona_sections(*(uint16_t*)(e + 2), *(uint16_t*)(e + 4), e, [e](int i) { return (int)*(uint16_t*)(e + 0xC + i * 2); });
     }
+    theurgy_section();
   }
 };
 

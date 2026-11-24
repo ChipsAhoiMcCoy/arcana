@@ -18,16 +18,17 @@
 namespace p3a::screens {
 using namespace ue;
 
+// F: the character's personality (what fills their Theurgy gauge), BMD_TheurgiaFlavorText dialog = character id.
+std::string theurgy_personality(int who) {
+  auto f = bmdfile::load("BMD_TheurgiaFlavorText");
+  if (!f || !f->ok || who <= 0 || who >= (int)f->dialogs.size() || f->dialogs[who].pages.empty()) return {};
+  return core::clean_text(core::bmd::plain(f->dialogs[who].pages[0]));
+}
+
 class TheurgyMenu : public MenuScreen {
   Finder ui_{"UITheurgia"};
   uint8_t* u() { UObject* o = ui_.get(); return o && (i32(o, 0x34) == 0xF || i32(o, 0x34) == 0x10) ? (uint8_t*)o : nullptr; }
   bool personality() { UObject* o = ui_.get(); return o && i32(o, 0x34) == 0x10; }
-  // F: the character's personality (what fills their Theurgy gauge), BMD_TheurgiaFlavorText dialog = character id.
-  static std::string personality_text(int who) {
-    auto f = bmdfile::load("BMD_TheurgiaFlavorText");
-    if (!f || !f->ok || who <= 0 || who >= (int)f->dialogs.size() || f->dialogs[who].pages.empty()) return {};
-    return core::clean_text(core::bmd::plain(f->dialogs[who].pages[0]));
-  }
   bool personality_said_ = false;
   Mirror& list_ = mirror("theurgy", [this] { uint8_t* p = u(); return p ? i32(p, 0x114) : -1; });
   int who() { uint8_t* p = u(); return p ? i32(p, 0xCC) : 0; }
@@ -76,7 +77,7 @@ class TheurgyMenu : public MenuScreen {
     if (!personality()) { personality_said_ = false; return; }
     if (personality_said_) return;
     personality_said_ = true;
-    std::string t = personality_text(who());
+    std::string t = theurgy_personality(who());
     if (!t.empty()) say(std::format("{}: {}", strings::kTheurgyGauge, t), true);
   }
   void build(ui::GraphBuilder& b) override {

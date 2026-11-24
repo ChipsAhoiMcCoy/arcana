@@ -93,4 +93,7 @@ inline social::Link link_of(const std::vector<social::Link>& all, int arcana) {
   for (auto& x : all) if (x.arcana == arcana) l = x;
   return l;
 }
+
+// A character's Theurgy personality, what fills their gauge (theurgy.cpp); empty when the text is not there.
+std::string theurgy_personality(int who);
 }  // namespace p3a::screens

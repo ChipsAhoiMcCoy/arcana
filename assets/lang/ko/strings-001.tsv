@@ -922,7 +922,7 @@ Up and down choose, A opens their page, LB and RB tactics, X joins or leaves the
 Up and down arrows choose, Space changes their tactic, Q and E back to stats, F joins or leaves the party, Escape back.	위아래 방향키 선택, 스페이스 작전 변경, Q와 E 스테이터스로 돌아가기, F 파티 참가 또는 이탈, Escape 돌아가기.
 Up and down choose, A changes their tactic, LB and RB back to stats, X joins or leaves the party, B back.	위아래 선택, A 작전 변경, LB와 RB 스테이터스로 돌아가기, X 파티 참가 또는 이탈, B 돌아가기.
 Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.	위아래 방향키로 항목 이동, Tab과 Shift Tab 섹션 이동, Q와 E 동료 전환, X 페르소나 스테이터스, Z 테우르기아, F 파티 참가 또는 이탈, Escape 돌아가기.
-Up and down go through the lines, LB and RB switch member, RT Persona status, LT Theurgy, X joins or leaves the party, B back.	위아래로 항목 이동, LB와 RB 동료 전환, RT 페르소나 스테이터스, LT 테우르기아, X 파티 참가 또는 이탈, B 돌아가기.
+Up and down go through the lines, RT and LT jump between sections, LB and RB switch member, X joins or leaves the party, B back.	위아래로 항목 이동, RT와 LT 섹션 이동, LB와 RB 동료 전환, X 파티 참가 또는 이탈, B 돌아가기.
 Up and down arrows choose, F info, X sorts, Q and E switch tabs, Escape closes.	위아래 방향키 선택, F 정보, X 정렬, Q와 E 탭 전환, Escape 닫기.
 Up and down choose, X info, RT sorts, LB and RB switch tabs, B closes.	위아래 선택, X 정보, RT 정렬, LB와 RB 탭 전환, B 닫기.
 Up and down arrows choose, F reads it again, X sorts, Q and E switch tabs, Escape closes.	위아래 방향키 선택, F 다시 읽기, X 정렬, Q와 E 탭 전환, Escape 닫기.

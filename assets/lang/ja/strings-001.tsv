@@ -922,7 +922,7 @@ Up and down choose, A opens their page, LB and RB tactics, X joins or leaves the
 Up and down arrows choose, Space changes their tactic, Q and E back to stats, F joins or leaves the party, Escape back.	上下の矢印キーで選択、スペースで作戦を変更、QとEでステータスに戻る、Fでパーティへの加入・離脱、Escで戻ります。
 Up and down choose, A changes their tactic, LB and RB back to stats, X joins or leaves the party, B back.	上下で選択、Aで作戦を変更、LBとRBでステータスに戻る、Xでパーティへの加入・離脱、Bで戻ります。
 Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.	上下の矢印キーで項目を移動、TabとShift+Tabで区切りを移動、QとEでメンバー切り替え、Xでペルソナステータス、Zでテウルギア、Fでパーティへの加入・離脱、Escで戻ります。
-Up and down go through the lines, LB and RB switch member, RT Persona status, LT Theurgy, X joins or leaves the party, B back.	上下で項目を移動、LBとRBでメンバー切り替え、RTでペルソナステータス、LTでテウルギア、Xでパーティへの加入・離脱、Bで戻ります。
+Up and down go through the lines, RT and LT jump between sections, LB and RB switch member, X joins or leaves the party, B back.	上下で項目を移動、RTとLTで区切りを移動、LBとRBでメンバー切り替え、Xでパーティへの加入・離脱、Bで戻ります。
 Up and down arrows choose, F info, X sorts, Q and E switch tabs, Escape closes.	上下の矢印キーで選択、Fで情報、Xで並び替え、QとEでタブ切り替え、Escで閉じます。
 Up and down choose, X info, RT sorts, LB and RB switch tabs, B closes.	上下で選択、Xで情報、RTで並び替え、LBとRBでタブ切り替え、Bで閉じます。
 Up and down arrows choose, F reads it again, X sorts, Q and E switch tabs, Escape closes.	上下の矢印キーで選択、Fでもう一度読み上げ、Xで並び替え、QとEでタブ切り替え、Escで閉じます。

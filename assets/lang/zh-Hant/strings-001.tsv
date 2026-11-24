@@ -922,7 +922,7 @@ Up and down choose, A opens their page, LB and RB tactics, X joins or leaves the
 Up and down arrows choose, Space changes their tactic, Q and E back to stats, F joins or leaves the party, Escape back.	上下方向鍵選擇，空白鍵變更其作戰指示，Q 和 E 返回能力值，F 加入或離開隊伍，Esc 返回。
 Up and down choose, A changes their tactic, LB and RB back to stats, X joins or leaves the party, B back.	上下選擇，A 變更其作戰指示，LB 和 RB 返回能力值，X 加入或離開隊伍，B 返回。
 Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.	上下方向鍵瀏覽各行，Tab 和 Shift Tab 在區段間跳轉，Q 和 E 切換隊員，X 人格面具狀態，Z 降神，F 加入或離開隊伍，Esc 返回。
-Up and down go through the lines, LB and RB switch member, RT Persona status, LT Theurgy, X joins or leaves the party, B back.	上下瀏覽各行，LB 和 RB 切換隊員，RT 人格面具狀態，LT 降神，X 加入或離開隊伍，B 返回。
+Up and down go through the lines, RT and LT jump between sections, LB and RB switch member, X joins or leaves the party, B back.	上下瀏覽各行，RT 和 LT 在區段間跳轉，LB 和 RB 切換隊員，X 加入或離開隊伍，B 返回。
 Up and down arrows choose, F info, X sorts, Q and E switch tabs, Escape closes.	上下方向鍵選擇，F 資訊，X 排序，Q 和 E 切換分頁，Esc 關閉。
 Up and down choose, X info, RT sorts, LB and RB switch tabs, B closes.	上下選擇，X 資訊，RT 排序，LB 和 RB 切換分頁，B 關閉。
 Up and down arrows choose, F reads it again, X sorts, Q and E switch tabs, Escape closes.	上下方向鍵選擇，F 再讀一次，X 排序，Q 和 E 切換分頁，Esc 關閉。

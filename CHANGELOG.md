@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Menus
+- A member's Stats page: RT and LT now jump between its sections, as on every Persona page. They opened the game's Persona status (silently: the page already reads it) and Theurgy list (only once someone knew one). The page gains a Theurgy section with each Theurgy the member knows, its effect, and what fills their gauge. The keyboard's X (Persona status) now says "Persona status" as it opens and "Stats" as it closes.
 - "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
 - Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
 
