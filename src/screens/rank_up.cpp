@@ -63,6 +63,8 @@ class RankUpScreen : public Screen {
     // The card's rank is set late (0 while the poem shows): the rank-up message's mode says what it will be for a new
     // link (0, CMM_RANKUP mode 0) and rank MAX (2); 1 is a plain rank up.
     if (rank == 0) rank = mode == 0 ? 1 : mode == 2 ? 10 : 0;
+    // A MAX card shows the old rank first (Hierophant's read "rank 9" as it was said, 2026-11-24): mode 2 is MAX.
+    if (mode == 2) rank = 10;
     card_ = social::card(arcana, rank);
     if (rank == rank_ && arcana == arcana_) return;
     log::writef("rank_up: rank {} link {} mode {} state {}", rank, arcana, mode, state);
