@@ -242,3 +242,11 @@ TEST_CASE("compass_point: eight points from north, clockwise, wrapping") {
   CHECK(p3a::core::compass_point(338) == 0);
   CHECK(p3a::core::compass_point(-23) == 7);
 }
+
+TEST_CASE("boss_trigger: the boxes on the way to a full moon's boss") {
+  CHECK(boss_trigger("BP_FldHitActor_308_101_H0_Play_C"));
+  CHECK(boss_trigger("BP_FldHitActor_305_101_H17_Play_C"));
+  CHECK_FALSE(boss_trigger("BP_FldHitActor_308_101_H1_Play_C"));   // the bridge's other box: "no escaping now"
+  CHECK_FALSE(boss_trigger("BP_FldHit_Tartarus_GateKeeper_C"));
+  CHECK_FALSE(boss_trigger(""));
+}

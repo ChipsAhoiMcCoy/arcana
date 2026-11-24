@@ -24,6 +24,10 @@ std::string person_from_actor_name(const std::string& actor_name);
 // The scene a story trigger is named for: FldHitActor_<major>_<Scene>_H<n> -> "Scene" ("FldHitActor_299_Takaya_H0"
 // -> "Takaya"). "" for an ordinary hit actor (FldHitActor_105_101_H3).
 std::string story_scene(const std::string& actor_name);
+// Whether a walk-in box with no name starts a full moon's boss fight, by its overlap blueprint's class: the box on the
+// way to the large Shadow (BF_FldHit_MoonLightBridge FLDHIT_000: Fuuka's "Are you ready?", then FLD_START_BOSS(8)),
+// one per operation whose script runs FLD_START_BOSS. A named one (the 10/4 station exit) is listed by its name.
+bool boss_trigger(const std::string& overlap_class);
 // The floor an unnamed staircase trigger takes you to, else 0. The 7/7 operation's hotel (field 304 101) climbs its
 // three floors through walk-in boxes with no name, whose scripts move the party within the field
 // (BF_FldHit_HotelDungeon: FLDHIT_000_Stair1to2 to entry 2001, FLDHIT_001_Stair2to1 to 1003, FLDHIT_002 to 3001,
