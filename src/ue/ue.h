@@ -51,6 +51,9 @@ bool exit_requested();
 // UFunction call that looks an object up is then a fatal error ("Illegal call to StaticFindObject() while collecting
 // garbage!", four player crashes 2026-11-22/23), and objects are being freed under any read. False when not found.
 bool collecting_garbage();
+// The frames the engine has run (GFrameCounter, exe+0x57305a8 in the known build: what KismetSystemLibrary's
+// GetFrameCount returns). 0 in another build.
+uint64_t frame_counter();
 std::string status();
 
 // ---- names and strings ----

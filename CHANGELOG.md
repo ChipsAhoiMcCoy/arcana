@@ -7,6 +7,7 @@
 - "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
 - Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
 
+- At a low frame rate (a slow computer, or a busy one) the camp menu could ignore the arrow keys, and other menus could step their cursor twice: the mod ran several times in one of the game's frames and miscounted them. It now runs once a frame.
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Dialogue

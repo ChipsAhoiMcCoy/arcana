@@ -591,6 +591,7 @@ bool known_build() {
 }
 bool exit_requested() { return g_exit_flag && *g_exit_flag; }
 bool collecting_garbage() { return g_gc_counter && *g_gc_counter != 0; }
+uint64_t frame_counter() { return known_build() ? *(const volatile uint64_t*)(scan::exe_base() + 0x57305a8) : 0; }
 
 std::string status() { return std::format("ue ready={} objects={} world={}", g_ready, num_objects(), full_name(gworld())); }
 }  // namespace p3a::ue

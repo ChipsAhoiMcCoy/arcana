@@ -288,7 +288,18 @@ void pump() {
   if (ue::collecting_garbage()) { ++g_gc_skips; return; }
   if (!g_qpf.QuadPart) QueryPerformanceFrequency(&g_qpf);
   LARGE_INTEGER now; QueryPerformanceCounter(&now);
-  if (now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 120) return;
+  // One tick per frame the game runs. The game pumps messages several times a frame (five at 18 fps with six games
+  // running, 2026-11-24), and capped only at 120 a second the mod ticked several times in one game frame: all it counts
+  // in frames (two frames with a cursor unmoved, the camp root's timer moving) counted pumps, and the camp read its
+  // list as not taking input and dropped every key. While the counter stands still and the game still pumps (a load),
+  // the tick runs ten times a second so the mod and its server go on. Another build: the old cap.
+  static uint64_t seen = 0;
+  if (uint64_t f = ue::frame_counter()) {
+    if (f == seen && now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 10) return;
+    seen = f;
+  } else if (now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 120) {
+    return;
+  }
   g_last = now;
   inside = true;
   tick();
