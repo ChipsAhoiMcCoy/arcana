@@ -381,10 +381,12 @@ class BattleScreen : public Screen {
   }
   void drop_hits(const WeakObj::Key& k) { std::erase_if(hits_, [&](const Hits& h) { return h.key == k; }); }
   void flush_hits() {
-    for (auto& h : hits_)
-      if (h.count > 1)
-        speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
+    for (auto& h : hits_) {
+      auto u = units_.find(h.key);
+      if (h.count < 2 || u == units_.end() || u->second.hp <= 0) continue;   // one hit, or it fell: said already
+      speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
                                : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
+    }
     hits_.clear();
     hits_by_ = {};
   }
@@ -468,7 +470,7 @@ class BattleScreen : public Screen {
       }
     }
     for (auto& [k, u] : units_)
-      if (u.enemy && u.hp > 0 && !next.count(k) && !fled_.count(k)) defeated.push_back(u.name);
+      if (u.enemy && u.hp > 0 && !next.count(k) && !fled_.count(k)) { drop_hits(k); defeated.push_back(u.name); }
     units_.swap(next);
     std::erase_if(won_enemies_, [&](const WeakObj::Key& k) { return !units_.count(k); });   // gone with the battle
     std::erase_if(fled_, [&](const WeakObj::Key& k) { return !units_.count(k); });
