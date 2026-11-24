@@ -13,6 +13,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- The August full moon's underground base: below about 25 meters the mod lost track of you (no points of interest, no auto-walk, no sonar) on the way down to the Shadow. It took you for one of the game's spare field characters, which it parks under the map; it now tells them apart by where they are parked, not by depth.
 - A full moon's boss can be found: the spot that starts the fight (Fuuka's "Are you ready?") is listed under Events as "Large Shadow". On 11/3 the Moonlight Bridge's was 13 meters up the bridge with nothing listed but the party; the same goes for the monorail, Fuuka's rescue in Tartarus, the July hotel and the August base.
 - Walking to a point and using it (Shift+Period) presses Space once the prompt has finished appearing and you have stopped: at a low frame rate the press came too early and the game ignored it (the July hotel's mirror).
 - Where the game marks the objective on the minimap with a "!" (the faculty office on your first school day), that place is said with "objective" after its name ("Faculty Office, objective, 28 meters, 9 o'clock") and is listed under Events too (key 6), so it can be found without stepping through every door.

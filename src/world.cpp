@@ -42,14 +42,17 @@ float camera_yaw() { return g_cam_yaw; }
 float move_yaw() { return g_north_on ? g_north_yaw : g_cam_yaw; }
 
 // The field player: one BP_FldPlayer_C per mode (DAILY, DUNGEON, ENCOUNT) exists at once; the inactive ones are
-// parked far below the map (z = -3200 measured at Iwatodai Station, 2026-10-27).
+// parked below the map at one spot, (0, 0, -3200) (z measured at Iwatodai Station 2026-10-27, x and y in the 8/6
+// base 2026-11-24). The spot, not the depth, tells them apart: the base goes 33 m down, and its deepest floor put the
+// real hero at z = -2513, which a "below -2500" rule took for a parked one (no hero: no list, no walk, no sonar).
+static bool parked(const FVector& v) { return std::fabs(v.x) < 10.0f && std::fabs(v.y) < 10.0f && v.z < -3000.0f; }
 static UObject* find_player() {
   static const int players = watch::want("BP_FldPlayer_C", true);
   for (UObject* p : watch::all(players)) {
     Params loc(find_function(class_of(p), "K2_GetActorLocation"));
     call(p, loc);
     FVector v = loc.ret<FVector>();
-    if (v.z > -2500.0f && !get_bool(p, "bHidden")) return p;
+    if (!parked(v) && !get_bool(p, "bHidden")) return p;
   }
   return nullptr;
 }
@@ -214,7 +217,7 @@ void tick() {
   // is parked under the map, and player() picks the active one.
   if (g_player.resolve()) {
     FVector v;
-    if (player_location(v) && v.z < -2500.0f) g_player = {};
+    if (player_location(v) && parked(v)) g_player = {};
   }
 }
 
