@@ -181,9 +181,28 @@ def pids(exe=EXE_NAME):
                 os.remove(f)
             except OSError:
                 pass
+    # The game whose dev server answers on this port is this port's, whatever the files say. With P3A_PORT set
+    # (several dev games), a port owns only that game or its own file's: never "every unclaimed game". With every
+    # instance file gone (2026-11-24), port 8793 took all six games as its own, and its reload ejected another
+    # lane's mod and its `up` killed every game.
+    served = served_pid()
+    if served in res:
+        return [served]
     if PORT in claimed:
         return [claimed[PORT]]
+    if "P3A_PORT" in os.environ:
+        return []
     return [p for p in res if p not in claimed.values()] if PORT == DEFAULT_PORT else []
+
+
+def served_pid():
+    """The pid the dev server on this port reports (/health "pid=N"), or 0 when nothing answers."""
+    try:
+        with urllib.request.urlopen(f"http://127.0.0.1:{PORT}/health", timeout=2) as r:
+            m = re.search(r"pid=(\d+)", r.read().decode("utf-8", "replace"))
+            return int(m.group(1)) if m else 0
+    except Exception:
+        return 0
 
 
 def alive(pid):
@@ -235,7 +254,19 @@ def shadow():
     """Copy the build's arcana.dll (and .map) to arcana.live<N>.dll beside it, so assets and prism.dll resolve
     as before, and return its path. Copies no longer loaded are removed (a loaded one is locked and stays)."""
     src = os.path.join(BUILD, "arcana.dll")
+    # A copy any running game has loaded stays: Windows lets a loaded DLL be deleted, and another port's reload
+    # removed the copy a game was running (its own reload then could not eject it, 2026-11-24).
+    in_use = set()
+    for gp in all_pids():
+        h = k32.OpenProcess(PROCESS_ALL, False, gp)
+        if h:
+            try:
+                in_use |= {os.path.normcase(os.path.abspath(m)) for m in modules(h)}
+            finally:
+                k32.CloseHandle(h)
     for old in glob.glob(os.path.join(BUILD, "arcana.live*.dll")):
+        if os.path.normcase(os.path.abspath(old)) in in_use:
+            continue
         try:
             os.remove(old)
             if os.path.exists(old[:-4] + ".map"):
