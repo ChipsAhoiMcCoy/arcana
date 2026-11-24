@@ -59,7 +59,7 @@ bool flag_on(const std::string& flag) {
 
 // Row KIN_<idx, 8 digits> of the first of these name tables that has it (FldNpcNameTableRow and the hit-name rows
 // share Name / flag / Name2).
-std::string kin_name(std::initializer_list<const char*> tables, int idx, bool* name2) {
+std::string kin_name(std::initializer_list<const char*> tables, int idx, bool* name2, bool plain) {
   if (name2) *name2 = false;
   if (idx < 0) return {};
   std::string row = std::format("KIN_{:08}", idx);
@@ -73,7 +73,7 @@ std::string kin_name(std::initializer_list<const char*> tables, int idx, bool* n
     // FLD_NOW_STATION_TO_DORMITORY): that is the name the game shows, and it tells the player where the story goes.
     std::string flag = to_utf8(*(FString*)(r + offset_of(rs, "flag")));
     std::string n2 = to_utf8(*(FString*)(r + offset_of(rs, "Name2")));
-    if (!flag.empty() && !n2.empty() && flag_on(flag)) {
+    if (!plain && !flag.empty() && !n2.empty() && flag_on(flag)) {
       if (name2) *name2 = true;
       return n2;
     }

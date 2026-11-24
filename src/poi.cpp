@@ -319,6 +319,11 @@ std::vector<Poi> scan(float radius) {
     else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));
     else add(a, check_kind(a), nm);
+    // The desk in your room (row KIN_02121001, "Desk") is where its computer is: Innocent Sin Online (the Hermit link)
+    // is played there, and a sighted player sees the computer on it. Said after its name with the game's own name for
+    // a computer (KIN_02102109's Name, "Computer"; its Name2 is the lounge's "Shared Computer").
+    if (!out.empty() && out.back().obj == WeakObj::of(a) && get<int32_t>(a, "mNameIndex_", -1) == 2121001)
+      if (std::string pc = kin_name({"DT_FldDailyHitName"}, 2102109, nullptr, true); !pc.empty()) out.back().state = pc;
     // The July hotel's 3F rooms (7/7, "Break the defective mirror on 3F"): the defective mirror is the one that shows
     // no reflection, which a sighted player sees as they walk in. Each room's mirror runs its own procedure of
     // BF_FldHit_HotelDungeon through its key-press blueprint: 53, 56 and 59 (rooms 301-303, SUB_MISTAKE_MIRROR: a
