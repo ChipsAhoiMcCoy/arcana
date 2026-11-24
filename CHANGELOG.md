@@ -17,6 +17,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- A missing person in Tartarus is listed under People wherever they are on the floor ("Missing Person, Ayako Yoshimoto, 120 meters, south-east"), as the floor's objective asks you to find them. Past the list's range they were not listed at all.
 - In Tartarus the "close" line names a Shadow that is not an ordinary one, as the list does: "The Reaper close, facing you", "Rare Shadow close, back turned". The Reaper was "Shadow close", so the line that came right before it caught you did not say what it was.
 - Where am I (Slash) after loading another save no longer says the last game's objective: it says the new one's once it shows (or that none is shown yet).
 - Where am I (Slash) says the moon as the date in the corner shows it: "full moon" on a full moon night, else the days to the next one ("full moon in 29 days", the game's LIMIT countdown), with the quarters and the new moon as the calendar marks them.

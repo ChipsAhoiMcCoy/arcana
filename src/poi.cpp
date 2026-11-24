@@ -167,7 +167,10 @@ std::vector<Poi> scan(float radius) {
       if (UObject* owner = get<UObject*>(icon, "Owner"))
         icons[owner] = i < kAccessKinds ? core::icon_state(kIconKinds[i]) : core::icon_state(kWordKinds[i - kAccessKinds]);
     }
-  auto add = [&](UObject* a, Kind k, std::string name, bool any_floor = false) {
+  // The list's own scan (not the sonar's or a prompt's nearer one): what the floor's objective is about is listed at
+  // any distance on it.
+  const bool list_scan = radius >= settings::get(settings::PoiRange) * 100.0f;
+  auto add = [&](UObject* a, Kind k, std::string name, bool any_floor = false, bool any_distance = false) {
     world::FVector v{};
     if (!guarded([&] { v = world::actor_location(a); })) return;
     float d = std::sqrt((v.x - me.x) * (v.x - me.x) + (v.y - me.y) * (v.y - me.y) + (v.z - me.z) * (v.z - me.z));
@@ -175,7 +178,7 @@ std::vector<Poi> scan(float radius) {
     // 2026-10-27): another floor's things count only when the navmesh walks there (Tartarus' raised entrance does).
     // Tartarus floors are levels of their own with raised and sunken parts: no floor filter there.
     bool other_floor = !dungeon && !any_floor && std::fabs(v.z - (me.z - 90.0f)) > 280.0f;
-    if (d > radius) { beyond |= d <= list_radius && !other_floor; return; }
+    if (d > radius && !(any_distance && list_scan)) { beyond |= d <= list_radius && !other_floor; return; }
     if (other_floor && !walkable(a, me, v)) return;
     // Another part of the map, past a closed door (the corridor's things from the gym hallway, 2026-11-11): listed
     // once the hero is through it.
@@ -232,7 +235,10 @@ std::vector<Poi> scan(float radius) {
   if (UObject* mc = watch::get(missing_id)) missing = get<UObject*>(mc, "m_pMissingPerson");
   if (missing && (!is_live(missing) || get_bool(missing, "bHidden"))) missing = nullptr;
   for (UObject* a : live("FldHitCore")) {
-    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || out_of_range(a)) continue;
+    // The missing person is the floor's objective ("Find missing persons."): listed wherever on the floor they are
+    // (a floor's far side was 107 m off, past the list's 60 m, and the list said "No People", 2026-11-24).
+    bool lost_one = missing && name_of(get<UObject*>(a, "mOverlapBluePrint_")) == "BP_FldHit_MISNPC_01_HERO_C";
+    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && out_of_range(a))) continue;
     std::string icon = icon_of(a);
     // The missing person's only hit has no icon: a sphere that starts the rescue when walked into
     // (BP_DHIT_MISNPC_C, overlap BP_FldHit_MISNPC_01_HERO_C). Named by the game's hit-name table: "Stray Cat",
@@ -247,7 +253,7 @@ std::vector<Poi> scan(float radius) {
         // 2026-11-12: "Missing Person, Ayako Yoshimoto"); the hit's own name stays first.
         if (std::string who = missing_name(watch::get(missing_id)); !who.empty()) nm += ", " + who;
       }
-      add(a, Kind::Person, nm);
+      add(a, Kind::Person, nm, false, true);
       continue;
     }
     if (icon == "None") continue;
