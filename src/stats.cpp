@@ -92,6 +92,9 @@ bool read(Stats& out) {
       if (i < tables->num) {
         auto& t = tables->data[i];
         for (int r = 0; r < t.num && r < 6; ++r) { need += t.data[r]; if (out.points[i] >= need) level = r + 1; }
+        int next_need = 0;
+        for (int r = 0; r <= level && r < t.num && r < 6; ++r) next_need += t.data[r];
+        out.next[i] = level < t.num && level < 6 ? next_need - out.points[i] : -1;
       }
       out.level[i] = level;
     }
@@ -155,7 +158,8 @@ void tick() {
       if (s.level[i] > prev.level[i])
         speech::speak(std::format("{}, {}", strings::fmt(strings::kRankUpFmt, strings::kSocialStats[i].c_str(), s.level[i]), rank_name(s, i)), false);
       else if (s.points[i] > prev.points[i])
-        speech::speak(strings::fmt(strings::kStatUpFmt, strings::kSocialStats[i].c_str()), false);
+        speech::speak(std::format("{}, {}", strings::fmt(strings::kStatUpFmt, strings::kSocialStats[i].c_str()),
+                                  strings::count(s.points[i] - prev.points[i], strings::kPoint, strings::kPoints)), false);
     }
   prev = s;
   have = true;

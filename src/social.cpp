@@ -302,7 +302,7 @@ void tick() {
         queue(i, std::format("{}: {}", g_prev[i] == 0 ? strings::kNewSocialLink : strings::kSocialLinkUp, name_rank(i, cur[i])));
       } else if (cur[i] == g_prev[i] && cur[i] > 0 && points[i] > prev_points[i]) {
         // The notes over the partner's head after an answer: the points it earned. Said at once (it answers the choice).
-        std::string line = std::format("{}: {}, {}", strings::kBondUp, arcana_name(i), strings::count(points[i] - prev_points[i], strings::kPoints));
+        std::string line = std::format("{}: {}, {}", strings::kBondUp, arcana_name(i), strings::count(points[i] - prev_points[i], strings::kPoint, strings::kPoints));
         Link l{i, cur[i], points[i]};
         if (ready(l) && !ready(Link{i, cur[i], prev_points[i]})) line += std::string(", ") + strings::kReadyToRankUp;
         log::writef("social: {} (now {} of {})", line, points[i], points_needed(l));

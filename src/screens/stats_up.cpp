@@ -25,7 +25,12 @@ class StatsUpScreen : public Screen {
     if (!stats::read(s)) return {};
     std::string out = strings::kStatsUp.c_str();
     if (int up = rise ? stats::last_up() : -1; up >= 0) out += " " + strings::fmt(strings::kStatUpFmt, strings::kSocialStats[up].c_str()) + ".";
-    for (int i = 0; i < 3; ++i) out += std::format(" {} {} {}.", strings::kSocialStats[i], s.level[i], stats::rank_name(s, i));
+    // The panel's gauges: how far each stat is from its next rank, in the game's points.
+    for (int i = 0; i < 3; ++i) {
+      out += std::format(" {} {} {}", strings::kSocialStats[i], s.level[i], stats::rank_name(s, i));
+      if (s.next[i] > 0) out += ", " + strings::fmt(strings::kToNextRankFmt, strings::count(s.next[i], strings::kPoint, strings::kPoints));
+      out += ".";
+    }
     return out;
   }
  public:

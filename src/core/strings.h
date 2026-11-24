@@ -128,6 +128,7 @@ inline constexpr Tr kChooseMoreFmt{"Choose {} more"};  // Shuffle Time: "Choose 
 inline constexpr Tr kWouldBecomeFmt{"{} would become {}"};   // "Agi would become Agilao"
 inline constexpr Tr kRankUpFmt{"{} up to rank {}"};    // a social stat: "Charm up to rank 3"
 inline constexpr Tr kStatUpFmt{"{} up"};               // "Charm up"
+inline constexpr Tr kToNextRankFmt{"{} to the next rank"};   // "15 points to the next rank"
 inline constexpr Tr kUpByFmt{"up {}"};                 // a Persona stat's rise: "St 12, up 2"
 inline constexpr Tr kGoesBackForFmt{"{} goes back for {}"};   // "Shift+1 goes back for Exits: ..."
 inline constexpr Tr kTimes{"times"};   // a pickup's count: "Got Bead times 3"
@@ -351,6 +352,7 @@ inline constexpr Tr kRankMax{"MAX"};
 inline constexpr Tr kReversed{"reversed"};
 inline constexpr Tr kReadyToRankUp{"ready to rank up"};
 inline constexpr Tr kBondUp{"Bond deepened"};
+inline constexpr Tr kPoint{"point"};
 inline constexpr Tr kPoints{"points"};
 inline constexpr Tr kShop{"Shop"};
 inline constexpr Tr kBuy{"Buy"};

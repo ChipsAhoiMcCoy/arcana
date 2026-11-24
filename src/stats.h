@@ -4,7 +4,8 @@
 
 namespace p3a::stats {
 // The hero's social stats, in the game's order: 0 Academics, 1 Charm, 2 Courage (game thread).
-struct Stats { int points[3] = {}; int level[3] = {}; ue::UObject* names = nullptr; };
+// next: the points still needed for the next rank (the game's own table, as the panel's gauge fills), -1 at the top.
+struct Stats { int points[3] = {}; int level[3] = {}; int next[3] = {-1, -1, -1}; ue::UObject* names = nullptr; };
 bool read(Stats& out);
 std::string rank_name(const Stats& s, int stat);   // "Slacker"
 std::string describe();                             // "Academics Slacker, Charm Plain, Courage Timid. 3000 yen"
