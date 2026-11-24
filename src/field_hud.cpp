@@ -90,6 +90,13 @@ static std::string misc_check_label() {
   });
   return core::has_words(label) ? label : std::string();
 }
+bool prompt_settled() {
+  static const int id = watch::want("UIMiscCheckDraw");
+  uint8_t* a = (uint8_t*)watch::get(id);
+  int st = 0;
+  if (a && ue::known_build()) guarded([&] { st = *(int32_t*)(a + 0x294); });
+  return st == 2;
+}
 void prompt_tick() {
   // The objectives (top right, in corner brackets, then stacked lines) are drawn through DrawFont; not while a
   // message window draws through the same routine. Only while the field's panel is up (AUIAccessInfoDraw's state +0x294

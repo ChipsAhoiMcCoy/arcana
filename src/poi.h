@@ -40,6 +40,7 @@ std::string npc_named(int major, int minor);
 std::string npc_name(ue::UObject* npc);   // an NPC's (FldNpcActor) or Social Link partner's (FldCmmActor) name as the list gives it
 bool breakable(ue::UObject* dungeon_object);   // a FldDungeonObjectActor a strike can still break (not broken yet)
 std::string prompt();      // the interaction prompt label showing now ("Treasure Chest"), or ""
+bool prompt_settled();     // the prompt has finished appearing (its draw's state 2): the game takes the check now
 // The story objective last shown in the field ("Head to the faculty office") with the lines stacked under it, or "".
 std::string objectives();
 std::string area_name();   // the current field area ("Iwatodai Station"), from the game's hit-name table

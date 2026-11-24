@@ -151,7 +151,11 @@ static void arrived_at(bool can_use = true) {
 static void use_tick(bool in_field, ULONGLONG now) {
   if (!g_use_until) return;
   if (!in_field || keys::movement_key_down() || input::pad_moving()) { g_use_until = 0; return; }
-  if (!poi::prompt().empty()) {
+  // Once the prompt has finished appearing (state 1 to 2) and the hero stands still: the press sent as it appeared
+  // did nothing (the July hotel's mirror and its exit door, at 24 frames a second, 2026-11-24).
+  FVector v{};
+  bool still = !world::player_velocity(v) || std::hypot(v.x, v.y) < 1.0f;
+  if (!poi::prompt().empty() && poi::prompt_settled() && still) {
     log::writef("nav: using {} (prompt {})", g_w.name, poi::prompt());
     input::inject_key(VK_SPACE, 80);
     g_use_until = 0;
