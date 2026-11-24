@@ -1,0 +1,2 @@
+#scene LS_BtlEvent707_900
+0.100	6.196	00.mp3	Petals burst from the metal beast. It sags, drops to the ground and lies still, folded up on the tiles.
