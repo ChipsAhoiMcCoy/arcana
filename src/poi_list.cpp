@@ -45,7 +45,7 @@ static bool in_cat(const Poi& p, Cat c) {
     case Cat::People: return p.kind == Kind::Person;
     case Cat::Shops: return p.kind == Kind::Shop;
     case Cat::Things: return p.kind == Kind::Thing || p.kind == Kind::Fragment;   // a fragment is an object with its own sound
-    case Cat::Events: return p.kind == Kind::Event;
+    case Cat::Events: return p.kind == Kind::Event || p.objective;   // the objective's mark too, in its own category as well
     default: return p.kind == Kind::Enemy;
   }
 }

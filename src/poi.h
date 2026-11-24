@@ -11,7 +11,9 @@ namespace p3a::poi {
 // a sonar sound of its own.
 enum class Kind { Exit, Person, Shop, Door, Thing, Enemy, Event, Fragment };
 // state: what the icon over a person says ("already spoken to", "Social Link"), said after the name; "" when it says nothing.
-struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; };
+// objective: the minimap's objective mark (its "!") stands on it: said as "objective" after the name, and listed under
+// Events as well as its own category.
+struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; bool objective = false; };
 
 std::vector<Poi> scan(float radius_cm = -1);   // nearest first (game thread); -1 = the range setting
 std::string clock(float bearing_deg);                   // "12 o'clock" etc. (camera-relative)

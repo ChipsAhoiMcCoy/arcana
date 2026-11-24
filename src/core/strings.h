@@ -693,6 +693,8 @@ inline constexpr Tr kIconEpisode{"Linked Episode"};
 inline constexpr Tr kIconRequest{"request"};
 inline constexpr Tr kIconStudy{"study group"};
 inline constexpr Tr kIconWalk{"walk"};
+// After the name of the thing the minimap's objective mark (its "!") stands on ("Faculty Office, objective").
+inline constexpr Tr kObjectiveMark{"objective"};
 // Navigation
 inline constexpr Tr kNoPath{"No path"};
 inline constexpr Tr kNoPathInRoom{"No path, though it is in this room"};

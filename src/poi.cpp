@@ -93,6 +93,26 @@ static std::string missing_name(UObject* controller) {
   return sp >= 0 && sp < (int)f->speakers.size() ? core::clean_text(f->speakers[sp]) : std::string();
 }
 
+// Where the minimap draws the objective's mark (the "!" over the faculty office's door on 4/7, the field's objective
+// "Head to the faculty office"): UFldMiniMapManager +0x40, a TArray of FTransform (0x30 each, its translation at
+// +0x10). Empty while the minimap shows no mark (the classroom on 4/7 after school, "Return to the dorm"). Seen
+// 2026-11-24: one mark 22 cm from the Faculty Office's hit, gone once the scene there had run.
+static std::vector<FVector> objective_marks() {
+  std::vector<FVector> out;
+  static const int id = watch::want("FldMiniMapManager");
+  UObject* m = watch::get(id);
+  if (!m || !ue::known_build()) return out;   // this build's offset
+  guarded([&] {
+    auto* arr = (TArray<uint8_t>*)((uint8_t*)m + 0x40);
+    if (!arr->data || arr->num <= 0 || arr->num > 8) return;
+    for (int i = 0; i < arr->num; ++i) {
+      const float* t = (const float*)(arr->data + i * 0x30 + 0x10);
+      out.push_back(FVector{t[0], t[1], t[2]});
+    }
+  });
+  return out;
+}
+
 bool breakable(UObject* a) {
   if (!a) return false;
   std::string cn = name_of(class_of(a));
@@ -337,6 +357,19 @@ std::vector<Poi> scan(float radius) {
   for (auto& p : out) places.push_back(core::Place{p.kind == Kind::Exit, p.name, world::vec3(p.loc)});
   std::vector<Poi> kept;
   for (size_t i : core::near_sides(places)) kept.push_back(std::move(out[i]));
+  // The objective's mark: the thing it stands on (within 3 m, on its floor) is where the story sends the player.
+  // A sighted player sees the "!" on the minimap; the list says "objective" after its name and Events lists it.
+  for (const FVector& m : objective_marks()) {
+    Poi* best = nullptr;
+    float bd = 300.0f;
+    for (Poi& p : kept) {
+      float d = std::hypot(p.loc.x - m.x, p.loc.y - m.y);
+      if (d < bd && std::fabs(p.loc.z - m.z) < 250.0f) { bd = d; best = &p; }
+    }
+    if (!best || best->objective) continue;
+    best->objective = true;
+    best->state = best->state.empty() ? std::string(strings::kObjectiveMark) : best->state + ", " + strings::kObjectiveMark.c_str();
+  }
   return kept;
 }
 
