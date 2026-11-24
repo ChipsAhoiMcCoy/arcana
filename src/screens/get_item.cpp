@@ -12,6 +12,7 @@
 #include "log.h"
 #include "seh.h"
 #include "speech.h"
+#include "stats.h"
 #include <format>
 
 namespace p3a::screens {
@@ -34,7 +35,9 @@ class GetItemScreen : public Screen {
       for (int i = 0; i < n; ++i, e += 12) {
         int id = *(uint16_t*)e, count = *(int32_t*)(e + 4);
         std::string what;
-        if (e[8]) what = strings::count(count, strings::kYen);
+        // The notice says its yen: the wallet's gain is then not said again (a request's reward is paid without
+        // ADD_GET_ITEM_LIST_MONEY, the path stats.cpp hears; "Got 30000 yen" came twice, 2026-11-24).
+        if (e[8]) { what = strings::count(count, strings::kYen); stats::money_told(count); }
         else {
           what = items::name_of(id);
           if (what.empty()) what = std::format("{} {}", strings::kItemNumber, id);

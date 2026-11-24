@@ -162,6 +162,8 @@ void tick() {
 }
 
 // UGlobalWorkBpLib::GWorkGetMoney -- the wallet.
+void money_told(int amount) { if (amount > 0) g_told_money = amount; }
+
 int money() {
   Params p = party::gwork("GWorkGetMoney");
   return p.fn ? p.ret<int32_t>() : -1;
