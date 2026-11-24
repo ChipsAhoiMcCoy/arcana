@@ -120,10 +120,41 @@ UObject* playing_mana() {
 // sequence's display rate (30 fps). The sequence pauses itself at a message that holds it (a dialogue key with
 // bPauseSequencer, a WaitingMessage controller) until the player moves on: IsPaused then (seen live, 2026-11-15).
 int event_actor_id() { static int id = watch::want("AtlEvtLevelSequenceActor", true); return id; }
-UObject* playing_event(UObject** actor) {
+
+// A battle's own scenes: a boss's entrance and the turns of its fight (LS_BtlEvent<id>_<row>, DT_BtlEvt<id> rows the
+// battle's script loads and plays: BTL_CUTSCENE_LOAD / PLAY / SYNC / END), a party member's first summon
+// (LS_BtlPc<nn>FirstSummon, BP_BtlHumanBase's FirstSummonSceneActor). Each is a plain LevelSequenceActor the battle
+// spawns with its own SequencePlayer; only those with descriptions are followed (assets/ad/LS_Btl*.txt, listed once):
+// a battle plays many more (summons, skills, criticals) that have none.
+// Their pause: the battle's script waits for a scene's end (BTL_CUTSCENE_SYNC, the first summon's OnFinished) by its
+// player still playing, so a Pause let the battle run on under a frozen picture (seen live, 2026-11-24: 704_999 paused,
+// the result screen came 3.5 s later). The box holds one by its play rate instead (SetPlayRate, kHeldRate): it stays
+// playing, barely moving, and the battle waits for it (704_000 held 12 s, the fight started 5 s after the release).
+constexpr float kHeldRate = 0.001f;
+int seq_actor_id() { static int id = watch::want("LevelSequenceActor", true); return id; }
+const std::vector<std::string>& battle_keys();
+bool is_battle_key(const std::string& k) {
+  for (const std::string& b : battle_keys()) if (b == k) return true;
+  return false;
+}
+UObject* playing_event(UObject** actor, bool* battle = nullptr) {
+  if (battle) *battle = false;
   for (UObject* a : watch::all(event_actor_id())) {
     UObject* p = get<UObject*>(a, "SequencePlayer");
     if (p && is_live(p) && (call_ret<bool>(p, "IsPlaying") || call_ret<bool>(p, "IsPaused"))) { if (actor) *actor = a; return p; }
+  }
+  if (battle_keys().empty()) return nullptr;
+  for (UObject* a : watch::all(seq_actor_id())) {
+    if (is_a(a, "AtlEvtLevelSequenceActor")) continue;
+    UObject* p = get<UObject*>(a, "SequencePlayer");
+    if (!p || !is_live(p)) continue;
+    UObject* seq = get<UObject*>(p, "Sequence");
+    if (!seq || !is_live(seq) || !is_battle_key(name_of(seq))) continue;
+    if (call_ret<bool>(p, "IsPlaying") || call_ret<bool>(p, "IsPaused")) {
+      if (actor) *actor = a;
+      if (battle) *battle = true;
+      return p;
+    }
   }
   return nullptr;
 }
@@ -262,6 +293,21 @@ std::string key_of(std::string name) {
 
 std::string data_dir() { return audio::module_dir() + "assets\\ad\\"; }
 
+const std::vector<std::string>& battle_keys() {
+  static const std::vector<std::string>* keys = [] {
+    auto* v = new std::vector<std::string>;
+    WIN32_FIND_DATAA fd;
+    HANDLE h = FindFirstFileA((data_dir() + "LS_Btl*.txt").c_str(), &fd);
+    if (h != INVALID_HANDLE_VALUE) {
+      do { std::string k = fd.cFileName; k.resize(k.size() - 4); v->push_back(std::move(k)); } while (FindNextFileA(h, &fd));
+      FindClose(h);
+    }
+    log::writef("ad: {} battle scenes described", v->size());
+    return v;
+  }();
+  return *keys;
+}
+
 // ---- the descriptions heard (3D scenes) ----
 // The file sits beside the settings; dev launches (P3A_NOFOCUS) keep their own, as they do settings-dev.ini.
 std::wstring heard_file() {
@@ -394,12 +440,29 @@ bool g_releasing = false;    // the box closed and asked the source to play: unt
 uint16_t a_mask() { static uint16_t a = input::button_mask("a"); return a; }
 uint16_t pad_a() { return input::layer_open() ? 0 : (input::real_buttons() & a_mask()); }
 
+bool g_battle = false;        // the scene loaded is a battle's (playing_event): held by its rate, not paused
+float g_rate = 1.0f;          // a held battle scene's play rate before the box held it
+bool g_box_over_msg = false;  // the box came up over a battle line's window that waits for the player (see tick)
+
+void set_rate(UObject* player, float r) {
+  if (UFunction* fn = find_function(class_of(player), "SetPlayRate")) { Params p(fn); p.set<float>("PlayRate", r); call(player, p); }
+}
+
 void hold_source(bool on) {
   if (UObject* m = playing_mana()) {
     if (UFunction* fn = find_function(class_of(m), "Pause")) { Params p(fn); p.set<uint8_t>("bPause", on ? 1 : 0); call(m, p); }
     return;
   }
-  if (UObject* ev = playing_event(nullptr)) call(ev, on ? "Pause" : "Play");
+  bool battle = false;
+  UObject* ev = playing_event(nullptr, &battle);
+  if (!ev) return;
+  if (!battle) { call(ev, on ? "Pause" : "Play"); return; }
+  const float r = call_ret<float>(ev, "GetPlayRate", 1.0f);
+  if (on) {
+    if (r > kHeldRate * 2) { g_rate = r; set_rate(ev, kHeldRate); }
+  } else if (r <= kHeldRate * 2) {
+    set_rate(ev, g_rate > kHeldRate * 2 ? g_rate : 1.0f);
+  }
 }
 
 void open_box(int cue) {
@@ -408,18 +471,24 @@ void open_box(int cue) {
   g_box_ended = false;
   g_box_spoke = false;
   g_box_pad = pad_a() != 0;   // an A still down from the last message is not this box's press
-  input::set_swallow_prompt(a_mask());
+  // Over a battle line's window that waits for the player, the press that goes on is the window's too: it reaches
+  // the game, so one press closes both, as one press turns a page.
+  const msg::Current w = msg::current();
+  g_box_over_msg = g_battle && w.open && w.blocking;
+  input::set_swallow_prompt(g_box_over_msg ? 0 : a_mask());
   hold_source(true);   // no opening sound: a dialogue window opens without one (the user's call, 2026-11-20)
 }
 
 // resume: the source is still the one the box held (playing, not replaced): it plays again.
-void close_box(bool resume) {
+// cut: the narrator stops (the player went on); a battle scene that ended under its box lets it finish.
+void close_box(bool resume, bool cut = true) {
   if (g_box < 0) return;
-  if (g_cur >= 0) audio::narrate_stop();   // gone on before the narrator finished: the cue is logged cut
+  if (cut && g_cur >= 0) audio::narrate_stop();   // gone on before the narrator finished: the cue is logged cut
   if (resume) { hold_source(false); g_releasing = true; }
   input::set_swallow_prompt(0);
   g_box = -1;
   g_box_go = false;
+  g_box_over_msg = false;
 }
 }  // namespace
 
@@ -439,15 +508,18 @@ Clock clock() {
   UObject* m = playing_mana();
   if (!m) {
     UObject* actor = nullptr;
-    UObject* ev = playing_event(&actor);
+    bool battle = false;
+    UObject* ev = playing_event(&actor, &battle);
     // Fast-forward runs a scene at four times its pace: no description is played over it (one playing stops; the
     // schedule skips what it passes). It is the same scene: reporting it as stopped reloaded the scene at each
     // toggle (2026-11-16, 110_210 in a player's log).
     if (!ev) return c;
-    c.fast = world::scene_fast();
+    c.fast = !battle && world::scene_fast();
     c.playing = true;
     c.event = true;
-    c.paused = call_ret<bool>(ev, "IsPaused");
+    c.battle = battle;
+    // a battle scene held by its rate (the box's hold) counts as paused
+    c.paused = call_ret<bool>(ev, "IsPaused") || (battle && call_ret<float>(ev, "GetPlayRate", 1.0f) <= kHeldRate * 2);
     // Keyed by the LevelSequence the player runs (UMovieSceneSequencePlayer::Sequence), not by the actor: 30 Social
     // Link levels name their actor after another scene (009_055's is LS_Event_Cmmu_009_053_C, the _600s' a _610) or
     // with a _2 (the _717/_737 hangouts), and their descriptions never played.
@@ -775,6 +847,7 @@ void tick() {
     close_box(g_key == key_of(c.movie));
     stop_all();
     g_key = key_of(c.movie);
+    g_battle = c.battle;
     g_mode = mode;
     g_once = once;
     g_speed = speed;
@@ -794,7 +867,7 @@ void tick() {
       log::writef("ad: {} opens at {:.2f} (music {:.2f}, fade in done {:.2f}, first line {:.2f})", g_key, o.end, o.music,
                   o.fade, o.first_line);
     }
-    log::writef("ad: {} {} ({}), {} descriptions{}{}", c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
+    log::writef("ad: {} {} ({}), {} descriptions{}{}", c.battle ? "battle scene" : c.event ? "scene" : "movie", c.movie, key_of(c.movie), s ? s->cues.size() : 0,
                 s && s->left_out ? std::format(", {} heard before left out", s->left_out) : std::string(),
                 speed ? std::format(", narrator x{:.2f}", settings::scene_speed_factor(speed)) : std::string());
   }
@@ -817,10 +890,18 @@ void tick() {
   if (c.event) {
     const msg::Current w = msg::current();
     sc.talk = (w.open && w.blocking) || voice::playing();
+    // A battle's script shows a line as it plays a scene, and ends the scene soon after the line's window closes
+    // (BTL_CUTSCENE_PLAY, MSG, WAIT, END): a description waiting for the window to close would never come. Once the
+    // line's voice has ended the window only waits for the player, as a held page does: the description comes then,
+    // over it (open_box: one press goes on from both).
+    if (g_battle && w.open && w.blocking && w.voice_done && !voice::playing()) sc.talk = false;
     if (c.time <= g_opening) sc.talk = true;   // its opening (music, fade in) has not played yet: see scene_opening
   }
   if (g_box >= 0) {
-    if (!playing || c.fast || !wait) close_box(playing);
+    // A battle scene ended under its box (its script ended it: the line's window closed under Auto): the description
+    // is said to its end, over the battle.
+    if (!playing && g_battle) close_box(false, false);
+    else if (!playing || c.fast || !wait) close_box(playing);
     else {
       const bool a = pad_a() != 0;
       if (a && !g_box_pad) g_box_go = true;
@@ -913,7 +994,7 @@ void register_routes() {
   keys::set_prompt([](uint32_t vk, bool repeat) {
     if (g_box < 0 || (vk != VK_RETURN && vk != VK_SPACE)) return false;
     if (!repeat) g_box_go = true;
-    return true;
+    return !g_box_over_msg;   // over a battle line's waiting window the press goes on to it too (open_box)
   });
   player_id();
   track_player_id();

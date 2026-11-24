@@ -13,6 +13,7 @@ struct Clock {
   int audio_track = -1;   // 0 Japanese voices, 1 English
   bool event = false;  // a scene played in the engine (its LevelSequence's clock; movie = the sequence's name)
   bool fast = false;   // the scene is fast-forwarded: still playing, but no description is said over it
+  bool battle = false;   // a battle's own scene (a boss's entrance, a first summon): event too
 };
 // A description's box holds the movie or scene paused (or has just let it go): the pause is the mod's, not the
 // player's (the movie screen says nothing of it).
