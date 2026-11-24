@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Menus
+- "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
+- Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
+
 ## 0.6.0
 
 ### Languages

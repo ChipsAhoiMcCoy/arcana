@@ -219,7 +219,9 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
     bool handed_back = g_active && cur == g_active && !(msg::current().blocking && !g_active->over_messages());
     if (back && (has_focus_now() || handed_back || !dynamic_cast<MenuScreen*>(cur))) {
       if (has_focus_now()) { player_moved(); armed_press(); cancel_pressed(); }
-      if (!repeat) input::inject_key('C');
+      bool closed = false;
+      if (!repeat && g_active && cur == g_active) guarded([&] { closed = g_active->on_cancel(); });
+      if (!repeat && !closed) input::inject_key('C');
       return true;
     }
   }
@@ -246,6 +248,7 @@ bool on_key_inner(uint32_t vk, int mods, bool repeat, bool& reached) {
   reached = true;
   if (mods == keys::None && (vk == VK_RETURN || vk == VK_SPACE || vk == VK_ESCAPE || vk == VK_BACK)) armed_press();
   if (mods == keys::None && (vk == VK_ESCAPE || vk == VK_BACK || vk == 'C')) cancel_pressed();   // C: the game's own cancel
+  if (mods == keys::None && vk == 'C' && !repeat) guarded([&] { g_active->on_cancel(); });
   using namespace ui::ui_actions;
   auto& n = nav();
   if (mods == keys::None) {
@@ -353,6 +356,7 @@ void pad_tick(bool on) {
       if (pressed & bit) pad_button(bit);
     g_pad_next = t + 450;
   }
+  if (b_pressed && g_active) guarded([&] { g_active->on_cancel(); });   // the game gets the B too
   if (b_pressed) { player_moved(); cancel_pressed(); }   // a cancel is a press like any other: a pending confirm is dropped
   if (b_pressed || (pressed & XINPUT_GAMEPAD_A)) armed_press();   // after pad_button: a move clears it
   // Any other new press of the pad's (LB / RB, a trigger, X, Y: input.cpp counts them) reached the game, which answers

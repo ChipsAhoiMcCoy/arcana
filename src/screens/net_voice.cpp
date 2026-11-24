@@ -23,7 +23,9 @@
 #include "core/strings.h"
 #include "calendar.h"
 #include "msg.h"
+#include "log.h"
 #include "seh.h"
+#include "ue/scan.h"
 #include <format>
 
 namespace p3a::screens {
@@ -39,7 +41,9 @@ std::string percent_line(const std::string& what, int pct) {
 // first row once the figures are in (at once when the game had them already).
 class NetMenu : public MenuScreen {
  protected:
-  struct Row { std::string id, text, region; };
+  // `group`: the heading the row sits under (a kind of activity and its share), said when focus enters the group;
+  // positions count within it.
+  struct Row { std::string id, text, region, group; };
   std::vector<Row> rows_;
   int start_ = 0;   // the row the menu opens on
   enum State { Waiting, Ready, Failed };
@@ -95,11 +99,19 @@ class NetMenu : public MenuScreen {
       return;
     }
     std::string region;
+    bool in_group = false;
     for (auto& r : rows_) {
-      if (!r.region.empty() && r.region != region) { region = r.region; b.set_region(region); }
+      if (!r.region.empty() && r.region != region) {
+        if (in_group) { b.pop_context(); in_group = false; }
+        region = r.region;
+        b.set_region(region);
+        if (!r.group.empty()) { b.push_context(r.group); in_group = true; }
+      }
       std::string text = r.text;
       b.add_item(ui::ControlId::structural(r.id), item([text] { return text; }));
     }
+    if (in_group) b.pop_context();
+    b.set_region({});
     if (!rows_.empty()) b.set_start(ui::ControlId::structural(rows_[std::min<size_t>(start_, rows_.size() - 1)].id));
   }
   std::string describe() override {
@@ -176,7 +188,8 @@ class NetActionScreen : public NetMenu {
     if (a) guarded([&] { err = *((uint8_t*)a + 0x41A) != 0; });
     return err && get_bool(d, "IsGetData");
   }
-  // Each kind of activity is a section: its share, then the activities the game notes for it (Tab jumps the kinds).
+  // Each kind of activity is a section headed by its share, the activities the game notes for it under it, counted
+  // within it (as the analysis page's affinities are). Tab jumps the kinds.
   void read(UObject* d) override {
     for (int k = 0; k < 3; ++k) {
       int pct = 0;
@@ -187,15 +200,33 @@ class NetActionScreen : public NetMenu {
         for (int i = 0; notes->data && i < notes->num && i < 5; ++i) pages.push_back(notes->data[i]);
       });
       std::string region = std::format("net.k{}", k);
-      rows_.push_back({region, percent_line(strings::kNetActionKinds[k].c_str(), pct), region});
+      std::string heading = percent_line(strings::kNetActionKinds[k].c_str(), pct);
+      size_t before = rows_.size();
       for (size_t i = 0; i < pages.size(); ++i)
-        if (std::string t = msg::page_string(pages[i]); !t.empty()) rows_.push_back({std::format("{}.{}", region, i), t, region});
+        if (std::string t = msg::page_string(pages[i]); !t.empty()) rows_.push_back({std::format("{}.{}", region, i), t, region, heading});
+      if (rows_.size() == before) rows_.push_back({region, heading, region, {}});   // no notes: the share is the row
     }
   }
   const char* base_title() const override { return strings::kNetActionTitle; }
   strings::Hint keys() const override { return strings::kNetActionKeys; }
  public:
   const char* id() const override { return "net_action"; }
+  // The game closes the action on its cancel (action 0x17) or View (0x33) in its state 5 (+0x294, the +0x288 part's
+  // +0xC) once the draw's +0x2F9 and +0x2FF are set (the action's state code, case 5): FUN_14149f020 (the close sound, state 6).
+  // Those presses were lost on the way to it, so the player's cancel runs the same close here.
+  bool on_cancel() override {
+    UObject* a = action();
+    UObject* d = draw();
+    if (!a || !d || !known_build()) return false;
+    bool ready = false;
+    guarded([&] {
+      ready = *(int32_t*)((uint8_t*)a + 0x294) == 5 && *((uint8_t*)d + 0x2F9) && *((uint8_t*)d + 0x2FF);
+    });
+    if (!ready) return false;
+    ((void (*)(void*))(scan::exe_base() + 0x149f020))(a);
+    log::writef("net_action: closed on the player's cancel");
+    return true;
+  }
   int priority() const override { return 30; }
 };
 }  // namespace

@@ -91,6 +91,9 @@ class MenuScreen : public Screen, public ui::Screen {
   virtual bool holds_keys() { return true; }
   // A key down going to the game while it has the keys (a screen that reads what the game does with it).
   virtual void on_game_key(uint32_t, int) {}
+  // The player's cancel (Escape, C, a fresh B) while the menu is up. True: the screen closed itself the game's way, and
+  // Escape sends no C.
+  virtual bool on_cancel() { return false; }
   // Whether the title is said on every entry (not once per opening of what is underneath).
   virtual bool title_every_entry() { return false; }
   // Whether entering the menu reads its focused item (false: something else has just said where the player is).
