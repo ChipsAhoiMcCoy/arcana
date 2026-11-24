@@ -23,11 +23,14 @@ std::string system_text(int row) {
   return text(*(FText*)(r + offset_of(datatable_struct(t), "Name")));   // DatNameTable.Name is an FText
 }
 
-std::string time_zone(int tz) {
-  // ECldTimeZone 1..9 -> DT_SystemTextName 120..129 (126 is "Daytime", used by no time zone)
+std::string time_zone(int tz, bool holiday) {
+  // ECldTimeZone 1..9 -> DT_SystemTextName 120..129. 126 is "Daytime": the afternoon (PM, 5) of a holiday, as the
+  // date in the corner and the time change show it (their sprite switch, exe+0x1449480 / exe+0x14542b0: PM is the
+  // "Daytime" sprite when the day's IsHoliday byte is set, the byte GetNowYasumi reads; Sunday June 7 read
+  // "Afternoon" under "Daytime", 2026-11-24).
   static const int rows[10] = {0, 120, 121, 122, 123, 124, 125, 127, 128, 129};
   if (tz < 1 || tz > 9) return {};
-  return system_text(rows[tz]);
+  return system_text(tz == 5 && holiday ? 126 : rows[tz]);
 }
 
 void install() {

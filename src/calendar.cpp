@@ -38,7 +38,7 @@ std::string moon_mark(int age) { return core::moon_mark(age); }
 
 std::string describe(const Now& n) {
   if (!n.valid) return {};
-  return core::date_text(n.month, n.day, n.weekday, n.holiday, gametext::time_zone(n.time_zone));
+  return core::date_text(n.month, n.day, n.weekday, n.holiday, gametext::time_zone(n.time_zone, n.holiday));
 }
 
 // The game's scene changes (UCalendar, a transient object): sleeping queues one (mChangeSetted_ DayChange, with
@@ -74,7 +74,7 @@ void tick() {
         n.time_zone = to;
         speech::speak(describe(n), true);
         said_tz = to; said_day = n.total;
-      } else if (std::string s = gametext::time_zone(to); !s.empty()) { speech::speak(s, true); said_tz = to; said_day = n.total; }
+      } else if (std::string s = gametext::time_zone(to, n.holiday); !s.empty()) { speech::speak(s, true); said_tz = to; said_day = n.total; }
     }
     if (t != last_type && t) next_tz = 0;
     last_type = t;
@@ -88,7 +88,7 @@ void tick() {
   if (!n.valid) return;
   bool first = said_day < 0;
   if (n.total == said_day && n.time_zone == said_tz) return;
-  std::string s = n.total == said_day ? gametext::time_zone(n.time_zone) : describe(n);
+  std::string s = n.total == said_day ? gametext::time_zone(n.time_zone, n.holiday) : describe(n);
   said_day = n.total; said_tz = n.time_zone;
   if (!first && !s.empty()) speech::speak(s, false);
 }

@@ -10,6 +10,9 @@
 - At a low frame rate (a slow computer, or a busy one) the camp menu could ignore the arrow keys, and other menus could step their cursor twice: the mod ran several times in one of the game's frames and miscounted them. It now runs once a frame.
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
+### Field
+- On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
+
 ### Dialogue
 - Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
 
