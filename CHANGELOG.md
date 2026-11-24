@@ -22,6 +22,9 @@
 ### Battle
 - A skill or attack that hits the same unit several times no longer reads every hit: the first hit on each one is said as it lands, then what the rest came to once the action is over ("Makoto 147 damage in all"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now at most eight.
 
+### Achievements
+- New: an achievement is said as it unlocks, with its name and description ("Achievement unlocked: SEES the Day. Joined the Specialized Extracurricular Execution Squad."). Steam shows unlocks only in its overlay, which a screen reader does not read. One you had unlocked before is not said again.
+
 ### Dialogue
 - Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
 

@@ -20,6 +20,7 @@
 #include "dat.h"
 #include "gametext.h"
 #include "stats.h"
+#include "achievements.h"
 #include "party.h"
 #include "flow.h"
 #include "items.h"
@@ -64,7 +65,7 @@ static Section g_sections[] = {
   {"voice", voice::tick}, {"msg", msg::tick}, {"screens", screens::tick},
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
-  {"stats", stats::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
+  {"stats", stats::tick, true}, {"achievements", achievements::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
   {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
 };
 static uint64_t g_perf_ticks = 0;
@@ -147,6 +148,7 @@ void init(bool speech_ok) {
   dat::install();
   calendar::install();
   stats::install();
+  achievements::install();
   if (ue::known_build()) confirm::install();   // fixed addresses: this build only
   else log::write("confirm: not this build, off");
   social::install();

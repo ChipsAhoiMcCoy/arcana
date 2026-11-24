@@ -116,6 +116,7 @@ inline constexpr Tr kToday{"today"};  // the calendar's current day
 inline constexpr Tr kMoonPhases[] = {"New moon", "Waxing crescent moon", "First quarter moon", "Waxing gibbous moon", "Full moon",
                                               "Waning gibbous moon", "Last quarter moon", "Waning crescent moon"};
 inline constexpr Tr kGot{"Got"};
+inline constexpr Tr kAchievementUnlocked{"Achievement unlocked"};   // "Achievement unlocked: Name. What it is for"
 // Whole sentences with the game's words in them, so each language puts the pieces in its own order:
 inline constexpr Tr kGotFmt{"Got {}"};                 // "Got Bead x3, Medicine"
 inline constexpr Tr kCountFmt{"{} x{}"};               // an item and how many: "Bead x3"
