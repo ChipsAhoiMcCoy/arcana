@@ -381,9 +381,10 @@ class BattleScreen : public Screen {
   // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
   WeakObj paid_;
   // An action that strikes the same unit again (Strength's Mobius Rondo hits each member six times; a weapon that
-  // hits more than once): the first hit on each unit is said as it lands, the rest are added up and said once the
-  // action is over, one line per unit ("Makoto 147 damage in all"), not a line per hit (Mobius Rondo was 24 lines,
-  // 2026-11-24). The action is over when another unit acts, the next banner comes up (the same unit's next action)
+  // hits more than once): its damage is added up per unit and said once the action is over, one line per unit
+  // ("Makoto 147 damage in all"; a single hit as before, "Makoto 26 damage"), not a line per hit (Mobius Rondo was
+  // 24 lines, 2026-11-24). Saying the first hit as it landed made one attack sound like two ("14 damage", then
+  // "59 damage in all"). The action is over when another unit acts, the next banner comes up (the same unit's next action)
   // or a wheel or list opens; a unit that falls says so instead.
   struct Hits { WeakObj::Key key; std::string name; int total; int count; bool chosen; };
   std::vector<Hits> hits_;
@@ -396,9 +397,11 @@ class BattleScreen : public Screen {
   void flush_hits() {
     for (auto& h : hits_) {
       auto u = units_.find(h.key);
-      if (h.count < 2 || u == units_.end() || u->second.hp <= 0) continue;   // one hit, or it fell: said already
-      speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
-                               : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
+      if (u == units_.end() || u->second.hp <= 0) continue;   // it fell: that is said instead
+      std::string one = std::format("{} {}", h.total, strings::kDamage);
+      if (h.count < 2) speech::speak(h.chosen ? one : std::format("{} {}", h.name, one), false);
+      else speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
+                                  : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
     }
     hits_.clear();
     hits_by_ = {};
@@ -463,11 +466,12 @@ class BattleScreen : public Screen {
             // The player's own choice of this one unit: the number alone. Anything else names who it landed on (an
             // enemy's or an ally's own action, a whole side, an attack sent back at the attacker).
             bool chosen = st == 0 && action_now && commanded_.resolve() == action_now && attacked(action_now) == u;
-            std::string s = d < 0 ? std::format("{} {}", -d, strings::kDamage) : std::format("{} {}", strings::kHealed, d);
-            speech::speak(chosen ? s : std::format("{} {}", cur.name, s), false);
-            if (d < 0 && st == 0 && action_now) {
+            if (d < 0 && st == 0 && action_now) {   // said once the action is over, with any hits after it
               if (!(WeakObj::of(action_now) == hits_by_)) { flush_hits(); hits_by_ = WeakObj::of(action_now); }
               hits_.push_back({key, cur.name, -d, 1, chosen});
+            } else {
+              std::string s = d < 0 ? std::format("{} {}", -d, strings::kDamage) : std::format("{} {}", strings::kHealed, d);
+              speech::speak(chosen ? s : std::format("{} {}", cur.name, s), false);
             }
           }
         }
