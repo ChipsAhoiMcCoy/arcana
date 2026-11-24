@@ -29,6 +29,7 @@
 - New: an achievement is said as it unlocks, with its name and description ("Achievement unlocked: SEES the Day. Joined the Specialized Extracurricular Execution Squad."). Steam shows unlocks only in its overlay, which a screen reader does not read. One you had unlocked before is not said again.
 
 ### Dialogue
+- A choice whose first answer is only "......" (Takaya's "Now... kill me." on 1/31) is said as "ellipsis, 1 of 2" as it opens, as moving to it already said: it opened as "...... 1 of 2", which a screen reader reads as nothing or as dots.
 - Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
 
 ### Audio description

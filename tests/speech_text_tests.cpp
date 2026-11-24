@@ -19,6 +19,13 @@ TEST_CASE("spoken_line names the speaker when there is one") {
   CHECK(spoken_line("", "") == "");
   CHECK(spoken_line("\xC3\x89lisabeth", "\xE2\x80\xA6Oh.") == "\xC3\x89lisabeth: \xE2\x80\xA6Oh.");
 }
+TEST_CASE("answer_line puts an answer's place after it and names an answer of marks") {
+  using p3a::core::answer_line;
+  CHECK(answer_line("Nice to meet you.", 1, 3) == "Nice to meet you, 1 of 3");
+  CHECK(answer_line("......", 1, 2) == "ellipsis, 1 of 2");
+  CHECK(answer_line("Well...", 2, 2) == "Well..., 2 of 2");
+  CHECK(answer_line("I hope you're prepared.", 2, 2) == "I hope you're prepared, 2 of 2");
+}
 TEST_CASE("without_own_stop drops one full stop and keeps an ellipsis") {
   using p3a::core::without_own_stop;
   CHECK(without_own_stop("Nice to meet you.") == "Nice to meet you");

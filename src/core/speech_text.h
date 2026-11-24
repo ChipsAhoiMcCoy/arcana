@@ -17,6 +17,9 @@ std::string spoken_line(std::string_view speaker, std::string_view text);
 // An entry without its own full stop ("Nice to meet you." -> "Nice to meet you": joined to a position, the stop was
 // read as a dot); an ellipsis stays, and so does a lone ".".
 std::string without_own_stop(std::string s);
+// An answer in a choice list with its place: "Yes, 1 of 2" (its own full stop gone, as without_own_stop), and an
+// answer of marks alone named ("......" -> "ellipsis, 1 of 2": a screen reader said nothing for it).
+std::string answer_line(std::string_view answer, size_t place, size_t count);
 // Whether a list has entries and every one has its text (a list's entries are empty for a frame or two as it opens).
 bool all_filled(const std::vector<std::string>& entries);
 // A line with each run of digits as one '#': two readings of a countdown ("...in 9 seconds", "...in 10 seconds")

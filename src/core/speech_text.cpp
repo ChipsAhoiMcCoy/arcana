@@ -25,6 +25,10 @@ std::string without_own_stop(std::string s) {
   return s;
 }
 
+std::string answer_line(std::string_view answer, size_t place, size_t count) {
+  return position(speakable(without_own_stop(std::string(answer))), place, count);
+}
+
 bool all_filled(const std::vector<std::string>& entries) {
   if (entries.empty()) return false;
   for (auto& e : entries) if (e.empty()) return false;

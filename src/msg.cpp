@@ -89,9 +89,10 @@ static UObject* manager() {
 }
 
 // "Yes, 1 of 2": every list in the mod speaks its position this way. An answer's own full stop goes ("Nice to meet
-// you., 1 of 3" read as a dot, 2026-10-29); an ellipsis stays.
+// you., 1 of 3" read as a dot, 2026-10-29); an ellipsis stays, and an answer of "......" alone is named, as the
+// list's own moves name it (it opened as "...... 1 of 2", 2026-11-24).
 static std::string choice_line(const std::vector<std::string>& ch, size_t i) {
-  return core::position(core::without_own_stop(ch[i]), i + 1, ch.size());
+  return core::answer_line(ch[i], i + 1, ch.size());
 }
 
 static std::string window_kind(UObject* item) {
