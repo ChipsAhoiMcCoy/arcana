@@ -96,15 +96,18 @@ std::string person(int id) {
 
 // The field prompt over a Social Link partner shows their arcana and rank (AUIMiscCheckDraw: DT_UILayout_MiscCheck
 // ARCANA_NAME, RANK): "Magician, rank 3" for the person of an established link, else "".
+// The prompt itself shows no readiness; the mod adds it, as the town map's blue card shows it (the user's call,
+// 2026-11-24).
 std::string partner_rank(const std::string& name) {
-  if (name.empty()) return {};
-  // The camp names some partners by first name only ("Maiko", "Bebe"): those match the field label's first word. The
-  // Old Couple's link names neither of them (their prompt gets nothing).
-  // Looked for anywhere in the label: Japanese and Chinese write the family name first, with no space.
+  int id = partner_arcana(name);
+  if (!id) return {};
   for (auto& l : read())
-    if (std::string p = l.rank > 0 ? person(l.arcana) : std::string();
-        !p.empty() && (p == name || (p.find(' ') == std::string::npos && name.find(p) != std::string::npos)))
-      return std::format("{}, {} {}", arcana_name(l.arcana), strings::kRank, l.rank >= 10 ? std::string(strings::kRankMax) : std::to_string(l.rank));
+    if (l.arcana == id) {
+      std::string s = std::format("{}, {} {}", arcana_name(l.arcana), strings::kRank, l.rank >= 10 ? std::string(strings::kRankMax) : std::to_string(l.rank));
+      if (reversed(l.arcana)) s += std::string(", ") + strings::kReversed;
+      else if (ready(l)) s += std::string(", ") + strings::kReadyToRankUp;
+      return s;
+    }
   return {};
 }
 
@@ -114,35 +117,82 @@ static std::string name_rank(int arcana, int rank) {
   return std::format("{}{}, {} {}", arcana_name(arcana), p.empty() ? "" : " (" + p + ")", strings::kRank, r);
 }
 
-// The points the link needs for its next rank, or -1 when it ranks up through the story or is at MAX. Of several rows
-// for one rank (romance and story variants) the lowest whose flag, if any, is on.
+// The points the link needs for its next rank, or -1 when it ranks up through the story or is at MAX. The game's own
+// test (exe+0x10b9160, "can rank up": the town map's blue card, CMM_CHK_LVUP's twin; read 2026-11-24): the arcana's
+// LoverRankUpTable (+0x20) while the link is a romance (flags 0x10000150.. per arcana, BF_CmmuFlagSetting), else its
+// RankUpTable (+0x10); the first row for the next rank, its flags not looked at.
+static int lover_flag(int arcana) {
+  switch (arcana) {
+    case 3: return 0x10000150; case 4: return 0x10000151; case 7: return 0x10000152;
+    case 9: return 0x10000153; case 12: return 0x10000154; case 22: return 0x10000155;
+    default: return 0;
+  }
+}
 static int points_needed(const Link& l) {
   if (l.rank < 1 || l.rank >= 10) return -1;
   UObject* h = handler();
   int need = -1;
+  int lf = lover_flag(l.arcana);
+  bool lover = lf && party::flag(lf);
   if (h) guarded([&] {
     UObject* a = *(UObject**)((uint8_t*)h + 0xF0);
     if (!a || !is_live(a)) return;
     auto* tables = (TArray<uint8_t>*)((uint8_t*)a + 0x30);
     if (!tables->data || l.arcana >= tables->num) return;
     uint8_t* t = tables->data + l.arcana * 0x30;
-    if (((TArray<uint8_t>*)t)->num <= 2) return;   // a story link
-    auto* rows = (TArray<uint8_t>*)(t + 0x10);
+    if (((TArray<uint8_t>*)t)->num <= 2) return;   // a story link (Fool, Death, Judgement): no hangouts
+    auto* rows = (TArray<uint8_t>*)(t + (lover ? 0x20 : 0x10));
     if (!rows->data || rows->num <= 0 || rows->num > 64) return;
     for (int i = 0; i < rows->num; ++i) {
       uint8_t* r = rows->data + i * 0x1C;
-      int rank = *(int16_t*)r, pts = *(int16_t*)(r + 2);
-      uint32_t f = *(uint32_t*)(r + 0xC);
-      if (rank != l.rank + 1 || (f && !party::flag((int)f))) continue;
-      if (need < 0 || pts < need) need = pts;
+      if (*(int16_t*)r == l.rank + 1) { need = *(int16_t*)(r + 2); return; }
     }
   });
   return need;
 }
 
+// A link the game holds back (exe+0x10b94f0): a social stat or the story gates its next hangout. The town map draws
+// its card grey, not blue, even with the points.
+static bool locked(int arcana) {
+  int f = 0;
+  switch (arcana) {
+    case 3: f = 0x100001a1; break; case 4: f = 0x100001b1; break; case 7: f = 0x100001e1; break;
+    case 15: f = 0x10000261; break; case 16: f = 0x10000271; break; case 17: f = 0x10000281; break;
+    case 18: f = 0x10000291; break; case 19: f = 0x100002a1; break; case 20: f = 0x100002b1; break;
+  }
+  if (f && party::flag(f)) return true;
+  switch (arcana) {
+    case 7: return party::flag(0x100001ee);
+    case 9: return party::flag(0x10000208) || party::flag(0x1000020a);
+    case 13: return party::flag(0x1000024f);
+    case 16: return party::flag(0x1000027a);
+    case 19: return party::flag(0x100002a8);
+  }
+  return false;
+}
+
+// Ready as the town map shows it (blue card): the points for the next rank, not reversed, not held back.
 bool ready(const Link& l) {
   int need = points_needed(l);
-  return need >= 0 && l.points >= need && !reversed(l.arcana);
+  return need >= 0 && l.points >= need && !reversed(l.arcana) && !locked(l.arcana);
+}
+
+bool ready(int arcana) {
+  for (auto& l : read()) if (l.arcana == arcana) return ready(l);
+  return false;
+}
+
+int partner_arcana(const std::string& name) {
+  if (name.empty()) return 0;
+  // The camp names some partners by first name only ("Maiko", "Bebe"): those match the field label's first word. The
+  // Old Couple's link names neither of them (their prompt gets nothing).
+  // Looked for anywhere in the label: Japanese and Chinese write the family name first, with no space.
+  for (auto& l : read())
+    if (std::string p = l.rank > 0 ? person(l.arcana) : std::string();
+        !p.empty() && (p == name || name.rfind(p + " (", 0) == 0 ||
+                       (p.find(' ') == std::string::npos && name.find(p) != std::string::npos)))
+      return l.arcana;
+  return 0;
 }
 
 std::string describe(const Link& l) {

@@ -23,6 +23,7 @@
 #include "settings.h"
 #include "shadow.h"
 #include "sight.h"
+#include "social.h"
 #include "world.h"
 #include <windows.h>
 #include <algorithm>
@@ -159,6 +160,17 @@ std::vector<Poi> scan(float radius) {
       if (core::same_thing(o.name, world::vec3(o.loc), name, world::vec3(v))) return;
     out.push_back(Poi{WeakObj::of(a), k, std::move(name), v, d, world::bearing(me, v)});
     if (auto it = icons.find(a); it != icons.end()) out.back().state = it->second;
+    // A Social Link partner whose next hangout ranks the link up (the game's own test, the town map's blue card): the
+    // field's card icon looks the same either way, so the list says it (the user's call, 2026-11-24). Asked only of a
+    // partner (FldCmmActor) or someone under the card icon: the name lookup reads the link table.
+    if (k == Kind::Person) {
+      Poi& p = out.back();
+      int id = 0;
+      if (is_a(a, "FldCmmActor")) id = get<int32_t>(a, "mUniqueId_", -1) + 1;
+      else if (p.state == strings::kIconLink.c_str()) id = social::partner_arcana(p.name);
+      if (id >= 1 && id <= 22 && social::ready(id))
+        p.state = p.state.empty() ? std::string(strings::kReadyToRankUp) : p.state + ", " + strings::kReadyToRankUp.c_str();
+    }
   };
   std::vector<UObject*> triggers;
   // A story trigger named for its scene, FldHitActor_<major>_<Scene>_H<n> (FldHitActor_299_Takaya_H0 and _Nyx_H0 at

@@ -267,6 +267,12 @@ void player_pressed() {
   bool blocking;
   { std::lock_guard lk(g_mu); blocking = g_current.blocking; }
   if (blocking) speech::stop();
+  // The player went on from the page before its voice or reading ended: no "Next" or end sound for it. The page shows
+  // for its closing frames, the voice stops, and the cue fell on the press (the player's report, 2026-11-24).
+  if (g_wait_page) {
+    log::writef("msg: confirm before the page's end: no end cue");
+    g_wait_page = nullptr;
+  }
 }
 
 // Auto is said only when the player switched it (Shift, or X on a controller). The game switches it off by itself

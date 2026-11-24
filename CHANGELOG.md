@@ -6,6 +6,13 @@
 - "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
 - Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
 
+### Dialogue
+- Confirming a line before its voice or reading has ended no longer says "Next" (or plays the end sound) as the window closes: the cue is for a line that waits for you, and you have already gone on.
+
+### Social Links
+- The people list (the scanner) says "ready to rank up" after a Social Link partner whose next hangout will rank the link up, and so does the prompt as you walk up to them (with "reversed" for a reversed link). In the game this shows only on the town map's cards.
+- "Ready to rank up" now follows the game's own rule everywhere it is said (the town map, the Social Link menu and Shift+backslash): a romance uses its own point table, and a link the game holds back (a social stat or the story gating its next hangout) is not called ready.
+
 ## 0.6.0
 
 ### Languages
