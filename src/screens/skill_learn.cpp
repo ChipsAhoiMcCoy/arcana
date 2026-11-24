@@ -39,10 +39,36 @@ class SkillLearnScreen : public MenuScreen {
   // 2026-10-31: Mithras 24 -> 28, eight slots full, Tentarafoo waiting with the cursor on it).
   static int new_skill(UObject* p) {
     auto* q = (uint8_t*)p;
+    if (remembering(p)) { int c = *(int32_t*)(q + 0x464); return c >= 0 && c < 8 ? recall_skill(p, *(int32_t*)(q + 0x484)) : 0; }
     if (int sid = *(uint16_t*)(q + 0x460)) return sid;
     int c = *(int32_t*)(q + 0x464);
     return *(int32_t*)(q + 0x458) > 0 && ((c >= 0 && c < 8) || c == 9) ? *(uint16_t*)(q + 0x358) : 0;
   }
+  // Be Blue V's treatment, a teammate relearning a forgotten skill: the page's Sequence_ is a
+  // PersonaStatusRememberSkillSeq. Measured 2026-11-24 (Yukari's Isis): +0x470 a TArray of {u32 skill, u32 SP cost},
+  // the forgotten skills as the game lists them ("SELECT SKILL": Garu, Magaru, Dia ...), +0x484 the cursor over them
+  // (it wraps; +0x480 the one before), +0x464 -1 while that list has the cursor. Enter on one moves the cursor to the
+  // eight slots (+0x464 0-7, +0x48C 1) to choose the skill it replaces; C goes back to the list.
+  static bool remembering(UObject* p) {
+    UObject* s = p ? get<UObject*>(p, "Sequence_") : nullptr;
+    return s && name_of(class_of(s)) == "PersonaStatusRememberSkillSeq";
+  }
+  static int recall_count(UObject* p) {
+    auto* a = p ? (TArray<uint32_t>*)((uint8_t*)p + 0x470) : nullptr;
+    return a && a->data && a->num > 0 && a->num <= 64 ? a->num : 0;
+  }
+  static int recall_skill(UObject* p, int i) {
+    if (i < 0 || i >= recall_count(p)) return 0;
+    int sid = 0;
+    guarded([&] { sid = (int)((TArray<uint32_t>*)((uint8_t*)p + 0x470))->data[i * 2]; });
+    return sid > 0 && sid < 0x10000 ? sid : 0;
+  }
+  Mirror& recall_ = mirror("recall", [this] {
+    UObject* p = ps_.get();
+    if (!p || !remembering(p) || *(int32_t*)((uint8_t*)p + 0x464) != -1) return -1;
+    int c = *(int32_t*)((uint8_t*)p + 0x484);
+    return c >= 0 && c < recall_count(p) ? c : -1;
+  });
   static bool card(UObject* p) { return *(uint16_t*)((uint8_t*)p + 0x460) != 0; }   // the new skill has its own card (slot 10)
   bool learning(UObject* p) {
     UObject* seq = get<UObject*>(p, "Sequence_");
@@ -56,6 +82,13 @@ class SkillLearnScreen : public MenuScreen {
   }
   // The page's own skill list (APersonaStatus +0x310: 8 of {u32 flag, u32 skill}, count +0x354), as drawn: a fusion's
   // level up adds the skills it learned there (Agilao, Hama) before the entry has them (2026-10-31). Else the entry.
+  int relearn_ = 0, relearn_slot_ = -1, relearn_old_ = 0;   // the treatment's choice while the slots have the cursor
+  // The skill in slot i of the page's own list (APersonaStatus +0x310), 0 for none.
+  int slot_sid(int i) {
+    auto* p = (uint8_t*)ps_.get();
+    int n = p ? *(int32_t*)(p + 0x354) : 0;
+    return n > 0 && n <= 8 && i >= 0 && i < n ? (int)*(uint32_t*)(p + 0x310 + i * 8 + 4) : 0;
+  }
   std::string slot_text(int i) {
     const uint8_t* e = persona::shown_status();
     auto* p = (uint8_t*)ps_.get();
@@ -81,6 +114,9 @@ class SkillLearnScreen : public MenuScreen {
       UObject* p = ps_.get();
       return p && ((bool (*)(void*, void*, int))(scan::exe_base() + 0x14c8cb0))(p, nullptr, i);
     };
+    // The treatment's list has no select handler found: it is stepped with the arrows (it wraps).
+    recall_.keep_edges = true;
+    recall_.ready = slots_.ready;
   }
   const char* id() const override { return "skill_learn"; }
   // Over the camp Item list, the Velvet Room (a fusion's level up) and the victory screen, whose Persona page (27) it
@@ -104,13 +140,20 @@ class SkillLearnScreen : public MenuScreen {
     return std::format("{}: {} {}", persona::name(*(uint16_t*)(e + 2)), strings::kLearnSkill, persona::skill_name(sid));
   }
   // Before the first press the line says it.
-  std::string title() override { return slots_.cursor() < 0 ? std::string() : learn_line(); }
+  std::string title() override {
+    if (recall_.cursor() >= 0) {
+      const uint8_t* e = persona::shown_status();
+      return e ? std::format("{}: {}", persona::name(*(uint16_t*)(e + 2)), strings::kRelearnSkill) : std::string();
+    }
+    return slots_.cursor() < 0 ? std::string() : learn_line();
+  }
   void on_enter() override {
     UObject* p = ps_.get();
     const uint8_t* e = persona::shown_status();
     if (!p || !e) return;
     shown_ = *(uint16_t*)(e + 2);
     if (!(WeakObj::of(p) == page_)) skill_ = 0;
+    if (remembering(p)) { screens::set_keys(strings::kRelearnKeys); return; }
     if (int sid = new_skill(p)) {
       skill_ = sid;
       page_ = WeakObj::of(p);
@@ -159,6 +202,17 @@ class SkillLearnScreen : public MenuScreen {
     const uint8_t* e = persona::shown_status();
     if (!p || !e) return;
     if (int id = *(uint16_t*)(e + 2); id && id != shown_) { shown_ = id; say(persona::describe(id, *(uint16_t*)(e + 4)), true); }
+    // The treatment: Space on a slot swaps at once (no question) and the cursor goes back to the list, where the
+    // replaced skill now waits: said when the slot holds the chosen skill ("Learned Garu, in place of Pulinpa").
+    if (remembering(p)) {
+      int c = *(int32_t*)((uint8_t*)p + 0x464);
+      if (c >= 0 && c < 8) { relearn_ = new_skill(p); relearn_slot_ = c; relearn_old_ = slot_sid(c); }
+      else if (relearn_) {
+        if (slot_sid(relearn_slot_) == relearn_ && relearn_old_ != relearn_)
+          say(strings::fmt(strings::kRelearnedFmt, persona::skill_name(relearn_), persona::skill_name(relearn_old_)), true);
+        relearn_ = 0;
+      }
+    }
     // The new skill's id clears once it is learned (the cursor goes to -1); the page then waits for C.
     if (skill_ && new_skill(p) == 0) {
       screens::set_keys(strings::kCBack);
@@ -168,6 +222,24 @@ class SkillLearnScreen : public MenuScreen {
     }
   }
   void build(ui::GraphBuilder& b) override {
+    // The treatment's list of forgotten skills: each with its cost and, after it, what it does.
+    if (int at = recall_.cursor(); at >= 0) {
+      UObject* p = ps_.get();
+      int n = recall_count(p);
+      recall_.count = n;
+      b.begin_stop("recall");
+      for (int i = 0; i < n; ++i) {
+        int sid = recall_skill(p, i);
+        auto v = game_item(recall_, i, [sid] {
+          std::string c = persona::skill_cost(sid);
+          return c.empty() ? persona::skill_name(sid) : persona::skill_name(sid) + ", " + c;
+        });
+        describe_with(v, [sid] { return persona::skill_help(sid); });
+        b.add_item(slot("recall", i), v);
+      }
+      b.set_start(slot("recall", at));
+      return;
+    }
     if (slots_.cursor() < 0) {
       // A card's page before its first press has no cursor yet, and with no line the menu never opened: the page said
       // nothing (2026-11-06). Its press is the game's. Learned: nothing to choose.
@@ -183,6 +255,8 @@ class SkillLearnScreen : public MenuScreen {
     b.begin_stop("slots");
     UObject* p = ps_.get();
     int sid = new_skill(p);
+    // The treatment's slots have no card above them: the relearned skill is the title ("Isis: Learn Patra").
+    if (!remembering(p)) {
     b.start_row("slots");
     if (card(p) && *(int32_t*)((uint8_t*)p + 0x458) > 0) {
       int next = *(uint16_t*)((uint8_t*)p + 0x358);
@@ -203,6 +277,7 @@ class SkillLearnScreen : public MenuScreen {
       b.add_item(slot("slots", at), v);
     }
     b.end_row();
+    }
     // Two columns side by side: rows of two (slot r beside slot r + 4), arrows move as on screen.
     for (int r = 0; r < 4; ++r) {
       b.start_row("slots");

@@ -303,7 +303,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 
 - Weapon and item shops: items with price and stats, descriptions, how many you own, why a row can't be bought ("not enough yen", "out of stock"), "How many?" with the total as you change it (up and down by one, left and right by ten), and the buy and equip prompts.
 - Mayoido Antiques (from July): Fuse Equipment, Trade Card, Trade Item, each entry with how many you own, its stats and what the trade needs ("needs Topaz 3, you have 1").
-- Vending machines say how many are left. Be Blue V's job is read as choices.
+- Vending machines say how many are left. Be Blue V's job is read as choices. Its treatment (a teammate relearns a forgotten skill) reads the forgotten skills with their cost and what they do ("Isis: Relearn a skill. Garu, 3 SP, 1 of 6"); Enter on one moves to the slots to choose the skill it replaces, and the swap is said ("Learned Garu, in place of Pulinpa").
 
 ## Top-down exploration
 

@@ -258,6 +258,10 @@ inline constexpr Hint kLearnLevelUpKeys{"Space learns. When asked to forget one,
 // A battle's level up has no way back (Escape does nothing there): giving the skill up is the new skill's own card.
 inline constexpr Hint kLearnBattleKeys{"Space learns. When asked to forget one, the arrows move over the slots, two columns of four; up from the top row is the new skill, where Space gives it up.", "A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; up from the top row is the new skill, where A gives it up."};
 inline constexpr Hint kLearnSkillKeys{"Q and E switch Persona, Space learns. When asked to forget one, the arrows move over the slots, two columns of four; Escape goes back.", "LB and RB switch Persona, A learns. When asked to forget one, the D-pad moves over the slots, two columns of four; B goes back."};
+// Be Blue V's treatment: a teammate's Persona relearns a skill it forgot ("Isis: Relearn a skill").
+inline constexpr Tr kRelearnSkill{"Relearn a skill"};
+inline constexpr Tr kRelearnedFmt{"Learned {}, in place of {}"};
+inline constexpr Hint kRelearnKeys{"Up and down choose a forgotten skill, Enter relearns it; then the arrows move over the slots, two columns of four, to choose the skill it replaces. Escape goes back.", "Up and down choose a forgotten skill, A relearns it; then the D-pad moves over the slots, two columns of four, to choose the skill it replaces. B goes back."};
 inline constexpr Tr kShuffleTime{"Shuffle Time"};
 inline constexpr Hint kShuffleKeys{"Left and right arrows choose a card, Space takes it.", "Left and right choose a card, A takes it."};
 inline constexpr Tr kChoose{"choose"};
