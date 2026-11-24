@@ -211,7 +211,15 @@ class ShopScreen : public MenuScreen {
     if (q == qty_) return;
     std::string line = std::to_string(q);
     // +0xBA8 is the item shop's own (AFclItemShop is 0x1128 bytes; the weapon and simple shops end before it)
-    if (st == 9 && is_a(shop(), "FclItemShop")) if (int total = *(int32_t*)(s() + 0xBA8); total > 0) line += std::format(", {} {}", total, strings::kYen);
+    if (st == 9 && is_a(shop(), "FclItemShop")) {
+      if (int total = *(int32_t*)(s() + 0xBA8); total > 0) line += std::format(", {} {}", total, strings::kYen);
+    } else {
+      // The other shops and every sell quantity draw the total as the row's price (each) times the count.
+      auto* rows = (TArray<uint8_t>*)(s() + 0x2E8);
+      int i = u16(0x2F8) + u16(0x2FA);
+      int each = rows->data && i >= 0 && i < rows->num ? *(int32_t*)(rows->data + i * 0x28) : 0;
+      if (each > 0 && q > 0) line += std::format(", {} {}", q * each, strings::kYen);
+    }
     // Not through the menu's no-repeat guard: the game has the keys here, so nothing tells the guard of a press, and
     // a number gone back to (2, 3, 2) is said again. The keys are F1's (keys(): kHowMany).
     speech::speak(qty_ < 0 ? std::format("{} {}", strings::kHowManyWords, line) : line, true);
