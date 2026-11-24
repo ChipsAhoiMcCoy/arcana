@@ -139,18 +139,37 @@ bool walking() { return g_walking; }
 // A walk that ends by using its target: Space is pressed once the game's prompt is up, until this time.
 constexpr ULONGLONG kUseWaitMs = 1500;
 static ULONGLONG g_use_until = 0;
+static int g_use_presses = 0;         // Space presses sent for this use
+static uint64_t g_use_delivered = 0;  // the frame the last one was delivered in full (its key-up posted), else 0
 // The walk reached its target: logged only (the player will give arrival its own cue; "Arrived" was spoken until
 // 2026-10-31). A walk to use it waits for its prompt (use_tick). `can_use` false: a teleport next to it (stairs) was
 // the target, already used.
 static void arrived_at(bool can_use = true) {
   log::writef("nav: arrived, {}", g_w.name);
   if (g_w.use && can_use) g_use_until = GetTickCount64() + kUseWaitMs;
+  g_use_presses = 0;
+  g_use_delivered = 0;
 }
 // The prompt came up: Space, as a sighted player presses it. The player moving, or anything over the field, ends the
 // wait; so does the time running out (an exit has no prompt: walking in is using it).
 static void use_tick(bool in_field, ULONGLONG now) {
   if (!g_use_until) return;
   if (!in_field || keys::movement_key_down() || input::pad_moving()) { g_use_until = 0; return; }
+  // A press sent: once it was delivered in full and the game ran two frames on it, the hero still in control and the
+  // prompt still up means the game dropped it (the July hotel's room doors took no press from the walk while one from
+  // the keyboard a moment later worked, 2026-11-24): pressed again, three presses at most. Taken, the operator leaves
+  // its free state (a door, a message) and the wait ends.
+  if (g_use_presses) {
+    if (input::injected_held()) { g_use_delivered = 0; return; }
+    if (!g_use_delivered) { g_use_delivered = hooks::frame(); return; }
+    if (hooks::frame() < g_use_delivered + 2) return;
+    if (!world::in_control() || poi::prompt().empty() || g_use_presses >= 3) { g_use_until = 0; g_use_presses = 0; return; }
+    log::writef("nav: {} took no Space, pressing again", g_w.name);
+    input::inject_key(VK_SPACE, 80);
+    ++g_use_presses;
+    g_use_delivered = 0;
+    return;
+  }
   // Once the prompt has finished appearing (state 1 to 2) and the hero stands still: the press sent as it appeared
   // did nothing (the July hotel's mirror and its exit door, at 24 frames a second, 2026-11-24).
   FVector v{};
@@ -158,7 +177,8 @@ static void use_tick(bool in_field, ULONGLONG now) {
   if (!poi::prompt().empty() && poi::prompt_settled() && still) {
     log::writef("nav: using {} (prompt {})", g_w.name, poi::prompt());
     input::inject_key(VK_SPACE, 80);
-    g_use_until = 0;
+    g_use_presses = 1;
+    g_use_delivered = 0;
     return;
   }
   if (now >= g_use_until) { log::writef("nav: no prompt at {}, nothing pressed", g_w.name); g_use_until = 0; }
