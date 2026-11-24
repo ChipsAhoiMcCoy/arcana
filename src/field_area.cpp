@@ -11,6 +11,7 @@
 #include "poi_internal.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
+#include "core/units.h"
 #include "gametext.h"
 #include "seh.h"
 #include "speech.h"
@@ -103,6 +104,12 @@ std::string area_name() {
   return a;
 }
 
+// The banner's number: a floor ("Hotel Hallway 2F"), but a depth in meters in the August full moon's underground base
+// (field 305: "Underground 33M", its exits "17m Underground"), said there as "Underground, 33 meters".
+static std::string banner_level(int major) {
+  return major == 305 ? core::meters((float)g_banner_floor) : std::format("{} {}", strings::kFloor, g_banner_floor);
+}
+
 static std::string area_name_now() {
   banner_tick();
   int major = 0, minor = 0;
@@ -114,10 +121,10 @@ static std::string area_name_now() {
         std::string s = to_utf8(*(FString*)(r + offset_of(datatable_struct(t), "Name")));
         // The banner names the part of it the hero is in ("Iwatodai Dorm, Lounge") when that says more.
         if (!s.empty() && !g_banner.empty() && s.find(g_banner) == std::string::npos && g_banner.find(s) == std::string::npos)
-          return s + ", " + g_banner + (g_banner_floor ? std::format(", {} {}", strings::kFloor, g_banner_floor) : "");
+          return s + ", " + g_banner + (g_banner_floor ? ", " + banner_level(major) : "");
         // The banner's floor number even when its name is the table's (the 7/7 hotel: "Hotel Hallway 2F" was said as
         // "Hotel Hallway" on every floor, 2026-11-24).
-        if (!s.empty()) return g_banner_floor ? std::format("{}, {} {}", s, strings::kFloor, g_banner_floor) : s;
+        if (!s.empty()) return g_banner_floor ? s + ", " + banner_level(major) : s;
       }
     }
   }
@@ -134,7 +141,7 @@ static std::string area_name_now() {
   if (tartarus) name += std::format(", {} {}", strings::kFloor, floor);
   // Another place the tables do not name, with the banner's floor number (the 7/7 hotel's "Hotel Hallway 2F" was
   // said as "Hotel Hallway" on every floor, 2026-11-24).
-  else if (g_banner_floor) name += std::format(", {} {}", strings::kFloor, g_banner_floor);
+  else if (g_banner_floor) name += ", " + banner_level(major);
   return name;
 }
 
