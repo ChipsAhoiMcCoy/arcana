@@ -64,7 +64,8 @@ class GraphNavigator {
   std::optional<std::string> compose_full(const GraphNode* node) const { return announcer_.compose_full(node); }
   // Announce the current focus in full (a screen's entry, after its title).
   void announce_current();
-  // Seat focus without a word (the landing counts as spoken): a screen whose entry something else announces.
+  // Seat focus without a word (the landing counts as spoken): a screen whose entry something else announces. A quiet
+  // focus_node asked for before it is seated here.
   void settle_silently();
   // The focused node's live parts take their next values as a fresh baseline: nothing is said until they change again.
   void forget_live() { live_key_.reset(); }

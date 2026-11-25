@@ -134,6 +134,11 @@ void GraphNavigator::announce_current() {
 
 void GraphNavigator::settle_silently() {
   if (!graph_ || !graph_->rerender()) return;
+  // A quiet focus the screen asked for is seated now: the opening that follows reads it, not the old focus.
+  if (pending_focus_ && !pending_announce_) {
+    if (graph_->current()->contains(*pending_focus_)) graph_->focus(*pending_focus_);
+    pending_focus_.reset();
+  }
   mark_spoken(graph_->current_node());
 }
 

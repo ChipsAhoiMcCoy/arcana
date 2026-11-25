@@ -181,6 +181,7 @@ class VelvetScreen : public MenuScreen {
   bool announce_entry() override {
     bool learned = take_skill_learned(), quiet = (learned && covered_) || accepted_;
     covered_ = false;
+    if (lead_levelup()) relead_ = false;   // the entry reads the name line: no second reading after it
     return !quiet;
   }
   // After the fusion (step 11) the Social Link bonus levels the result up on its page (APersonaStatus.Sequence_ a
@@ -271,6 +272,19 @@ class VelvetScreen : public MenuScreen {
   // 1" was all that was said, 2026-11-24): the focus goes back to the name, "Level up!" and the new level. Said by
   // the window's re-entry when Igor's line is up, else once the level up's lines are built (the next tick).
   bool plain_seen_ = false, relead_ = false;
+  // The plain page has become the level up's: the focus goes to the name line, quietly (true: it moved). Asked by
+  // the window's re-entry too, before it reads the focus: Igor's bonus line covers the page while it turns, so the
+  // tick only saw it after the re-entry had read the old focus ("Strength 72, up 3" cut off by "Level up!",
+  // 2026-11-24).
+  bool lead_levelup() {
+    plain_result();   // keeps levelled_
+    if (!plain_seen_ || !levelled_ || scene() != 4 || step() != 11) return false;
+    plain_seen_ = false;
+    const uint8_t* e = persona::shown_status();
+    if (!e) return false;
+    focus_quietly(status_name_id(*(uint16_t*)(e + 2)));
+    return true;
+  }
   void relead() {
     bool plain = plain_result();
     if (plain) { plain_seen_ = true; relead_ = false; return; }
@@ -280,12 +294,7 @@ class VelvetScreen : public MenuScreen {
       if (!msg::current().blocking) say_focus();
       return;
     }
-    if (!plain_seen_ || !levelled_) return;
-    plain_seen_ = false;
-    const uint8_t* e = persona::shown_status();
-    if (!e) return;
-    focus_quietly(status_name_id(*(uint16_t*)(e + 2)));
-    relead_ = true;
+    if (lead_levelup()) relead_ = true;
   }
   void on_tick() override {
     relead();

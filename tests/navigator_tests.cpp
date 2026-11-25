@@ -257,6 +257,21 @@ TEST_CASE("a closed screen starts again from its first row; a kept one comes bac
   CHECK_FALSE(h.said[0].interrupt);
 }
 
+TEST_CASE("an entry reads a quiet focus asked for before it, not the old one") {
+  OptionHarness h;
+  h.nav.attach(nullptr);                         // covered (a message window); the page changed under it
+  h.nav.attach(&h.screen);
+  h.nav.focus_node(id("mute"), false);           // the screen moves its focus as it comes back
+  h.nav.settle_silently();
+  h.said.clear();
+  h.nav.announce_current();
+  REQUIRE(h.said.size() == 1);
+  CHECK(h.said[0].text == "Sound, Mute, off");
+  h.said.clear();
+  h.pull();
+  CHECK(h.said.empty());
+}
+
 namespace {
 // A tab strip stop (a row), then a page stop in two sections: a header line, then two lines of stats.
 struct PagedScreen : Screen {
