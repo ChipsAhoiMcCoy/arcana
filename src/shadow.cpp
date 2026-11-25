@@ -246,6 +246,55 @@ int close_cues(const Seen& s, const FVector& me) {
 // that hunts the hero out of earshot and back still reads as hunting; the two cues sound only within kMindRange.
 struct Mind { bool hunting = false, tracked = false; Mark last = Mark::None; };
 std::map<WeakObj::Key, Mind> g_minds;
+
+// ---- a Rare Shadow's flight ----
+// A Rare Shadow (EFldEnemyType 2) never hunts the hero: its exclamation mark starts its flight. Its behaviour
+// (FUN_14111c670; the state object at FldEnemyNormalComp +0x388, its step at +0x08, as sight.cpp reads it): 4 and 5 it
+// wanders, 6 it has noticed him (DiscoverWaitTime), 7 it flees (FUN_141109a20: EscapeSpeed, for EscapeTime, 15 s, or
+// until it loses him), 9 it vanishes (its actor hidden), 10 it waits to come back far off (RespawnDistance, 96 m), 11
+// and 2 it is back. Watched on Yabbashah floor 86 (2026-11-24): 4, 6 at 4.7 m, 7, then 9 and 10 fifteen seconds on.
+bool is_rare(UObject* comp) {
+  bool r = false;
+  guarded([&] { r = comp && is_a(comp, "FldEnemyNormalComp") && get<int8_t>(comp, "EnemyType") == 2; });
+  return r;
+}
+int behaviour_step(UObject* comp) {
+  int step = -1;
+  guarded([&] {
+    uint8_t* so = *reinterpret_cast<uint8_t**>(reinterpret_cast<uint8_t*>(comp) + 0x388);
+    if (so) step = *reinterpret_cast<int32_t*>(so + 0x08);
+  });
+  return step;
+}
+// "Rare Shadow fleeing" as one within kMindRange starts to run (a sighted player sees it turn and bolt), and "Rare
+// Shadow got away" when one told as fleeing vanishes. Caught (a battle) or anything else ends the flight quietly.
+void rare_cues(const FVector& me) {
+  if (!ue::known_build()) return;   // the state object's layout is this build's
+  static std::map<WeakObj::Key, bool> fleeing;   // the Rare Shadows told as fleeing
+  std::map<WeakObj::Key, bool> now;
+  for (const Holder& h : holders()) {
+    if (!is_rare(h.comp)) continue;
+    const int step = behaviour_step(h.comp);
+    auto key = WeakObj::of(h.actor).key();
+    bool told = fleeing.count(key) > 0;
+    if (step == 7 && !told) {
+      FVector at{};
+      if (guarded([&] { at = world::actor_location(h.actor); }) && std::hypot(flat(at, me), at.z - me.z) <= kMindRange) {
+        speech::speak(strings::kRareFleeing.c_str(), false);
+        log::writef("shadow: rare #{} flees", std::get<0>(key));
+        told = true;
+      }
+    } else if (told && step != 7) {
+      if (step == 9 || step == 10) {
+        speech::speak(strings::kRareGotAway.c_str(), false);
+        log::writef("shadow: rare #{} got away", std::get<0>(key));
+      }
+      told = false;
+    }
+    if (told) now[key] = true;
+  }
+  fleeing.swap(now);
+}
 bool hunting(UObject* shadow) {
   auto it = g_minds.find(WeakObj::of(shadow).key());
   return it != g_minds.end() && it->second.hunting;
@@ -253,6 +302,7 @@ bool hunting(UObject* shadow) {
 void mind_cues(const std::vector<Seen>& seen, const FVector& me) {
   std::map<WeakObj::Key, Mind> now_known;
   for (const Seen& s : seen) {
+    if (is_rare(s.comp)) continue;   // it flees instead: rare_cues
     const bool heard = s.dist <= kMindRange;
     auto key = WeakObj::of(s.actor).key();
     auto it = g_minds.find(key);
@@ -479,6 +529,7 @@ void tick() {
   strike_assist(seen, me);   // its own setting, and every swing logged
   if (!settings::on(settings::ShadowAlerts)) return;
   mind_cues(seen, me);
+  rare_cues(me);
   log_zones(seen, me);
   const Seen* nearest = nullptr;
   for (const Seen& s : seen) if (!nearest || s.dist < nearest->dist) nearest = &s;
