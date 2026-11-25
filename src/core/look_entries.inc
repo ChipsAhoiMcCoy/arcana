@@ -1253,8 +1253,8 @@ const Model kModels[] = {
         "with her legs flung wide apart, one black and one white, her pale sea-blue skirts, edged with white "
         "lace, spread open between them and caught at the waist by a gold clasp. She is bare to the waist and "
         "thin enough that her ribs show on the white side, a letter on each breast, B on the black side and J on "
-        "the white, the two pillars of a temple. A glossy magenta masquerade mask with pointed wings hides her "
-        "eyes above dark lips, and a corkscrew ringlet hangs beside each cheek. From behind her head burst two "
+        "the white, the two pillars of a temple. A glossy magenta masquerade mask with pointed wings, a small "
+        "numeral II beside one eye, hides her eyes above dark lips, and a corkscrew ringlet hangs beside each cheek. From behind her head burst two "
         "vast fans of paper strips covered in tiny printed script and tipped in red, white on her black side and "
         "black on her white. Shameless and serene, she sits like a priestess who has thrown the temple doors open "
         "and dares you to read what is written."},
@@ -1275,7 +1275,7 @@ const Model kModels[] = {
         "curled, pointed shoes. Rigid as a tin soldier, he stands like authority with nothing inside it."},
   {"Em0531_000",  // Hierophant
         "A grotesque mock pontiff on a throne that walks. An enormously round white body, its face a small blue "
-        "mask with a gaping mouth peering from a black hood, sits in a red brocade capelet and striped cyan "
+        "mask marked V, its mouth gaping, peering from a black hood, sits in a red brocade capelet and striped cyan "
         "breeches on a gilded throne, a red banner of crossed keys hanging before it. The throne has no feet of "
         "its own: it stands on four women's legs in black fishnets and red high heels. From the back of the "
         "throne rises a naked headless woman of white porcelain, arms spread, her breasts and buttocks huge and "
@@ -1316,25 +1316,26 @@ const Model kModels[] = {
         "and above them the legs turn to dark scaly flesh arching into a black back traced with red circuit "
         "lines. Three black cylinders like old valves, printed with white lettering, jut from its shoulders. Its "
         "head hangs low in front, buried in a huge spiky mane of pale blue-grey spines, its face a small orange "
-        "mask with one round black hole at its centre, like a single eye. It lurks, all static, feeding on the current."},
+        "mask with one round black hole at its centre, like a single eye, the numeral IX above it. It lurks, all static, feeding on the current."},
   {"Em0561_000",  // Fortune
         "A little brass mechanical beast crouched like a sphinx near the hub of an enormous flat bronze wheel, "
         "many times its size. Its scrolled golden body is riveted with gears and glass portholes, a grey dome "
         "rides on its back with a ribbed brass fan behind, and a long dark chain ending in a small spiked ball "
-        "trails out like a tail. Its face is a green mask speckled with red, framed by a striped pharaoh's "
+        "trails out like a tail. Its face is a green mask marked X, two red ringed eyes over a wide black grin, framed by a striped pharaoh's "
         "headdress. Across the disc beside it lies a long black block tapering to a needle-sharp silver point, "
         "the wheel's pointer. Small and watchful, it waits on a spin of chance."},
   {"Em0562_000",  // Strength
         "A tall, slender lady floating upright in a long cream gown that flares into a wide cone and ends in a "
         "point where her feet should be, with puffed white sleeves and a pink trim at the neckline. Her skin is "
         "jet black, long ash-blonde hair falls down her back, and her face is a smooth cobalt-blue mask with "
-        "closed, sleepy eyes. One dark hand holds a single red rose. A great bouquet of roses, lilies and "
+        "hollow, heavy-lidded eyes and the numeral XI on its brow. One dark hand holds a single red rose. A great bouquet of roses, lilies and "
         "sunflowers tangled with vines swallows the lower gown. A pink ribbon swirls over her head like a halo, "
         "and spear-tipped iron railings run before her. Graceful and still, she is gentleness fenced in."},
   {"Em0571_000",  // Hanged Man
         "A massive grey-green brute strung face down beneath a steel girder like a carcass on a crane, his "
         "muscular body slung level from hooks and straps, his arms stretched straight out to either side so that "
-        "he hangs as a cross, cuffed at wrists and ankles, with dark hands and heavy black boots. His head is a lavender-grey helmet marked with a numeral above a black, glassy face "
+        "he hangs as a cross, cuffed at wrists and ankles, with dark hands and heavy black boots. Over his head sits a lavender-grey mask of a sleeping face worn upside down, eyes shut, the numeral XII "
+        "upright on its brow, above a black, glassy face "
         "plate ringed in teal, like a diver's mask. Above, chains run up to two long brass beams stacked one over "
         "the other, each sprouting ragged sky-blue wings of jagged feathers. Strung between the ground and the "
         "sky, he hangs helpless and enormous."},
