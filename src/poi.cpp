@@ -51,7 +51,9 @@ static bool walkable(UObject* a, const world::FVector& me, const world::FVector&
   if (it != cache.end()) return it->second;
   bool partial = true;
   auto path = world::find_path(world::path_start(me), v, &partial);
-  bool ok = !path.empty() && std::fabs(path.back().z - v.z) < 250.0f &&
+  // A thing stands on its floor or above it: a path that ends a metre above it is on the floor above (the dorm's 2F
+  // stair flight runs over 1F's "Hallway 2F" box, 1.9 m below the 2F floor, 2026-11-24).
+  bool ok = !path.empty() && path.back().z - v.z > -250.0f && path.back().z - v.z < 100.0f &&
             std::hypot(path.back().x - v.x, path.back().y - v.y) < 300.0f;
   // A path is walked: a leg that rises more than it runs (plus a step) is no walk. Loading slot 9 puts the hero at the
   // dorm lounge's counter, right under 2F's "Your Room" exit: the path from there was 2 points, partial, 4 m straight
@@ -136,6 +138,10 @@ std::vector<Poi> scan(float radius) {
   if (!world::player_location(me)) return out;
   UObject* hero = world::player();
   bool dungeon = hero && name_of(class_of(hero)).find("DUNGEON") != std::string::npos;
+  // The Dark Hour's hero is the dungeon one everywhere, the 4/9 dorm included: only Tartarus (fields 2xx, its floors
+  // name none) goes without the floor filter. The dorm's Dark Hour lounge listed every floor's doors ("Your Room,
+  // 5 meters" from the lounge, 2026-11-24).
+  if (int ma = 0, mi = 0; dungeon && area_ids(ma, mi) && (ma < 200 || ma >= 300)) dungeon = false;
   // Whether the unnamed triggers are listed (below) is one answer for every caller: it goes by what the list's own
   // range holds, not by `radius`. The sonar reads 10 m around the player, found nothing else that near, and sounded
   // a trigger the list (60 m, a chest and the stairs in it) did not have (a Tartarus floor, 2026-11-11).
@@ -177,7 +183,10 @@ std::vector<Poi> scan(float radius) {
     // Floors of one building share a level, stacked about 3.4 m apart and joined by teleporting stairs (the dorm,
     // 2026-10-27): another floor's things count only when the navmesh walks there (Tartarus' raised entrance does).
     // Tartarus floors are levels of their own with raised and sunken parts: no floor filter there.
-    bool other_floor = !dungeon && !any_floor && std::fabs(v.z - (me.z - 90.0f)) > 280.0f;
+    // A thing's box stands on its floor or above it: more than 1.2 m below the feet is the floor below (each floor's
+    // stair box up sits 2.3 m over its floor, 1.9 m under the next: "Hallway 3F" was listed on 3F, 2026-11-24).
+    float dz = v.z - (me.z - 90.0f);
+    bool other_floor = !dungeon && !any_floor && (dz > 280.0f || dz < -120.0f);
     if (d > radius && !(any_distance && list_scan)) { beyond |= d <= list_radius && !other_floor; return; }
     if (other_floor && !walkable(a, me, v)) return;
     // Another part of the map, past a closed door (the corridor's things from the gym hallway, 2026-11-11): listed
