@@ -1,0 +1,2 @@
+#scene LS_BtlEvent709_720
+0.100	13.491	00.mp3	The Nyx Avatar raises its sword and soars high into the sky, its wings spread before the full moon amid whirling black feathers. It rushes down, lands before you, and wrenches its long glowing sword from the floor.
