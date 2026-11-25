@@ -46,6 +46,30 @@ TEST_CASE("person_from_actor_name: the cast by their romanised names, others by 
   CHECK(person_from_actor_name("FldNpcActor").empty());
 }
 
+TEST_CASE("part boxes: the slabs across a stairway that set the field's part") {
+  CHECK(part_box("BP_FldAreaChange_105_102_H3_Play_C") == 3);
+  CHECK(part_box("BP_FldAreaChange_105_102_H5_Play_C") == 1);
+  CHECK(part_box("BP_FldAreaChange_103_101_H8_Play_C") == 2);
+  CHECK(part_box("BP_FldAreaChange_105_102_H0_Play_C") == 0);   // a door to another field
+  CHECK(part_box("") == 0);
+}
+
+TEST_CASE("ways_from: the Strip Mall's stairways, from each floor") {
+  // LV_F105_102_AreaChange: H5-1/-2 set part 1, H4-1..4 part 2, H3-1/-2 part 3.
+  std::vector<PartBox> b = {
+    {3, {940, -25, 1000}}, {3, {-940, -25, 1000}},
+    {2, {1260, -25, 660}}, {2, {1255, 35, 400}}, {2, {-1260, -25, 660}}, {2, {-1255, 35, 400}},
+    {1, {1065, -150, 180}}, {1, {-1050, -150, 180}},
+  };
+  CHECK(ways_from(b, 1) == std::vector<size_t>{3, 5});          // the two flights up to 2F, by their lower slabs
+  CHECK(ways_from(b, 2) == std::vector<size_t>{0, 6, 1, 7});    // up to 3F and down to 1F, east then west
+  CHECK(ways_from(b, 3) == std::vector<size_t>{2, 4});
+  CHECK(ways_from(b, 4).empty());                               // a part no box sets (a room reached by a jump)
+  CHECK(way_pair(b, 3, 1) == 6);
+  CHECK(way_pair(b, 0, 2) == 2);
+  CHECK(way_pair(b, 0, 1) == b.size());                         // 3F's slab has no 1F slab beside it
+}
+
 TEST_CASE("stairs: the hotel's unnamed staircases") {
   int from = 0, to = 0;
   CHECK(stairs("FldHitActor_304_101_H0", from, to)); CHECK(from == 1); CHECK(to == 2);

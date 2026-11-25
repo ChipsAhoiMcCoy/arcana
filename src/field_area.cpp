@@ -9,6 +9,7 @@
 //  - AFldDungeonControlActor: +0x2A0 the dungeon (299 = Tartarus), +0x2A4 the floor.
 #include "core/lang.h"
 #include "poi_internal.h"
+#include "floors.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
 #include "core/units.h"
@@ -153,11 +154,18 @@ void arrival_tick() {
   static std::string spoken, banner_seen;
   static WeakObj hero_seen;
   static bool due = false;
+  // The floor alone changed, the place and the field staying (the stairs of the Strip Mall, Paulownia Mall or Club
+  // Escapade walked up or down): only the floor is said ("Floor 2"), not the whole place again. The floor is the
+  // field's part (floors::part), which the stairs' script sets before it changes the banner: the banner itself shows
+  // no number on some ground floors (Paulownia Mall's), where coming down said the place's whole name.
+  static std::string banner_said;
+  static int part_said = 0;
+  static bool fresh = true;   // a field loaded since the last line
   UObject* hero = world::player();
   if (!hero) return;   // a menu or scene hides the hero for a moment: not an arrival
   banner_tick();
   std::string key = g_banner + "|" + std::to_string(g_banner_floor);
-  if (!(WeakObj::of(hero) == hero_seen)) { hero_seen = WeakObj::of(hero); spoken.clear(); due = true; }   // a field loaded: said again
+  if (!(WeakObj::of(hero) == hero_seen)) { hero_seen = WeakObj::of(hero); spoken.clear(); due = true; fresh = true; }   // a field loaded: said again
   if (key != banner_seen) { banner_seen = key; due = true; }
   if (!due || g_banner_moving) return;
   std::string a = area_name();
@@ -165,6 +173,13 @@ void arrival_tick() {
   due = false;
   if (a == spoken) return;
   spoken = a;
+  const int part = floors::part();
+  const bool floor_only = !fresh && g_banner == banner_said && part > 0 && part_said > 0 && part != part_said;
+  banner_said = g_banner;
+  part_said = part;
+  fresh = false;
+  int major = 0, minor = 0;
+  if (floor_only && area_ids(major, minor) && major != 305) a = std::format("{} {}", strings::kFloorTitle, part);
   speech::speak(a, false);
 }
 }  // namespace p3a::poi

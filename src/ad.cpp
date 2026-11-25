@@ -19,6 +19,7 @@
 // SceneSpeed: a 3D scene's narrator reads faster. Its clips are sped up as they are decoded (core/time_stretch keeps
 // the pitch) and its cues' lengths shortened to match; a movie's clips keep their speed (they are timed to its gaps).
 #include "ad.h"
+#include "event_skip.h"
 #include "audio.h"
 #include "core/ad_schedule.h"
 #include "core/heard_cues.h"
@@ -436,6 +437,13 @@ bool g_box_pad = true;       // A was down at the last frame (only a fresh press
 bool g_box_ended = false;    // its narrator finished (the end cue was given)
 bool g_box_spoke = false;    // the screen reader reported it speaking (Auto waits for it to go quiet)
 bool g_releasing = false;    // the box closed and asked the source to play: until it reports so, the pause is ours
+// The scene's clock when the box's first frame saw it held (-1 until then). The box holds the scene still, so a clock
+// that has run on past it is the game's own skip (Tab or Menu in a fusion's animation: the sequence jumps to the new
+// Persona's appearance, 18.8 s in, paused or not): the box closes and the scene plays from there. Left up, the scene
+// had jumped but stood still until Enter, which the player who had just skipped it had no reason to press
+// (2026-11-25).
+double g_box_time = -1;
+constexpr double kBoxSkipS = 1.0;   // a held scene the game lets go for a frame creeps a few hundredths at most
 
 uint16_t a_mask() { static uint16_t a = input::button_mask("a"); return a; }
 uint16_t pad_a() { return input::layer_open() ? 0 : (input::real_buttons() & a_mask()); }
@@ -470,6 +478,7 @@ void open_box(int cue) {
   g_box_go = false;
   g_box_ended = false;
   g_box_spoke = false;
+  g_box_time = -1;
   g_box_pad = pad_a() != 0;   // an A still down from the last message is not this box's press
   // Over a battle line's window that waits for the player, the press that goes on is the window's too: it reaches
   // the game, so one press closes both, as one press turns a page.
@@ -902,7 +911,12 @@ void tick() {
     // is said to its end, over the battle.
     if (!playing && g_battle) close_box(false, false);
     else if (!playing || c.fast || !wait) close_box(playing);
-    else {
+    else if (g_box_time >= 0 && c.time > g_box_time + kBoxSkipS) {
+      log::writef("ad: {} cue {} box closed by a skip, {:.2f} to {:.2f}", s->key, g_box, g_box_time, c.time);
+      close_box(true);
+      sc.paused = false;
+    } else {
+      if (g_box_time < 0 && c.paused) g_box_time = c.time;
       const bool a = pad_a() != 0;
       if (a && !g_box_pad) g_box_go = true;
       g_box_pad = a;
@@ -917,6 +931,10 @@ void tick() {
         }
         g_box_go = by_auto;
       }
+      // The game's skip prompt is up (the skip button's first press: the game holds the scene too): the box stays
+      // until the player has skipped or cancelled. Letting the scene go under the prompt would play it while the
+      // game has it paused.
+      if (event_skip::prompt()) g_box_go = false;
       if (g_box_go) {
         log::writef("ad: {} cue {} box closed at {:.2f}{}", s->key, g_box, c.time, by_auto ? " (Auto)" : "");
         mark_heard(*s, g_box);   // the player went on from it (or Auto did): heard, even if cut short

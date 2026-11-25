@@ -130,6 +130,22 @@ TEST_CASE("sonar field: a thing gone for a moment keeps its place, gone for long
   CHECK(f.tracked() == 0);
 }
 
+TEST_CASE("way tones: a run of short tones, up a scale or down it") {
+  const int rate = 48000;
+  for (int rise : {-1, 0, 1})
+    for (int s = 0; s < kWaySteps; ++s) {
+      CAPTURE(rise); CAPTURE(s);
+      std::vector<float> v = way_tone(rate, s, rise);
+      REQUIRE(v.size() > (size_t)(rate * kWayStepS));   // each tone rings into the next
+      CHECK(v.size() < (size_t)rate * 12 / 100);
+      CHECK(std::fabs(v.front()) < 0.01);
+      CHECK(std::fabs(v.back()) < 0.01);
+      CHECK(cue_loudness(v, rate) == doctest::Approx(kCueLoudness).epsilon(0.01));
+    }
+  CHECK(way_tone(rate, 2, 1) == way_tone(rate, 2, 1));   // the same sound every time
+  CHECK(way_tone(rate, 0, 1) != way_tone(rate, 1, 1));
+}
+
 TEST_CASE("sonar cues: short, clean at both ends, one loudness") {
   const int rate = 48000;
   for (int k = 0; k < (int)SonarCue::Count; ++k) {

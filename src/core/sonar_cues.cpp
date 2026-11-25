@@ -427,6 +427,24 @@ double cue_loudness(const std::vector<float>& v, int rate) {
   return std::sqrt(best);
 }
 
+std::vector<float> way_tone(int rate, int step, int rise) {
+  static constexpr int kScale[kWaySteps] = {0, 2, 4, 7, 9};   // a major pentatonic from D5
+  step = std::clamp(step, 0, kWaySteps - 1);
+  const int degree = rise > 0 ? kScale[step] : rise < 0 ? kScale[kWaySteps - 1 - step] : kScale[2];
+  const double hz = 587.33 * std::pow(2.0, degree / 12.0);
+  std::vector<float> v(frames(rate, 0.11), 0.0f);
+  Noise noise(0x57a125u + (uint32_t)step);
+  BandPass air;
+  for (int i = 0; i < (int)v.size(); ++i) {
+    double sec = (double)i / rate, ph = 2.0 * kPi * hz * sec;
+    double bar = std::sin(ph) + 0.32 * std::sin(2.0 * ph) * std::exp(-sec / 0.02) + 0.14 * std::sin(4.07 * ph) * std::exp(-sec / 0.008);
+    double puff = air.run(noise.next(), 3400.0, 1.2, rate) * env_ad(sec, 0.001, 0.006);
+    v[i] = (float)(bar * env_ad(sec, 0.003, 0.032) + 0.5 * puff);
+  }
+  finish(v, rate, 0.1f);
+  return v;
+}
+
 std::vector<float> sonar_cue(SonarCue cue, int rate, bool brief) {
   std::vector<float> v = raw(cue, rate, brief);
   finish(v, rate, 0.14f);

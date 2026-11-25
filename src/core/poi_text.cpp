@@ -77,6 +77,46 @@ bool stairs(const std::string& actor_name, int& from, int& to) {
   return true;
 }
 
+int part_box(const std::string& overlap_class) {
+  struct Row { const char* bp; int part; };
+  static constexpr Row kRows[] = {
+    {"BP_FldAreaChange_105_102_H3_Play_C", 3}, {"BP_FldAreaChange_105_102_H4_Play_C", 2},
+    {"BP_FldAreaChange_105_102_H5_Play_C", 1}, {"BP_FldAreaChange_103_111_H1_Play_C", 2},
+    {"BP_FldAreaChange_103_111_H2_Play_C", 1}, {"BP_FldAreaChange_103_101_H8_Play_C", 2},
+    {"BP_FldAreaChange_103_101_H9_Play_C", 1},
+  };
+  for (const Row& r : kRows)
+    if (overlap_class == r.bp) return r.part;
+  return 0;
+}
+
+std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current) {
+  std::vector<size_t> out;
+  for (size_t i = 0; i < boxes.size(); ++i) {
+    if (boxes[i].part != current) continue;
+    size_t best = boxes.size();
+    float bd = kWayPairCm;
+    for (size_t j = 0; j < boxes.size(); ++j) {
+      if (boxes[j].part == current) continue;
+      float d = dist3(boxes[i].at, boxes[j].at);
+      if (d < bd) { bd = d; best = j; }
+    }
+    if (best < boxes.size() && std::find(out.begin(), out.end(), best) == out.end()) out.push_back(best);
+  }
+  return out;
+}
+
+size_t way_pair(const std::vector<PartBox>& boxes, size_t way, int current) {
+  size_t best = boxes.size();
+  float bd = kWayPairCm;
+  for (size_t i = 0; way < boxes.size() && i < boxes.size(); ++i) {
+    if (boxes[i].part != current) continue;
+    float d = dist3(boxes[i].at, boxes[way].at);
+    if (d < bd) { bd = d; best = i; }
+  }
+  return best;
+}
+
 bool numbered_name(const std::string& flag, std::string& base, int& number) {
   size_t us = flag.find_last_of('_');
   if (us == std::string::npos || us + 1 >= flag.size() || flag.size() - us > 10 ||

@@ -1,0 +1,9 @@
+In a place with several floors, the points of interest list and the sonar leave out everything on the other floors. The stairs between floors stay.	在有多个楼层的地方，兴趣点列表和声呐会略去其他楼层的所有内容。楼层之间的楼梯保留。
+Stairs to another floor	通往其他楼层的楼梯
+A run of tones from one side of the stairway to the other, as wide as it is. Rising: it leads up. Falling: it leads down.	一串音从楼梯的一侧排到另一侧，与楼梯同宽。上行音：通往楼上。下行音：通往楼下。
+Same floor only	仅限同一楼层
+Tab pauses the animation and offers to skip it, Tab again skips it.	Tab 暂停动画并询问是否跳过，再按 Tab 跳过。
+The Menu button pauses the animation and offers to skip it, the Menu button again skips it.	Menu 键暂停动画并询问是否跳过，再按 Menu 键跳过。
+Paused. Tab skips, Escape resumes.	已暂停。Tab 跳过，Escape 继续。
+Paused. The Menu button skips, B resumes.	已暂停。Menu 键跳过，B 继续。
+Resumed.	已继续。

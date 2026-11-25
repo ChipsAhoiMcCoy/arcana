@@ -16,6 +16,7 @@
 //    UFldOperationCamera (AFldOperator.OpCameraComp).CurrentHitRef (+0xB8) is the zone showing the field.
 #include "topdown.h"
 #include "audio.h"
+#include "floors.h"
 #include "core/sonar_cues.h"
 #include "core/strings.h"
 #include "core/units.h"
@@ -118,13 +119,7 @@ float g_turn = 0;              // this part's turn from the map's north
 int g_part = -1;               // the field part, as the game has it
 float room_north() { return std::remainder(g_north + g_turn, 360.0f); }
 
-int field_part() {
-  if (!known_build()) return -1;
-  auto owner = (uintptr_t (*)())(scan::exe_base() + 0x11af780);
-  auto part = (uint32_t (*)(uintptr_t))(scan::exe_base() + 0x11addf0);
-  uintptr_t o = owner();
-  return o ? (int)part(o) : -1;
-}
+int field_part() { return floors::part(); }
 
 // Each frame the mode holds: the part's turn. It takes effect at once, a key held through the jump too: the turn is
 // the one that makes the way walked in "up" in the new room, so a held up walks on along it (the game's own hold of

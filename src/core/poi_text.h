@@ -43,6 +43,22 @@ bool dead_hit(const std::string& overlap_class);
 // to 1003, FLDHIT_002 to 3001, FLDHIT_003 to 2007; the entry's thousands are the floor; each box stands at the top or
 // foot of its flight). FldHitActor_304_101_H<n>[_k] runs FLDHIT_<n>.
 bool stairs(const std::string& actor_name, int& from, int& to);
+// A walk-through box that moves the hero to another part of its field, by its walk-in blueprint's class: a thin slab
+// across a stairway whose script only sets the field's part and changes the minimap (BF_f105_102 AC_003..005,
+// BF_f103_111 AC_001/002, BF_f103_101 AC_008/009: SET_FIELD_PARTS_ID(n), CHANGE_MINIMAP; BP_FldAreaChange_<M>_<m>_H<n>
+// runs AC_00n). They stand in pairs, one setting each side's part, a few metres apart up the flight. Returns the part
+// it sets, 0 for anything else. The parts are the floors the place banner shows (the Iwatodai Strip Mall's three,
+// Club Escapade's two, Paulownia Mall's two). The key-free event copies of those levels and Episode Aigis's mall use
+// the same blueprints.
+int part_box(const std::string& overlap_class);
+// Which of a field's part boxes lead on from the part the hero is in: for each box that sets his part, the nearest box
+// that sets another within kWayPairCm (its pair, at the other end of the same flight). Indices into `boxes`, each once.
+struct PartBox { int part = 0; Vec3 at; };
+inline constexpr float kWayPairCm = 600.0f;
+std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current);
+// The pair of a way's box: the nearest box setting `current` within kWayPairCm (the hero's end of the flight), or
+// boxes.size() when it has none.
+size_t way_pair(const std::vector<PartBox>& boxes, size_t way, int current);
 
 // A name that ends in "_<digits>" without a leading zero is, to Unreal, the name before it with a number one
 // higher: "FOO_12" is FOO with number 13. True, with both parts, when `name` is such a name.

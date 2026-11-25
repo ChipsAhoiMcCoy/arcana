@@ -40,7 +40,7 @@ static Poi g_sel_poi;   // what the list said about it: selected() refreshes the
 
 static bool in_cat(const Poi& p, Cat c) {
   switch (c) {
-    case Cat::Exits: return p.kind == Kind::Exit;
+    case Cat::Exits: return p.kind == Kind::Exit || p.kind == Kind::Way;
     case Cat::Doors: return p.kind == Kind::Door;
     case Cat::People: return p.kind == Kind::Person;
     case Cat::Shops: return p.kind == Kind::Shop;

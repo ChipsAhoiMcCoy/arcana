@@ -6,6 +6,7 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "doors.h"
+#include "floors.h"
 #include "input.h"
 #include "log.h"
 #include "speech.h"
@@ -92,7 +93,8 @@ struct Source { ue::WeakObj obj; int kind; FVector loc; bool selected; Body body
 // sounds (the field, a Shadow's growl; not the wall tones, 2026-11-17) are silenced (audio::solo), so what it is and where can be
 // heard (the user, 2026-11-13). Held while a point is chosen in the list (until the controller's layer closes, or
 // kFocusMs after a key, or once the hero walks off) and while the right stick points somewhere.
-struct Focus { ue::WeakObj obj; int kind = -1; bool shadow = false; FVector loc{}; bool has = false; Body body; };
+// way: a stairway to another floor: its run of tones (floors::trail), at its own steady rhythm; rise: its direction.
+struct Focus { ue::WeakObj obj; int kind = -1; bool shadow = false; FVector loc{}; bool has = false; Body body; bool way = false; int rise = 0; };
 Focus g_focus;
 ULONGLONG g_focus_until = 0;     // the list's choice, by key: held this long
 bool g_focus_layer = false;      // the list's choice with the controller's layer open: held until it closes
@@ -299,6 +301,11 @@ audio::Pcm ping_sound(const char* kind) {
 void sound_focus(const FVector& me, double start) {
   if (!g_focus.has) return;
   start = std::max(start, now_s());
+  if (g_focus.way) {
+    floors::trail(g_focus.obj.resolve(), g_focus.rise, true, start);
+    g_focus_next = start + floors::kTrailPeriodS;
+    return;
+  }
   const Place pl = place_of(g_focus.loc, g_focus.body, me);
   if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true, start);
   else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start);
@@ -309,8 +316,8 @@ void sound_focus(const FVector& me, double start) {
 void focus_on(const poi::Poi* p) {
   g_focus = {};
   if (p) {
-    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, body_of(*p)};
-    g_focus.has = g_focus.kind >= 0 || g_focus.shadow;
+    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, body_of(*p), p->kind == poi::Kind::Way, p->rise};
+    g_focus.has = g_focus.kind >= 0 || g_focus.shadow || g_focus.way;
   }
   audio::solo(true);
   silence();

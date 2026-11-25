@@ -17,6 +17,7 @@
 #include "devserver.h"
 #include "doors.h"
 #include "hooks.h"
+#include "floors.h"
 #include "msg.h"
 #include "screens/screen.h"
 #include "seh.h"
@@ -192,7 +193,12 @@ std::vector<Poi> scan(float radius) {
     // joins them. From inside it the floor's Head Up and Enter Door were listed and the walk there got stuck
     // (Adamah 231, 2026-11-24); things more than 30 m above or below belong to the other part.
     if (dungeon && std::abs(v.z - me.z) > 3000.0f) return;
+    // "Same floor only": nothing of another floor, walkable or not, whether it stands a storey away or the walk to it
+    // takes a stairway (the stairways themselves are listed on any).
+    // Where the floors are joined by stairways the walk tells them apart, not the height: Paulownia Mall's upper
+    // floor starts a metre above the square, and Mandragora at the top of its stairs stands 3.3 m over their foot.
     if (other_floor && !walkable(a, me, v)) return;
+    if (settings::on(settings::FloorOnly) && k != Kind::Way && (floors::stairways() ? floors::elsewhere(a, me, v) : other_floor)) return;
     // Another part of the map, past a closed door (the corridor's things from the gym hallway, 2026-11-11): listed
     // once the hero is through it.
     if (doors::behind(a, me, v)) return;
@@ -262,6 +268,8 @@ std::vector<Poi> scan(float radius) {
     // (2026-11-25). Only for the list's own scan: the sonar's 4 Hz one keeps the range test.
     bool floor_wide = dungeon && list_scan;
     if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && !way_on && !floor_wide && out_of_range(a))) continue;
+    // A slab across a stairway that sets the field's part: the stairways on from here are listed below (floors::ways).
+    if (floors::slab(a)) continue;
     std::string icon = icon_of(a);
     // The missing person's only hit has no icon: a sphere that starts the rescue when walked into
     // (BP_DHIT_MISNPC_C, overlap BP_FldHit_MISNPC_01_HERO_C). Named by the game's hit-name table: "Stray Cat",
@@ -366,6 +374,12 @@ std::vector<Poi> scan(float radius) {
       p.state = p.state.empty() ? std::string(strings::kPoiLargeShadow) : p.state + ", " + strings::kPoiLargeShadow.c_str();
     }
   }
+  // The stairways to the field's other floors (the Strip Mall's, Club Escapade's, Port Island Station's): each by the
+  // slab at its far end, on a landing above or below the hero's floor.
+  for (const floors::Way& w : floors::ways()) {
+    add(w.box, Kind::Way, floors::name(w), true);
+    if (!out.empty() && out.back().obj == WeakObj::of(w.box)) out.back().rise = w.rise;
+  }
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
     // A placeholder with nobody spawned in it (no child actor, no class): not a person (the dorm lounge, 2026-10-27).
@@ -427,7 +441,7 @@ std::vector<Poi> scan(float radius) {
   // A door between two rooms is two exits a step apart, one on each side, each named for where it leads (the
   // monorail's cars, 1.4 m apart, 2026-10-27): only the one on the player's side, the nearer, counts.
   std::vector<core::Place> places;
-  for (auto& p : out) places.push_back(core::Place{p.kind == Kind::Exit, p.name, world::vec3(p.loc)});
+  for (auto& p : out) places.push_back(core::Place{p.kind == Kind::Exit, p.name, world::vec3(p.loc)});   // not a Way: it has no other side
   std::vector<Poi> kept;
   for (size_t i : core::near_sides(places)) kept.push_back(std::move(out[i]));
   // The objective's mark: the thing it stands on (within 3 m, on its floor) is where the story sends the player.
@@ -456,6 +470,7 @@ void tick() {
   sight::tick();    // the edge of the Shadows' sight (it checks the same)
   prompt_tick();
   arrival_tick();
+  floors::tick();
 }
 
 void install() {

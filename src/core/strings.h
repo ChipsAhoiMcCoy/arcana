@@ -487,6 +487,7 @@ inline constexpr Tr kHelpRelaxedReaper{"In Tartarus: you can stay on a floor twi
 inline constexpr Tr kHelpAlwaysDash{"Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too."};
 inline constexpr Tr kHelpBehindPitch{"Sounds whose source is behind you play lower."};
 inline constexpr Tr kHelpPoiRange{"How far the points of interest list reaches."};
+inline constexpr Tr kHelpFloorOnly{"In a place with several floors, the points of interest list and the sonar leave out everything on the other floors. The stairs between floors stay."};
 inline constexpr Tr kHelpMasterVolume{"Every sound the mod plays. The game's own sounds follow the game's settings."};
 inline constexpr Tr kHelpSoundVolume{"The Shadow sounds and the controller layer's tick."};
 inline constexpr Tr kHelpWallVolume{"How loud the wall tones are."};
@@ -547,6 +548,7 @@ inline constexpr SoundTest kSoundTests[] = {
     {"Wall behind", "The wall tone for a wall behind you."},
     {"Wall to the left", "The wall tone for a wall on your left."},
     {"Controller layer", "Both triggers are held: the mod's controller layer is open."},
+    {"Stairs to another floor", "A run of tones from one side of the stairway to the other, as wide as it is. Rising: it leads up. Falling: it leads down."},
 };
 inline constexpr Tr kSetWallTones{"Wall tones"};
 inline constexpr Tr kSetSonar{"Sonar"};
@@ -579,6 +581,7 @@ inline constexpr Tr kSpatialHrtf{"3D for headphones"};
 inline constexpr Tr kSpatialPan{"plain left and right"};
 inline constexpr Tr kSetBehindPitch{"Lower pitch behind you"};
 inline constexpr Tr kSetPoiRange{"Points of interest range"};
+inline constexpr Tr kSetFloorOnly{"Same floor only"};
 inline constexpr Tr kSetMasterVolume{"Master"};
 inline constexpr Tr kSetSoundVolume{"Shadow sounds"};
 inline constexpr Tr kSetWallVolume{"Wall tones"};
@@ -658,6 +661,7 @@ inline constexpr Tr kPoiDoor{"Door"};
 inline constexpr Tr kPoiThing{"Object"};
 inline constexpr Tr kPoiEvent{"Event"};
 inline constexpr Tr kPoiStairsTo{"Stairs to floor {0}"};   // an unnamed staircase trigger, by the floor it takes you to
+
 inline constexpr Tr kPoiGatekeeper{"Gatekeeper"};   // the game's word for the boss of a border floor
 inline constexpr Tr kPoiLargeShadow{"Large Shadow"};
 inline constexpr Tr kPoiIntoMonorail{"Into the monorail"};   // 5/9: the way from the overhead bridge onto the train   // a full moon's boss, as its objective names it
@@ -786,7 +790,11 @@ inline constexpr Tr kPicks{"picks"};   // "chosen, 1 of 2 picks": apart from the
 inline constexpr Tr kInherits{"Inherits"};
 inline constexpr Tr kNotChosen{"not chosen"};
 inline constexpr Tr kFusing{"Fusing."};
-inline constexpr Hint kFusingKeys{"Tab skips the animation.", "The Menu button skips the animation."};
+inline constexpr Hint kFusingKeys{"Tab pauses the animation and offers to skip it, Tab again skips it.", "The Menu button pauses the animation and offers to skip it, the Menu button again skips it."};
+// The game's skip prompt in an event scene ("Skip" beside a pause mark): said when it comes up, and when it is
+// cancelled.
+inline constexpr Hint kSkipPrompt{"Paused. Tab skips, Escape resumes.", "Paused. The Menu button skips, B resumes."};
+inline constexpr Tr kSkipResumed{"Resumed."};
 inline constexpr Hint kInheritSkill{"Up and down arrows move, Space takes a skill or puts it back, Escape back.", "Up and down move, A takes a skill or puts it back, B back."};
 inline constexpr Hint kFusionConfirmKeys{"Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.", "A fuses, RT and LT jump between sections, LB and RB page through the result and its materials, X skills and affinities, B back."};
 // Config (System > Config, and the title screen's)

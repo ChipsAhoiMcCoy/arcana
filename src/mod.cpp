@@ -27,6 +27,8 @@
 #include "persona.h"
 #include "social.h"
 #include "sonar.h"
+#include "floors.h"
+#include "event_skip.h"
 #include "shadow.h"
 #include "sight.h"
 #include "bmdfile.h"
@@ -66,7 +68,7 @@ static Section g_sections[] = {
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"achievements", achievements::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
-  {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
+  {"event_skip", event_skip::tick, true}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
 };
 static uint64_t g_perf_ticks = 0;
 static void tick() {
@@ -133,6 +135,7 @@ void init(bool speech_ok) {
   voice::install();
   poi::install();
   sonar::install();
+  floors::install();
   topdown::install();
   menuspeed::install();
   walkmode::install();

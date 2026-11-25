@@ -20,7 +20,7 @@ using namespace ue;
 
 const char* kind_name(Kind k) {
   switch (k) {
-    case Kind::Exit: return strings::kPoiExit;
+    case Kind::Exit: case Kind::Way: return strings::kPoiExit;
     case Kind::Person: return strings::kPoiPerson;
     case Kind::Shop: return strings::kPoiShop;
     case Kind::Door: return strings::kPoiDoor;

@@ -8,6 +8,7 @@
 #include "core/strings.h"
 #include "core/units.h"
 #include "devserver.h"
+#include "floors.h"
 #include "input.h"
 #include "keys.h"
 #include "log.h"
@@ -72,6 +73,8 @@ static const Def kDefs[Count] = {
   // the daily hero dashes whenever he moves, outside Tartarus; Shift (RT) then runs (walkmode.cpp). On by default (the user's call, 2026-11-23)
   {"always_dash", strings::kSetAlwaysDash, CatExploring, strings::kHelpAlwaysDash, Unit::Toggle, {0, 1}, 1},
   {"poi_range", strings::kSetPoiRange, CatExploring, strings::kHelpPoiRange, Unit::Meters, {20, 40, 60, 100, 150}, 60},
+  // the list and the sonar leave out everything on another floor of the place, the stairways aside (poi.cpp)
+  {"same_floor", strings::kSetFloorOnly, CatExploring, strings::kHelpFloorOnly, Unit::Toggle, {0, 1}, 0},
   // when the wall tones play: all the time, only while the player moves (the default), or never (walltones.cpp)
   {"wall_tones", strings::kSetWallTones, CatExploring, strings::kHelpWallTones, Unit::Choice, {WallOff, WallMoving, WallContinuous}, WallMoving,
    {strings::kOff, strings::kWallMoving, strings::kWallContinuous}},
@@ -252,6 +255,7 @@ static void play_test(int i) {
     case 16: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
     case 17: case 18: case 19: case 20: walltones::demo(i - 17); break;
     case 21: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
+    case 22: floors::demo(); break;
   }
 }
 

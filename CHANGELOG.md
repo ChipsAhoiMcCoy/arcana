@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Menus
+- A fusion's animation can be skipped, and the mod now says how: the game's skip takes two presses. Tab (the Menu button) pauses the animation and shows a skip prompt, now read as "Paused. Tab skips, Escape resumes."; Tab again skips to the new Persona, Escape goes on ("Resumed."). The first press was silent before, so the skip seemed not to work. With scene descriptions set to wait, skipping while a description held the scene left it standing still until Enter: the description now closes with the skip.
 - Restaurants and other order lists (Hagakure, Wilduck and the like) say each dish's price and, with the list's heading, how much money you have ("Hagakure Ramen. What should I order...? You have 360 yen.", "Pork ramen, 900 yen, 1 of 1"). The screen showed both; neither was said.
 - Spending all your money is said too ("Spent 110 yen" with 110 yen in your wallet): a purchase that left 0 yen was silent.
 - Be Blue V's treatment (a teammate relearns a forgotten skill) works: the list of forgotten skills was silent and took no keys, so the 3000 yen paid left you stuck. Each skill is read with its cost and what it does, then the slots to choose the skill it replaces, and the swap is said ("Learned Garu, in place of Pulinpa").
@@ -18,6 +19,9 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- Stairs between the floors of one place are points of interest: "Stairs to floor 2" under Exits in the Iwatodai Strip Mall (all three floors), Paulownia Mall (up to Mandragora) and Club Escapade. You walk to them like any other point. Their sound is new: a run of five tones from one side of the stairway to the other, as wide as the opening is, rising when the stairs lead up and falling when they lead down. It repeats while a stairway is within the sonar's range (under the sonar's Exits switch), plays when you select one, and is in the sound test.
+- Walking onto another floor says just the floor ("Floor 2"). It said the whole place again ("Fountain Square, Paulownia Mall, floor 2"), and coming back down to a ground floor said only the place's name.
+- New option, Same floor only (Exploring, off by default): the points of interest list and the sonar leave out everything on the other floors of the place; the stairs between floors stay.
 - Area descriptions (the description key) are rewritten from screenshots of each place: what it is like to stand in and where things are from the entrance, at about the old length. The school's approach at dusk is described in the deep blue the game shows, not warm gold.
 - A skill card is said as one when you get it ("Got Maragi skill card"), from a Tartarus chest, an item notice or a battle's results: it was said as its skill alone ("Got Maragi"), where the screen shows a card.
 - The route sound when you select a point (straight, round, or unreachable) no longer calls Tartarus' stairs, teleporters and Gatekeepers unreachable from afar: their trigger floats above the floor, and the walk went there all along.
