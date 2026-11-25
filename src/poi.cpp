@@ -253,7 +253,11 @@ std::vector<Poi> scan(float radius) {
     std::string overlap = name_of(get<UObject*>(a, "mOverlapBluePrint_"));
     bool lost_one = missing && overlap == "BP_FldHit_MISNPC_01_HERO_C";
     bool way_on = overlap == "BP_FldHitActor_302_101_H1_Play_C";
-    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && !way_on && out_of_range(a))) continue;
+    // A Tartarus floor's ways on (stairs, teleporter, doors) and its Gatekeeper are listed wherever on the floor they
+    // are: after the 5F Gatekeeper the list said "No Exits" with Head Up 68 m off and the teleporter 62 m
+    // (2026-11-25). Only for the list's own scan: the sonar's 4 Hz one keeps the range test.
+    bool floor_wide = dungeon && list_scan;
+    if (!world::actor_visible_level(a) || is_a(a, "FldNpcActor") || (!lost_one && !way_on && !floor_wide && out_of_range(a))) continue;
     std::string icon = icon_of(a);
     // The missing person's only hit has no icon: a sphere that starts the rescue when walked into
     // (BP_DHIT_MISNPC_C, overlap BP_FldHit_MISNPC_01_HERO_C). Named by the game's hit-name table: "Stray Cat",
@@ -294,7 +298,7 @@ std::vector<Poi> scan(float radius) {
       // off once it is beaten (FLD_BATTLE_DEFEAT_GK_*, checked above). Always listed: it is what the floor is for.
       // The other unnamed boxes were never checked against their flags: a finished one is left out now.
       std::string bp = name_of(get<UObject*>(a, "mOverlapBluePrint_"));
-      if (bp == "BP_FldHit_Tartarus_GateKeeper_C") add(a, Kind::Event, strings::kPoiGatekeeper.c_str());
+      if (bp == "BP_FldHit_Tartarus_GateKeeper_C") add(a, Kind::Event, strings::kPoiGatekeeper.c_str(), false, true);
       // A full moon's boss: the box on the way to it (the Moonlight Bridge's, 13 m up the bridge, was not listed
       // while the party stood nearby, 2026-11-24). It goes once the fight is won (the field changes).
       else if (core::boss_trigger(bp)) add(a, Kind::Event, strings::kPoiLargeShadow.c_str());
@@ -322,14 +326,14 @@ std::vector<Poi> scan(float radius) {
     // plain Check icon: listed as exits, they read as ways out (2026-11-24). Every other AreaChange hit in the game is
     // a FldAreaChange or carries the Go To icon (a survey of the field levels): a FldHitActor under Check is a thing.
     bool way_out = icon == "Goto" || (type == "AreaChange" && !(icon == "Check" && !is_a(a, "FldAreaChange")));
-    if (way_out) add(a, Kind::Exit, nm.empty() ? strings::kPoiExit.c_str() : nm);
+    if (way_out) add(a, Kind::Exit, nm.empty() ? strings::kPoiExit.c_str() : nm, false, dungeon);
     else if (icon == "Shop") add(a, Kind::Shop, nm.empty() ? strings::kPoiShop.c_str() : nm);
     // A vendor under the Speak icon (a hit named as a shop) is a shop like an NPC vendor (below).
     else if (icon == "Speak" || icon == "Listen") add(a, !cmm && check_kind(a) == Kind::Shop ? Kind::Shop : Kind::Person, nm.empty() ? strings::kPoiPerson.c_str() : nm);
     // Tartarus' doors are ways onward under the plain Check icon: the Monad door on a floor ("Enter Door", row
     // 10009006; seen on Adamah floors 231 and 243, 2026-11-11), and in the passage "Exit Door", "Proceed Onward" and
     // the way back (10009007-10009009, 10009012; all three seen listed on Adamah floor 255, 2026-11-11).
-    else if (int idx = get<int32_t>(a, "mNameIndex_", -1); ((idx >= 10009006 && idx <= 10009009) || idx == 10009012) && !nm.empty()) add(a, Kind::Exit, nm);
+    else if (int idx = get<int32_t>(a, "mNameIndex_", -1); ((idx >= 10009006 && idx <= 10009009) || idx == 10009012) && !nm.empty()) add(a, Kind::Exit, nm, false, dungeon);
     else if (fragment_spot(a)) add(a, Kind::Fragment, strings::kPoiFragment.c_str());
     else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));

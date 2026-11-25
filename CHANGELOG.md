@@ -17,6 +17,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- A Tartarus floor lists its ways on (stairs, teleporter, doors) and its Gatekeeper wherever on the floor they are, past the points of interest range: after the 5F Gatekeeper the list said "No Exits" with the stairs 68 meters off.
 - Walking to a breakable object in Tartarus stops as soon as your strike would break it, turned to face it: the strike-reach ring sounds, and Ctrl breaks it. The walk used to head for its middle, and where they stand in a ring the others blocked you and it said "Stuck, stopping".
 - Strike assist also aims at breakable objects: with no Shadow in reach, a swing turns you to the nearest breakable object your strike would reach on any side, and the ring sounds for it from any side, as for a Shadow.
 - Where am I (Slash) no longer says an objective the game has stopped showing: "Return to the dorm" from your first school day was still said days later.
