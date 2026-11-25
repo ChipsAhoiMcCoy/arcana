@@ -4,7 +4,7 @@ Arcana is an alpha. This is what is missing and what has not been tested. If you
 
 ## Not covered
 
-- Audio description covers every animated movie and the 3D story scenes of the main story (the main story, every Social Link, outings, requests, field and Tartarus moments). Episode Aigis's 3D scenes are not described yet; its movies are.
+- Audio description covers every animated movie, the 3D story scenes of the main story (the main story, every Social Link, outings, requests, field and Tartarus moments) and the story battles' own scenes (boss entrances and falls, Persona first summons). Episode Aigis's 3D scenes are not described yet; its movies are.
 
 ## Never tried in the running game
 
@@ -14,7 +14,7 @@ Arcana is an alpha. This is what is missing and what has not been tested. If you
 
 - Episode Aigis has not been played through. Its movies, area descriptions and Theurgy list have been checked.
 - The end of the game (the final battles, the epilogue, credits, clear save and New Game Plus) was played once with test shortcuts, not at a player's pace.
-- No full late-game playthrough: menus were tested on saves from various points. Monad and the Abyss of Time were visited only to check area descriptions.
+- No full late-game playthrough: menus were tested on saves from various points. Monad was entered once through its door to check the list and the walk; the Abyss of Time was visited only to check area descriptions.
 - Audio description was checked by automated timing and transcript checks, and the 3D scenes' descriptions against screenshots of each scene, not by a person watching every movie and scene.
 - The translations of the mod's own lines (every language but English) are new and were not checked by native speakers. A line with no translation is said in English. Please report wording that is wrong or unclear.
 - In languages other than English, the audio descriptions are read by your screen reader: the narrator's voice speaks English only.
