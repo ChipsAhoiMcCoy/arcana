@@ -292,10 +292,11 @@ void pump() {
   // running, 2026-11-24), and capped only at 120 a second the mod ticked several times in one game frame: all it counts
   // in frames (two frames with a cursor unmoved, the camp root's timer moving) counted pumps, and the camp read its
   // list as not taking input and dropped every key. While the counter stands still and the game still pumps (a load),
-  // the tick runs ten times a second so the mod and its server go on. Another build: the old cap.
+  // the tick runs once a second so the mod and its server go on: at ten a second, a game at 9 fps (six games and a
+  // relaunch) ticked twice in most frames and the camp dropped every key again. Another build: the old cap.
   static uint64_t seen = 0;
   if (uint64_t f = ue::frame_counter()) {
-    if (f == seen && now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 10) return;
+    if (f == seen && now.QuadPart - g_last.QuadPart < g_qpf.QuadPart) return;
     seen = f;
   } else if (now.QuadPart - g_last.QuadPart < g_qpf.QuadPart / 120) {
     return;
