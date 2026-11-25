@@ -14,6 +14,7 @@
 - Selling (and buying in the shops that ask how many outside Aohige Pharmacy): "How many?" now says the total as you change the count ("2, 360 yen"), as the screen shows it. Only the pharmacy's purchases said it before.
 - The bulletin board in Fountain Square (Paulownia Mall) opens the Missing Persons list: it is now read as the camp's is (each case with its number, name, status and profile; F1 for the keys). It was silent, and until you found C to close it nothing else in the field answered.
 - The police station's Sell Item: Q and E now say which category is up ("Sell Item, Armor, No items"), in the game's words; two empty categories in a row were silent before. A purchase or a sale no longer says "Shop" again before the next prompt.
+- After a fusion accident (the Velvet Room's fusion goes wrong and makes another Persona), the new Persona's page is read ("Chi You, Tower, level 86", then its stats, skills and affinities, Space to go on): it was silent. When its Social Link then levels it up, "Level up!" and the new level are said from the top of the page.
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field

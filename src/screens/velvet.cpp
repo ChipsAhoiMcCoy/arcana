@@ -173,7 +173,7 @@ class VelvetScreen : public MenuScreen {
   const char* id() const override { return "velvet"; }
   int priority() const override { return 19; }
   bool active() override { int s = scene(); return (s >= 2 && s <= 6) && room_.get(); }
-  bool holds_keys() override { return on_list() || on_page() || levelup(); }
+  bool holds_keys() override { return on_list() || on_page() || levelup() || plain_result(); }
   // Back from skill_learn (a fusion's level up): "Learned Tentarafoo" is not cut off by the page's first line.
   // Only when it is the Velvet Room that the learning covered (a skill learned after a battle says nothing about it).
   bool covered_ = false;
@@ -192,6 +192,18 @@ class VelvetScreen : public MenuScreen {
   // old one is the copy kept while it still had them (before_).
   uint8_t levelup_[0x30] = {}, before_[0x30] = {};
   const uint8_t* levelup_before_ = nullptr;
+  // The new Persona's page with no level up on it (step 11, the page's own PersonaStatusSkillHelpSeq): a fusion
+  // accident's Persona (measured 2026-11-24: Hell Biker + Vasuki became Loki, no bonus) or a result its Social Link
+  // gives nothing. Not after a level up on this page (that page stays as the level up left it).
+  bool levelled_ = false;
+  bool plain_result() {
+    if (scene() != 4 || step() != 11) { levelled_ = false; return false; }
+    if (levelup()) { levelled_ = true; return false; }
+    if (levelled_ || !persona::shown_status()) return false;
+    auto* p = (uint8_t*)ps_.get();
+    UObject* seq = p ? get<UObject*>((UObject*)p, "Sequence_") : nullptr;
+    return seq && name_of(class_of(seq)) == "PersonaStatusSkillHelpSeq";
+  }
   bool levelup() {
     if (scene() != 4 || step() != 11) return false;
     auto* p = (uint8_t*)ps_.get();
@@ -255,7 +267,28 @@ class VelvetScreen : public MenuScreen {
   }
   int chosen_ = -1;   // the inheritance's chosen count last tick: a drop is said ("chosen" is the item's own part)
   bool fusing_ = false;   // the fusion's animation (steps 7 and 8: Igor's cards, then the Persona appears) was said
+  // The plain page, then a Social Link bonus levels it up on the same page (the same lines: Loki's "Strength 49, up
+  // 1" was all that was said, 2026-11-24): the focus goes back to the name, "Level up!" and the new level. Said by
+  // the window's re-entry when Igor's line is up, else once the level up's lines are built (the next tick).
+  bool plain_seen_ = false, relead_ = false;
+  void relead() {
+    bool plain = plain_result();
+    if (plain) { plain_seen_ = true; relead_ = false; return; }
+    if (scene() != 4 || step() != 11) { plain_seen_ = relead_ = false; return; }
+    if (relead_) {
+      relead_ = false;
+      if (!msg::current().blocking) say_focus();
+      return;
+    }
+    if (!plain_seen_ || !levelled_) return;
+    plain_seen_ = false;
+    const uint8_t* e = persona::shown_status();
+    if (!e) return;
+    focus_quietly(status_name_id(*(uint16_t*)(e + 2)));
+    relead_ = true;
+  }
   void on_tick() override {
+    relead();
     // The animation runs 20 seconds with nothing to read until the Persona speaks: say it started (Tab skips it).
     if (scene() == 4 && (step() == 7 || step() == 8)) {
       if (!fusing_) { fusing_ = true; screens::set_keys(strings::kFusingKeys); say(strings::kFusing.c_str(), true); }
@@ -313,6 +346,9 @@ class VelvetScreen : public MenuScreen {
     } else if (levelup()) {
       screens::set_keys(strings::kLevelUpKeys);
       build_status_page(b, levelup_, strings::kLevelUp.c_str(), "", levelup_before_);
+    } else if (plain_result()) {
+      screens::set_keys(strings::kLevelUpKeys);
+      build_status_page(b, persona::shown_status(), "", "", nullptr);
     } else if (sc == 4) {
       int st = step();
       if (st == 6) build_inherit(b);
