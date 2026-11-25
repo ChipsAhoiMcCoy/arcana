@@ -1246,7 +1246,7 @@ const Model kModels[] = {
         "spattered with blood. Its head is a pale hood soaked red, one bulging, bloodshot eye staring out of one "
         "side, a rope cinched around its neck like a noose. Long chains cross its chest and loop over its "
         "shoulders. Its arms hang at its sides, each gloved hand gripping a revolver whose absurdly long silver "
-        "barrel reaches nearly to the floor. Unhurried and silent, it has the stillness of something that always "
+        "barrel reaches nearly to the floor. Unhurried, it has the stillness of something that always "
         "arrives."},
   {"Em0511_000",  // Priestess
         "A woman split exactly down the middle, one half jet black, the other bone white, sitting on the ground "
@@ -1274,12 +1274,14 @@ const Model kModels[] = {
         "white fur cuffs and black clawed hands, one gripping a long blue sword held low. Thin black legs end in "
         "curled, pointed shoes. Rigid as a tin soldier, he stands like authority with nothing inside it."},
   {"Em0531_000",  // Hierophant
-        "A grotesque mock pontiff, two beings stacked into one. Below squats an enormously round white body, its "
-        "face a small blue mask with a gaping mouth peering from a black hood, in a red brocade capelet, striped "
-        "cyan breeches, black fishnets and red high heels, a gilded throne frame and a red banner of crossed keys "
-        "at its hips. From its back rises a naked headless woman of white porcelain, arms spread, her breasts and "
-        "buttocks huge and round, a golden tree studded with red jewels growing from her neck. Two white crosses "
-        "stand beside it. Pompous and obscene, it holds that bare body aloft like a banner."},
+        "A grotesque mock pontiff on a throne that walks. An enormously round white body, its face a small blue "
+        "mask with a gaping mouth peering from a black hood, sits in a red brocade capelet and striped cyan "
+        "breeches on a gilded throne, a red banner of crossed keys hanging before it. The throne has no feet of "
+        "its own: it stands on four women's legs in black fishnets and red high heels. From the back of the "
+        "throne rises a naked headless woman of white porcelain, arms spread, her breasts and buttocks huge and "
+        "round, and where her head should be grows a golden branch studded with red jewels, forked like a "
+        "many-armed cross. Two white crosses stand beside it. Pompous and obscene, it sits enthroned on flesh "
+        "and calls it holy."},
   {"Em0532_000",  // Lovers
         "A giant heart of translucent red glass, caged in riveted brass bands like a corset of armour, spikes "
         "bristling along its top. Thick branching limbs spread from its sides like bare antlers or wings, shading "
@@ -1314,7 +1316,7 @@ const Model kModels[] = {
         "and above them the legs turn to dark scaly flesh arching into a black back traced with red circuit "
         "lines. Three black cylinders like old valves, printed with white lettering, jut from its shoulders. Its "
         "head hangs low in front, buried in a huge spiky mane of pale blue-grey spines, its face a small orange "
-        "mask with one round black hole at its centre, like a single eye. It lurks, all static and eavesdropping."},
+        "mask with one round black hole at its centre, like a single eye. It lurks, all static, feeding on the current."},
   {"Em0561_000",  // Fortune
         "A little brass mechanical beast crouched like a sphinx near the hub of an enormous flat bronze wheel, "
         "many times its size. Its scrolled golden body is riveted with gears and glass portholes, a grey dome "
@@ -1330,9 +1332,9 @@ const Model kModels[] = {
         "sunflowers tangled with vines swallows the lower gown. A pink ribbon swirls over her head like a halo, "
         "and spear-tipped iron railings run before her. Graceful and still, she is gentleness fenced in."},
   {"Em0571_000",  // Hanged Man
-        "A massive grey-green brute strung beneath a steel girder like a carcass on a crane, his muscular body "
-        "slung from hooks and straps, his arms spread wide, cuffed at wrists and ankles, with dark hands and "
-        "heavy black boots. His head is a lavender-grey helmet marked with a numeral above a black, glassy face "
+        "A massive grey-green brute strung face down beneath a steel girder like a carcass on a crane, his "
+        "muscular body slung level from hooks and straps, his arms stretched straight out to either side so that "
+        "he hangs as a cross, cuffed at wrists and ankles, with dark hands and heavy black boots. His head is a lavender-grey helmet marked with a numeral above a black, glassy face "
         "plate ringed in teal, like a diver's mask. Above, chains run up to two long brass beams stacked one over "
         "the other, each sprouting ragged sky-blue wings of jagged feathers. Strung between the ground and the "
         "sky, he hangs helpless and enormous."},
@@ -1345,8 +1347,8 @@ const Model kModels[] = {
   {"Em0581_000",  // Nyx Avatar
         "A dark, regal figure borne on two pairs of vast black feathered wings, wider than a house, their "
         "undersides veined with glowing electric-blue lines like cracks of lightning. At their centre is a "
-        "slender, humanlike body: a pale, gaunt face with the faintest smile, framed by spiky black hair, under a "
-        "tall flat-crowned black hat with a gold band. Its fitted coat of black and gunmetal armour glows with "
+        "slender, humanlike body: a pale, gaunt face as still as a mask, hollow-eyed and set in the faintest "
+        "smile, framed by spiky black hair, under a tall flat-crowned black hat with a gold band. Its fitted coat of black and gunmetal armour glows with "
         "the same blue veins, long blade-like panels hanging to a point in place of legs. One clawed hand holds a "
         "long, slim silver sword with a gold hilt. Cold and terribly calm, it is death in a dress uniform."},
   {"Em0582_000",  // Nyx Core

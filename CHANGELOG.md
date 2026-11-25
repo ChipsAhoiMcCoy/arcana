@@ -50,7 +50,7 @@
 - On a Sunday or a holiday the time of day is "Daytime", as the game's date shows it (Slash, the day and time changes): it was called "Afternoon".
 
 ### Battle
-- Every Persona and Shadow look (the description key on a battle target, a fusion or the compendium) is rewritten from the game's models: pose, shape and what the design means come first, nudity and allure are said as plainly as the screen shows them, and the Emperor, Empress and Lovers bosses now match their battle entrances (the Emperor's sword, the Lovers' glass heart).
+- Every Persona and Shadow look (the description key on a battle target, a fusion or the compendium) is rewritten from the game's models: pose, shape and what the design means come first, nudity and allure are said as plainly as the screen shows them, and the Emperor, Empress and Lovers bosses now match their battle entrances (the Emperor's sword, the Lovers' glass heart). The Hierophant's throne is said to stand on four women's legs in fishnets and heels (they read as his own), the Hanged Man hangs face down with his arms out as a cross, and the Nyx Avatar's face is still as a mask.
 - An enemy's second action in a turn is named as theirs: Elizabeth's Slash Attack after her Inferno was said as "Makoto: Slash Attack", taken for a counter of the one she hit. Only a passive skill (a Counter) is now said under the name of the one it belongs to.
 - The monorail battle's countdown says "Time's up" when it runs out. After "10 seconds left" nothing more was said until the game over.
 - After escaping (Tactics, Escape) the results page is headed "Escaped", and "The enemies fled" when they ran; both were called "Victory".
