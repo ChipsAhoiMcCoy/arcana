@@ -1,0 +1,2 @@
+#scene LS_BtlEvent710_400
+0.100	10.198	00.mp3	Hunched over your sword, you straighten as sparks of golden light rain down on you. Rings of gold and pink light whirl around you and burst in a blaze, and you stand ready again.
