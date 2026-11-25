@@ -160,21 +160,38 @@ bool in_reach(UObject* shadow, const FVector& at, const FVector& me, bool& known
 // same box as the Shadows (the actors overlapping AttackArea's AreaComp). That box collides with nothing between
 // swings (CollisionEnabled NoCollision at rest, seen in the player's game 2026-11-10: the engine's overlap answered
 // false beside a breakable), so the two boxes are compared here: the strike's and the breakable's own Box.
-bool breakable_in_reach(const FVector& me, FVector& at) {
+// The strike's box meets this breakable's Box: as the hero faces now, or (`turned`) with the box turned round him to
+// face it, as strike assist turns him on a swing. `yaw` is that facing (toward its Box's middle).
+bool breakable_meets(const Box& strike, UObject* a, const FVector& me, bool turned, float& yaw) {
+  Box body;
+  if (!read_box(get<UObject*>(a, "Box"), body)) return false;
+  yaw = std::atan2(body.center.y - me.y, body.center.x - me.x) * 180.0f / kPi;
+  if (boxes_meet(strike, body)) return true;
+  return turned && boxes_meet(core::turned_about(strike, world::vec3(me), yaw), body);
+}
+// The nearest breakable the strike reaches (turned to it with strike assist on, like a Shadow: in_reach).
+UObject* breakable_reached(const FVector& me, FVector& at, float& yaw) {
   UObject* dc = dungeon_comp();
   Box strike;
-  if (!dc || long_range(dc) || !strike_box(dc, strike)) return false;
+  if (!dc || long_range(dc) || !strike_box(dc, strike)) return nullptr;
+  const bool turned = settings::on(settings::StrikeAssist);
   UObject* found = nullptr;
   float best = 600.0f;   // cm: nothing farther is in the box
   guarded([&] {
     for (UObject* a : live("FldDungeonObjectActor")) {
       FVector v = world::actor_location(a);
       float d = std::hypot(flat(v, me), v.z - me.z);
+      float y = 0.0f;
       if (d >= best || !poi::breakable(a)) continue;
-      Box body;
-      if (read_box(get<UObject*>(a, "Box"), body) && boxes_meet(strike, body)) { best = d; found = a; at = v; }
+      if (breakable_meets(strike, a, me, turned, y)) { best = d; found = a; at = v; yaw = y; }
     }
   });
+  return found;
+}
+bool breakable_in_reach(const FVector& me, FVector& at) {
+  float yaw = 0.0f, best = 0.0f;
+  UObject* found = breakable_reached(me, at, yaw);
+  if (found) best = std::hypot(flat(at, me), at.z - me.z);
   static WeakObj logged;
   if (WeakObj w = WeakObj::of(found); found && !(w == logged)) {
     logged = w;
@@ -405,6 +422,22 @@ void strike_assist(const std::vector<Seen>& seen, const FVector& me) {
     if (better) { pick = &s; pick_yaw = yaw; }
   }
   UObject* hero = world::player();
+  // No Shadow: a breakable thing in reach on any side, the nearest (aimed the same way; 2026-11-24, aiming at one by
+  // ear was hard).
+  if (!pick && hero) {
+    FVector at{};
+    float yaw = 0.0f;
+    if (UObject* br = breakable_reached(me, at, yaw)) {
+      float turned = angle_diff(yaw_of(hero), yaw);
+      Params sp(find_function(class_of(hero), "K2_SetActorRotation"));
+      sp.set<FRotator>("NewRotation", FRotator{0.0f, yaw, 0.0f});
+      call(hero, sp);
+      if (swinging)
+        if (FVector* fwd = field<FVector>(dc, "AttackForward")) *fwd = FVector{std::cos(yaw * kPi / 180.0f), std::sin(yaw * kPi / 180.0f), 0.0f};
+      log::writef("shadow: swing (attack {}, {}): strike assist turned the hero {:.0f} deg to breakable #{}", aid, when, turned, index_of(br));
+      return;
+    }
+  }
   if (!pick || !hero) { log::writef("shadow: swing (attack {}, {}), no Shadow in reach on any side", aid, when); return; }
   float turned = angle_diff(yaw_of(hero), pick_yaw);
   Params sp(find_function(class_of(hero), "K2_SetActorRotation"));
@@ -417,6 +450,15 @@ void strike_assist(const std::vector<Seen>& seen, const FVector& me) {
               index_of(pick->actor), pick->dist / 100.0f, off_front(*pick, me), hunting(pick->actor) ? ", hunting" : "");
 }
 }  // namespace
+
+bool strike_reaches(UObject* breakable, const FVector& me, float& yaw) {
+  UObject* dc = dungeon_comp();
+  Box strike;
+  if (!breakable || !dc || long_range(dc) || !strike_box(dc, strike)) return false;
+  bool r = false;
+  guarded([&] { r = poi::breakable(breakable) && breakable_meets(strike, breakable, me, true, yaw); });
+  return r;
+}
 
 std::vector<Holder> enemy_holders() {
   static const int id = watch::want("FldEnemyManager");

@@ -14,6 +14,7 @@
 #include "screens/screen.h"
 #include "speech.h"
 #include "seh.h"
+#include "shadow.h"
 #include "watch.h"
 #include "world.h"
 #include <algorithm>
@@ -777,6 +778,20 @@ void tick() {
     // as he slowed it could go again (Elizabeth in the back alley: arrived facing the Velvet Room door, 15 cm from her, no
     // prompt, Space did nothing, 2026-11-24). Turned the way its check asks, as on every other arrival.
     if (!arrived && near_target && poi::prompt() == g_w.name) { finish("arrived (prompt)"); stop(false); face(t, me); arrived_at(); return; }
+    // A breakable thing (Tartarus' Shadow remains) is reached once the strike would break it: he stops there turned to
+    // it, the strike's ring sounds, and Ctrl breaks it. They stand in rings: walking on into the middle of one, the
+    // others blocked him and the walk said "Stuck" (2026-11-24). Nothing to use: no Space.
+    if (float yaw = 0.0f; shadow::strike_reaches(t, me, yaw)) {
+      finish("arrived (strike reach)");
+      stop(false);
+      if (ue::UObject* hero = world::player()) {
+        ue::Params sp(ue::find_function(ue::class_of(hero), "K2_SetActorRotation"));
+        sp.set<ue::FRotator>("NewRotation", ue::FRotator{0.0f, yaw, 0.0f});
+        ue::call(hero, sp);
+      }
+      arrived_at(false);
+      return;
+    }
     if (arrived) { finish("arrived"); stop(false); face(t, me); arrived_at(); return; }
     Goal target{has_box, box, goal};
     // The next way in: walk round to its standing point (the path leads there while g_w.detour_on), then straight in.

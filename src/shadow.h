@@ -18,6 +18,9 @@ void set_relaxed_reaper(bool on);
 void demo(int which);
 // The enemy manager's list (AFldEnemyManager.Enemies, FFldEnemyHolder): each Shadow's actor beside the component
 // that holds its state. Every entry as the game has it (either pointer may be null); empty off a Tartarus floor.
+// A breakable thing (Tartarus' Shadow remains) the hero's strike would break, turned to face it from where he stands
+// (`me`): the strike's box turned round him toward it meets its Box. `yaw` is that facing. Game thread.
+bool strike_reaches(ue::UObject* breakable, const ue::FVector& me, float& yaw);
 struct Holder { ue::UObject* actor; ue::UObject* comp; };
 std::vector<Holder> enemy_holders();
 }  // namespace p3a::shadow
