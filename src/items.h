@@ -11,5 +11,7 @@ std::string stats(const Info& in);                // ", attack 60, accuracy 95" 
 std::string name_of(int id);                      // an item's English name by id, empty if unknown
 int owned(const Info& in);                         // how many the player carries, -1 if unknown
 std::string help(int id);                          // its help line (BMD_Item<category>Help), empty if unknown
+std::string labelled(int id, const std::string& name);   // a skill card's name as one ("Maragi skill card")
+std::string labelled_pickup(const std::string& name);    // a drawn pickup's name, labelled by the ids queued last (game thread)
 void install();                                    // registers the item database with the object watcher; /item dev route
 }  // namespace p3a::items

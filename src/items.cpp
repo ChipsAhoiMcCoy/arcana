@@ -5,6 +5,9 @@
 #include "bmdfile.h"
 #include "core/strings.h"
 #include "devserver.h"
+#include "flow.h"
+#include "hooks.h"
+#include "log.h"
 #include "party.h"
 #include "seh.h"
 #include "watch.h"
@@ -126,8 +129,34 @@ std::string help(int id) {
   return t.starts_with("\xE6\x9C\xAA\xE4\xBD\xBF\xE7\x94\xA8") ? std::string() : t;   // "unused" in Japanese
 }
 
+std::string labelled(int id, const std::string& name) {
+  return (id >> 12) == 7 && !name.empty() ? strings::fmt(strings::kSkillCardFmt, name) : name;
+}
+
+// ADD_GET_ITEM_LIST(id, count) queues an item on the next notice. A Tartarus chest's (BF_BP_DOBJ_TBOX) is the small
+// pickup line drawn at the left ("Maragi x1"), read as text with no id (field_hud pickup_tick): the ids queued
+// last give it its kind. A skill card was said as its skill ("Got Maragi", 2026-11-25).
+static flow::Command g_add_item_cmd;
+static int g_queued[16];
+static int g_queued_n = 0;   // how many were ever queued; the last 16 are kept
+static int64_t add_item_hook(uint8_t* ctx) {
+  g_queued[g_queued_n++ % 16] = flow::int_arg(ctx);
+  return g_add_item_cmd(ctx);
+}
+
+std::string labelled_pickup(const std::string& name) {
+  for (int k = 0; k < 16 && k < g_queued_n; ++k) {
+    int id = g_queued[(g_queued_n - 1 - k) % 16];
+    if (name_of(id) == name) return labelled(id, name);
+  }
+  return name;
+}
+
 void install() {
   watch::want("DatItem");   // before the first tick: that tick's one sweep fills it
+  g_add_item_cmd = (flow::Command)flow::command("ADD_GET_ITEM_LIST");
+  if (g_add_item_cmd) hooks::attach((void**)&g_add_item_cmd, (void*)&add_item_hook, "ADD_GET_ITEM_LIST");
+  else log::writef("items: ADD_GET_ITEM_LIST not found");
   dev::route("/item", [](const dev::Request& r, int&) {
     std::string name = dev::arg(r, "name");
     return dev::on_game([name] {

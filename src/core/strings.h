@@ -119,6 +119,7 @@ inline constexpr Tr kGot{"Got"};
 inline constexpr Tr kAchievementUnlocked{"Achievement unlocked"};   // "Achievement unlocked: Name. What it is for"
 // Whole sentences with the game's words in them, so each language puts the pieces in its own order:
 inline constexpr Tr kGotFmt{"Got {}"};                 // "Got Bead x3, Medicine"
+inline constexpr Tr kSkillCardFmt{"{} skill card"};    // an item that is a skill card: "Got Maragi skill card"
 inline constexpr Tr kCountFmt{"{} x{}"};               // an item and how many: "Bead x3"
 inline constexpr Tr kHitOnFmt{"{} on {}"};             // a hit's word and whom: "Weak on Junpei"
 inline constexpr Tr kUseOnFmt{"Use {} on {}?"};        // "Use Agi on all enemies?"

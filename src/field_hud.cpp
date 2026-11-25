@@ -7,6 +7,7 @@
 //    (textcap source 0), while the field's panel is up: AUIAccessInfoDraw's task state +0x294 is 3.
 //  - A picked-up item's line ("Revival Bead×1") is drawn at the left through FontDrawEx (textcap source 2).
 #include "hooks.h"
+#include "items.h"
 #include "poi_internal.h"
 #include "core/poi_text.h"
 #include "core/strings.h"
@@ -203,6 +204,7 @@ void pickup_tick() {
     if (shown.count(t.text)) continue;
     std::string name = t.text.substr(0, x), count = t.text.substr(x + 2);
     while (!name.empty() && name.back() == ' ') name.pop_back();
+    name = items::labelled_pickup(name);   // "Maragi skill card"
     speech::speak(strings::fmt(strings::kGotFmt, count == "1" ? name : strings::fmt(strings::kCountFmt, name, count)), false);
   }
   shown.swap(now_shown);

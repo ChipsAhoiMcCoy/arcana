@@ -17,6 +17,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- A skill card is said as one when you get it ("Got Maragi skill card"), from a Tartarus chest, an item notice or a battle's results: it was said as its skill alone ("Got Maragi"), where the screen shows a card.
 - The route sound when you select a point (straight, round, or unreachable) no longer calls Tartarus' stairs, teleporters and Gatekeepers unreachable from afar: their trigger floats above the floor, and the walk went there all along.
 - A Tartarus floor lists its ways on (stairs, teleporter, doors) and its Gatekeeper wherever on the floor they are, past the points of interest range: after the 5F Gatekeeper the list said "No Exits" with the stairs 68 meters off.
 - Walking to a breakable object in Tartarus stops as soon as your strike would break it, turned to face it: the strike-reach ring sounds, and Ctrl breaks it. The walk used to head for its middle, and where they stand in a ring the others blocked you and it said "Stuck, stopping".

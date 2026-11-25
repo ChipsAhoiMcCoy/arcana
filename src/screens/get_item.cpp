@@ -41,6 +41,7 @@ class GetItemScreen : public Screen {
         else {
           what = items::name_of(id);
           if (what.empty()) what = std::format("{} {}", strings::kItemNumber, id);
+          else what = items::labelled(id, what);
           if (count > 1) what = strings::fmt(strings::kCountFmt, what, count);
         }
         s += (s.empty() ? std::string() : std::string(", ")) + what;

@@ -87,6 +87,7 @@ class BattleResultScreen : public MenuScreen {
       std::string name = take(e + 8);
       if (name.empty()) name = items::name_of(id);
       if (name.empty()) continue;
+      name = items::labelled(id, name);
       out.push_back(strings::fmt(strings::kGotFmt, num > 1 ? strings::fmt(strings::kCountFmt, name, num) : name));
     }
     return out;
