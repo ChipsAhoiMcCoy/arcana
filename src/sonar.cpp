@@ -6,6 +6,7 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "doors.h"
+#include "floors.h"
 #include "input.h"
 #include "log.h"
 #include "speech.h"
@@ -57,8 +58,8 @@ constexpr float kLookAheadCm = 300.0f; // how far past the range that reading lo
 // One more sound than the kinds with a switch of their own: a stairway to another floor of the same place (poi::Kind::Way,
 // floors.cpp). It is an exit to the list and to the settings (the Exits switch), with its own sound: the Kingdom Hearts
 // mod's ladder (four wooden knocks climbing like rungs; assets/audio/sonar/stairs.wav), at the rhythm of everything
-// else, from the middle of the stairway (the user's call, 2026-11-25: a line of tones across its width was tried
-// first; the middle is what a player walks at to be sure of going in).
+// else, from where the stairway is walked into (floors::lead; the user's call, 2026-11-25: a line of tones across its
+// width was tried first; one point is what a player walks at to be sure of going in).
 constexpr int kStairs = kKinds;
 constexpr int kSounds = kKinds + 1;
 const char* kind_name(int kind) { return kind == kStairs ? "stairs" : kKind[kind].name; }
@@ -82,20 +83,26 @@ Body body_of(const poi::Poi& p) {
 }
 // Where a thing's sound comes from, heard from `me`, and how far it counts as (its rhythm and level): the nearest point
 // of its body, else its place. Standing inside the body (Paulownia Mall's exits are strips 9 m long the hero walks
-// through, 2026-11-13) the nearest point is the hero himself, with no direction: the sound comes from its middle then,
-// at the rhythm of being at it.
-struct Place { FVector at; float dist_m; };
+// through, 2026-11-13) the nearest point is the hero himself, with no direction: the sound is heard in the middle
+// then, from no side, at the rhythm of being at it. (It came from the thing's own place at first, which is not the
+// box's middle: stepping into Port Island Station's way to the outskirts from the west, its sound went from 0.1 m to
+// the right to 2.2 m to the left, 2026-11-25.)
+struct Place { FVector at; float dist_m; bool inside = false; };
 float dist_m(const FVector& a, const FVector& b) {
   return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z)) / 100.0f;
 }
 Place place_of(const FVector& loc, const Body& b, const FVector& me) {
   if (!b.has) return {loc, dist_m(me, loc)};
-  if (core::box_holds(b.box, world::vec3(me), 0.0f, 200.0f)) return {loc, 0.0f};   // the hero is 90 cm up: a step's leeway
+  if (core::box_holds(b.box, world::vec3(me), 0.0f, 200.0f)) return {me, 0.0f, true};   // the hero is 90 cm up: a step's leeway
   FVector p = world::fvec(core::box_nearest(b.box, world::vec3(me)));
   return {p, dist_m(me, p)};
 }
 
 struct Source { ue::WeakObj obj; int kind; FVector loc; bool selected; Body body; };
+// Where a thing is now, from `me`: a stairway's place is where it is walked into from where the hero stands
+// (floors::lead), which moves on ahead of him as he climbs; the list's reading of it, four times a second, would
+// fall behind him on the stairs.
+FVector place_now(const ue::WeakObj& obj, int kind, const FVector& loc, const FVector& me);
 
 // The focus: one thing heard alone, its sound repeating at its distance's rhythm while the rest of the mod's placed
 // sounds (the field, a Shadow's growl; not the wall tones, 2026-11-17) are silenced (audio::solo), so what it is and where can be
@@ -115,7 +122,13 @@ std::vector<Source> g_sources;
 core::SonarField g_field;
 ULONGLONG g_scan_at = 0;
 long long g_fired = 0;
+bool g_trace = false;   // dev: /sonar?trace=1 logs every sound with where it was heard from
 
+FVector place_now(const ue::WeakObj& obj, int kind, const FVector& loc, const FVector& me) {
+  FVector at = loc;
+  if (kind == kStairs) floors::lead(obj.resolve(), me, at);
+  return at;
+}
 int cue_of(poi::Kind k) {
   if (k == poi::Kind::Way) return kStairs;
   for (int i = 0; i < kKinds; ++i) if (kKind[i].poi == k) return i;
@@ -175,12 +188,14 @@ float gain_at(float dist_m) {
 
 // focus: it plays through the solo. db: added to its level. dist: how far it counts as for its level (-1: from `at`).
 // start_s: when it starts (audio::now_s; 0 at once).
-void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, float dist = -1.0f, double start_s = 0) {
-  audio::Spot s = world::spot(me, at);
+void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, float dist = -1.0f, double start_s = 0, int id = -1, bool inside = false) {
+  audio::Spot s = inside ? audio::Spot{} : world::spot(me, at);   // inside it: ahead and centred, and it stays so
   Voice v = voice(kind, s);
   if (!v.pcm) return;
   float vol = gain_at(dist >= 0.0f ? dist : s.dist_m) * std::pow(10.0f, (g_trim_db[kind] + db) / 20.0f);
   audio::play(std::move(v.pcm), vol, s, audio::Bus::Sonar, v.rate, focus, start_s);
+  if (g_trace) log::writef("sonar trace: {} #{} yaw {:.0f} me ({:.0f}, {:.0f}, {:.0f}) at ({:.0f}, {:.0f}, {:.0f}) right {:+.2f} ahead {:+.2f} up {:+.2f} {:.1f} m vol {:.2f} rate {:.2f}",
+                          kind_name(kind), id, world::north_up() ? world::move_yaw() : world::camera_yaw(), me.x, me.y, me.z, at.x, at.y, at.z, s.right, s.ahead, s.up, s.dist_m, vol, v.rate);
   ++g_fired;
 }
 
@@ -313,9 +328,9 @@ audio::Pcm ping_sound(const char* kind) {
 void sound_focus(const FVector& me, double start) {
   if (!g_focus.has) return;
   start = std::max(start, now_s());
-  const Place pl = place_of(g_focus.loc, g_focus.body, me);
+  const Place pl = place_of(place_now(g_focus.obj, g_focus.kind, g_focus.loc, me), g_focus.body, me);
   if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true, start);
-  else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start);
+  else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start, g_focus.obj.index, pl.inside);
   g_focus_next = start + std::max(g_field.params().period_for(pl.dist_m), kFocusMinPeriod);
 }
 
@@ -381,7 +396,7 @@ void tick() {
   const bool any_distance = settings::get(settings::SonarScope) == settings::ScopeSelected;
   float nearest = 1e9f;
   for (const Source& s : g_sources) {
-    const float d = place_of(s.loc, s.body, me).dist_m;
+    const float d = place_of(place_now(s.obj, s.kind, s.loc, me), s.body, me).dist_m;
     if (!any_distance && d > range_m()) continue;   // read ahead of the range: not in it yet
     items.push_back({(unsigned)s.obj.index, d, s.kind});
     nearest = std::min(nearest, items.back().dist);
@@ -395,9 +410,9 @@ void tick() {
     for (const Source& s : g_sources)
       if ((unsigned)s.obj.index == p.id) {
         // Something is beside the hero and this is not it (a metre's leeway: two things side by side both stay).
-        const Place pl = place_of(s.loc, s.body, me);
+        const Place pl = place_of(place_now(s.obj, s.kind, s.loc, me), s.body, me);
         bool upstaged = nearest <= kCloseM && pl.dist_m > nearest + 1.0f;
-        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m, p.at);
+        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m, p.at, s.obj.index, pl.inside);
         if (std::find(heard.begin(), heard.end(), p.id) == heard.end()) {
           heard.push_back(p.id);
           log::writef("sonar: {} #{} first sounds at {:.1f} m{}", kind_name(s.kind), s.obj.index, pl.dist_m,
@@ -421,7 +436,7 @@ void ping(const poi::Poi& p) {
   const Place pl = place_of(p.loc, body_of(p), me);
   const float gain = std::max(kPingRefM / (kPingRefM + pl.dist_m), kPingFloor);
   const double len = (double)pcm->size() / audio::sample_rate();
-  audio::play(std::move(pcm), gain, world::spot(me, pl.at), audio::Bus::Cues, 1.0f, true);
+  audio::play(std::move(pcm), gain, pl.inside ? audio::Spot{} : world::spot(me, pl.at), audio::Bus::Cues, 1.0f, true);
   g_ping_end = now_s() + len;
   log::writef("sonar: route ping {} for {} at {:.1f} m", kind, p.name, pl.dist_m);
 }
@@ -470,6 +485,7 @@ void install() {
   dev::route("/sonar", [](const dev::Request& r, int&) {
     // /sonar | ?play=person (its sound, ahead) | ?trim=person,-3 (a kind's level in dB)
     std::string play = dev::arg(r, "play"), trim = dev::arg(r, "trim");
+    if (dev::has(r, "trace")) g_trace = dev::arg(r, "trace") == "1";
     return dev::on_game([play, trim] {
       for (int k = 0; k < kSounds; ++k) {
         if (play == kind_name(k)) audio::play(cue(k), 1.0f, audio::Spot{}, audio::Bus::Sonar);
@@ -482,9 +498,9 @@ void install() {
       FVector me;
       if (world::player_location(me))
         for (const Source& src : g_sources) {
-          const Place pl = place_of(src.loc, src.body, me);
+          const Place pl = place_of(place_now(src.obj, src.kind, src.loc, me), src.body, me);
           float d = pl.dist_m;
-          audio::Spot at = world::spot(me, pl.at);
+          audio::Spot at = pl.inside ? audio::Spot{} : world::spot(me, pl.at);
           std::string body = src.body.has ? std::format("  body {:.1f} x {:.1f} m, middle {:.1f} m{}", src.body.box.extent.x / 50.0f,
                                                         src.body.box.extent.y / 50.0f, dist_m(me, src.loc), d == 0.0f ? ", inside" : "")
                                           : std::string("  no body");

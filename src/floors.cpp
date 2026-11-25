@@ -120,6 +120,54 @@ std::vector<Way> ways() {
   return out;
 }
 
+// The path's foot is its last point before it leaves the height it starts at; kept per slab until the hero has moved
+// a step (the path is asked again then, not on a clock).
+bool lead(UObject* box, const FVector& me, FVector& out) {
+  constexpr float kRiseCm = 30.0f;     // the path has left its floor
+  constexpr float kIntoCm = 100.0f;    // past the foot: walked at, the hero goes in
+  constexpr float kAheadCm = 200.0f;   // on the stairs: this far on along them
+  constexpr float kStepCm = 25.0f;
+  struct Kept { FVector from{}, at{}; bool ok = false; };
+  static std::map<WeakObj::Key, Kept> kept;
+  if (!box) return false;
+  const auto key = WeakObj::of(box).key();
+  if (kept.size() > 32) kept.clear();
+  Kept& k = kept[key];
+  const core::Vec3 here = world::vec3(me);
+  if (!k.ok || core::dist3(here, world::vec3(k.from)) > kStepCm) {
+    k.from = me;
+    k.ok = false;
+    bool partial = false;
+    FVector to{};
+    if (!guarded([&] { to = world::actor_location(box); })) return false;
+    const std::vector<FVector> path = world::find_path(world::path_start(me), to, &partial);
+    if (path.size() < 2) return false;
+    float foot = 0, total = 0;
+    bool level = true;
+    for (size_t i = 1; i < path.size(); ++i) {
+      const float len = core::dist3(world::vec3(path[i - 1]), world::vec3(path[i]));
+      if (level && std::fabs(path[i].z - path[0].z) > kRiseCm) level = false;
+      if (level) foot += len;
+      total += len;
+    }
+    float along = std::min(std::max(foot + kIntoCm, kAheadCm), total);
+    k.at = path.back();
+    for (size_t i = 1; i < path.size(); ++i) {
+      const float len = core::dist3(world::vec3(path[i - 1]), world::vec3(path[i]));
+      if (along <= len && len > 0.0f) {
+        const float u = along / len;
+        k.at = FVector{path[i - 1].x + (path[i].x - path[i - 1].x) * u, path[i - 1].y + (path[i].y - path[i - 1].y) * u,
+                       path[i - 1].z + (path[i].z - path[i - 1].z) * u};
+        break;
+      }
+      along -= len;
+    }
+    k.ok = true;
+  }
+  out = k.at;
+  return true;
+}
+
 std::string name(const Way& w) { return strings::fmt(strings::kPoiStairsTo, w.to); }
 
 void install() {
@@ -146,7 +194,12 @@ void install() {
         for (const FVector& q : world::find_path(world::path_start(me), at, &partial)) s += std::format(" ({:.0f}, {:.0f}, {:.0f})", q.x, q.y, q.z);
         s += partial ? " partial\n" : "\n";
       }
-      for (const Way& w : ways()) s += std::format("way: {} -> part {} #{}\n", name(w), w.to, index_of(w.box));
+      for (const Way& w : ways()) {
+        FVector at{};
+        const bool has = lead(w.box, me, at);
+        s += std::format("way: {} -> part {} #{}", name(w), w.to, index_of(w.box)) +
+             (has ? std::format(" walked into at ({:.0f}, {:.0f}, {:.0f})\n", at.x, at.y, at.z) : std::string(" no path\n"));
+      }
       return s;
     });
   }, "?path=obj the field's part, the slabs that set it and the stairways on from here");

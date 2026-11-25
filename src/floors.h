@@ -23,6 +23,12 @@ bool slab(ue::UObject* hit);
 // (Paulownia Mall's upper floor is a metre above the square). Worked out once per actor and kept while the hero stays
 // in his part and on his side of the map's doors. False where the field has no such stairways.
 bool elsewhere(ue::UObject* a, const ue::FVector& me, const ue::FVector& at);
+// Where a stairway (a way's slab) is walked into from where the hero stands: a point on the walking path to it, a
+// step past the stairs' foot while he is on his floor, and two metres on along the path once he is on the stairs. A
+// stairway is heard and listed from there: its slab hangs at its far end, metres up and often round a turn (the Strip
+// Mall's sits 4 m over the square and 2.5 m east of the foot, and its sound swung from ahead to the right to behind
+// on the way in and up, 2026-11-25). False with no path: the slab's own place it is then.
+bool lead(ue::UObject* box, const ue::FVector& me, ue::FVector& out);
 bool stairways();   // the field has such stairways to another floor than the hero's: elsewhere() tells its floors apart
 void install();   // dev route /floors
 }  // namespace p3a::floors

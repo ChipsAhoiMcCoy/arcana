@@ -376,7 +376,17 @@ std::vector<Poi> scan(float radius) {
   }
   // The stairways to the field's other floors (the Strip Mall's, Club Escapade's, Port Island Station's): each by the
   // slab at its far end, on a landing above or below the hero's floor.
-  for (const floors::Way& w : floors::ways()) add(w.box, Kind::Way, floors::name(w), true);
+  // Each is listed and heard from where it is walked into from here (floors::lead), not from the slab itself.
+  for (const floors::Way& w : floors::ways()) {
+    const size_t had = out.size();
+    add(w.box, Kind::Way, floors::name(w), true);
+    world::FVector at{};
+    if (out.size() == had || !floors::lead(w.box, me, at)) continue;
+    Poi& p = out.back();
+    p.loc = at;
+    p.dist = std::sqrt((at.x - me.x) * (at.x - me.x) + (at.y - me.y) * (at.y - me.y) + (at.z - me.z) * (at.z - me.z));
+    p.bearing = world::bearing(me, at);
+  }
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
     // A placeholder with nobody spawned in it (no child actor, no class): not a person (the dorm lounge, 2026-10-27).
