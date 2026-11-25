@@ -453,6 +453,7 @@ static bool install_modkeys() {
   g_keypage = p;
   return true;
 }
+bool dev_modifier_held(uint32_t vk) { return g_keypage && g_keypage[vk & 0xFF]; }
 
 static std::string module_of(void* p) {
   HMODULE m = nullptr;

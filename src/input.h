@@ -29,6 +29,9 @@ void block_ends(uint16_t buttons, int stick_sides);
 // Keyboard to the game window via PostMessage (works unfocused): the dev loop's keys and the auto-walk's movement keys.
 // synthetic = the mod's own navigator (marked so the key filter does not treat it as the player taking over).
 void post_key(uint32_t vk, bool down, bool synthetic = false);
+// Dev games only: a modifier held through /modkey (the game sees it through its import stubs; the mod's own key
+// chords read it here). Always false in a player's game, where the stubs are never installed.
+bool dev_modifier_held(uint32_t vk);
 // A key press for the game on the player's behalf (a bespoke menu stepping the game's cursor): down now, up hold_ms
 // later. Marked by its repeat count, so the mod's own key handling lets it through to the game.
 constexpr uint32_t kInjectedRepeat = 0x5A3;

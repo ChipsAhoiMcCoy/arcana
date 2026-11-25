@@ -78,8 +78,8 @@ void pad(uint16_t button, bool repeat, bool layer) {
 // Alt is the walk key (alt_held), not a modifier: the mod binds no Alt chord (reserved).
 static int current_mods() {
   int m = 0;
-  if (GetKeyState(VK_SHIFT) & 0x8000) m |= Shift;
-  if (GetKeyState(VK_CONTROL) & 0x8000) m |= Ctrl;
+  if ((GetKeyState(VK_SHIFT) & 0x8000) || input::dev_modifier_held(VK_SHIFT)) m |= Shift;
+  if ((GetKeyState(VK_CONTROL) & 0x8000) || input::dev_modifier_held(VK_CONTROL)) m |= Ctrl;
   return m;
 }
 
