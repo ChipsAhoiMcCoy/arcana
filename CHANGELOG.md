@@ -23,7 +23,7 @@
 - A Tartarus floor lists its ways on (stairs, teleporter, doors) and its Gatekeeper wherever on the floor they are, past the points of interest range: after the 5F Gatekeeper the list said "No Exits" with the stairs 68 meters off.
 - Inside a Monad room the list keeps to the room: it listed the floor's Head Up and Enter Door, which no path reaches from there (the walk said "Stuck, stopping").
 - Walking to a breakable object in Tartarus stops as soon as your strike would break it, turned to face it: the strike-reach ring sounds, and Ctrl breaks it. The walk used to head for its middle, and where they stand in a ring the others blocked you and it said "Stuck, stopping".
-- Strike assist also aims at breakable objects: with no Shadow in reach, a swing turns you to the nearest breakable object your strike would reach on any side, and the ring sounds for it from any side, as for a Shadow.
+- Strike assist also aims at breakable objects: with no Shadow in reach, a swing turns you to the nearest breakable object your strike would reach on any side, and the ring sounds for it from any side, as for a Shadow. Its help line in the mod settings says so.
 - Where am I (Slash) no longer says an objective the game has stopped showing: "Return to the dorm" from your first school day was still said days later.
 - "Shift available" is said after a 1 More once the wheel shows Shift: the first 1 More of a battle used to say only "1 More!", as the Shift button was still sliding in.
 - The party key (Shift+Apostrophe) ends with the navigator outside the party and her SP ("Fuuka, navigator, SP 248 of 299"), which pays for her support in Tartarus (Jamming, Sylphid Aura); the game shows it beside her menu.
