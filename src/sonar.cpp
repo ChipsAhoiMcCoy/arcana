@@ -261,12 +261,22 @@ const char* route_kind(const poi::Poi& p, const FVector& me) {
   }
   bool partial = false;
   FVector beside{};
+  // A trigger box is reached where the walk arrives (nav.cpp: anywhere in the box, with its leeway). A tall one's
+  // middle floats past the navmesh query's 3 m: a Gatekeeper's wall of a box, 9.6 m tall with its middle 3 m over
+  // the floor, pinged "unreachable" while the walk went into it (Thebel 11F, 2026-11-25).
+  core::Box box{};
+  const bool boxed = t && world::trigger_box(t, box);
   auto path = world::find_path(world::path_start(me), at, &partial);
-  if (path.empty() && world::project_to_nav(at, 300.0f, beside)) path = world::find_path(world::path_start(me), beside, &partial);
+  if (path.empty() && world::project_to_nav(at, 300.0f, beside, boxed ? box.extent.z + 300.0f : -1.0f))
+    path = world::find_path(world::path_start(me), beside, &partial);
   const bool close_by = flat_cm(me, at) < kRouteBodyCm && std::fabs(me.z - at.z) < kRouteFloorCm;   // on this floor
-  if (path.empty() || partial) return close_by ? "path" : "unreachable";
+  // A partial path that ends at the thing reaches it, as for the list and the walk (poi.cpp walkable, nav.cpp): a
+  // hit's box floats over the floor, off the navmesh. Tartarus' stairs, teleporter and Gatekeeper pinged
+  // "unreachable" from past 25 m, and the walk went there (Arqa 28F, 2026-11-25). The end test below decides.
+  if (path.empty()) return close_by ? "path" : "unreachable";
   const FVector& end = path.back();
-  if (flat_cm(end, at) > kRouteReachCm || std::fabs(end.z - at.z) > kRouteFloorCm) return close_by ? "path" : "unreachable";
+  const bool in_box = boxed && core::box_holds(box, world::vec3(end), 50.0f, 400.0f);
+  if (!in_box && (flat_cm(end, at) > kRouteReachCm || std::fabs(end.z - at.z) > kRouteFloorCm)) return close_by ? "path" : "unreachable";
   float len = 0;
   FVector prev = me;
   for (const FVector& q : path) { len += flat_cm(prev, q); prev = q; }
