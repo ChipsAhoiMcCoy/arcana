@@ -53,7 +53,7 @@ TEST_CASE("area descriptions pick the storey and the light") {
 TEST_CASE("area outdoor seasons, Christmas and January") {
   CHECK(has(describe(at(101, 101, 4, 8)), "full bloom"));
   CHECK(has(describe(at(101, 101, 10, 20, Light::Evening)), "red and gold"));
-  CHECK(has(describe(at(101, 101, 10, 20, Light::Evening)), "glows warm gold"));
+  CHECK(has(describe(at(101, 101, 10, 20, Light::Evening)), "deep blue"));
   CHECK(has(describe(at(103, 101, 12, 24, Light::Night)), "Christmas trees"));
   CHECK(!has(describe(at(103, 101, 12, 23, Light::Night)), "Christmas"));
   Scene lounge = at(102, 102, 12, 20, Light::Night, 1);
@@ -91,7 +91,7 @@ TEST_CASE("area places named only by the game") {
 
 TEST_CASE("area fields whose every area shares a description") {
   CHECK(has(describe(at(207, 102, 1, 31, Light::DarkHour)), "Adamah block"));
-  CHECK(has(describe(at(304, 109, 7, 7, Light::DarkHour)), "round bed"));
+  CHECK(has(describe(at(304, 109, 7, 7, Light::DarkHour)), "round red bed"));
   CHECK(has(describe(at(304, 101, 7, 7, Light::DarkHour)), "reception window"));   // an exact entry wins
 }
 

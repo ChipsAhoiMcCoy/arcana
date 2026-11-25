@@ -18,6 +18,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- Area descriptions (the description key) are rewritten from screenshots of each place: what it is like to stand in and where things are from the entrance, at about the old length. The school's approach at dusk is described in the deep blue the game shows, not warm gold.
 - A skill card is said as one when you get it ("Got Maragi skill card"), from a Tartarus chest, an item notice or a battle's results: it was said as its skill alone ("Got Maragi"), where the screen shows a card.
 - The route sound when you select a point (straight, round, or unreachable) no longer calls Tartarus' stairs, teleporters and Gatekeepers unreachable from afar: their trigger floats above the floor, and the walk went there all along.
 - A Tartarus floor lists its ways on (stairs, teleporter, doors) and its Gatekeeper wherever on the floor they are, past the points of interest range: after the 5F Gatekeeper the list said "No Exits" with the stairs 68 meters off.

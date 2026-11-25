@@ -8,13 +8,15 @@
 const Entry kEntries[] = {
 // ---- Gekkoukan High School (F101) ----
 {.major = 101, .minor = 101, .outdoor = true,
- .base = "School Entranceway. The front gate stands between white marble gateposts with ornate wrought-iron gates, and a "
-         "wide paved approach lined with trees leads to Gekkoukan High. Broad stone steps climb to its main entrance: a "
-         "colonnade of massive round pillars standing before a tall facade of glass and dark steel. Through the glass "
-         "you can make out the entrance hall and its rows of shoe lockers. Trees line the approach, and students stream "
-         "up and down the steps every morning and after class.",
+ .base = "School Entranceway. You come in through the front gate, between white marble gateposts and ornate "
+         "wrought-iron gates, onto a broad, straight approach of paving stone that runs ahead to Gekkoukan High. "
+         "Cherry trees and lamp posts line both sides above low hedged beds. At the far end, wide stone steps climb "
+         "to the main entrance: a row of massive round pillars before a tall front of glass and dark steel, the "
+         "entrance hall and its shoe lockers just visible through it. The whole approach is built to impress, wide, "
+         "symmetrical and orderly, and students stream up and down the steps every morning and after class.",
  .day = "Sunlight glints off the great glass facade.",
- .evening = "The low sun throws the pillars' long shadows across the steps, and the building glows warm gold.",
+ .evening = "Dusk washes the approach in deep blue; the lamps are lit, and the pillars stand dark against the "
+            "glass.",
  .night = "The school stands dark and locked, its glass facade black.",
  .spring = "The cherry trees along the approach are in full bloom, and pink petals drift down over the steps.",
  .summer = "The trees are thick with green leaves, throwing patches of shade over the hot stone.",
@@ -22,31 +24,35 @@ const Entry kEntries[] = {
  .winter = "The trees are bare, and the stone approach looks grey and wind-swept under the cold sky."},
 {.major = 101, .minor = 102, .floor = 1,
  .base = "School Building, first floor: the main lobby. A grand, high-ceilinged hall like an old bank, held up by "
-         "massive fluted stone columns, with a polished tile floor and an ornate inlaid pattern around a statue of a "
-         "figure holding a sword and a staff. A wide staircase rises under an arch at the back, and tall latticed "
-         "windows glow along one side. A counter sells school goods, and bulletin boards carry event notices and, at "
-         "exam time, the posted results. Hallways lead off to the faculty office, the nurse's office, the library, the "
-         "laboratory, the science, art, music and home economics rooms with their prep rooms, the printing room, the "
-         "janitor's room and the restrooms."},
+         "massive fluted stone columns around a statue of a figure holding a sword and a staff, with a wide "
+         "staircase rising under an arch at the back and tall latticed windows along one side. A counter sells "
+         "school goods, and bulletin boards carry event notices and, at exam time, the posted results. Tiled "
+         "corridors lead off past sliding doors to the faculty office, the nurse's office, the library, the "
+         "laboratory, the science, art, music and home economics rooms with their prep rooms, the printing room, "
+         "the janitor's room and the restrooms. One ends at heavy double doors under a green exit sign, beside a "
+         "row of sinks where students loiter."},
 {.major = 101, .minor = 102, .floor = 2,
- .base = "School Building, second floor: the classroom hallway. A long corridor of pale stone tiles laid in a diamond "
-         "pattern, lined with sliding classroom doors set with frosted glass, transom windows above them, and cork "
-         "bulletin boards crowded with flyers. Classroom 2-E is here, and your own classroom 2-F, with the computer "
-         "room, the PA room and the student council room further along, and restrooms by the stairs. Students linger "
-         "and chat in the hall between classes. Stairs lead down to the lobby and up toward the third floor and the roof."},
+ .base = "School Building, second floor: the classroom hallway. The stairs come up into a landing of pale stone "
+         "tiles, with a pair of drinking fountains and a row of sinks. Across it a long stone bench runs under "
+         "latticed windows, where students sit and chat. A long corridor of sliding classroom doors runs on past "
+         "square pillars and bulletin boards crowded with flyers. Classroom 2-E is here, and your own classroom "
+         "2-F, with the computer room, the PA room and the student council room further along, and restrooms by the "
+         "stairs. Stairs lead down to the lobby and up toward the third floor and the roof."},
 {.major = 101, .minor = 103, .outdoor = true,
- .base = "The outdoor corridor behind the school building: an open-air arcade of weathered stone-brick arches, lamps "
-         "fixed to its pillars, with a tiled walkway running between them to the double doors of the gym building. "
-         "Small gardens of grass and shrubs lie on either side, a young tree stands alone by the path, a whiteboard holds "
-         "club notices, and a locked gate closes off the far side. The gym, the indoor swimming pool and the practice "
-         "field are all reached from here.",
- .evening = "Shouts and whistles drift over from the practice field, and the lamps glow against the orange evening.",
+ .base = "The gym hallway behind the school building, reached from the main building by an outdoor corridor of "
+         "stone-brick arches, past small gardens and a locked gate. Indoors it is a long, plain passage of pale "
+         "green walls and pale tiles, running straight to tall glass doors full of light, the gym's red double "
+         "doors at their centre, taped with club posters. Lockers, stacked folding chairs, a whiteboard of club "
+         "notices and racks of gear line the walls. The gym, the indoor swimming pool and the practice field are "
+         "all reached from here.",
+ .evening = "Pale evening light pours through the glass doors at the end of the hall, and shouts and whistles drift "
+            "in from the practice field.",
  .spring = "", .autumn = "Fallen leaves gather in the corners of the arcade."},
 {.major = 101, .minor = 121,
- .base = "Classroom 2-F, your homeroom. Rows of white desks and red chairs stand on a checkered tile floor, facing the "
-         "blackboard and the teacher's lectern; low cubby shelves for bags line the back wall. A wall of tall windows "
-         "hung with yellow curtains looks out over the trees of the school grounds to another wing of the school with "
-         "arched windows.",
+ .base = "Classroom 2-F, your homeroom. You come in through sliding doors at the back, beside a tall locker and "
+         "cubby shelves for bags. Rows of white desks and dark red chairs face the blackboard and the teacher's "
+         "lectern. A wall of tall windows hung with yellow curtains looks out over the trees of the school grounds. "
+         "After class, students linger in knots between the desks.",
  .day = "Sunlight pours through the windows across the desks.",
  .evening = "The room is emptying, and orange evening light floods in through the windows, laying the window frames' "
             "shadows across the desks.",
@@ -56,11 +62,12 @@ const Entry kEntries[] = {
  .autumn = "Outside the windows the trees have turned red and gold.",
  .winter = "Outside the windows the trees stand bare."},
 {.major = 101, .minor = 141, .outdoor = true,
- .base = "The school rooftop. A broad concrete deck ringed by a metal railing, with stone benches and flower planters "
-         "along the edges. The stairwell housing has double doors with pale blue glass, and a water tank and antennas on "
-         "its roof; there is a small storage room too. A tall white wind turbine turns slowly beside the building. "
-         "Beyond the railing lies the sea and the rooftops of Port Island. Students come here to eat lunch or talk "
-         "away from the crowds.",
+ .base = "The school rooftop. You step out through the stairwell housing's glass double doors onto a broad deck of "
+         "pale concrete tiles ringed by a metal railing. A steel ladder climbs the housing to a water tank and "
+         "antennas, and there is a small storage room. Curved stone benches and brick flower planters stand along "
+         "the edges, beside a railed-off strip of solar panels and a tall wind turbine turning. Beyond the railing "
+         "lie the sea and the rooftops of Port Island. Students come here to eat lunch or talk away from the "
+         "crowds.",
  .day = "The wind is fresh up here, and the sky is wide and open.",
  .evening = "The sun sets over the sea under pink and violet clouds, and the whole roof turns gold.",
  .night = "The city lights glitter below, and the sky above is dark and wide.",
@@ -70,11 +77,12 @@ const Entry kEntries[] = {
  .winter = "A cold winter wind cuts across the roof, and the sea below looks grey."},
 // ---- Iwatodai Dorm (F102) ----
 {.major = 102, .minor = 101, .outdoor = true, .town = true,
- .base = "Dorm Entrance: a quiet street in Iwatodai. The dormitory is a handsome old building of dark red brick with "
-         "tall arched windows patterned in art deco ironwork. A short flight of stone steps rises under a pitched "
-         "portico to the double front doors, lit by a single lamp, and an iron fence runs along the front. Across the "
-         "street a guardrail lines the sidewalk; utility poles carry wires overhead, office buildings stand nearby, and "
-         "now and then a car or someone walking a dog goes by.",
+ .base = "Dorm Entrance: a quiet street in Iwatodai. The dormitory is a handsome old building of dark red brick, "
+         "its tall windows patterned in art deco ironwork. A short, wide flight of stone steps rises between stone "
+         "posts to double front doors of dark wood with tall arched windows, lit by a single round lamp. A low iron "
+         "fence over a hedge runs along the front. Plain concrete office buildings stand on either side, a car and "
+         "a covered motorbike parked beneath one. Among the modern blocks the old dorm looks grand and out of its "
+         "time.",
  .day = "The street is calm and sunlit.",
  .evening = "The streetlights flicker on as the sunset fades behind the dorm.",
  .night = "The dorm's tall windows glow warm yellow against the dark, quiet street.",
@@ -83,68 +91,78 @@ const Entry kEntries[] = {
  .autumn = "The roadside trees have turned, and fallen leaves gather along the curb and the steps.",
  .winter = "The trees are bare, and dry leaves collect in drifts by the steps and along the curb."},
 {.major = 102, .minor = 102, .floor = 1,
- .base = "The dorm lounge, on the first floor. The dorm feels like an old Western hotel. Just inside the front doors is "
-         "a curved wooden reception counter with the dorm register you sign to save, and a little bell. The floor is "
-         "carpeted in a green and cream check, the walls are panelled in wood beneath cream wallpaper, and brass lamps "
-         "glow on the walls. In the lounge, red velvet sofas and armchairs with carved wooden frames sit around a low "
-         "table, near an old-fashioned TV in a wooden cabinet. Bookshelves, a bulletin board, a computer desk and a post "
-         "box stand about. Behind glass partitions with brass posts is the dining room under a chandelier, with the "
-         "kitchen and its fridge beyond; a storeroom and the rear entrance are off to the side, and a red-carpeted "
-         "staircase with a wooden banister climbs to the rooms. Your dormmates often relax here in the evenings.",
+ .base = "The dorm lounge, on the first floor. The dorm feels like an old Western hotel turned home. Just inside "
+         "the front doors, on your left, is a curved wooden reception counter with the dorm register you sign to "
+         "save, a pen and a little bell. Ahead the room opens out over a green and cream checked carpet. To the "
+         "right, red velvet sofas and armchairs with carved wooden frames gather around a low table on a patterned "
+         "rug, with an old-fashioned TV in a wooden cabinet beside them. Straight ahead, behind glass partitions on "
+         "brass posts, is the dining room under a chandelier, with the kitchen and its fridge beyond. On the left a "
+         "red carpet runner leads past wooden doors, a bulletin board and brass wall lamps to a red-carpeted "
+         "staircase with a wooden banister climbing to the rooms. Bookshelves, a computer desk and a post box stand "
+         "about, and a storeroom and the rear entrance are off to the side. Your dormmates often relax here in the "
+         "evenings.",
  .dark = "It is the Dark Hour. The lamps are dead and the lounge is washed in a sickly green glow; the clock has "
          "stopped, and the room feels hollow and still.",
  .christmas = "A tall Christmas tree stands in the lounge, hung with ornaments and twinkling lights."},
 {.major = 102, .minor = 102, .floor = 2,
- .base = "The dorm's second floor, the boys' floor. The stairs come up beside a wooden banister onto a red carpet "
-         "runner. A sitting area opens here: red upholstered benches around a low table on a rug, a glass-fronted "
-         "bookcase, potted plants, a floor lamp, a candle-style chandelier, and tall windows with roll-down blinds. A "
-         "vending machine stands in the corner by a bin. Along the hallway are your room, Sanada's room and vacant rooms "
-         "waiting for new residents. Stairs lead down to the lounge and up to the third floor.",
+ .base = "The dorm's second floor, the boys' floor. The stairs come up beside a turned wooden banister onto a red "
+         "carpet runner. A sitting area opens here: low red upholstered benches around a wooden table, a "
+         "glass-fronted bookcase, potted plants, a floor lamp and tall windows with roll-down blinds. A vending "
+         "machine stands in the corner. Along the hallway, lit by brass wall lamps, are your room, Sanada's room "
+         "and vacant rooms waiting for new residents. Stairs lead down to the lounge and up to the third floor. It "
+         "feels more like an old hotel than a student dorm.",
  .dark = "It is the Dark Hour. The hallway is dead quiet under the green light, and the vending machine's glow has gone out."},
 {.major = 102, .minor = 102, .floor = 3,
- .base = "The dorm's third floor, the girls' floor. The stairs arrive by a wooden banister onto a red carpet runner. The "
-         "open area here is a little dining nook: two wooden tables with spindle-backed chairs, a pair of blue drink "
-         "vending machines against the wall, a floor lamp, a potted plant, a candle-style chandelier and tall windows "
-         "with roll-down blinds. Mitsuru's and Yukari's rooms and vacant rooms line the hallway. Stairs lead "
-         "down to the second floor and up to the fourth.",
+ .base = "The dorm's third floor, the girls' floor. The stairs arrive by a turned wooden banister onto a red carpet "
+         "runner, in a stairwell open from floor to floor: over the rail you can see the flights winding down past "
+         "the landings below. The open area here is a dining nook: two wooden tables with spindle-backed chairs, a "
+         "pair of drink vending machines, a floor lamp and tall windows with roll-down blinds. Mitsuru's and "
+         "Yukari's rooms and vacant rooms line the hallway. Stairs lead down to the second floor and up to the "
+         "fourth.",
  .dark = "It is the Dark Hour. The hallway is silent and bathed in green light."},
 {.major = 102, .minor = 102, .floor = 4,
- .base = "The dorm's fourth floor. A quieter landing with a pair of red benches, a floor lamp and a potted plant. The "
-         "hallway leads to a large, heavy door: the command room, where the members of SEES meet. There are restrooms "
-         "here, and stairs lead down to the rooms and up to the rooftop landing.",
+ .base = "The dorm's fourth floor. The stairs climb to a quiet landing: a long red bench under a window and a "
+         "potted plant. The hallway leads to a large, heavy door: the command room, where SEES meets. There are "
+         "restrooms here, and stairs lead down to the rooms and up to the rooftop landing. The floor feels hushed "
+         "and set apart.",
  .dark = "It is the Dark Hour. The hallway is bathed in green light; behind the large door, the command room is "
          "where the team gathers on nights like this."},
 {.major = 102, .minor = 102, .floor = 5,
- .base = "The rooftop landing at the top of the dorm stairs: a cramped, dim stairwell used for storage, with stools "
-         "stacked upside down on an old table and a couple of spare floor lamps. The door out to the roof is under a "
-         "green emergency exit sign, with a notice taped to it."},
+ .base = "The rooftop landing atop the dorm stairs: a cramped stairwell used for storage, its walls bare plaster. "
+         "Taped cardboard boxes are stacked along one wall, stools sit upside down on an old table, and spare floor "
+         "lamps lean in the corner. The door out to the roof is under a green emergency exit sign, a notice taped "
+         "to it."},
 {.major = 102, .minor = 121,
- .base = "Your Room, on the dorm's second floor. A small single room with wooden floorboards and pale green striped "
-         "wallpaper. By the door are a tall white built-in closet, with moving boxes still stacked on the shelves above "
-         "it, a small rounded old fridge, and a sink with a mirror, a towel rail and shelves of folded towels. Further "
-         "in are your bed by the window with a radiator beneath it, a desk with a computer, a TV and a calendar on the "
-         "wall. A shelf holds the things you have collected. It is plain, but it is yours.",
+ .base = "Your Room, on the dorm's second floor. A small single room with wooden floorboards and cream striped "
+         "wallpaper. Just inside the door are a small fridge and a sink with a mirror and shelves of towels, and "
+         "beside them a wide built-in closet. Next to it two bare wall shelves hold a single moving box still not "
+         "unpacked, and a calendar hangs on the wall. A rug covers the middle of the floor. Further in are your bed "
+         "by the window, a desk with a computer and a TV. A shelf holds the things you have collected. It is plain "
+         "and barely lived in yet, but it is yours.",
  .day = "Daylight comes in through the window over the bed.",
  .evening = "The setting sun throws orange light across the room through the window.",
  .night = "Outside the window it is night; the room is lit by its lamp.",
  .dark = "It is the Dark Hour. The lamp is dead, and the window spills a sickly green light across the bed and the "
          "floor under a huge, pale moon. Everything is utterly silent."},
 {.major = 102, .minor = 125,
- .base = "Aragaki's Room. Shinjiro's room on the dorm's second floor, laid out like the other rooms: sparse and "
-         "lived-in, with little more than his bed, his desk and a few belongings, kept the way he left them."},
+ .base = "Aragaki's Room. Shinjiro's room on the dorm's second floor: an iron-framed bed, a desk and swivel chair "
+         "with an open cardboard box, empty wall shelves and a coat rack. Sparse and quiet, it is kept the way he "
+         "left it."},
 {.major = 102, .minor = 141,
- .base = "The command room on the dorm's fourth floor, the meeting room of SEES. Green-striped wallpaper above wood "
-         "panelling, white columns, and tall arched windows with iron grilles. One wall is taken up by a big console "
-         "deck: a wide screen of glowing graphs and waveforms flanked by huge loudspeakers, with a desk of smaller "
-         "monitors and a chair before it. Across the room a red armchair and cushioned stools sit around a long wooden "
-         "table on a hide rug, beside tall bookshelves, a decorative display shelf and a storage room.",
+ .base = "The command room on the dorm's fourth floor, the meeting room of SEES. You enter through tall double "
+         "doors of dark wood. Green-striped wallpaper runs above wood panelling, and fluted grey columns rise "
+         "between tall arched windows with iron grilles. One wall is taken up by a big console deck: a wide screen "
+         "of glowing graphs and waveforms flanked by huge loudspeakers, with a desk of smaller monitors and a chair "
+         "before it. Across the room a red sofa heaped with cushions, an armchair and stools sit around a long "
+         "wooden table, beside tall bookshelves, a display shelf and a storage room.",
  .dark = "It is the Dark Hour. The whole room is drowned in green; the arched windows blaze with sickly yellow-green "
          "moonlight and throw the pattern of their iron grilles across the floor."},
 {.major = 102, .minor = 151, .outdoor = true,
- .base = "The dorm rooftop. A flat, tiled roof behind a low parapet. The brick stairwell housing has a plain metal door "
-         "under a single lamp; big pipes and machinery units sit on one side, and on the other a rooftop garden of "
-         "planter boxes, with sacks of soil and gardening tools beside them and a small storage shed. From up here you "
-         "can see across the rooftops of Iwatodai.",
+ .base = "The dorm rooftop. You come out through a plain steel door in the brick stairwell housing. Ahead lies a "
+         "wide, flat roof of dark slate tiles behind a low concrete parapet. Pipes and machinery units sit on one "
+         "side; on the other, by a second door, is a rooftop garden of planter boxes with gardening tools and a "
+         "small storage shed. Taller apartment blocks crowd in close, and between them you can see across the "
+         "rooftops of Iwatodai.",
  .day = "The garden beds bask in the open sun.",
  .evening = "The sunset paints the sky and the garden in orange.",
  .night = "The neighbourhood's lights spread out below a wide night sky.",
@@ -156,14 +174,15 @@ const Entry kEntries[] = {
  .winter = "The winter wind is cold and sharp up here."},
 // ---- Paulownia Mall (F103) ----
 {.major = 103, .minor = 101, .outdoor = true, .town = true,
- .base = "Paulownia Mall, Fountain Square: a round plaza under a high glass dome, ringed by elegant European-style "
-         "shopfronts with arched upper windows, columns and wall lanterns. The paving is laid in wide concentric rings "
-         "around a tiered fountain at the centre, with benches and potted trees around it. Behind the fountain, stairs "
-         "climb to the karaoke bar Mandragora. Around the ring are Chagall Café with its round sign, the accessory shop "
-         "Be Blue V, Mayoido Antiques, Aohige Pharmacy, the CD and DVD shop Kenneth Arnold, the police station, and the "
-         "arcade Game Parade with crane games outside, besides a bulletin board and the neon-lit entrance of Club "
+ .base = "Paulownia Mall, Fountain Square: a round plaza under a high glass dome, ringed by a two-storey wall of "
+         "European-style shopfronts. Just inside the entrance you pass a wide, shallow pool with wrought-iron "
+         "benches beside it. Ahead the paving spreads in wide rings around a tiered fountain at the centre, ringed "
+         "by benches and potted trees. Behind the fountain, under a great brick archway, stairs climb to the "
+         "karaoke bar Mandragora and its neon sign. Around the ring are Chagall Cafe, the accessory shop Be Blue V, "
+         "Mayoido Antiques, Aohige Pharmacy, the CD and DVD shop Kenneth Arnold, the police station, and the arcade "
+         "Game Parade with crane games outside, besides a bulletin board and the neon-lit entrance of Club "
          "Escapade. Tucked away in a corner is a strange blue door that only you seem to notice: the way into the "
-         "Velvet Room.",
+         "Velvet Room. Shoppers mill about under the dome.",
  .day = "Daylight falls through the glass dome, the plaza bustles with shoppers, and the fountain sparkles.",
  .evening = "Shop signs light up as the dome turns orange overhead, and students crowd the plaza after school.",
  .night = "The dome shows a starry night sky. The fountain glows blue, neon signs blaze over Escapade, Mandragora and "
@@ -175,30 +194,33 @@ const Entry kEntries[] = {
  .christmas = "For Christmas the plaza is decorated with Christmas trees strung with glowing lights, and a large "
               "illuminated tree stands at its heart."},
 {.major = 103, .minor = 111,
- .base = "Club Escapade, a nightclub in Paulownia Mall. A dark room pulsing with music: a crowd dances on a floor where "
-         "the club's name is projected in red spotlights, laser beams sweep overhead, and strips of light glow along "
-         "the edges. At one end is a stage with a drum kit, microphone stands and towering speaker stacks; around the "
-         "floor are lounge tables lit by small glowing lamps, and a bar where bottles and brandy glasses glitter.",
+ .base = "Club Escapade, a nightclub in Paulownia Mall. A dark room pulsing with music, its walls a deep electric "
+         "blue. At its heart a dance floor is ringed by a band of glowing blue light panels, where a few people "
+         "dance, and laser beams sweep overhead. At one end is a black stage with a drum kit, microphone stands and "
+         "towering speaker stacks; around the floor are lounge tables lit by small blue lamps, tall bar stools, and "
+         "a bar where bottles glitter.",
  .day = "", .evening = "", .night = "",
  .dark = "It is the Dark Hour. The music has stopped dead; the coloured lights are frozen and dark, and the room is "
          "filled with silent coffins."},
 // ---- Port Island Station (F104) ----
 {.major = 104, .minor = 101, .outdoor = true, .town = true,
- .base = "Port Island Station: a wide paved plaza inlaid with blue lines, dotted with tall classical columns and "
-         "double-headed lampposts. Raised flowerbeds full of tall purple flowers have benches set into them, and "
-         "sparrows hop about the paving. Broad stone steps climb to the brick station entrance and its signboard, with "
-         "the ticket booth and the restrooms up top. The cinema Screen Shot faces the plaza under big movie posters, "
-         "beside a café and a vending machine, and a department store, Tatsumi Mall, hangs its sale banners on one side.",
+ .base = "Port Island Station: a wide plaza of grey flagstones crossed by bands of blue tile, dotted with tall "
+         "columns and lampposts. Raised brick flowerbeds have red wooden benches set into them. Broad stone steps, "
+         "with an escalator beside them, climb a brick terrace to the station entrance, with the ticket booth and "
+         "the restrooms up top; a little flower shop sits in an arch under the steps. The cinema Screen Shot faces "
+         "the plaza under big movie posters, beside a cafe's terrace under green umbrellas and a vending machine, "
+         "and a department store, Tatsumi Mall, hangs its sale banners on one side.",
  .day = "Commuters and students stream across the bright plaza.",
  .evening = "The evening sun slants across the plaza, the columns throw long shadows, and the cinema's sign lights up.",
  .night = "The plaza is lit by the lampposts, the cinema's glow and the station lights; late commuters hurry past.",
  .spring = "The flowerbeds are in bloom.", .summer = "The flowerbeds are lush under the summer sun.",
  .autumn = "", .winter = "The flowerbeds are bare and the plaza is cold."},
 {.major = 104, .minor = 102, .outdoor = true, .town = true,
- .base = "Station Outskirts: the back alley behind Port Island Station. A cramped, grimy space hemmed in by red brick "
-         "walls studded with air conditioner units and pipes. Oil drums and old boxes are piled by a stairway, and black "
-         "garbage bags and scattered magazines spill around a big dumpster. The Mahjong Parlor Red Hawk and the bar Que "
-         "Sera Sera have their doors here. It is a hangout for delinquents, and most students know to stay away. A "
+ .base = "Station Outskirts: the back alley behind Port Island Station. A grimy yard of cracked paving hemmed in by "
+         "brick walls studded with air conditioner units and scrawled with graffiti. A chain-link fence topped with "
+         "barbed wire closes off one side, and a narrow passage runs past a lone drink vending machine. Garbage "
+         "bags spill around a dumpster by a stairway. The Mahjong Parlor Red Hawk and the bar Que Sera Sera have "
+         "their doors here. It is a hangout for delinquents, and most students know to stay away. A "
          "familiar-looking black cat sometimes prowls about.",
  .day = "Even in daylight the alley feels shadowed and stale.",
  .evening = "The alley falls into shadow early as the sun sets.",
@@ -206,12 +228,12 @@ const Entry kEntries[] = {
  .spring = "", .summer = "The summer heat makes the alley stink of garbage.", .autumn = "", .winter = ""},
 // ---- Iwatodai Station and Strip Mall (F105) ----
 {.major = 105, .minor = 101, .outdoor = true, .town = true,
- .base = "Iwatodai Station, the station closest to the dorm. A concrete concourse under fluorescent lights: posters "
-         "and a station map on the walls, a row of recycling bins, a long bench, and crows pecking at the floor. Overhead "
-         "a departure board lists the trains, and a wide staircase flanked by escalators climbs to the platforms, its "
-         "steps plastered with banners advertising a shopping mall. There is also an elevator, a telephone box, a "
-         "vending machine, bicycle racks out front, and a construction site fenced off nearby. The strip mall is right "
-         "next door.",
+ .base = "Iwatodai Station, the station closest to the dorm. From the street you cross a tiled forecourt to a broad "
+         "flight of low stone steps, where people sit and chat. At the top is a concrete concourse under "
+         "fluorescent lights: posters and a station map on the walls, recycling bins and a long bench. Overhead a "
+         "departure board lists the trains, and a wide staircase flanked by escalators climbs to the platforms. "
+         "There is also an elevator, a telephone box with two booths, a vending machine, bicycle racks out front, "
+         "and a construction site fenced off behind white hoardings. The strip mall is right next door.",
  .day = "Commuters come and go from the escalators in the daylight.",
  .evening = "The station grows busy with people coming home as the sky turns orange.",
  .night = "The station's fluorescent lights shine bright against the night; only a few travellers are about.",
@@ -219,34 +241,37 @@ const Entry kEntries[] = {
          "under a green sky.",
  .spring = "", .summer = "", .autumn = "", .winter = "It is winter, and the air at the station is cold."},
 {.major = 105, .minor = 102, .floor = 1, .outdoor = true, .town = true,
- .base = "Iwatodai Strip Mall, ground floor. A three-storey brick building whose shops open onto stacked balconies "
-         "and walkways, joined by stairs and an iron spiral staircase. At ground level, Wilduck Burger shines under its "
-         "big orange sign, beside the used bookstore Bookworms. Bicycles are parked along the front, and people sit on "
-         "the kerb with their shopping.",
+ .base = "Iwatodai Strip Mall, ground floor. A three-storey brick building whose shops open onto stacked walkways, "
+         "joined by stairs and an iron spiral staircase. At ground level the takoyaki stand Octopia serves from a "
+         "little window under a yellow sign, with benches out front. Nearby, Wilduck Burger shines under its big "
+         "orange sign, beside the used bookstore Bookworms. Bicycles are parked along the front.",
  .night = "The burger shop's sign and the shop lights glow warmly in the dark.",
  .spring = "", .summer = "", .autumn = "", .winter = ""},
 {.major = 105, .minor = 102, .floor = 2, .outdoor = true, .town = true,
- .base = "Iwatodai Strip Mall, second floor. An open walkway of stone tiles behind a metal railing, beside the iron "
-         "spiral staircase. The Chinese diner Wakatsu Kitchen has a green sign and a display case of plastic food "
-         "samples; Hagakure Ramen hangs big blue cloth banners with a flower crest at its door, and people queue outside. "
-         "The sweets shop Azuki Arai, with its mascot Azuki-chan, is here too.",
+ .base = "Iwatodai Strip Mall, second floor. An open walkway behind a metal railing, beside the iron spiral "
+         "staircase. The Chinese diner Wakatsu Kitchen hangs a green cloth curtain over its door, with a display "
+         "case of plastic food samples beside it. Hagakure Ramen hangs deep blue curtains over a sliding glass "
+         "door, and people queue outside. The sweets shop Azuki Arai has its mascot Azuki-chan, a beaming red-faced "
+         "statue, standing at the door.",
  .night = "The restaurants' lit signs and warm windows glow along the walkway.",
  .spring = "", .summer = "", .autumn = "", .winter = ""},
 {.major = 105, .minor = 102, .floor = 3, .outdoor = true, .town = true,
- .base = "Iwatodai Strip Mall, third floor. The top walkway, reached by the iron spiral staircase. The MangaStar net café "
-         "has a purple sign scattered with stars, a tall banner flag out front, and windows plastered with a cartoon "
-         "mascot girl with antennae and posters for new games. Umiushi Beef Bowls is up here too, beside a drink "
-         "vending machine, and you can look down over the railing at Hagakure's blue banners below.",
+ .base = "Iwatodai Strip Mall, third floor. The top walkway, reached by the iron spiral staircase. The MangaStar "
+         "net cafe has a purple sign scattered with stars, glass doors taped with posters for new games, and "
+         "windows plastered with a cartoon mascot girl. Umiushi Beef Bowls is up here too, under a long orange-red "
+         "sign, with an \"open 24 hours\" sign and people waiting outside. A drink vending machine stands nearby. "
+         "Over the railing you can look down on the floor below.",
  .night = "The net café's sign glows; it stays open late.",
  .spring = "", .summer = "", .autumn = "", .winter = ""},
 // ---- Naganaki Shrine (F106) ----
 {.major = 106, .minor = 101, .outdoor = true, .town = true,
- .base = "Naganaki Shrine: a small Shinto shrine among old trees in Iwatodai. A mossy stone path leads to the wooden "
-         "main hall, roofed in green copper tiles, where a thick braided straw rope with white paper streamers hangs over "
-         "the entrance above the offertory box. Stone guardian lion-dogs flank the steps. To one side a tunnel of small "
-         "red torii gates leads to the Inari fox statues; a roofed stone basin is there for cleansing your hands, a huge "
-         "sacred tree spreads its branches overhead, and fortune slips are tied in rows on a rack. Beside the grounds is "
-         "a small playground: a slide, a jungle gym, a see-saw, a horizontal bar and a sandbox.",
+ .base = "Naganaki Shrine: a small Shinto shrine among old trees in Iwatodai. From the entrance steps a worn, mossy "
+         "stone path leads straight to the wooden main hall, where a thick braided straw rope with white paper "
+         "streamers hangs over the entrance above the offertory box. Stone guardian lion-dogs crouch on either side "
+         "of the steps. To the left a tunnel of small red torii gates leads to the Inari fox statues; a roofed "
+         "stone basin is there for cleansing your hands, a huge sacred tree spreads its branches overhead, and "
+         "fortune slips are tied in white rows on a rack. Beside the grounds is a small playground: a slide, a "
+         "jungle gym, a see-saw, a horizontal bar and a sandbox. Old and quiet, it feels sheltered from the town.",
  .day = "It is peaceful here; birdsong and the rustle of leaves replace the noise of the town.",
  .evening = "The low sun filters through the trees in long beams, and the playground stands empty and quiet.",
  .night = "The shrine is dark and hushed, the trees black against the sky.",
@@ -256,107 +281,146 @@ const Entry kEntries[] = {
  .winter = "The trees are bare, and the shrine grounds look stark and cold."},
 // ---- Yakushima (F107) ----
 {.major = 107, .minor = 101, .outdoor = true,
- .base = "The Kirijo family's private beach on Yakushima. White sand slopes down to clear turquoise water, fringed with "
-         "palm and banana trees. Striped beach parasols shade wooden loungers, driftwood lies on the shore, a boat is "
-         "tied up at a wooden pier, and a dark rocky headland closes off the end of the beach. Behind it, the Kirijo Yakushima Mansion stands at the edge of a deep, green "
-         "forest of ancient cedars.",
+ .base = "The Kirijo family's private beach on Yakushima. A path comes down out of the trees onto soft white sand "
+         "that slopes gently into clear, shallow turquoise water, a steep green bank of palms behind. Parasols "
+         "shade yellow loungers, and big grey boulders sit half in the water. A boat is tied up at a wooden pier, "
+         "and a rocky headland closes off the end of the beach. Behind it, the Kirijo Yakushima Mansion stands at "
+         "the edge of an ancient cedar forest.",
  .day = "The summer sun blazes on the sand, and the sea glitters.",
  .evening = "The sun sinks into the sea, turning the water and the sand orange.",
  .night = "The beach is dark; waves wash softly on the sand under the stars.",
  .spring = "", .summer = "", .autumn = "", .winter = ""},
 // ---- Kyoto, the school trip (F108) ----
 {.major = 108, .minor = 101, .floor = 1,
- .base = "Godaigo Inn, a traditional Japanese inn in Kyoto, on its ground floor. The lobby is carpeted in wine red with a "
-         "small flower pattern under a slatted wooden ceiling. Guests in cotton robes sit on benches draped in red cloth "
-         "at low wooden tables, between standing paper lanterns, beside a round red-lacquered display shelf of tea "
-         "things under a red paper parasol, and a gold folding screen. Paper-paned windows look onto a lit inner garden "
-         "with a stone lantern, hanging scrolls line the wall, and there is a pamphlet rack and a souvenir corner piled "
-         "with Kyoto sweets, crafts, decorated figurines and wooden swords. A passage leads to the hot spring."},
+ .base = "Godaigo Inn, a traditional Japanese inn in Kyoto, on its ground floor. The lobby is carpeted in dusty "
+         "rose under a wooden ceiling, its curved walls cream. Along one side runs the long wooden front desk, with "
+         "a wall of key boxes, a framed piece of calligraphy and a beckoning cat statue behind it. Guests in cotton "
+         "robes sit on red-draped benches at low tables among paper lanterns, beside a display shelf of tea things "
+         "and a gold folding screen. A carpeted staircase climbs at the back between two lanterns. Paper-paned "
+         "windows look onto a lit inner garden with a stone lantern, and there is a pamphlet rack and a souvenir "
+         "corner piled with Kyoto sweets, crafts and wooden swords. A passage leads to the hot spring."},
 {.major = 108, .minor = 101, .floor = 2,
- .base = "Godaigo Inn, second floor. A quiet wooden corridor of guest rooms behind sliding doors, among them the Fuji "
-         "Room, with a vending machine, a telephone and the emergency exit."},
+ .base = "Godaigo Inn, second floor. The stairs arrive at a quiet corridor running past guest rooms behind sliding "
+         "doors, among them the Fuji Room, with a vending machine, a telephone and the emergency exit."},
 {.major = 108, .minor = 101, .floor = 3,
- .base = "Godaigo Inn, third floor. Another wooden corridor of guest rooms, with a vending machine, a telephone, a "
-         "travel guide and the emergency exit."},
+ .base = "Godaigo Inn, third floor. Another corridor of guest rooms behind carved wooden doors, with a vending "
+         "machine, a telephone, a travel guide and the emergency exit."},
 {.major = 108, .minor = 102, .name = "Hot Spring", .outdoor = true,
- .base = "The inn's open-air hot spring. A wide pool of steaming water is edged with great smooth boulders, with a "
-         "little cascade spilling between them. A bamboo fence and maple trees screen it in, and along the bathhouse "
-         "wall is a row of washing taps with low stools and buckets; the air is warm and damp.",
+ .base = "The inn's open-air hot spring. You come out of the dressing room through frosted sliding doors under a "
+         "wooden porch hung with lanterns. Along both walls runs a row of washing taps with mirrors, stools and "
+         "buckets. A wide pool of steaming water is edged with smooth boulders, screened in by a bamboo fence and "
+         "maple trees; the air is warm and damp.",
  .night = "Steam rises into a sky full of stars, and small lamps glow along the bathhouse wall.",
  .spring = "", .summer = "", .autumn = "The maples around the pool are red.", .winter = ""},
-{.major = 108, .minor = 104, .base = "The Nanten Room, a guest room at Godaigo Inn named for the nandina shrub. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 105, .base = "The Botan Room, a guest room at Godaigo Inn named for the peony. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 106, .base = "The Tsubaki Room, a guest room at Godaigo Inn named for the camellia. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 107, .base = "The Shoubu Room, a guest room at Godaigo Inn named for the iris. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
+{.major = 108, .minor = 104, .base = "The Nanten Room, a guest room at Godaigo Inn named for the nandina shrub. "
+                                     "Tatami mats, the far wall a row of paper-paned sliding doors. Futons are laid "
+                                     "out for the night. A low red-lacquered table holds a tea set, with floor "
+                                     "cushions around it. A raised alcove holds a paper lantern under a hanging "
+                                     "scroll, travel bags beside it. There are painted sliding closet doors, a "
+                                     "small old TV, a round window and a latticed window."},
+{.major = 108, .minor = 105, .base = "The Botan Room, a guest room at Godaigo Inn named for the peony. Green tatami "
+                                     "under a square paper lamp. Ahead is a wall of paper-paned sliding doors, and "
+                                     "a latticed window over cupboard doors. Futons are laid out along one side. A "
+                                     "low red-lacquered table holds a tea set, with floor cushions. A porcelain jar "
+                                     "stands in the alcove under a scroll. There are painted closet doors, a small "
+                                     "old TV and a round window."},
+{.major = 108, .minor = 106, .base = "The Tsubaki Room, a guest room at Godaigo Inn named for the camellia. Pale "
+                                     "tatami, futons laid out for the night, a square paper lamp overhead. Painted "
+                                     "closet doors fill the back wall; to the left are a paper-paned sliding door, "
+                                     "a round window and a small old TV. To the right stand a low red-lacquered "
+                                     "table with a tea set and floor cushions, and a hanging scroll in the alcove. "
+                                     "It feels settled into."},
+{.major = 108, .minor = 107, .base = "The Shoubu Room, a guest room at Godaigo Inn named for the iris. Pale tatami, "
+                                     "futons laid out, a square paper lamp overhead. Painted closet doors fill the "
+                                     "back wall; to the left are a paper-paned sliding door, a bamboo-barred round "
+                                     "window, and a small old TV. To the right stand a low red-lacquered table with "
+                                     "a tea set and floor cushions, and an ink painting of a pine. Hushed and tidy, "
+                                     "it waits for guests."},
 {.major = 108, .minor = 108, .base = "The Kikyo Room, a guest room at Godaigo Inn named for the bellflower. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
+                                     "square paper lamp hangs over pale tatami, futons down the left, paper-paned "
+                                     "sliding doors across the far wall. To the right, a low red-lacquered table "
+                                     "holds a tea set, with floor cushions and a paper lantern in the corner; "
+                                     "painted closet doors, a small old TV and a round window complete it. Snug, it "
+                                     "is ready for a late night of talk."},
 {.major = 108, .minor = 109, .base = "The Ajisai Room, a guest room at Godaigo Inn named for the hydrangea. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 110, .base = "The Suisen Room, a guest room at Godaigo Inn named for the daffodil. A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 111, .base = "The Sazanka Room, a guest room at Godaigo Inn named for the sasanqua camellia. "
- "A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
-{.major = 108, .minor = 112, .base = "The Suzuran Room, a guest room at Godaigo Inn named for the lily of the valley. "
- "A "
- "traditional room of tatami mats, with futons laid out for the night, a low red-lacquered table set with a tea set and legless chairs on floor cushions, a square paper lamp hanging from the wooden ceiling, painted sliding closet doors, a small old TV, a round window and a paper-paned sliding door."},
+                                     "square paper lamp hangs over pale tatami, futons in a neat row down the left, "
+                                     "paper-paned sliding doors across the far wall. To the right, a low "
+                                     "red-lacquered table holds a tea set, with floor cushions and a telephone on a "
+                                     "shelf; painted closet doors, a small old TV and a round window complete it. "
+                                     "Bright and roomy, set for several guests."},
+{.major = 108, .minor = 110, .base = "The Suisen Room, a guest room at Godaigo Inn named for the daffodil. A square "
+                                     "paper lamp hangs over pale tatami, futons along the left, paper-paned sliding "
+                                     "doors across the far wall. On the right, a long, low red-lacquered table "
+                                     "holds a tea set, with floor cushions and travel bags by a telephone; painted "
+                                     "closet doors, a small old TV and a round window complete it. It has the calm "
+                                     "of a day that is over."},
+{.major = 108, .minor = 111, .base = "The Sazanka Room, a guest room at Godaigo Inn named for the sasanqua "
+                                     "camellia, dimmer than its neighbours: pale tatami, futons laid out, a square "
+                                     "paper lamp overhead. To the left are a paper-paned sliding door and a round "
+                                     "window. Ahead are painted closet doors; to the right, a recess holds a small "
+                                     "old TV, a telephone and a safe, beside a low table with a tea set and floor "
+                                     "cushions. It feels tucked away."},
+{.major = 108, .minor = 112, .base = "The Suzuran Room, a guest room at Godaigo Inn named for the lily of the "
+                                     "valley: pale tatami, futons laid out, a square paper lamp overhead. To the "
+                                     "left are a paper-paned sliding door and a round window. Ahead are painted "
+                                     "closet doors; to the right, under a painting of autumn trees, a recess holds "
+                                     "a small old TV and a telephone, beside a low table with a tea set and floor "
+                                     "cushions. It looks lived in."},
 // ---- The full-moon operations and the first night (Dark Hour only) ----
 {.major = 302, .minor = 102, .name = "Inside Monorail",
- .base = "Inside the monorail, stalled on its elevated track in the Dark Hour. A narrow car of bench seats along both "
-         "walls, hand straps hanging still from the rails overhead, advertisements dangling from the ceiling, and "
-         "connecting doors leading car after car toward the front of the train. Upright coffins stand where the "
-         "passengers were, oozing a red glow onto the floor. Through the windows lie the sea and the silent city under "
-         "a green sky and a huge moon.", .dark_only = true},
+ .base = "Inside the monorail, stalled on its elevated track in the Dark Hour. A narrow, cramped car drowned in "
+         "murky green light, as if under deep water. Bench seats run along both walls beneath hand straps hanging "
+         "dead still, and advertisements dangle from the ceiling. Ahead, a connecting door with a small window "
+         "leads car after car toward the front of the train. Upright coffins stand where the passengers were. "
+         "Through the windows lie the sea and the silent city under a huge moon. It is close, airless and utterly "
+         "still.", .dark_only = true},
 {.major = 302, .minor = 101, .name = "Overhead Bridge",
- .base = "The Overhead Bridge: the monorail's elevated concrete track, high above the city in the Dark Hour. The "
-         "guideway curves away between low walls, with steel gantries spanning it overhead and office buildings close "
-         "alongside; a red splash stains the track. Far ahead, the stalled train waits. Everything is lit a sickly "
-         "green under an enormous moon.", .dark_only = true},
+ .base = "The Overhead Bridge: the monorail's elevated concrete track, above the city in the Dark Hour. The "
+         "guideway sweeps away in a long curve between low railed walls, red splashes dripping down the concrete "
+         "like blood. Far ahead around the bend, the stalled train waits, and above the rooftops an enormous green "
+         "moon hangs low. Exposed and silent, it is very far from the ground.", .dark_only = true},
 {.major = 304, .minor = 101, .name = "Hotel Hallway",
- .base = "Champs de Fleurs, a love hotel on Shirakawa Boulevard, transformed by the Dark Hour. The hallways are carpeted "
-         "in a dull mauve check, the walls papered with faded flowers, with potted palms and green-shaded lamps along "
-         "them. On the ground floor are the entrance, a reception window, an information panel of room photos, "
-         "curtained waiting booths, vending machines and elevators. Above, corridors of numbered doors run across three "
-         "floors, with a strange vending machine on each landing. Coffins stand where guests were caught, and everything "
-         "is lit a sickly green.", .dark_only = true},
+ .base = "Champs de Fleurs, a love hotel on Shirakawa Boulevard, transformed by the Dark Hour. The hallways are "
+         "carpeted in a dull check, the walls papered with faded flowers, lined with potted palms and floor lamps. "
+         "On the ground floor are the entrance, a reception window, an information panel of room photos, curtained "
+         "waiting booths, vending machines and elevators; at the end of the hall narrow stairs climb into darkness. "
+         "Above, corridors of numbered doors run across three floors, with a strange vending machine on each "
+         "landing. Coffins stand where guests were caught. Everything is sunk in a sickly green, cheap glamour gone "
+         "stale.", .dark_only = true},
 {.major = 304, .minor = 104, .name = "Hierophant's Chamber",
- .base = "A room in the love hotel where the Shadow lies in wait. Mirrors cover the walls, and the room's garish "
-         "furnishings are drowned in green Dark Hour light.", .dark_only = true},
+ .base = "A love hotel suite where the Shadow lies in wait, drenched in magenta and red light: red velvet curtains, "
+         "mirrors covering the walls, a low sofa and a bed. Lurid and overheated.", .dark_only = true},
 {.major = 304, .minor = -1, .name = "Hotel Room",
- .base = "A love hotel room on Shirakawa Boulevard: a big round bed with a red cover, a large mirror framed in heart "
-         "ornaments, little round mirrors along the flowered wallpaper, a sofa and an oval glass coffee table, potted "
-         "palms, a heart-shaped chair, a glass-walled bathroom, a TV and a small fridge. In the Dark Hour it is all "
-         "washed in sickly green light.",
+ .base = "A love hotel room on Shirakawa Boulevard, built around a big round red bed on a low platform in the "
+         "middle. Behind it hangs a large mirror framed in hearts. A sofa and a glass coffee table sit to one side, "
+         "and there are a heart-shaped chair, a glass-walled bathroom, a TV, a floor lamp and a small fridge. The "
+         "Dark Hour washes it a sickly green, its romance gone hollow.",
  .dark_only = true},
 {.major = 305, .minor = 101, .name = "Underground",
- .base = "An abandoned military base deep underground, entered through heavy riveted steel doors streaked with rust. Cracked "
-         "concrete slabs pave the floors, old timber beams shore up the walls, and cobwebs hang in the corners. "
-         "Passages descend "
-         "level by level, with signs marking 13 and then 17 meters underground. Rusting old military equipment, cannon "
-         "and artillery parts lie about, and side rooms hold beds, boxes, canned food, desks with diaries left behind, and "
-         "a messy work area. The air is stale and still.", .dark_only = true},
+ .base = "An abandoned military base deep underground, entered through heavy riveted steel doors streaked with "
+         "rust. Cracked concrete floors are strewn with rubble, and timber posts and beams shore up the walls "
+         "against heaps of rock. Passages descend level by level, with signs marking 13 and then 17 meters "
+         "underground. Rusting military equipment, cannon and artillery parts lie about, and side rooms hold beds, "
+         "boxes, canned food, desks with diaries left behind, and a messy work area. Dim and stale, it has the "
+         "weight of earth pressing close overhead.", .dark_only = true},
 {.major = 308, .minor = 101, .name = "Moonlight Bridge",
- .base = "The Moonlight Bridge, the huge suspension bridge linking Port Island to the mainland, in the Dark Hour. Its "
-         "towers and cables soar into a green, misty sky beneath an enormous moon. Cars and trucks sit abandoned in their "
-         "lanes, coffins stand where people were, streaks like blood smear the asphalt, the city skyline rises beyond, "
-         "and the dark sea stretches far below.", .dark_only = true},
+ .base = "The Moonlight Bridge, the suspension bridge linking Port Island to the mainland, in the Dark Hour. A "
+         "broad roadway runs ahead between hanging cables to a great arched tower, an enormous moon hanging right "
+         "over the road. A trailer and a few cars sit abandoned, coffins stand where people were, and pools like "
+         "blood smear the asphalt. Vast and dead still, it is a road out with no one on it.", .dark_only = true},
 {.major = 150, .minor = 211,
- .base = "A vast open floor of polished blue marble slabs, high in a tower, under rings of glowing arched windows and "
-         "great turning gears. The air is still and empty.", .dark_only = true},
+ .base = "A vast floor of blue marble high in a tower, a round dais at its heart, walled in by great gears and "
+         "glowing green windows, like the inside of a giant clock.", .dark_only = true},
 {.major = 150, .minor = 109, .name = "Dark Hour Cityscape",
  .base = "The city in the Dark Hour, swallowed by a thick, featureless green haze: no street or building can be made "
          "out through it, and not a sound carries.", .dark_only = true},
 {.name = "Iwatodai Station",
- .base = "Iwatodai Station at midnight, in the Dark Hour. The station's lights have died all at once; the escalators "
-         "stand frozen, and the concourse is empty but for upright coffins where people were. A sickly green glow lies "
-         "over everything beneath a huge, swollen moon.", .dark_only = true},
+ .base = "Iwatodai Station in the Dark Hour, its lights dead. Out front a tiled plaza lies under a green haze: "
+         "bicycles against a railing, two phone booths by the taxi stand, and steps climbing to the station and its "
+         "frozen escalators. Red splashes stain the paving, and coffins stand where people were.", .dark_only = true},
 {.name = "School Dorm",
- .base = "The dormitory at the end of the street, its arched windows dark in the Dark Hour. Green moonlight falls over "
-         "its steps and heavy front doors.", .dark_only = true},
+ .base = "The dormitory in the Dark Hour, its windows dark. Stone steps climb to its front doors behind an iron "
+         "fence, blood-red splashes on the pavement, in a sour green light.", .dark_only = true},
 // ---- Tartarus (its blocks' special floors are fields 202-207) ----
 {.major = 201, .minor = 101, .name = "Tartarus: Gates",
  .base = "Tartarus: Gates. This is Gekkoukan High's front approach, but in the Dark Hour the school has twisted and "
@@ -365,12 +429,13 @@ const Entry kEntries[] = {
  .spring = "Strangely, the cherry trees by the gate are still in bloom.",
  .autumn = "The trees by the gate still wear their autumn colours, eerie in the green light.", .dark_only = true},
 {.major = 201, .minor = 102, .name = "Tartarus: Entrance",
- .base = "Tartarus: Entrance. A vast, palatial hall. A blue carpet runs down the middle of a polished floor of blue and "
-         "white marble laid in a maze-like pattern and circled by rings of gold, between tall white columns; the walls "
-         "behind glow green, lined with arched alcoves. Ahead, a long blue staircase climbs to a gigantic gilded clock "
-         "face, its several dials and turning gears set in ornate golden scrollwork: the way up into the tower. To one "
-         "side stands the blue door of the Velvet Room, nearby a grandfather clock and Mitsuru's motorcycle, and on the "
-         "other side a small arched device that carries you to floors you have reached.", .dark_only = true},
+ .base = "Tartarus: Entrance. A palatial hall. A bright blue carpet runs straight ahead from where you enter, down "
+         "the middle of a polished marble floor circled by broad rings of gold, between tall white columns; the "
+         "walls behind glow green. Ahead, a steep blue staircase climbs to a gigantic gilded clock face, its gears "
+         "turning in green light: the way up into the tower. To the left stands a grandfather clock, the blue door "
+         "of the Velvet Room nearby; at the foot of the stairs on the right Mitsuru's motorcycle is parked, and "
+         "beyond it a small arch of coiled metal around a screen that carries you to floors you have reached. Grand "
+         "and cold, it feels like the lobby of a palace built for no one.", .dark_only = true},
 {.name = "Monad Passage",
  .base = "The Monad Passage, a hidden way beneath Tartarus's entrance hall: dark corridors that feel even heavier "
          "and more hostile than the tower above.", .dark_only = true},
@@ -379,43 +444,47 @@ const Entry kEntries[] = {
 {.name = "Monad",
  .base = "Monad, a hidden area beyond a Monad door, floating high above the floor you came from. It is built like the block below, but drenched in harsh red and orange light, with dark puddles like blood smeared across the floors and red glowing arches in a pale haze. The exit door stands near where you arrive.", .dark_only = true},
 {.major = 202, .minor = -1, .name = "Thebel",
- .base = "Tartarus, Thebel block, the first block of the tower: a maze that reshapes itself every night. Corridors of dark "
-         "blue stone, their walls stepping back in tiers like a ziggurat, run over checkered tile floors edged with "
-         "glowing green diamond patterns, and pale green light glimmers in the gloom. Here and there huge gears are "
-         "built into the architecture, as if the tower were a vast piece of clockwork.", .dark_only = true},
+ .base = "Tartarus, Thebel block, the first block of the tower: a maze that reshapes itself every night. Corridors "
+         "of dark blue stone blocks stepping back in tiers like a ziggurat run over black and white checkered "
+         "floors edged with glowing green. Where you arrive, a ring of green lights glows around a dark star-shaped "
+         "seal. On special floors a stained-glass window burns at a long corridor's end. Cold and bare, it is a "
+         "tomb laid out as a puzzle.", .dark_only = true},
 {.major = 203, .minor = -1, .name = "Arqa",
- .base = "Tartarus, Arqa block, the second block: a maze that feels alive. Its walls are great twisting, ribbed forms "
-         "like tendrils or giant coiled arms, knotted overhead, their ridges glowing a vivid magenta and violet against "
-         "the green gloom; the floor underfoot is uneven and rippled.", .dark_only = true},
+ .base = "Tartarus, Arqa block, the second block: a maze that feels alive. Its walls are twisting, ribbed forms "
+         "like coiled arms, knotted together overhead and glowing magenta and violet. The floor is dark and rippled "
+         "like wet sand, with gnarled black spires rising from it. It feels like the inside of something breathing.", .dark_only = true},
 {.major = 204, .minor = -1, .name = "Yabbashah",
- .base = "Tartarus, Yabbashah block, the third block: an industrial maze of steel girders and lattice towers, huge "
-         "gears set into the walls, and long walkways leading to arches crowned with glowing stained-glass windows, "
-         "lit in deep red and gold, with dark stains like blood on the floors.", .dark_only = true},
+ .base = "Tartarus, Yabbashah block, the third block: an industrial maze of steel girders. Broad halls run between "
+         "steel pillars ringed with yellow light, over dark metal floors lined like a circuit board, to a girder "
+         "arch crowned with a stained-glass window. Cold and mechanical, it feels like the engine room of the "
+         "tower.", .dark_only = true},
 {.major = 205, .minor = -1, .name = "Tziah",
- .base = "Tartarus, Tziah block, the fourth block: a dark gothic palace. A red carpet runs down long halls between "
-         "rows of spiked iron railings, past massive carved columns and great stone urns, over floors inlaid with "
-         "circular medallions, toward tall arched stained-glass windows, all in a pale, washed-out golden light.",
+ .base = "Tartarus, Tziah block, the fourth block: a dark gothic palace. A wide red carpet runs down a long hall "
+         "between spiked iron railings and massive carved columns, toward a tall stained-glass window glowing "
+         "green, a violet flame burning before it. Solemn and oppressive, it is like a cathedral to something that "
+         "should not be worshipped.",
  .dark_only = true},
 {.major = 206, .minor = -1, .name = "Harabah",
  .base = "Tartarus, Harabah block, the fifth block: a psychedelic maze like a nightclub gone mad. The floors are "
-         "glowing checkerboards of magenta, cyan, red and blue; the walls are forests of dark pillars topped with neon "
-         "blocks in every colour, swirling with concentric dotted patterns, with striped columns and gears looming in "
-         "the dark, and dark puddles like blood here and there.", .dark_only = true},
+         "glowing checkerboards of magenta, cyan, red and blue, spiralling in to a dark hole so the ground seems to "
+         "swirl away underfoot. The walls are forests of dark pillars topped with neon blocks, and tall cones of "
+         "yellow light rise from glowing pools. Dizzying, it seems built to make you lose your footing.", .dark_only = true},
 {.major = 207, .minor = 104,
- .base = "A floor of Tartarus built like its first block: corridors of dark stone stepping back in tiers, a checkered "
-         "floor edged with glowing green diamond patterns, a circle of glowing green lights on the floor, and a tall "
-         "arched stained-glass window glowing green at the end of the hall.", .dark_only = true},
+ .base = "A floor of Tartarus built like its first block, drowned in green. Where you arrive, a circle of green "
+         "lights rings a star-shaped seal. Ahead, a corridor of dark stone climbs a few steps to a stained-glass "
+         "window, side passages opening to either hand. Still and hushed, it feels like a gathering place before a "
+         "climb.", .dark_only = true},
 {.major = 207, .minor = -1, .name = "Adamah",
- .base = "Tartarus, Adamah block, the sixth and last block, near the top of the tower. The floors are dizzying "
-         "op-art: bold black and white stripes that sweep in curves along winding paths. All around rise towering white "
-         "and grey monoliths carved with zigzag patterns, like a city of pale towers, under a dark green sky, with "
-         "touches of red light here and there.", .dark_only = true},
+ .base = "Tartarus, Adamah block, the sixth and last block, near the tower's top. The floors are dizzying black and "
+         "white stripes sweeping in curves along winding paths over a glossy black ground. Ahead, a smooth white "
+         "dome rises with three white spheres floating above it. All around tower pale monoliths carved with "
+         "zigzags, like a city of white towers, under a dark green sky. Hypnotic, it feels less built than dreamed.", .dark_only = true},
 {.name = "Tartarus",
- .base = "Tartarus, the tower of the Dark Hour. A maze of corridors and rooms that reshapes itself every night, lit "
-         "an eerie green, where Shadows roam.", .dark_only = true},
+ .base = "Tartarus, the tower of the Dark Hour. A maze of corridors that reshapes itself every night: dark blue "
+         "stone walls over checkered floors edged with green, where Shadows roam.", .dark_only = true},
 {.major = 201, .minor = 103,
- .base = "A room all in deep velvet blue: walls of ornate patterned panels, a tufted blue wall, a tufted blue sofa "
-         "and a round table draped in blue cloth, in a dim blue light.", .dark_only = true},
+ .base = "A room in velvet blue. One wall is tufted blue upholstery, the far wall wrought-iron grillwork. A row of "
+         "panelled doors, one with a window glowing yellow; a sofa and a round table. Hushed, like a waiting room.", .dark_only = true},
 {.major = 401, .minor = 103,
  .base = "A room all in deep velvet blue: walls of ornate patterned panels, a tufted blue wall, a tufted blue sofa "
          "and a round table draped in blue cloth, in a dim blue light.", .dark_only = true},
