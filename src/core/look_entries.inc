@@ -1234,12 +1234,15 @@ const Model kModels[] = {
         "arcs around it. In each black-gloved hand it holds a revolver with an absurdly long, slender silver "
         "barrel reaching nearly to the floor. It is pure dread: slow, silent, and always arriving."},
   {"Em0511_000",  // Priestess
-        "A slender, eerie woman seated on the ground in a wide pool of pale sea-blue skirts edged with white "
-        "lace, her body split exactly down the middle, one side jet black, the other bone white. Her two-toned "
-        "hair falls in long corkscrew ringlets, and she wears a sharp-winged masquerade mask of glossy magenta "
-        "above dark lips. Bare to the waist, she has a letter marking each breast, B on the black side and J on "
-        "the white, like a temple's two pillars. Behind her head opens a vast fan of red-tipped slats, white on "
-        "one side, black on the other. Elegant and cold, she is a priestess of a forbidden temple."},
+        "A woman split exactly down the middle, one half jet black, the other bone white, sitting on the ground "
+        "with her legs flung wide apart, one black and one white, her pale sea-blue skirts, edged with white "
+        "lace, spread open between them and caught at the waist by a gold clasp. She is bare to the waist and "
+        "thin enough that her ribs show on the white side, a letter on each breast, B on the black side and J on "
+        "the white, the two pillars of a temple. A glossy magenta masquerade mask with pointed wings hides her "
+        "eyes above dark lips, and a corkscrew ringlet hangs beside each cheek. From behind her head burst two "
+        "vast fans of paper strips covered in tiny printed script and tipped in red, white on her black side and "
+        "black on her white. Shameless and serene, she sits like a priestess who has thrown the temple doors open "
+        "and dares you to read what is written."},
   {"Em0521_000",  // Empress
         "An absurd queen whose body is a huge riveted globe of dark slate-green metal with gold latches and a "
         "round gold medallion like the lock of a jewel box. Puffed teal-blue silk sleeves and bloomers frame it, "
