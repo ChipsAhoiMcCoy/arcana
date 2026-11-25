@@ -1,0 +1,2 @@
+#scene LS_BtlEvent725_000
+0.100	18.425	00.mp3	In a vast chamber of clockwork, Elizabeth stands before a giant clock face, its centre cut into a glowing keyhole, smaller dials and gears set around it. She wears her blue attendant's dress and cap, a book in one gloved hand, cards floating about her. You face her alone, your sword lowered at your side.
