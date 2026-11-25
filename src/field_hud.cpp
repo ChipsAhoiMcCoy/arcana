@@ -145,6 +145,13 @@ void prompt_tick() {
       g_objective = now[0];
       g_sub_objective.clear();
       for (size_t i = 1; i < now.size(); ++i) g_sub_objective += (i > 1 ? ". " : "") + now[i];
+    } else if (hooks::frame() > field_since + 12) {
+      // The field has been up for the whole capture window and the panel drew no line: no objective is shown now.
+      // An objective the story has finished was kept and said by Where am I for days ("Return to the dorm" from
+      // 4/7 still on 4/9, the panel empty, 2026-11-24). The lines said stay remembered, so one that comes back is not
+      // announced again.
+      g_objective.clear();
+      g_sub_objective.clear();
     }
   }
   std::string& last = g_prompt;
