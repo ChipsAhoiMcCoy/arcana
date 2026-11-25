@@ -65,37 +65,13 @@ constexpr int kSounds = kKinds + 1;
 const char* kind_name(int kind) { return kind == kStairs ? "stairs" : kKind[kind].name; }
 float g_trim_db[kSounds] = {};
 
-// A thing's body: its trigger box (the game's HitComp_, where the hero stands to use it), read at each rescan. Its sound
-// comes from the box's point nearest the hero, so a long counter or a wide exit is heard from the part beside him, not
-// from its middle (Dark Vision's way, 2026-11-13). People and Shadows have none here: their trigger is a ring round
-// someone who moves. A box wider than kBodyMaxM to a side is not trusted (a trigger can cover a whole room): its
-// middle it is.
-struct Body { core::Box box; bool has = false; };
-constexpr float kBodyMaxM = 6.0f;
-Body body_of(const poi::Poi& p) {
-  Body b;
-  if (p.kind == poi::Kind::Person || p.kind == poi::Kind::Enemy) return b;
-  if (p.kind == poi::Kind::Way) return b;   // a stairway is heard from its middle: where to walk
-  ue::UObject* a = p.obj.resolve();
-  if (!a || !world::trigger_box(a, b.box)) return b;
-  b.has = std::max(b.box.extent.x, b.box.extent.y) <= kBodyMaxM * 100.0f;
-  return b;
-}
-// Where a thing's sound comes from, heard from `me`, and how far it counts as (its rhythm and level): the nearest point
-// of its body, else its place. Standing inside the body (Paulownia Mall's exits are strips 9 m long the hero walks
-// through, 2026-11-13) the nearest point is the hero himself, with no direction: the sound is heard in the middle
-// then, from no side, at the rhythm of being at it. (It came from the thing's own place at first, which is not the
-// box's middle: stepping into Port Island Station's way to the outskirts from the west, its sound went from 0.1 m to
-// the right to 2.2 m to the left, 2026-11-25.)
-struct Place { FVector at; float dist_m; bool inside = false; };
+// A thing's body (poi::Body, read at each rescan): its sound comes from the body's point nearest the hero, placed
+// again for every pulse (poi::place_of).
+using poi::Body;
+using poi::Place;
+using poi::place_of;
 float dist_m(const FVector& a, const FVector& b) {
   return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z)) / 100.0f;
-}
-Place place_of(const FVector& loc, const Body& b, const FVector& me) {
-  if (!b.has) return {loc, dist_m(me, loc)};
-  if (core::box_holds(b.box, world::vec3(me), 0.0f, 200.0f)) return {me, 0.0f, true};   // the hero is 90 cm up: a step's leeway
-  FVector p = world::fvec(core::box_nearest(b.box, world::vec3(me)));
-  return {p, dist_m(me, p)};
 }
 
 struct Source { ue::WeakObj obj; int kind; FVector loc; bool selected; Body body; };
@@ -211,7 +187,7 @@ void rescan() {
   bool has_sel = poi::selected(sel) && cue_of(sel.kind) >= 0;
   const int scope = settings::get(settings::SonarScope);
   if (scope == settings::ScopeSelected) {
-    if (has_sel) g_sources.push_back({sel.obj, cue_of(sel.kind), sel.loc, false, body_of(sel)});
+    if (has_sel) g_sources.push_back({sel.obj, cue_of(sel.kind), sel.loc, false, sel.body});
     return;
   }
   FVector me{};
@@ -227,7 +203,7 @@ void rescan() {
   const std::vector<poi::Poi> scanned = poi::scan(range_m() * 100.0f + kLookAheadCm);
   for (const poi::Poi& p : scanned) {
     if (cue_of(p.kind) < 0) continue;
-    Body b = body_of(p);
+    Body b = p.body;
     seen.push_back({&p, b, place_of(p.loc, b, me).dist_m});
   }
   std::stable_sort(seen.begin(), seen.end(), [](const Seen& a, const Seen& b) { return a.d < b.d; });
@@ -338,7 +314,7 @@ void sound_focus(const FVector& me, double start) {
 void focus_on(const poi::Poi* p) {
   g_focus = {};
   if (p) {
-    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, body_of(*p)};
+    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, p->body};
     g_focus.has = g_focus.kind >= 0 || g_focus.shadow;
   }
   audio::solo(true);
@@ -433,7 +409,7 @@ void ping(const poi::Poi& p) {
   const char* kind = route_kind(p, me);
   audio::Pcm pcm = ping_sound(kind);
   if (!pcm) return;
-  const Place pl = place_of(p.loc, body_of(p), me);
+  const Place pl = place_of(p.loc, p.body, me);
   const float gain = std::max(kPingRefM / (kPingRefM + pl.dist_m), kPingFloor);
   const double len = (double)pcm->size() / audio::sample_rate();
   audio::play(std::move(pcm), gain, pl.inside ? audio::Spot{} : world::spot(me, pl.at), audio::Bus::Cues, 1.0f, true);
@@ -503,7 +479,7 @@ void install() {
           audio::Spot at = pl.inside ? audio::Spot{} : world::spot(me, pl.at);
           std::string body = src.body.has ? std::format("  body {:.1f} x {:.1f} m, middle {:.1f} m{}", src.body.box.extent.x / 50.0f,
                                                         src.body.box.extent.y / 50.0f, dist_m(me, src.loc), d == 0.0f ? ", inside" : "")
-                                          : std::string("  no body");
+                                          : std::format("  no body (box {:.1f} x {:.1f} m)", src.body.box.extent.x / 50.0f, src.body.box.extent.y / 50.0f);
           s += std::format("  {:<7} {:5.1f} m  every {:.2f} s  gain {:.2f}  right {:+.2f} ahead {:+.2f} up {:+.2f}{}{}  #{}\n", kind_name(src.kind), d,
                            g_field.params().period_for(d), gain_at(d), at.right, at.ahead, at.up, body, src.selected ? "  selected" : "", src.obj.index);
         }

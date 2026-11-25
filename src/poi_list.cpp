@@ -8,6 +8,7 @@
 #include "core/strings.h"
 #include "core/units.h"
 #include "doors.h"
+#include "floors.h"
 #include "seh.h"
 #include "sonar.h"
 #include "speech.h"
@@ -169,8 +170,12 @@ bool selected(Poi& out) {
   if (doors::behind(a, me, v)) return false;   // the hero has gone through a door since: it is not in the list now
   out = g_sel_poi;
   out.loc = v;
-  out.dist = std::sqrt((v.x - me.x) * (v.x - me.x) + (v.y - me.y) * (v.y - me.y) + (v.z - me.z) * (v.z - me.z));
-  out.bearing = world::bearing(me, v);
+  if (out.kind == Kind::Way) {   // where the stairway is walked into from here, as the scan lists it
+    floors::lead(a, me, out.loc);
+  } else {
+    out.body = body_of(a, out.kind);
+  }
+  place(out, me);
   return true;
 }
 }  // namespace p3a::poi

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "core/boxes.h"
 #include "ue/ue.h"
 
 namespace p3a::poi {
@@ -15,7 +16,19 @@ enum class Kind { Exit, Person, Shop, Door, Thing, Enemy, Event, Fragment, Way }
 // state: what the icon over a person says ("already spoken to", "Social Link"), said after the name; "" when it says nothing.
 // objective: the minimap's objective mark (its "!") stands on it: said as "objective" after the name, and listed under
 // Events as well as its own category.
-struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; bool objective = false; };
+// A thing's body: its trigger box (the game's HitComp_, where the hero stands to use it or walks in). People and
+// Shadows have none here (their trigger is a ring round someone who moves), nor has a stairway (floors::lead).
+struct Body { core::Box box; bool has = false; };
+// dist, bearing: to where the thing starts from the hero, the point of its body nearest him (a doorway's near edge,
+// the part of a counter beside him), as its sound is placed; standing in it, 0 and the way to its middle. loc stays
+// the actor's own place.
+struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; bool objective = false; Body body; };
+Body body_of(ue::UObject* a, Kind k);
+// Where a thing is heard and counted from, standing at `me`: the nearest point of its body, else its place; inside
+// the body it is the hero himself, from no side.
+struct Place { ue::FVector at; float dist_m; bool inside = false; };
+Place place_of(const ue::FVector& loc, const Body& b, const ue::FVector& me);
+void place(Poi& p, const ue::FVector& me);   // sets dist and bearing from loc and body
 
 std::vector<Poi> scan(float radius_cm = -1);   // nearest first (game thread); -1 = the range setting
 std::string clock(float bearing_deg);                   // "12 o'clock" etc. (camera-relative)

@@ -37,6 +37,41 @@
 namespace p3a::poi {
 using namespace ue;
 
+// A thing's sound, its distance and its direction come from its body's point nearest the hero, so a long counter or a
+// wide exit is where its near part is, not where its marker stands (Dark Vision's way, 2026-11-13; the list and the
+// right stick too since 2026-11-25: the user asked that every doorway be where it starts). A box wider than kBodyMaxM
+// to a side is not trusted (a trigger can cover a whole room): its place it is. An exit's or a door's box always is:
+// it is the way through itself, however wide (the line across the school's Entranceway is 18 m long, Port Island
+// Station's street side 21 m, the school's front doors 6 m by 13 m: each was heard from its marker, up to 10 m
+// along it from where the hero walks in).
+constexpr float kBodyMaxM = 6.0f;
+Body body_of(UObject* a, Kind k) {
+  Body b;
+  if (k == Kind::Person || k == Kind::Enemy || k == Kind::Way) return b;
+  if (!a || !guarded([&] { b.has = world::trigger_box(a, b.box); })) return Body{};
+  b.has = b.has && (k == Kind::Exit || k == Kind::Door || std::max(b.box.extent.x, b.box.extent.y) <= kBodyMaxM * 100.0f);
+  return b;
+}
+// Standing inside the body (Paulownia Mall's exits are strips 9 m long the hero walks through, 2026-11-13) the
+// nearest point is the hero himself, with no direction: the sound is heard in the middle then, from no side, at the
+// rhythm of being at it. (It came from the thing's own place at first, which is not the box's middle: stepping into
+// Port Island Station's way to the outskirts from the west, its sound went from 0.1 m to the right to 2.2 m to the
+// left, 2026-11-25.)
+Place place_of(const FVector& loc, const Body& b, const FVector& me) {
+  auto metres = [&](const FVector& p) {
+    return std::sqrt((p.x - me.x) * (p.x - me.x) + (p.y - me.y) * (p.y - me.y) + (p.z - me.z) * (p.z - me.z)) / 100.0f;
+  };
+  if (!b.has) return {loc, metres(loc)};
+  if (core::box_holds(b.box, world::vec3(me), 0.0f, 200.0f)) return {me, 0.0f, true};   // the hero is 90 cm up: a step's leeway
+  const FVector p = world::fvec(core::box_nearest(b.box, world::vec3(me)));
+  return {p, metres(p)};
+}
+void place(Poi& p, const FVector& me) {
+  const Place pl = place_of(p.loc, p.body, me);
+  p.dist = pl.dist_m * 100.0f;
+  p.bearing = world::bearing(me, pl.inside ? world::fvec(p.body.box.center) : pl.at);
+}
+
 // The navmesh path ends near the thing. Kept per actor while the hero stays on his side of the map (floors
 // are joined by stairs that jump him: doors::side_stamp counts those, doors passed and levels changing).
 // A path the navmesh calls partial counts when it ends there too: a hit's box floats above the floor, off the mesh,
@@ -206,6 +241,8 @@ std::vector<Poi> scan(float radius) {
     for (auto& o : out)
       if (core::same_thing(o.name, world::vec3(o.loc), name, world::vec3(v))) return;
     out.push_back(Poi{WeakObj::of(a), k, std::move(name), v, d, world::bearing(me, v)});
+    out.back().body = body_of(a, k);
+    place(out.back(), me);
     if (auto it = icons.find(a); it != icons.end()) out.back().state = it->second;
     // A Social Link partner whose next hangout ranks the link up (the game's own test, the town map's blue card): the
     // field's card icon looks the same either way, so the list says it (the user's call, 2026-11-24). Asked only of a
@@ -500,12 +537,22 @@ void install() {
   dev::route("/poi", [](const dev::Request& r, int&) {
     auto out = std::make_shared<std::string>("timeout\n");
     float radius = (float)dev::arg_num(r, "r", 6000);
-    hooks::run_on_game_thread([out, radius] {
+    bool body = dev::has(r, "body");
+    hooks::run_on_game_thread([out, radius, body] {
       std::string s;
-      for (auto& p : scan(radius)) s += std::format("#{} [{}] {}\n", p.obj.index, kind_name(p.kind), describe(p));
+      world::FVector me{};
+      world::player_location(me);
+      for (auto& p : scan(radius)) {
+        s += std::format("#{} [{}] {}", p.obj.index, kind_name(p.kind), describe(p));
+        // ?body=1: its box (two sides in metres), whether its near edge is used, and how far its own place is.
+        if (body)
+          s += std::format("  | box {:.1f} x {:.1f} m {} marker {:.1f} m", p.body.box.extent.x / 50.0f, p.body.box.extent.y / 50.0f,
+                           p.body.has ? "edge" : "marker", place_of(p.loc, Body{}, me).dist_m);
+        s += "\n";
+      }
       *out = s.empty() ? "none\n" : s;
     });
     return *out;
-  }, "?r=cm points of interest near the player");
+  }, "?r=cm ?body=1 points of interest near the player");
 }
 }  // namespace p3a::poi
