@@ -188,6 +188,10 @@ std::vector<Poi> scan(float radius) {
     float dz = v.z - (me.z - 90.0f);
     bool other_floor = !dungeon && !any_floor && (dz > 280.0f || dz < -120.0f);
     if (d > radius && !(any_distance && list_scan)) { beyond |= d <= list_radius && !other_floor; return; }
+    // A Tartarus floor's Monad section stands in the same level about 74 m above it (z ~7600, area.cpp): no path
+    // joins them. From inside it the floor's Head Up and Enter Door were listed and the walk there got stuck
+    // (Adamah 231, 2026-11-24); things more than 30 m above or below belong to the other part.
+    if (dungeon && std::abs(v.z - me.z) > 3000.0f) return;
     if (other_floor && !walkable(a, me, v)) return;
     // Another part of the map, past a closed door (the corridor's things from the gym hallway, 2026-11-11): listed
     // once the hero is through it.

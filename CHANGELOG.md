@@ -21,6 +21,7 @@
 - A skill card is said as one when you get it ("Got Maragi skill card"), from a Tartarus chest, an item notice or a battle's results: it was said as its skill alone ("Got Maragi"), where the screen shows a card.
 - The route sound when you select a point (straight, round, or unreachable) no longer calls Tartarus' stairs, teleporters and Gatekeepers unreachable from afar: their trigger floats above the floor, and the walk went there all along.
 - A Tartarus floor lists its ways on (stairs, teleporter, doors) and its Gatekeeper wherever on the floor they are, past the points of interest range: after the 5F Gatekeeper the list said "No Exits" with the stairs 68 meters off.
+- Inside a Monad room the list keeps to the room: it listed the floor's Head Up and Enter Door, which no path reaches from there (the walk said "Stuck, stopping").
 - Walking to a breakable object in Tartarus stops as soon as your strike would break it, turned to face it: the strike-reach ring sounds, and Ctrl breaks it. The walk used to head for its middle, and where they stand in a ring the others blocked you and it said "Stuck, stopping".
 - Strike assist also aims at breakable objects: with no Shadow in reach, a swing turns you to the nearest breakable object your strike would reach on any side, and the ring sounds for it from any side, as for a Shadow.
 - Where am I (Slash) no longer says an objective the game has stopped showing: "Return to the dorm" from your first school day was still said days later.
