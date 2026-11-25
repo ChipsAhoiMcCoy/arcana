@@ -494,6 +494,7 @@ class BattleSurvey : public BattleList {
 // battle screen says nothing over the opening.
 class BattleAnalyze : public BattleList {
   UObject* shown_ = nullptr;   // compared, never dereferenced: the target the page was last built for
+  bool full_playing_ = false;  // Full Analysis was playing last tick
   static std::string key(UObject* t) { return std::format("an.{:x}", (uintptr_t)t); }
  public:
   BattleAnalyze() : BattleList(8, "BP_BtlGuiAnalyze_C", strings::kAnalyzeKeys) {}
@@ -508,6 +509,7 @@ class BattleAnalyze : public BattleList {
   void on_enter() override {
     BattleList::on_enter();
     shown_ = cursor_target();
+    full_playing_ = false;
     screens::set_keys([this] {
       std::string k = strings::kAnalyzeKeys();
       UObject* a = list_.get();
@@ -519,6 +521,18 @@ class BattleAnalyze : public BattleList {
     UObject* t = cursor_target();
     if (t && shown_ && t != shown_) focus(ui::ControlId::structural(key(t) + ".name"));
     if (t) shown_ = t;
+    // Full Analysis lights every affinity icon at once (StartHighAnalyze sets isPlayHighAnalyze, EndHighAnalyze clears
+    // it): its end says what it found, as the icons show it. It said nothing (2026-11-24).
+    UObject* a = list_.get();
+    bool* playing = a ? field<bool>(a, "isPlayHighAnalyze") : nullptr;
+    bool now = playing && *playing;
+    if (full_playing_ && !now && t) {
+      BtlWords::AnalyzePanel p = w_.panel(t);
+      std::string s;
+      for (auto& l : core::analyze_affinities(p.attrs)) s += (s.empty() ? "" : ". ") + l;
+      if (!s.empty()) say(s, true);
+    }
+    full_playing_ = now;
   }
   void build(ui::GraphBuilder& b) override {
     UObject* t = cursor_target();
