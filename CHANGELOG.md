@@ -76,6 +76,7 @@
 - A stat that rises says by how much ("Academics up, 2 points"), and the Stats up screen says how far each stat is from its next rank ("Charm 1 Plain, 1 point to the next rank"), as its gauges show. A single point is no longer "1 points" (here and in "Bond deepened").
 
 ### Social Links
+- A Social Link's picture (the description key in the camp menu) is rewritten from the art: pose and expression first, then the look.
 - The "Personality" card a dorm hangout ends on (cooking, reading, a film with a member) is read: the member, what fills their Theurgy gauge, and the characteristic they gained with its effect ("Characteristic: Buff Boost. Increases the effects of buffs on self."). It was silent and waited for Space.
 - The shrine's fortune ("Who should I think of...?") names each link as the game labels it, then the person, the arcana and the rank, and whether the link is reversed (the fortune can mend it) or ready to rank up: "Track Team, Kazushi Miyamoto, Chariot, rank 5, ready to rank up". Before, only the label was said ("Track Team"), where the game shows the person's portrait.
 - A Social Link reaching its maximum is announced as such: "Social Link at max rank, Justice Social Link, Chihiro Fushimi, rank MAX". The card was read before it turned to MAX, so it said "Social Link rank up ... rank 9".

@@ -9,116 +9,145 @@ namespace {
 // board; the others are a single figure from the chest up.
 const char* const kPictures[] = {
   // 0100: the Fool, the team as it starts
-  "A collage of four tilted snapshot panels on bright cyan, the team as it first came together: a light-haired girl "
-  "with a big bow at her collar, glancing sideways; an elegant girl with long dark hair falling over one eye; the "
-  "joker of the group in a backwards baseball cap, grinning; and, largest, a silver-haired boy with a plaster on his "
-  "brow and a calm, fighter's stare. Mismatched frames, one family in the making.",
+  "Four tilted snapshot panels on cyan, the team as it first came together. A light-haired girl with a "
+  "heart-buckled choker and a big bow gives a cool smile; an elegant girl glances sideways through dark hair "
+  "falling over one eye; a goateed boy in a backwards cap peers up; and largest, a silver-haired boy with a plaster "
+  "on his brow stares straight out. Four strangers, framed side by side.",
   // 0101: one more
-  "A collage of five tilted snapshot panels on bright cyan: the elegant girl with dark hair over one eye, the "
-  "light-haired girl with the bow, the grinning boy in his baseball cap and the silver-haired boy with the plaster "
-  "on his brow, and, largest at the front, a newcomer: a shy, short-haired girl with wide gentle eyes and a high "
-  "lace-patterned collar. The team is growing.",
+  "Five tilted snapshot panels on cyan. The elegant girl with dark hair over one eye, the light-haired girl with "
+  "her heart choker, the boy in the backwards cap and the silver-haired boy with the plaster on his brow crowd the "
+  "top, and largest at the front is a newcomer: a short-haired girl with wide, gentle eyes and a high flowered "
+  "collar. The circle has opened to let one more in.",
   // 0102
-  "A collage of six snapshot panels on bright cyan: the silver-haired boy with the plaster on his brow, the joker "
-  "in his cap, the light-haired girl, the shy girl with the bob, the elegant girl with her big bow, and, largest, a "
-  "blonde girl with round mechanical ear pieces, a calm, glassy gaze and a big bow at a white collar: the android "
-  "who joined. The frames crowd closer together.",
+  "Six snapshot panels on bright cyan, packed closer now. Small frames hold the silver-haired boy with his plaster, "
+  "the boy in the cap, the light-haired girl's eyes and the short-haired girl's soft face; the elegant girl leans "
+  "in large, a big bow at her throat. Largest of all, a blonde girl with round mechanical ear pieces and a big bow "
+  "at a white collar looks straight out, calm and glassy-eyed.",
   // 0103
-  "A collage of seven snapshot panels on bright cyan: the shy girl with the bob, the joker, now sporting a little "
-  "goatee and a cap with a peace badge, the light-haired girl, a strip of the android girl's wide eyes, the elegant "
-  "girl, the silver-haired boy, and, taking the whole corner, a white Shiba dog with alert ears and his tongue "
-  "lolling happily over his collar. Even the dog made the team photo.",
+  "Seven snapshot panels on cyan, in a staggered column. The short-haired girl, the goateed boy in a cap with a "
+  "peace badge, the light-haired girl, a strip of the blonde girl's wide eyes, the elegant girl and the "
+  "silver-haired boy fill the small frames. The tallest panel belongs to a white dog, a collar at his neck and his "
+  "tongue lolling happily. Even he has a place in the picture.",
   // 0104
-  "A collage of eight snapshot panels on bright cyan: the elegant girl, a big close-up of the silver-haired boy's "
-  "plastered brow, the android girl, the light-haired girl, the joker in his cap, the white dog's bright eyes, and, "
-  "large at the bottom, a young boy with neat short hair and a serious little face in a school uniform, beside the "
-  "shy girl with the bob. A full, busy board of friends.",
+  "Eight snapshot panels on bright cyan, a full board of faces. Across the top, the elegant girl's eye under her "
+  "dark hair and a big close-up of the silver-haired boy's plastered brow; below, the blonde girl, the light-haired "
+  "girl, the boy in the cap and the white dog's watchful eyes. Large at the bottom, a young boy in blazer and tie "
+  "gazes out, serious, beside the short-haired girl.",
   // 0105 (also Judgement's, 2100)
-  "A collage of nine snapshot panels on bright cyan, the whole team at last: the joker's eyes under his cap, the shy "
-  "girl with the bob, the silver-haired boy, the light-haired girl, a brooding young man in a beanie with a metal "
-  "plate and a studded coat collar turned up, the white dog, a strip of the android girl's eyes, the elegant girl "
-  "tall in her big bow, and the serious young boy in his uniform. Every face that stood together, crowded into one "
-  "frame.",
+  "Nine snapshot panels on cyan, the whole team like a wall of photographs. The boy in the cap, the short-haired "
+  "girl, the silver-haired boy, the light-haired girl, the white dog, the blonde girl's wide eyes and the young boy "
+  "in his tie look out. A brooding young man in a beanie turns up his studded collar with a faint smile, and the "
+  "elegant girl stands tallest in her big bow.",
   // 0200: the Magician
-  "A boy with messy, short brown hair, his head tilted, one brow up and a lopsided, easy grin. School blazer with "
-  "the crest on the pocket, shirt open at the neck and tie loose. Pure class-clown energy, always up for ramen or "
-  "trouble.",
+  "A boy drawn in cool blue ink in the lower corner, his head cocked to one side under a mop of messy dark hair. "
+  "One brow is hitched up, his eyes slide sideways and his mouth twists into a lopsided, doubtful line. His school "
+  "blazer hangs loose over a white shirt and dark tie. He looks easygoing and a little sceptical, as if weighing "
+  "whether you are kidding.",
   // 0300: the Priestess
-  "A shy girl with a short, rounded bob and a straight fringe, wide gentle eyes and a soft, hesitant look. A high, "
-  "lace-patterned collar tied with a ribbon peeks over a dark coat with large round buttons. Quiet, kind and a "
-  "little fragile, like she'd apologise for taking up space.",
+  "A shy girl drawn in cool blue ink, small in the lower corner, her head tipped gently to one side. A short, "
+  "rounded bob with a jagged fringe frames wide dark eyes and a small closed mouth. A high collar printed with "
+  "flowers, its white ribbon loose at one side, rises from a dark coat with large round buttons. She holds herself "
+  "small and still, hopeful and unsure.",
   // 0400: the Empress
-  "A poised young woman with long, wavy hair swept over one eye, heavy-lidded eyes and the faintest cool smile. A "
-  "soft white blouse with a huge, floppy bow at the throat. Regal and composed, the untouchable queen of the "
-  "school.",
+  "A tall girl drawn in cool blue ink, turned half away and looking back over her shoulder, long heavy hair falling "
+  "in waves down her back and a lock sweeping across one eye. Her gaze slides sideways from under lowered lids, her "
+  "lips closed and unsmiling. A huge soft bow spills from the collar of her white jacket, its loops and tails "
+  "hanging to her chest. She regards you coolly, from a distance she means to keep.",
   // 0500: the Emperor
-  "A stern young man with slicked-back dark hair, a few strands falling loose, narrowed eyes and a smug half "
-  "smile. Blazer buttoned, tie straight, and an official armband on his sleeve. The rules in human form, and he "
-  "knows it.",
+  "A young man drawn in cool blue ink, his dark hair slicked back with one strand curling loose over his forehead "
+  "and the ends flicking out at his neck. His eyes cut sideways under a sharply arched brow, and his lips press "
+  "into a thin, satisfied smirk. Blazer neat, tie straight, an official armband on his sleeve. He looks pleased "
+  "with himself and quick to judge.",
   // 0600: the Hierophant, the old man
-  "An old man with a wild cloud of white hair, bushy brows, a drooping moustache and rectangular glasses on his "
-  "nose, leaning forward with a pipe in one hand. He wears a chunky sweater with a zig-zag pattern. A gruff, "
-  "grandfatherly bookseller with a soft heart.",
+  "An old man drawn in cool blue ink, leaning forward out of the corner with a pipe cupped in one hand. A wild "
+  "cloud of white hair surrounds a deeply lined face with an age spot at one temple. Heavy-lidded eyes peer over "
+  "rectangular glasses slipped down his nose, above a bushy moustache and pursed lips. His chunky sweater is "
+  "knitted in zigzags. He looks weary and gruff, but patient.",
   // 0601: the Hierophant, the old woman
-  "A small, stooped old woman with neat white hair, droopy, gentle eyes and a soft, faintly sad mouth. A "
-  "leaf-patterned blouse under a dark apron. Sweet and warm, the kind of grandmother who always has a snack for "
-  "you.",
+  "A small, stooped old woman drawn in cool blue ink, her shoulders rounded and her head bowed forward. Neat white "
+  "hair is combed back from a lined forehead, and her droopy eyes look out above a small mouth turned down. She "
+  "wears a blouse printed with climbing leaves under a dark apron with round buttons on its straps. Soft and "
+  "patient, she seems to carry a quiet sorrow without complaint.",
   // 0700: the Lovers
-  "A pretty girl with short hair flipping out at the ends, her head tilted with a shy, sidelong glance. A choker "
-  "with a little heart buckle sits at her throat, above a wide-collared shirt with a big ribbon bow and a ribbed "
-  "cardigan. Spirited and popular, but softer than she lets on.",
+  "A girl drawn in cool blue ink, her head tipped to one side so her short hair swings out at the ends. Her eyes "
+  "look up at you, and her lips hold the faintest closed smile. A choker with a heart-shaped buckle circles her "
+  "throat above a wide pointed collar, a big ribbon bow and a ribbed cardigan. She seems poised and a little "
+  "guarded, testing you before she warms.",
   // 0800: the Chariot
-  "A sporty boy with short, spiky dark hair, sharp eyes and a confident smirk over his shoulder. A high-collared "
-  "track jacket zipped to the chin. All athlete's swagger and stubborn pride.",
+  "A sporty boy drawn in cool blue ink, turned half away and looking back over his shoulder. His short dark hair "
+  "spikes up and back, and his narrow eyes slide sideways above a crooked, confident smirk. A high-collared track "
+  "jacket with white stripes down the sleeves is zipped nearly to his chin. He carries himself loose and sure, "
+  "proud and quick to rise to a challenge.",
   // 0900: Justice
-  "A girl with long, straight dark hair parted over a high forehead and thin rectangular glasses, one hand "
-  "fidgeting at her bow, with a small, nervous smile. Neat school uniform. Bookish and timid, the student council's "
-  "quiet treasurer.",
+  "A girl drawn in cool blue ink, long straight dark hair parted over a high forehead and falling past her "
+  "shoulders. Thin rectangular glasses sit on her nose, and her eyes glance up and aside above a small, uncertain "
+  "smile. One hand is raised to her chest, fingers curled at the soft bow of her school uniform. She seems careful "
+  "and shy, as if hoping she said the right thing.",
   // 1000: the Hermit
-  "Not a person but an avatar: a figure built from blocky polygons and flickering scan lines, like a low-resolution "
-  "game character. Spiky angular hair, a pale face half hidden behind a high, armoured collar, one bright eye. The "
-  "online friend, all pixels and mystery.",
+  "Not a person but an avatar, built from flat, angular polygons and striped with scan lines like an old screen. A "
+  "smooth capped head sits over spiky hair that flares out sideways in jagged points; a single pale eye shows, and "
+  "a high, blocky collar hides the face below it. The coat is marked with stripes and arrowheads. Faceless and "
+  "guarded, it keeps whoever is behind it out of sight.",
   // 1100: Fortune
-  "A boy with fluffy, curly hair and rectangular glasses, his head tilted with a sweet, slightly bashful smile. A "
-  "neat school blazer with the crest on the pocket. Gentle and artistic, a quiet dreamer.",
+  "A boy drawn in cool blue ink, his head tilted, a soft mop of curly hair spilling over his brow and ears. "
+  "Rectangular glasses sit crooked on his nose, his eyes glance sideways and his closed lips curl into a small, "
+  "bashful smile. He wears a neat school blazer and dark tie, the crest on its pocket. Gentle and a touch awkward, "
+  "he seems pleased and embarrassed at once.",
   // 1200: Strength
-  "A sporty girl with short dark hair flicking out behind, a hair clip above one eye, big bright eyes and lips "
-  "parted as if mid-sentence. School blazer with a big bow. Energetic and caring, the team's devoted manager.",
+  "A girl drawn in cool blue ink, her head turned toward you, short dark hair gathered into a little tail that "
+  "sticks out behind and a hairpin clipped above one eye. Her big round eyes are wide and her lips parted, as if "
+  "about to speak up. A soft bow sits at the collar of her school blazer. She looks earnest and eager, ready to "
+  "help before she is asked.",
   // 1300: the Hanged Man
-  "A little girl with her hair in a bun tied with a frilly scrunchie, freckles on her cheeks and a big, happy "
-  "smile, hands gripping the straps of a school backpack over an open shirt. A cheerful kid trying very hard to be "
-  "fine.",
+  "A little girl drawn in cool blue ink, both hands gripping the straps of a stiff school satchel on her back. Her "
+  "dark hair is pulled smoothly back into a braided bun wrapped in a frilly scrunchie, a few freckles dot her "
+  "cheeks, and she smiles up at you with round, bright eyes. An open shirt hangs over a plain T-shirt. She looks "
+  "cheerful and determined, holding on tight.",
   // 1400: Death
-  "A small boy with messy dark curls and a beauty mark beneath one eye, gazing out with a calm, unreadable "
-  "expression. He wears a simple shirt with bold horizontal stripes. Innocent-looking, and quietly uncanny.",
+  "A small boy drawn in cool blue ink, his head tipped slightly, a tousled mop of dark hair falling over his brow. "
+  "Large, pale eyes gaze straight out, a beauty mark beneath one, and his small mouth rests in a flat, unreadable "
+  "line. He wears a plain buttoned shirt in bold horizontal stripes. Innocent and very still, he watches with a "
+  "calm that seems older than he is.",
   // 1500: Temperance
-  "A boy with a smooth, pale bowl cut, sleepy smiling eyes and a tiny earring, holding open a folding fan painted "
-  "with butterflies in front of his school uniform. Dreamy and theatrical, in love with everything traditional.",
+  "A boy drawn in cool blue ink, holding a dark folding fan open beside his face, painted with butterflies and "
+  "grasses. His hair is a pale bowl cut with a blunt fringe, a small earring at one ear, and his eyes and gentle "
+  "closed smile look dreamily past you. Beneath the fan, his school blazer. Serene and a little theatrical, he "
+  "poses as if on a stage of his own.",
   // 1600: the Devil
-  "A man in a light, slightly rumpled suit and tie, with shaggy dark hair, a sly sidelong look and a smug, "
-  "knowing smirk. Slick, shady charm: the kind of salesman who'd sell you your own wallet.",
+  "A man drawn in cool blue ink, his head cocked and shoulders slouched, shaggy dark hair falling untidily around a "
+  "long face. Heavy-lidded eyes slide sideways at you under one raised brow, and his mouth tugs up at one corner in "
+  "a sly, knowing smirk. He wears a pale suit with a loosened dark tie. Shifty and amused, he looks like a man "
+  "sizing up what you are worth.",
   // 1700: the Tower
-  "A bald old monk with a deeply lined, scowling face, a thick cigarette pinched between his fingers, in dark robes "
-  "with a white collar. Gruff, grumpy and drowning his sorrows, though there's more to him than the frown.",
+  "A bald old monk drawn in cool blue ink, chin lifted and glaring down his nose, his brow knotted and his mouth "
+  "pulled into a deep, sour frown. He holds a thick cigar up near his chin in a hand crowded with heavy rings. Dark "
+  "robes cross over a white collar, a strap running over one shoulder. Gruff and defiant, he scowls like a man "
+  "daring anyone to lecture him.",
   // 1800: the Star
-  "A lean young man with short dark hair, confident brows and an easy, friendly smirk, in a white zip-up hoodie "
-  "with a band of triangles down the sleeve. A star athlete, cheerful and a little cocky.",
+  "A lean young man drawn in cool blue ink, facing you with his head held level, short dark hair spiking at the "
+  "edges. Strong straight brows sit over clear, steady eyes, and one corner of his mouth lifts in an easy, "
+  "confident half smile. He wears a white zip-up hoodie, a dark band of triangles running down the sleeve. Relaxed "
+  "and self-assured, he looks ready for whatever comes next.",
   // 1900: the Moon
-  "A chubby boy with a single curl sticking up from his hair, droopy, mournful eyes, puffed cheeks and a wobbling "
-  "lip. School blazer and a ribbon tie. Comically sorry for himself, and surprisingly full of grand ideas.",
+  "A heavyset boy drawn in cool blue ink, his round head drooping to one side, one curl sprouting up from the crown "
+  "and another looping onto his forehead. His heavy-lidded eyes sag under sloping brows, and his full cheeks puff "
+  "around a pouting, wobbling lip. A school blazer strains over his shirt and loose tie. He looks thoroughly sorry "
+  "for himself, and quite sure the world owes him better.",
   // 2000: the Sun
-  "A thin, pale young man with straight, shoulder-length hair, tired eyes and a wan, strained smile, in a shirt "
-  "with bold vertical stripes. Fragile and wistful, looking back over his shoulder.",
+  "A thin, pale young man drawn in cool blue ink, his head tilted back and turned aside, gazing up and away. "
+  "Straight hair falls to his jaw. His brows lift in a worried slant and his lips press into a strained, wavering "
+  "smile. A shirt in bold vertical stripes hangs open at the neck over sharp collarbones. Fragile and wistful, he "
+  "seems lost in a thought he cannot finish.",
   // 2100: Judgement, the whole team (0105's collage)
-  "A collage of nine snapshot panels on bright cyan, the whole team together: the joker's eyes under his cap, the "
-  "shy girl with the bob, the silver-haired boy, the light-haired girl, a brooding young man in a beanie with a "
-  "metal plate and a studded coat collar, the white dog, a strip of the android girl's eyes, the elegant girl tall "
-  "in her big bow, and the serious young boy in his uniform. Every face that stood together, crowded into one "
-  "frame.",
+  "Nine snapshot panels on cyan, the whole team like a wall of photographs. The boy in the cap, the short-haired "
+  "girl, the silver-haired boy, the light-haired girl, the white dog, the blonde girl's wide eyes and the young boy "
+  "in his tie look out. A brooding young man in a beanie turns up his studded collar with a faint smile, and the "
+  "elegant girl stands tallest in her big bow.",
   // 2200: the Aeon
-  "A girl with short blonde hair under a lattice-like metal headpiece, round mechanical ear units and a calm, "
-  "gentle gaze. A big bow sits at her white collar, and jointed armour shows at her shoulders. An android with a "
-  "very human softness in her eyes.",
+  "A girl drawn in cool blue ink, facing you with her head tilted slightly, short pale hair framing her face "
+  "beneath a lattice-like metal headpiece. Round mechanical units cover her ears, and her large eyes look out "
+  "calmly over softly closed lips. A big ribbon bow sits at a high white collar, and jointed armour plates cap her "
+  "shoulders. Machine-made and gentle, she seems quietly attentive, almost tender.",
 };
 constexpr int kCount = (int)(sizeof(kPictures) / sizeof(kPictures[0]));
 }  // namespace
