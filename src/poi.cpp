@@ -263,6 +263,9 @@ std::vector<Poi> scan(float radius) {
       continue;
     }
     if (icon == "None") continue;
+    // A box whose script does nothing (the 4/9 dorm escape's "Head Upstairs", at the stairs down: walked to and
+    // checked, nothing happened, 2026-11-24).
+    if (!get<UObject*>(a, "mKeyPushBluePrint_") && core::dead_hit(overlap)) continue;
     // Story triggers: unnamed boxes that only run a blueprint when walked through (the first Tartarus floor's
     // tutorial gates, 2026-10-27). Nothing there to use, but where the story leads: kept for an area with nothing
     // else (the monorail tracks, whose way on is a row of them, 2026-10-27).

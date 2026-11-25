@@ -49,6 +49,10 @@ std::string story_scene(const std::string& actor_name) {
 
 bool story_start(const std::string& overlap_class) { return overlap_class.ends_with("_H0_Play_C"); }
 
+bool dead_hit(const std::string& overlap_class) {
+  return overlap_class == "BP_FldHitActor_102_102_Shadow_H7_Play_C" || overlap_class == "BP_FldHitActor_302_102_H12_Play_C";
+}
+
 bool boss_trigger(const std::string& overlap_class) {
   static const std::set<std::string> bosses = {
     "BP_FldAreaChange_302_102_H24_Play_C",   // 5/9, the monorail

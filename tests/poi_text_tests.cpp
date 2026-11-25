@@ -257,6 +257,13 @@ TEST_CASE("boss_trigger: named ones too (9/5 Club Escapade, 10/4 station)") {
   CHECK(boss_trigger("BP_FldHitActor_105_102_Shadow_H0_Play_C"));
 }
 
+TEST_CASE("dead_hit: named boxes whose script does nothing") {
+  CHECK(dead_hit("BP_FldHitActor_102_102_Shadow_H7_Play_C"));   // "Head Upstairs", 4/9
+  CHECK(dead_hit("BP_FldHitActor_302_102_H12_Play_C"));
+  CHECK_FALSE(dead_hit("BP_FldHitActor_102_102_Shadow_H5_Play_C"));   // starts a field event
+  CHECK_FALSE(dead_hit(""));
+}
+
 TEST_CASE("story_start: the box that starts a story scene, not its stopper") {
   CHECK(story_start("BP_FldHitActor_299_Jin_H0_Play_C"));
   CHECK_FALSE(story_start("BP_FldHitActor_299_Jin_Stoper_Play_C"));

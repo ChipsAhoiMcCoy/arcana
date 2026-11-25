@@ -31,6 +31,12 @@ bool boss_trigger(const std::string& overlap_class);
 // Whether a story trigger's walk-in box starts its scene: the H0 box (BP_FldHitActor_299_Jin_H0_Play_C). Its others
 // only turn the party back (Jin's "stoper": "There's no time to look back."; Elizabeth's H1).
 bool story_start(const std::string& overlap_class);
+// Whether a named box's only script does nothing, by its walk-in blueprint's class: the 4/9 dorm escape's "Head
+// Upstairs" on 2F (BP_FldHitActor_102_102_Shadow_H7_Play: BF_FldHit_Dormitory_EscapeToRoof FLDHIT_000, an empty
+// procedure; it stands at the stairs down, beside the working "Hallway 3F"), and the 5/9 monorail's "Vending Machine"
+// (BP_FldHitActor_302_102_H12_Play: a blueprint that runs nothing). The only named walk-in-only boxes in the game
+// besides exits, people and one story door (a survey of the field levels, 2026-11-24).
+bool dead_hit(const std::string& overlap_class);
 // An unnamed staircase trigger: the floor it stands on and the floor it takes you to; false for anything else. The
 // 7/7 operation's hotel (field 304 101) climbs its three floors through walk-in boxes with no name, whose scripts
 // move the party within the field (BF_FldHit_HotelDungeon: FLDHIT_000_Stair1to2 to entry 2001, FLDHIT_001_Stair2to1

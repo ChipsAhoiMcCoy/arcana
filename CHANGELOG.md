@@ -23,6 +23,7 @@
 - After the 1/31 scene with Jin, "Event: Jin" no longer stays in the list: the spot left there only turns you back ("There's no time to look back."). Only the spot that starts a story scene is listed as its event.
 - The desk in your room is listed as "Desk, Computer": the online game (Innocent Sin Online) is played at it, and only checking it told you so.
 - Walk and use (Shift+Period) turns you to the thing once you stand still, then presses: arriving on someone's prompt while still sliding (Elizabeth in the back alley), you could end up facing away, the prompt gone and the press lost.
+- 4/9, the dorm escape: the 2F hallway no longer lists "Head Upstairs", a spot at the stairs down that does nothing when checked (the way up is "Hallway 3F"). The same goes for a monorail "Vending Machine" that does nothing.
 - 5/9: the way from the overhead bridge onto the monorail is listed under Exits as "Into the monorail", at any distance (it is 200 meters up the bridge). The bridge's other spots, which only turn the party back, were listed instead as plain "Event".
 - A reward of yen (one of Elizabeth's requests) is said once: "Got 30000 yen" came twice, from the notice and again as the money arrived.
 - The July hotel's third floor: each room's mirror says whether it shows your reflection ("Large Mirror, shows no reflection"), as a sighted player sees on walking in; the defective mirror is the one with none. Before, the only way to find it was to break each one in turn.
