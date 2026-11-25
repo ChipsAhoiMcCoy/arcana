@@ -376,10 +376,7 @@ std::vector<Poi> scan(float radius) {
   }
   // The stairways to the field's other floors (the Strip Mall's, Club Escapade's, Port Island Station's): each by the
   // slab at its far end, on a landing above or below the hero's floor.
-  for (const floors::Way& w : floors::ways()) {
-    add(w.box, Kind::Way, floors::name(w), true);
-    if (!out.empty() && out.back().obj == WeakObj::of(w.box)) out.back().rise = w.rise;
-  }
+  for (const floors::Way& w : floors::ways()) add(w.box, Kind::Way, floors::name(w), true);
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
     // A placeholder with nobody spawned in it (no child actor, no class): not a person (the dorm lounge, 2026-10-27).
@@ -470,7 +467,6 @@ void tick() {
   sight::tick();    // the edge of the Shadows' sight (it checks the same)
   prompt_tick();
   arrival_tick();
-  floors::tick();
 }
 
 void install() {

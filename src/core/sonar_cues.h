@@ -24,15 +24,6 @@ enum class SonarCue {
 // sooner.
 std::vector<float> sonar_cue(SonarCue cue, int rate, bool brief = false);
 
-// One tone of the trail that marks a stairway between floors (floors.cpp): kWaySteps of them are played one after
-// another from places across the stairway's width, so the ear follows a line of sound from one side of the opening to
-// the other and hears how wide it is. A small struck bar with a breath of noise at its start (something to place, as
-// a pure tone gives little). The run climbs a pentatonic scale when the way leads up (`rise` > 0), comes down it when
-// it leads down (< 0), and stays on one note for a way on the level. Under 0.12 s, at the cues' common loudness.
-inline constexpr int kWaySteps = 5;
-inline constexpr double kWayStepS = 0.085;   // from one tone's start to the next
-std::vector<float> way_tone(int rate, int step, int rise);
-
 // How loud a cue sounds (ITU-R BS.1770's K-weighting, over its loudest 100 ms, silence after it counted), as an RMS.
 // Every cue and signal is made to this one level, so none stands out by being bright or quiet by being short.
 double cue_loudness(const std::vector<float>& v, int rate);

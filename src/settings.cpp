@@ -8,7 +8,6 @@
 #include "core/strings.h"
 #include "core/units.h"
 #include "devserver.h"
-#include "floors.h"
 #include "input.h"
 #include "keys.h"
 #include "log.h"
@@ -255,7 +254,7 @@ static void play_test(int i) {
     case 16: audio::signal_here((int)SignalCue::Ambush, 1.2f); break;
     case 17: case 18: case 19: case 20: walltones::demo(i - 17); break;
     case 21: audio::signal((int)SignalCue::Layer, 0.9f, ahead); break;
-    case 22: floors::demo(); break;
+    case 22: sonar::demo(sonar::kDemoStairs); break;
   }
 }
 

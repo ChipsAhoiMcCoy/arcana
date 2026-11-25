@@ -6,7 +6,6 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "doors.h"
-#include "floors.h"
 #include "input.h"
 #include "log.h"
 #include "speech.h"
@@ -55,7 +54,15 @@ constexpr float kLookAheadCm = 300.0f; // how far past the range that reading lo
 
 // Per-kind level trims in dB (the cues are made at one RMS; a kind that still stands out is trimmed here; dev:
 // /sonar?trim=kind,dB).
-float g_trim_db[kKinds] = {0, 0, 0, 0, 0, 0, 0};
+// One more sound than the kinds with a switch of their own: a stairway to another floor of the same place (poi::Kind::Way,
+// floors.cpp). It is an exit to the list and to the settings (the Exits switch), with its own sound: the Kingdom Hearts
+// mod's ladder (four wooden knocks climbing like rungs; assets/audio/sonar/stairs.wav), at the rhythm of everything
+// else, from the middle of the stairway (the user's call, 2026-11-25: a line of tones across its width was tried
+// first; the middle is what a player walks at to be sure of going in).
+constexpr int kStairs = kKinds;
+constexpr int kSounds = kKinds + 1;
+const char* kind_name(int kind) { return kind == kStairs ? "stairs" : kKind[kind].name; }
+float g_trim_db[kSounds] = {};
 
 // A thing's body: its trigger box (the game's HitComp_, where the hero stands to use it), read at each rescan. Its sound
 // comes from the box's point nearest the hero, so a long counter or a wide exit is heard from the part beside him, not
@@ -67,6 +74,7 @@ constexpr float kBodyMaxM = 6.0f;
 Body body_of(const poi::Poi& p) {
   Body b;
   if (p.kind == poi::Kind::Person || p.kind == poi::Kind::Enemy) return b;
+  if (p.kind == poi::Kind::Way) return b;   // a stairway is heard from its middle: where to walk
   ue::UObject* a = p.obj.resolve();
   if (!a || !world::trigger_box(a, b.box)) return b;
   b.has = std::max(b.box.extent.x, b.box.extent.y) <= kBodyMaxM * 100.0f;
@@ -93,8 +101,7 @@ struct Source { ue::WeakObj obj; int kind; FVector loc; bool selected; Body body
 // sounds (the field, a Shadow's growl; not the wall tones, 2026-11-17) are silenced (audio::solo), so what it is and where can be
 // heard (the user, 2026-11-13). Held while a point is chosen in the list (until the controller's layer closes, or
 // kFocusMs after a key, or once the hero walks off) and while the right stick points somewhere.
-// way: a stairway to another floor: its run of tones (floors::trail), at its own steady rhythm; rise: its direction.
-struct Focus { ue::WeakObj obj; int kind = -1; bool shadow = false; FVector loc{}; bool has = false; Body body; bool way = false; int rise = 0; };
+struct Focus { ue::WeakObj obj; int kind = -1; bool shadow = false; FVector loc{}; bool has = false; Body body; };
 Focus g_focus;
 ULONGLONG g_focus_until = 0;     // the list's choice, by key: held this long
 bool g_focus_layer = false;      // the list's choice with the controller's layer open: held until it closes
@@ -110,10 +117,14 @@ ULONGLONG g_scan_at = 0;
 long long g_fired = 0;
 
 int cue_of(poi::Kind k) {
+  if (k == poi::Kind::Way) return kStairs;
   for (int i = 0; i < kKinds; ++i) if (kKind[i].poi == k) return i;
   return -1;   // Shadows: their own sounds
 }
-bool kind_on(int kind) { return kind >= 0 && kind < kKinds && settings::on(kKind[kind].setting); }
+bool kind_on(int kind) {
+  if (kind == kStairs) return settings::on(settings::SonarExits);
+  return kind >= 0 && kind < kKinds && settings::on(kKind[kind].setting);
+}
 
 // The sounds, made once at the mixer's rate. A kind with a file in assets/audio/sonar (<its name>.wav) plays the
 // file: Grim Dark's sonar sounds for their nearest kin here (the user, 2026-11-13) -- its dungeon entrance for the
@@ -125,19 +136,20 @@ bool kind_on(int kind) { return kind >= 0 && kind < kKinds && settings::on(kKind
 // rhythm) cut a door's knock and the files short; holding the rhythm back for the whole sound kept the exit's 0.4 s
 // sound from getting faster inside about 3.5 m; playing it faster to fit raised its pitch.
 audio::Pcm cue(int kind) {
-  static audio::Pcm made[kKinds];
-  if (kind < 0 || kind >= kKinds) return nullptr;
+  static audio::Pcm made[kSounds];
+  if (kind < 0 || kind >= kSounds) return nullptr;
   audio::Pcm& p = made[kind];
   if (p) return p;
   const int rate = audio::sample_rate();
   std::vector<float> file;
-  const std::string path = audio::module_dir() + "assets\\audio\\sonar\\" + kKind[kind].name + ".wav";
+  const std::string path = audio::module_dir() + "assets\\audio\\sonar\\" + kind_name(kind) + ".wav";
   if (GetFileAttributesA(path.c_str()) != INVALID_FILE_ATTRIBUTES && audio::decode_mono(path, file)) file = core::file_cue(std::move(file), rate);
   if (!file.empty()) {
-    log::writef("sonar: {} plays {} ({:.0f} ms)", kKind[kind].name, path, 1000.0 * file.size() / rate);
+    log::writef("sonar: {} plays {} ({:.0f} ms)", kind_name(kind), path, 1000.0 * file.size() / rate);
     p = std::make_shared<const std::vector<float>>(std::move(file));
   } else {
-    p = std::make_shared<const std::vector<float>>(core::sonar_cue((SonarCue)kind, rate));
+    // the stairs' file missing: the exit's made sound stands in
+    p = std::make_shared<const std::vector<float>>(core::sonar_cue(kind == kStairs ? SonarCue::Exit : (SonarCue)kind, rate));
   }
   return p;
 }
@@ -189,7 +201,7 @@ void rescan() {
   }
   FVector me{};
   world::player_location(me);
-  int per_kind[kKinds] = {};
+  int per_kind[kSounds] = {};
   bool sel_listed = false;
   // Read a little past the range: the list is read four times a second, and at a run (7 m/s in Tartarus) a thing
   // found only at the next reading first sounded a metre or two inside the range. tick() holds it until it is in.
@@ -301,11 +313,6 @@ audio::Pcm ping_sound(const char* kind) {
 void sound_focus(const FVector& me, double start) {
   if (!g_focus.has) return;
   start = std::max(start, now_s());
-  if (g_focus.way) {
-    floors::trail(g_focus.obj.resolve(), g_focus.rise, true, start);
-    g_focus_next = start + floors::kTrailPeriodS;
-    return;
-  }
   const Place pl = place_of(g_focus.loc, g_focus.body, me);
   if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true, start);
   else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start);
@@ -316,8 +323,8 @@ void sound_focus(const FVector& me, double start) {
 void focus_on(const poi::Poi* p) {
   g_focus = {};
   if (p) {
-    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, body_of(*p), p->kind == poi::Kind::Way, p->rise};
-    g_focus.has = g_focus.kind >= 0 || g_focus.shadow || g_focus.way;
+    g_focus = {p->obj, cue_of(p->kind), p->kind == poi::Kind::Enemy, p->loc, false, body_of(*p)};
+    g_focus.has = g_focus.kind >= 0 || g_focus.shadow;
   }
   audio::solo(true);
   silence();
@@ -393,7 +400,7 @@ void tick() {
         emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m, p.at);
         if (std::find(heard.begin(), heard.end(), p.id) == heard.end()) {
           heard.push_back(p.id);
-          log::writef("sonar: {} #{} first sounds at {:.1f} m{}", kKind[s.kind].name, s.obj.index, pl.dist_m,
+          log::writef("sonar: {} #{} first sounds at {:.1f} m{}", kind_name(s.kind), s.obj.index, pl.dist_m,
                       s.body.has ? std::format(" (its middle {:.1f} m)", dist_m(me, s.loc)) : std::string());
         }
         break;
@@ -464,13 +471,13 @@ void install() {
     // /sonar | ?play=person (its sound, ahead) | ?trim=person,-3 (a kind's level in dB)
     std::string play = dev::arg(r, "play"), trim = dev::arg(r, "trim");
     return dev::on_game([play, trim] {
-      for (int k = 0; k < kKinds; ++k) {
-        if (play == kKind[k].name) audio::play(cue(k), 1.0f, audio::Spot{}, audio::Bus::Sonar);
-        if (size_t c = trim.find(','); c != std::string::npos && trim.substr(0, c) == kKind[k].name) g_trim_db[k] = (float)atof(trim.c_str() + c + 1);
+      for (int k = 0; k < kSounds; ++k) {
+        if (play == kind_name(k)) audio::play(cue(k), 1.0f, audio::Spot{}, audio::Bus::Sonar);
+        if (size_t c = trim.find(','); c != std::string::npos && trim.substr(0, c) == kind_name(k)) g_trim_db[k] = (float)atof(trim.c_str() + c + 1);
       }
       std::string s = std::format("sonar on={} scope={} range={} m in_field={} sources={} tracked={} fired={}\ntrims dB:", settings::on(settings::Sonar),
                                   settings::get(settings::SonarScope), settings::get(settings::SonarRange), in_field(), g_sources.size(), g_field.tracked(), g_fired);
-      for (int k = 0; k < kKinds; ++k) s += std::format(" {}={:+.1f}", kKind[k].name, g_trim_db[k]);
+      for (int k = 0; k < kSounds; ++k) s += std::format(" {}={:+.1f}", kind_name(k), g_trim_db[k]);
       s += "\n";
       FVector me;
       if (world::player_location(me))
@@ -481,7 +488,7 @@ void install() {
           std::string body = src.body.has ? std::format("  body {:.1f} x {:.1f} m, middle {:.1f} m{}", src.body.box.extent.x / 50.0f,
                                                         src.body.box.extent.y / 50.0f, dist_m(me, src.loc), d == 0.0f ? ", inside" : "")
                                           : std::string("  no body");
-          s += std::format("  {:<7} {:5.1f} m  every {:.2f} s  gain {:.2f}  right {:+.2f} ahead {:+.2f} up {:+.2f}{}{}  #{}\n", kKind[src.kind].name, d,
+          s += std::format("  {:<7} {:5.1f} m  every {:.2f} s  gain {:.2f}  right {:+.2f} ahead {:+.2f} up {:+.2f}{}{}  #{}\n", kind_name(src.kind), d,
                            g_field.params().period_for(d), gain_at(d), at.right, at.ahead, at.up, body, src.selected ? "  selected" : "", src.obj.index);
         }
       return s;

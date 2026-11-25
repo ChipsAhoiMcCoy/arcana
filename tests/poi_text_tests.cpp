@@ -65,9 +65,6 @@ TEST_CASE("ways_from: the Strip Mall's stairways, from each floor") {
   CHECK(ways_from(b, 2) == std::vector<size_t>{0, 6, 1, 7});    // up to 3F and down to 1F, east then west
   CHECK(ways_from(b, 3) == std::vector<size_t>{2, 4});
   CHECK(ways_from(b, 4).empty());                               // a part no box sets (a room reached by a jump)
-  CHECK(way_pair(b, 3, 1) == 6);
-  CHECK(way_pair(b, 0, 2) == 2);
-  CHECK(way_pair(b, 0, 1) == b.size());                         // 3F's slab has no 1F slab beside it
 }
 
 TEST_CASE("stairs: the hotel's unnamed staircases") {

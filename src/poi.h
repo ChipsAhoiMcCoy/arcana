@@ -10,13 +10,12 @@ namespace p3a::poi {
 // Fragment: a Twilight Fragment, a pickup in town or a crystal to strike in Tartarus: listed among the objects, with
 // a sonar sound of its own.
 // Way: a stairway to another floor of the same field (floors.cpp): walked up or down, nothing to press. Listed with the
-// exits; its sound is a run of tones across its width.
+// exits, with a sonar sound of its own.
 enum class Kind { Exit, Person, Shop, Door, Thing, Enemy, Event, Fragment, Way };
 // state: what the icon over a person says ("already spoken to", "Social Link"), said after the name; "" when it says nothing.
 // objective: the minimap's objective mark (its "!") stands on it: said as "objective" after the name, and listed under
 // Events as well as its own category.
-// rise: a Way's direction, +1 up, -1 down.
-struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; bool objective = false; int rise = 0; };
+struct Poi { ue::WeakObj obj; Kind kind; std::string name; ue::FVector loc; float dist; float bearing; std::string state; bool objective = false; };
 
 std::vector<Poi> scan(float radius_cm = -1);   // nearest first (game thread); -1 = the range setting
 std::string clock(float bearing_deg);                   // "12 o'clock" etc. (camera-relative)

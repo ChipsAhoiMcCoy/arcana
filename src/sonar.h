@@ -37,5 +37,6 @@ bool preview(settings::Id id);
 // The settings menu's sound test: kind 0 exit, 1 door, 2 person, 3 shop, 4 object, 5 event, 6 fragment, from ahead
 // or from behind (lower when that setting is on), on the sonar's volume.
 void demo(int kind, bool behind = false);
+inline constexpr int kDemoStairs = 7;   // demo's kind for a stairway to another floor (after the seven sonar kinds)
 void install();                    // dev route /sonar
 }  // namespace p3a::sonar

@@ -548,7 +548,7 @@ inline constexpr SoundTest kSoundTests[] = {
     {"Wall behind", "The wall tone for a wall behind you."},
     {"Wall to the left", "The wall tone for a wall on your left."},
     {"Controller layer", "Both triggers are held: the mod's controller layer is open."},
-    {"Stairs to another floor", "A run of tones from one side of the stairway to the other, as wide as it is. Rising: it leads up. Falling: it leads down."},
+    {"Stairs to another floor", "Stairs you walk to another floor of the same place. Four wooden knocks climbing like rungs, from the middle of the stairway."},
 };
 inline constexpr Tr kSetWallTones{"Wall tones"};
 inline constexpr Tr kSetSonar{"Sonar"};

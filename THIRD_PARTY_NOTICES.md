@@ -33,11 +33,15 @@ The four sounds in `assets/audio/walltones/2`, in the player zip, are byte-for-b
 
 ## Sonar sounds from Grim Dark
 
-The five sounds in `assets/audio/sonar` and `assets/audio/signals`, in the player zip, are Grim Dark's sonar sounds (its dungeon entrance, interactable, ruined shrine, loot and enemy sounds), by Austin Hicks, under its zlib license. The door, person and shop sounds are made by the mod itself.
+Five sounds in `assets/audio/sonar` and `assets/audio/signals` (every file there but `sonar/stairs.wav`, below), in the player zip, are Grim Dark's sonar sounds (its dungeon entrance, interactable, ruined shrine, loot and enemy sounds), by Austin Hicks, under its zlib license. The door, person and shop sounds are made by the mod itself.
 
 The three sounds in `assets/audio/sight`, in the player zip, are Grim Dark's harmful-ground sounds, byte-for-byte, by Austin Hicks, under its zlib license: `zone.wav` is its east lane sound (assets/audio/hazards/sizzle/east.wav) and `hidden_left.wav` and `hidden_right.wav` its "standing in it" bed (assets/audio/hazards/inside_low, left.wav and right.wav). Grim Dark made them with its own generator script. Arcana plays the bed through a low-pass filter.
 
 The three sounds `assets/audio/review_straight.wav`, `review_path.wav` and `review_unreachable.wav`, in the player zip, are Grim Dark's review pings (the route ping it plays when its review cursor lands on something), byte-for-byte, by Austin Hicks, under its zlib license.
+
+## Stairs sound
+
+`assets/audio/sonar/stairs.wav`, in the player zip, is the ladder sound of the Kingdom Hearts access mod by the same author: four copies of `impactWood_light_001.ogg` from Kenney's Impact Sounds pack (https://kenney.nl/assets/impact-sounds), pitched to climb and laid 75 ms apart. Kenney's pack is CC0 1.0 (public domain dedication, https://creativecommons.org/publicdomain/zero/1.0/): no attribution is required, and Kenney is credited here anyway.
 
 ## Prism
 

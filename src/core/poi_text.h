@@ -56,9 +56,6 @@ int part_box(const std::string& overlap_class);
 struct PartBox { int part = 0; Vec3 at; };
 inline constexpr float kWayPairCm = 600.0f;
 std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current);
-// The pair of a way's box: the nearest box setting `current` within kWayPairCm (the hero's end of the flight), or
-// boxes.size() when it has none.
-size_t way_pair(const std::vector<PartBox>& boxes, size_t way, int current);
 
 // A name that ends in "_<digits>" without a leading zero is, to Unreal, the name before it with a number one
 // higher: "FOO_12" is FOO with number 13. True, with both parts, when `name` is such a name.

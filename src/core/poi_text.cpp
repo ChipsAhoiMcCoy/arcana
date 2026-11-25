@@ -106,17 +106,6 @@ std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current) {
   return out;
 }
 
-size_t way_pair(const std::vector<PartBox>& boxes, size_t way, int current) {
-  size_t best = boxes.size();
-  float bd = kWayPairCm;
-  for (size_t i = 0; way < boxes.size() && i < boxes.size(); ++i) {
-    if (boxes[i].part != current) continue;
-    float d = dist3(boxes[i].at, boxes[way].at);
-    if (d < bd) { bd = d; best = i; }
-  }
-  return best;
-}
-
 bool numbered_name(const std::string& flag, std::string& base, int& number) {
   size_t us = flag.find_last_of('_');
   if (us == std::string::npos || us + 1 >= flag.size() || flag.size() - us > 10 ||
