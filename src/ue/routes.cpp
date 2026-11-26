@@ -4,7 +4,6 @@
 #include "ue/ue.h"
 #include "ue/scan.h"
 #include "devserver.h"
-#include "hooks.h"
 #include "seh.h"
 #include "input.h"
 #include "log.h"

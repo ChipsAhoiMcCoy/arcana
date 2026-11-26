@@ -339,7 +339,7 @@ class BtlWords {
     return ue::get_bool(u, "EnemyFlag") ? enemy(u) : std::format("{}, {}", unit_name(u), hp_sp(u));
   }
   // The affinities the player has found out, a line per kind: "weak to Fire, Ice". The game's names are "Fire
-  // Attack", "Ice Attack": the word is dropped (core::short_attack), it was said with every target (the user's call,
+  // Attack", "Ice Attack": the word is dropped (analyze_attr_name), it was said with every target (the user's call,
   // 2026-11-11).
   std::vector<std::string> affinity_groups(ue::UObject* e) {
     std::vector<std::string> out;

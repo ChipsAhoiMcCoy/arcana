@@ -2,7 +2,7 @@
 #include <string>
 
 namespace p3a::topdown {
-// The top-down mode (the "Top-down exploration" setting), after Dark Vision's view of the field: while the player
+// The top-down mode (always on since 2026-11-25; it was the "Top-down exploration" setting), after Dark Vision's view of the field: while the player
 // walks freely (world::exploring, the field operator in its Free state with its keys enabled), the game is heard as if
 // from above with north always ahead.
 //  - The free camera is fixed facing north: the stick's yaw speed is 0 and the camera's follow (it swung round behind

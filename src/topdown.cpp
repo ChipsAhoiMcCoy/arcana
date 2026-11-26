@@ -17,7 +17,6 @@
 #include "topdown.h"
 #include "audio.h"
 #include "floors.h"
-#include "core/sonar_cues.h"
 #include "core/strings.h"
 #include "core/units.h"
 #include "dat.h"

@@ -12,7 +12,6 @@
 #include "core/page_text.h"
 #include "core/poi_text.h"
 #include "core/speech_text.h"
-#include "core/text_clean.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "hooks.h"
