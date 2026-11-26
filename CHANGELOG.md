@@ -22,6 +22,7 @@
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
 
 ### Field
+- Where am I no longer says a Tartarus objective ("Find a valuable treasure chest") after you've left Tartarus. Objectives were kept until the objective panel showed empty, so a place where it never came up kept the last floor's. They now belong to the place they were shown in and are forgotten when you go somewhere else.
 - New: Always advantage (F2, Exploring, off by default), to make battles a little easier. Every battle you start by touching a Shadow begins with your advantage, as if you had struck it from behind: also when you strike it face to face and when it reaches you first. Boss and story battles stay as the game has them.
 - Distance is heard the way Dark Vision plays it. A Shadow's snarl, the sonar and the route ping are half as loud at 3 meters as beside you and a quarter at 9, and a sound still playing follows you as you move. Before, a Shadow's snarl grew evenly over its whole 30 meters, so a few steps toward it or away changed almost nothing and you could not tell how near it was; the sonar was full inside 1.5 meters and faded evenly to its range's edge.
 - Left and right follow Dark Vision's own width: within 3 meters a sound moves across by how far to the side the thing is, beyond that by its direction. It was 1 meter.

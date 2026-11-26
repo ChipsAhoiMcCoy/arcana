@@ -119,6 +119,17 @@ void prompt_tick() {
   bool field_up = !panel || panel_state == 3;
   if (field_up && !field_was) field_since = hooks::frame();
   field_was = field_up;
+  // The objectives belong to the field they were drawn in. A new field (a new hero actor: a field loaded, a Tartarus
+  // floor, the trip home) forgets them and reads only what is drawn since: the panel is cleared above only while it
+  // is up, and a field whose panel never came up kept Tartarus' "Find a valuable treasure chest" for Where am I
+  // outside Tartarus (a player's report, 2026-11-26). The lines said stay remembered, as when the panel empties.
+  static WeakObj hero_seen;
+  if (UObject* hero = world::player(); hero && !(WeakObj::of(hero) == hero_seen)) {
+    hero_seen = WeakObj::of(hero);
+    g_objective.clear();
+    g_sub_objective.clear();
+    field_since = hooks::frame();
+  }
   if (!msg::current().open && field_up) {
     // The panel's lines, top to bottom. It can hold several objectives at once, each in brackets with its own lines
     // under it: a Tartarus floor showed "Face Nyx", "Defeat Strega" and a second bracketed one, "Explore the floor"
