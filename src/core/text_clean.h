@@ -26,4 +26,9 @@ std::string without_last_sentence_naming(std::string_view s, std::string_view wh
 // "ellipsis, exclamation mark, question mark"): a screen reader says nothing for it, so a page or an answer of "..."
 // sounded empty (the player's report, 2026-11-17). Anything else comes back as it is.
 std::string speakable(std::string_view s);
+
+// A System window's text asks yes or no: it ends in "?", or in "?" before a closing note in brackets ("...keep these
+// changes? (Settings will revert in 10 seconds.)"); Japanese and Chinese write the full-width ？ and （）
+// ("設定を保存しますか？（10秒後に戻ります）").
+bool is_question(std::string_view t);
 }  // namespace p3a::core

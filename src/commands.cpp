@@ -5,6 +5,7 @@
 #include "audio.h"
 #include "core/sonar_cues.h"
 #include "core/strings.h"
+#include "core/text_clean.h"
 #include "keys.h"
 #include "msg.h"
 #include "nav.h"
@@ -70,7 +71,7 @@ static void screen_keys() {
   // question is answered yes or no.
   bool own = screens::current() && screens::current()->own_messages();
   if (m.blocking && !over) k = m.kind == "Tutorial" ? strings::kTutorialKeys() : !m.choices.empty() ? strings::kChooseKeys()
-                    : m.kind == "System" && msg::is_question(m.text) ? strings::kYesNoHint()
+                    : m.kind == "System" && core::is_question(m.text) ? strings::kYesNoHint()
                     : m.kind == "System" || own ? strings::kSpaceContinues() : strings::kDialogueKeys();
   else if (screens::current()) {
     k = screens::keys();

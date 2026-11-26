@@ -12,6 +12,7 @@
 #include "core/page_text.h"
 #include "core/poi_text.h"
 #include "core/speech_text.h"
+#include "core/text_clean.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "hooks.h"
@@ -352,7 +353,7 @@ static bool read_window(Tick& tk, Seen& s, UObject* item, UObject* sel) {
   if (echo) s.page = page;
   // System questions answer with the key-help buttons, not a choice list (TODO: the window's own yes/no flag).
   auto hinted = [&](const std::string& t) {
-    return !sel && cur.kind == "System" && is_question(t) ? t + " " + strings::kYesNoHint() : with_who_asked(t, t);
+    return !sel && cur.kind == "System" && core::is_question(t) ? t + " " + strings::kYesNoHint() : with_who_asked(t, t);
   };
   // A tutorial turns its pages (Q and E) without replacing CurrentPage: the window keeps the shown page's index
   // (MsgProcWindow_Tutorial +0x74, the one before at +0x70, the page count at +0xA4; measured 2026-10-29), and
@@ -632,18 +633,6 @@ bool window_session_open() {
   return false;
 }
 ue::UObject* sel_item() { return g_sel.resolve(); }
-// A question may end in a note: "...keep these changes? (Settings will revert in 10 seconds.)".
-// Japanese and Chinese write the full-width ？ and （）: "設定を保存しますか？（10秒後に戻ります）".
-bool is_question(const std::string& t) {
-  std::string_view s = t;
-  while (!s.empty() && (s.back() == ' ' || s.back() == '\n')) s.remove_suffix(1);
-  // a note in brackets after the question
-  if (s.ends_with(')')) { if (size_t q = s.rfind('('); q != std::string_view::npos) s = s.substr(0, q); }
-  else if (s.ends_with("\xEF\xBC\x89")) { if (size_t q = s.rfind("\xEF\xBC\x88"); q != std::string_view::npos) s = s.substr(0, q); }
-  while (!s.empty() && s.back() == ' ') s.remove_suffix(1);
-  return s.ends_with('?') || s.ends_with("\xEF\xBC\x9F");
-}
-
 std::string with_who_asked(const std::string& line, const std::string& game_text) {
   int major = core::bar_customer_asked(game_text);
   if (!major) return line;

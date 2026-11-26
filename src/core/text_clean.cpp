@@ -167,4 +167,13 @@ std::string speakable(std::string_view s) {
   for (auto* n : names) { if (!out.empty()) out += ", "; out += n; }
   return out;
 }
+
+bool is_question(std::string_view s) {
+  while (!s.empty() && (s.back() == ' ' || s.back() == '\n')) s.remove_suffix(1);
+  // a note in brackets after the question
+  if (s.ends_with(')')) { if (size_t q = s.rfind('('); q != std::string_view::npos) s = s.substr(0, q); }
+  else if (s.ends_with("\xEF\xBC\x89")) { if (size_t q = s.rfind("\xEF\xBC\x88"); q != std::string_view::npos) s = s.substr(0, q); }
+  while (!s.empty() && s.back() == ' ') s.remove_suffix(1);
+  return s.ends_with('?') || s.ends_with("\xEF\xBC\x9F");
+}
 }  // namespace p3a::core

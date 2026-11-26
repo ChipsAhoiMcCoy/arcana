@@ -62,3 +62,16 @@ TEST_CASE("speakable names a line that is only punctuation") {
   CHECK(speakable(" ") == " ");
   CHECK(speakable("...?") == "ellipsis, question mark");
 }
+
+TEST_CASE("is_question: a closing ?, before a note in brackets too, full-width in Japanese and Chinese") {
+  using p3a::core::is_question;
+  CHECK(is_question("Do you want to quit?"));
+  CHECK(is_question("Quit? \n"));
+  CHECK(is_question("Keep these changes? (Settings will revert in 10 seconds.)"));
+  CHECK(is_question("\xE8\xA8\xAD\xE5\xAE\x9A\xEF\xBC\x9F"));                                      // full-width ?
+  CHECK(is_question("\xE4\xBF\x9D\xE5\xAD\x98\xEF\xBC\x9F\xEF\xBC\x88" "10\xEF\xBC\x89"));   // ? then a full-width bracketed note
+  CHECK_FALSE(is_question("Saved."));
+  CHECK_FALSE(is_question("(Is this a question?) No."));
+  CHECK_FALSE(is_question("A note (really?)"));   // the bracketed part is dropped: "A note"
+  CHECK_FALSE(is_question(""));
+}

@@ -20,8 +20,6 @@ bool window_session_open();   // session_open for that window's session alone
 ue::UObject* sel_item();   // the choice list up now (USelItem), or null (game thread)
 bool side_by_side(ue::UObject* sel);   // two answers side by side: +0x40 is the answer (-1 none yet), not the ListCursor
 void repeat();   // speak the current page again
-// A System window's text asks yes or no (ends in "?", or in "?" before a closing note in brackets).
-bool is_question(const std::string& t);
 // A line with who it means, when the game asks about someone by place only (core::bar_customer_asked): the line,
 // then "That's the Unemotional Woman." Any other line comes back as it is.
 std::string with_who_asked(const std::string& line, const std::string& game_text);
