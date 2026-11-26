@@ -88,6 +88,8 @@ static const Def kDefs[Count] = {
   {"strike_assist", strings::kSetStrikeAssist, CatExploring, strings::kHelpStrikeAssist, Unit::Toggle, {0, 1}, 1},
   // the Reaper's timers on a Tartarus floor run twice as long (shadow.cpp); off is the game's own pace
   {"relaxed_reaper", strings::kSetRelaxedReaper, CatExploring, strings::kHelpRelaxedReaper, Unit::Toggle, {0, 1}, 0},
+  // every battle a roaming Shadow starts begins with the party's advantage, however the two met (shadow.cpp)
+  {"always_advantage", strings::kSetAlwaysAdvantage, CatExploring, strings::kHelpAlwaysAdvantage, Unit::Toggle, {0, 1}, 0},
   // every nearby point of interest sounds (sonar.cpp)
   {"sonar", strings::kSetSonar, CatSonar, strings::kHelpSonar, Unit::Toggle, {0, 1}, 1},
   {"sonar_scope", strings::kSetSonarScope, CatSonar, strings::kHelpSonarScope, Unit::Choice, {ScopeSelected, ScopeCategory, ScopeAll}, ScopeAll,

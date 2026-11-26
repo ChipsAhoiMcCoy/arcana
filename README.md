@@ -136,6 +136,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Shadow sight range: 10 meters; 2 to 16 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
 - Strike assist: off, on. In Tartarus, when you attack, you turn to the Shadow your strike can reach, whichever way it is (with no Shadow in reach, to a breakable object)
 - Relaxed Reaper rate: off, on. In Tartarus, you can stay on a floor twice as long before the Reaper comes (about six minutes on a normal floor instead of three); Fuuka's warning still comes shortly before it. Turned on while on a floor, the time left there doubles (and halves when turned off)
+- Always advantage: off, on. Every battle you start by touching a Shadow begins with your advantage, as if you had struck it from behind: also when you strike it face to face and when it reaches you first. Boss and story battles stay as the game has them.
 
 **Sonar**
 

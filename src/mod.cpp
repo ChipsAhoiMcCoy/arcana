@@ -66,7 +66,7 @@ static Section g_sections[] = {
   {"watch", watch::tick}, {"probe", ue::probe_tick}, {"input", input::tick}, {"world", world::tick}, {"doors", doors::tick},
   {"voice", voice::tick}, {"msg", msg::tick}, {"screens", screens::tick},
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
-  {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
+  {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"advantage", shadow::advantage_tick, true}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"achievements", achievements::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
   {"event_skip", event_skip::tick, true}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
 };

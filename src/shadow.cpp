@@ -422,6 +422,61 @@ void log_encounter() {
   log::writef("shadow: battle begins with #{} at {}: {} (type {}); {}; {}", enemy.index, where, kinds[type], type, ring, in_zone);
 }
 
+}  // namespace
+
+// ---- Always advantage ----
+// The field decides how a battle with a roaming Shadow starts as the two touch: AFldOperator.EncountType (1 the strike
+// with the Shadow facing the hero, 2 from behind, 3 / 4 with Ambush, 5 the Shadow reached him first). The battle then
+// carries its own copy, UBtlCoreComponent.EncountParameter.Preemptive (FBtlEncountParam +0x4: 0 Normal, 1 Enemy,
+// 2 Ally), which decides who moves first and which splash plays. With the option on, a 1 or a 5 becomes a 2 the frame
+// it is set, so the game builds the battle of a strike from behind itself; and the first battle core born after that
+// encounter (EncountIndex 0, not called from a script) is set to Ally if it is not, in case its copy was made before.
+// A battle a script starts (a boss, a story fight) is left as the game has it.
+void advantage_tick() {
+  static const int op_id = watch::want("FldOperator");
+  static const int core_id = watch::want("BtlCoreComponent");
+  static int last_type = 0;
+  static WeakObj last_enemy, stale_core, done_core;
+  static bool pending = false;   // a Shadow encounter, its battle not yet seen
+  const bool on = settings::on(settings::AlwaysAdvantage);
+  if (UObject* op = watch::get(op_id))
+    guarded([&] {
+      int32_t* t = field<int32_t>(op, "EncountType");
+      Holder* e = field<Holder>(op, "EncountEnemy");
+      if (!t || !e) return;
+      WeakObj enemy = WeakObj::of(e->actor);
+      if (*t == last_type && enemy == last_enemy) return;
+      if (on && e->actor && (*t == 1 || *t == 5)) {
+        log::writef("shadow: always advantage: encounter type {} with #{} made 2 (from behind)", *t, enemy.index);
+        *t = 2;
+      }
+      if (on && e->actor && *t >= 1 && *t <= 5 && !(enemy == last_enemy)) {
+        pending = true;
+        stale_core = WeakObj::of(watch::get(core_id));
+      }
+      last_type = *t;
+      last_enemy = enemy;
+    });
+  if (!on) { pending = false; return; }
+  if (!pending) return;
+  UObject* core = watch::get(core_id);
+  if (!core) return;
+  WeakObj w = WeakObj::of(core);
+  if (w == stale_core || w == done_core) return;
+  guarded([&] {
+    auto* param = field<uint8_t>(core, "EncountParameter");
+    if (!param) return;
+    done_core = w;
+    pending = false;
+    const bool scripted = param[0x20] != 0;   // CalledFromScript
+    log::writef("shadow: always advantage: battle {} encounter {} preemptive {} (original {}){}", w.index,
+                *(int32_t*)param, param[4], param[5], scripted ? ", called from a script: left alone" : "");
+    if (scripted || get<int32_t>(core, "EncountIndex") != 0 || param[4] == 2) return;
+    param[4] = 2;
+  });
+}
+
+namespace {
 // The held snarl's samples, made on first use (game thread).
 const audio::Pcm& drone_pcm() {
   static const audio::Pcm drone = std::make_shared<const std::vector<float>>(core::drone_loop(audio::sample_rate()));

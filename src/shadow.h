@@ -14,6 +14,9 @@ void install();   // dev route /shadows
 // The Relaxed Reaper rate option changed: doubles (on) or halves (off) what is left of the Reaper's timers on this
 // floor. Game thread.
 void set_relaxed_reaper(bool on);
+// The Always advantage option: a battle a roaming Shadow starts begins with the party's advantage, however the two
+// met. Game thread, every frame (field and battle).
+void advantage_tick();
 // The sound test: 1.5 s of the nearest Shadow's snarl, ahead. 0 facing the hero, 1 hunting him, 2 its back turned.
 void demo(int which);
 // The enemy manager's list (AFldEnemyManager.Enemies, FFldEnemyHolder): each Shadow's actor beside the component

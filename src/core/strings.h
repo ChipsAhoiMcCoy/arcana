@@ -473,6 +473,7 @@ inline constexpr Tr kHelpShadowAlerts{"In Tartarus: the nearest Shadow's steady 
 inline constexpr Tr kHelpTurnedRooms{"In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere."};
 inline constexpr Tr kHelpStrikeAssist{"In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same."};
 inline constexpr Tr kHelpRelaxedReaper{"In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off."};
+inline constexpr Tr kHelpAlwaysAdvantage{"Every battle you start by touching a Shadow begins with your advantage, even when it faces you or reaches you first. Boss and story battles stay as they are."};
 inline constexpr Tr kHelpAlwaysDash{"Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too."};
 inline constexpr Tr kHelpBehindPitch{"Sounds whose source is behind you play lower."};
 inline constexpr Tr kHelpPoiRange{"How far the points of interest list reaches."};
@@ -562,6 +563,7 @@ inline constexpr Tr kSetTurnedRooms{"Keep your heading through passages"};
 inline constexpr Tr kSetStrikeAssist{"Strike assist"};
 inline constexpr Tr kSetAlwaysDash{"Always dash"};
 inline constexpr Tr kSetRelaxedReaper{"Relaxed Reaper rate"};
+inline constexpr Tr kSetAlwaysAdvantage{"Always advantage"};
 inline constexpr Tr kSetBehindPitch{"Lower pitch behind you"};
 inline constexpr Tr kSetPoiRange{"Points of interest range"};
 inline constexpr Tr kSetFloorOnly{"Same floor only"};
