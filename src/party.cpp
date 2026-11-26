@@ -193,10 +193,12 @@ void install() {
     return dev::on_game([] {
       std::string s = summary() + "\nids:";
       for (int id : ids()) s += std::format(" {}", id);
-      for (int id = 1; id <= 10; ++id) s += std::format("\n{} {}{}", id, name(id), joined(id) ? "" : " (not joined)");
+      // The unit's address: /ue/poke?addr=..&off=0xC (HP) or 0x10 (SP) sets a member's HP or SP for a test.
+      for (int id = 1; id <= 10; ++id)
+        s += std::format("\n{} {}{} unit={}", id, name(id), joined(id) ? "" : " (not joined)", (void*)unit_work(id));
       return s + "\n";
     });
-  }, "the party: level, HP and SP of each member, its ids, every character id's name and who has not joined");
+  }, "the party: level, HP and SP of each member, its ids, every character id's name, who has not joined, its unit address");
 }
 bool joined(int id) { return id == 1 || (id >= 2 && id <= 10 && flag(0x3FFFFFFF + id)); }
 // The game keeps no navigator id: Mitsuru navigates until Fuuka joins (p3rpc.slplus reads the same flags).

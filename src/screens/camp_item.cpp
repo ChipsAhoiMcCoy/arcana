@@ -1,7 +1,8 @@
 // The camp's Item submenu as a bespoke menu (menu.h), modelled from the game's own objects (the offsets are this
 // build's, measured 2026-10-30). Every list uses the generic ListCursor (util.h): index = row + top.
 //
-//   UCmpItem +0x38 state (3 list, 4 member, 6 Persona), +0x44 category, +0x40 the state's open timer, +0x178 / +0x17C
+//   UCmpItem +0x38 state (3 list, 4 member, 6 Persona), +0x44 category, +0x40 the state's open timer, +0x3C / +0x174
+//   a whole-party item's timer and the frames it waits before Enter, +0x178 / +0x17C
 //   the NEW mark's index (the list's move), +0x188 UCmpItemSystem: +0x788 TArray<{u32 id, u8 count at +4, ...}> (0x10
 //   each), +0x768 TArray<i16> party ids, +0x778 TArray<i32> Persona stock slots, +0x28 the Persona panel.
 //   Cursors: list +0x84, member +0x48, Persona +0xC0. Every cursor here is written directly, with what the game's own
@@ -27,6 +28,8 @@ class CampItem : public MenuScreen {
   Mirror& list_ = mirror("items", [this] { return state() == 3 ? ListCursor(m() + 0x84).index() : -1; });
   Mirror& who_ = mirror("item.member", [this] { return state() == 4 ? ListCursor(m() + 0x48).index() : -1; });
   Mirror& pers_ = mirror("item.persona", [this] { return state() == 6 ? ListCursor(m() + 0xC0).index() : -1; });
+  // An item for the whole party (target 2): state 4 has no member cursor, one row, "all allies".
+  Mirror& all_ = mirror("item.all", [this] { return state() == 4 && target_type() == 2 ? 0 : -1; });
   std::string category_;
  public:
   // The item's target: 1 / 3 one member (a member cursor), 2 the whole party (none).
@@ -58,6 +61,12 @@ class CampItem : public MenuScreen {
       fn<void (*)(void*, int, char)>(0x13229a0)(m(), lc.index(), 1);
       return true;
     };
+    // FUN_141325240 case 4, target 2: Enter is taken once the state's timer +0x3C has passed +0x174 frames (at 30).
+    all_.ready = [this] {
+      uint8_t* o = m();
+      return state() == 4 && target_type() == 2 && *(float*)(o + 0x3C) > *(int32_t*)(o + 0x174) / 30.0f;
+    };
+    all_.set = [this](int i) { return i == 0 && state() == 4; };
     // FUN_141322b60(menu, row): the sound and the Persona panel's bar; not until the panel's animation is done.
     pers_.ready = [this] { uint8_t* s = sys(); return state() == 6 && s && fn<bool (*)(void*)>(0x13032b0)(*(void**)(s + 0x28)); };
     pers_.set = [this](int i) {
@@ -104,6 +113,14 @@ class CampItem : public MenuScreen {
       if (!items) b.add_item(ui::ControlId::structural("items.none"), item([] { return std::string(strings::kNoItems); }));
       b.pop_context();
       if (int c = list_.cursor(); c >= 0) b.set_start(slot(key, c));
+    } else if (st == 4 && target_type() == 2) {
+      b.begin_stop(all_.key);
+      b.push_context(strings::kUseOnWhom.c_str());
+      auto v = game_item(all_, 0, [ids = member_ids(arr<int16_t>(s, 0x768))] { return all_allies_line(ids); });
+      v->announcements[0].live = true;   // the new HP or SP is read once the item lands
+      b.add_item(slot(all_.key, 0), v);
+      b.pop_context();
+      b.set_start(slot(all_.key, 0));
     } else if (st == 4) {
       auto* ids = arr<int16_t>(s, 0x768);
       b.begin_stop("item.member");

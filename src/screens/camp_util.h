@@ -19,6 +19,19 @@ inline std::string member_line(int id, bool level = true, const std::string& mar
   if (party::member(id, m)) { m.name += mark; return party::line(m, level); }
   return party::name(id) + mark;
 }
+// The one row of an item or skill for the whole party (its target step has no member cursor): "all allies", then
+// every member's line, so what it did is heard once it lands.
+template <class Id>
+std::vector<int> member_ids(const ue::TArray<Id>* ids) {
+  std::vector<int> out;
+  for (int i = 0; ids && ids->data && i < ids->num; ++i) out.push_back(ids->data[i]);
+  return out;
+}
+inline std::string all_allies_line(const std::vector<int>& ids) {
+  std::string s = strings::kAllAllies.c_str();
+  for (int id : ids) s += ". " + member_line(id, false);
+  return s;
+}
 // A member list that holds both the active party and members outside it (the Stats roster, an item or gear picked for
 // anyone): which each row is, ", in party", ", navigator" or ", reserve", in list order. A list of one kind marks
 // nothing (the tester's report, 2026-11-20: the Stats list never said who was in the party). The navigator never

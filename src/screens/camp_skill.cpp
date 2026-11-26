@@ -25,6 +25,15 @@ class CampSkill : public MenuScreen {
   Mirror& who_ = mirror("skill.member", [this] { return state() == 3 ? ListCursor(m() + 0x48).index() : -1; });
   Mirror& list_ = mirror("skills", [this] { return state() == 4 ? ListCursor(m() + 0x84).index() : -1; });
   Mirror& target_ = mirror("skill.target", [this] { return state() == 5 ? ListCursor(m() + 0xC0).index() : -1; });
+  // The highlighted skill's target (FUN_14130c910): 0 one member, 1 / 2 the whole party, -1 none.
+  int target_kind() {
+    uint8_t* s = sys();
+    auto* sk = s ? arr<uint8_t>(s, 0x38) : nullptr;
+    int k = sk ? row_of(m() + 0x84) : -1;
+    if (!sk || k < 0 || k >= sk->num) return -1;
+    return fn<short (*)(uint16_t)>(0x130c910)(*(uint16_t*)(sk->data + k * 0xC + 2));
+  }
+  Mirror& all_ = mirror("skill.all", [this] { int t = state() == 5 ? target_kind() : -1; return t == 1 || t == 2 ? 0 : -1; });
   int member_id(int i) {
     auto* ids = sys() ? arr<int16_t>(sys(), 0x28) : nullptr;
     return ids && i >= 0 && i < ids->num ? ids->data[i] : 0;
@@ -48,12 +57,10 @@ class CampSkill : public MenuScreen {
       return true;
     };
     // Only a skill for one member has a target cursor (FUN_14130c910(skill) == 0).
-    target_.ready = [this] {
-      uint8_t* s = sys();
-      auto* sk = state() == 5 && s ? arr<uint8_t>(s, 0x38) : nullptr;
-      int k = sk ? row_of(m() + 0x84) : -1;
-      return sk && k >= 0 && k < sk->num && fn<short (*)(uint16_t)>(0x130c910)(*(uint16_t*)(sk->data + k * 0xC + 2)) == 0;
-    };
+    target_.ready = [this] { return state() == 5 && target_kind() == 0; };
+    // A skill for the whole party (1 or 2): FUN_14133efb0 case 5 takes Enter at once, no cursor.
+    all_.ready = [this] { int t = state() == 5 ? target_kind() : -1; return t == 1 || t == 2; };
+    all_.set = [this](int i) { return i == 0 && state() == 5; };
     target_.set = [this](int i) {
       uint8_t* o = m();
       uint8_t* s = sys();
@@ -75,6 +82,16 @@ class CampSkill : public MenuScreen {
     if (!s) return;
     int st = state();
     auto* ids = arr<int16_t>(s, 0x28);
+    if (st == 5 && all_.cursor() == 0) {
+      b.begin_stop(all_.key);
+      b.push_context(strings::kUseOnWhom.c_str());
+      auto v = game_item(all_, 0, [ids = member_ids(ids)] { return all_allies_line(ids); });
+      v->announcements[0].live = true;   // a healing skill's result (and the caster's SP) once it lands
+      b.add_item(slot(all_.key, 0), v);
+      b.pop_context();
+      b.set_start(slot(all_.key, 0));
+      return;
+    }
     if (st == 3 || st == 5) {
       Mirror& mm = st == 3 ? who_ : target_;
       b.begin_stop(mm.key);
