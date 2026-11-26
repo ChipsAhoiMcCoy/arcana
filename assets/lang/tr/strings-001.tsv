@@ -96,7 +96,6 @@ Waning gibbous moon	Küçülen şişkin ay
 Last quarter moon	Son dördün
 Waning crescent moon	Küçülen hilal
 Got	Alındı:
-times	çarpı
 item	öğe
 Spent	Harcandı:
 Space closes it.	Boşluk kapatır.
@@ -140,8 +139,6 @@ Academics	Akademik
 Charm	Cazibe
 Courage	Cesaret
 rank	derece
-up to rank	derecesi yükseldi:
-up	arttı
 Stats up.	İstatistikler arttı.
 Space continues.	Boşluk devam eder.
 A continues.	A devam eder.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Yukarı ve aşağı sonuçlarda
 Battle	Savaş
 HP	HP
 SP	SP
-of	/
 ellipsis	üç nokta
 question mark	soru işareti
 exclamation mark	ünlem işareti
@@ -163,7 +159,6 @@ Target	Hedef
 Skills	Yetenekler
 Items	Öğeler
 Choose target	Hedef seç
-Use	Kullan
 all enemies	tüm düşmanlar
 all allies	tüm müttefikler
 everyone	herkes
@@ -259,7 +254,6 @@ Learn	Öğren
 New skill	Yeni yetenek
 Next skill	Sonraki yetenek
 Learned	Öğrenildi
-would become	şuna dönüşecek:
 Escape goes back.	Escape geri döner.
 B goes back.	B geri döner.
 Empty slot	Boş yuva
@@ -273,7 +267,6 @@ Shuffle Time	Karıştırma Zamanı
 Left and right arrows choose a card, Space takes it.	Sol ve sağ ok tuşları bir kart seçer, Boşluk onu alır.
 Left and right choose a card, A takes it.	Sol ve sağ bir kart seçer, A onu alır.
 choose	seçilecek:
-more	daha
 Arcana Burst	Arkana Yağmuru
 Persona overstock. Choose a Persona to release	Persona fazlası. Serbest bırakılacak bir Persona seç
 Gain	Kazanılan
@@ -325,9 +318,7 @@ Analyze	Analiz Et
 Arcana	Arkana
 Drops	Düşürdükleri
 Max	En yüksek
-max	en yüksek
 Attack type	Saldırı türü
-Level, HP and SP unknown	Seviye, HP ve SP bilinmiyor
 Skills and attack type unknown	Yetenekler ve saldırı türü bilinmiyor
 Skills unknown	Yetenekler bilinmiyor
 Attack type unknown	Saldırı türü bilinmiyor
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Klavyede bas; B iptal eder.
 Cancelled	İptal edildi
 is the game's. Press another key, or Escape.	oyuna ait. Başka bir tuşa bas ya da Escape.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	Shift içeriyor: bu tuşla Shift geri gider. Shift olmadan bir tuşa bas ya da Escape.
-goes back for	geri gider:
 Press another key, or Escape.	Başka bir tuşa bas ya da Escape.
 moves to	şu tuşa taşındı:
 back on its default	varsayılanına döndü
@@ -708,7 +698,6 @@ Shadow close, facing you	Gölge yakında, sana bakıyor
 Rare Shadow fleeing	Nadir Gölge kaçıyor
 Rare Shadow got away	Nadir Gölge kaçtı
 Nothing nearby	Yakında bir şey yok
-No	Yok:
 Nothing selected	Hiçbir şey seçili değil
 o'clock	saat hizasında
 north	kuzey
@@ -791,7 +780,6 @@ Endurance	Dayanıklılık
 Agility	Çeviklik
 Luck	Şans
 Affinities	Yatkınlıklar
-no weaknesses or resistances	zayıflık ya da direnç yok
 Learns later	Sonra öğrenecekleri
 at level	seviye
 Social Link bonus	Sosyal Bağ bonusu

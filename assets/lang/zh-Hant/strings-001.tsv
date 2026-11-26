@@ -96,7 +96,6 @@ Waning gibbous moon	虧凸月
 Last quarter moon	下弦月
 Waning crescent moon	殘月
 Got	獲得
-times	數量
 item	道具
 Spent	花費
 Space closes it.	空白鍵關閉。
@@ -140,8 +139,6 @@ Academics	學力
 Charm	魅力
 Courage	勇氣
 rank	階級
-up to rank	提升至階級
-up	提升
 Stats up.	能力提升。
 Space continues.	空白鍵繼續。
 A continues.	A 繼續。
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	上下瀏覽結果，A 繼續�
 Battle	戰鬥
 HP	HP
 SP	SP
-of	/
 ellipsis	刪節號
 question mark	問號
 exclamation mark	驚嘆號
@@ -163,7 +159,6 @@ Target	目標
 Skills	技能
 Items	道具
 Choose target	選擇目標
-Use	使用
 all enemies	全體敵人
 all allies	全體我方
 everyone	所有人
@@ -259,7 +254,6 @@ Learn	習得
 New skill	新技能
 Next skill	下一個技能
 Learned	已習得
-would become	將變為
 Escape goes back.	Esc 返回。
 B goes back.	B 返回。
 Empty slot	空欄位
@@ -273,7 +267,6 @@ Shuffle Time	洗牌時間
 Left and right arrows choose a card, Space takes it.	左右方向鍵選擇卡片，空白鍵拿取。
 Left and right choose a card, A takes it.	左右選擇卡片，A 拿取。
 choose	選擇
-more	張（剩餘）
 Arcana Burst	阿爾卡那爆發
 Persona overstock. Choose a Persona to release	人格面具已滿。請選擇要釋放的人格面具
 Gain	獲得
@@ -325,9 +318,7 @@ Analyze	分析
 Arcana	阿爾卡那
 Drops	掉落道具
 Max	最大
-max	最大
 Attack type	攻擊屬性
-Level, HP and SP unknown	等級、HP 和 SP 不明
 Skills and attack type unknown	技能和攻擊屬性不明
 Skills unknown	技能不明
 Attack type unknown	攻擊屬性不明
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	請在鍵盤上按下；B 取消。
 Cancelled	已取消
 is the game's. Press another key, or Escape.	是遊戲使用的按鍵。請按其他按鍵，或按 Esc。
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	含有 Shift：Shift 加這個按鍵用於返回。請按不含 Shift 的按鍵，或按 Esc。
-goes back for	是返回鍵，用於
 Press another key, or Escape.	請按其他按鍵，或按 Esc。
 moves to	改為
 back on its default	已恢復預設
@@ -708,7 +698,6 @@ Shadow close, facing you	陰影就在附近，面向你
 Rare Shadow fleeing	稀有陰影在逃跑
 Rare Shadow got away	稀有陰影逃走了
 Nothing nearby	附近什麼都沒有
-No	沒有
 Nothing selected	尚未選擇
 o'clock	點鐘方向
 north	北
@@ -791,7 +780,6 @@ Endurance	耐力
 Agility	速度
 Luck	運氣
 Affinities	屬性相性
-no weaknesses or resistances	沒有弱點或耐性
 Learns later	之後習得的技能
 at level	於等級
 Social Link bonus	社群加成

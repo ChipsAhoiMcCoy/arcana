@@ -96,7 +96,6 @@ Waning gibbous moon	Abnehmender Mond
 Last quarter moon	Abnehmender Halbmond
 Waning crescent moon	Abnehmende Mondsichel
 Got	Erhalten:
-times	mal
 item	Item
 Spent	Ausgegeben:
 Space closes it.	Die Leertaste schließt es.
@@ -140,8 +139,6 @@ Academics	Wissen
 Charm	Charme
 Courage	Mut
 rank	Rang
-up to rank	steigt auf Rang
-up	steigt
 Stats up.	Werte gestiegen.
 Space continues.	Die Leertaste setzt fort.
 A continues.	A setzt fort.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Hoch und runter gehen durch die
 Battle	Kampf
 HP	HP
 SP	SP
-of	von
 ellipsis	Auslassungspunkte
 question mark	Fragezeichen
 exclamation mark	Ausrufezeichen
@@ -163,7 +159,6 @@ Target	Ziel
 Skills	Skills
 Items	Items
 Choose target	Ziel wählen
-Use	Einsetzen:
 all enemies	alle Gegner
 all allies	alle Verbündeten
 everyone	alle
@@ -259,7 +254,6 @@ Learn	Lernen
 New skill	Neuer Skill
 Next skill	Nächster Skill
 Learned	Gelernt
-would become	wird zu
 Escape goes back.	Escape geht zurück.
 B goes back.	B geht zurück.
 Empty slot	Leerer Platz
@@ -273,7 +267,6 @@ Shuffle Time	Shuffle Time
 Left and right arrows choose a card, Space takes it.	Pfeiltasten links und rechts wählen eine Karte, Leertaste nimmt sie.
 Left and right choose a card, A takes it.	Links und rechts wählen eine Karte, A nimmt sie.
 choose	wähle
-more	weitere
 Arcana Burst	Arkana-Schub
 Persona overstock. Choose a Persona to release	Zu viele Personas. Wähle eine Persona zum Freilassen
 Gain	Neu
@@ -325,9 +318,7 @@ Analyze	Analyse
 Arcana	Arkana
 Drops	Beute
 Max	Max
-max	max
 Attack type	Angriffsart
-Level, HP and SP unknown	Stufe, HP und SP unbekannt
 Skills and attack type unknown	Skills und Angriffsart unbekannt
 Skills unknown	Skills unbekannt
 Attack type unknown	Angriffsart unbekannt
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Drücke sie auf der Tastatur; B bricht ab.
 Cancelled	Abgebrochen
 is the game's. Press another key, or Escape.	gehört dem Spiel. Drücke eine andere Taste oder Escape.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	enthält Shift: Shift mit dieser Taste geht zurück. Drücke eine Taste ohne Shift oder Escape.
-goes back for	geht zurück bei
 Press another key, or Escape.	Drücke eine andere Taste oder Escape.
 moves to	wandert auf
 back on its default	wieder auf Standard
@@ -708,7 +698,6 @@ Shadow close, facing you	Schatten nah, sieht dich an
 Rare Shadow fleeing	Seltener Schatten flieht
 Rare Shadow got away	Seltener Schatten entkommen
 Nothing nearby	Nichts in der Nähe
-No	Keine
 Nothing selected	Nichts gewählt
 o'clock	Uhr
 north	Norden
@@ -791,7 +780,6 @@ Endurance	Ausdauer
 Agility	Agilität
 Luck	Glück
 Affinities	Affinitäten
-no weaknesses or resistances	keine Schwächen oder Resistenzen
 Learns later	Lernt später
 at level	auf Stufe
 Social Link bonus	Social-Link-Bonus

@@ -132,7 +132,6 @@ inline constexpr Tr kStatUpFmt{"{} up"};               // "Charm up"
 inline constexpr Tr kToNextRankFmt{"{} to the next rank"};   // "15 points to the next rank"
 inline constexpr Tr kUpByFmt{"up {}"};                 // a Persona stat's rise: "St 12, up 2"
 inline constexpr Tr kGoesBackForFmt{"{} goes back for {}"};   // "Shift+1 goes back for Exits: ..."
-inline constexpr Tr kTimes{"times"};   // a pickup's count: "Got Bead times 3"
 inline constexpr Tr kItemNumber{"item"};   // an item with no known name: "item 16387"
 inline constexpr Tr kSpent{"Spent"};
 inline constexpr Hint kGetItemClose{"Space closes it.", "A closes it."};
@@ -163,8 +162,6 @@ inline constexpr Hint kTownMapHelp{"Up and down arrows choose, Space opens its e
                                    "The D-pad goes through the list, the stick moves on the map, A opens its entrances, X town info, B closes."};
 inline constexpr Tr kSocialStats[] = {"Academics", "Charm", "Courage"};
 inline constexpr Tr kRank{"rank"};
-inline constexpr Tr kRankUp{"up to rank"};
-inline constexpr Tr kStatUp{"up"};
 inline constexpr Tr kStatsUp{"Stats up."};
 inline constexpr Hint kSpaceContinues{"Space continues.", "A continues."};
 inline constexpr Hint kGameOverKeys{"Space skips to the choices.", "A skips to the choices."};
@@ -174,7 +171,6 @@ inline constexpr Hint kResultKeys{"The up and down arrows go through the results
 inline constexpr Tr kBattle{"Battle"};
 inline constexpr Tr kHP{"HP"};
 inline constexpr Tr kSP{"SP"};
-inline constexpr Tr kOf{"of"};
 // A count against its whole: "2 of 5" (a position), "HP 30 of 45". strings::of(2, 5) says it in the language's order.
 inline constexpr Tr kOfFormat{"{} of {}"};
 // Punctuation named where a line is nothing else (core::speakable): a screen reader says nothing for "...".
@@ -190,7 +186,6 @@ inline constexpr Tr kSkills{"Skills"};
 inline constexpr Tr kItems{"Items"};
 inline constexpr Tr kChooseTarget{"Choose target"};
 // A skill or item that takes a whole side at once: a question, "Use Mazio Gem on all enemies?" with its buttons.
-inline constexpr Tr kUse{"Use"};
 inline constexpr Tr kAllEnemies{"all enemies"};
 inline constexpr Tr kAllAllies{"all allies"};
 inline constexpr Tr kAllUnits{"everyone"};
@@ -255,7 +250,6 @@ inline constexpr Tr kLearnSkill{"Learn"};
 inline constexpr Tr kNewSkill{"New skill"};
 inline constexpr Tr kNextSkill{"Next skill"};
 inline constexpr Tr kLearned{"Learned"};
-inline constexpr Tr kWouldBecome{"would become"};   // a skill change offered after a level up: "Agi would become Agilao"
 inline constexpr Hint kCBack{"Escape goes back.", "B goes back."};
 inline constexpr Tr kEmptySlot{"Empty slot"};
 // A level up (after a battle, or a fusion's bonus): the Persona is fixed; only a skill card's page switches Persona.
@@ -270,7 +264,6 @@ inline constexpr Hint kRelearnKeys{"Up and down choose a forgotten skill, Enter 
 inline constexpr Tr kShuffleTime{"Shuffle Time"};
 inline constexpr Hint kShuffleKeys{"Left and right arrows choose a card, Space takes it.", "Left and right choose a card, A takes it."};
 inline constexpr Tr kChoose{"choose"};
-inline constexpr Tr kMore{"more"};                   // "choose 1 more"
 inline constexpr Tr kArcanaBurst{"Arcana Burst"};
 inline constexpr Tr kPersonaOverstock{"Persona overstock. Choose a Persona to release"};
 inline constexpr Tr kGain{"Gain"};                   // the overstock list's new Persona: "Gain: Apsaras, ..."
@@ -306,10 +299,8 @@ inline constexpr Tr kAnalyze{"Analyze"};
 inline constexpr Tr kArcanaWord{"Arcana"};
 inline constexpr Tr kDrops{"Drops"};
 inline constexpr Tr kMaxWord{"Max"};              // "Max HP 83, max SP 20"
-inline constexpr Tr kMaxWordLower{"max"};
 inline constexpr Tr kAttackType{"Attack type"};   // then the game's name for it: "Attack type Strike Attack"
 // What Analyze still hides, said where its panel would be (the game draws "??" and "UNKNOWN").
-inline constexpr Tr kStatusUnknown{"Level, HP and SP unknown"};
 inline constexpr Tr kSkillsAttackUnknown{"Skills and attack type unknown"};
 inline constexpr Tr kSkillsUnknown{"Skills unknown"};
 inline constexpr Tr kAttackTypeUnknown{"Attack type unknown"};
@@ -513,7 +504,6 @@ inline constexpr Hint kKeysPressCancel{"Escape cancels.", "Press it on the keybo
 inline constexpr Tr kKeysCancelled{"Cancelled"};   // + the key it keeps
 inline constexpr Tr kKeysReserved{"is the game's. Press another key, or Escape."};   // after the key
 inline constexpr Tr kKeysNeedsNoShift{"has Shift: Shift with this key goes back. Press a key without Shift, or Escape."};   // after the key
-inline constexpr Tr kKeysBackOf{"goes back for"};   // "Shift+1 goes back for Exits: ..."
 inline constexpr Tr kKeysPressAnother{"Press another key, or Escape."};
 inline constexpr Tr kKeysMovesTo{"moves to"};   // "<what the other key does> moves to Apostrophe"
 inline constexpr Tr kKeysBackToDefault{"back on its default"};
@@ -689,7 +679,6 @@ inline constexpr Tr kKindFacingYouFmt{"{} close, facing you"};
 inline constexpr Tr kRareFleeing{"Rare Shadow fleeing"};
 inline constexpr Tr kRareGotAway{"Rare Shadow got away"};
 inline constexpr Tr kNothingNearbyFull{"Nothing nearby"};
-inline constexpr Tr kPoiNoneOf{"No"};   // "No Shadows": a category key with nothing in its category
 inline constexpr Tr kNothingSelected{"Nothing selected"};
 inline constexpr Tr kOClock{"o'clock"};                 // after the hour, a direction by the clock face: "2 o'clock"
 // The compass in the top-down mode (north fixed): a bearing's eight points, from north clockwise.
@@ -768,14 +757,12 @@ inline constexpr Tr kFusionMaterial{"Material"};
 inline constexpr Tr kStatNames[] = {"Strength", "Magic", "Endurance", "Agility", "Luck"};
 inline constexpr Tr kStatsTitle{"Stats"};
 inline constexpr Tr kAffinitiesTitle{"Affinities"};
-inline constexpr Tr kNoAffinities{"no weaknesses or resistances"};
 inline constexpr Tr kLearnsTitle{"Learns later"};
 inline constexpr Tr kLearnsAt{"at level"};
 inline constexpr Tr kSlBonus{"Social Link bonus"};
 inline constexpr Tr kSlRank{"rank"};
 inline constexpr Tr kExpToNext{"EXP to next level"};
 inline constexpr Tr kRaisesTo{"up to level"};
-inline constexpr Tr kUp{"up"};
 inline constexpr Tr kNew{"new"};
 inline constexpr Tr kInheritTitle{"Choose skills to inherit."};
 inline constexpr Tr kInheritUpTo{"Choose skills to inherit, up to"};   // then how many: "..., up to 3."

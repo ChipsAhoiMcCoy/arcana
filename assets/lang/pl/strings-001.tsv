@@ -96,7 +96,6 @@ Waning gibbous moon	Ubywający księżyc garbaty
 Last quarter moon	Ostatnia kwadra
 Waning crescent moon	Sierp ubywającego księżyca
 Got	Zdobyto
-times	razy
 item	przedmiot
 Spent	Wydano
 Space closes it.	Spacja zamyka.
@@ -140,8 +139,6 @@ Academics	Zdolności do nauki
 Charm	Oczarowanie
 Courage	Odwaga
 rank	ranga
-up to rank	wzrasta do rangi
-up	wzrasta
 Stats up.	Statystyki wzrosły.
 Space continues.	Spacja kontynuuje.
 A continues.	A kontynuuje.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Góra i dół przechodzą przez
 Battle	Walka
 HP	PŻ
 SP	PE
-of	z
 ellipsis	wielokropek
 question mark	znak zapytania
 exclamation mark	wykrzyknik
@@ -163,7 +159,6 @@ Target	Cel
 Skills	Umiejętności
 Items	Przedmioty
 Choose target	Wybierz cel
-Use	Użyć
 all enemies	wszystkich wrogów
 all allies	wszystkich sojuszników
 everyone	wszystkich
@@ -259,7 +254,6 @@ Learn	Naucz się
 New skill	Nowa umiejętność
 Next skill	Następna umiejętność
 Learned	Opanowano
-would become	zmieni się w
 Escape goes back.	Escape wraca.
 B goes back.	B wraca.
 Empty slot	Pusty slot
@@ -273,7 +267,6 @@ Shuffle Time	Przetasowanie
 Left and right arrows choose a card, Space takes it.	Strzałki w lewo i w prawo wybierają kartę, Spacja ją bierze.
 Left and right choose a card, A takes it.	Lewo i prawo wybierają kartę, A ją bierze.
 choose	wybierz
-more	więcej
 Arcana Burst	Eksplozja arkanów
 Persona overstock. Choose a Persona to release	Za dużo Person. Wybierz Personę do uwolnienia
 Gain	Zyskujesz
@@ -325,9 +318,7 @@ Analyze	Analiza
 Arcana	Arkana
 Drops	Łupy
 Max	Maksymalne
-max	maksymalne
 Attack type	Rodzaj ataku
-Level, HP and SP unknown	Poziom, PŻ i PE nieznane
 Skills and attack type unknown	Umiejętności i rodzaj ataku nieznane
 Skills unknown	Umiejętności nieznane
 Attack type unknown	Rodzaj ataku nieznany
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Naciśnij go na klawiaturze; B anuluje.
 Cancelled	Anulowano
 is the game's. Press another key, or Escape.	należy do gry. Naciśnij inny klawisz albo Escape.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	ma Shift: Shift z tym klawiszem cofa. Naciśnij klawisz bez Shift albo Escape.
-goes back for	cofa dla:
 Press another key, or Escape.	Naciśnij inny klawisz albo Escape.
 moves to	przechodzi na
 back on its default	z powrotem na domyślnym
@@ -708,7 +698,6 @@ Shadow close, facing you	Cień blisko, zwrócony do ciebie
 Rare Shadow fleeing	Rzadki Cień ucieka
 Rare Shadow got away	Rzadki Cień uciekł
 Nothing nearby	Nic w pobliżu
-No	Brak:
 Nothing selected	Nic nie wybrano
 o'clock	na zegarze
 north	północ
@@ -791,7 +780,6 @@ Endurance	Wytrzymałość
 Agility	Zwinność
 Luck	Szczęście
 Affinities	Odporności
-no weaknesses or resistances	brak słabości i odporności
 Learns later	Później nauczy się
 at level	na poziomie
 Social Link bonus	Premia Więzi

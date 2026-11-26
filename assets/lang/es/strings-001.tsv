@@ -96,7 +96,6 @@ Waning gibbous moon	Gibosa menguante
 Last quarter moon	Cuarto menguante
 Waning crescent moon	Luna menguante
 Got	Obtienes
-times	por
 item	objeto
 Spent	Gastas
 Space closes it.	Espacio lo cierra.
@@ -140,8 +139,6 @@ Academics	Intelecto
 Charm	Encanto
 Courage	Coraje
 rank	rango
-up to rank	sube al rango
-up	sube
 Stats up.	Atributos sociales mejorados.
 Space continues.	Espacio continúa.
 A continues.	A continúa.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Arriba y abajo recorren los res
 Battle	Combate
 HP	PV
 SP	PE
-of	de
 ellipsis	puntos suspensivos
 question mark	signo de interrogación
 exclamation mark	signo de exclamación
@@ -163,7 +159,6 @@ Target	Objetivo
 Skills	Habilidades
 Items	Objetos
 Choose target	Elige un objetivo
-Use	Usar
 all enemies	todos los enemigos
 all allies	todos los aliados
 everyone	todos
@@ -259,7 +254,6 @@ Learn	Aprender
 New skill	Nueva habilidad
 Next skill	Siguiente habilidad
 Learned	Aprendida
-would become	se convertiría en
 Escape goes back.	Escape vuelve atrás.
 B goes back.	B vuelve atrás.
 Empty slot	Ranura vacía
@@ -273,7 +267,6 @@ Shuffle Time	Hora de barajar
 Left and right arrows choose a card, Space takes it.	Las flechas izquierda y derecha eligen una carta, Espacio la toma.
 Left and right choose a card, A takes it.	Izquierda y derecha eligen una carta, A la toma.
 choose	elige
-more	más
 Arcana Burst	Explosión arcana
 Persona overstock. Choose a Persona to release	Demasiadas Personas. Elige una Persona para liberarla
 Gain	Obtienes
@@ -325,9 +318,7 @@ Analyze	Analizar
 Arcana	Arcano
 Drops	Botín
 Max	Máximo
-max	máximo
 Attack type	Tipo de ataque
-Level, HP and SP unknown	Nivel, PV y PE desconocidos
 Skills and attack type unknown	Habilidades y tipo de ataque desconocidos
 Skills unknown	Habilidades desconocidas
 Attack type unknown	Tipo de ataque desconocido
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Púlsala en el teclado; B cancela.
 Cancelled	Cancelado
 is the game's. Press another key, or Escape.	es del juego. Pulsa otra tecla, o Escape.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	lleva Shift: Shift con esta tecla retrocede. Pulsa una tecla sin Shift, o Escape.
-goes back for	retrocede en
 Press another key, or Escape.	Pulsa otra tecla, o Escape.
 moves to	pasa a
 back on its default	vuelve a su valor predeterminado
@@ -707,7 +697,6 @@ Shadow close, facing you	Sombra cerca, mirándote
 Rare Shadow fleeing	Sombra rara huyendo
 Rare Shadow got away	La Sombra rara escapó
 Nothing nearby	Nada cerca
-No	No hay
 Nothing selected	Nada seleccionado
 o'clock	en punto
 north	norte
@@ -790,7 +779,6 @@ Endurance	Resistencia
 Agility	Agilidad
 Luck	Suerte
 Affinities	Afinidades
-no weaknesses or resistances	sin debilidades ni resistencias
 Learns later	Aprenderá después
 at level	en el nivel
 Social Link bonus	Bonificación de vínculo social

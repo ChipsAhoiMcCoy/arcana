@@ -96,7 +96,6 @@ Waning gibbous moon	満月後の月
 Last quarter moon	下弦の月
 Waning crescent moon	新月前の細い月
 Got	入手
-times	×
 item	アイテム
 Spent	支払い
 Space closes it.	スペースで閉じます。
@@ -140,8 +139,6 @@ Academics	学力
 Charm	魅力
 Courage	勇気
 rank	ランク
-up to rank	ランクアップ、ランク
-up	アップ
 Stats up.	ステータスアップ。
 Space continues.	スペースで続けます。
 A continues.	Aで続けます。
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	上下で結果を確認、Aで
 Battle	バトル
 HP	HP
 SP	SP
-of	/
 ellipsis	三点リーダー
 question mark	疑問符
 exclamation mark	感嘆符
@@ -163,7 +159,6 @@ Target	対象
 Skills	スキル
 Items	アイテム
 Choose target	対象を選択
-Use	使用：
 all enemies	敵全体
 all allies	味方全体
 everyone	全員
@@ -259,7 +254,6 @@ Learn	習得
 New skill	新しいスキル
 Next skill	次のスキル
 Learned	習得した
-would become	は次に変化
 Escape goes back.	Escで戻ります。
 B goes back.	Bで戻ります。
 Empty slot	空きスロット
@@ -273,7 +267,6 @@ Shuffle Time	シャッフルタイム
 Left and right arrows choose a card, Space takes it.	左右の矢印キーでカードを選び、スペースで取ります。
 Left and right choose a card, A takes it.	左右でカードを選び、Aで取ります。
 choose	あと
-more	枚選択
 Arcana Burst	アルカナバースト
 Persona overstock. Choose a Persona to release	ペルソナが所持上限です。手放すペルソナを選んでください
 Gain	獲得
@@ -325,9 +318,7 @@ Analyze	アナライズ
 Arcana	アルカナ
 Drops	ドロップ
 Max	最大
-max	最大
 Attack type	攻撃属性
-Level, HP and SP unknown	レベル、HP、SPは不明
 Skills and attack type unknown	スキルと攻撃属性は不明
 Skills unknown	スキルは不明
 Attack type unknown	攻撃属性は不明
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	キーボードで押してください。B
 Cancelled	キャンセルしました
 is the game's. Press another key, or Escape.	はゲームが使っています。別のキーを押すか、Escを押してください。
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	にはShiftが含まれます。Shiftとこのキーは戻る操作です。Shiftなしのキーを押すか、Escを押してください。
-goes back for	で戻る：
 Press another key, or Escape.	別のキーを押すか、Escを押してください。
 moves to	の割り当て先：
 back on its default	初期設定に戻しました
@@ -708,7 +698,6 @@ Shadow close, facing you	近くにシャドウ、こちら向き
 Rare Shadow fleeing	レアシャドウが逃げている
 Rare Shadow got away	レアシャドウに逃げられた
 Nothing nearby	近くに何もありません
-No	該当なし：
 Nothing selected	何も選択されていません
 o'clock	時の方向
 north	北
@@ -791,7 +780,6 @@ Endurance	耐久力
 Agility	速さ
 Luck	運
 Affinities	相性
-no weaknesses or resistances	弱点も耐性もなし
 Learns later	今後習得するスキル
 at level	習得レベル
 Social Link bonus	コミュボーナス

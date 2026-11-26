@@ -96,7 +96,6 @@ Waning gibbous moon	기우는 달
 Last quarter moon	하현달
 Waning crescent moon	그믐달
 Got	획득
-times	수량
 item	아이템
 Spent	지출
 Space closes it.	스페이스로 닫습니다.
@@ -140,8 +139,6 @@ Academics	학력
 Charm	매력
 Courage	용기
 rank	랭크
-up to rank	상승 후 랭크
-up	상승
 Stats up.	인간 파라미터 상승.
 Space continues.	스페이스로 계속합니다.
 A continues.	A로 계속합니다.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	위아래로 결과 확인, A �
 Battle	전투
 HP	HP
 SP	SP
-of	/
 ellipsis	말줄임표
 question mark	물음표
 exclamation mark	느낌표
@@ -163,7 +159,6 @@ Target	대상
 Skills	스킬
 Items	아이템
 Choose target	대상 선택
-Use	사용:
 all enemies	적 전체
 all allies	아군 전체
 everyone	모두
@@ -259,7 +254,6 @@ Learn	습득
 New skill	새 스킬
 Next skill	다음 스킬
 Learned	습득함
-would become	이(가) 다음으로 바뀜:
 Escape goes back.	Escape로 돌아갑니다.
 B goes back.	B로 돌아갑니다.
 Empty slot	빈 슬롯
@@ -273,7 +267,6 @@ Shuffle Time	셔플 타임
 Left and right arrows choose a card, Space takes it.	좌우 방향키로 카드 선택, 스페이스로 획득.
 Left and right choose a card, A takes it.	좌우로 카드 선택, A로 획득.
 choose	선택
-more	장 더
 Arcana Burst	아르카나 버스트
 Persona overstock. Choose a Persona to release	페르소나가 가득 찼습니다. 떠나보낼 페르소나를 선택하세요
 Gain	획득
@@ -325,9 +318,7 @@ Analyze	애널라이즈
 Arcana	아르카나
 Drops	드롭
 Max	최대
-max	최대
 Attack type	공격 속성
-Level, HP and SP unknown	레벨, HP, SP 알 수 없음
 Skills and attack type unknown	스킬과 공격 속성 알 수 없음
 Skills unknown	스킬 알 수 없음
 Attack type unknown	공격 속성 알 수 없음
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	키보드에서 누르세요. B로 취소�
 Cancelled	취소됨
 is the game's. Press another key, or Escape.	은(는) 게임이 쓰는 키입니다. 다른 키를 누르거나 Escape를 누르세요.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	에는 Shift가 들어 있습니다. 이 키에 Shift를 더하면 뒤로 가기가 됩니다. Shift 없는 키를 누르거나 Escape를 누르세요.
-goes back for	은(는) 다음의 뒤로 가기 키입니다:
 Press another key, or Escape.	다른 키를 누르거나 Escape를 누르세요.
 moves to	기능의 키가 바뀜:
 back on its default	기본값으로 돌아감
@@ -708,7 +698,6 @@ Shadow close, facing you	섀도 근처, 이쪽을 봄
 Rare Shadow fleeing	레어 섀도가 도망치는 중
 Rare Shadow got away	레어 섀도가 도망쳤다
 Nothing nearby	주변에 아무것도 없음
-No	없음:
 Nothing selected	선택된 것 없음
 o'clock	시 방향
 north	북
@@ -791,7 +780,6 @@ Endurance	내구
 Agility	속도
 Luck	운
 Affinities	상성
-no weaknesses or resistances	약점도 내성도 없음
 Learns later	습득 예정 스킬
 at level	레벨
 Social Link bonus	커뮤니티 보너스

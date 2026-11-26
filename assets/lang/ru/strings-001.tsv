@@ -96,7 +96,6 @@ Waning gibbous moon	Убывающая луна
 Last quarter moon	Последняя четверть
 Waning crescent moon	Убывающий серп
 Got	Получено:
-times	в количестве
 item	предмет
 Spent	Потрачено:
 Space closes it.	Пробел закрывает.
@@ -140,8 +139,6 @@ Academics	Эрудиция
 Charm	Очарование
 Courage	Смелость
 rank	ранг
-up to rank	достигает ранга
-up	растёт
 Stats up.	Показатели растут.
 Space continues.	Пробел продолжает.
 A continues.	A продолжает.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Вверх и вниз лист
 Battle	Бой
 HP	ОЗ
 SP	ОД
-of	из
 ellipsis	многоточие
 question mark	вопросительный знак
 exclamation mark	восклицательный знак
@@ -163,7 +159,6 @@ Target	Цель
 Skills	Навыки
 Items	Предметы
 Choose target	Выберите цель
-Use	Использовать
 all enemies	всем врагам
 all allies	всем союзникам
 everyone	всем
@@ -259,7 +254,6 @@ Learn	Изучить
 New skill	Новый навык
 Next skill	Следующий навык
 Learned	Изучено
-would become	может стать
 Escape goes back.	Esc возвращает назад.
 B goes back.	B возвращает назад.
 Empty slot	Пустая ячейка
@@ -273,7 +267,6 @@ Shuffle Time	Перетасовка
 Left and right arrows choose a card, Space takes it.	Стрелки влево и вправо выбирают карту, Пробел берёт её.
 Left and right choose a card, A takes it.	Влево и вправо выбирают карту, A берёт её.
 choose	выберите
-more	ещё
 Arcana Burst	Всплеск аркана
 Persona overstock. Choose a Persona to release	Слишком много Персон. Выберите Персону, которую нужно отпустить
 Gain	Новая Персона
@@ -325,9 +318,7 @@ Analyze	Анализ
 Arcana	Аркан
 Drops	Добыча
 Max	Максимум
-max	максимум
 Attack type	Тип атаки
-Level, HP and SP unknown	Уровень, ОЗ и ОД неизвестны
 Skills and attack type unknown	Навыки и тип атаки неизвестны
 Skills unknown	Навыки неизвестны
 Attack type unknown	Тип атаки неизвестен
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Нажмите её на клавиатур
 Cancelled	Отменено
 is the game's. Press another key, or Escape.	занята игрой. Нажмите другую клавишу или Esc.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	содержит Shift: Shift с этой клавишей работает в обратную сторону. Нажмите клавишу без Shift или Esc.
-goes back for	работает в обратную сторону для действия
 Press another key, or Escape.	Нажмите другую клавишу или Esc.
 moves to	переходит на
 back on its default	возвращена по умолчанию
@@ -708,7 +698,6 @@ Shadow close, facing you	Тень рядом, смотрит на вас
 Rare Shadow fleeing	Редкая Тень убегает
 Rare Shadow got away	Редкая Тень сбежала
 Nothing nearby	Поблизости ничего нет
-No	Ничего в категории
 Nothing selected	Ничего не выбрано
 o'clock	по часам
 north	север
@@ -791,7 +780,6 @@ Endurance	Выносливость
 Agility	Ловкость
 Luck	Удача
 Affinities	Предрасположенности
-no weaknesses or resistances	нет слабостей и сопротивлений
 Learns later	Изучит позже
 at level	на уровне
 Social Link bonus	Бонус социальной связи

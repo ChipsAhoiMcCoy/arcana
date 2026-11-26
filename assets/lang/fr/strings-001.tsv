@@ -96,7 +96,6 @@ Waning gibbous moon	Lune gibbeuse décroissante
 Last quarter moon	Dernier quartier
 Waning crescent moon	Dernier croissant
 Got	Obtenu
-times	fois
 item	objet
 Spent	Dépensé
 Space closes it.	Espace le ferme.
@@ -140,8 +139,6 @@ Academics	Savoir
 Charm	Charme
 Courage	Courage
 rank	rang
-up to rank	monte au rang
-up	augmente
 Stats up.	Statistiques en hausse.
 Space continues.	Espace pour continuer.
 A continues.	A pour continuer.
@@ -153,7 +150,6 @@ Up and down go through the results, A continues.	Haut et bas parcourent les rés
 Battle	Combat
 HP	PV
 SP	PC
-of	sur
 ellipsis	points de suspension
 question mark	point d'interrogation
 exclamation mark	point d'exclamation
@@ -163,7 +159,6 @@ Target	Cible
 Skills	Compétences
 Items	Objets
 Choose target	Choisissez la cible
-Use	Utiliser
 all enemies	tous les ennemis
 all allies	tous les alliés
 everyone	tout le monde
@@ -259,7 +254,6 @@ Learn	Apprendre
 New skill	Nouvelle compétence
 Next skill	Compétence suivante
 Learned	Apprise
-would become	deviendrait
 Escape goes back.	Échap revient.
 B goes back.	B revient.
 Empty slot	Emplacement vide
@@ -273,7 +267,6 @@ Shuffle Time	Tirage de carte
 Left and right arrows choose a card, Space takes it.	Flèches gauche et droite pour choisir une carte, Espace la prend.
 Left and right choose a card, A takes it.	Gauche et droite pour choisir une carte, A la prend.
 choose	choisissez-en
-more	de plus
 Arcana Burst	Explosion arcanique
 Persona overstock. Choose a Persona to release	Trop de Personae. Choisissez un Persona à libérer
 Gain	Nouveau
@@ -325,9 +318,7 @@ Analyze	Analyse
 Arcana	Arcane
 Drops	Butin
 Max	Max
-max	max
 Attack type	Type d'attaque
-Level, HP and SP unknown	Niveau, PV et PC inconnus
 Skills and attack type unknown	Compétences et type d'attaque inconnus
 Skills unknown	Compétences inconnues
 Attack type unknown	Type d'attaque inconnu
@@ -541,7 +532,6 @@ Press it on the keyboard; B cancels.	Appuyez dessus sur le clavier ; B annule.
 Cancelled	Annulé
 is the game's. Press another key, or Escape.	appartient au jeu. Appuyez sur une autre touche, ou Échap.
 has Shift: Shift with this key goes back. Press a key without Shift, or Escape.	contient Maj : Maj avec cette touche revient en arrière. Appuyez sur une touche sans Maj, ou Échap.
-goes back for	revient en arrière pour
 Press another key, or Escape.	Appuyez sur une autre touche, ou Échap.
 moves to	passe à
 back on its default	remise par défaut
@@ -708,7 +698,6 @@ Shadow close, facing you	Ombre proche, face à vous
 Rare Shadow fleeing	Ombre rare en fuite
 Rare Shadow got away	L'Ombre rare s'est échappée
 Nothing nearby	Rien à proximité
-No	Rien dans
 Nothing selected	Rien de sélectionné
 o'clock	heures
 north	nord
@@ -791,7 +780,6 @@ Endurance	Endurance
 Agility	Agilité
 Luck	Chance
 Affinities	Affinités
-no weaknesses or resistances	aucune faiblesse ni résistance
 Learns later	Apprendra plus tard
 at level	au niveau
 Social Link bonus	Bonus de lien social
