@@ -28,6 +28,9 @@ std::string with_who_asked(const std::string& line, const std::string& game_text
 // The player pressed confirm or cancel (Enter, Space, Escape, Backspace; A, B): over a blocking message window the
 // mod's reading stops at once, so a page skipped (or a choice made) feels instant (game thread).
 void player_pressed();
+// The mod is pressing the game's skip button itself (the game over poem's skip): the scene's fast-forward it turns on
+// for the moment the key is down is not said.
+void fast_forward_ours(bool on);
 uint32_t press_count();   // how many such presses so far: a screen that acts on the player's confirm compares it
 // The player pressed the game's Auto key (Shift; X on a controller): the next change of Auto is theirs, and said.
 void auto_key_pressed();

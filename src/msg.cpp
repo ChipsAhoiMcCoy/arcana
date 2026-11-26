@@ -482,6 +482,8 @@ static void read_choices(Tick& tk, Seen& s, UObject* sel) {
 // no window (the game resetting it) is only logged. `change(was, now)` words the log line. Returns whether it changed.
 struct Toggle { uint32_t was = 0; bool window = false; };
 static Toggle g_auto_said, g_ffwd_said;
+static bool g_ffwd_ours = false;
+void fast_forward_ours(bool on) { g_ffwd_ours = on; }
 template <class F>
 static bool announce_toggle(Toggle& t, uint32_t now, bool talking, const char* on, const char* off, F&& change,
                             bool theirs = true) {
@@ -581,7 +583,8 @@ void tick() {
     g_auto_key = false;
   // Fast-forward said the same way; when it ends, the page it left showing is read.
   if (announce_toggle(g_ffwd_said, g_ffwd ? 1 : 0, talking, strings::kFastForwardOn, strings::kFastForwardOff,
-                      [](uint32_t, uint32_t now) { return std::string(now ? "fast-forward on" : "fast-forward off"); })) {
+                      [](uint32_t, uint32_t now) { return std::string(now ? "fast-forward on" : "fast-forward off"); },
+                      !g_ffwd_ours)) {
     if (!g_ffwd && !g_ffwd_line.empty() && cur.open && cur.text == g_ffwd_text) speech::speak(g_ffwd_line, false);
     if (!g_ffwd) g_ffwd_line.clear();
   }

@@ -202,7 +202,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Semicolon (triggers + B) on a Social Link in the camp menu, or on its page (the link or one of its people), describes the picture the menu draws beside it: the person, or for the team the collage of faces, which grows as members join. On the old couple's page, each of them has their own.
 - Messages (Ctrl, or the morning's "I've got a text message..."): each mail as sender and title, "new" when unread; Space reads it, Escape closes. The reply choice that follows is read like any choice.
 - A new day: the date, weekday, time of day and moon as the day-change screen starts ("April 7, Tuesday, Morning. Waxing gibbous moon"), and a new time of day as its screen plays. A date reached any other way (a load, a story jump) is said once you can walk.
-- Game over: "Game Over" and the poem are read whole; Space or Enter (A) skips to the choices, each read with its description.
+- Game over: "Game Over" and the poem are read whole; one press of Space or Enter (A) ends it and goes to the choices, each read with its description.
 
 ### Start of the game
 
