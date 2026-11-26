@@ -11,6 +11,7 @@
 #include "poi_internal.h"
 #include "bmdfile.h"
 #include "dat.h"
+#include "core/path_rules.h"
 #include "core/poi_text.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
@@ -88,15 +89,13 @@ static bool walkable(UObject* a, const world::FVector& me, const world::FVector&
   if (it != cache.end()) return it->second;
   bool partial = true;
   auto path = world::find_path(world::path_start(me), v, &partial);
-  // A thing stands on its floor or above it: a path that ends a metre above it is on the floor above (the dorm's 2F
-  // stair flight runs over 1F's "Hallway 2F" box, 1.9 m below the 2F floor, 2026-11-24).
-  bool ok = !path.empty() && path.back().z - v.z > -250.0f && path.back().z - v.z < 100.0f &&
-            std::hypot(path.back().x - v.x, path.back().y - v.y) < 300.0f;
-  // A path is walked: a leg that rises more than it runs (plus a step) is no walk. Loading slot 9 puts the hero at the
-  // dorm lounge's counter, right under 2F's "Your Room" exit: the path from there was 2 points, partial, 4 m straight
-  // up, and the exit was listed 4 meters away on the lounge until the hero moved (the walk said "Stuck", 2026-11-24).
-  for (size_t i = 1; ok && i < path.size(); ++i)
-    if (std::fabs(path[i].z - path[i - 1].z) > std::hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y) + 100.0f) ok = false;
+  // Its end on the thing's floor and near it, and no leg straight up (core::walks_to). Loading slot 9 puts the hero at
+  // the dorm lounge's counter, right under 2F's "Your Room" exit: the exit was listed 4 meters away on the lounge
+  // until the hero moved (the walk said "Stuck", 2026-11-24).
+  std::vector<core::Vec3> pts;
+  pts.reserve(path.size());
+  for (const FVector& p : path) pts.push_back(world::vec3(p));
+  bool ok = core::walks_to(pts, world::vec3(v));
   cache[key] = ok;
   return ok;
 }
