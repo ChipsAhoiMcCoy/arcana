@@ -318,14 +318,14 @@ std::wstring heard_file() {
 }
 core::HeardCues& heard() {
   static core::HeardCues* h = [] {
-    auto* h = new core::HeardCues;
+    auto* cues = new core::HeardCues;
     if (FILE* f = _wfopen(heard_file().c_str(), L"rb")) {
       char line[256];
-      while (fgets(line, sizeof line, f)) h->add_line(line);
+      while (fgets(line, sizeof line, f)) cues->add_line(line);
       fclose(f);
     }
-    log::writef("ad: {} scene descriptions heard before", h->size());
-    return h;
+    log::writef("ad: {} scene descriptions heard before", cues->size());
+    return cues;
   }();
   return *h;
 }

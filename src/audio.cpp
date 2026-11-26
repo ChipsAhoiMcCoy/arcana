@@ -186,9 +186,11 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
   g_frames += frames;
   // HRTF slots need the fixed block size they were made for (miniaudio's fixed-size callback gives it).
   const bool hrtf_block = g_hrtf_on && hrtf::available() && (int)frames == hrtf::frame() && frames <= (ma_uint32)kMaxBlock;
-  if (g_hrtf_on && hrtf::available() && !hrtf_block && !g_odd_block_logged) {
-    g_odd_block_logged = true;
-    log::writef("audio: a {}-frame block (HRTF needs {}); positional sounds pan for such blocks", frames, hrtf::frame());
+  if constexpr (g_hrtf_on) {
+    if (hrtf::available() && !hrtf_block && !g_odd_block_logged) {
+      g_odd_block_logged = true;
+      log::writef("audio: a {}-frame block (HRTF needs {}); positional sounds pan for such blocks", frames, hrtf::frame());
+    }
   }
   // Per-bus gain ramps for this block: from where the last block ended to the target (the master folded in).
   float b_from[(int)Bus::Count], b_step[(int)Bus::Count];

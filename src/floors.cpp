@@ -110,12 +110,12 @@ bool elsewhere(UObject* a, const FVector& me, const FVector& at) {
 
 std::vector<Way> ways() {
   std::vector<Way> out;
-  const int cur = part();
-  if (cur <= 0) return out;
+  const int here = part();
+  if (here <= 0) return out;
   const std::vector<Slab> s = slabs();
   if (s.empty()) return out;
   const std::vector<core::PartBox> b = boxes(s);
-  for (size_t i : core::ways_from(b, cur))
+  for (size_t i : core::ways_from(b, here))
     out.push_back({s[i].a, s[i].part});
   return out;
 }
