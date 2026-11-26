@@ -1,3 +1,5 @@
+// The "Next" cue a screen gives once it takes OK (next_cue.h: the stats panel, an item got, a Social Link card, the
+// victory pages), and the log of what asked for the decide button meanwhile (confirm.cpp's callers).
 #include "screens/next_cue.h"
 #include "confirm.h"
 #include "core/strings.h"

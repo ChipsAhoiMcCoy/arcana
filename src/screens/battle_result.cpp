@@ -1,3 +1,18 @@
+// The victory screen, a bespoke page per state of the game's own result state machine (BP_BtlResultUIBase "Update
+// State"; the result phase's _uiBase, an ABtlResultUIBase): `State` (EBtlResultState) 1 Top (EXP and the items found;
+// with level-ups it moves on to 2 by itself after SecondChangeToLevup), 2 Levelup (the members' levels, the risen
+// ones marked; on to 3 by itself when a Persona rose), 3 PersonaLvup (the Personas that rose), 4 HeroHumanLevelup (the
+// hero's own page), 7 PersonaStatus (a Persona's status page with its stats rising, _PersonaStatusActor, when it
+// learned a skill), 8 End. States 1 to 3 are one page that grows: the summary stays drawn while the level-ups slide
+// in over it (2026-11-02). Each page is read from the native functions the Blueprint draws it from: GetItemParams
+// (id, count, name), GetAllyLevelupParam (unit id, level, risen), GetPersonaLevelupParam (id, level, name),
+// GetHeroInfo / GetHeroHumanLvupParam. Nothing is read from drawn text (the item names used to be caught off
+// FontDrawEx as they slid in, the level-ups by matching drawn names).
+// Each thing on a page is a line of its own: said in turn as it comes up, and there to go back to with the arrows (the
+// user's call, 2026-11-05). The level-ups slide in by themselves, so a section the game adds queues after what is being
+// said and leaves the focus where the player is; only a new page or the player's press moves it.
+// A press goes on (InputButton): taken only while isAvailableKeyHelpButton is on and isStarttingKeyhelpOut off (the OK
+// key help is up); one made before that is held until the game takes it, so each page is said as soon as it is up.
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/next_cue.h"
@@ -28,21 +43,6 @@ UObject* result_ui() {
 }
 int result_state(UObject* ui) { return ui ? get<uint8_t>(ui, "State") : -1; }
 
-// The victory screen, a bespoke page per state of the game's own result state machine (BP_BtlResultUIBase "Update
-// State"; the result phase's _uiBase, an ABtlResultUIBase): `State` (EBtlResultState) 1 Top (EXP and the items found;
-// with level-ups it moves on to 2 by itself after SecondChangeToLevup), 2 Levelup (the members' levels, the risen
-// ones marked; on to 3 by itself when a Persona rose), 3 PersonaLvup (the Personas that rose), 4 HeroHumanLevelup (the
-// hero's own page), 7 PersonaStatus (a Persona's status page with its stats rising, _PersonaStatusActor, when it
-// learned a skill), 8 End. States 1 to 3 are one page that grows: the summary stays drawn while the level-ups slide
-// in over it (2026-11-02). Each page is read from the native functions the Blueprint draws it from: GetItemParams
-// (id, count, name), GetAllyLevelupParam (unit id, level, risen), GetPersonaLevelupParam (id, level, name),
-// GetHeroInfo / GetHeroHumanLvupParam. Nothing is read from drawn text (the item names used to be caught off
-// FontDrawEx as they slid in, the level-ups by matching drawn names).
-// Each thing on a page is a line of its own: said in turn as it comes up, and there to go back to with the arrows (the
-// user's call, 2026-11-05). The level-ups slide in by themselves, so a section the game adds queues after what is being
-// said and leaves the focus where the player is; only a new page or the player's press moves it.
-// A press goes on (InputButton): taken only while isAvailableKeyHelpButton is on and isStarttingKeyhelpOut off (the OK
-// key help is up); one made before that is held until the game takes it, so each page is said as soon as it is up.
 class BattleResultScreen : public MenuScreen {
   Finder view_{"BtlResultViewData"};
   struct Section { std::string key; std::vector<std::string> lines; };

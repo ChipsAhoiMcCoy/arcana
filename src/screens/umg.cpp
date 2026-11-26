@@ -1,3 +1,4 @@
+// UMG widgets read as text (umg.h): a widget tree's visible TextBlocks and RichTextBlocks, cleaned, in order.
 #include "screens/umg.h"
 #include "core/text_clean.h"
 
