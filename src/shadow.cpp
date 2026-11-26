@@ -650,7 +650,10 @@ void install() {
       UObject* a = ue::object_at(obj);
       UObject* hero = world::player();
       if (!a || !hero) return std::string("no Shadow or no hero\n");
-      const FVector at = world::actor_location(a);
+      FVector at = world::actor_location(a);
+      Box body{};   // a breakable thing: its Box's middle, and the box against the strike's
+      const bool thing = is_a(a, "FldDungeonObjectActor") && read_box(get<UObject*>(a, "Box"), body);
+      if (thing) at = world::fvec(body.center);
       const float way = (yaw_of(a) + deg) * kPi / 180.0f;
       FVector to{at.x + std::cos(way) * d, at.y + std::sin(way) * d, at.z}, on;
       if (!world::project_to_nav(to, 300.0f, on)) return std::string("no navmesh there\n");
@@ -662,11 +665,12 @@ void install() {
       FVector me;
       world::player_location(me);
       bool known = false;
-      const bool reach = in_reach(a, at, me, known);
       Box b{};
-      float rr, hh;
+      float rr, hh, yaw = 0.0f;
       body_of(a, rr, hh);
-      const bool plain = strike_box(dungeon_comp(), b) && box_holds(b, at, rr, hh);
+      const bool has_box = strike_box(dungeon_comp(), b);
+      const bool reach = thing ? strike_reaches(a, me, yaw) && (settings::on(settings::StrikeAssist) || boxes_meet(b, body)) : in_reach(a, at, me, known);
+      const bool plain = has_box && (thing ? boxes_meet(b, body) : box_holds(b, at, rr, hh));
       return std::format("hero ({:.0f}, {:.0f}, {:.0f}) {:.0f} cm from #{} ({:.0f} flat), reach={} facing-only reach={} box centre ({:.0f}, {:.0f}, {:.0f}) yaw {:.0f}\n", me.x, me.y, me.z,
                          std::hypot(flat(at, me), at.z - me.z), obj, flat(at, me), reach, plain, b.center.x, b.center.y, b.center.z, b.yaw);
     });
