@@ -153,6 +153,8 @@ class BattleScreen : public Screen {
   // 0 to 4 are the plain numbers, which the HP watch says). A miss or a block changes no HP: nothing was said at all.
   int popups_ = watch::want("BP_BtlGuiDamage2_C", true);
   std::set<WeakObj::Key> popups_seen_;
+  std::set<WeakObj::Key> popped_;   // units a new popup came up on since their damage was last said (this action)
+  WeakObj popped_by_;               // the action they came up in
   void hit_words(UObject* action_now, int st) {
     std::set<WeakObj::Key> live;
     for (UObject* o : watch::all(popups_)) {
@@ -161,6 +163,7 @@ class BattleScreen : public Screen {
       auto key = WeakObj::of(o).key();
       live.insert(key);
       if (popups_seen_.count(key)) continue;
+      popped_.insert(WeakObj::of(u).key());
       int type = get<int32_t>(o, "Type");
       if (type < 5 || type > 9) continue;
       const char* word = strings::kHitWords[type - 5];
@@ -322,8 +325,10 @@ class BattleScreen : public Screen {
     watch_commands(st, action_now);
     watch_banner(action_now);
     watch_help(core);
+    if (!(WeakObj::of(action_now) == popped_by_)) { popped_.clear(); popped_by_ = WeakObj::of(action_now); }
     hit_words(action_now, st);
     watch_units(core, st, action_now);
+    say_landed();
     watch_one_more();
   }
   // On is said at once, over anything else: it answers the player's own press. Off queues: the game also ends a rush
@@ -386,11 +391,35 @@ class BattleScreen : public Screen {
   // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
   WeakObj paid_;
   // An action that strikes the same unit again (Strength's Mobius Rondo hits each member six times; a weapon that
-  // hits more than once): its damage is added up per unit and said once the action is over, one line per unit
-  // ("Makoto 147 damage in all"; a single hit as before, "Makoto 26 damage"), not a line per hit (Mobius Rondo was
-  // 24 lines, 2026-11-24). Saying the first hit as it landed made one attack sound like two ("14 damage", then
-  // "59 damage in all"). The action is over when another unit acts, the next banner comes up (the same unit's next action)
-  // or a wheel or list opens; a unit that falls says so instead.
+  // hits more than once): its damage is added up per unit and said at its last hit, one line per unit ("Makoto 147
+  // damage in all"; a single hit, "Makoto 26 damage"), not a line per hit (Mobius Rondo was 24 lines, 2026-11-24).
+  // Saying the first hit as it landed made one attack sound like two ("14 damage", then "59 damage in all"), and
+  // waiting for the action's end said every number a second or more after its hit (2026-11-25).
+  // Which hit is the last is the game's own call: a multi-hit animation's notifies deal the damage in portions
+  // (PreAffectSkillDamagePortion, the rest with AffectSkillDamageRestPortion), and BP_BtlGuiIcon CreateDamage keeps
+  // each unit with a portion shown in PotionPatamMap (added at the first portion, removed by the hit that is not one).
+  // A unit's damage is said once a popup came up on it (the hit has been shown, so the map has had its say) and it is
+  // not in the map. Anything left (no popup: the display off) goes when the action is over: another unit acts, the
+  // next banner comes up (the same unit's next action) or a wheel or list opens. A unit that falls says so instead.
+  int icons_ = watch::want("BP_BtlGuiIcon_C", true);
+  // TMap<BP_BtlCharacterBase_C*, int32>: a TSparseArray of 0x18-byte elements (key at +0), allocation bits as in
+  // ue::datatable_rows (inline at +0x10, secondary at +0x20, NumBits at +0x28).
+  bool portion_open(const WeakObj::Key& unit) {
+    for (UObject* icon : watch::all(icons_)) {
+      auto* map = field<uint8_t>(icon, "PotionPatamMap");
+      if (!map) continue;
+      auto& elems = *(TArray<uint8_t>*)map;
+      const uint32_t* secondary = *(const uint32_t**)(map + 0x20);
+      const uint32_t* bits = secondary ? secondary : (const uint32_t*)(map + 0x10);
+      int32_t num_bits = *(int32_t*)(map + 0x28);
+      for (int i = 0; elems.data && i < elems.num && i < 64; ++i) {
+        if (i < num_bits && !((bits[i / 32] >> (i % 32)) & 1)) continue;   // a removed element
+        UObject* u = *(UObject**)(elems.data + i * 0x18);
+        if (u && WeakObj::of(u).key() == unit) return true;
+      }
+    }
+    return false;
+  }
   struct Hits { WeakObj::Key key; std::string name; int total; int count; bool chosen; };
   std::vector<Hits> hits_;
   WeakObj hits_by_;   // the acting unit whose action landed them
@@ -399,14 +428,26 @@ class BattleScreen : public Screen {
     return nullptr;
   }
   void drop_hits(const WeakObj::Key& k) { std::erase_if(hits_, [&](const Hits& h) { return h.key == k; }); }
+  void say_hit(const Hits& h) {
+    std::string one = std::format("{} {}", h.total, strings::kDamage);
+    if (h.count < 2) speech::speak(h.chosen ? one : std::format("{} {}", h.name, one), false);
+    else speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
+                                : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
+  }
+  // The units whose last hit has landed: said now, the rest wait for theirs.
+  void say_landed() {
+    std::erase_if(hits_, [&](const Hits& h) {
+      if (!popped_.count(h.key) || portion_open(h.key)) return false;
+      popped_.erase(h.key);
+      say_hit(h);
+      return true;
+    });
+  }
   void flush_hits() {
     for (auto& h : hits_) {
       auto u = units_.find(h.key);
       if (u == units_.end() || u->second.hp <= 0) continue;   // it fell: that is said instead
-      std::string one = std::format("{} {}", h.total, strings::kDamage);
-      if (h.count < 2) speech::speak(h.chosen ? one : std::format("{} {}", h.name, one), false);
-      else speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
-                                  : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
+      say_hit(h);
     }
     hits_.clear();
     hits_by_ = {};
@@ -698,7 +739,7 @@ class BattleScreen : public Screen {
     bool target_pressed = target_press();
     UObject* core = battle_core();
     end_pad(core ? gui_state() : 0);
-    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; one_more_ = false; shift_pending_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; countdown_on_ = false; return; }
+    if (!core) { units_.clear(); won_enemies_.clear(); forget_battle_start(); downed_since_turn_ = false; one_more_ = false; shift_pending_ = false; last_actor_ = {}; rush_ = false; popups_seen_.clear(); helps_said_.clear(); fled_.clear(); hits_.clear(); hits_by_ = {}; popped_.clear(); popped_by_ = {}; popped_by_ = {}; countdown_on_ = false; return; }
     watch();
     countdown_tick(core);
     int st = gui_state();

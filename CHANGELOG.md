@@ -70,7 +70,7 @@
 - "1 More!" is said when a weakness hit defeats its target too (the game shows its 1 MORE and you act again); it was only said after a Down.
 - Giving a new skill up when all eight slots are full ("Forget Repel Wind?", yes) no longer says "Learned Repel Wind".
 - Learning a skill after a battle with all eight slots full: F1 now says how to give the new skill up (up from the top row to the new skill, then Space or A, which asks "Forget ...?"). It said Escape goes back, and Escape does nothing there.
-- A skill or attack that hits the same unit several times no longer reads every hit: once the action is over, each unit it hit gets one line with what it came to ("Makoto 147 damage in all"; a single hit as before, "Makoto 26 damage"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now four.
+- A skill or attack that hits the same unit several times no longer reads every hit: at its last hit, each unit it hit gets one line with what it came to ("Makoto 147 damage in all"; a single hit, "Makoto 26 damage"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now four. Damage is said as the hit lands: it waited for the next turn, a second or two after the blow you heard.
 
 ### Achievements
 - New: an achievement is said as it unlocks, with its name and description ("Achievement unlocked: SEES the Day. Joined the Specialized Extracurricular Execution Squad."). Steam shows unlocks only in its overlay, which a screen reader does not read. One you had unlocked before is not said again.
