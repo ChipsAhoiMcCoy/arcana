@@ -4,10 +4,10 @@ namespace p3a::settings {
 // The mod's options, saved to %LOCALAPPDATA%\Arcana\settings.ini (settings-dev.ini for dev launches), and the
 // mod settings menu that changes them: F2, or both triggers and View on a controller (the game's Config keys say so).
 // A new option: an Id here (in the menu's order: the table follows it), a row in settings.cpp's table, its name in strings.h, and its README line.
-enum Id { TopDown, TurnedRooms, AlwaysDash, PoiRange, FloorOnly, WallTones, WallRange, ShadowAlerts, ShadowSight, SightRange, StrikeAssist, RelaxedReaper,
+enum Id { TurnedRooms, AlwaysDash, PoiRange, FloorOnly, WallTones, WallRange, ShadowAlerts, ShadowSight, SightRange, StrikeAssist, RelaxedReaper,
           Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
           MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
-          Spatial, BehindPitch,
+          BehindPitch,
           VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, SceneSpeed, DescriptionWait,
           TriggerDelay, EntryHints, MenuSpeed, Language, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
@@ -27,8 +27,6 @@ enum Description { DescOff, DescAudio, DescReader };
 enum SceneMode { SceneOff, SceneOn, SceneOnce };
 // SceneSpeed: how much faster the narrator reads a 3D scene's descriptions (0 off, then 25, 50, 75 percent; ad.cpp).
 inline double scene_speed_factor(int v) { return 1.0 + 0.25 * v; }
-// Spatial: how the mod's sounds are placed (audio::set_spatial).
-enum SpatialModel { SpatialStereo, SpatialHrtf, SpatialPan };
 // WallTones: when the tones play (walltones::set_mode). A saved 1 from the old on/off toggle is WallMoving.
 enum WallMode { WallOff, WallMoving, WallContinuous };
 void set(Id id, int value);   // applies it (wall tones, volume) and saves

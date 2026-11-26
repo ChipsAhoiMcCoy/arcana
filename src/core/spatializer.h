@@ -24,6 +24,14 @@ struct SpatialCue {
 // The cues for a thing `east` / `north` metres from the listener. Within `pan_width` metres the pan follows the
 // sideways offset itself; beyond it, the bearing.
 SpatialCue spatial_cue(float east, float north, float pan_width, int sample_rate);
+// Dark Vision's sonar (SonarSystem.cs), 10 ft both: the pan's crossover, and the distance at which a sound is half
+// as loud.
+inline constexpr float kPanWidthM = 3.048f;
+inline constexpr float kRefDistanceM = 3.048f;
+inline constexpr float kMinGain = 0.08f;   // a far thing still in range stays audible
+// Its distance curve: ref / (ref + distance), never under kMinGain. Full at the listener, half at 3 m, a quarter at
+// 9 m: a step taken close changes the level far more than one taken at range, so nearing a thing is heard.
+float distance_gain(float dist_m);
 // Stereo gains for a pan: constant power, the level difference capped at 12 dB, centre 0.707 / 0.707.
 void spatial_pan_gains(float pan, float& left, float& right);
 

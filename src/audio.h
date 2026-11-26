@@ -22,14 +22,16 @@ void install_routes();   // the dev server's /audio, /audiomute and /audio/rende
 // `placed`: the sound has a place in the world (wx, wy, wz, the game's units); while it plays, `follow` moves it in
 // the listener's ears as the hero walks and the camera turns. Without it the sound stays where it started.
 // flat_m: the distance across the ground alone (-1: not known, taken from dist_m and up).
-struct Spot { float right = 0, up = 0, ahead = 1, dist_m = 0, pan = 0; bool placed = false; float wx = 0, wy = 0, wz = 0; float flat_m = -1; };
+// falloff: its level follows its distance by Dark Vision's curve (core::distance_gain) for as long as it plays, on top
+// of the volume it was given: walked toward, a sound still playing grows louder.
+struct Spot { float right = 0, up = 0, ahead = 1, dist_m = 0, pan = 0; bool placed = false; float wx = 0, wy = 0, wz = 0; float flat_m = -1; bool falloff = false; };
+// A Spot whose level follows its distance (see falloff).
+inline Spot fading(Spot s) { s.falloff = true; return s; }
 // Once a frame (game thread): every playing sound with a place is heard from where the listener is now. `where`
 // turns a place into a Spot (world::spot from the hero).
 void follow(const std::function<Spot(float x, float y, float z)>& where);
-// How a sound from a place is heard (the Sound placement setting, settings::SpatialModel): 0 Dark Vision's stereo
-// model (core/spatializer: capped level and time differences, darker behind), 1 Steam Audio's HRTF (src/hrtf.cpp;
-// stereo when it is unavailable), 2 a plain equal-power pan.
-void set_spatial(int model);
+// A sound from a place is heard through Dark Vision's stereo model (core/spatializer: capped level and time
+// differences, darker behind). It was one of three placements to choose from; the other two are no longer offered.
 // Dev: a beep rendered offline through the HRTF from `at` into a stereo 16-bit WAV (false = HRTF unavailable).
 bool render_beep_wav(float freq, int ms, const Spot& at, const std::string& path);
 // Looping sample channels (the wotr wall tones): a WAV decoded to mono at the mixer rate, looped

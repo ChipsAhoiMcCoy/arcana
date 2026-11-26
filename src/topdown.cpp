@@ -409,12 +409,11 @@ float north_yaw() { return room_north(); }
 void tick() {
   if (g_unloading) return;
   UObject* o = op();
-  bool want = settings::on(settings::TopDown) && world::exploring() && operator_free(o);
+  bool want = world::exploring() && operator_free(o);   // always, while the player walks freely (an option until 2026-11-25)
   if (want) north_tick();   // before entering: the mode starts facing this field's north
   if (want != g_active && !want) {
-    // What let go: the setting, the field not explorable (and why), or the field operator's state and keys.
-    std::string why = !settings::on(settings::TopDown) ? std::string("setting off")
-                    : !world::exploring() ? world::not_exploring_reason()
+    // What let go: the field not explorable (and why), or the field operator's state and keys.
+    std::string why = !world::exploring() ? world::not_exploring_reason()
                     : std::format("operator state {} keys {}", o ? get<int32_t>(o, "State", -1) : -1, o ? get<int32_t>(o, "KeyState", -1) : -1);
     log::writef("topdown: letting go ({})", why);
   }
@@ -478,9 +477,9 @@ void install() {
         const float y = world::yaw_of(hero);
         walk += std::format("hero yaw {:.0f}, {:.0f} clockwise from the room's north\n", y, std::remainder(y - room_north(), 360.0f));
       }
-      return walk + std::format("topdown setting={} active={} exploring={} operator state={} keys={} listener_set={} h={:.0f}\n"
+      return walk + std::format("topdown active={} exploring={} operator state={} keys={} listener_set={} h={:.0f}\n"
                          "camera speed={:.1f} margin={:.1f} saved={} ({:.1f}, {:.1f}) relocks={} camera_yaw={:.1f} scan held={} on={}\n",
-                         settings::on(settings::TopDown), g_active, world::exploring(), o ? get<int32_t>(o, "State", -1) : -1,
+                         g_active, world::exploring(), o ? get<int32_t>(o, "State", -1) : -1,
                          o ? get<int32_t>(o, "KeyState", -1) : -1, g_listener_set, g_listener_h, sp ? *sp : -1.0f, mg ? *mg : -1.0f,
                          g_saved, g_saved_speed, g_saved_margin, g_relocks, world::camera_yaw(), g_scan_held, g_scan_name);
     });

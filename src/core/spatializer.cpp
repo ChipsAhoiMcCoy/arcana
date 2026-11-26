@@ -34,6 +34,10 @@ SpatialCue spatial_cue(float east, float north, float pan_width, int sample_rate
   return c;
 }
 
+float distance_gain(float dist_m) {
+  return std::clamp(kRefDistanceM / (kRefDistanceM + std::max(dist_m, 0.0f)), kMinGain, 1.0f);
+}
+
 void spatial_pan_gains(float pan, float& left, float& right) {
   float mag = std::clamp(std::fabs(pan), 0.0f, 1.0f);
   float far_g = std::pow(10.0f, -kMaxIldDb * mag / 20.0f);

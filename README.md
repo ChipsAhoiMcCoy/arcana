@@ -125,7 +125,6 @@ They work like any other menu: up and down choose (at either end a further press
 
 **Exploring**
 
-- Top-down exploration: off, on (see below)
 - Keep your heading through passages: off, on. In top-down exploration, rooms the game moves you into turned around are turned to match (see below)
 - Always dash: off, on. Outside Tartarus you dash whenever you move, without holding Shift (RT). Holding Shift (RT) then runs, and Alt still walks, so all three paces stay. The mod's walk to a point of interest dashes too. In Tartarus and Episode Aigis' dungeons you run as before, since a dash there draws the Shadows' notice. On by default
 - Points of interest range: 60 meters; 20, 40, 100 or 150
@@ -155,7 +154,6 @@ They work like any other menu: up and down choose (at either end a further press
 
 **Sound**
 
-- Placement: stereo, 3D for headphones, plain left and right. How the sonar and Shadow cues are placed. Stereo (Dark Vision's model, the default) places them by level and by the moment each ear hears them, and darkens sounds behind you. 3D uses Steam Audio's HRTF, which also gives above and below. Plain only pans
 - Lower pitch behind you: off, on. The sonar and the Shadow pulse play lower from behind (in top-down mode, from the south)
 
 **Dialogue**
@@ -308,7 +306,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 
 ## Top-down exploration
 
-The game's camera sits behind the hero and turns, so a sound "ahead" kept changing direction. Top-down mode (on by default) presents the field the way Dark Vision does:
+The game's camera sits behind the hero and turns, so a sound "ahead" kept changing direction. Top-down mode (always on while you walk freely) presents the field the way Dark Vision does:
 
 - While you walk freely the camera faces north and cannot turn. The scene cameras some places switch to (by the Velvet Room's door, the station, your room) are turned off, so the north camera shows everywhere. Up always walks north.
 - The game's sounds and the mod's are heard from where you stand with north ahead, as if from above.
@@ -329,7 +327,7 @@ Conversations, story scenes, menus and battles keep the game's own camera and so
 - **Shadow sight:** in Tartarus, each nearby Shadow's sight is a zone on the ground, and it sizzles from its edge nearest you, heard from where that edge is. While the edge is within the Shadow sight range (10 m by default) it plays all the time, louder and higher by an even step for every metre nearer, loudest at the edge, so you hear it close in or fall away as you walk; step over it and the Shadow notices you. The three nearest zones sound at once. The zone is the game's own: how far and how wide each Shadow sees for its mood (an angry one sees farther, but only to its front), the wider sight it has while you dash (holding Shift), so the edge audibly pulls back when you slow to a run, and the walls that block its view, which cut the zone. Turning moves it too: walk round a Shadow and you hear its sight swing with it. While you stand where a Shadow would see you but a wall blocks its view, a muffled hum plays: step out past the corner and it sees you. Only Shadows that are wandering, and so looking, are heard: one chasing you already knows where you are. Nothing sounds while Fuuka's Jamming hides you. The sounds are Grim Dark's harmful-ground sounds (its sizzle, and its "standing in it" bed, played muffled). Its own setting, on by default.
 - **Strike assist:** in Tartarus, when you attack with a Shadow close enough that your strike would reach it if you faced it, from any side, you turn to face it as the swing starts. Your reach stays the same: it only aims. A Shadow hunting you comes first, then the nearest. With no Shadow in reach it turns you to the nearest breakable object your strike would reach, and the ring counts every side for those too. Its own setting, on by default.
 
-Placed sounds stay where they are while they play, so they shift as you move. Positioning is set by the Placement setting (Sound). The 3D option uses Steam Audio (Valve, Apache 2.0, `phonon.dll`); without that file it falls back to stereo.
+Placed sounds stay where they are while they play, so they shift and grow louder or quieter as you move. They are placed the way Dark Vision places them: left and right by level and by the moment each ear hears a sound, sounds behind you darker, and louder the nearer they are (half as loud at 3 meters as beside you, a quarter at 9), so a few steps toward a Shadow or away from it are heard.
 
 ## Known limits
 

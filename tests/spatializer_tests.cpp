@@ -32,6 +32,20 @@ TEST_CASE("spatial_cue: within the pan width the sideways offset itself pans") {
   CHECK(c.pan == doctest::Approx(std::pow(1.0f / 3.0f, 0.82f)).epsilon(0.01));
 }
 
+TEST_CASE("distance_gain: Dark Vision's curve, half at 10 ft, never under its floor") {
+  CHECK(distance_gain(0) == doctest::Approx(1.0f));
+  CHECK(distance_gain(3.048f) == doctest::Approx(0.5f));
+  CHECK(distance_gain(9.144f) == doctest::Approx(0.25f));
+  CHECK(distance_gain(1000.0f) == doctest::Approx(0.08f));
+  // A step taken close changes the level more than the same step at range.
+  CHECK(distance_gain(1) - distance_gain(2) > 4 * (distance_gain(11) - distance_gain(12)));
+}
+
+TEST_CASE("spatial_cue: at Dark Vision's pan width a thing 1 m to the side is a third of the way") {
+  CHECK(spatial_cue(1, 0, kPanWidthM, 48000).pan == doctest::Approx(std::pow(1.0f / 3.048f, 0.82f)).epsilon(0.01));
+  CHECK(spatial_cue(5, 0, kPanWidthM, 48000).pan == doctest::Approx(1.0f));
+}
+
 TEST_CASE("spatial_pan_gains: constant power, the far ear capped at 12 dB") {
   float l, r;
   spatial_pan_gains(0, l, r);

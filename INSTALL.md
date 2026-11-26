@@ -54,7 +54,7 @@ The game has probably been updated. Please report it with the log. The mod stays
   - `Win64\Arcana\assets\audio\walltones\2\north.wav`
   - `Win64\Arcana\assets\audio\sonar`
   - `Win64\Arcana\assets\ad`
-  - `Win64\Arcana\phonon.dll` (needed only for the "3D for headphones" sound placement; without it, sounds use the default stereo placement)
+  - `Win64\Arcana\phonon.dll` (no longer used: the "3D for headphones" sound placement is gone)
 
 ### The game crashes
 

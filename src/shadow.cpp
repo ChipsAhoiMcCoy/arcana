@@ -319,7 +319,7 @@ void mind_cues(const std::vector<Seen>& seen, const FVector& me) {
       // No alarm of the mod's own: the game sounds one as the mark goes up (the user's call, 2026-11-15). Logged only.
       log::writef("shadow: #{} noticed the hero at {:.1f} m{}", std::get<0>(key), s.dist / 100.0f, heard ? "" : " (too far off for the cue)");
     } else if (was && !m.hunting) {
-      if (heard) audio::signal((int)SignalCue::Lost, 1.1f, world::spot(me, s.at));
+      if (heard) audio::signal((int)SignalCue::Lost, 1.1f, audio::fading(world::spot(me, s.at)));
       log::writef("shadow: #{} lost the hero{}", std::get<0>(key), heard ? "" : " (too far off for the cue)");
     }
     now_known[key] = m;
@@ -551,16 +551,17 @@ void tick() {
   }
   // The nearest Shadow within 30 m: one held snarl from where it is (it was a growl repeated faster as it neared; the
   // user asked for one constant sound, its facing told by something other than pitch, 2026-11-15). Louder as it
-  // nears; higher while it hunts the hero, lower from behind him (the Behind pitch setting), as before. Its facing:
+  // nears, by Dark Vision's distance curve (half as loud at 3 m as on him, followed while it sounds): its level rose
+  // evenly over the whole 30 m before, so a few steps toward it or away changed almost nothing and its distance could
+  // not be judged (a player's report, 2026-11-25). Higher while it hunts the hero, lower from behind him (the Behind pitch setting), as before. Its facing:
   // bright facing him, more muffled the further it turns away, and once his place is behind its front half (the
   // game's own 90 degrees, where a strike brings the advantage) its loudness wobbles too.
   const audio::Pcm& drone = drone_pcm();
   if (!shadow_near) { audio::release_hold(kDroneId); return; }
-  float closeness = 1.0f - nearest->dist / kPulseRange;
   bool hunted = hunting(nearest->actor);
   bool behind = std::cos(world::bearing(me, nearest->at) * kPi / 180.0f) < -0.2f && settings::on(settings::BehindPitch);
   float off = off_front(*nearest, me);
-  audio::hold(kDroneId, drone, 0.3f + 1.0f * closeness + (hunted ? 0.2f : 0.0f), world::spot(me, nearest->at),
+  audio::hold(kDroneId, drone, hunted ? 1.5f : 1.3f, audio::fading(world::spot(me, nearest->at)),
               (behind ? 0.7f : 1.0f) * (hunted ? 1.3f : 1.0f), 1.0f - off / 180.0f, off > kBackTurnedDeg ? 0.75f : 0.0f);
   // Its facing, logged as it crosses the game's line (to compare with what was heard).
   static WeakObj facing_of;

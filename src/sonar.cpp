@@ -3,6 +3,7 @@
 #include "core/boxes.h"
 #include "core/sonar_cues.h"
 #include "core/sonar_field.h"
+#include "core/spatializer.h"
 #include "core/strings.h"
 #include "devserver.h"
 #include "doors.h"
@@ -45,10 +46,6 @@ constexpr int kMaxPerKind = 2;         // a corridor of students must not drown 
 // (the user, 2026-11-13: beside a thing it was hard to tell among the others).
 constexpr float kCloseM = 2.5f;
 constexpr float kCloseDuckDb = 10.0f;
-constexpr float kNearM = 1.5f;         // at and under this: full volume (the rhythm has its own scale: core/sonar_field)
-// How much quieter a thing is at the range's edge (and beyond, when selected). 14 at first: with the far-off sound's
-// duller treble on top, a thing was not noticed until the player was nearly on it (the user, 2026-11-10).
-constexpr float kEdgeDb = 8.0f;
 constexpr float kBehindRate = 0.84f;   // "Lower pitch behind you": three semitones down
 constexpr ULONGLONG kRescanMs = 250;   // how often the list of things is read again (their sounds are placed per pulse)
 constexpr float kLookAheadCm = 300.0f; // how far past the range that reading looks
@@ -155,23 +152,20 @@ Voice voice(int kind, const audio::Spot& at) {
 }
 
 float range_m() { return (float)settings::get(settings::SonarRange); }
-// Full volume up close, kEdgeDb down at the range's edge, even steps in dB per doubling of distance between.
-float gain_at(float dist_m) {
-  float far_m = std::max(range_m(), kNearM + 0.5f);
-  float u = std::clamp(std::log(std::max(dist_m, kNearM) / kNearM) / std::log(far_m / kNearM), 0.0f, 1.0f);
-  return std::pow(10.0f, -kEdgeDb * u / 20.0f);
-}
+// A thing's level for its distance is Dark Vision's curve (core::distance_gain: half at 3 m, whatever the range),
+// applied in the mixer for as long as the sound plays (audio::fading). The level was full inside 1.5 m and 8 dB down
+// at the range's edge until 2026-11-25: over a long range a few steps changed it too little to judge distance by.
 
-// focus: it plays through the solo. db: added to its level. dist: how far it counts as for its level (-1: from `at`).
+// focus: it plays through the solo. db: added to its level.
 // start_s: when it starts (audio::now_s; 0 at once).
-void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, float dist = -1.0f, double start_s = 0, int id = -1, bool inside = false) {
-  audio::Spot s = inside ? audio::Spot{} : world::spot(me, at);   // inside it: ahead and centred, and it stays so
+void emit(int kind, const FVector& me, const FVector& at, bool focus = false, float db = 0.0f, double start_s = 0, int id = -1, bool inside = false) {
+  audio::Spot s = inside ? audio::Spot{} : audio::fading(world::spot(me, at));   // inside it: ahead and centred, at full level, and it stays so
   Voice v = voice(kind, s);
   if (!v.pcm) return;
-  float vol = gain_at(dist >= 0.0f ? dist : s.dist_m) * std::pow(10.0f, (g_trim_db[kind] + db) / 20.0f);
+  float vol = std::pow(10.0f, (g_trim_db[kind] + db) / 20.0f);
   audio::play(std::move(v.pcm), vol, s, audio::Bus::Sonar, v.rate, focus, start_s);
   if (g_trace) log::writef("sonar trace: {} #{} yaw {:.0f} me ({:.0f}, {:.0f}, {:.0f}) at ({:.0f}, {:.0f}, {:.0f}) right {:+.2f} ahead {:+.2f} up {:+.2f} {:.1f} m vol {:.2f} rate {:.2f}",
-                          kind_name(kind), id, world::north_up() ? world::move_yaw() : world::camera_yaw(), me.x, me.y, me.z, at.x, at.y, at.z, s.right, s.ahead, s.up, s.dist_m, vol, v.rate);
+                          kind_name(kind), id, world::north_up() ? world::move_yaw() : world::camera_yaw(), me.x, me.y, me.z, at.x, at.y, at.z, s.right, s.ahead, s.up, s.dist_m, vol * (s.falloff ? core::distance_gain(s.dist_m) : 1.0f), v.rate);
   ++g_fired;
 }
 
@@ -241,8 +235,6 @@ constexpr float kRouteFloorCm = 250.0f;      // the path's end to the thing in h
 constexpr float kRouteDirectRatio = 1.2f;    // Grim Dark's kRouteDirectRatio
 constexpr float kRouteDirectSlackCm = 100.0f;   // Grim Dark's kRouteDirectSlack (1 unit)
 constexpr float kRouteBodyCm = 2500.0f;      // nav.cpp's kBodyReach: the walk finds its own way this near
-// Grim Dark's gain for a placed cue: ref / (ref + distance), never under the floor (its ear_frame: 10 units, 0.2).
-constexpr float kPingRefM = 10.0f, kPingFloor = 0.2f;
 double g_ping_end = 0;   // when the last ping ends: the focus's own sound waits for it
 
 float flat_cm(const FVector& a, const FVector& b) { return std::hypot(a.x - b.x, a.y - b.y); }
@@ -305,8 +297,8 @@ void sound_focus(const FVector& me, double start) {
   if (!g_focus.has) return;
   start = std::max(start, now_s());
   const Place pl = place_of(place_now(g_focus.obj, g_focus.kind, g_focus.loc, me), g_focus.body, me);
-  if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, world::spot(me, pl.at), 1.0f, true, start);
-  else emit(g_focus.kind, me, pl.at, true, 0.0f, pl.dist_m, start, g_focus.obj.index, pl.inside);
+  if (g_focus.shadow) audio::signal((int)core::SignalCue::Shadow, 1.0f, audio::fading(world::spot(me, pl.at)), 1.0f, true, start);
+  else emit(g_focus.kind, me, pl.at, true, 0.0f, start, g_focus.obj.index, pl.inside);
   g_focus_next = start + std::max(g_field.params().period_for(pl.dist_m), kFocusMinPeriod);
 }
 
@@ -388,7 +380,7 @@ void tick() {
         // Something is beside the hero and this is not it (a metre's leeway: two things side by side both stay).
         const Place pl = place_of(place_now(s.obj, s.kind, s.loc, me), s.body, me);
         bool upstaged = nearest <= kCloseM && pl.dist_m > nearest + 1.0f;
-        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, pl.dist_m, p.at, s.obj.index, pl.inside);
+        emit(s.kind, me, pl.at, false, upstaged ? -kCloseDuckDb : 0.0f, p.at, s.obj.index, pl.inside);
         if (std::find(heard.begin(), heard.end(), p.id) == heard.end()) {
           heard.push_back(p.id);
           log::writef("sonar: {} #{} first sounds at {:.1f} m{}", kind_name(s.kind), s.obj.index, pl.dist_m,
@@ -410,9 +402,9 @@ void ping(const poi::Poi& p) {
   audio::Pcm pcm = ping_sound(kind);
   if (!pcm) return;
   const Place pl = place_of(p.loc, p.body, me);
-  const float gain = std::max(kPingRefM / (kPingRefM + pl.dist_m), kPingFloor);
   const double len = (double)pcm->size() / audio::sample_rate();
-  audio::play(std::move(pcm), gain, pl.inside ? audio::Spot{} : world::spot(me, pl.at), audio::Bus::Cues, 1.0f, true);
+  // Dark Vision's review ping: the sonar's own distance curve and pan (SonarSystem.PlayPathCue).
+  audio::play(std::move(pcm), 1.0f, pl.inside ? audio::Spot{} : audio::fading(world::spot(me, pl.at)), audio::Bus::Cues, 1.0f, true);
   g_ping_end = now_s() + len;
   log::writef("sonar: route ping {} for {} at {:.1f} m", kind, p.name, pl.dist_m);
 }
@@ -481,7 +473,7 @@ void install() {
                                                         src.body.box.extent.y / 50.0f, dist_m(me, src.loc), d == 0.0f ? ", inside" : "")
                                           : std::format("  no body (box {:.1f} x {:.1f} m)", src.body.box.extent.x / 50.0f, src.body.box.extent.y / 50.0f);
           s += std::format("  {:<7} {:5.1f} m  every {:.2f} s  gain {:.2f}  right {:+.2f} ahead {:+.2f} up {:+.2f}{}{}  #{}\n", kind_name(src.kind), d,
-                           g_field.params().period_for(d), gain_at(d), at.right, at.ahead, at.up, body, src.selected ? "  selected" : "", src.obj.index);
+                           g_field.params().period_for(d), core::distance_gain(d), at.right, at.ahead, at.up, body, src.selected ? "  selected" : "", src.obj.index);
         }
       return s;
     });

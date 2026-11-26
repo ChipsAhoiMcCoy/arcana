@@ -80,6 +80,7 @@ struct Shot {
   bool focus = false;     // plays through the solo
   double start_s = 0;     // when it starts (now_s; 0: at the next block), placed to the sample in its block
   float duck = 1.0f;      // glides to 0 when the solo silences it (it is then cut)
+  float fall = -1.0f;     // the distance curve's gain where the last block ended (spot.falloff; -1: not started)
   core::SpatialVoice stereo;   // Dark Vision's stereo model: its filters' and delay's state (held by value: the audio
                                // thread neither allocates nor frees)
   // A held voice (audio::hold): loops, its volume, tone and wobble glide to what the caller last asked, and it fades
@@ -135,10 +136,12 @@ float g_limit = 1.0f;
 uint32_t g_limited_blocks = 0;   // dev: blocks in which the limiter worked
 // 3D sound: positional sounds go through an HRTF slot. Fallbacks (no free slot, or a block of an unexpected size)
 // pan instead and are counted for /audio.
-bool g_hrtf_on = false;
-int g_spatial = 0;   // settings::SpatialModel
-constexpr float kPanWidthM = 1.0f;   // inside it the pan follows the sideways offset. Dark Vision's 10 ft (3 m) panned a door 1 m to
-                                     // the right only 40% right, less than one 10 m away; 1 m still keeps a thing walked past from jumping ear to ear
+// Dark Vision's stereo model is the one placement now (the user's call, 2026-11-25): the HRTF is never switched on
+// and never initialised; its code stays until that model has been played with.
+constexpr bool g_hrtf_on = false;
+// Inside it the pan follows the sideways offset; beyond it, the bearing. Dark Vision's own 10 ft (1 m was used here
+// from 2026-11-13; back to Dark Vision's to match it exactly, 2026-11-25).
+using core::kPanWidthM;
 uint32_t g_hrtf_fallbacks = 0;
 bool g_odd_block_logged = false;
 constexpr int kMaxBlock = 4096;
@@ -227,9 +230,19 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
     }
     if (sh.slot >= 0 && !hrtf_block) { hrtf::release(sh.slot); sh.slot = -1; }   // 3D sound switched off mid-shot
     // Dark Vision's stereo: the model when chosen, and the HRTF's own fallback (no slot, odd block, no phonon).
-    const bool stereo = sh.spatial && sh.slot < 0 && g_spatial != 2 && frames <= (ma_uint32)kMaxBlock;
+    const bool stereo = sh.spatial && sh.slot < 0 && frames <= (ma_uint32)kMaxBlock;
     const bool ears = sh.slot >= 0 || stereo;
     if (ears) std::fill(g_mono, g_mono + frames, 0.0f);
+    // The distance curve, from where the listener is this block (audio::follow moved the spot): the gain glides
+    // across the block to it, as Dark Vision's voices do, so a sound walked toward grows without a step.
+    float fall_to = 1.0f;
+    if (sh.spot.falloff) {
+      const float level = std::sqrt(std::max(0.0f, 1.0f - sh.spot.up * sh.spot.up));
+      const float across = sh.spot.flat_m >= 0.0f ? sh.spot.flat_m : sh.spot.dist_m * level;
+      fall_to = core::distance_gain(across / std::max(level, 0.05f));
+    }
+    if (sh.fall < 0.0f) sh.fall = fall_to;
+    const float fall_step = (fall_to - sh.fall) / (float)(frames - first);
     float l, r; pan_gains(sh.spot.pan, l, r);
     const std::vector<float>& v = *sh.pcm;
     const float duck_to = soloing && soloed_out(sh) ? 0.0f : 1.0f;
@@ -254,7 +267,8 @@ void data_callback(ma_device*, void* out, const void*, ma_uint32 frames) {
         sh.trem += 2.0 * kPi * kWobbleHz / kRate;
         if (sh.trem > 2.0 * kPi) sh.trem -= 2.0 * kPi;
       }
-      float s = x * sh.vol * sh.duck * bus_gain(sh.bus, i);
+      sh.fall += fall_step;
+      float s = x * sh.vol * sh.fall * sh.duck * bus_gain(sh.bus, i);
       sh.pos += sh.rate;
       if (ears) g_mono[i] = s;
       else { o[i * 2] += s * l; o[i * 2 + 1] += s * r; }
@@ -360,7 +374,6 @@ bool init() {
   if (g_inited) return g_ready;
   g_inited = true;
   { std::lock_guard lk(g_mu); g_shots.reserve(kMaxShots); }   // push_shot never reallocates under the callback's lock
-  hrtf::init(kRate, kPeriod);         // before the device starts: the callback reads hrtf::available()
   if (!open_device()) {
     log::writef("audio: no output device to open; trying again every {} s", kRetryMs / 1000);
     g_retry_logged = true;
@@ -479,14 +492,14 @@ void solo(bool on) {
   if (g_solo.exchange(on) != on) log::writef("audio: solo {}", on ? "on" : "off");
 }
 int sample_rate() { return kRate; }
-// A sound's volume and pitch stay as they started (the sonar's level for its distance, the lower pitch from behind):
-// only where it is heard from moves. The HRTF takes a new direction per 10 ms block and blends from the last one.
+// A sound's pitch stays as it started (the lower pitch from behind); where it is heard from moves, and with it the
+// level of a sound whose spot has `falloff`. The HRTF takes a new direction per 10 ms block and blends from the last one.
 std::atomic<int> g_followed{0};
 void follow(const std::function<Spot(float, float, float)>& where) {
   if (!g_ready) return;
   std::lock_guard lk(g_mu);
   int n = 0;
-  for (Shot& s : g_shots) if (!s.dead && s.spot.placed) { s.spot = where(s.spot.wx, s.spot.wy, s.spot.wz); s.spot.placed = true; ++n; }
+  for (Shot& s : g_shots) if (!s.dead && s.spot.placed) { const bool falloff = s.spot.falloff; s.spot = where(s.spot.wx, s.spot.wy, s.spot.wz); s.spot.placed = true; s.spot.falloff = falloff; ++n; }
   g_followed += n;
 }
 // A signal's samples, made on first use (game thread only). Null for a number that is no signal. A signal with a file
@@ -508,7 +521,6 @@ static Pcm signal_pcm(int signal) {
 }
 void signal(int signal, float volume, const Spot& at, float rate, bool focus, double start_s) { push_shot(signal_pcm(signal), volume, at, Bus::Cues, rate, true, focus, start_s); }
 void signal_here(int signal, float volume, double start_s) { push_shot(signal_pcm(signal), volume, Spot{}, Bus::Cues, 1.0f, false, false, start_s); }
-void set_spatial(int model) { std::lock_guard lk(g_mu); g_spatial = model; g_hrtf_on = model == 1; }
 
 bool render_beep_wav(float freq, int ms, const Spot& at, const std::string& path) {
   // A test beep: sine, ~10 ms smoothing in, 5 ms fade out.
@@ -613,11 +625,21 @@ std::string status() {
   std::lock_guard lk(g_mu);
   int loud = 0;
   for (const Loop& l : g_loops) if (l.cur >= kSilent) ++loud;
-  return std::format("audio ready={} master={:.2f} buses cues={:.2f} walls={:.2f} narration={:.2f} sonar={:.2f} shots={} loops={} ({} audible) limiter={:.2f} limited_blocks={}\n"
+  // The held voices (a Shadow's snarl, the sight zones): each one's volume, its distance curve's gain and its place.
+  std::string held;
+  for (const Shot& s : g_shots)
+    if (s.hold && !s.dead) {
+      float l, r;
+      core::SpatialCue c = core::spatial_cue(s.spot.right * std::max(s.spot.flat_m, 0.0f), s.spot.ahead * std::max(s.spot.flat_m, 0.0f), kPanWidthM, kRate);
+      core::spatial_pan_gains(c.pan, l, r);
+      held += std::format("hold {} vol {:.2f} falloff {} gain {:.3f} at {:.2f} m (flat {:.2f}) pan {:+.2f} left {:.3f} right {:.3f} rear {:.1f} dB\n", s.hold, s.vol,
+                          s.spot.falloff, s.fall, s.spot.dist_m, s.spot.flat_m, c.pan, l, r, c.rear_shelf_db);
+    }
+  return held + std::format("audio ready={} master={:.2f} buses cues={:.2f} walls={:.2f} narration={:.2f} sonar={:.2f} shots={} loops={} ({} audible) limiter={:.2f} limited_blocks={}\n"
                      "hrtf {} slots {}/{} fallbacks={} air={:.1f} callback_max_us={} followed={}\n",
                      g_ready.load(), g_master, g_bus[(int)Bus::Cues].target, g_bus[(int)Bus::Walls].target, g_bus[(int)Bus::Narration].target,
                      g_bus[(int)Bus::Sonar].target, g_shots.size(), g_loops.size(), loud, g_limit, g_limited_blocks,
-                     !hrtf::available() ? "unavailable" : g_hrtf_on ? "on" : g_spatial == 0 ? "off (stereo model)" : "off (pan)", hrtf::slots_used(), hrtf::slot_count(), g_hrtf_fallbacks,
+                     "off (stereo model)", hrtf::slots_used(), hrtf::slot_count(), g_hrtf_fallbacks,
                      hrtf::air(), g_cb_max_us, g_followed.load()) +
          std::format("latency: device buffer {:.1f} ms; tick every {:.1f} ms; wall-tone onset to half volume in the mixer avg {:.1f} max {:.1f} ms ({}); "
                      "scheduled starts {}, late {} (max {:.1f} ms)\n",

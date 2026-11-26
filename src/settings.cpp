@@ -65,8 +65,7 @@ static std::vector<strings::Tr> language_labels() {
   return v;
 }
 static const Def kDefs[Count] = {
-  // the camera fixed north and every sound heard from above while walking freely (topdown.cpp)
-  {"top_down", strings::kSetTopDown, CatExploring, strings::kHelpTopDown, Unit::Toggle, {0, 1}, 1},
+  // (the top-down mode itself, topdown.cpp, was an option until 2026-11-25: it is always on)
   // in the top-down mode, a room reached by a jump is turned so the way walked in stays up (topdown.cpp kRoomTurns)
   {"turned_rooms", strings::kSetTurnedRooms, CatExploring, strings::kHelpTurnedRooms, Unit::Toggle, {0, 1}, 1},
   // the daily hero dashes whenever he moves, outside Tartarus; Shift (RT) then runs (walkmode.cpp). On by default (the user's call, 2026-11-23)
@@ -108,10 +107,7 @@ static const Def kDefs[Count] = {
   {"wall_volume", strings::kSetWallVolume, CatVolume, strings::kHelpWallVolume, Unit::Percent, kPercents, 50},
   {"sound_volume", strings::kSetSoundVolume, CatVolume, strings::kHelpSoundVolume, Unit::Percent, kPercents, 50},     // the Cues bus
   {"description_volume", strings::kSetDescriptionVolume, CatVolume, strings::kHelpDescriptionVolume, Unit::Percent, kPercents, 100},
-  // how positional cues are placed: Dark Vision's stereo model, Steam Audio's HRTF, or a plain pan (a new key: the
-  // old "hrtf" toggle's saved 1 would have kept the HRTF)
-  {"spatial", strings::kSetSpatial, CatSound, strings::kHelpSpatial, Unit::Choice, {SpatialStereo, SpatialHrtf, SpatialPan}, SpatialStereo,
-   {strings::kSpatialStereo, strings::kSpatialHrtf, strings::kSpatialPan}},
+  // (how positional cues are placed was a choice until 2026-11-25: Dark Vision's stereo model is the one placement)
   {"behind_pitch", strings::kSetBehindPitch, CatSound, strings::kHelpBehindPitch, Unit::Toggle, {0, 1}, 1},
   {"voiced_lines", strings::kSetVoicedLines, CatDialogue, strings::kHelpVoicedLines, Unit::Choice, {VoicedSilent, VoicedName, VoicedRead}, VoicedSilent,
    {strings::kVoicedRead, strings::kVoicedName, strings::kVoicedSilent}},
@@ -170,7 +166,6 @@ static void apply(Id id) {
   if (id == SonarVolume) audio::set_bus_volume(audio::Bus::Sonar, g_value[id] / 100.0f);
   if (id == WallVolume) audio::set_bus_volume(audio::Bus::Walls, g_value[id] / 100.0f);
   if (id == DescriptionVolume) audio::set_bus_volume(audio::Bus::Narration, g_value[id] / 100.0f);
-  if (id == Spatial) audio::set_spatial(g_value[id]);
   if (id == Language) language::apply(g_value[id]);
 }
 
