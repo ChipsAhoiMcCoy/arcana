@@ -58,6 +58,21 @@ std::string fname(int32_t index, int32_t number) {
   return s;
 }
 std::string fname(FName n) { return fname(n.index, n.number); }
+bool fname_is(FName n, std::string_view s) {
+  if (!g_names || n.index < 0) return s.empty();
+  uint32_t block = (uint32_t)n.index >> 16, offs = ((uint32_t)n.index & 0xFFFF) * 2;
+  if (block >= 8192) return s.empty();
+  uint8_t* blk = ((uint8_t**)(g_names + 0x10))[block];
+  if (!blk) return s.empty();
+  uint8_t* e = blk + offs;
+  uint16_t hdr = *(uint16_t*)e;
+  if (hdr & 1) return fname(n) == s;   // wide: as fname() makes it
+  size_t len = hdr >> 6;
+  if (s.size() < len || memcmp(s.data(), e + 2, len) != 0) return false;
+  std::string_view rest = s.substr(len);
+  if (n.number <= 0) return rest.empty();
+  return rest.size() > 1 && rest[0] == '_' && rest.substr(1) == std::to_string(n.number - 1);
+}
 
 std::string to_utf8(const char16_t* s, int len) {
   if (!s) return {};
@@ -434,9 +449,26 @@ std::vector<Row> datatable_rows(UObject* t) {
   });
   return out;
 }
+// The first row named `row`, in datatable_rows' order: the names are compared where they lie (a hit's name looked up
+// a table's few hundred rows as strings, ~15 us a lookup, 2026-11-26).
 uint8_t* datatable_find(UObject* t, std::string_view row) {
-  for (auto& r : datatable_rows(t)) if (r.name == row) return r.data;
-  return nullptr;
+  uint8_t* found = nullptr;
+  if (!t) return found;
+  guarded([&] {
+    uint8_t* map = (uint8_t*)t + 0x30;
+    auto& elems = *(TArray<uint8_t>*)map;
+    const uint32_t* inline_bits = (const uint32_t*)(map + 0x10);
+    const uint32_t* secondary = *(const uint32_t**)(map + 0x20);
+    int32_t num_bits = *(int32_t*)(map + 0x28);
+    const uint32_t* bits = secondary ? secondary : inline_bits;
+    for (int i = 0; i < elems.num; ++i) {
+      bool allocated = i >= num_bits || (bits[i / 32] >> (i % 32)) & 1;
+      if (!allocated) continue;
+      uint8_t* e = elems.data + i * 0x18;
+      if (fname_is(*(FName*)e, row)) { found = *(uint8_t**)(e + 8); return; }
+    }
+  });
+  return found;
 }
 std::string struct_string(UStruct* s, const void* data, int depth) {
   std::string out;

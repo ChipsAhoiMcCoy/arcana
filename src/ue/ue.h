@@ -59,6 +59,7 @@ std::string status();
 // ---- names and strings ----
 std::string fname(FName n);
 std::string fname(int32_t index, int32_t number = 0);
+bool fname_is(FName n, std::string_view s);   // fname(n) == s, read in place (no string made)
 // The name's index in the pool (found by scanning it, then cached), or -1: the name was never made, it is stored
 // wide, or it was looked for and missed within the last 10 seconds.
 int32_t fname_index(std::string_view s);
