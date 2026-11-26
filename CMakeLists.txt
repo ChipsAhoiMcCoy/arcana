@@ -23,7 +23,10 @@ add_library(detours STATIC
   ${DETOURS_SRC}/detours.cpp ${DETOURS_SRC}/modules.cpp ${DETOURS_SRC}/disasm.cpp
   ${DETOURS_SRC}/image.cpp ${DETOURS_SRC}/creatwth.cpp)
 target_include_directories(detours PUBLIC ${DETOURS_SRC})
-target_compile_options(detours PRIVATE /W0)
+# Vendored code builds without warnings: /W4 (from add_compile_options) taken off rather than overridden (D9025).
+get_target_property(DETOURS_OPTIONS detours COMPILE_OPTIONS)
+list(REMOVE_ITEM DETOURS_OPTIONS /W4)
+set_target_properties(detours PROPERTIES COMPILE_OPTIONS "${DETOURS_OPTIONS};/W0")
 
 # --- Prism (prebuilt SDK release) ---
 set(PRISM_SDK ${CMAKE_SOURCE_DIR}/third_party/prism-bin/prism-sdk-v0.18.1)
