@@ -15,6 +15,8 @@
 #include "dat.h"
 #include "party.h"
 #include "persona.h"
+#include "confirm.h"
+#include "log.h"
 #include "stats.h"
 #include "seh.h"
 #include <algorithm>
@@ -77,11 +79,61 @@ class CampStats : public MenuScreen, private CampStatsUi {
   bool active() override { return mode() >= 1; }
   bool holds_keys() override { int md = mode(); return md == 1 || md == 3 || md == 4; }
   std::string title() override { return strings::kCampItems[4].c_str(); }
+  // The party key (F, pad X; FUN_141350110): the game's check FUN_1410a89b0(3, 0x1c) returns to exe+0x1350739, then
+  // asks BIT 0x200005DA (FUN_14a302c80: on in the dorm, Tartarus's lobby, a few fields; off on Tartarus's floors and
+  // story days) and, if on, FUN_141353fa0 (whether this member can join or leave) and FUN_141304b90 (the change). The
+  // game answers a refusal with a buzz or nothing, a change with a sound: the mod says which.
+  static constexpr uint32_t kPartyFlag = 0x200005DA;
+  static constexpr uintptr_t kPartyKeyRet = 0x1350739;
+  std::vector<int> party_;
+  uint64_t key_seen_ = 0;
+  int key_member_ = -1;   // the member the party key was pressed on (the list's focused row then)
+  bool party_open() { return party::flag(kPartyFlag); }
   void on_enter() override {
     screens::set_keys([this] {
       int md = mode();
-      return std::string(md == 1 ? strings::kStatsKeys() : md == 3 ? strings::kTacticsListKeys() : strings::kListKeys());
+      bool open = party_open();
+      return std::string(md == 1 ? (open ? strings::kStatsKeys() : strings::kStatsKeysLocked())
+                         : md == 3 ? (open ? strings::kTacticsListKeys() : strings::kTacticsListKeysLocked())
+                                   : strings::kListKeys());
     });
+    party_ = party();
+    key_seen_ = confirm::answered(kPartyKeyRet, kPartyKeyRet + 1);
+    key_member_ = -1;
+  }
+  // A member joining or leaving is said as it happens (the row's "in party" / "reserve" would only be heard on coming
+  // back to it); a press that changed nothing says why.
+  void on_tick() override {
+    int md = mode();
+    if (md == 1 || md == 3) {   // the member under the cursor, for a press this frame
+      uint8_t* u = ui();
+      auto* ids = u ? arr<uint16_t>(u, 0x28) : nullptr;
+      int i = u ? ListCursor(u + 0x68).index() : -1;
+      if (ids && i >= 0 && i < ids->num) key_member_ = ids->data[i];
+    }
+    std::vector<int> now = party();
+    uint64_t key = confirm::answered(kPartyKeyRet, kPartyKeyRet + 1);
+    bool pressed = key != key_seen_;
+    key_seen_ = key;
+    if (now.empty()) return;
+    if (party_.empty()) { party_ = std::move(now); return; }   // the menu's copy just came: nothing changed yet
+    auto has = [](const std::vector<int>& v, int id) { return std::find(v.begin(), v.end(), id) != v.end(); };
+    std::string line;
+    auto add = [&line](const std::string& s) { line += (line.empty() ? "" : ". ") + s; };
+    for (int id : now)
+      if (!has(party_, id)) add(strings::fmt(strings::kJoinsPartyFmt, party::name(id)));
+    for (int id : party_)
+      if (!has(now, id)) add(strings::fmt(strings::kLeavesPartyFmt, party::name(id)));
+    if (line.empty() && pressed) {
+      if (!party_open()) line = strings::kPartyLocked.c_str();
+      else if (key_member_ >= 0)
+        line = strings::fmt(has(now, key_member_) ? strings::kCantLeavePartyFmt : strings::kCantJoinPartyFmt, party::name(key_member_));
+    }
+    party_ = std::move(now);
+    if (!line.empty()) {
+      log::writef("stats: party key {}: {}", pressed ? "pressed" : "-", line);
+      say(line, true);
+    }
   }
   // A member on the party list: their line, their Persona, then its stats, skills with costs and affinities.
   int focused_member() {
@@ -95,7 +147,8 @@ class CampStats : public MenuScreen, private CampStatsUi {
     int id = focused_member();
     if (id < 0) return {};
     auto* ids = arr<uint16_t>(ui(), 0x28);
-    auto marks = party_marks(ids);
+    auto working = party();
+    auto marks = party_marks(ids, &working);
     int row = focused_row("stats");
     std::vector<std::string> out{member_line(id, true, row >= 0 && row < (int)marks.size() ? marks[row] : std::string())};
     if (const uint8_t* e = party::persona_entry(id)) {
@@ -127,7 +180,8 @@ class CampStats : public MenuScreen, private CampStatsUi {
     list_.key = key;
     b.begin_stop(key);
     if (md == 3) b.push_context(strings::kTacticsHeading.c_str());
-    auto marks = party_marks(ids);
+    auto working = party();
+    auto marks = party_marks(ids, &working);
     for (int i = 0; ids && i < ids->num; ++i) {
       int id = ids->data[i];
       std::string mark = marks[i];

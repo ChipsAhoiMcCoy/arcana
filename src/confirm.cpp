@@ -41,18 +41,31 @@ inline void note(uint32_t button, void* ret) {
   if (g_used < kSlots) g_slots[g_used++] = {rva, f, 1};
 }
 
+// The callers whose query answered true, and when (any button): game thread only.
+Slot g_true[kSlots];
+int g_true_used = 0;
+inline bool answer(bool r, void* ret) {
+  if (!r) return r;
+  uintptr_t rva = (uintptr_t)ret - g_base;
+  uint64_t f = hooks::frame();
+  for (int i = 0; i < g_true_used; ++i)
+    if (g_true[i].rva == rva) { g_true[i].frame = f; ++g_true[i].count; return r; }
+  if (g_true_used < kSlots) g_true[g_true_used++] = {rva, f, 1};
+  return r;
+}
+
 using Q2 = bool (*)(uint32_t, uint8_t);
 using Q1 = bool (*)(uint32_t);
 using Q3 = bool (*)(uint32_t, uint8_t, int32_t);
 Q2 g_on = nullptr, g_trg = nullptr, g_rep = nullptr;
 Q1 g_on1 = nullptr, g_trg1 = nullptr;
 Q3 g_list = nullptr;
-bool on_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return g_on(b, k); }
-bool trg_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return g_trg(b, k); }
-bool rep_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return g_rep(b, k); }
-bool on1_hook(uint32_t b) { note(b, _ReturnAddress()); return g_on1(b); }
-bool trg1_hook(uint32_t b) { note(b, _ReturnAddress()); return g_trg1(b); }
-bool list_hook(uint32_t b, uint8_t k, int32_t id) { note(b, _ReturnAddress()); return g_list(b, k, id); }
+bool on_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return answer(g_on(b, k), _ReturnAddress()); }
+bool trg_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return answer(g_trg(b, k), _ReturnAddress()); }
+bool rep_hook(uint32_t b, uint8_t k) { note(b, _ReturnAddress()); return answer(g_rep(b, k), _ReturnAddress()); }
+bool on1_hook(uint32_t b) { note(b, _ReturnAddress()); return answer(g_on1(b), _ReturnAddress()); }
+bool trg1_hook(uint32_t b) { note(b, _ReturnAddress()); return answer(g_trg1(b), _ReturnAddress()); }
+bool list_hook(uint32_t b, uint8_t k, int32_t id) { note(b, _ReturnAddress()); return answer(g_list(b, k, id), _ReturnAddress()); }
 
 bool matches(uintptr_t rva, const char* hex) {
   auto* p = (const uint8_t*)(g_base + rva);
@@ -85,6 +98,13 @@ uintptr_t new_caller(const std::vector<uintptr_t>& except, uint64_t recent) {
     if (!old) return g_slots[i].rva;
   }
   return 0;
+}
+
+uint64_t answered(uintptr_t from, uintptr_t to) {
+  uint64_t last = 0;
+  for (int i = 0; i < g_true_used; ++i)
+    if (g_true[i].rva >= from && g_true[i].rva < to && g_true[i].frame > last) last = g_true[i].frame;
+  return last;
 }
 
 std::string status() {

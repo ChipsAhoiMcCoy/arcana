@@ -106,7 +106,7 @@ In a conversation, Auto (Shift, or X) and Fast-forward (Tab, or Menu) are announ
 
 F1 always gives the current screen's keys. These are not described elsewhere here:
 
-- Stats: F adds or removes a party member.
+- Stats: F (controller: X, Square on PlayStation) adds or removes the focused member: "Junpei joins the party", "Junpei leaves the party". The game allows it only in some places (the dorm, Tartarus's entrance hall, and a few others); elsewhere, such as on Tartarus's floors, it says "The party can't be changed here", and a member who can't join or leave is said so ("Colton can't leave the party"). The change is saved when you close Stats.
 - Camp Persona: H releases a Persona.
 - Quest: X sorts.
 - Compendium: Q and E sort, Tab shows registered Personas only, F locks.

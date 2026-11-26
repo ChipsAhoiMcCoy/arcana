@@ -1,0 +1,9 @@
+{} joins the party	{}がパーティに加わります
+{} leaves the party	{}がパーティから外れます
+{} can't join the party	{}はパーティに加われません
+{} can't leave the party	{}はパーティから外せません
+The party can't be changed here	ここではパーティを変更できません
+Up and down arrows choose, Space opens their page, Q and E tactics, Escape back.	上下の矢印キーで選択、スペースでページを開く、QとEで作戦、Escで戻ります。
+Up and down choose, A opens their page, LB and RB tactics, B back.	上下で選択、Aでページを開く、LBとRBで作戦、Bで戻ります。
+Up and down arrows choose, Space changes their tactic, Q and E back to stats, Escape back.	上下の矢印キーで選択、スペースで作戦を変更、QとEでステータスに戻る、Escで戻ります。
+Up and down choose, A changes their tactic, LB and RB back to stats, B back.	上下で選択、Aで作戦を変更、LBとRBでステータスに戻る、Bで戻ります。

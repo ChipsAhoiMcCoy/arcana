@@ -1,0 +1,9 @@
+{} joins the party	{}加入隊伍
+{} leaves the party	{}離開隊伍
+{} can't join the party	{}無法加入隊伍
+{} can't leave the party	{}無法離開隊伍
+The party can't be changed here	此處無法變更隊伍
+Up and down arrows choose, Space opens their page, Q and E tactics, Escape back.	上下方向鍵選擇，空白鍵開啟其頁面，Q 和 E 作戰指示，Esc 返回。
+Up and down choose, A opens their page, LB and RB tactics, B back.	上下選擇，A 開啟其頁面，LB 和 RB 作戰指示，B 返回。
+Up and down arrows choose, Space changes their tactic, Q and E back to stats, Escape back.	上下方向鍵選擇，空白鍵變更其作戰指示，Q 和 E 返回能力值，Esc 返回。
+Up and down choose, A changes their tactic, LB and RB back to stats, B back.	上下選擇，A 變更其作戰指示，LB 和 RB 返回能力值，B 返回。

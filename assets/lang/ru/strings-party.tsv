@@ -1,0 +1,9 @@
+{} joins the party	{} вступает в отряд
+{} leaves the party	{} покидает отряд
+{} can't join the party	{} не может вступить в отряд
+{} can't leave the party	{} не может покинуть отряд
+The party can't be changed here	Здесь нельзя изменить состав отряда
+Up and down arrows choose, Space opens their page, Q and E tactics, Escape back.	Стрелки вверх и вниз выбирают, Пробел открывает страницу участника, Q и E переходят к тактике, Esc возвращает назад.
+Up and down choose, A opens their page, LB and RB tactics, B back.	Вверх и вниз выбирают, A открывает страницу участника, LB и RB переходят к тактике, B возвращает назад.
+Up and down arrows choose, Space changes their tactic, Q and E back to stats, Escape back.	Стрелки вверх и вниз выбирают, Пробел меняет тактику, Q и E возвращают к характеристикам, Esc возвращает назад.
+Up and down choose, A changes their tactic, LB and RB back to stats, B back.	Вверх и вниз выбирают, A меняет тактику, LB и RB возвращают к характеристикам, B возвращает назад.

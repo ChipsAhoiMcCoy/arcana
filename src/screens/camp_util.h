@@ -23,11 +23,12 @@ inline std::string member_line(int id, bool level = true, const std::string& mar
 // anyone): which each row is, ", in party", ", navigator" or ", reserve", in list order. A list of one kind marks
 // nothing (the tester's report, 2026-11-20: the Stats list never said who was in the party). The navigator never
 // fights (party::navigator).
+// `working`: the party as a menu holds it before it is saved (the Stats list's, CampStatsUi::party), else the game's.
 template <class Id>
-std::vector<std::string> party_marks(const ue::TArray<Id>* ids) {
+std::vector<std::string> party_marks(const ue::TArray<Id>* ids, const std::vector<int>* working = nullptr) {
   std::vector<std::string> out(ids && ids->data ? ids->num : 0);
   if (out.empty()) return out;
-  std::vector<int> party = party::ids();
+  std::vector<int> party = working && !working->empty() ? *working : party::ids();
   auto in = [&](int id) { return std::find(party.begin(), party.end(), id) != party.end(); };
   int navi = party::navigator();
   bool any_in = false, any_out = false;
@@ -62,6 +63,16 @@ struct CampStatsUi {
   uint8_t* ui() {
     ue::UObject* o = camp_open() ? status_menu_.get() : nullptr;
     return o && i32(o, 0x44) != 0 ? *(uint8_t**)((uint8_t*)o + 0x58) : nullptr;
+  }
+  // The party as the Stats menu holds it (+0x38 TArray<u16>, the hero first): the party key (F, pad X) changes this
+  // copy, and the game's party (party::ids) only when Stats closes. Empty while Stats is not open.
+  std::vector<int> party() {
+    std::vector<int> out;
+    uint8_t* u = ui();
+    auto* a = u ? (ue::TArray<uint16_t>*)(u + 0x38) : nullptr;
+    if (a && a->data && a->num > 0 && a->num <= 8)
+      for (int i = 0; i < a->num; ++i) out.push_back(a->data[i]);
+    return out;
   }
   // The scene on top of the UI's scene stack (UUISceneFSM.SceneStack_).
   ue::UObject* scene() {

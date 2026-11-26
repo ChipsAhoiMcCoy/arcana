@@ -805,6 +805,12 @@ inline constexpr Tr kDictionary{"Dictionary"};
 inline constexpr Tr kNoParty{"No party"};
 inline constexpr Tr kInParty{"in party"};   // a member list that mixes the active party with the rest
 inline constexpr Tr kReserve{"reserve"};
+// The party key on the Stats list (F, pad X): what it did. The game itself only plays a sound or nothing.
+inline constexpr Tr kJoinsPartyFmt{"{} joins the party"};
+inline constexpr Tr kLeavesPartyFmt{"{} leaves the party"};
+inline constexpr Tr kCantJoinPartyFmt{"{} can't join the party"};
+inline constexpr Tr kCantLeavePartyFmt{"{} can't leave the party"};
+inline constexpr Tr kPartyLocked{"The party can't be changed here"};   // the game allows it in the dorm, Tartarus's lobby and a few other places
 inline constexpr Tr kNavigator{"navigator"};
 inline constexpr Tr kTownInfo{"Places here"};
 inline constexpr Tr kTownLinks{"Social Links here"};
@@ -869,6 +875,9 @@ inline constexpr Hint kEquipGearKeys{"Up and down arrows choose, Space equips, Q
 inline constexpr Hint kCampPersonaKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch Persona, Space on its name equips it, F reads it again, H releases, Escape back.", "Up and down go through the lines, RT and LT jump between sections, LB and RB switch Persona, A on its name equips it, X reads it again, Menu button releases, B back."};
 inline constexpr Hint kCampPersonaStatusKeys{"Tab and Shift Tab jump between sections, Q and E switch Persona, Space equips it, Escape back.", "RT and LT jump between sections, LB and RB switch Persona, A equips it, B back."};
 inline constexpr Hint kStatsKeys{"Up and down arrows choose, Space opens their page, Q and E tactics, F joins or leaves the party, Escape back.", "Up and down choose, A opens their page, LB and RB tactics, X joins or leaves the party, B back."};
+// Where the party can't be changed (Tartarus's floors, a story day), the game hides its party key too.
+inline constexpr Hint kStatsKeysLocked{"Up and down arrows choose, Space opens their page, Q and E tactics, Escape back.", "Up and down choose, A opens their page, LB and RB tactics, B back."};
+inline constexpr Hint kTacticsListKeysLocked{"Up and down arrows choose, Space changes their tactic, Q and E back to stats, Escape back.", "Up and down choose, A changes their tactic, LB and RB back to stats, B back."};
 inline constexpr Hint kTacticsListKeys{"Up and down arrows choose, Space changes their tactic, Q and E back to stats, F joins or leaves the party, Escape back.", "Up and down choose, A changes their tactic, LB and RB back to stats, X joins or leaves the party, B back."};
 // On a pad the triggers jump the page's sections (its Persona and Theurgy sections hold what the game's triggers open).
 inline constexpr Hint kStatsPageKeys{"Up and down arrows go through the lines, Tab and Shift Tab jump between sections, Q and E switch member, X Persona status, Z Theurgy, F joins or leaves the party, Escape back.", "Up and down go through the lines, RT and LT jump between sections, LB and RB switch member, X joins or leaves the party, B back."};

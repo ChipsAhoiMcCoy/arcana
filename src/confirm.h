@@ -14,5 +14,8 @@ uint64_t frame();   // the mod's frame now (hooks::frame)
 std::vector<uintptr_t> callers(uint64_t from, uint64_t to);
 // The first caller asking in the last `recent` frames that is not in `except`; 0 if none.
 uintptr_t new_caller(const std::vector<uintptr_t>& except, uint64_t recent = 3);
+// The last mod frame a pad query called from code in exe [from, to) answered true, for any button (0: none yet):
+// a screen's own key check firing ("the game saw its party key").
+uint64_t answered(uintptr_t from, uintptr_t to);
 std::string status();
 }  // namespace p3a::confirm
