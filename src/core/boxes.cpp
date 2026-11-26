@@ -10,6 +10,7 @@ float dist3(const Vec3& a, const Vec3& b) {
 }
 
 float angle_diff(float a, float b) { return std::fabs(std::fmod(a - b + 540.0f, 360.0f) - 180.0f); }
+float heading(float dx, float dy) { return std::atan2(dy, dx) * 180.0f / kPi; }
 
 bool box_holds(const Box& b, const Vec3& p, float grow_xy, float grow_z) {
   // The point in the box's own frame: turned back by its yaw.

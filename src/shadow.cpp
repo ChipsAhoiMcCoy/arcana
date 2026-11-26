@@ -152,7 +152,7 @@ bool in_reach(UObject* shadow, const FVector& at, const FVector& me, bool& known
   body_of(shadow, r, hh);
   if (box_holds(b, at, r, hh)) return true;
   if (!settings::on(settings::StrikeAssist)) return false;
-  float yaw = std::atan2(at.y - me.y, at.x - me.x) * 180.0f / kPi;
+  float yaw = core::heading(at.x - me.x, at.y - me.y);
   return core::box_meets_body(core::turned_about(b, world::vec3(me), yaw), world::vec3(at), r, hh);
 }
 
@@ -165,7 +165,7 @@ bool in_reach(UObject* shadow, const FVector& at, const FVector& me, bool& known
 bool breakable_meets(const Box& strike, UObject* a, const FVector& me, bool turned, float& yaw) {
   Box body;
   if (!read_box(get<UObject*>(a, "Box"), body)) return false;
-  yaw = std::atan2(body.center.y - me.y, body.center.x - me.x) * 180.0f / kPi;
+  yaw = core::heading(body.center.x - me.x, body.center.y - me.y);
   if (boxes_meet(strike, body)) return true;
   return turned && boxes_meet(core::turned_about(strike, world::vec3(me), yaw), body);
 }
@@ -208,7 +208,7 @@ bool breakable_in_reach(const FVector& me, FVector& at) {
 int close_cues(const Seen& s, const FVector& me) {
   static WeakObj told;                 // the Shadow this approach is to
   static bool said[2] = {false, false};   // "facing you", "back turned": said on this approach
-  float to_me = std::atan2(me.y - s.at.y, me.x - s.at.x) * 180.0f / kPi;
+  float to_me = core::heading(me.x - s.at.x, me.y - s.at.y);
   bool back_turned = angle_diff(yaw_of(s.actor), to_me) > kBackTurnedDeg;   // the hero is outside its front
   WeakObj w = WeakObj::of(s.actor);
   if (s.dist < 400.0f) {
@@ -233,7 +233,7 @@ int close_cues(const Seen& s, const FVector& me) {
   if (!known) {
     // No hit area to read: the old estimate, close behind it and facing it.
     UObject* hero = world::player();
-    float to_shadow = std::atan2(s.at.y - me.y, s.at.x - me.x) * 180.0f / kPi;
+    float to_shadow = core::heading(s.at.x - me.x, s.at.y - me.y);
     reach = hero && back_turned && s.dist < 220.0f && angle_diff(yaw_of(hero), to_shadow) < 45.0f;
   }
   return !reach ? -1 : (int)(back_turned ? SignalCue::Ambush : SignalCue::Reach);
@@ -331,7 +331,7 @@ void mind_cues(const std::vector<Seen>& seen, const FVector& me) {
 // as it did (the user heard no ring before five battles, 2026-11-14) ----
 // How far the hero stands off a Shadow's front, in degrees: under 90 the game counts it as facing him.
 float off_front(const Seen& s, const FVector& me) {
-  float to_me = std::atan2(me.y - s.at.y, me.x - s.at.x) * 180.0f / kPi;
+  float to_me = core::heading(me.x - s.at.x, me.y - s.at.y);
   return angle_diff(yaw_of(s.actor), to_me);
 }
 // The ring for the nearest Shadow as it starts, changes and stops. `ring` is close_cues' answer (-1: none).
@@ -464,7 +464,7 @@ void strike_assist(const std::vector<Seen>& seen, const FVector& me) {
   const Seen* pick = nullptr;
   float pick_yaw = 0.0f;
   for (const Seen& s : seen) {
-    float yaw = std::atan2(s.at.y - me.y, s.at.x - me.x) * 180.0f / kPi;
+    float yaw = core::heading(s.at.x - me.x, s.at.y - me.y);
     float r, hh;
     body_of(s.actor, r, hh);
     if (!core::box_meets_body(core::turned_about(box, world::vec3(me), yaw), world::vec3(s.at), r, hh)) continue;
@@ -660,7 +660,7 @@ void install() {
       to = FVector{to.x, to.y, on.z + 95.0f};
       Params tp(find_function(class_of(hero), "K2_TeleportTo"));
       tp.set<FVector>("DestLocation", to);
-      tp.set<FRotator>("DestRotation", FRotator{0.0f, std::atan2(at.y - to.y, at.x - to.x) * 180.0f / kPi + turn, 0.0f});
+      tp.set<FRotator>("DestRotation", FRotator{0.0f, core::heading(at.x - to.x, at.y - to.y) + turn, 0.0f});
       call(hero, tp);
       FVector me;
       world::player_location(me);

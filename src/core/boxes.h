@@ -16,6 +16,8 @@ float flat(const Vec3& a, const Vec3& b);    // the distance on the ground plane
 float dist3(const Vec3& a, const Vec3& b);   // the distance in space
 // How far apart two headings are, in degrees: 0 (the same way) to 180 (opposite).
 float angle_diff(float a, float b);
+// The heading of a ground offset in degrees, Unreal's yaw: 0 along +x, 90 along +y, -90 along -y.
+float heading(float dx, float dy);
 
 // `p` is inside the box grown by `grow_xy` along both of its ground axes (negative: shrunk) and by `grow_z` up and
 // down.

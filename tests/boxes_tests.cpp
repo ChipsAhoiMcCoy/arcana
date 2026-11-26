@@ -20,6 +20,15 @@ TEST_CASE("boxes: the angle between two headings") {
   CHECK(angle_diff(30.0f, -60.0f) == doctest::Approx(90.0f));
 }
 
+TEST_CASE("boxes: the heading of a ground offset, Unreal's yaw") {
+  CHECK(heading(1, 0) == doctest::Approx(0.0f));      // along +x
+  CHECK(heading(0, 5) == doctest::Approx(90.0f));     // along +y
+  CHECK(heading(0, -5) == doctest::Approx(-90.0f));
+  CHECK(heading(-3, 0) == doctest::Approx(180.0f));
+  CHECK(heading(10, 10) == doctest::Approx(45.0f));
+  CHECK(heading(2, -2) == std::atan2(-2.0f, 2.0f) * 180.0f / kPi);   // the expression it replaced, exactly
+}
+
 TEST_CASE("box_holds: a point in an unturned box, its edge included") {
   Box b{Vec3{0, 0, 0}, Vec3{100, 50, 20}, 0};
   CHECK(box_holds(b, Vec3{99, 0, 0}, 0, 0));
