@@ -35,7 +35,7 @@ int fool_members() {
   auto joined = fn<char (*)(uint16_t)>(0x12d5fc0);
   int n = 0;
   for (int m : {6, 7, 8, 9}) n += joined((uint16_t)m) != 0;
-  void* g = fn<void* (*)()>(0x122ac90)();
+  void* g = game_work();
   if (joined(10) || (g && fn<bool (*)(void*, uint32_t)>(0x122a080)(g, 0x6f))) ++n;
   return n;
 }

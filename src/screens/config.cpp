@@ -196,10 +196,7 @@ class ConfigScreen : public MenuScreen {
       uint8_t* k = c ? *(uint8_t**)(c + 0xD58) : nullptr;
       // The timer is reset by the game's first tick in a state: on the frame a state appears it still holds the last one's.
       if ((st != 5 && st != 6) || !state_settled_ || !k || *(float*)(k + 0x34) <= *(float*)(k + 0x38)) return false;
-      uintptr_t base = scan::exe_base();
-      uint8_t* game = ((uint8_t * (*)())(base + 0x122ac90))();
-      int frames = ((int (*)(void*))(base + 0x12e13b0))(*(void**)(game + 0x308A0));
-      return st == 5 || c[0x345] || *(float*)(c + 0x3B8) >= frames * (1.f / 30);
+      return st == 5 || c[0x345] || open_timer_done(*(float*)(c + 0x3B8), ui_layer());
     };
     list_.set = [this](int i) {
       UObject* c = cfg_.get();

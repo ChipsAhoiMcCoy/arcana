@@ -40,7 +40,7 @@ class TutorialListScreen : public MenuScreen {
     // FUN_1415536c0: its confirm and cancel wait for the open timer +0x334 (frames * 1/20 s), moves only for +0x27D.
     list_.ready = [this] {
       uint8_t* p = u();
-      return p && *(float*)(p + 0x334) >= ((int (*)(void*))(scan::exe_base() + 0x12e13b0))(*(void**)(p + 0x3A8)) * 0.05f;
+      return p && open_timer_done(*(float*)(p + 0x334), *(void**)(p + 0x3A8), 20);
     };
     list_.set = [this](int i) {
       uint8_t* p = u();

@@ -40,7 +40,7 @@ class SaveLoadScreen : public MenuScreen {
         auto* r = (uint8_t*)restore_.get();
         if (!r || *(int32_t*)(r + 0x280) != 3 || !ListCursor(r + 0x2f8).set(i)) return false;
         *(int32_t*)(r + 0x278) = i;
-        uint8_t* saves = ((uint8_t* (*)())(scan::exe_base() + 0x122ac90))();
+        uint8_t* saves = game_work();
         ((void (*)(void*, uint8_t, char))(scan::exe_base() + 0x152dd50))(r, saves[0x2ff30 + i * 0x30], 1);
         cursor_sound();
         return true;

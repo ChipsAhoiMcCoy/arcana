@@ -74,7 +74,13 @@ inline int i32(void* base, int off) { return base ? *(int32_t*)((uint8_t*)base +
 template <class F> F fn(uintptr_t rva) { return (F)(scan::exe_base() + rva); }
 // A ListCursor's row on screen (+0x24), given the cursor's address.
 inline int row_of(uint8_t* lc) { return *(int32_t*)(lc + 0x24); }
+// The game's global work object (exe+0x122ac90: flags, counts, the save list at +0x2ff30) and its UI layer (+0x308A0).
+inline uint8_t* game_work() { return fn<uint8_t* (*)()>(0x122ac90)(); }
+inline void* ui_layer() { return *(void**)(game_work() + 0x308A0); }
 // Whether a menu's open timer has run its opening: `elapsed` (the menu's own float, seconds) against the frame count
-// the game asks of the UI layer `layer` (exe+0x12e13b0), at 30 frames a second. What the game's confirm waits for.
-inline bool open_timer_done(float elapsed, void* layer) { return elapsed >= fn<int (*)(void*)>(0x12e13b0)(layer) * (1.f / 30); }
+// the game asks of the UI layer `layer` (exe+0x12e13b0), at `fps` frames a second (30; the tutorial list counts 20).
+// What the game's confirm waits for.
+inline bool open_timer_done(float elapsed, void* layer, int fps = 30) {
+  return elapsed >= fn<int (*)(void*)>(0x12e13b0)(layer) * (1.f / fps);
+}
 }  // namespace p3a::screens

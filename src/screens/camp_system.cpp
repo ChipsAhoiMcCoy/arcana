@@ -23,7 +23,7 @@ class CampSystem : public MenuScreen {
     list_.ready = [this] {
       uint8_t* o = m();
       return o && open_timer_done(*(float*)(o + 0x5C), *(void**)(o + 0x30)) &&
-             fn<bool (*)(void*)>(0x12d5f60)(*(void**)(fn<uint8_t* (*)()>(0x122ac90)() + 0x308A0));
+             fn<bool (*)(void*)>(0x12d5f60)(ui_layer());
     };
     list_.set = [this](int i) {
       uint8_t* o = m();

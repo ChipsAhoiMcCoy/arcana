@@ -62,7 +62,7 @@ class CampQuest : public MenuScreen {
         cursor_sound();
         if (old >= 0 && old < n) {
           uint32_t f = *(uint16_t*)(*(uint8_t**)(r + 0xB48) + old * 4 + 2) + 0x20000E95u;
-          void* g = fn<void* (*)()>(0x122ac90)();
+          void* g = game_work();
           if (!fn<bool (*)(void*, uint32_t)>(0x122a080)(g, f)) fn<void (*)(void*, uint32_t, int)>(0x1230410)(g, f, 1);
         }
       }

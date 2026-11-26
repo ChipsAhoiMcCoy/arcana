@@ -85,7 +85,7 @@ class CampCalendar : public MenuScreen {
       return label >= 0 && label < (int)f->dialogs.size() && !f->dialogs[label].pages.empty()
                  ? core::clean_text(core::bmd::plain(f->dialogs[label].pages[0])) : std::string();
     };
-    void* g = fn<void* (*)()>(0x122ac90)();
+    void* g = game_work();
     uint8_t* months = *(uint8_t**)((uint8_t*)a + 0x30);
     int n = i32((uint8_t*)a, 0x38);
     std::string out;
@@ -170,8 +170,7 @@ class CampCalendar : public MenuScreen {
       uint8_t* a = actor();
       uint8_t* d = a && i32(a, 0x2A8) == 0 ? *(uint8_t**)(a + 0x300) : nullptr;
       if (!d) return false;
-      void* layer = *(void**)(fn<uint8_t* (*)()>(0x122ac90)() + 0x308A0);
-      return open_timer_done(*(float*)(a + 0x308), layer) && *(float*)(d + 0x250) > fn<int (*)(void*)>(0x12bfdc0)(d) * (1.f / 30);
+      return open_timer_done(*(float*)(a + 0x308), ui_layer()) && *(float*)(d + 0x250) > fn<int (*)(void*)>(0x12bfdc0)(d) * (1.f / 30);
     };
     days_.set = [this](int i) {
       uint8_t* c = cursor_obj();
