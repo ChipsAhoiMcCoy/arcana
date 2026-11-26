@@ -74,6 +74,7 @@ inline int i32(void* base, int off) { return base ? *(int32_t*)((uint8_t*)base +
 template <class F> F fn(uintptr_t rva) { return (F)(scan::exe_base() + rva); }
 // A ListCursor's row on screen (+0x24), given the cursor's address.
 inline int row_of(uint8_t* lc) { return *(int32_t*)(lc + 0x24); }
+inline int top_of(uint8_t* lc) { return *(int32_t*)(lc + 0x28); }   // the ListCursor's top of the window
 // The game's global work object (exe+0x122ac90: flags, counts, the save list at +0x2ff30) and its UI layer (+0x308A0).
 inline uint8_t* game_work() { return fn<uint8_t* (*)()>(0x122ac90)(); }
 inline void* ui_layer() { return *(void**)(game_work() + 0x308A0); }

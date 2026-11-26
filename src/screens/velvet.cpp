@@ -85,7 +85,7 @@ class VelvetScreen : public MenuScreen {
     if (!ListCursor(list).set(i)) return false;
     uintptr_t b = scan::exe_base();
     if (push_draw) {
-      if (UObject* d = draw_.get()) ((void (*)(void*, int, int))(b + 0x1586b50))(d, *(int32_t*)(list + 0x28), *(int32_t*)(list + 0x24));
+      if (UObject* d = draw_.get()) ((void (*)(void*, int, int))(b + 0x1586b50))(d, top_of(list), row_of(list));
       cursor_sound();
     } else {
       cb()[0x40A] = 1;   // steps 12 and 13 refresh themselves (the seen flag, the materials panel, the sound)
@@ -118,7 +118,7 @@ class VelvetScreen : public MenuScreen {
       UObject* d = draw_.get();
       if (!c || !d || step() != 2 || !ListCursor(c + 0x48).set(i)) return false;
       cursor_sound(0x25F);
-      ((void (*)(void*, int))(scan::exe_base() + 0x1586b40))(d, *(int32_t*)(c + 0x48 + 0x24));
+      ((void (*)(void*, int))(scan::exe_base() + 0x1586b40))(d, row_of(c + 0x48));
       return true;
     };
     // Inheritance: six rows shown over +0x478 entries; exe+0x14c9c70(status, top, row) writes them and restarts the

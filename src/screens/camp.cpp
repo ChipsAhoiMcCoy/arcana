@@ -125,7 +125,7 @@ class CampScreen : public MenuScreen {
       auto* r = (uint8_t*)root_.get();
       int st = r ? *(int32_t*)(r + 0x38) : 0;
       if (st < 1 || st > 3 || !ListCursor(r + 0x48).set(i)) return false;
-      *(int32_t*)(r + 0x3c) = *(int32_t*)(r + 0x48 + 0x24);
+      *(int32_t*)(r + 0x3c) = row_of(r + 0x48);
       if (uint8_t* d = *(uint8_t**)(r + 0x88)) *(uint64_t*)(d + 0x7BC) = 0;
       cursor_sound();
       return true;
