@@ -75,7 +75,7 @@ Hold both triggers (LT and RT) for the mod's keys. You hear a tick and, in the f
 
 A single trigger reaches the game 0.15 seconds late (adjustable in the settings), so pressing both does not also dash or turn; a quick tap still works.
 
-In top-down mode (on by default), the right stick no longer turns the camera while you walk. Push it toward a direction (up is north) to snap to the nearest point of interest that way: its name and distance are said ("Iwatodai Station, 8 meters"), or "nothing", and its sound repeats alone from where it is while you hold the stick, even with the sonar off. It speaks again when another point takes over. Press RT while on a point to walk there and use it, as Shift+Period does; that press does not dash.
+In top-down mode (always on while you walk freely), the right stick no longer turns the camera while you walk. Push it toward a direction (up is north) to snap to the nearest point of interest that way: its name and distance are said ("Iwatodai Station, 8 meters"), or "nothing", and its sound repeats alone from where it is while you hold the stick, even with the sonar off. It speaks again when another point takes over. Press RT while on a point to walk there and use it, as Shift+Period does; that press does not dash.
 
 ### In menus
 
@@ -130,7 +130,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Points of interest range: 60 meters; 20, 40, 100 or 150
 - Same floor only: off, on. In a place with several floors (the Strip Mall, Paulownia Mall, the dorm), the points of interest list and the sonar leave out everything on the other floors; the stairs between floors stay
 - Wall tones: only while moving; off or continuous (standing still too)
-- Wall tone range: 5 meters; 1 to 10 in steps of 1 (in both camera modes)
+- Wall tone range: 5 meters; 1 to 10 in steps of 1
 - Shadow alerts: off, on. In Tartarus: the Shadow's steady snarl (muffled and wobbling when its back is to you), the note when one loses you, the strike-reach ring (for Shadows and breakable objects) and the back-turned / facing-you cues
 - Shadow sight: off, on. In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder and higher as you near it, and a muffled hum plays while a wall hides you from one
 - Shadow sight range: 10 meters; 2 to 16 in steps of 2. How far from the edge of a Shadow's sight you start to hear it
@@ -160,20 +160,20 @@ They work like any other menu: up and down choose (at either end a further press
 
 - Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
 - When a line ends: off, say Next, page turn sound, message chime sound, cursor tick sound. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
-- Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way
+- Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way. Off by default
 
 **Audio description**
 
 - Movies: off, narrator's voice, screen reader. The animated story movies are described between lines of dialogue: by a narrator, dipping the movie's sound, or as text read by your screen reader
-- 3D scenes: off, suppress repeated descriptions, on. The same for the story scenes played in the game's 3D engine. Suppress repeated descriptions reads each description only the first time: a description you have heard is not read again when its scene comes back (a job shift, a meal). What you have heard is kept in seen-descriptions.txt beside settings.ini; delete that file to hear them all again
+- 3D scenes: off, suppress repeated descriptions, on. The same for the story scenes played in the game's 3D engine. Suppress repeated descriptions reads each description only the first time: a description you have heard is not read again when its scene comes back (a job shift, a meal). What you have heard is kept in seen-descriptions.txt beside settings.ini; delete that file to hear them all again. On by default
 - 3D scenes read by: narrator's voice, screen reader
 - Faster narrator in 3D scenes: off, 25 percent, 50 percent, 75 percent. The narrator reads the descriptions of 3D scenes that much faster, at the same pitch. The animated movies keep the normal speed: their descriptions are timed between the lines. Off by default
-- Descriptions wait for Enter: off, on. On, each description in a 3D story scene pauses the scene like a message window, with its sounds, and once it is said you hear "Next" (or the sound chosen in "When a line ends"), whether the narrator or your screen reader reads it; Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. These descriptions are in the log (B). Off, they are fitted between the lines while the scene plays. The animated movies never wait: their descriptions are timed between the lines
+- Descriptions wait for Enter: off, on. On, each description in a 3D story scene pauses the scene like a message window, with its sounds, and once it is said you hear "Next" (or the sound chosen in "When a line ends"), whether the narrator or your screen reader reads it; Enter, Space or A goes on (pressed while the narrator speaks, it cuts the description short). With the game's Auto on, it goes on by itself once the description is said; fast-forward skips descriptions. These descriptions are in the log (B). Off, they are fitted between the lines while the scene plays. The animated movies never wait: their descriptions are timed between the lines. On by default
 
 **Controls and help**
 
 - Trigger delay: 150 milliseconds; how long one controller trigger waits for the other; off, 100 or 250
-- Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1
+- Menu key hints on entry: off, on. Menus say their keys after their first line, besides F1. Off by default
 - Menu animation speed: off, 4 times, 8 times, 16 times. While a menu is up (the camp menu, the Velvet Room, shops, the save list and the other menus the mod reads), the game runs that many times faster while the menu is busy, so menus open, close and change sooner and take your keys sooner. A menu waiting for your key runs at normal speed, so idle lines (Igor's, the shopkeepers') keep their pace. The game's menu sounds still play, and the characters on screen (the hero at the fusion table, the camp's party) move at their normal speed. Battles, story scenes (the fusion's own scene included) and conversations keep their normal speed. Off by default
 - Mod keys: Space or Enter (A) opens the list of the mod's keys, where you can change them (below)
 
@@ -315,7 +315,7 @@ The game's camera sits behind the hero and turns, so a sound "ahead" kept changi
 - The wall tones are a compass: north, east, south and west, reaching as far as the Wall tone range setting (5 m by default). All four sound while you move, the wall behind you too; standing still, they sound with Wall tones on Continuous.
 - Points of interest give compass directions ("north-east"), and the right stick scans (see On a controller).
 
-Conversations, story scenes, menus and battles keep the game's own camera and sound. Turn the setting off to play with the game's camera.
+Conversations, story scenes, menus and battles keep the game's own camera and sound.
 
 ## Sounds
 
