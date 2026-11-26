@@ -17,9 +17,9 @@
 namespace p3a::screens {
 using namespace ue;
 
-static Finder g_title_actor{"TitleActor"};
+static Finder& g_title_actor() { static Finder f{"TitleActor"}; return f; }   // not at static init
 // The title actor's current state object (a UTitleState*), or null.
-static UObject* title_state_obj() { return get<UObject*>(g_title_actor.get(), "CurrentTitleState"); }
+static UObject* title_state_obj() { return get<UObject*>(g_title_actor().get(), "CurrentTitleState"); }
 // A state's class without its "TitleState" prefix ("Select", "NewGame"), or "" for none.
 static std::string title_state(UObject* s) {
   if (!s) return {};
@@ -100,7 +100,7 @@ class TitleScreen : public Screen {
       if (st == "Caution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitleCaution.c_str(), true); }
       else if (st == "PhotosensitiveCaution") { screens::set_keys(strings::kPressAnyKey); speech::speak(strings::kTitlePhotosensitive.c_str(), true); }
     }
-    if (st == "Caution" || st == "PhotosensitiveCaution") hold_notice(s, st == "Caution", g_title_actor.get(), notice_pressed_);
+    if (st == "Caution" || st == "PhotosensitiveCaution") hold_notice(s, st == "Caution", g_title_actor().get(), notice_pressed_);
     // The logos before the opening movie (about 13 s with nothing else on screen): UTitleStateLogo +0x44 is the one
     // shown, 0 Atlus, 1 P-Studio, 2 Unreal Engine, 3 fading out (measured 2026-10-28). cursor_ holds the last read.
     // Only the first interrupts: a description still running when the next logo comes is finished, not cut.
@@ -114,7 +114,7 @@ class TitleScreen : public Screen {
     // after the state starts; the line used to come with the state, and a key pressed on hearing it did nothing
     // (measured and read from both states' tick, 2026-10-29). cursor_ 1 = said.
     if ((st == "PressWait" || st == "PressWait_Astrea") && cursor_ < 0 && *((uint8_t*)s + 0x4c) &&
-        *((uint8_t*)g_title_actor.get() + 0x3da)) {
+        *((uint8_t*)g_title_actor().get() + 0x3da)) {
       screens::set_keys(strings::kPressAnyKey);
       speech::speak(st == "PressWait" ? strings::kTitlePressAny.c_str() : strings::kTitlePressAnyAstrea.c_str(), true);   // _Astrea: Episode Aigis
       cursor_ = 1;
@@ -134,8 +134,8 @@ static bool select_set(uint8_t* s, int i) { return s && ((bool (*)(void*, void*,
 // slides its items in for about 2 s before it takes a key: its step at +0x490 is 1 meanwhile, 2 once up/down and
 // confirm count (read from UTitleStateSelect's tick). The screen opens at 2: a press on hearing it counts.
 class TitleMenuScreen : public MenuScreen {
-  Mirror& list_ = mirror("title", [] { UObject* a = g_title_actor.get(); return a ? *(int*)((uint8_t*)a + 0x4cc) : -1; });
-  static uint8_t* sel() { UObject* a = g_title_actor.get(); return a ? (uint8_t*)a + 0x478 : nullptr; }
+  Mirror& list_ = mirror("title", [] { UObject* a = g_title_actor().get(); return a ? *(int*)((uint8_t*)a + 0x4cc) : -1; });
+  static uint8_t* sel() { UObject* a = g_title_actor().get(); return a ? (uint8_t*)a + 0x478 : nullptr; }
  public:
   TitleMenuScreen() {
     list_.ready = [] { return select_ready(sel()); };

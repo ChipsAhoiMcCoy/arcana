@@ -26,7 +26,7 @@ namespace p3a::cutin {
 using namespace ue;
 
 namespace {
-screens::Finder g_draw{"CutInDraw"};
+screens::Finder& g_draw() { static screens::Finder f{"CutInDraw"}; return f; }   // not at static init
 constexpr int kChara = 0x2A0, kPic = 0x2A4, kProgress = 0x2C4;
 WeakObj g_seen;          // the actor last looked at
 float g_progress = 0;    // its slide-in progress then
@@ -75,7 +75,7 @@ const char* describe(int chara, int pic) {
 
 void tick() {
   test_tick();
-  UObject* d = g_draw.get();
+  UObject* d = g_draw().get();
   bool primed = std::exchange(g_primed, true);
   if (!d) return;
   int chara = 0, pic = 0;

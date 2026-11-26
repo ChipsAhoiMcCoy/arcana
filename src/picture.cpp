@@ -24,7 +24,7 @@ namespace p3a::picture {
 using namespace ue;
 
 namespace {
-screens::Finder g_draw{"UIMiscPictureDraw"};
+screens::Finder& g_draw() { static screens::Finder f{"UIMiscPictureDraw"}; return f; }   // not at static init
 constexpr int kPicture = 0x2D0;
 std::string g_said;   // the texture last read (forgotten with the actor)
 
@@ -51,7 +51,7 @@ bool request(int mode, int id, int arg) {
 }  // namespace
 
 void tick() {
-  UObject* d = g_draw.get();
+  UObject* d = g_draw().get();
   std::string texture;
   int state = -1;
   if (d) guarded([&] {
