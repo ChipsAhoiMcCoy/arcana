@@ -31,27 +31,55 @@ static std::vector<WeakObj::Key> g_keys;
 static uint64_t g_side = 1;
 uint64_t side_stamp() { return g_side; }
 
+// A door's colliding bounds (GetActorBounds, a call into the game): Ok, None while nothing of it collides (yet), or
+// Skip when the call cannot be made.
+enum class Bounds { Ok, None, Skip };
+static Bounds bounds_of(UObject* d, FVector& lo, FVector& hi) {
+  ue::Params p(ue::find_function(ue::class_of(d), "GetActorBounds"));
+  if (!p.fn || !p.set<uint8_t>("bOnlyCollidingComponents", 1)) return Bounds::Skip;
+  FVector* o = p.at<FVector>("Origin");
+  FVector* e = p.at<FVector>("BoxExtent");
+  if (!o || !e || !guarded([&] { ue::call(d, p); })) return Bounds::Skip;
+  if (e->x <= 0 && e->y <= 0) return Bounds::None;
+  lo = FVector{o->x - e->x, o->y - e->y, o->z - e->z};
+  hi = FVector{o->x + e->x, o->y + e->y, o->z + e->z};
+  return Bounds::Ok;
+}
+
+// Waiting on a door's bounds with the levels unchanged: the doors read before are there in the same order and none of
+// the others has bounds now. Only those others are asked: two of the dorm's toilet doors (Toilet1F01, Toilet4F01)
+// never collide, and asking all nineteen doors every frame cost ~18 us (2026-11-26).
+static bool still_waiting(int id) {
+  size_t known = 0;
+  for (UObject* d : watch::all(id)) {
+    if (!world::actor_visible_level(d)) continue;
+    if (known < g_keys.size() && WeakObj::of(d).key() == g_keys[known]) { ++known; continue; }
+    FVector lo, hi;
+    if (bounds_of(d, lo, hi) == Bounds::Ok) return false;   // one more to read (or the order changed): read them all
+  }
+  return known == g_keys.size();   // else one read before has gone
+}
+
 // The doors come and go with their levels: read again when the set of visible levels changes (every door of every
-// loaded level each frame cost 10 us, 2026-11-11), and while a visible door has no bounds yet (a level just shown).
+// loaded level each frame cost 10 us, 2026-11-11), and when a visible door that had no bounds (a level just shown)
+// has them.
 static void refresh() {
   static const int id = watch::want("FldDoorObjCore", true);
   static uint64_t levels = ~0ull;
   static bool unready = false;
   uint64_t stamp = world::levels_stamp();
-  if (stamp == levels && !unready) return;
+  if (stamp == levels && (!unready || still_waiting(id))) return;
   levels = stamp;
   unready = false;
   std::vector<Door> doors;
   std::vector<WeakObj::Key> keys;
   for (UObject* d : watch::all(id)) {
     if (!world::actor_visible_level(d)) continue;
-    ue::Params p(ue::find_function(ue::class_of(d), "GetActorBounds"));
-    if (!p.fn || !p.set<uint8_t>("bOnlyCollidingComponents", 1)) continue;
-    FVector* o = p.at<FVector>("Origin");
-    FVector* e = p.at<FVector>("BoxExtent");
-    if (!o || !e || !guarded([&] { ue::call(d, p); })) continue;
-    if (e->x <= 0 && e->y <= 0) { unready = true; continue; }   // nothing of it collides (yet)
-    doors.push_back(Door{WeakObj::of(d), FVector{o->x - e->x, o->y - e->y, o->z - e->z}, FVector{o->x + e->x, o->y + e->y, o->z + e->z}});
+    FVector lo, hi;
+    Bounds b = bounds_of(d, lo, hi);
+    if (b == Bounds::Skip) continue;
+    if (b == Bounds::None) { unready = true; continue; }   // nothing of it collides (yet)
+    doors.push_back(Door{WeakObj::of(d), lo, hi});
     keys.push_back(doors.back().obj.key());
   }
   if (keys == g_keys) return;
