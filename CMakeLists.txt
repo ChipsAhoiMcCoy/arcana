@@ -55,6 +55,8 @@ file(GLOB P3A_SOURCES CONFIGURE_DEPENDS src/*.cpp src/ue/*.cpp src/screens/*.cpp
 add_library(arcana SHARED ${P3A_SOURCES})
 target_include_directories(arcana PRIVATE src ${PRISM_SDK}/include ${STEAMAUDIO_SDK}/include third_party/miniaudio)
 target_link_libraries(arcana PRIVATE p3core detours ${PRISM_LIB} ${PHONON_LIB} user32 ws2_32 ole32 delayimp gdi32)
+# The headers most of the mod's files include, compiled once (the mod only: src/core stays free of Windows headers).
+target_precompile_headers(arcana PRIVATE <windows.h> <algorithm> <format> <map> <memory> <mutex> <string> <vector> src/core/strings.h)
 # phonon.dll delay-loaded too: without it (or if it fails) the cues fall back to stereo panning.
 target_link_options(arcana PRIVATE /DELAYLOAD:${PRISM_DLL_NAME} /DELAYLOAD:phonon.dll /MAP)   # arcana.map: crash-log offsets -> functions
 add_custom_command(TARGET arcana POST_BUILD
