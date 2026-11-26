@@ -373,7 +373,9 @@ class BattleScreen : public Screen {
   // HP changes, ailments and defeats. The enemies an All-Out Attack finishes keep their HP until the results take them
   // away, after Shuffle Time ("2 Muttering Tiara defeated" came after the cards, 2026-11-09): a deal with a card still
   // to take (the next battle's comes on the same actor, its last deal's picks all made) means the battle is won, and
-  // whoever is left is defeated now.
+  // whoever is left is defeated now. A battle with no Shuffle Time (a scripted one) has no deal: its defeats waited
+  // for the results, through the whole attack in silence (2026-11-25). The attack's finishing cut says the same
+  // sooner, with or without cards (allout_finishing).
   // Who has the advantage, once per battle before anything of it is read: the battle's FBtlEncountParam.Preemptive
   // (EBtlEncountPreemptive: 1 Enemy, 2 Ally; it read Ally after a strike that started the fight, 2026-11-11), which
   // the game shows as a splash (BP_BtlGuiEncountAlert) on a battle's first wave only (EncountIndex 0).
@@ -477,7 +479,7 @@ class BattleScreen : public Screen {
     say_advantage(core);
     UObject* deal = shuffle_ui();
     int picks = deal ? get<int32_t>(deal, "EnableSelectNum") : 0;
-    bool won = picks > 0 && get<int32_t>(deal, "SelectedCardNum") < picks;
+    bool won = (picks > 0 && get<int32_t>(deal, "SelectedCardNum") < picks) || allout_finishing();
     std::map<WeakObj::Key, Unit> next;
     std::vector<std::string> defeated;
     for (const char* list : {"PlayerList", "EnemyList"}) {

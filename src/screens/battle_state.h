@@ -51,4 +51,15 @@ inline ue::UObject* result_phase() {
   ue::UObject* phase = c ? ue::get<ue::UObject*>(c, "CurrentPhase") : nullptr;
   return phase && ue::is_a(phase, "BtlPhaseResult") ? phase : nullptr;
 }
+// An All-Out Attack is finishing the battle: the fighting phase's All-Out controller (BP_BtlAlloutController_C, a new
+// one for every All-Out Attack, SetupAlloutAttack; destroyed at its end, FinalizeAlloutAnnihilation) has played its
+// finishing cut. BP_BtlPhaseFighting "On Switch Allout Cut 2" calls PlayAllout2ndSequence, which sets "LS Before
+// Shuffle Actor", only when the attack leaves no enemy (CheckGeneralAttackAnnihilation, decided by DoGeneralAttack as
+// the attack starts); Shuffle Time, where the battle has it (CheckShaffleTimeAllowed), and the results come after.
+inline bool allout_finishing() {
+  ue::UObject* c = battle_core();
+  ue::UObject* phase = c ? ue::get<ue::UObject*>(c, "CurrentPhase") : nullptr;
+  ue::UObject* ctrl = phase ? ue::get<ue::UObject*>(phase, "AlloutController") : nullptr;
+  return ctrl && ue::get<ue::UObject*>(ctrl, "LS Before Shuffle Actor") != nullptr;
+}
 }  // namespace p3a::screens
