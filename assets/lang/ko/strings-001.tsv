@@ -510,7 +510,7 @@ The Shadow sounds and the controller layer's tick.	섀도 소리와 컨트롤러
 How loud the wall tones are.	벽 음의 크기.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	벽이 소리를 내기 시작하는 거리. 짧게 하면 가까운 벽에서만 음이 납니다.
 How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	한쪽 트리거가 다른 쪽을 기다리는 시간. 이 시간이 지나면 게임 자체의 입력으로 처리됩니다. 길게 하면 모드의 컨트롤러 레이어를 열기 쉬워집니다.
-Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. Not in battle, story scenes or conversations.	메뉴가 더 빨리 열리고 닫히고 바뀌어서 키 입력을 더 빨리 받습니다. 게임의 메뉴 소리는 그대로 재생됩니다. 전투, 스토리 장면, 대화에는 적용되지 않습니다.
+Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	메뉴가 더 빨리 열리고 닫히고 바뀌어서 키 입력을 더 빨리 받습니다. 게임의 메뉴 소리는 그대로 재생됩니다. 전투에서는 명령 휠과 목록이 열릴 때만 적용되며, 행동에는 적용되지 않습니다. 스토리 장면과 대화에는 적용되지 않습니다.
 Menus say their keys after their first line. Off, F1 still reads them.	메뉴가 첫 줄 다음에 키를 알려 줍니다. 꺼도 F1로 들을 수 있습니다.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	게임이 음성으로 들려주는 대사를 화면 낭독기가 어떻게 할지: 침묵, 화자 이름만, 또는 소리 내어 읽기. 음성이 없는 대사는 항상 읽습니다.
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	대사가 끝나고 입력을 기다린다는 것을 알리는 방법: 다음이라는 말, 게임 소리 중 하나, 또는 없음.

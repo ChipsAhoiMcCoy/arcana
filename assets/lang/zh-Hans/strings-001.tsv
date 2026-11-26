@@ -510,7 +510,7 @@ The Shadow sounds and the controller layer's tick.	暗影的声音和手柄层�
 How loud the wall tones are.	墙壁音调的音量。
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	墙壁在多远时开始发声。越短，只有近处的墙才有音调。
 How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	一个扳机键等待另一个多久，超时就算作游戏自己的按键。越长越容易打开模组的手柄层。
-Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. Not in battle, story scenes or conversations.	菜单打开、关闭和切换更快，能更早接受你的按键。游戏的菜单音效仍会播放。战斗、剧情场景和对话中无效。
+Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	菜单打开、关闭和切换更快，能更早接受你的按键。游戏的菜单音效仍会播放。战斗中只在指令轮盘和列表打开时加速，行动不会加速。剧情场景和对话中无效。
 Menus say their keys after their first line. Off, F1 still reads them.	菜单在第一行之后说出它的按键。关闭时，F1 仍可读出按键。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	读屏软件如何处理游戏配音的台词：保持安静、只说出说话的人，或朗读出来。无配音的台词总会朗读。
 What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing.	用什么提示一句台词已结束并在等你：说出“下一句”、游戏的某个音效，或不提示。

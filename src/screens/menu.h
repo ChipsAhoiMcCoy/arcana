@@ -86,6 +86,8 @@ class MenuScreen : public Screen, public ui::Screen {
   // transition, a list's slide) is the game at work: the menu speed runs only then (menuspeed.cpp), so what the game
   // times while a menu sits idle (Igor's and the shopkeepers' idle lines) keeps its pace.
   const char* busy();   // what the game is at, or null while the menu waits for the player (the log's reason)
+  // Opened and not yet said: the menu has not taken input since it opened (a battle list's fly-in).
+  bool opening() const { return entry_due_; }
   // Whether the menu has the keys now (false: something of the game's is over it, a term's page, a prompt).
   virtual bool holds_keys() { return true; }
   // A key down going to the game while it has the keys (a screen that reads what the game does with it).

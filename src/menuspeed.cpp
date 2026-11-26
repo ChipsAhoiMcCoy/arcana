@@ -7,6 +7,7 @@
 #include "settings.h"
 #include "watch.h"
 #include "world.h"
+#include "screens/battle_state.h"
 #include "screens/camp.h"
 #include "screens/menu.h"
 #include "screens/screen.h"
@@ -35,10 +36,33 @@ static float scale_wanted() {
   return i > 0 && i < (int)std::size(kScale) ? kScale[i] : 1.f;
 }
 
+// In a battle, only a menu opening before it has ever taken a key: nothing acts then (a turn's actions start from a
+// confirm, and the player has not had the keys yet), so the menu's fly-in, and the camera and idle world meanwhile,
+// are all the scale speeds; the characters keep the game's time (keep_characters). It is off from the frame the menu
+// takes input, before any press. The end of an action before the next turn's wheel (~1 s) is the action's own.
+//   The wheel: a turn opens it with its keys unbound for TopUIDelayFrame / 30 s of game time (10 frames;
+//   BP_BtlGuiComponent SetBindTimer, then SetState(1)); BP_BtlGuiBaseActor holds BindFlag until its timer binds them.
+//   A list (skills, items, Theurgy, targets, ...): its MenuScreen opening and not yet said (the list's slide-in; the
+//   Theurgy list's InAnimEnd is the end of its 0.9 s opening timeline).
+static bool battle_menu_opening() {
+  using namespace screens;
+  g_why = "battle";
+  g_busy = "";
+  if (gui_state() == 0) return false;
+  if (auto* m = dynamic_cast<MenuScreen*>(current())) {
+    if (std::string_view(m->id()).starts_with("battle_") && m->opening()) { g_why = m->id(); g_busy = "opening"; return true; }
+    return false;
+  }
+  static Finder top{"BP_BtlTopUI_C"};
+  UObject* t = gui_state() == 1 ? top.get() : nullptr;
+  if (t && get_bool(t, "isStateInit") && get_bool(t, "BindFlag")) { g_why = "battle wheel"; g_busy = "keys not bound yet"; return true; }
+  return false;
+}
+
 // Whether a menu is up that the scale may speed (header).
 static bool menu_up() {
   static const int battle = watch::want("BtlCoreComponent");
-  if (watch::get(battle)) { g_why = "battle"; return false; }
+  if (watch::get(battle)) return battle_menu_opening();
   if (world::scene_playing()) { g_why = "story scene"; return false; }
   if (msg::current().open) { g_why = "message window"; return false; }
   // The game pauses itself while its window is minimized (the world's time stands still, the camp root's timer with it):

@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Menus
+- Menu animation speed now works in battle too, only while a battle menu opens and before it takes your keys. The command wheel at the start of each turn takes your keys after about 20 ms instead of a third of a second, and the Theurgy list is read after about 60 ms instead of almost a second (at 16 times). Attacks, skills, Theurgy cut-ins and the enemies' turns keep their normal speed, and so do the characters on screen. The wait at the end of an action, before the next member's turn, is the action's own and is unchanged.
 - A fusion's animation can be skipped, and the mod now says how: the game's skip takes two presses. Tab (the Menu button) pauses the animation and shows a skip prompt, now read as "Paused. Tab skips, Escape resumes."; Tab again skips to the new Persona, Escape goes on ("Resumed."). The first press was silent before, so the skip seemed not to work. With scene descriptions set to wait, skipping while a description held the scene left it standing still until Enter: the description now closes with the skip.
 - Restaurants and other order lists (Hagakure, Wilduck and the like) say each dish's price and, with the list's heading, how much money you have ("Hagakure Ramen. What should I order...? You have 360 yen.", "Pork ramen, 900 yen, 1 of 1"). The screen showed both; neither was said.
 - Spending all your money is said too ("Spent 110 yen" with 110 yen in your wallet): a purchase that left 0 yen was silent.

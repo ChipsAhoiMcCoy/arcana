@@ -482,7 +482,7 @@ inline constexpr Tr kHelpSoundVolume{"The Shadow sounds and the controller layer
 inline constexpr Tr kHelpWallVolume{"How loud the wall tones are."};
 inline constexpr Tr kHelpWallRange{"How far away a wall starts to sound. Shorter keeps the tones for walls close by."};
 inline constexpr Tr kHelpTriggerDelay{"How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open."};
-inline constexpr Tr kHelpMenuSpeed{"Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. Not in battle, story scenes or conversations."};
+inline constexpr Tr kHelpMenuSpeed{"Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations."};
 inline constexpr Tr kHelpEntryHints{"Menus say their keys after their first line. Off, F1 still reads them."};
 inline constexpr Tr kHelpVoicedLines{"What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read."};
 inline constexpr Tr kHelpVoiceEndSound{"What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing."};
