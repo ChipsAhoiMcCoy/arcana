@@ -1,2 +1,2 @@
 #scene LS_BtlEvent717_999
-0.100	9.115	00.mp3	Red flames burst over Jin's chest. He staggers and drops his briefcase, sinks to his knees, then falls face down on the striped floor beside it.
+0.100	5.327	00.mp3	Flames burst over Jin's chest. He drops his briefcase, kneels, and falls face down.

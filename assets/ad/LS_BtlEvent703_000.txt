@@ -1,2 +1,2 @@
 #scene LS_BtlEvent703_000
-0.100	20.528	00.mp3	The Shadow sits enthroned on a great chair: a fat, robed body with a small round masked face peering out of its chest, and rising above it a slender, pale woman's torso with no head, a branching ornament where her head would be, one hand resting on the face below. Two white cross-shaped figures stand on either side of the throne.
+0.100	4.784	00.mp3	The Shadow sits on a great throne, a headless woman rising from its robed body.

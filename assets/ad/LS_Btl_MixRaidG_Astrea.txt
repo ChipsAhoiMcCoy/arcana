@@ -1,0 +1,3 @@
+#scene LS_Btl_MixRaidG_Astrea
+0.300	2.786	00.mp3	Helel spreads white wings. Satan bares his fangs.
+3.300	2.309	01.mp3	Aigis glares. A sphere of light swells.

@@ -1,2 +1,2 @@
 #scene LS_BtlEvent715_920
-0.100	10.338	00.mp3	Takaya staggers, his Persona hanging in the green sky above him. He flings his arms wide, falls back, and lies spread out on the roadway, Jin face down beside him.
+0.100	4.940	00.mp3	Takaya staggers, flings his arms wide and falls back on the road, beside Jin.

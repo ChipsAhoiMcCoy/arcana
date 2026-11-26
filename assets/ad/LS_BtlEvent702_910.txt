@@ -1,2 +1,2 @@
 #scene LS_BtlEvent702_910
-0.100	8.053	00.mp3	The queen Shadow staggers, flinging out her arms and her sceptre, then pitches forward and sprawls face down on the floor, her cape spread over her.
+0.100	3.935	00.mp3	The queen Shadow staggers, flings out her arms, and sprawls face down.

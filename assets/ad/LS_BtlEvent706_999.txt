@@ -1,2 +1,2 @@
 #scene LS_BtlEvent706_999
-0.100	9.668	00.mp3	Lightning crackles over the Shadow and bursts all around it. Its shaggy head sags as sparks drift off it, and its body of cables crumbles away into black flakes.
+0.100	4.840	00.mp3	Lightning bursts around the Shadow, and its body of cables crumbles into black flakes.

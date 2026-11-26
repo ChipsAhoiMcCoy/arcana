@@ -1,2 +1,2 @@
 #scene LS_BtlEvent735_320
-0.100	9.994	00.mp3	Yukari draws her Evoker and lifts it before her face. She snaps it open, pushes a glowing red cartridge inside, closes it, and raises it again, her eyes set.
+0.100	4.162	00.mp3	Yukari loads a glowing red cartridge into her Evoker and raises it.

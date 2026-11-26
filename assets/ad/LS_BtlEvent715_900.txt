@@ -1,2 +1,2 @@
 #scene LS_BtlEvent715_900
-0.100	7.330	00.mp3	Takaya staggers, then flings his arms wide with his face turned up to the sky, falls back and lies spread out on the roadway.
+0.100	4.172	00.mp3	Takaya staggers, flings his arms wide and falls back onto the roadway.

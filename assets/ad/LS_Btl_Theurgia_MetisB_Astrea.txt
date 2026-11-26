@@ -1,0 +1,3 @@
+#scene LS_Btl_Theurgia_MetisB_Astrea
+8.100	3.295	00.mp3	Psyche spreads her wings. Metis leaps, trailing fire.
+11.700	1.896	01.mp3	Metis lands, fists raised.

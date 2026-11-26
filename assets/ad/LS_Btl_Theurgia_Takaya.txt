@@ -1,0 +1,2 @@
+#scene LS_Btl_Theurgia_Takaya
+3.250	1.418	00.mp3	Takaya spreads his arms.

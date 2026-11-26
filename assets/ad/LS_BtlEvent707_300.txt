@@ -1,2 +1,2 @@
 #scene LS_BtlEvent707_300
-0.100	8.312	00.mp3	The caged woman sways in the air, then sinks to the ground. Her cage settles with its spikes splayed, and she bows her head, slumped inside it.
+0.100	3.660	00.mp3	The caged woman sinks to the ground and slumps inside her cage.

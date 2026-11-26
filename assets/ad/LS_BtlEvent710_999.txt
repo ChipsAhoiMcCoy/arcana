@@ -1,2 +1,2 @@
 #scene LS_BtlEvent710_999
-0.100	10.972	00.mp3	Blue light swirls up around your feet. You raise one hand high above your head, your face calm, and a beam of light shoots up from where you stand toward the orb above, until everything turns white.
+0.100	7.664	00.mp3	Blue light swirls at your feet. You raise one hand, calm, and a beam of light shoots up toward the orb until everything turns white.

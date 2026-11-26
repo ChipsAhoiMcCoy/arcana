@@ -1,2 +1,2 @@
 #scene LS_BtlEvent719_999
-0.100	11.794	00.mp3	Seen from above, the roadway is empty but for a dark stain where the Shadow was. Takaya stands off to one side; you and Shinjiro, his axe over his shoulder, stand together a few steps away.
+0.100	5.211	00.mp3	The Shadow is gone, leaving a dark stain. Takaya stands apart from you and Shinjiro.

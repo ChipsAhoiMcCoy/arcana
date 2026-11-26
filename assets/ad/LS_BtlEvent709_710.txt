@@ -1,2 +1,2 @@
 #scene LS_BtlEvent709_710
-0.100	7.412	00.mp3	The Nyx Avatar draws a long golden sword and swings it low across the floor, trailing a streak of purple and pink fire.
+0.100	3.849	00.mp3	The Nyx Avatar swings a golden sword low, trailing purple fire.

@@ -1,2 +1,2 @@
 #scene LS_BtlPc04FirstSummon
-0.100	10.067	00.mp3	Akihiko raises his Evoker to his temple with a gloved hand, his gaze hard and steady. Then he lets his eyes fall shut and stands still for a moment, focused.
+0.100	4.946	00.mp3	Akihiko raises his Evoker to his temple, gaze hard, then closes his eyes.

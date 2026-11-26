@@ -1,0 +1,3 @@
+#scene LS_Btl_MixRaidC_Astrea
+0.300	1.435	00.mp3	Aigis raises her arms.
+1.950	2.559	01.mp3	Black Frost bounces beside King Frost's scepter.

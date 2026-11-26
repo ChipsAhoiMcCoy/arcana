@@ -1,2 +1,2 @@
 #scene LS_BtlEvent710_000
-0.100	16.480	00.mp3	High above, among great tumbling blocks of dark blue stone, hangs a glowing golden orb marked with a jagged line, cradled in a web of pale, ghostly figures whose clawed hands reach out on every side. You stand alone on the ground below it, your sword in hand.
+0.100	7.314	00.mp3	High above, among tumbling stone blocks, a golden orb hangs in a web of ghostly figures. You stand below, alone.

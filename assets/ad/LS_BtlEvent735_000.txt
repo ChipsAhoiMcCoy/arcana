@@ -1,2 +1,2 @@
 #scene LS_BtlEvent735_000
-0.100	20.158	00.mp3	Deep in a purple hall striped with glowing light, the Shadow stands alone: a tall pale rock like a twisted tooth, a little castle of towers and turrets perched on top of it, and on its highest tower a white masked face, crowned in spikes. Glowing eyes open in the walls around it. You and your friends stand facing it, weapons ready.
+0.100	3.923	00.mp3	In a hall, the Shadow: a pale rock crowned with a castle. You face it.

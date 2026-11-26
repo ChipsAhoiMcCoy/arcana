@@ -1,2 +1,2 @@
 #scene LS_BtlEvent717_000
-0.100	14.715	00.mp3	In a pale hall of Tartarus, its walls carved with rings and its floor striped black and white, Jin stands alone in his green coat, a grenade in one hand and his metal briefcase in the other. You face him, your sword lowered at your side.
+0.100	5.362	00.mp3	In a hall of Tartarus, Jin stands alone, grenade and briefcase in hand, facing you.

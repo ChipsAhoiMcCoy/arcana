@@ -1,2 +1,2 @@
 #scene LS_BtlEvent704_999
-0.100	9.868	00.mp3	The giant heart Shadow writhes, its glassy arms thrashing. It topples and crashes onto the carpet, and its body crumbles away into a cloud of black flakes.
+0.100	4.681	00.mp3	The heart Shadow writhes, crashes onto the carpet, and crumbles into black flakes.

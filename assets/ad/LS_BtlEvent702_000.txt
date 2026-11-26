@@ -1,2 +1,2 @@
 #scene LS_BtlEvent702_000
-0.100	20.038	00.mp3	At the foot of the great staircase stand the two Shadows: the round-bodied queen in her cape, a fan of plumes behind her head, her sceptre raised, and the tall king, his shield-shaped body marked with a cross, a sword in his hand. The view swings back past you and your friends to Fuuka's Persona towering over her glass dome, arms spread wide.
+0.100	6.076	00.mp3	A plumed queen and a sword-bearing king wait at the foot of the stairs, Fuuka's Persona looming behind you.

@@ -1,0 +1,2 @@
+#scene LS_Btl_MixRaidA_Astrea
+0.400	2.380	00.mp3	Orpheus and Apsaras dance beside Aigis.

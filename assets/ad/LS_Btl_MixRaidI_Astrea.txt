@@ -1,0 +1,3 @@
+#scene LS_Btl_MixRaidI_Astrea
+0.300	3.763	00.mp3	Aigis raises her hand. Two winged Personas swoop in beside her.
+5.000	2.880	01.mp3	A grinning imp leers; a winged woman blows a kiss.

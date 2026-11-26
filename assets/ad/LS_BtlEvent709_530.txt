@@ -1,2 +1,2 @@
 #scene LS_BtlEvent709_530
-0.100	8.692	00.mp3	The Nyx Avatar's wings blaze red, patterned with glowing eyes. It holds its long glowing sword low as your party stands ready beneath it.
+0.100	2.702	00.mp3	The Avatar's wings blaze red with glowing eyes.

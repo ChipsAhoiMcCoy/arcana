@@ -1,2 +1,2 @@
 #scene LS_BtlEvent715_000
-0.100	17.369	00.mp3	On the Moonlight Bridge, Takaya stands on the roadway, shirtless, his arms tattooed, a revolver in his jeans. Jin steps up beside him in his green coat, a metal briefcase in hand. Behind them a huge Shadow hangs upside down before the full moon. You and Aigis face them.
+0.100	5.295	00.mp3	On the Moonlight Bridge, Takaya and Jin face you and Aigis, a Shadow hanging behind them.

@@ -1,2 +1,2 @@
 #scene LS_BtlEvent701_999
-0.100	10.462	00.mp3	The Shadow throws back her head and flings out her arms, her paper hair whipping around her. She crumples forward as her body breaks apart into black flakes, the strips of paper scattering.
+0.100	4.186	00.mp3	The Shadow flings out her arms and breaks apart into black flakes and paper.

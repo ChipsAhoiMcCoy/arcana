@@ -1,2 +1,2 @@
 #scene LS_BtlPc09FirstSummon
-0.100	10.839	00.mp3	Koromaru crouches low with his forelegs stretched out in front of him, the little winged harness on his back holding his Evoker. He lowers his head and closes his eyes, gathering himself.
+0.100	4.951	00.mp3	Koromaru crouches low, his Evoker on his harness, and closes his eyes to summon.

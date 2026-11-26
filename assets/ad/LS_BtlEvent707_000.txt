@@ -1,2 +1,2 @@
 #scene LS_BtlEvent707_000
-0.100	17.227	00.mp3	In front of Iwatodai Station, two Shadows wait: a tall woman in a white gown, her face blue and a rose in her raised hand, standing in a floating cage of iron spikes, and a small beast of grey metal plates on four legs. You and Junpei, his spiked bat raised, face them.
+0.100	5.101	00.mp3	At Iwatodai Station, a caged woman in white and a metal beast face you and Junpei.

@@ -1,2 +1,2 @@
 #scene LS_BtlEvent708_710
-0.100	9.040	00.mp3	A statue on the roadway lies broken in red shards. Above, the hanging giant jolts as blue sparks run over him, and sways on his chains.
+0.100	2.833	00.mp3	A statue lies shattered; the hanging giant jolts.

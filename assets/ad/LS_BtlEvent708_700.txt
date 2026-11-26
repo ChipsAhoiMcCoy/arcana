@@ -1,2 +1,2 @@
 #scene LS_BtlEvent708_700
-0.100	5.420	00.mp3	Blue sparks crackle around the hanging giant. He sways on his chains, his arms dangling.
+0.100	2.417	00.mp3	Sparks crackle; the hanging giant sways.

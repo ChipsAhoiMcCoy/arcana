@@ -1,2 +1,2 @@
 #scene LS_BtlEvent725_999
-0.100	8.082	00.mp3	Elizabeth staggers, her head thrown back, then sinks to her knees, her book held at her side and one gloved hand on the floor, her eyes closed.
+0.100	3.094	00.mp3	Elizabeth staggers and sinks to her knees, eyes closed.

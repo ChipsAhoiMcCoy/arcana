@@ -1,2 +1,2 @@
 #scene LS_BtlEvent718_000
-0.100	12.565	00.mp3	At the top of Tartarus, in a dark hall of pale pillars with wide stairs behind him, Takaya stands alone, shirtless and tattooed, his long hair loose. You face him across the black floor, your sword lowered.
+0.100	4.949	00.mp3	At the top of Tartarus, Takaya stands alone, shirtless and tattooed, facing you.

@@ -654,6 +654,10 @@ void tick() {
     // over it (open_box: one press goes on from both). Played over, any scene's voiced line that has ended leaves
     // such a gap. An unvoiced line is read by the screen reader: its window stays a line spoken.
     if ((g_battle || over) && w.open && w.blocking && w.voice_done && !voice::playing()) sc.talk = false;
+    // Played over, a battle's scene lasts a few seconds and the fight goes on: a line its script shows beside it
+    // (unvoiced: "Priestess defeated" with her fall) held its description until the scene had ended, and it was
+    // never said (seen live, 2026-11-26, 701_999). Only a voice holds it; the narrator pauses for one.
+    if (g_battle && over) sc.talk = voice::playing();
     if (c.time <= g_opening) sc.talk = true;   // its opening (music, fade in) has not played yet: see scene_opening
     if (over) {
       sc.queue = true;

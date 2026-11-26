@@ -1,2 +1,2 @@
 #scene LS_BtlEvent701_000
-0.100	25.129	00.mp3	The Shadow sits on the floor of the front car, leaning back on her hands, her legs spread wide toward you, one black, one white, her pale skirts pooled open between them. She is a woman split down the middle, black and white, bare to the waist, B and J marked on her chest, a magenta mask over her eyes. Her hair bursts out on every side in long strips of printed paper, tipped in red, rippling as if in a gale. You stand facing her, sword in hand.
+0.100	4.229	00.mp3	On the car floor sits the Shadow, a woman split black and white, facing you.

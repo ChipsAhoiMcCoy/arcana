@@ -1,0 +1,4 @@
+#scene LS_Btl_MixRaidJ_Astrea
+0.300	2.779	00.mp3	Aigis's eyes glow red as two Personas appear.
+3.300	3.324	01.mp3	One, in a wide hat, rains fiery orbs on the enemy.
+7.000	3.453	02.mp3	The other hurls a blazing spear. The enemy cowers in fear.
