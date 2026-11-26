@@ -115,3 +115,12 @@ TEST_CASE("bmd stops at the end of a cut-off file") {
   b[0x1B] = 0x10;                          // a dialog count far beyond the file
   CHECK_FALSE(parse(b.data(), b.size()).ok);
 }
+
+TEST_CASE("var_slot: a variable function's one argument names its slot") {
+  CHECK(var_slot(Function{2, 1, {0x0101}, 0}) == 0);   // 01 01
+  CHECK(var_slot(Function{2, 1, {0x0102}, 0}) == 1);   // 02 01
+  CHECK(var_slot(Function{2, 1, {0x0103}, 0}) == 2);
+  CHECK(var_slot(Function{2, 1, {0x0201}, 0}) == 1);   // 01 02: the high byte
+  CHECK(var_slot(Function{4, 1, {0x0101}, 0}) == -1);  // another table
+  CHECK(var_slot(Function{2, 1, {}, 0}) == -1);        // no argument
+}

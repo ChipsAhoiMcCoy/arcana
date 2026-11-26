@@ -3,6 +3,7 @@
 // screens read the numbers, these say them.
 #include <cstdint>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 
@@ -43,4 +44,7 @@ std::string shop_mode_name(int mode);
 // Why a buy row cannot be bought now: nothing left of its stock, the player carries the maximum (99), or it costs
 // more than the player has (`yen` below 0: not known); else just "not now".
 const char* cannot_buy_reason(int stock, int have, int price, int yen);
+// A battle banner (jyokyohelp_*, by its message name) that repeats what is said already: an ailment taken ("Inflicted
+// with Freeze!": the unit's own line says who), and the blank and test entries.
+bool banner_said_elsewhere(std::string_view name);
 }  // namespace p3a::core

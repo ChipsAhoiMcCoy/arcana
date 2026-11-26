@@ -226,13 +226,6 @@ class BattleScreen : public Screen {
     out.page = built ? page : nullptr;
     return true;
   }
-  // A variable function's slot (BMD function table 2, its one argument stored as two bytes each plus 1: 01 01 slot 0,
-  // 02 01 slot 1).
-  static int var_slot(const core::bmd::Function& f) {
-    if (f.table != 2 || f.args.empty()) return -1;
-    int a = f.args[0] & 0xFF, b = f.args[0] >> 8;
-    return (a == 1 ? b : a) - 1;
-  }
   // The name a banner's slot 0 holds, from the banner's own genus, ID and flags as SetVariableJyokyoHelp reads them:
   // the unit of that side with that unit id, a Persona; "" when the mod cannot tell.
   std::string help_name(UObject* btl, UObject* help) {
@@ -263,7 +256,7 @@ class BattleScreen : public Screen {
     for (auto it = pg.functions.rbegin(); it != pg.functions.rend(); ++it) {
       if (it->pos > pg.text.size()) continue;
       std::string v;
-      if (int slot = var_slot(*it); slot == 0) v = help_name(btl, help);
+      if (int slot = core::bmd::var_slot(*it); slot == 0) v = help_name(btl, help);
       else if (slot == 1 || slot == 2) {
         int n = get<int32_t>(help, slot == 1 ? "var1" : "var2");
         if (n == -1) return {};
@@ -275,12 +268,6 @@ class BattleScreen : public Screen {
       pg.text.insert(it->pos, v);
     }
     return core::clean_text(core::bmd::plain(pg));
-  }
-  // The banners that repeat what is said already: an ailment taken ("Inflicted with Freeze!": the unit's own line says
-  // who), and the blank and test entries.
-  static bool help_said_elsewhere(const std::string& name) {
-    return name.starts_with("jyokyohelp_SET_BAD_") || name.starts_with("jyokyohelp_BLANK") ||
-           name.starts_with("jyokyohelp_LOCALIZATION");
   }
   void watch_help(UObject* btl) {
     std::set<WeakObj::Key> live;
@@ -297,7 +284,7 @@ class BattleScreen : public Screen {
       if (!file) continue;   // the file not read yet: a later tick
       helps_said_.insert(key);
       std::string name = d.dialog >= 0 && d.dialog < (int)file->dialogs.size() ? file->dialogs[d.dialog].name : "";
-      if (help_said_elsewhere(name)) continue;
+      if (core::banner_said_elsewhere(name)) continue;
       std::string text = msg::page_string(d.page);   // rendered and cleaned
       // The page the game built renders to nothing (no page renderer in this build): the file's page, filled in.
       bool from_file = !core::has_words(text);

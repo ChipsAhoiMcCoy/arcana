@@ -22,4 +22,7 @@ struct File { std::vector<Dialog> dialogs; std::vector<std::string> speakers; bo
 File parse(const uint8_t* data, size_t size);
 // One page's text, functions removed and line breaks turned into spaces.
 std::string plain(const Page& p);
+// A variable function's slot (function table 2, its one argument stored as two bytes each plus 1: 01 01 slot 0,
+// 02 01 slot 1), or -1 for any other function.
+int var_slot(const Function& f);
 }  // namespace p3a::core::bmd

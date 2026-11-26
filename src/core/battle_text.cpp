@@ -118,4 +118,9 @@ const char* cannot_buy_reason(int stock, int have, int price, int yen) {
   return !stock ? strings::kOutOfStock : have >= 99 ? strings::kCarryingMax
        : price > 0 && yen >= 0 && yen < price ? strings::kNotEnoughYen : strings::kCannotBuy;
 }
+
+bool banner_said_elsewhere(std::string_view name) {
+  return name.starts_with("jyokyohelp_SET_BAD_") || name.starts_with("jyokyohelp_BLANK") ||
+         name.starts_with("jyokyohelp_LOCALIZATION");
+}
 }  // namespace p3a::core

@@ -100,4 +100,10 @@ std::string plain(const Page& p) {
   }
   return out;
 }
+
+int var_slot(const Function& f) {
+  if (f.table != 2 || f.args.empty()) return -1;
+  int a = f.args[0] & 0xFF, b = f.args[0] >> 8;
+  return (a == 1 ? b : a) - 1;
+}
 }  // namespace p3a::core::bmd

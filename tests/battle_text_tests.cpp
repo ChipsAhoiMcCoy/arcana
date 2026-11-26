@@ -145,3 +145,12 @@ TEST_CASE("battle_text: Analyze's affinity panel") {
   CHECK(panel({0, 0, 0, 4, 0, 0, 0, 0, 1, 6}) == V{"Weak to Fire", "Nulls Dark", "Unknown: Almighty", "The rest normal"});
   CHECK(panel({0, 0, 0, 0, 0, 0, 0, 0, 0, 6}) == V{"Unknown: Almighty", "The rest normal"});
 }
+
+TEST_CASE("banner_said_elsewhere: ailments taken, blank and test banners") {
+  using p3a::core::banner_said_elsewhere;
+  CHECK(banner_said_elsewhere("jyokyohelp_SET_BAD_FREEZE"));
+  CHECK(banner_said_elsewhere("jyokyohelp_BLANK"));
+  CHECK(banner_said_elsewhere("jyokyohelp_LOCALIZATION_TEST"));
+  CHECK_FALSE(banner_said_elsewhere("jyokyohelp_BOSS015"));
+  CHECK_FALSE(banner_said_elsewhere(""));
+}
