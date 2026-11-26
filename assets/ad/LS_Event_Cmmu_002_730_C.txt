@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_002_730_C
-0.170	5.649	00.mp3	In the dorm kitchen, Yukari works a frying pan at the stove while you stand beside her at the counter.
-2.700	5.246	01.mp3	Later, you and Yukari sit across from each other at the dining table, your plates in front of you.
+0.170	0.630	00.mp3	Kitchen.
+1.200	1.196	01.mp3	You cook with Yukari.
+2.700	0.843	02.mp3	Dinner together.

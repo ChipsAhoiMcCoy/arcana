@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_210_200_B", "title": "The Nyx Avatar rises again", "cues": [
-  {"at": 1.25, "text": "The Nyx Avatar hangs slumped above the platform, wings drooping, while you and the team spread out beneath it, watching."},
-  {"at": 6.2, "text": "It slowly straightens and rises to its full height before the moon, wings opening, its long blade in hand. With a sweep of its wings it scatters feathers and hovers over the team once more."}
-]}
+{"movie": "LS_Event_Main_210_200_B", "title": "The Nyx Avatar rises again", "cues": [{"at": 1.25, "text": "The Nyx Avatar hangs slumped above you and the team."}, {"at": 6.2, "text": "It rises to its full height, wings opening, blade in hand, and sweeps feathers over the team."}]}

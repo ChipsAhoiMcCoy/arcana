@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_380_C
-0.050	7.826	00.mp3	Wakatsu, the set-meal restaurant. You and Yukari sit across a table by the window, the bowls and trays of your meal in front of you.
+0.050	0.943	00.mp3	At Wakatsu.

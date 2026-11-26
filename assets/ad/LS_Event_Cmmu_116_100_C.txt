@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_116_100_C
-0.030	6.412	00.mp3	Paulownia Mall, Fountain Square. Nozomi sits on a bench and gets to his feet as you come up, looking sheepish.
+0.030	1.046	00.mp3	Nozomi stands.

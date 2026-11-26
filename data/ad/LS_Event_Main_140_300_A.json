@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_140_300_A",
- "title": "A girl on the pier",
- "cues": [
-  {
-   "at": 0.6,
-   "text": "At the end of a wooden pier on the Kirijo family's private beach, a girl in a long, ruffled dress stands alone, looking out to sea. The wind lifts the hem of her dress. Her fingers are jointed like a machine's, her neck is jointed too, and round devices cover her ears under her short hair. At last she turns her head, eyes closed, then opens them and looks straight ahead."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_300_A", "title": "A girl on the pier", "cues": [{"at": 0.6, "text": "At the end of a pier on the Kirijo family's private beach, a girl in a long ruffled dress stands alone, looking out to sea. Her fingers and neck are jointed like a machine's. At last she turns and looks straight ahead."}]}

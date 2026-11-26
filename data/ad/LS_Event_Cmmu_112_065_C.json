@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_065_C",
- "title": "Bebe: a plan",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Bebe walk up to Azuki Arai, the sweets shop in the Iwatodai Strip Mall, school bags in hand, and stop outside it. Bebe lowers his head."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_065_C", "title": "Bebe: a plan", "cues": [{"at": 0.0, "text": "Outside Azuki Arai."}, {"at": 2.72, "text": "Bebe looks down."}]}

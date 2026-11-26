@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_200_260_C",
- "title": "Ryoji says goodbye",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "The dorm lounge. You come in with Ryoji to where the others sit waiting, Koromaru among them."
-  },
-  {
-   "at": 18.2,
-   "text": "Ryoji turns and walks toward the front door, then stops and looks back at everyone with a smile. Ryoji goes out through the front door."
-  }
- ]
-}
+{"movie": "LS_Event_Main_200_260_C", "title": "Ryoji says goodbye", "cues": [{"at": 0.1, "text": "You come in with Ryoji."}, {"at": 18.2, "text": "Ryoji walks toward the front door, stops, looks back smiling, then goes out."}]}

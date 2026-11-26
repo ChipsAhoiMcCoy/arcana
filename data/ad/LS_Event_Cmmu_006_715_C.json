@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_715_C",
- "title": "Reading with Fuuka",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The lounge of the dorm. You and Fuuka sit on benches facing each other across a low table, you reading the science fiction novel she has lent you while she reads her own."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_715_C", "title": "Reading with Fuuka", "cues": [{"at": 1.86, "text": "You read."}]}

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_003_720_C",
- "title": "The last volume",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The dorm lounge. You and Junpei sit across a low table from each other, reading the last volumes of his baseball manga."
-  },
-  {
-   "at": 3.87,
-   "text": "Later, the finished volumes lie on the table."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_003_720_C", "title": "The last volume", "cues": [{"at": 0.0, "text": "You read manga."}, {"at": 3.87, "text": "Later, the finished volumes lie on the table."}]}

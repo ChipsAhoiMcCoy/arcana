@@ -1,3 +1,4 @@
 #scene LS_Event_Extr_410_050_C
-0.000	6.272	00.mp3	Tartarus's entrance hall. All six of you stand together in new combat gear, each outfit a little different.
-22.330	10.593	01.mp3	Fuuka closes her eyes. Her Persona rises around her: a towering figure of a woman with her arms spread wide, the lower half of her a great dome that closes over Fuuka.
+0.000	0.865	00.mp3	Tartarus.
+5.830	1.385	01.mp3	All six wear new gear.
+22.330	2.947	02.mp3	Fuuka's Persona rises, a dome closing over her.

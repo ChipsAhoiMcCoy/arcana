@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_390_C
-0.000	6.051	00.mp3	You and Fuuka sit together at a table in a cake shop's café, other customers at the tables around you.
+1.330	1.815	00.mp3	You and Fuuka sit in a cake shop.

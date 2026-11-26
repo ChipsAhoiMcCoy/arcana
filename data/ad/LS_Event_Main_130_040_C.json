@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_130_040_C", "title": "Pharos gets a name", "cues": [
-{"at": 0.05, "text": "In your dorm room, you lie asleep in bed."},
-{"at": 2.90, "text": "You open your eyes and push yourself up on one elbow. The boy in striped pyjamas stands beside your bed."},
-{"at": 12.05, "text": "Pharos breaks apart into flecks and is gone."}
-]}
+{"movie": "LS_Event_Main_130_040_C", "title": "Pharos gets a name", "cues": [{"at": 0.05, "text": "In your dorm, you lie asleep."}, {"at": 2.9, "text": "A boy stands beside you."}, {"at": 12.05, "text": "Pharos breaks apart into flecks and is gone."}]}

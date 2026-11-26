@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_600_C",
- "title": "A film with Yuko",
- "cues": [
-  {
-   "at": 1.0,
-   "text": "The cinema at Port Island Station. From the snack counter in the lobby, you and Yuko go in and sit side by side in the audience while the film plays."
-  },
-  {
-   "at": 6.4,
-   "text": "When the film ends, you and Yuko are back in the lobby by the snack counter."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_600_C", "title": "A film with Yuko", "cues": [{"at": 1.0, "text": "At the cinema, you and Yuko watch the film."}, {"at": 6.4, "text": "Back in the lobby."}]}

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_600_580_C",
- "title": "Summer festival with Aigis",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The summer festival at Naganaki Shrine, crowded with people and stalls. You walk along the stalls to a mask stand, where Mitsuru and Aigis stand looking at the masks."
-  },
-  {
-   "at": 15.4,
-   "text": "Mitsuru turns and moves off along the stalls, and Aigis follows her."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_600_580_C", "title": "Summer festival with Aigis", "cues": [{"at": 0.0, "text": "The festival."}, {"at": 2.05, "text": "Mitsuru and Aigis look at masks."}, {"at": 15.4, "text": "Mitsuru turns and moves off along the stalls, and Aigis follows her."}]}

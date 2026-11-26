@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_900_049_C
-0.030	7.358	00.mp3	In the entrance hall of Tartarus, your friends stand by the stairs talking, while Elizabeth waits apart from them, watching you.
-6.330	5.542	01.mp3	You walk over to Elizabeth, who stands beside the Velvet Room door holding a large book in front of her.
+0.030	2.222	00.mp3	In Tartarus, Elizabeth watches you.
+4.830	2.387	01.mp3	You walk to Elizabeth by the Velvet Room door.

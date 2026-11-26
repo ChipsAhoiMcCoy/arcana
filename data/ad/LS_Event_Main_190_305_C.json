@@ -4,11 +4,11 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Back inside the Godaigo Inn, you and Akihiko walk along a corridor."
+   "text": "You and Akihiko walk the corridor."
   },
   {
    "at": 3.5,
-   "text": "Something hits the floor with a thud nearby. You and Akihiko turn toward the sound."
+   "text": "Something thuds. You both turn."
   }
  ]
 }

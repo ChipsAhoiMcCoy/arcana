@@ -1,7 +1,5 @@
 #scene LS_Event_Main_190_030_C
-0.100	12.594	00.mp3	Later, in the lounge, the sushi platters on the table are empty. You and the others sit on the sofas around it with Mitsuru's father, while his aides in suits stand by the windows. A camera lies on the table.
-4.670	5.517	01.mp3	Junpei crosses the room to one of the men in suits by the windows and holds out his camera to him.
-12.150	14.928	02.mp3	Everyone lines up in front of the windows for the photo: Mitsuru's father at one end, then Mitsuru, Fuuka, Akihiko, Yukari, Junpei, and you at the other end, with Ken and Koromaru in front. The man in the suit raises the camera.
-18.100	5.033	03.mp3	Junpei reaches an arm behind Akihiko's head and holds up two fingers beside it.
-21.500	20.404	04.mp3	The camera flashes. The photo: Koromaru has leapt up barking, and everyone flinches. Mitsuru has a hand to her forehead and her eyes shut, Ken squeezes one eye closed, Fuuka and Yukari stare, Akihiko scowls, and Junpei's cap flies off his head as he gapes. Mitsuru's father and you stand still and composed at either end.
-30.730	4.032	05.mp3	Koromaru bounces happily, and Yukari, Fuuka and the others laugh.
+0.100	0.729	00.mp3	The lounge.
+12.150	1.889	01.mp3	Everyone lines up by the windows.
+21.500	3.554	02.mp3	The camera flashes. Koromaru barks; everyone flinches.
+30.730	0.962	03.mp3	Everyone laughs.

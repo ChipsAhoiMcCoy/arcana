@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_157_C
-0.000	3.777	00.mp3	Outside the dorm, Elizabeth stands facing you, her eyes lowered.
+0.000	1.029	00.mp3	Elizabeth stands.

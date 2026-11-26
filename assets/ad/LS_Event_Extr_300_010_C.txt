@@ -1,0 +1,2 @@
+#scene LS_Event_Extr_300_010_C
+0.030	0.973	00.mp3	An empty room.

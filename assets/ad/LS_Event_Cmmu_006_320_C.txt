@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_320_C
-0.000	4.203	00.mp3	You and Fuuka step out of a sweets shop and stop in front of its window to talk.
+0.000	1.214	00.mp3	Outside a sweets shop.

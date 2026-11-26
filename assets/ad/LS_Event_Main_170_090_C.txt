@@ -1,4 +1,4 @@
 #scene LS_Event_Main_170_090_C
-0.000	2.559	00.mp3	Your room at the dorm. You lie asleep in bed.
-2.830	6.495	01.mp3	You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed.
-8.170	3.845	02.mp3	Pharos smiles, then breaks apart into a cloud of specks and is gone.
+0.000	1.301	00.mp3	You lie asleep in bed.
+2.830	1.523	01.mp3	You wake. Pharos is there.
+8.170	2.465	02.mp3	Pharos smiles, then scatters and is gone.

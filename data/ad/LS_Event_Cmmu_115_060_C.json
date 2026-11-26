@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_115_060_C",
- "title": "A call from the hospital",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Paulownia Mall, the fountain square. You stand alone outside a shop beside the crane games, your bag over your shoulder, waiting. Time passes: you wander along the shop fronts, stop at the crane games, and come back to the same spot."
-  },
-  {
-   "at": 40.33,
-   "text": "You take out your phone, flip it open and answer a call."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_115_060_C", "title": "A call from the hospital", "cues": [{"at": 1.33, "text": "You wait in the fountain square."}, {"at": 40.33, "text": "You answer a call."}]}

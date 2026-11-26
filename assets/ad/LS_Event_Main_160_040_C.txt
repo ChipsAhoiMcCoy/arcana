@@ -1,6 +1,4 @@
 #scene LS_Event_Main_160_040_C
-0.000	5.268	00.mp3	Junpei, on his own, walks across a paved square lined with stone columns and flower beds.
-1.330	4.238	01.mp3	He stops, checks his phone, then puts it away and stands with a hand on his hip.
-6.330	6.664	02.mp3	Nearby, a girl in a long, frilly dress sits on a bench by a flower bed, drawing on a board propped in her lap.
-8.000	4.154	03.mp3	Junpei walks over and stands right in front of her, looking from her to the board.
-17.330	3.646	04.mp3	Junpei walks off across the square, leaving her drawing on the bench.
+1.330	1.440	00.mp3	Junpei checks his phone.
+8.000	2.516	01.mp3	Junpei walks over to a girl drawing on a bench.
+17.330	1.717	02.mp3	Junpei walks off, leaving her.

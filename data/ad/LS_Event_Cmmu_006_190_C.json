@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_190_C",
- "title": "Fuuka's honest feelings",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You stand facing Fuuka by the railing on the school rooftop, one hand in your pocket. Fuuka keeps a hand near her chest as she talks, and later clasps her hands behind her back."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_190_C", "title": "Fuuka's honest feelings", "cues": [{"at": 0.0, "text": "School rooftop."}]}

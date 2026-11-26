@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_102_080_C",
- "title": "Meeting canceled",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You walk into the student council room, where Chihiro stands alone by the table, hands clasped in front of her, looking worried."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_102_080_C", "title": "Meeting canceled", "cues": [{"at": 0.0, "text": "Chihiro looks worried."}]}

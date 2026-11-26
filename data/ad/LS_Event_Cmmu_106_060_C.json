@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_060_C",
- "title": "Before the race",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the school's sports field, you and Yuko stand before the children."
-  },
-  {
-   "at": 6.7,
-   "text": "Later, you and Yuko stand on your own at the edge of the field, the children gone. Yuko keeps her hands clasped behind her back, eyes lowered."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_060_C", "title": "Before the race", "cues": [{"at": 0.0, "text": "Sports field."}]}

@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_004_045_C
-0.000	8.019	00.mp3	Akihiko leads you into his room in the dorm. Trophies crowd the shelves, and a punching bag and a speed bag hang among the furniture.
-7.670	3.269	01.mp3	You sit down, and Akihiko stays standing across from you.
+0.000	3.687	00.mp3	Akihiko leads you into his room, trophies crowding the shelves.
+7.670	2.377	01.mp3	You sit down; Akihiko stays standing.
 19.330	3.689	02.mp3	Akihiko turns away, walks across the room and starts searching.
-27.000	8.376	03.mp3	You get up and walk over to his desk, where the medal from his parents' parcel lies on its ribbon. Akihiko comes over and stands beside you.
-42.670	7.294	04.mp3	Akihiko picks the medal up from his desk and hands it to you. You hang it around his neck, and he looks down at it in surprise.
+27.000	4.901	03.mp3	You walk to his desk, where the parcel's medal lies. Akihiko stands beside you.
+42.670	2.671	04.mp3	He hands you the medal; you hang it around his neck.

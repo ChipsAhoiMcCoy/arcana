@@ -1,3 +1,3 @@
 #scene LS_Event_Main_140_185_C
-0.000	9.167	00.mp3	Back in the vacation home after dinner, you and the others walk in and stop in a loose line. Fuuka turns to face everyone, and Junpei clutches his stomach.
-6.330	8.908	01.mp3	Fuuka, Akihiko, Junpei and you head off toward your rooms. Yukari stops and looks back; Mitsuru stays where she is, a hand on her hip.
+0.000	3.028	00.mp3	Fuuka faces everyone; Junpei clutches his stomach.
+6.330	3.892	01.mp3	You head toward your rooms. Yukari looks back; Mitsuru stays put.

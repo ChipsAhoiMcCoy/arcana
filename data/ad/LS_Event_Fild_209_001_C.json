@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_209_001_C", "title": "A box at the front desk", "cues": [{"at": 0.0, "text": "The dorm lounge. You walk up to the front desk, where a cardboard box sits beside a stack of papers."}]}
+{
+ "movie": "LS_Event_Fild_209_001_C",
+ "title": "A box at the front desk",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Dorm front desk."
+  }
+ ]
+}

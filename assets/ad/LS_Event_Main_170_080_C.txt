@@ -1,2 +1,2 @@
 #scene LS_Event_Main_170_080_C
-0.000	5.275	00.mp3	The Velvet Room. You sit across a round table from Igor, and Elizabeth stands beside him.
+0.000	1.667	00.mp3	You sit with Igor and Elizabeth.

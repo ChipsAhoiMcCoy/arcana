@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_009_710_C
-0.170	6.780	00.mp3	In the dorm lounge, Koromaru sits up on an armchair and you sit on the sofa beside him, both facing the TV.
+1.000	1.839	00.mp3	You and Koromaru watch TV.

@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_116_040_C
-0.000	5.777	00.mp3	Wakatsu, the set-meal restaurant. You and Nozomi sit together at a table among the other diners.
-9.170	5.382	01.mp3	Nozomi clutches his stomach with both hands. Then he is back in his seat, slumped and drained.
+0.000	0.806	00.mp3	Wakatsu.
+5.170	0.824	01.mp3	With Nozomi.
+9.170	3.015	02.mp3	Nozomi clutches his stomach, then sits back, drained.

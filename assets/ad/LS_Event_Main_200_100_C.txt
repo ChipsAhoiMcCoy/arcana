@@ -1,5 +1,4 @@
 #scene LS_Event_Main_200_100_C
-0.250	10.336	00.mp3	You walk into the dorm lounge with your bag on your shoulder. Akihiko, Yukari, Fuuka and Koromaru are sitting around the low table, and Junpei stands with Ryoji.
-3.200	5.427	01.mp3	Ryoji walks past you and out the front door. A moment later, Aigis walks into the lounge.
-26.550	7.591	02.mp3	The others get up and head off, leaving you alone in the lounge with Aigis. She stands with her hands clasped at her chest as she talks.
-35.700	7.220	03.mp3	Aigis turns and walks out of the lounge. Then she walks alone down a dorm hallway, stops, and lays a hand on her chest.
+3.200	4.721	00.mp3	You enter the lounge. Ryoji walks past you and out the door. Aigis walks in.
+26.550	1.849	01.mp3	The others leave you alone with Aigis.
+35.720	3.321	02.mp3	Aigis walks down a hallway and stops, hand on her chest.

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_190_300_C
-0.000	7.782	00.mp3	In the hot spring, Yukari, Fuuka and Mitsuru stand in the water in their towels, with Aigis. A rubber duck bobs beside them.
+0.000	0.853	00.mp3	Hot spring.

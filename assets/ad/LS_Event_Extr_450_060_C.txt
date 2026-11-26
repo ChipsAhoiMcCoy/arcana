@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_060_C
-0.030	13.328	00.mp3	Wilduck Burger in the Iwatodai Strip Mall. You sit alone in a cushioned booth, a tray of fries and a drink before you, and take a big bite of a burger held in both hands. Other customers sit in the booths behind you.
+2.700	1.040	00.mp3	You bite a burger.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_107_010_C
-0.000	5.367	00.mp3	Your room in the dorm. You sit at your desk in front of the computer and log in to an online game.
+0.000	0.705	00.mp3	Your room.

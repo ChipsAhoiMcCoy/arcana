@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_221_013_C",
- "title": "The boxes for the music room",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the faculty office, you and Ryoji stand at the desk of a teacher, who sits facing you. Several boxes are stacked nearby."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_221_013_C", "title": "The boxes for the music room", "cues": []}

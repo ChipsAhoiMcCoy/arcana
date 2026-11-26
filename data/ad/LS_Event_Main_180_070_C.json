@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.3,
-   "text": "Your dorm room. You lie asleep in bed."
+   "text": "You lie asleep in bed."
   },
   {
    "at": 2.9,
-   "text": "You prop yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed by the window."
+   "text": "Pharos stands by your bed."
   },
   {
    "at": 12.9,
-   "text": "Pharos breaks apart into drifting flecks and is gone."
+   "text": "Pharos breaks apart and is gone."
   }
  ]
 }

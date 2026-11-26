@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_380_C
-0.170	10.046	00.mp3	In Wakatsu, the set-meal restaurant at the Iwatodai strip mall, you and Mitsuru sit across a table from each other, plates of fried food, rice and soup in front of you.
+0.170	1.176	00.mp3	Lunch with Mitsuru.

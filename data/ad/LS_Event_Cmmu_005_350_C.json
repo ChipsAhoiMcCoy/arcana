@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_350_C",
- "title": "After the record shop",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "Outside a record shop in Paulownia Mall, you and Mitsuru walk out together and stop to talk. Mitsuru is smiling, a hand on her hip."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_350_C", "title": "After the record shop", "cues": [{"at": 0.05, "text": "Outside a record shop."}]}

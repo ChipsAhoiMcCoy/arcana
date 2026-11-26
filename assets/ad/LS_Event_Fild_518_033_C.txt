@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_518_033_C
-1.970	6.303	00.mp3	The seal on the door swirls into a ring, shrinks away to nothing, and shards burst out across the whole floor.
+1.970	1.192	00.mp3	Shards burst out.

@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_117_660_C
-0.000	4.418	00.mp3	Naganaki Shrine. You sit on a bench, and a woman sitting beside you turns to you.
-21.030	4.315	01.mp3	She gets up from the bench and presses her hands to her chest, and you stand up too.
+0.000	0.641	00.mp3	Shrine.
+21.030	2.843	01.mp3	She stands, hands to her chest, and you stand too.
 27.700	3.138	02.mp3	Akinari's mother walks away, and you turn to watch her go.

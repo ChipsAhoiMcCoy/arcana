@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_106_200_C
-0.000	5.065	00.mp3	The school athletic field. Yuko comes running up to you, a stuffed bag over her shoulder.
-8.330	2.556	01.mp3	Yuko holds out a letter, and you take it from her.
-29.670	2.556	02.mp3	Yuko holds out a letter, and you take it from her.
+0.000	1.029	00.mp3	Yuko runs up.
+8.350	1.317	01.mp3	Yuko hands you a letter.
+29.700	1.317	02.mp3	Yuko hands you a letter.

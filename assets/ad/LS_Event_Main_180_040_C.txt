@@ -1,6 +1,5 @@
 #scene LS_Event_Main_180_040_C
-0.100	8.851	00.mp3	The dorm lounge. You sit with Yukari, Junpei, Fuuka, Akihiko and Mitsuru on the sofas, Koromaru with you. Aigis stands nearby.
+0.100	0.665	00.mp3	Lounge.
 3.200	2.117	01.mp3	Aigis turns and walks out of the lounge.
-15.250	1.327	02.mp3	Aigis runs back in.
-19.950	3.758	03.mp3	Yukari is on her feet. Fuuka stands too and starts for the door.
-36.400	5.799	04.mp3	Akihiko turns and walks away from the group. Mitsuru and Koromaru watch him go, downcast.
+15.250	1.034	02.mp3	Aigis returns.
+36.400	2.537	03.mp3	Akihiko walks away; the others watch.

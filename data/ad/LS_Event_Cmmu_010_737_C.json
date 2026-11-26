@@ -3,12 +3,8 @@
  "title": "Katsudon again",
  "cues": [
   {
-   "at": 0.0,
-   "text": "The dorm kitchen. You and Shinjiro stand at the counter, facing each other."
-  },
-  {
    "at": 6.5,
-   "text": "Later, you and Shinjiro sit side by side at the long dining table with bowls of the katsudon you made. You lean over your bowl while Shinjiro sits with his arms folded, watching."
+   "text": "You eat katsudon."
   }
  ]
 }

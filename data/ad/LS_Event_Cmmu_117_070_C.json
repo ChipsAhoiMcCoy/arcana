@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_117_070_C",
- "title": "The alligator and the bird",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Naganaki Shrine. You sit on a bench with Akinari again, a notebook lying on the seat between you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_117_070_C", "title": "The alligator and the bird", "cues": [{"at": 0.0, "text": "Shrine."}, {"at": 4.5, "text": "You sit with Akinari again."}]}

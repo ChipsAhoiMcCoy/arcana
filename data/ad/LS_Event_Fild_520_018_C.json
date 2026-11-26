@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_520_018_C",
- "title": "The sealed chest",
- "cues": [
-  {
-   "at": 6.83,
-   "text": "Standing before the sealed chest, you hold out a small fragment in your open hand."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_520_018_C", "title": "The sealed chest", "cues": [{"at": 8.03, "text": "You offer the fragment."}]}

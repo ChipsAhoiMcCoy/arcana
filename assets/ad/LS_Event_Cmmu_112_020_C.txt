@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_020_C
-0.000	7.631	00.mp3	In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you.
+0.000	0.592	00.mp3	Sewing.

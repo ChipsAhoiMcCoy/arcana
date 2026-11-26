@@ -1,2 +1,2 @@
 #scene LS_Event_Main_130_010_C
-0.600	4.230	00.mp3	You sit at your desk in the classroom, your bag on the desk, and take out your phone.
+0.600	2.135	00.mp3	You sit at your desk, taking out your phone.

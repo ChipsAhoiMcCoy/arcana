@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_600_640_C
-2.500	4.257	00.mp3	You are at work in Wilduck Burger. Ryoji walks up to you with his school bag.
-16.000	5.594	01.mp3	Kenji, in the same staff uniform as you, walks over and stops short at the sight of Ryoji.
-27.000	8.265	02.mp3	The three of you sit down together in a booth, at a table spread with trays of burgers, fries and drinks. Kenji sits with his arms crossed.
-44.170	4.695	03.mp3	Kenji hurries off back to work, leaving you and Ryoji at the table with the food.
+2.530	3.464	00.mp3	You are at work in Wilduck Burger. Ryoji walks up to you.
+16.030	1.597	01.mp3	Kenji stops at Ryoji.
+27.030	1.354	02.mp3	You three sit in a booth.
+44.200	1.214	03.mp3	Kenji hurries off.

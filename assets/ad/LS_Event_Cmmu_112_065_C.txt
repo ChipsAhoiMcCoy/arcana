@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_112_065_C
-0.000	9.061	00.mp3	You and Bebe walk up to Azuki Arai, the sweets shop in the Iwatodai Strip Mall, school bags in hand, and stop outside it. Bebe lowers his head.
+0.000	1.192	00.mp3	Outside Azuki Arai.
+2.720	1.007	01.mp3	Bebe looks down.

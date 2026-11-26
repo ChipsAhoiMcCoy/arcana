@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_112_055_C
-0.000	13.220	00.mp3	You and Bebe sit across from each other at Wakatsu, the set-meal restaurant, set meals in front of you, with other diners eating nearby. Bebe holds his chopsticks over his food and keeps his eyes down, looking downcast.
+0.000	0.806	00.mp3	Wakatsu.
+3.170	1.255	01.mp3	Bebe looks downcast.

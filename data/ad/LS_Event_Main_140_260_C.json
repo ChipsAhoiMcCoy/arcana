@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_140_260_C",
- "title": "Junpei tries his luck",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the beach, you, Junpei and Akihiko walk up and stop, eyeing two young women further along the sand. Akihiko stands with his arms folded."
-  },
-  {
-   "at": 6.33,
-   "text": "The three of you walk over to them. One sits under a beach parasol; the other stands beside her."
-  },
-  {
-   "at": 37.35,
-   "text": "The two women are gone. Junpei stands there, downcast."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_260_C", "title": "Junpei tries his luck", "cues": [{"at": 6.33, "text": "You three walk over to them."}, {"at": 36.5, "text": "The women are gone."}]}

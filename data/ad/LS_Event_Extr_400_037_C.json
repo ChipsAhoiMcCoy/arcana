@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Extr_400_037_C",
- "title": "Takaya questions you",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Naganaki Shrine, among the torii gates. You stand with Koromaru at your side, facing Takaya a few steps away."
-  },
-  {
-   "at": 26.36,
-   "text": "Takaya walks over to stand at your shoulder, leans in close and hands you a folded piece of paper."
-  },
-  {
-   "at": 34.53,
-   "text": "Takaya turns and walks away. You take out your phone and look at it."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_400_037_C", "title": "Takaya questions you", "cues": [{"at": 0.0, "text": "Shrine."}, {"at": 26.36, "text": "Takaya walks over and hands you a folded piece of paper."}, {"at": 34.53, "text": "Takaya walks away. You look at your phone."}]}

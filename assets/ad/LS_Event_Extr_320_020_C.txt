@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_320_020_C
-0.030	2.580	00.mp3	At the school gate, Junpei hurries over to you.
+0.030	1.527	00.mp3	Junpei hurries over to you.

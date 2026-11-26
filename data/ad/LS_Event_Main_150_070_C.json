@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_150_070_C", "title": "Pharos: one week to the full moon", "cues": [
-  {"at": 0.00, "text": "You lie asleep in bed in your dorm room."},
-  {"at": 2.83, "text": "You open your eyes and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands beside your bed."},
-  {"at": 9.83, "text": "Pharos breaks apart into drifting specks and is gone."}
-]}
+{"movie": "LS_Event_Main_150_070_C", "title": "Pharos: one week to the full moon", "cues": [{"at": 0, "text": "You sleep in your dorm room."}, {"at": 2.83, "text": "Pharos stands by your bed."}, {"at": 9.83, "text": "Pharos breaks into specks and is gone."}]}

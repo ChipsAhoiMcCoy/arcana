@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_380_C
-0.000	6.078	00.mp3	In Paulownia Mall, you and Fuuka walk out of a music shop and stop outside it, your hands in your pockets.
+0.000	1.166	00.mp3	You and Fuuka stop.

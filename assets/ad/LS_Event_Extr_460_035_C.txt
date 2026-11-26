@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_460_035_C
-0.030	8.223	00.mp3	The snack bar at the cinema in Port Island Station, with a long line of customers at the counter. In a staff shirt, you hurry to serve them.
-3.500	4.330	01.mp3	At the end of the shift, a coworker in an apron walks over to you and talks with you.
+0.030	0.837	00.mp3	Snack bar.
+3.500	1.320	01.mp3	A coworker approaches.

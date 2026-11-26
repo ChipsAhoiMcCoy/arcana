@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_030_C",
- "title": "Kazushi collapses",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the track, Kazushi grins at you, ready for another run. Yuko and a few teammates stand by, two of them sitting."
-  },
-  {
-   "at": 3.0,
-   "text": "Kazushi grabs his knee, then his leg gives way and he falls to the ground. Yuko stares in shock as you crouch down beside him and the teammates turn toward him."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_030_C", "title": "Kazushi collapses", "cues": [{"at": 0.0, "text": "On the track."}, {"at": 3.0, "text": "Kazushi falls, clutching his knee."}, {"at": 6.33, "text": "You crouch beside him."}]}

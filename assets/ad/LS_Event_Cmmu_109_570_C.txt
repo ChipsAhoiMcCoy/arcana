@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_109_570_C
-0.000	11.819	00.mp3	At the summer festival at Naganaki Shrine, you stand with Chihiro among the crowds and the food stalls, a woman in a yukata standing nearby. Chihiro clasps her hands in front of her as she talks.
-8.500	6.269	01.mp3	You and Chihiro make your way through the crowd to a takoyaki stall, where a woman stands behind the counter.
-24.770	3.737	02.mp3	You walk on together with the takoyaki to a stall hung with masks.
-38.930	4.314	03.mp3	At the lucky-draw stall, you reach in and draw a ticket while Chihiro watches.
+1.170	2.206	00.mp3	At the festival, you stand with Chihiro.
+8.500	2.644	01.mp3	You and Chihiro go to a takoyaki stall.
+24.770	1.431	02.mp3	You walk on to a mask stall.
+38.930	2.286	03.mp3	At the lucky-draw stall, you draw a ticket.

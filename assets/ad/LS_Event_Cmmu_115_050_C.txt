@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_115_050_C
-0.030	6.876	00.mp3	The Iwatodai Strip Mall. You stand waiting outside the beef bowl shop, and Mamoru comes running up to you, out of breath.
-8.330	4.105	01.mp3	The two of you go in together. Later, you come back out and stop to talk.
+0.030	3.650	00.mp3	Outside the beef bowl shop, Mamoru runs up to you, out of breath.
+8.330	2.847	01.mp3	The two of you go in. Later, you come out and talk.
 21.330	1.169	02.mp3	Mamoru runs off.

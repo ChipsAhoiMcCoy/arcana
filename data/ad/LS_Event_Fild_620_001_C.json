@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Fild_620_001_C",
- "title": "Akihiko and Mitsuru catch up in the hotel",
- "cues": [
-  {
-   "at": 2.5,
-   "text": "In a hallway of the love hotel, Akihiko and Mitsuru come running up to you and Yukari."
-  },
-  {
-   "at": 8.83,
-   "text": "Yukari glares, and Mitsuru looks taken aback."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_620_001_C", "title": "Akihiko and Mitsuru catch up in the hotel", "cues": [{"at": 2.5, "text": "Akihiko and Mitsuru run up to you."}, {"at": 8.83, "text": "Yukari glares."}]}

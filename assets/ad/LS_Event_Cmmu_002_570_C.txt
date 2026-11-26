@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_002_570_C
-0.050	16.106	00.mp3	Naganaki Shrine during the summer festival: the path is lined with stalls under strings of paper lanterns, and people stroll between them. You stand with Yukari, who is wearing a yukata, beside a lottery stall, both of you watching a woman in a yukata pass by.
-8.850	6.163	01.mp3	You and Yukari make your way through the crowd to a takoyaki stand, where a woman works behind the counter.
-20.450	10.256	02.mp3	A little later, you and Yukari stand off to one side near a stone guardian statue, Yukari holding the tray of takoyaki. She picks one up and pops it into her mouth.
-40.350	6.957	03.mp3	You step up to the lottery stall's counter, reach into the box on it and draw a ticket, while Yukari watches from beside you.
+1.360	2.536	00.mp3	You and Yukari walk the festival stalls.
+8.860	4.094	01.mp3	You and Yukari make your way through the crowd to a takoyaki stand.
+21.460	2.556	02.mp3	Yukari pops a takoyaki into her mouth.
+41.300	2.124	03.mp3	You reach into the box and draw a ticket.

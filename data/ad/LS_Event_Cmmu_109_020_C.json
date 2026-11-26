@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_109_020_C",
- "title": "Chihiro's shopping trip",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Chihiro steps out of the used bookstore in Iwatodai Strip Mall and turns to face you. She keeps her head lowered."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_109_020_C", "title": "Chihiro's shopping trip", "cues": [{"at": 0.0, "text": "Chihiro faces you."}]}

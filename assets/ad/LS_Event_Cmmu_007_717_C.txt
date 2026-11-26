@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_007_717_C
-0.230	8.372	00.mp3	The dorm lounge. You and Aigis sit facing each other across a low table, reading again, Aigis with her novel held up in both hands.
-9.170	6.111	01.mp3	Aigis now sits with her closed book in her lap, your own book set on the table, and lays a hand on her chest.
+11.830	1.842	00.mp3	Aigis rests a hand on her chest.

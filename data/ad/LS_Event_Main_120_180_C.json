@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_120_180_C", "title": "Natsuki alone in her room", "cues": [
-  {"at": 0.00, "text": "In a bedroom, a girl sits alone on the edge of her bed, arms wrapped around herself, head bowed."},
-  {"at": 6.50, "text": "Natsuki clutches her head in both hands and doubles over."},
-  {"at": 10.17, "text": "She gets to her feet and stands still, staring ahead."}
-]}
+{"movie": "LS_Event_Main_120_180_C", "title": "Natsuki alone in her room", "cues": [{"at": 0.0, "text": "A girl sits alone, head bowed."}, {"at": 6.5, "text": "Natsuki clutches her head and doubles over."}, {"at": 10.17, "text": "She gets up."}]}

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_050_C",
- "title": "Fuuka's rice balls",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You sit with Fuuka on a curved bench on the school rooftop, a small box on her lap."
-  },
-  {
-   "at": 3.83,
-   "text": "Fuuka gives you a rice ball she made, and you eat it while she watches, a bead of sweat on her brow."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_050_C", "title": "Fuuka's rice balls", "cues": [{"at": 0.0, "text": "You sit with Fuuka."}, {"at": 5.0, "text": "Fuuka gives you food."}]}

@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_045_C",
- "title": "Kids on the school field",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Yuko lead three children, a boy and two girls, onto the school's sports field. They run on ahead, looking all around."
-  },
-  {
-   "at": 8.55,
-   "text": "The children race off down the field while you and Yuko watch."
-  },
-  {
-   "at": 37.3,
-   "text": "Later, you and Yuko stand by the tent on your own, the children gone. Yuko fiddles with her hair."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_045_C", "title": "Kids on the school field", "cues": [{"at": 0.0, "text": "You and Yuko lead three children out."}, {"at": 3.17, "text": "They run on ahead."}, {"at": 8.55, "text": "The children race off down the field while you and Yuko watch."}, {"at": 37.3, "text": "Now you're alone."}, {"at": 40.63, "text": "Yuko fiddles with her hair."}]}

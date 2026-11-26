@@ -1,6 +1,5 @@
 #scene LS_Event_Main_150_090_C
-0.000	8.334	00.mp3	In an abandoned military base deep underground, you and the team walk in among concrete walls and steel girders and spread out to look around.
-7.240	4.583	01.mp3	At the voice behind you, everyone spins around and drops into a fighting stance.
-8.500	7.661	02.mp3	Two young men walk out from the back of the room toward you: a shirtless one with long hair, and one in glasses carrying a metal case.
-26.670	5.474	03.mp3	Takaya turns his back on you and walks away. Jin follows him, grinning back over his shoulder.
-33.000	7.173	04.mp3	A gate slams shut between you and them. Akihiko runs to it, too late, as Jin strolls off on the other side.
+0.000	0.823	00.mp3	You walk in.
+8.500	1.506	01.mp3	Two men walk out toward you.
+26.670	2.685	02.mp3	Takaya walks away. Jin follows, grinning.
+33.000	2.756	03.mp3	A gate slams shut; Akihiko runs to it.

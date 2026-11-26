@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_113_010_C
-0.000	7.533	00.mp3	Outside Port Island Station, by a fountain and a bench, a man in a suit stands facing you among the passers-by, smiling.
-6.500	2.822	01.mp3	The man steps up to you and hands you a business card.
-14.000	6.385	02.mp3	President Tanaka turns his back on you, walks a few steps toward the fountain and stops there, his back still to you.
-19.500	6.518	03.mp3	Tanaka turns around and starts at the sight of you, still standing there. Then he stomps right up to you, glaring.
+1.220	1.566	00.mp3	A suited man smiles at you.
+6.500	2.503	01.mp3	The man steps up and hands you a business card.
+14.000	3.268	02.mp3	President Tanaka walks off toward the fountain, back to you.
+19.500	3.179	03.mp3	Tanaka turns, startled, and stomps up to you, glaring.

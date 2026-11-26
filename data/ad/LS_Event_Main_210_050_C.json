@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_210_050_C",
- "title": "Rooftop with Yukari and Junpei",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "The school rooftop. You walk out to where Yukari and Junpei are standing."
-  },
-  {
-   "at": 5.7,
-   "text": "Yukari turns her back to you both and looks out from the rooftop."
-  }
- ]
-}
+{"movie": "LS_Event_Main_210_050_C", "title": "Rooftop with Yukari and Junpei", "cues": [{"at": 0.03, "text": "The rooftop."}, {"at": 5.7, "text": "Yukari turns away from you."}]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_106_010_C
-0.000	4.281	00.mp3	You and Yuko sit together at a table in a café in Paulownia Mall.
+0.000	0.822	00.mp3	In a café.

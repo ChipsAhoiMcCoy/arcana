@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_117_660_C",
- "title": "Akinari's mother",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Naganaki Shrine. You sit on a bench, and a woman sitting beside you turns to you."
-  },
-  {
-   "at": 21.03,
-   "text": "She gets up from the bench and presses her hands to her chest, and you stand up too."
-  },
-  {
-   "at": 27.7,
-   "text": "Akinari's mother walks away, and you turn to watch her go."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_117_660_C", "title": "Akinari's mother", "cues": [{"at": 0.0, "text": "Shrine."}, {"at": 21.03, "text": "She stands, hands to her chest, and you stand too."}, {"at": 27.7, "text": "Akinari's mother walks away, and you turn to watch her go."}]}

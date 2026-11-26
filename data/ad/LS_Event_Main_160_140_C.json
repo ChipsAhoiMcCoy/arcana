@@ -4,11 +4,11 @@
  "cues": [
   {
    "at": 0.05,
-   "text": "The school gate. Akihiko waits by it with his metal briefcase as you walk up."
+   "text": "Akihiko."
   },
   {
-   "at": 4.55,
-   "text": "Akihiko turns and walks off, and you follow him."
+   "at": 4.37,
+   "text": "Akihiko walks off, and you follow."
   }
  ]
 }

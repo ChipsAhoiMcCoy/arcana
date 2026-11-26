@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_030_C",
- "title": "Bebe: a Japanese project",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you."
-  },
-  {
-   "at": 4.4,
-   "text": "Bebe gets up and stands at his machine, a folded fan in his hand, tapping it against his chin as he thinks."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_030_C", "title": "Bebe: a Japanese project", "cues": [{"at": 0, "text": "Sewing."}, {"at": 3.17, "text": "Bebe stands."}]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Fild_620_005_C", "title": "Junpei and Akihiko catch up", "cues": [{"at": 2.50, "text": "In a hallway of the love hotel, Junpei and Akihiko come running up to you and Yukari."}, {"at": 8.83, "text": "Yukari glares, and Akihiko looks taken aback."}]}
+{
+ "movie": "LS_Event_Fild_620_005_C",
+ "title": "Junpei and Akihiko catch up",
+ "cues": [
+  {
+   "at": 2.5,
+   "text": "Junpei and Akihiko run up."
+  },
+  {
+   "at": 8.83,
+   "text": "Yukari glares."
+  }
+ ]
+}

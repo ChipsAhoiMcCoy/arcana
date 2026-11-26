@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_600_010_C
-0.000	5.549	00.mp3	The Velvet Room. You sit facing Igor across his table; Elizabeth stands beside his chair.
+0.030	1.850	00.mp3	You face Igor in the Velvet Room.

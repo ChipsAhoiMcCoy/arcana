@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_004_910_C
-0.030	10.857	00.mp3	In the entrance hall of Tartarus, you walk in with Akihiko, Yukari, Junpei and Mitsuru. The others walk on ahead; Akihiko stops beside you and turns to face you.
+0.030	3.296	00.mp3	You enter Tartarus; Akihiko stops and turns to you.

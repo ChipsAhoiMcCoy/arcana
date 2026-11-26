@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_008_790_C
-2.100	10.206	00.mp3	Camera footage plays: Ken alone in his room at the dorm, holding a long-handled broom like a spear. Ken sets his feet and swings it, lunging and striking at the air.
-9.000	6.729	01.mp3	Ken swings again, and the handle cracks against his own shin. He drops the broom and crouches, clutching his leg.
+1.050	1.158	00.mp3	Ken swings a broom.
+9.000	2.059	01.mp3	The broom hits his shin; he crouches.
 13.330	4.785	02.mp3	Ken crosses the room, picks up a carton of milk from the low table and drinks it down.

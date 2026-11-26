@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_200_030_C", "title": "Chidori's challenge", "cues": [
-{"at": 0.00, "text": "The command room on the dorm's fourth floor. Fuuka's Persona looms over the room with Fuuka inside it, and you run in with the others and Koromaru to gather around her."},
-{"at": 20.17, "text": "Junpei turns and runs out of the room."},
-{"at": 24.00, "text": "The door shuts behind him. The others turn to look at you."}
-]}
+{"movie": "LS_Event_Main_200_030_C", "title": "Chidori's challenge", "cues": [{"at": 0.0, "text": "You gather around Fuuka."}, {"at": 20.17, "text": "Junpei runs out."}, {"at": 24.0, "text": "The others turn to you."}]}

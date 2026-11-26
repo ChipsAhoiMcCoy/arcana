@@ -1,4 +1,4 @@
 #scene LS_Event_Main_190_040_C
-0.100	15.881	00.mp3	The lounge. Everyone sits around the table among half-empty sushi platters, Mitsuru's father with them in an armchair and his aides standing by the windows. Mitsuru sits with her arms folded, and Koromaru sits on the floor at the end of the table near Junpei.
-9.400	3.519	01.mp3	Koromaru gets up and steps over toward Junpei, looking at him.
-19.400	3.797	02.mp3	A clock face appears over the room, its hands at one minute to midnight.
+0.100	1.465	00.mp3	Everyone sits at the table.
+9.400	1.914	01.mp3	Koromaru steps over to Junpei.
+19.400	1.012	02.mp3	A clock appears.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_100_170_C", "title": "Watching you sleep", "cues": [{"at": 0.00, "text": "A room in the dorm full of monitors and a large control console. Mitsuru and Yukari sit at the console. The big screen above it shows you, asleep in your bed. Ikutsuki walks in behind them."}]}
+{
+ "movie": "LS_Event_Main_100_170_C",
+ "title": "Watching you sleep",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Ikutsuki walks in."
+  }
+ ]
+}

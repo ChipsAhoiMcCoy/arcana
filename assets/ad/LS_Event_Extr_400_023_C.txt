@@ -1,2 +1,3 @@
 #scene LS_Event_Extr_400_023_C
-0.050	3.525	00.mp3	Iwatodai Station. A clock reads 11:59.
+0.050	1.227	00.mp3	Iwatodai Station.
+1.670	1.429	01.mp3	It's 11:59.

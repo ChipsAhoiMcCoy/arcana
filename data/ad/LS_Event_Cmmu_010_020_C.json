@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Cmmu_010_020_C", "title": "Shinjiro treats you to ramen", "cues": [
-{"at": 0.00, "text": "Hagakure Ramen. You and Shinjiro sit at the counter."},
-{"at": 10.50, "text": "The cook sets two bowls of ramen down in front of you and Shinjiro."}
-]}
+{"movie": "LS_Event_Cmmu_010_020_C", "title": "Shinjiro treats you to ramen", "cues": [{"at": 1.7, "text": "At Hagakure with Shinjiro."}, {"at": 10.52, "text": "The cook sets two bowls of ramen in front of you and Shinjiro."}]}

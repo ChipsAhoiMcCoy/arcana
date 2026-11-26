@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_600_847_C
-0.030	10.377	00.mp3	The dorm lounge. You study around the dining table with Yukari, Junpei, Fuuka, Akihiko and Ken, with Koromaru sitting by Ken. Mitsuru is not with you.
-6.000	5.968	01.mp3	Ken, already on his feet, sits back down. Mitsuru stands a few steps from the table, watching the group.
-19.330	3.231	02.mp3	Later, Mitsuru sits at the table with everyone, studying.
+0.030	0.886	00.mp3	Dorm lounge.
+6.000	1.013	01.mp3	Ken sits down.
+19.330	1.241	02.mp3	Mitsuru sits down.

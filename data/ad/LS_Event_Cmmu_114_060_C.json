@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_114_060_C",
- "title": "Mutatsu with a hangover",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Club Escapade. You sit beside Mutatsu on a long sofa in a booth, a bottle and a glass on the low table in front of him. He sits hunched forward, wincing at you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_114_060_C", "title": "Mutatsu with a hangover", "cues": [{"at": 0.0, "text": "Club Escapade."}]}

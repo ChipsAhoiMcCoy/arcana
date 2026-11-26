@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_516_005_C",
- "title": "A Shadow crawls",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Beside a round seal set into the floor, a Shadow drags itself along on long clawed hands."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_516_005_C", "title": "A Shadow crawls", "cues": [{"at": 0.0, "text": "A Shadow crawls on clawed hands."}]}

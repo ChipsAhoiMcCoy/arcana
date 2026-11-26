@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_004_010_C
-0.000	10.285	00.mp3	Outside Iwatodai Station, you and Akihiko stand at the foot of a wide flight of steps, people passing around you. Akihiko faces you with a hand on his hip.
-5.670	3.371	01.mp3	Two girls hurry over and stop right in front of Akihiko.
-10.670	5.838	02.mp3	Akihiko stands with his arms folded. A man and a woman passing by stop and look over at him.
-15.170	10.811	03.mp3	Akihiko turns and breaks into a run, and you run after him. He stops in a quieter spot beside some roadworks fenced off with traffic cones, turns back to you and looks down.
+1.350	1.839	00.mp3	You and Akihiko wait outside.
+5.670	1.773	01.mp3	Two girls hurry to Akihiko.
+10.670	1.798	02.mp3	Passersby stare at Akihiko.
+15.170	3.367	03.mp3	Akihiko runs off and you follow him to a quieter spot.

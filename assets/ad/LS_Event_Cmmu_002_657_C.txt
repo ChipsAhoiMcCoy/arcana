@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_002_657_C
-0.000	8.080	00.mp3	You and Yukari walk side by side across a busy plaza, bags in hand. Yukari stops and flips open her phone to check the time.
-9.000	5.583	01.mp3	Yukari edges closer to you, one small step and then another, until she stands right at your side.
-11.670	4.001	02.mp3	Yukari turns, and the two of you walk off together, close side by side.
+0.000	1.854	00.mp3	You and Yukari cross a plaza.
+9.000	1.834	01.mp3	Yukari steps close beside you.
+11.670	1.406	02.mp3	You two walk off together.

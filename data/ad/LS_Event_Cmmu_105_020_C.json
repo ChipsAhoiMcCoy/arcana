@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_020_C",
- "title": "Kazushi pushes too hard",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "After a run, Kazushi stands facing you, out of breath and wincing, while you stand with a hand on your hip. A few teammates rest under a canopy nearby, two of them sitting."
-  },
-  {
-   "at": 11.67,
-   "text": "Kazushi doubles over, clutching his knee, his face twisted in pain."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_020_C", "title": "Kazushi pushes too hard", "cues": [{"at": 1.17, "text": "Kazushi stands facing you, out of breath."}, {"at": 11.67, "text": "Kazushi doubles over."}]}

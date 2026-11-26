@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_103_100_C",
- "title": "The persimmon tree's first fruit",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "You come into Bookworms. Bunkichi is dozing in his chair, eyes closed, murmuring in his sleep, while Mitsuko stands beside him."
-  },
-  {
-   "at": 3.4,
-   "text": "Bunkichi's eyes snap open and he straightens up in his chair."
-  },
-  {
-   "at": 23.77,
-   "text": "Bunkichi leans forward from his chair and holds out a single persimmon, and you take it."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_103_100_C", "title": "The persimmon tree's first fruit", "cues": [{"at": 0.03, "text": "You enter Bookworms. Bunkichi dozes."}, {"at": 23.77, "text": "Bunkichi holds out a persimmon. You take it."}]}

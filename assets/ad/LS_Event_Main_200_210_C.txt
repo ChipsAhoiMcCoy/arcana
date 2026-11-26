@@ -1,3 +1,2 @@
 #scene LS_Event_Main_200_210_C
-0.520	5.904	00.mp3	Junpei sits alone on a bench among flowerbeds, a sketchbook lying beside him. Fuuka walks up.
-8.330	2.980	01.mp3	Junpei gets up from the bench and stands facing Fuuka.
+0.520	0.833	00.mp3	Fuuka arrives.

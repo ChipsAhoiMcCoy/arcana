@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_040_C
-0.000	4.352	00.mp3	At a café in Paulownia Mall, Chihiro sits across from you, looking down.
+0.000	0.647	00.mp3	Café.

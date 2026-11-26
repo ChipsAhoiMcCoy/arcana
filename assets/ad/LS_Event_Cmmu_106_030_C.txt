@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_106_030_C
-0.000	3.361	00.mp3	You and Yuko stand in the school's front lobby, bags in hand.
-1.400	6.366	01.mp3	Yuko turns away from you to her shoe locker and takes out something small, holding it up to her chest to look at it.
+0.000	0.842	00.mp3	School lobby.
+1.400	2.328	01.mp3	Yuko takes something small from her shoe locker.

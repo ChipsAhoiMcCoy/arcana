@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_108_035_C
-0.000	3.772	00.mp3	In the school lobby, you and Fuuka walk with Keisuke, who looks downcast.
-5.330	5.535	01.mp3	The club member doubles over against the shoe lockers, and Keisuke runs to him and kneels at his side.
+0.000	1.568	00.mp3	School lobby, with Keisuke.
+5.330	1.857	01.mp3	Keisuke kneels by the club member.

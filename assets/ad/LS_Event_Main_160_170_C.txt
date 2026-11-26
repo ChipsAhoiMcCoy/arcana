@@ -1,2 +1,2 @@
 #scene LS_Event_Main_160_170_C
-0.000	6.695	00.mp3	Junpei, his bag over his shoulder, walks along a pavement past a railing and a building's front steps, and stops.
+0.000	1.766	00.mp3	Junpei walks along and stops.

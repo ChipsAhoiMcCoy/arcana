@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_109_100_C
-0.000	7.435	00.mp3	At Chihiro's home, in her room, you sit with her on cushions on the floor, Chihiro kneeling with her hands folded in her lap.
-4.100	3.017	01.mp3	Chihiro holds out a book, and you lean over and take it.
-7.500	5.816	02.mp3	You get up to leave and start toward the door. Chihiro looks up, startled, and scrambles to her feet.
-20.500	4.300	03.mp3	You turn back, walk over to Chihiro and draw her close. She looks startled.
+1.860	1.121	00.mp3	At Chihiro's home.
+4.120	1.439	01.mp3	Chihiro hands you a book.
+7.520	2.949	02.mp3	You rise to leave. Chihiro scrambles to her feet.
+20.520	2.867	03.mp3	You turn back, walk over and draw Chihiro close.

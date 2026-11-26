@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_007_737_C
-0.170	7.092	00.mp3	The dorm rooftop. You and Aigis crouch side by side at the vegetable planters, garden tools on the ground beside you.
-9.500	5.561	01.mp3	Later, you and Aigis stand facing each other by the planters; Aigis lays a hand on her chest.
+9.500	1.025	00.mp3	Facing Aigis.

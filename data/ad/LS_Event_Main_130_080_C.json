@@ -4,31 +4,23 @@
  "cues": [
   {
    "at": 0.05,
-   "text": "A back alley on the outskirts of Port Island Station, with bins lined up along a wall. Coffins stand upright on the paving, a mist curling around the base of each."
-  },
-  {
-   "at": 10.3,
-   "text": "The nearest coffin crumbles away into smoke. A teenage boy in a cap and jacket stands where it was, and looks around him."
+   "text": "A back alley. Coffins stand upright, mist curling around them. The nearest crumbles to smoke, and a teenage boy stands in its place."
   },
   {
    "at": 13.25,
-   "text": "Three strangers walk up and stop in front of him: a shirtless young man with long hair and tattooed arms, a boy in glasses carrying a metal case, and a girl in a long dress."
+   "text": "Three strangers walk up."
   },
   {
    "at": 21.4,
-   "text": "The boy in glasses sets down his case, opens it and holds up a sheet of paper toward the teenager."
+   "text": "One holds up a paper."
   },
   {
-   "at": 28.7,
-   "text": "The shirtless young man walks toward the teenager. The teenager backs away, then turns and runs."
-  },
-  {
-   "at": 35.65,
-   "text": "The shirtless young man raises a revolver high over his head, then levels it at the running boy and fires. The boy falls. The shirtless young man lowers the gun and tucks it into his jeans."
+   "at": 35.6,
+   "text": "The teenager runs. The shirtless young man raises a revolver and fires. The boy falls."
   },
   {
    "at": 42.7,
-   "text": "The shirtless young man turns his back on the fallen boy."
+   "text": "The shirtless young man turns away."
   }
  ]
 }

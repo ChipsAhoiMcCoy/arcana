@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Extr_400_030_C",
- "title": "Koromaru wants a walk",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the dorm lounge, Koromaru whines up at Aigis, his head low. You walk over to them, hands in your pockets."
-  },
-  {
-   "at": 20.03,
-   "text": "Koromaru trots over to you. You crouch beside him, and he pants happily."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_400_030_C", "title": "Koromaru wants a walk", "cues": [{"at": 0.0, "text": "Dorm lounge."}, {"at": 20.03, "text": "Koromaru trots to you; you crouch beside him."}]}

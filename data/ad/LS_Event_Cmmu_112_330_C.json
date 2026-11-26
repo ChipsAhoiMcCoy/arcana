@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_330_C",
- "title": "Bebe and the sounds of Japan",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Paulownia Mall, outside a shop with racks of CDs. You and Bebe walk out together and stop; Bebe holds the CD he bought up against his chest."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_330_C", "title": "Bebe and the sounds of Japan", "cues": [{"at": 0.0, "text": "Bebe clutches his CD."}]}

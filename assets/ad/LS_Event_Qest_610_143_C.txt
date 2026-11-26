@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_143_C
-0.000	9.880	00.mp3	Elizabeth stands beside a plaster bust of a man's head and shoulders, set on a stand, with you on her other side. As she speaks, a sweat drop forms on your brow.
+1.700	1.496	00.mp3	Elizabeth beside a bust.

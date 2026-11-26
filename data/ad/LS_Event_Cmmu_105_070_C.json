@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "On the athletic field, you stand with two club members as runners race past down the track, Kazushi among them. The two club members watch him go by."
+   "text": "Athletic field. You stand with two club members as runners race past, Kazushi among them."
   },
   {
    "at": 8.2,
-   "text": "Yuko walks up behind the two club members."
+   "text": "Yuko walks up behind them."
   },
   {
    "at": 10.7,
-   "text": "The two club members turn and hurry back to practice."
+   "text": "The two members hurry back."
   }
  ]
 }

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_043_C
-0.000	10.250	00.mp3	Port Island Station. You and Aigis make your way across the plaza among the passers-by, looking around; you scratch the back of your head as Aigis moves on ahead, searching.
+0.000	4.657	00.mp3	Port Island Station. You and Aigis cross the plaza; Aigis searches ahead.

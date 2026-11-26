@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_330_001_C
-0.100	13.846	00.mp3	You and Junpei, his bag over his shoulder, walk into the plaza of Paulownia Mall and stop near the fountain in its middle. Across the plaza, at the foot of a staircase, stands a small police box with a bicycle parked by its door.
+0.100	9.767	00.mp3	You and Junpei walk into Paulownia Mall's plaza and stop near the fountain. At the foot of a staircase stands a small police box, a bicycle by its door.

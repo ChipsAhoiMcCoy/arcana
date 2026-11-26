@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_114_020_C",
- "title": "The monk gives his name",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Club Escapade. You sit on a long couch beside the monk, at a low table with his bottle and glass; he puffs on a cigar."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_114_020_C", "title": "The monk gives his name", "cues": [{"at": 0.0, "text": "Club Escapade. You sit beside the monk."}]}

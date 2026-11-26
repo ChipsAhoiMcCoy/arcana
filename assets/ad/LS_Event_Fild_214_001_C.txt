@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_214_001_C
-0.000	4.316	00.mp3	You come in through the dorm's front door. Mitsuru walks across the lounge to meet you.
+0.000	2.232	00.mp3	You enter. Mitsuru walks over to meet you.

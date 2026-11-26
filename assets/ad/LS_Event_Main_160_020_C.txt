@@ -1,3 +1,2 @@
 #scene LS_Event_Main_160_020_C
-0.000	3.495	00.mp3	You sit on the edge of your bed in your dorm room, looking at your phone.
-6.400	4.376	01.mp3	You put your phone away and open your door. Mitsuru stands in the hallway outside.
+7.500	1.381	00.mp3	Mitsuru stands outside.

@@ -1,3 +1,3 @@
 #scene LS_Event_Main_180_100_C
-0.550	6.473	00.mp3	The student council room. Yukari sits alone at the table, writing. The door opens and Mitsuru walks in.
-10.170	4.499	01.mp3	Mitsuru folds her arms and looks down, while Yukari keeps her eyes on her writing.
+0.550	1.959	00.mp3	Yukari writes; Mitsuru enters.
+10.170	1.195	01.mp3	Mitsuru looks down.

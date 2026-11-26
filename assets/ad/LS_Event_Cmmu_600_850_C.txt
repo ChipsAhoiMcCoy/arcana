@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_600_850_C
-0.170	6.410	00.mp3	Naganaki Shrine. You and Aigis have brought Koromaru for a walk, and he hops up on his hind legs, happy.
-2.330	7.764	01.mp3	Koromaru runs off across the shrine grounds. Later, you and Aigis sit side by side on a bench by the playground while he plays.
+0.170	1.381	00.mp3	Koromaru hops, happy.
+2.330	1.301	01.mp3	Koromaru runs off.

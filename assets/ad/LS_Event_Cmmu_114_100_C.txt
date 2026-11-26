@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_114_100_C
-0.000	9.365	00.mp3	Club Escapade. You sit beside Mutatsu on a couch in a booth, at a low table with a bottle and glasses. Mutatsu leans forward, smoking a cigarette.
-13.000	4.897	01.mp3	Mutatsu is up from the couch, standing beside the table next to you. He gives you a gift.
+0.000	1.025	00.mp3	At Club Escapade.
+13.000	2.140	01.mp3	Mutatsu stands and gives you a gift.
 19.000	2.438	02.mp3	Mutatsu turns and walks away from the bar.

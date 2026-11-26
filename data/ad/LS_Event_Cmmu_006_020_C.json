@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_020_C",
- "title": "Fuuka's second bento and the stray cat",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You sit with Fuuka in the open-air corridor behind the school building again. A stray cat pads up to you."
-  },
-  {
-   "at": 11.49,
-   "text": "Fuuka crouches and sets the open bento down in front of the cat. The cat sniffs it, jerks back and darts away."
-  },
-  {
-   "at": 16.67,
-   "text": "Fuuka tries a bite of the bento herself."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_020_C", "title": "Fuuka's second bento and the stray cat", "cues": [{"at": 0.0, "text": "Behind school."}, {"at": 2.67, "text": "A cat approaches."}, {"at": 16.67, "text": "Fuuka tries it."}]}

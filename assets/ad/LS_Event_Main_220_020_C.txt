@@ -1,4 +1,4 @@
 #scene LS_Event_Main_220_020_C
-0.100	2.917	00.mp3	Your room in the dorm. You sit on your bed, head down.
-4.200	4.532	01.mp3	You get up, cross the room and open the door. Aigis stands in the hallway outside.
-18.200	3.278	02.mp3	Aigis wipes her eyes with her gloved hand, then lowers it.
+0.100	1.297	00.mp3	You sit, head down.
+4.200	2.945	01.mp3	You get up and open the door. Aigis stands outside.
+18.200	1.317	02.mp3	Aigis wipes her eyes.

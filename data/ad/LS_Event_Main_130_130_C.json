@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_130_130_C",
- "title": "The Shadow on the throne",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "You and your party run into a large hall and stop short. On a throne at the far end sits a huge, round Shadow in robes, with a tall figure crowned with branching antlers rising up behind it, and flat cut-out figures like paper dolls stand on either side. You all take up fighting stances."
-  }
- ]
-}
+{"movie": "LS_Event_Main_130_130_C", "title": "The Shadow on the throne", "cues": [{"at": 0.05, "text": "A huge Shadow on a throne."}]}

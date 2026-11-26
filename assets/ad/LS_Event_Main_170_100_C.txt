@@ -1,3 +1,3 @@
 #scene LS_Event_Main_170_100_C
-0.000	19.934	00.mp3	The dorm's command room, in front of its wall of monitors. Fuuka is inside her Persona, a tall figure with outstretched arms whose skirt closes around her like a dome. You, Yukari, Junpei, Akihiko, Mitsuru, Aigis and Koromaru stand around her, and Ikutsuki, the chairman, stands by the monitors with his arms crossed.
+0.000	2.451	00.mp3	Command room: Fuuka inside her Persona.
 17.000	2.185	01.mp3	Junpei turns and walks out of the room.

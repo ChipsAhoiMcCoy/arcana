@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_170_040_C",
- "title": "Akihiko confronts Shinjiro",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Outside the hospital, a paved courtyard lined with columns and benches. Shinjiro walks away, and Akihiko runs up behind him and stops."
-  },
-  {
-   "at": 13.17,
-   "text": "Akihiko raises his fists and punches Shinjiro, who staggers and bends forward."
-  },
-  {
-   "at": 25.87,
-   "text": "Shinjiro walks off across the courtyard, leaving Akihiko standing alone."
-  }
- ]
-}
+{"movie": "LS_Event_Main_170_040_C", "title": "Akihiko confronts Shinjiro", "cues": [{"at": 13.17, "text": "Akihiko punches Shinjiro."}, {"at": 25.87, "text": "Shinjiro walks off, leaving Akihiko alone."}]}

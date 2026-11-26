@@ -1,2 +1,2 @@
 #scene LS_Event_Main_190_110_C
-0.100	4.351	00.mp3	In class, you sit at your desk near Yukari and Junpei. You take out your phone.
+0.100	3.159	00.mp3	You sit near Yukari and Junpei, and take out your phone.

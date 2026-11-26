@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_116_095_C
-0.030	13.732	00.mp3	A deserted back alley, graffiti on the walls and trash bags and bins along one side. Nozomi walks in with two young men behind him, and a bitter-looking middle-aged man in a suit and glasses stands waiting by the bins.
-6.500	5.956	01.mp3	Nozomi turns around to find the two men closing in on him. He backs away, arms spread, trembling.
-13.330	4.968	02.mp3	You come running into the alley. Nozomi spots you and stumbles toward you, arms out.
-20.830	5.461	03.mp3	Nozomi is in tears. The two men turn and walk off, and Nozomi scurries over to your side.
-27.500	6.725	04.mp3	The bitter-looking man walks past you and out of the alley, leaving you with Nozomi, who is still crying and wiping his face.
+0.030	2.948	00.mp3	Nozomi walks into an alley with two men behind him.
+6.500	1.228	01.mp3	Nozomi backs away.
+13.330	1.700	02.mp3	Nozomi stumbles toward you.
+20.830	3.034	03.mp3	Nozomi cries. The men walk off and he hurries to you.
+27.500	3.354	04.mp3	The bitter-looking man walks out, leaving you with crying Nozomi.

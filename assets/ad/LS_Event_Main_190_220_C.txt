@@ -1,5 +1,5 @@
 #scene LS_Event_Main_190_220_C
-1.170	10.215	00.mp3	The entrance hall of a traditional inn in Kyoto. Two staff women bow as you walk in carrying your bags, with Junpei, Yukari, Aigis, Fuuka and Ryoji.
-21.500	7.771	01.mp3	Aigis hurries off down the hall with her bag, and the rest of you follow her to tall windows that look out on a garden courtyard, where she stops.
-52.400	2.748	02.mp3	Junpei walks over to stand with Yukari and Fuuka.
-55.070	3.258	03.mp3	Aigis walks over to stand with you and Ryoji, smiling.
+1.200	7.314	00.mp3	The entrance of a Kyoto inn. Two staff women bow as you walk in with Junpei, Yukari, Aigis, Fuuka and Ryoji.
+21.530	4.678	01.mp3	Aigis hurries down the hall, and you follow her to tall windows by a garden courtyard.
+52.430	1.059	02.mp3	Junpei joins.
+55.100	1.117	03.mp3	Aigis joins you.

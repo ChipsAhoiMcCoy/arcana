@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_105_020_C
-0.000	9.941	00.mp3	After a run, Kazushi stands facing you, out of breath and wincing, while you stand with a hand on your hip. A few teammates rest under a canopy nearby, two of them sitting.
-11.670	3.880	01.mp3	Kazushi doubles over, clutching his knee, his face twisted in pain.
+1.170	1.987	00.mp3	Kazushi stands facing you, out of breath.
+11.670	1.343	01.mp3	Kazushi doubles over.

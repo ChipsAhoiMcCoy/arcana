@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_108_090_C",
- "title": "Keisuke asks you to the station",
- "cues": [
-  {
-   "at": 1.1,
-   "text": "In the art room, Keisuke gets up from his stool at an easel and walks over to you. You, Fuuka and the other club members are painting at easels around the room."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_108_090_C", "title": "Keisuke asks you to the station", "cues": [{"at": 1.1, "text": "Keisuke walks over to you."}]}

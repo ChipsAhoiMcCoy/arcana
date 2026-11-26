@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Paulownia Mall. You stand chatting with Yuko outside the shops. Two girls from school walk over to her."
+   "text": "Girls approach."
   },
   {
    "at": 12.4,
    "text": "The two girls walk off past you."
   },
   {
-   "at": 21.4,
-   "text": "You and Yuko sit down side by side on a bench by the fountain."
+   "at": 21.33,
+   "text": "You and Yuko sit."
   },
   {
    "at": 33.2,

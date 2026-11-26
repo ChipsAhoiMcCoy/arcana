@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_110_073_C",
- "title": "Searching Paulownia Mall",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Fountain Square in Paulownia Mall. You stand with Maiko's parents."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_110_073_C", "title": "Searching Paulownia Mall", "cues": [{"at": 0.03, "text": "Fountain Square."}]}

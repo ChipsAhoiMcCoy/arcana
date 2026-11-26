@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_110_200_C",
- "title": "The boy at your bedside",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "In your dorm room, you lie asleep in bed. Your eyes open."
-  },
-  {
-   "at": 2.9,
-   "text": "You push yourself up on the bed. The boy in striped pyjamas stands beside it."
-  },
-  {
-   "at": 9.4,
-   "text": "The boy breaks apart into specks and is gone."
-  }
- ]
-}
+{"movie": "LS_Event_Main_110_200_C", "title": "The boy at your bedside", "cues": [{"at": 0.1, "text": "You lie asleep. Your eyes open."}, {"at": 2.9, "text": "You sit up beside the boy."}, {"at": 9.4, "text": "The boy breaks apart into specks."}]}

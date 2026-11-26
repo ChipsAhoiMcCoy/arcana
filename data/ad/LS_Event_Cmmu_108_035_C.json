@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_108_035_C",
- "title": "Art club: a member collapses",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the school lobby, you and Fuuka walk with Keisuke, who looks downcast."
-  },
-  {
-   "at": 5.33,
-   "text": "The club member doubles over against the shoe lockers, and Keisuke runs to him and kneels at his side."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_108_035_C", "title": "Art club: a member collapses", "cues": [{"at": 0.0, "text": "School lobby, with Keisuke."}, {"at": 5.33, "text": "Keisuke kneels by the club member."}]}

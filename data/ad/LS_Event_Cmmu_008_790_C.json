@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_008_790_C",
- "title": "Camera footage: Ken",
- "cues": [
-  {
-   "at": 2.1,
-   "text": "Camera footage plays: Ken alone in his room at the dorm, holding a long-handled broom like a spear. Ken sets his feet and swings it, lunging and striking at the air."
-  },
-  {
-   "at": 9.0,
-   "text": "Ken swings again, and the handle cracks against his own shin. He drops the broom and crouches, clutching his leg."
-  },
-  {
-   "at": 13.33,
-   "text": "Ken crosses the room, picks up a carton of milk from the low table and drinks it down."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_008_790_C", "title": "Camera footage: Ken", "cues": [{"at": 1.05, "text": "Ken swings a broom."}, {"at": 9.0, "text": "The broom hits his shin; he crouches."}, {"at": 13.33, "text": "Ken crosses the room, picks up a carton of milk from the low table and drinks it down."}]}

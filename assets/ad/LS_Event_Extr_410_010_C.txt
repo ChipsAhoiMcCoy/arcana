@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_410_010_C
-0.000	11.010	00.mp3	Your classroom. You sit at your desk; Junpei sits turned round in the seat in front of you and Yukari sits on the next desk. The door opens and Mitsuru walks in and comes over to you.
-5.670	2.366	01.mp3	Mitsuru turns and walks out of the classroom.
+0.000	2.035	00.mp3	In class, Mitsuru walks over to you.
+5.670	1.170	01.mp3	Mitsuru walks out.

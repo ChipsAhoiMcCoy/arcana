@@ -1,3 +1,3 @@
 #scene LS_Event_Main_160_110_C
-0.050	9.460	00.mp3	The dorm's lounge. You come in through the front door with your school bag. Junpei, Yukari and Ken sit on the sofas, and Koromaru turns and trots over to you.
-7.250	13.299	01.mp3	Fuuka comes over with Aigis beside her, Aigis wearing a school uniform like the girls': blazer and skirt. They stop in front of you, Aigis with her hands folded in front of her and Fuuka smiling with a hand at her chest.
+0.050	0.886	00.mp3	Dorm lounge.
+7.250	1.806	01.mp3	Aigis wears a school uniform.

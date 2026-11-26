@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_009_737_C",
- "title": "Brushing Koromaru again",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "In the dorm lounge, you sit on the sofa brushing Koromaru, who lies stretched out beside you with his head on the armrest, now and then lifting it to pant happily."
-  },
-  {
-   "at": 10.2,
-   "text": "Koromaru has jumped down and stands on the floor in front of you. He lowers his head to the floor at your feet, and something small glints there."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_009_737_C", "title": "Brushing Koromaru again", "cues": [{"at": 1.2, "text": "Brushing Koromaru."}, {"at": 10.2, "text": "Something small glints at your feet."}]}

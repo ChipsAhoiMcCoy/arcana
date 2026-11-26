@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_037_C
-0.030	5.781	00.mp3	You walk up to the Iwatodai Dorm, an old building, and climb its front steps to a pair of double doors.
+0.030	1.901	00.mp3	You climb the Iwatodai Dorm steps.
 9.800	4.557	01.mp3	You push the doors open and go in. The title appears: Persona 3 Reload.

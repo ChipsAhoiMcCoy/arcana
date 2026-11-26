@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_360_C
-0.050	9.930	00.mp3	You and Mitsuru sit across from each other at a café table, steaming cups of coffee in front of you; a woman sits at the next table. Mitsuru sits with her arms folded.
+0.000	0.679	00.mp3	A cafe.

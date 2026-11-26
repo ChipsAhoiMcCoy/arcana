@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_110_025_C",
- "title": "Maiko at Wilduck",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Wilduck Burger. You and Maiko sit across a table from each other, trays of burgers, fries and drinks between you."
-  },
-  {
-   "at": 5.4,
-   "text": "Maiko buries her face in her hands and bursts into tears. You reach a hand across the table toward her."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_110_025_C", "title": "Maiko at Wilduck", "cues": [{"at": 0, "text": "Wilduck Burger."}, {"at": 6.0, "text": "Maiko cries."}]}

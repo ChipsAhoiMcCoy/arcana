@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_116_010_C
-0.030	7.678	00.mp3	Paulownia Mall, Fountain Square. A chubby student in your school's uniform sits on a bench, looking up at you as you stand before him.
-3.330	9.396	01.mp3	The student is on his feet, waving his arms at you in annoyance. A bitter-looking man in glasses walks up to the two of you, and the student scurries around behind you.
-12.000	3.755	02.mp3	The man turns and walks off into the crowd. You turn to watch him go.
+0.030	0.966	00.mp3	Fountain Square.
+3.330	1.090	01.mp3	A man approaches.
+12.000	2.026	02.mp3	The man walks off; you watch him go.
 22.000	2.156	03.mp3	Wincing in pain, Nozomi runs off.

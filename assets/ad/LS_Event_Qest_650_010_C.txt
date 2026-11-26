@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_650_010_C
-0.000	9.509	00.mp3	In the faculty office, a teacher in a suit and a samurai helmet with a tall crescent crest walks up to you. Another teacher sits working at a desk behind him.
+0.000	1.581	00.mp3	Helmeted teacher approaches.

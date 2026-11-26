@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Paulownia Mall, decorated for Christmas and crowded with people. You and Yuko walk in together."
+   "text": "Paulownia Mall, decorated for Christmas and crowded. You and Yuko walk in."
   },
   {
    "at": 11.67,
-   "text": "Later, you and Yuko sit side by side on a bench beside the fountain."
+   "text": "By the fountain."
   },
   {
    "at": 14.33,
-   "text": "Yuko holds out a medicated patch she made herself, and you take it."
+   "text": "Yuko hands you a patch."
   }
  ]
 }

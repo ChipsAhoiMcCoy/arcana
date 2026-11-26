@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_140_060_C", "title": "Mitsuru asks Fuuka a favor", "cues": [
- {"at": 0.50, "text": "Fuuka's room in the dorm. She sits at a low table, typing on a laptop. There is a knock at the door."},
- {"at": 4.55, "text": "Fuuka opens the door and lets Mitsuru in. They stand facing each other in the room."}
-]}
+{"movie": "LS_Event_Main_140_060_C", "title": "Mitsuru asks Fuuka a favor", "cues": [{"at": 0.5, "text": "Fuuka types on a laptop."}, {"at": 4.55, "text": "Fuuka lets Mitsuru in."}]}

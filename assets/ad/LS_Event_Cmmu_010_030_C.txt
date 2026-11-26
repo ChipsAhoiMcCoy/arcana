@@ -1,5 +1,4 @@
 #scene LS_Event_Cmmu_010_030_C
-0.030	4.336	00.mp3	The back alley behind Port Island Station. Shinjiro stands facing you.
+0.030	0.709	00.mp3	Back alley.
 9.170	1.878	01.mp3	Shinjiro hands you an envelope.
-13.170	2.398	02.mp3	Akihiko walks up the alley toward you.
-22.830	4.498	03.mp3	Shinjiro hangs his head, then walks off past you, leaving you with Akihiko.
+22.830	2.834	02.mp3	Shinjiro walks off, leaving you with Akihiko.

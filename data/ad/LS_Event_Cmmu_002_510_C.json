@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_002_510_C", "title": "Yukari at the café", "cues": [{"at": 0.05, "text": "A café. You and Yukari sit across a small table from each other, talking."}]}
+{
+ "movie": "LS_Event_Cmmu_002_510_C",
+ "title": "Yukari at the café",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "A café."
+  }
+ ]
+}

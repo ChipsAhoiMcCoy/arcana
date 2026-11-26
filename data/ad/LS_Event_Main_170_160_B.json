@@ -1,10 +1,38 @@
-{"movie": "LS_Event_Main_170_160_B", "title": "Takaya's ambush", "cues": [
-{"at": 0.00, "text": "In the alley, Ken still points his spear at Shinjiro. Shinjiro stands his ground, making no move to defend himself."},
-{"at": 9.83, "text": "Takaya, shirtless, his long hair held back by a band, walks up the alley toward them, a revolver tucked into his belt."},
-{"at": 15.50, "text": "Takaya draws the revolver and aims it at Ken."},
-{"at": 18.83, "text": "Shinjiro rushes forward and plants himself in front of Ken, facing the gun."},
-{"at": 32.33, "text": "Takaya fires. The bullet strikes Shinjiro; he staggers and drops to one knee."},
-{"at": 37.57, "text": "Takaya walks over to the kneeling Shinjiro and kicks him to the ground."},
-{"at": 46.83, "text": "Takaya kicks Shinjiro again where he lies."},
-{"at": 52.33, "text": "Ken lowers his head and closes his eyes, his spear hanging at his side."}
-]}
+{
+ "movie": "LS_Event_Main_170_160_B",
+ "title": "Takaya's ambush",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Ken threatens."
+  },
+  {
+   "at": 8.5,
+   "text": "Takaya comes."
+  },
+  {
+   "at": 15.5,
+   "text": "Takaya aims at Ken."
+  },
+  {
+   "at": 18.83,
+   "text": "He blocks."
+  },
+  {
+   "at": 32.33,
+   "text": "A shot."
+  },
+  {
+   "at": 34.9,
+   "text": "Shinjiro drops to one knee."
+  },
+  {
+   "at": 41.33,
+   "text": "Takaya kicks Shinjiro down."
+  },
+  {
+   "at": 52.33,
+   "text": "Ken bows his head."
+  }
+ ]
+}

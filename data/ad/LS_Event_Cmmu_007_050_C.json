@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_007_050_C",
- "title": "Mii-chan found",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Port Island Station. You and Aigis walk across the plaza."
-  },
-  {
-   "at": 2.67,
-   "text": "Aigis turns and runs toward the sound, and you follow. A cat sits on a bench, and Aigis crouches in front of it."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_007_050_C", "title": "Mii-chan found", "cues": [{"at": 0.0, "text": "You and Aigis walk the plaza."}, {"at": 2.67, "text": "Aigis runs toward the sound; you follow. She crouches by a cat."}]}

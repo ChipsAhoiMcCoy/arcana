@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_600_810_C",
- "title": "Studying with Junpei and Yukari",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You sit at the dorm's dining table with Yukari and Junpei, studying. Junpei slouches with his cheek propped on his hand while Yukari writes in her notebook."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_600_810_C", "title": "Studying with Junpei and Yukari", "cues": [{"at": 0, "text": "Studying."}]}

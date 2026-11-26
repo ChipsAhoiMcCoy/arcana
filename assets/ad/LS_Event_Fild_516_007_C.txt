@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_007_C
-0.000	5.603	00.mp3	You run ahead with your weapon out, your party close behind, and stop face to face with what waits there.
+0.000	1.502	00.mp3	You run ahead, weapon out.

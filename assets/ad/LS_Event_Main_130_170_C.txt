@@ -1,5 +1,5 @@
 #scene LS_Event_Main_130_170_C
-0.200	13.531	00.mp3	Outside the hotel, Fuuka waits by the entrance under a sign reading champs de fleurs. Mitsuru comes out first, then Akihiko, Yukari, you and Junpei, and you all gather around her. Junpei hangs back, looking glum.
+0.200	4.272	00.mp3	Outside the hotel, Fuuka waits. The group gathers; Junpei hangs back.
 15.400	4.011	01.mp3	Mitsuru turns and walks away down the street, and Akihiko follows her.
 31.050	2.604	02.mp3	Junpei turns his back on you and walks off alone.
-36.700	4.869	03.mp3	Yukari heads off the same way, and Fuuka goes after her, leaving you by the entrance.
+36.700	3.592	03.mp3	Yukari heads off, and Fuuka follows, leaving you at the entrance.

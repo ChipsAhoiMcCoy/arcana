@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_340_020_C
-0.300	7.509	00.mp3	Your classroom, silent during an exam. You and your classmates, Junpei and Yukari among them, sit bent over your papers.
+1.960	1.130	00.mp3	You take an exam.

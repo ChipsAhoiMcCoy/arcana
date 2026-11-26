@@ -4,15 +4,11 @@
  "cues": [
   {
    "at": 0.05,
-   "text": "The command room on the dorm's top floor. You, Yukari and Junpei sit on stools around the low table; Mitsuru, Fuuka and Akihiko sit on the sofa, Akihiko with his arms folded, and Aigis stands beside it. The chairman, Ikutsuki, walks in."
+   "text": "Command room."
   },
   {
    "at": 3.9,
-   "text": "The door opens and Ken walks in to stand beside the chairman. Akihiko, Mitsuru and Fuuka stare at him in surprise."
-  },
-  {
-   "at": 7.33,
-   "text": "Akihiko gets up from the sofa and stands facing Ken and the chairman, a hand on his hip."
+   "text": "Ken joins the chairman."
   }
  ]
 }

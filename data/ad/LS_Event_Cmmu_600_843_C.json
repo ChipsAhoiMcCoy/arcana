@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_600_843_C",
- "title": "The chairman joins the study session",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "The dorm lounge. You study around the dining table with Yukari, Junpei, Fuuka, Mitsuru and Akihiko, everyone bent over notebooks. The chairman, Ikutsuki, sits at the table with you, a pen in his hand."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_600_843_C", "title": "The chairman joins the study session", "cues": []}

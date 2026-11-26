@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_660_C",
- "title": "Yuko heads home",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The school's main lobby, by the shoe lockers. You walk along with Yuko, bags in hand, and stop to face each other."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_660_C", "title": "Yuko heads home", "cues": [{"at": 0.2, "text": "You stop and face Yuko."}]}

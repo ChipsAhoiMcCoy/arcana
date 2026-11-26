@@ -1,6 +1,22 @@
-{"movie": "LS_Event_Main_140_250_C", "title": "Operation Yakushima Beach Fling", "cues": [
-{"at": 0.00, "text": "Among palm trees near the beach, you, Junpei and Akihiko walk up in swimsuits."},
-{"at": 7.70, "text": "Junpei pulls out a letter and opens it. You and Akihiko step closer to look."},
-{"at": 25.33, "text": "Akihiko turns and walks off."},
-{"at": 29.67, "text": "Junpei turns from you and stomps off after him."}
-]}
+{
+ "movie": "LS_Event_Main_140_250_C",
+ "title": "Operation Yakushima Beach Fling",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You, Junpei and Akihiko arrive."
+  },
+  {
+   "at": 7.7,
+   "text": "Junpei opens a letter."
+  },
+  {
+   "at": 25.33,
+   "text": "Akihiko walks off."
+  },
+  {
+   "at": 29.67,
+   "text": "Junpei turns from you and stomps off after him."
+  }
+ ]
+}

@@ -1,3 +1,3 @@
 #scene LS_Event_Main_190_100_C
-2.550	7.415	00.mp3	Free of the crosses, you and the others turn around. Behind you, Mitsuru kneels beside her father, who lies still on his back.
-8.800	2.381	01.mp3	Mitsuru bows low over her father's body.
+2.550	2.695	00.mp3	Mitsuru kneels beside her father, who lies still.
+8.800	1.176	01.mp3	Mitsuru bows low.

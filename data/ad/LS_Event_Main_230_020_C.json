@@ -1,6 +1,18 @@
-{"movie": "LS_Event_Main_230_020_C", "title": "A girl at the school gate", "cues": [
-{"at": 0.10, "text": "The school entranceway. You walk along the paved path between the planters, a bag over your shoulder, and Junpei jogs up behind you. A little way ahead, Aigis stands still by the planters, a bag in her hand, watching you."},
-{"at": 8.85, "text": "Yukari walks up and joins you and Junpei."},
-{"at": 17.05, "text": "Aigis turns and runs off past the planters, out of sight."},
-{"at": 23.35, "text": "Junpei turns and walks off toward the school building, and you go with him. Yukari lingers a moment, then follows."}
-]}
+{
+ "movie": "LS_Event_Main_230_020_C",
+ "title": "A girl at the school gate",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "School entrance."
+  },
+  {
+   "at": 17.05,
+   "text": "Aigis runs off."
+  },
+  {
+   "at": 23.35,
+   "text": "Junpei walks off with you. Yukari lingers, then follows."
+  }
+ ]
+}

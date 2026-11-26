@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_710_C",
- "title": "Reading with Mitsuru again",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The lounge of the dorm. You and Mitsuru sit near each other, each reading one of her books. Later she has set hers down on the table and sits with her arms folded while you read on."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_710_C", "title": "Reading with Mitsuru again", "cues": [{"at": 1.33, "text": "You and Mitsuru read in the lounge."}]}

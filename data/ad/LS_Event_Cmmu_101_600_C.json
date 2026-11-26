@@ -3,16 +3,12 @@
  "title": "Movies with Kenji",
  "cues": [
   {
-   "at": 0.0,
-   "text": "The lobby of the movie theater at Port Island Station. You and Kenji stand by the snack counter."
-  },
-  {
    "at": 1.0,
-   "text": "In the screening room, you and Kenji sit side by side among the audience, watching the film, Kenji with his arms folded."
+   "text": "You and Kenji sit watching the film."
   },
   {
-   "at": 7.67,
-   "text": "Afterwards, you and Kenji stand back by the snack counter in the lobby, Kenji rubbing the back of his head."
+   "at": 6.33,
+   "text": "Back in the lobby."
   }
  ]
 }

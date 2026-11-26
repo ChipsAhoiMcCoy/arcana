@@ -1,5 +1,5 @@
 #scene LS_Event_Main_120_200_C
-0.000	10.997	00.mp3	You lie face down on a rippled floor in a wide, strange hall whose walls twist in ridges. No one else is there. Slowly you push yourself up into a crouch, one hand on the floor.
+0.000	5.831	00.mp3	You lie face down on a rippled floor in a strange hall, alone. Slowly you push up into a crouch.
 8.930	1.744	01.mp3	You get to your feet and look around.
-14.270	8.016	02.mp3	A few steps from you a haze gathers and takes the shape of a boy in striped pyjamas. He stands facing you, hands behind his back.
-21.770	3.969	03.mp3	The boy dissolves back into haze and is gone. You stand alone again.
+14.270	2.107	02.mp3	A haze becomes a boy in pyjamas.
+21.770	2.462	03.mp3	The boy fades into haze. You stand alone.

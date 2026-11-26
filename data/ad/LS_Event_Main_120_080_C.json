@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_120_080_C", "title": "Heading out", "cues": [
-  {"at": 0.00, "text": "In the dorm's ground-floor lobby, you, Yukari and Junpei stand together."},
-  {"at": 4.00, "text": "Yukari turns away from you both and walks a few steps off, then stops and waits."}
-]}
+{"movie": "LS_Event_Main_120_080_C", "title": "Heading out", "cues": [{"at": 0.0, "text": "The lobby."}, {"at": 4.0, "text": "Yukari walks off a few steps, then waits."}]}

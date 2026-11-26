@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_070_C",
- "title": "Fuuka and the bookstore",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Fuuka stand outside the bookstore in the Iwatodai strip mall, school bags in hand. Fuuka looks downcast, holding her bag in front of her."
-  },
-  {
-   "at": 25.5,
-   "text": "Fuuka presses a hand to her chest."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_070_C", "title": "Fuuka and the bookstore", "cues": [{"at": 0.0, "text": "Fuuka looks downcast."}]}

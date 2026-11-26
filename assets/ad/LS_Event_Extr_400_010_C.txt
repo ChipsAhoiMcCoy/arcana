@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_400_010_C
-0.000	5.471	00.mp3	The dorm lounge. You come in to find Ikutsuki sitting on the sofas with Junpei and Yukari.
-21.000	4.350	01.mp3	Akihiko, Fuuka and Mitsuru come over to the sofas and join the group.
+0.000	0.823	00.mp3	You walk in.
+21.000	2.586	01.mp3	Akihiko, Fuuka and Mitsuru join the group.

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_065_C",
- "title": "Kazushi's promise",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Iwatodai Station. You come running up and stop in front of Kazushi, who stands by a pillar with his bag over his shoulder and a hand on his hip, looking glum."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_065_C", "title": "Kazushi's promise", "cues": [{"at": 0.0, "text": "Iwatodai Station."}]}

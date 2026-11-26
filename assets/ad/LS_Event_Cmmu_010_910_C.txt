@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_010_910_C
-0.030	12.245	00.mp3	Tartarus's entrance hall. The team waits in a loose group: Mitsuru, Akihiko, Yukari, Junpei, Fuuka, Aigis, Ken, and Koromaru sitting at Ken's feet. Shinjiro walks over to you.
+0.030	1.355	00.mp3	Shinjiro walks over.

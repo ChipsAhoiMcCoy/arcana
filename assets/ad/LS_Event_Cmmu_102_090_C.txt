@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_102_090_C
-0.000	7.911	00.mp3	In the student council room, Hidetoshi stands with his arms folded, giving a report to the members seated at the table, Mitsuru among them.
-1.300	5.803	01.mp3	Chihiro gets up and goes to the front of the room as Hidetoshi walks back and stops beside your seat.
+1.200	4.817	00.mp3	In the council room, Chihiro goes to the front; Hidetoshi stops beside your seat.

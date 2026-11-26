@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_330_C
-0.000	10.174	00.mp3	Meanwhile, in the dorm's command room, Akihiko sits at the console with his arms folded. The chairman, Ikutsuki, stands beside him facing the big monitors.
-9.170	2.441	01.mp3	Ikutsuki doubles over, rubbing his legs.
+0.000	1.071	00.mp3	Dorm command room.
+9.170	1.194	01.mp3	Ikutsuki winces.

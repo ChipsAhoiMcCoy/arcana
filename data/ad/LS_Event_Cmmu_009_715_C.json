@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_009_715_C",
- "title": "The wolf documentary",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "In the dorm lounge, you sit on the sofa in front of the TV, and Koromaru sits up in the armchair beside it."
-  },
-  {
-   "at": 3.0,
-   "text": "Koromaru springs to his feet and glares at the screen."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_009_715_C", "title": "The wolf documentary", "cues": [{"at": 4.33, "text": "Koromaru jumps up, glaring at the screen."}]}

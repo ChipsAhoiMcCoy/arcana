@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_070_C",
- "title": "The kids' victory",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the school's sports field, you and Yuko walk over to the children, who are waiting for you."
-  },
-  {
-   "at": 8.4,
-   "text": "The children run off across the field. Yuko watches them go."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_070_C", "title": "The kids' victory", "cues": [{"at": 0.0, "text": "You walk to the children."}, {"at": 8.4, "text": "The children run off. Yuko watches them go."}]}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_010_C", "title": "Joining the track team", "cues": [{"at": 0.00, "text": "You stand beside the track team's advisor, facing the team. A girl and a boy stand at the front, and the rest of the members look you over."}]}
+{
+ "movie": "LS_Event_Cmmu_105_010_C",
+ "title": "Joining the track team",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Track team."
+  }
+ ]
+}

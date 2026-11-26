@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_660_C",
- "title": "Mitsuru in the student council room",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The student council room at Gekkoukan High. You and Mitsuru walk in together, and she stops to look around the room."
-  },
-  {
-   "at": 2.33,
-   "text": "Mitsuru wanders slowly across the room to the window and gazes out, then turns back to face you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_660_C", "title": "Mitsuru in the student council room", "cues": [{"at": 0.0, "text": "In the student council room."}, {"at": 2.33, "text": "Mitsuru crosses to the window, gazes out, then turns to you."}]}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_003_040_C", "title": "Off to the shrine", "cues": [{"at": 0.05, "text": "Outside a burger shop. You and Junpei walk along the street with your school bags and stop."}]}
+{
+ "movie": "LS_Event_Cmmu_003_040_C",
+ "title": "Off to the shrine",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "You and Junpei stop."
+  }
+ ]
+}

@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_140_280_C", "title": "Junpei's beach pick-up", "cues": [
-{"at": 0.00, "text": "Further along the beach, a woman stands on her own."},
-{"at": 2.00, "text": "Junpei walks up to her. You and Akihiko follow."},
-{"at": 28.00, "text": "You turn and run off down the beach, and Akihiko runs after you. Junpei stares, then bolts after you both."}
-]}
+{"movie": "LS_Event_Main_140_280_C", "title": "Junpei's beach pick-up", "cues": [{"at": 0.0, "text": "A woman."}, {"at": 2.0, "text": "Junpei walks up to her. You and Akihiko follow."}, {"at": 28.0, "text": "You run off."}]}

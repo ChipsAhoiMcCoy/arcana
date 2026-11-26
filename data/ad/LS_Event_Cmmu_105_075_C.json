@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_075_C",
- "title": "Walking home with Kazushi",
- "cues": [
-  {
-   "at": 3.0,
-   "text": "At the school entranceway, among students heading home, you turn around. Kazushi walks up to you, his bag over his shoulder."
-  },
-  {
-   "at": 6.4,
-   "text": "The two of you set off side by side toward the school gate, where Kazushi stops and stands with his back to you as he talks."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_075_C", "title": "Walking home with Kazushi", "cues": [{"at": 3.0, "text": "Kazushi walks up to you."}, {"at": 6.4, "text": "You and Kazushi walk to the school gate, where he stops, back to you, and talks."}]}

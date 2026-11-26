@@ -1,2 +1,2 @@
 #scene LS_Event_Main_150_080_C
-0.000	7.335	00.mp3	In the dorm's command room, you and the team sit around the low table with Ikutsuki, the chairman. Aigis stands behind them.
+0.000	1.309	00.mp3	You sit with Ikutsuki.

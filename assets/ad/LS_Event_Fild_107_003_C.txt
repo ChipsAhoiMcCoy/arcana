@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_107_003_C
-0.200	4.934	00.mp3	Far up the path, the girl from the pier runs on through the woods, and you stop to watch her.
+0.200	2.995	00.mp3	The girl from the pier runs on through the woods; you watch.

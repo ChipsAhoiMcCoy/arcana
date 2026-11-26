@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_110_040_C",
- "title": "Maiko's birthday",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Naganaki Shrine. Maiko sits beside you on a bench, her school backpack still on, swinging her feet and beaming."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_110_040_C", "title": "Maiko's birthday", "cues": [{"at": 0.0, "text": "The shrine."}, {"at": 1.33, "text": "Maiko sits beside you."}]}

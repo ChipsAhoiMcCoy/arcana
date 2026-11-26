@@ -1,4 +1,3 @@
 #scene LS_Event_Main_170_010_C
-0.000	10.731	00.mp3	A hospital room. Chidori sits up in bed with a sketchbook open on her lap. Mitsuru sits on a stool beside the bed with her arms crossed, and Akihiko stands by the window.
-7.330	4.348	01.mp3	Junpei hurries in and stops beside the bed. Yukari comes in after him.
-14.370	5.207	02.mp3	Chidori lets go of the sketchbook and doubles over in the bed, burying her face in her arms.
+0.000	1.116	00.mp3	A hospital room.
+14.370	2.435	01.mp3	Chidori doubles over, face in her arms.

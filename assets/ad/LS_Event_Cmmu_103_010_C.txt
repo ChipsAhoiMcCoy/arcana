@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_010_C
-0.030	5.191	00.mp3	You walk back into the used-book store and up to the elderly man and woman, a leaf in your hand.
+0.030	1.737	00.mp3	You return to the elderly couple.

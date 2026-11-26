@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_109_600_C
-0.000	4.751	00.mp3	At the cinema at Port Island Station, you stand with Chihiro by the snack counter.
-1.000	5.372	01.mp3	You and Chihiro sit side by side among the audience in the theatre as the films play.
+1.000	3.031	00.mp3	At the cinema, you and Chihiro sit among the audience.

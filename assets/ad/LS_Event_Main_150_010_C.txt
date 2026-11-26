@@ -1,6 +1,6 @@
 #scene LS_Event_Main_150_010_C
-0.050	7.143	00.mp3	In a back alley, Shinjiro sits hunched on a flight of stairs, a hand pressed to his chest. A young couple stands nearby.
-2.700	9.376	01.mp3	A young man with long hair and a bare, tattooed chest walks up, followed by a boy with glasses carrying a metal case and a girl in a long, frilled dress.
+0.050	1.395	00.mp3	Shinjiro sits hunched.
+2.700	2.213	01.mp3	Three strangers walk up to Shinjiro.
 8.700	1.756	02.mp3	The couple hurries off down the alley.
-19.650	4.311	03.mp3	The boy with glasses tosses the capsules to Shinjiro, who catches them.
+19.650	1.426	03.mp3	Shinjiro catches them.
 36.350	3.563	04.mp3	The three turn and walk away, leaving Shinjiro standing alone.

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_160_150_C",
- "title": "Shinjiro returns",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Outside Hagakure, the ramen shop in the back street, you stand with Akihiko, who has an attaché case in his hand. The shop door opens and Shinjiro steps out, walks a few paces toward Akihiko and stops, a hand on his hip."
-  },
-  {
-   "at": 17.13,
-   "text": "Shinjiro tugs the brim of his cap down over his eyes."
-  }
- ]
-}
+{"movie": "LS_Event_Main_160_150_C", "title": "Shinjiro returns", "cues": [{"at": 0.0, "text": "Shinjiro steps out toward Akihiko."}]}

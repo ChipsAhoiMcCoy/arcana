@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_114_080_C
-0.000	10.197	00.mp3	Club Escapade. Mutatsu sits on a booth sofa with his bottle and glass on the low table in front of him, a cigar in his fingers. You walk over and sit down beside him.
-12.000	4.040	01.mp3	Mutatsu peers at you, then slumps forward over the table, head hanging.
+0.000	1.012	00.mp3	Club Escapade.

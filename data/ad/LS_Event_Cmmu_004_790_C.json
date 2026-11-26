@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_004_790_C",
- "title": "Akihiko practises small talk",
- "cues": [
-  {
-   "at": 1.17,
-   "text": "The footage shows Akihiko alone in his dorm room, scowling as he throws punches beside a hanging punching bag."
-  },
-  {
-   "at": 3.67,
-   "text": "He stops, turns away and walks over to his desk, where he leans over something lying open and reads."
-  },
-  {
-   "at": 11.5,
-   "text": "He turns from the desk, steps out into the middle of the room and faces the empty space with a smile, as if someone were standing there."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_004_790_C", "title": "Akihiko practises small talk", "cues": [{"at": 1.17, "text": "Akihiko punches."}, {"at": 3.67, "text": "He stops, walks to his desk and reads something lying open."}, {"at": 11.5, "text": "He steps into the room and smiles at empty space."}]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_620_010_C
-0.000	6.569	00.mp3	Your room in the dorm, beside the bed. Your phone beeps in your pocket; you take it out, look at the screen and answer.
+0.000	2.629	00.mp3	Your dorm room. Your phone beeps and you answer it.

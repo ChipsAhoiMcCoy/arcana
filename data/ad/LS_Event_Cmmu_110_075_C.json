@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_110_075_C",
- "title": "Maiko found",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Iwatodai Strip Mall. Maiko sits alone on a bench by the takoyaki stand. You and her parents come running up, and she gets to her feet."
-  },
-  {
-   "at": 12.33,
-   "text": "Maiko walks over to stand in front of you, gripping the straps of her backpack, while her parents turn to watch."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_110_075_C", "title": "Maiko found", "cues": [{"at": 0.03, "text": "Maiko waits."}, {"at": 12.33, "text": "Maiko faces you."}]}

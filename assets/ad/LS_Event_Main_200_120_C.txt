@@ -1,4 +1,3 @@
 #scene LS_Event_Main_200_120_C
-0.050	6.772	00.mp3	Ryoji stands alone on a bridge among stopped cars and trucks, his back turned. Aigis strides up behind him.
-5.200	1.815	01.mp3	Ryoji turns around to face her.
-17.020	6.753	02.mp3	Ryoji lifts a hand to his head. Aigis drops into a fighting stance, feet planted wide, arms held out.
+0.050	2.565	00.mp3	Aigis strides up behind Ryoji on the bridge.
+5.200	1.579	01.mp3	Ryoji turns to face her.

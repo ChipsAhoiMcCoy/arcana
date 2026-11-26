@@ -1,5 +1,4 @@
 #scene LS_Event_Main_190_290_C
-0.000	6.144	00.mp3	The inn's open-air hot spring. You sit in the steaming water with Junpei, Akihiko and Ryoji.
-14.530	5.564	01.mp3	A door slides open somewhere beyond the steam. Junpei, Akihiko and Ryoji start.
-19.200	9.738	02.mp3	Yukari, Fuuka and Mitsuru walk out onto the far side of the bath, wrapped in towels, with Aigis beside them. You and the others stand up in the water and stare.
-32.330	4.990	03.mp3	Junpei lunges at Ryoji, splashing through the water, and clamps a hand over his mouth.
+0.000	0.853	00.mp3	Hot spring.
+14.530	1.329	01.mp3	A door slides open.
+19.200	2.642	02.mp3	Yukari, Fuuka and Mitsuru enter in towels.

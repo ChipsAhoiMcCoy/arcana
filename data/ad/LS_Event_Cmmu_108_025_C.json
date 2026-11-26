@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_108_025_C",
- "title": "Art club: Fuuka's headache",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the school lobby, you, Fuuka and Keisuke walk along with your bags. Fuuka has stopped short, wincing."
-  },
-  {
-   "at": 11.83,
-   "text": "A girl from the art club comes up beside you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_108_025_C", "title": "Art club: Fuuka's headache", "cues": [{"at": 2.0, "text": "You, Fuuka and Keisuke walk through the school lobby. Fuuka stops short, wincing."}, {"at": 11.83, "text": "A girl approaches."}]}

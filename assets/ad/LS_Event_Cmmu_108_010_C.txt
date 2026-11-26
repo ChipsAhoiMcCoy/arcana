@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_108_010_C
-0.000	9.195	00.mp3	In the art room, among club members at their easels, you walk up to Fuuka, who is talking with a student with glasses; he pushes his glasses up as he talks.
+0.000	2.028	00.mp3	In the art room, you walk up to Fuuka.

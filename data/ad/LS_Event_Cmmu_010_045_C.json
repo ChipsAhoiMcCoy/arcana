@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_010_045_C",
- "title": "Ramen and the truth",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Hagakure Ramen. You and Shinjiro sit at the counter, the envelope with you."
-  },
-  {
-   "at": 9.0,
-   "text": "The cook sets two bowls of ramen down in front of you."
-  },
-  {
-   "at": 28.5,
-   "text": "You both stand by the counter now, Shinjiro holding the envelope. You turn and walk out, the door closing behind you. Shinjiro stays behind, puts the envelope away inside his coat, and stands with a hand on his hip."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_010_045_C", "title": "Ramen and the truth", "cues": [{"at": 1.17, "text": "You sit at Hagakure Ramen."}, {"at": 9.0, "text": "The cook sets two bowls of ramen down in front of you."}, {"at": 28.5, "text": "You walk out. Shinjiro pockets the envelope and stays behind."}]}

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_140_050_C",
- "title": "Akihiko visits Shinjiro",
- "cues": [
-  {
-   "at": 0.3,
-   "text": "Shinjiro sits alone on a stack of crates beside an outdoor staircase, leaning forward with an elbow on his knee. Akihiko walks up and stops in front of him, one hand on his hip."
-  },
-  {
-   "at": 16.4,
-   "text": "Akihiko turns and walks away. Shinjiro stays where he is."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_050_C", "title": "Akihiko visits Shinjiro", "cues": [{"at": 0.3, "text": "Akihiko walks up to Shinjiro, seated on crates."}, {"at": 16.4, "text": "Akihiko turns and walks away. Shinjiro stays where he is."}]}

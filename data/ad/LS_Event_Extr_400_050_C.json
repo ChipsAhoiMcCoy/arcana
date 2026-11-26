@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Extr_400_050_C",
- "title": "Takaya at the station",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You cross the plaza at Port Island Station and stop short: Takaya is waiting by a pillar."
-  },
-  {
-   "at": 9.36,
-   "text": "Takaya turns and walks off. You follow him."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_400_050_C", "title": "Takaya at the station", "cues": [{"at": 0.0, "text": "You cross the plaza and stop short: Takaya is waiting by a pillar."}, {"at": 9.36, "text": "Takaya turns and walks off. You follow him."}]}

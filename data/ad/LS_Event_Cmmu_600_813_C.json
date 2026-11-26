@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_600_813_C", "title": "Natsuki's notes", "cues": [{"at": 0.00, "text": "You sit at the dorm's dining table with Yukari and Fuuka, studying. Fuuka has a borrowed notebook open in front of her."}]}
+{
+ "movie": "LS_Event_Cmmu_600_813_C",
+ "title": "Natsuki's notes",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You study."
+  }
+ ]
+}

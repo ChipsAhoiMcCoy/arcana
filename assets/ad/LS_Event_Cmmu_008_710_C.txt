@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_008_710_C
-0.170	5.741	00.mp3	The dorm lounge. You and Ken sit side by side in front of the TV, watching an action movie.
+1.030	1.425	00.mp3	You and Ken watch a movie.

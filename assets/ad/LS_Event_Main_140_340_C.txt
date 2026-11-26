@@ -1,6 +1,6 @@
 #scene LS_Event_Main_140_340_C
-2.550	9.614	00.mp3	On the Kirijo family's private beach, you stand by a parasol with Junpei and Akihiko. Yukari, Fuuka, Mitsuru and Aigis walk over to join you.
-13.700	7.886	01.mp3	Junpei runs off into the sea, and Aigis dashes in after him with a splash. Yukari laughs and heads down to the water with Aigis.
-23.100	12.321	02.mp3	Fuuka and Mitsuru follow them into the water. Later, you and Akihiko sit on beach loungers under a parasol, Akihiko with his arms folded and legs crossed, and Ikutsuki walks over to you.
-35.550	10.578	03.mp3	Out in the shallows, Aigis aims her arm at Junpei and a jet of water blasts from her fingertips straight into him. Yukari grins and drops into a fighting stance, and so do you.
-46.400	6.759	04.mp3	Akihiko and you rush in too. Junpei ends up sprawled face down in the shallows, everyone standing over him.
+2.550	2.911	00.mp3	The girls walk over to you, Junpei and Akihiko.
+13.700	1.548	01.mp3	Junpei runs into the sea.
+23.100	4.014	02.mp3	Later, you and Akihiko sit on loungers; Ikutsuki walks over.
+34.400	1.775	03.mp3	Aigis blasts water at Junpei.
+46.400	0.947	04.mp3	Junpei falls.

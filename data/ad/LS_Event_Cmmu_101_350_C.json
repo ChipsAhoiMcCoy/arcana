@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_101_350_C",
- "title": "Kenji: after a bad movie",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Outside the cinema at Port Island Station, by the movie posters. Kenji walks up beside you and stops, facing you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_101_350_C", "title": "Kenji: after a bad movie", "cues": [{"at": 0.0, "text": "Kenji walks up to you."}]}

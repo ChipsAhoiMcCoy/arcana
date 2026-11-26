@@ -4,19 +4,11 @@
  "cues": [
   {
    "at": 2.1,
-   "text": "In Tartarus's entrance hall, a giant clock face looms overhead. Ikutsuki waits at the far end with his arms folded, Aigis standing beside him between two great bull heads mounted on the wall. You run in with Mitsuru, Akihiko, Yukari, Junpei, Fuuka, Ken and Koromaru, and stop in a line facing them."
-  },
-  {
-   "at": 42.1,
-   "text": "Mitsuru turns toward Ikutsuki and drops into a fighting stance."
+   "text": "Tartarus's entrance hall. Ikutsuki waits with Aigis beside him. You and your team run in and stop facing them."
   },
   {
    "at": 45.9,
-   "text": "Aigis steps forward from Ikutsuki's side, toward you."
-  },
-  {
-   "at": 48.55,
-   "text": "Aigis plants her feet and spreads her arms wide, ready to fight."
+   "text": "Aigis steps forward."
   }
  ]
 }

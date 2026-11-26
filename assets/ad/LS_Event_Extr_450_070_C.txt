@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_070_C
-0.170	6.196	00.mp3	The cinema at Port Island Station. You sit in a plush seat in the rows of the theater, eyes on the screen.
+0.170	2.284	00.mp3	You sit in the cinema, eyes on the screen.

@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_650_080_C
-0.000	7.973	00.mp3	In the faculty office, Mr. Ono stands facing you in his samurai helmet. Another teacher sits working at a desk behind him.
+0.000	1.008	00.mp3	Faculty office.

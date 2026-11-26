@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_600_C",
- "title": "Fuuka: hard science fiction",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the lobby of the cinema, you and Fuuka stand by the snack counter, Fuuka holding her bag in front of her with both hands."
-  },
-  {
-   "at": 3.67,
-   "text": "You and Fuuka sit side by side among the audience as the film plays, hands folded in your laps."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_600_C", "title": "Fuuka: hard science fiction", "cues": [{"at": 0.0, "text": "You wait."}, {"at": 3.67, "text": "You and Fuuka watch the film."}]}

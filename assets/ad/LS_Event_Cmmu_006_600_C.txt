@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_006_600_C
-0.000	6.887	00.mp3	In the lobby of the cinema, you and Fuuka stand by the snack counter, Fuuka holding her bag in front of her with both hands.
-3.670	5.792	01.mp3	You and Fuuka sit side by side among the audience as the film plays, hands folded in your laps.
+0.000	0.687	00.mp3	You wait.
+3.670	1.512	01.mp3	You and Fuuka watch the film.

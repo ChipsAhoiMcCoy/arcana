@@ -1,4 +1,5 @@
 #scene LS_Event_Cmmu_115_010_C
-0.000	14.326	00.mp3	The takoyaki stand at the Iwatodai Strip Mall. You and an athletic-looking boy in a tracksuit sit side by side on a low ledge, each with a tray of takoyaki, in the middle of an eating race, cramming them in as fast as you can.
-8.330	6.618	01.mp3	The race over, you and Mamoru sit side by side, hunched forward with your elbows on your knees, catching your breath.
-14.830	1.671	02.mp3	Mamoru gets up and runs off.
+0.000	0.867	00.mp3	Takoyaki.
+4.000	1.478	01.mp3	You two cram takoyaki.
+9.500	1.067	02.mp3	You catch your breath.
+14.830	1.671	03.mp3	Mamoru gets up and runs off.

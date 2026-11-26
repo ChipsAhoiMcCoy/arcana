@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_006_653_C
-0.000	8.213	00.mp3	Fountain Square, decorated for Christmas and busy with people. You and Fuuka walk in side by side and stop to take in the decorations.
-13.330	8.095	01.mp3	The two of you walk on to a quieter spot by the doors of a café, people passing now and then. Fuuka stops and turns to you, smiling.
-18.170	3.295	02.mp3	Fuuka holds out the cookies she baked herself, and you take them.
-25.500	1.698	03.mp3	Fuuka steps a little closer to you.
+0.000	4.440	00.mp3	Fountain Square, decorated for Christmas. You and Fuuka stop to take it in.
+13.330	2.112	01.mp3	Fuuka stops and turns to you, smiling.
+18.170	1.367	02.mp3	Fuuka hands you cookies.
+25.500	0.928	03.mp3	She steps in.

@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_002_060_C
-0.000	4.686	00.mp3	On the school rooftop, Yukari stands with her back to you, then turns around to face you.
-5.000	1.245	01.mp3	Yukari bows to you.
+0.030	1.387	00.mp3	Yukari turns around.
+5.030	1.245	01.mp3	Yukari bows to you.

@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Extr_400_027_C",
- "title": "Takaya on the bridge",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The Shadow is gone. You lower your guard and face Takaya on the bridge."
-  },
-  {
-   "at": 3.5,
-   "text": "Takaya walks past you and stops with his back to you. You walk up behind him."
-  },
-  {
-   "at": 20.03,
-   "text": "Takaya walks off along the bridge. Mitsuru rides up on a motorcycle, stops beside you and takes off her helmet."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_400_027_C", "title": "Takaya on the bridge", "cues": [{"at": 0.0, "text": "The Shadow is gone. You face Takaya."}, {"at": 3.5, "text": "Takaya walks past. You step up behind him."}, {"at": 20.03, "text": "Takaya walks off. Mitsuru rides up on a motorcycle and takes off her helmet."}]}

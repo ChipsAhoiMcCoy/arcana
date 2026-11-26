@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_100_033_C",
- "title": "Outside the station",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Outside Iwatodai Station, you stand on the plaza with a bag over your shoulder. A few people sit and stand by the station wall behind you."
-  }
- ]
-}
+{"movie": "LS_Event_Main_100_033_C", "title": "Outside the station", "cues": [{"at": 0.03, "text": "You stand outside Iwatodai Station with a bag."}]}

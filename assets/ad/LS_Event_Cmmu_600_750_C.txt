@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_750_C
-0.000	4.328	00.mp3	As you come into the dorm lounge with your bag, Ikutsuki walks over to meet you.
+0.000	1.379	00.mp3	Ikutsuki walks over.

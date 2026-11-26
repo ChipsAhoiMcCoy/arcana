@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_103_050_C", "title": "The tree their son planted", "cues": [{"at": 0.03, "text": "You come into Bookworms, where Bunkichi and Mitsuko are waiting."}]}
+{
+ "movie": "LS_Event_Cmmu_103_050_C",
+ "title": "The tree their son planted",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Bookworms. Bunkichi and Mitsuko wait."
+  }
+ ]
+}

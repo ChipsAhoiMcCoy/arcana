@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_003_050_C
-0.050	6.193	00.mp3	Naganaki Shrine. Junpei sits on a bench with two baseball gloves beside him. You stand in front of him.
-9.200	3.600	01.mp3	Junpei picks up one of the gloves and tosses it to you, and you catch it.
+1.830	2.002	00.mp3	Naganaki Shrine. Junpei waits.

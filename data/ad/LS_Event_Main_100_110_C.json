@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_100_110_C", "title": "The faculty office", "cues": [{"at": 0.03, "text": "In the faculty office, between desks piled with papers, a woman in a suit stands with her back to you. She turns and walks over, a folder in her hand."}]}
+{
+ "movie": "LS_Event_Main_100_110_C",
+ "title": "The faculty office",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Faculty office. A woman in a suit stands with her back to you, then turns and walks over with a folder."
+  }
+ ]
+}

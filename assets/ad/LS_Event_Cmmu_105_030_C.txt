@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_105_030_C
-0.000	6.755	00.mp3	On the track, Kazushi grins at you, ready for another run. Yuko and a few teammates stand by, two of them sitting.
-3.000	9.639	01.mp3	Kazushi grabs his knee, then his leg gives way and he falls to the ground. Yuko stares in shock as you crouch down beside him and the teammates turn toward him.
+0.000	0.769	00.mp3	On the track.
+3.000	1.953	01.mp3	Kazushi falls, clutching his knee.
+6.330	1.234	02.mp3	You crouch beside him.

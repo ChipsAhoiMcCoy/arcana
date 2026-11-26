@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_102_015_C
-0.000	4.226	00.mp3	You walk into the faculty office and up to a woman teacher sitting at her desk.
-4.700	3.561	01.mp3	Ms. Toriumi picks up a form from her desk and looks it over.
-7.400	1.849	02.mp3	You read through the form and sign it.
+0.000	1.590	00.mp3	You approach a seated teacher.
+4.700	1.435	01.mp3	Toriumi studies a form.
+7.400	1.024	02.mp3	You sign the form.

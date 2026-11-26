@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_109_090_C",
- "title": "Called to the student council room",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the school's main lobby, with students passing through, you and Chihiro walk along together and stop by the shoe lockers."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_109_090_C", "title": "Called to the student council room", "cues": [{"at": 0.0, "text": "In the lobby."}]}

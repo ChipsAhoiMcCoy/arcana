@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_130_120_C", "title": "Fuuka finds the full moon Shadow", "cues": [
-  {"at": 0.05, "text": "In the command room, you stand in a ring with Ikutsuki, Junpei, Yukari, Akihiko and Mitsuru around Fuuka. Her Persona towers over her, a huge figure in a gown whose wide skirt closes around Fuuka like a glass dome, with Fuuka standing inside it."},
-  {"at": 6.70, "text": "Fuuka's Persona bursts apart into sparks and is gone, and Fuuka stands in the middle of the room again."}
-]}
+{"movie": "LS_Event_Main_130_120_C", "title": "Fuuka finds the full moon Shadow", "cues": [{"at": 0.05, "text": "Fuuka's Persona towers over her."}, {"at": 6.7, "text": "Her Persona bursts apart into sparks."}]}

@@ -1,5 +1,4 @@
 #scene LS_Event_Main_170_070_C
-0.000	3.359	00.mp3	The dorm's front door. You come in with your bag over your shoulder.
-4.000	15.446	01.mp3	In the lounge, the others sit on the sofas around the low table: Junpei, Yukari, Fuuka, Ken, Akihiko, Mitsuru and Shinjiro, with Aigis and Koromaru at the back of the room. You walk over and stand beside them, bag still over your shoulder.
-21.500	4.025	02.mp3	Junpei has sprung up from the sofa and stands grinning, hands on his hips.
-30.830	2.026	03.mp3	Ken gets up and walks out of the lounge.
+0.000	0.807	00.mp3	You come in.
+4.000	1.120	01.mp3	The team is gathered.
+30.830	1.001	02.mp3	Ken walks out.

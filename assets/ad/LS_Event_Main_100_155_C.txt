@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_155_C
-0.000	13.202	00.mp3	The Iwatodai strip mall, busy with shoppers and students. You walk along it with your bag. Outside a burger shop, Junpei stands chatting with a classmate who sits on a bench. You watch them a moment, then turn and walk on.
+0.000	6.285	00.mp3	The Iwatodai strip mall. You walk past Junpei chatting with a classmate outside a burger shop, then walk on.

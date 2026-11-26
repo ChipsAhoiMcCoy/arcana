@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_105_010_C
-0.000	7.840	00.mp3	You stand beside the track team's advisor, facing the team. A girl and a boy stand at the front, and the rest of the members look you over.
+0.000	0.801	00.mp3	Track team.

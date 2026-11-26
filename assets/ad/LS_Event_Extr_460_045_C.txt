@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_045_C
-0.030	10.566	00.mp3	Inside the shop Be Blue V in Paulownia Mall, by the counter under its big sign. You stand with your bag over your shoulder and your hands in your pockets; Aigis stands facing you.
-8.200	4.135	01.mp3	Aigis turns and walks off for the treatment, leaving you waiting by the sign.
+0.030	0.810	00.mp3	Be Blue V.
+8.200	2.768	01.mp3	Aigis walks off for the treatment, leaving you waiting.
 12.830	1.829	02.mp3	Later, Aigis walks back to you.

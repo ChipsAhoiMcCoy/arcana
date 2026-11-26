@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_108_065_C",
- "title": "Art club: Keisuke on the rooftop",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the school rooftop, Keisuke stands at the railing with his back to you, looking out, while you wait a few steps away."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_108_065_C", "title": "Art club: Keisuke on the rooftop", "cues": [{"at": 1.17, "text": "Keisuke stands at the railing."}]}

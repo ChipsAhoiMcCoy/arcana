@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_516_008_C
-0.000	4.101	00.mp3	You step up and hold out a hand, your party standing by with weapons ready.
+0.000	0.987	00.mp3	You raise a hand.

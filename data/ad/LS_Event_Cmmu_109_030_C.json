@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_109_030_C",
- "title": "A couple in the library",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the school library, you sit at a long table with Chihiro. At the same table, beside her, a boy and a girl sit studying together."
-  },
-  {
-   "at": 7.33,
-   "text": "The girl leans in close to the boy, then the two of them get up together and walk away from the table. Chihiro stares after them, frowning."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_109_030_C", "title": "A couple in the library", "cues": [{"at": 0.0, "text": "In the library."}, {"at": 7.33, "text": "A couple leaves; Chihiro frowns after them."}]}

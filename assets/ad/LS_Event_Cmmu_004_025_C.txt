@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_004_025_C
-0.000	5.009	00.mp3	You and Akihiko come running in through the door of the dorm and pull up, out of breath.
-6.670	5.417	01.mp3	Akihiko notices a large parcel in the lounge, walks over to it and reads the label.
-17.000	11.456	02.mp3	Later, the dorm is gathered in the lounge around the open parcel on the table, Yukari, Junpei, Mitsuru and Fuuka among them. Akihiko sits in an armchair with his arms folded.
+0.000	1.659	00.mp3	You and Akihiko rush in.
+6.670	1.641	01.mp3	Akihiko reads the label.
+17.000	1.402	02.mp3	The dorm gathers around.
 21.670	7.164	03.mp3	Everyone eats and talks together. Later, with most of the food gone, Akihiko stands beside you by the parcel.
-44.330	4.011	04.mp3	Akihiko looks down into the box with a start, then his face falls.
+44.330	1.326	04.mp3	Akihiko looks down.

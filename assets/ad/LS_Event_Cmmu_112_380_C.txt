@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_380_C
-0.000	10.890	00.mp3	Iwatodai Strip Mall, outside a Japanese sweets shop. You and Bebe walk up to each other, and he smiles. While he puzzles over the azuki, he holds his folded fan to his chin.
+0.000	0.944	00.mp3	You meet Bebe.

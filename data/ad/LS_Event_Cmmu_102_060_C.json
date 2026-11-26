@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_102_060_C",
- "title": "Hidetoshi on sincerity",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You walk into the student council room, your bag over your shoulder. Hidetoshi sits alone at the long table with his arms folded, stacks of papers beside him."
-  },
-  {
-   "at": 9.6,
-   "text": "Hidetoshi gets up from the table and walks a few steps away, then turns back to you."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_102_060_C", "title": "Hidetoshi on sincerity", "cues": [{"at": 0.02, "text": "You walk in."}, {"at": 1.9, "text": "Hidetoshi sits, arms folded."}, {"at": 9.6, "text": "Hidetoshi stands, walks away, then turns back to you."}]}

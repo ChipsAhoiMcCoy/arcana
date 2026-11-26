@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_518_030_C",
- "title": "Into battle",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You run forward with your party, weapons drawn, and all of you pull up together."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_518_030_C", "title": "Into battle", "cues": [{"at": 0.0, "text": "You all stop."}]}

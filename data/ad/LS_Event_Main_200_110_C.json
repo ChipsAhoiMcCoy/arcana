@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_200_110_C", "title": "Mitsuru's late call", "cues": [
-{"at": 0.55, "text": "Mitsuru sits alone on a sofa, arms folded."},
-{"at": 2.05, "text": "She gets up, takes out her phone and makes a call."}
-]}
+{"movie": "LS_Event_Main_200_110_C", "title": "Mitsuru's late call", "cues": [{"at": 0.0, "text": "Mitsuru sits alone."}, {"at": 2.03, "text": "She gets up, takes out her phone and makes a call."}]}

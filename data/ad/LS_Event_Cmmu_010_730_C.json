@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_010_730_C",
- "title": "Tempura in the kitchen",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The dorm kitchen. You and Shinjiro work side by side at the counter, frying in a pan of hot oil."
-  },
-  {
-   "at": 3.17,
-   "text": "Later, you and Shinjiro sit side by side at the counter, eating from bowls with chopsticks. Shinjiro glances over at you and smiles."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_010_730_C", "title": "Tempura in the kitchen", "cues": [{"at": 1.33, "text": "You cook together."}]}

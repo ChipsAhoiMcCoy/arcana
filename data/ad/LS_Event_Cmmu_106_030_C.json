@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_030_C",
- "title": "Prank on the shoe locker",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Yuko stand in the school's front lobby, bags in hand."
-  },
-  {
-   "at": 1.4,
-   "text": "Yuko turns away from you to her shoe locker and takes out something small, holding it up to her chest to look at it."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_030_C", "title": "Prank on the shoe locker", "cues": [{"at": 0, "text": "School lobby."}, {"at": 1.4, "text": "Yuko takes something small from her shoe locker."}]}

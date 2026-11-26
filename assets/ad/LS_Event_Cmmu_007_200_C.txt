@@ -1,4 +1,3 @@
 #scene LS_Event_Cmmu_007_200_C
-0.000	6.106	00.mp3	The dorm lounge. Aigis stands beside you, holding up an open phone to take a picture of the two of you.
-21.330	3.332	01.mp3	Aigis holds out a small charred screw, and you take it from her.
-30.670	3.671	02.mp3	The front door opens, and Junpei, Yukari and Fuuka come in.
+0.000	0.886	00.mp3	Dorm lounge.
+21.330	1.642	01.mp3	Aigis hands you a charred screw.

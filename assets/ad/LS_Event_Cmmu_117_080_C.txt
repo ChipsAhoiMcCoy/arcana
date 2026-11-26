@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_117_080_C
-0.000	7.601	00.mp3	Naganaki Shrine. You sit beside Akinari on a bench; he clutches his chest, gasping for breath, his face tight with pain.
+0.000	0.784	00.mp3	Akinari.

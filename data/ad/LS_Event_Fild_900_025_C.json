@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_900_025_C",
- "title": "Out of the Velvet Room",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The door at the end of the back alley opens, and you step out of the Velvet Room."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_900_025_C", "title": "Out of the Velvet Room", "cues": [{"at": 0.0, "text": "You step out of the Velvet Room."}]}

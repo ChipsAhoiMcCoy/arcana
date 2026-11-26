@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_050_C
-0.030	3.493	00.mp3	You come into Bookworms, where Bunkichi and Mitsuko are waiting.
+0.030	2.210	00.mp3	Bookworms. Bunkichi and Mitsuko wait.

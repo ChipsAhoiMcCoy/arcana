@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_115_090_C
-0.000	5.362	00.mp3	Hagakure Ramen. You and Mamoru sit side by side at the counter over bowls of ramen.
-11.000	2.549	01.mp3	For a while, you and Mamoru eat without a word.
+11.000	1.713	00.mp3	You and Mamoru eat in silence.

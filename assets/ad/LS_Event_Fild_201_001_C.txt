@@ -1,2 +1,3 @@
 #scene LS_Event_Fild_201_001_C
-0.050	11.692	00.mp3	On the dorm rooftop, Ikutsuki stands waiting for you with his arms folded, beside a row of planters full of soil set out along the wall, a watering can and a tray of small pots beside them.
+0.050	1.008	00.mp3	Dorm rooftop.
+2.080	1.158	01.mp3	Ikutsuki waits.

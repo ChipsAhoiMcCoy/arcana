@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_005_C
-0.000	5.104	00.mp3	The Velvet Room door swings open, and you step back out into the Tartarus entrance hall.
+0.000	2.549	00.mp3	The Velvet Room door opens, and you step out.

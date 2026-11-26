@@ -1,4 +1,3 @@
 #scene LS_Event_Main_140_110_C
-0.000	4.951	00.mp3	At the foot of a staircase, Mitsuru walks toward the stairs. Yukari runs up behind her.
-2.330	2.040	01.mp3	Mitsuru turns around to face Yukari.
-7.330	5.652	02.mp3	Mitsuru turns away and walks off, leaving Yukari alone by the stairs. Yukari looks down.
+2.330	1.798	00.mp3	Mitsuru turns to face Yukari.
+7.330	2.985	01.mp3	Mitsuru walks away, leaving Yukari, who looks down.

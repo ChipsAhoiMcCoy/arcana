@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_106_360_C
-0.000	6.188	00.mp3	A café in Paulownia Mall. You sit across a table from Yuko, with a few other customers around you.
+0.000	0.798	00.mp3	At a cafe.

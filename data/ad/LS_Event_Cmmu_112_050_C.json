@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_050_C",
- "title": "Bebe: something to talk about",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In the home economics room, Bebe sits at a sewing machine behind a heap of fabric scraps, looking downcast; you sit at a machine across from him. He stands up behind his table."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_050_C", "title": "Bebe: something to talk about", "cues": [{"at": 1.83, "text": "Bebe stands up."}]}

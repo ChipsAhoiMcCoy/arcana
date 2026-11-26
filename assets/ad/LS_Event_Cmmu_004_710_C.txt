@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_004_710_C
-0.170	13.157	00.mp3	You and Akihiko sit side by side on a sofa in the dorm lounge, watching a boxing match on the TV: Akihiko with his arms and legs crossed, you leaning forward, elbows on your knees and hands clasped.
+1.000	2.667	00.mp3	You and Akihiko watch boxing on TV.

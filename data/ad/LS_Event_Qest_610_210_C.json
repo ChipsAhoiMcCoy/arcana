@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Qest_610_210_C",
- "title": "Elizabeth's challenge",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "A door opens and you walk into a wide round chamber walled with giant gears. Elizabeth stands waiting for you."
-  },
-  {
-   "at": 12.33,
-   "text": "You set your feet, ready. Elizabeth opens her book and draws a single card from its pages, fans a hand of cards before her face, then a whole row of cards spreads through the air around her, and blades of energy streak past."
-  }
- ]
-}
+{"movie": "LS_Event_Qest_610_210_C", "title": "Elizabeth's challenge", "cues": [{"at": 0.17, "text": "A door opens and you walk into a wide round chamber walled with giant gears. Elizabeth waits."}, {"at": 12.33, "text": "Elizabeth opens her book and draws a card; a row of cards spreads through the air around her, and blades of energy streak past."}]}

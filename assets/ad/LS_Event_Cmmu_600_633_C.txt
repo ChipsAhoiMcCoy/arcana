@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_633_C
-0.000	8.901	00.mp3	Inside Wilduck Burger, in a staff uniform, you wipe down a table with a cloth. A coworker in the same uniform walks over and stops behind you.
+0.000	0.861	00.mp3	Burger shop.

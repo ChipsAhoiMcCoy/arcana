@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Extr_450_030_C",
- "title": "Karaoke alone",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "A karaoke booth. You sit alone on the bench at the table, your bag beside you on the tabletop, a microphone in your hand, singing."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_450_030_C", "title": "Karaoke alone", "cues": []}

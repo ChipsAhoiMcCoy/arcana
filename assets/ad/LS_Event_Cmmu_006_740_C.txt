@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_740_C
-0.200	7.575	00.mp3	The dorm rooftop. You and Fuuka crouch side by side at the vegetable planters, looking over the plants, now growing well again.
+1.670	0.777	00.mp3	You crouch.

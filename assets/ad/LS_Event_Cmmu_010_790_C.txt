@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_010_790_C
-1.170	12.973	00.mp3	Footage from a camera high in a corner of the dorm lounge. Shinjiro sits alone on the sofa watching a cooking show on the television, a magazine on the low table in front of him, Koromaru lying on the floor nearby.
-10.670	10.263	01.mp3	Shinjiro snatches the magazine off the table, opens it over his face and sits back with his arms crossed, as if asleep. Koromaru gets up as the front door opens.
-13.670	4.191	02.mp3	Fuuka and Aigis walk in from the entrance, and Koromaru goes to meet them.
-26.000	10.822	03.mp3	Fuuka hurries Aigis away across the lounge and out of sight. Shinjiro, alone again with Koromaru, lifts the magazine off his face, drops it on the table and slumps forward.
+1.170	1.525	00.mp3	Shinjiro watches TV.
+10.700	2.300	01.mp3	Shinjiro hides behind a magazine.
+13.700	2.808	02.mp3	Fuuka and Aigis walk in. Koromaru meets them.
+26.030	5.354	03.mp3	Fuuka hurries Aigis out of sight. Shinjiro lifts the magazine off his face and slumps forward.

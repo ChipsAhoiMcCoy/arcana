@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_110_040_C
-0.000	6.726	00.mp3	Naganaki Shrine. Maiko sits beside you on a bench, her school backpack still on, swinging her feet and beaming.
+0.000	0.714	00.mp3	The shrine.
+1.330	1.464	01.mp3	Maiko sits beside you.

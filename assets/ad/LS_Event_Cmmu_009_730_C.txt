@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_009_730_C
-0.170	6.713	00.mp3	In the dorm lounge, you sit on the sofa brushing Koromaru, who lies stretched out beside you with his eyes closed.
-2.670	5.801	01.mp3	Koromaru has hopped down and comes to stand in front of you, then sniffs at something on the floor at his feet.
+1.050	2.860	00.mp3	Koromaru hops off the sofa and sniffs the floor.

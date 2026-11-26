@@ -1,4 +1,2 @@
 #scene LS_Event_Cmmu_109_097_C
-0.000	4.436	00.mp3	On the school rooftop, Chihiro turns around with a smile as you walk up to her.
-13.000	3.328	01.mp3	Chihiro lowers her eyes and presses a hand to her chest.
-34.400	2.329	02.mp3	Chihiro runs off across the rooftop.
+34.400	1.292	00.mp3	Chihiro runs off.

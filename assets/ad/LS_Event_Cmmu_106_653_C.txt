@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_106_653_C
-0.000	5.516	00.mp3	Paulownia Mall, decorated for Christmas and crowded with people. You and Yuko walk in together.
-11.670	4.060	01.mp3	Later, you and Yuko sit side by side on a bench beside the fountain.
-14.330	3.735	02.mp3	Yuko holds out a medicated patch she made herself, and you take it.
+0.000	4.492	00.mp3	Paulownia Mall, decorated for Christmas and crowded. You and Yuko walk in.
+11.670	0.917	01.mp3	By the fountain.
+14.330	1.384	02.mp3	Yuko hands you a patch.

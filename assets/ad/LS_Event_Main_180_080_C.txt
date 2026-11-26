@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_080_C
-0.100	7.385	00.mp3	A classroom in the middle of a lesson. A teacher stands at the front. Fuuka sits at her desk, Natsuki a couple of desks away.
-11.900	2.642	01.mp3	Natsuki gets up and walks to the front of the class.
-16.250	1.658	02.mp3	Fuuka jumps up from her seat.
+0.000	0.812	00.mp3	A classroom.
+11.900	1.490	01.mp3	Natsuki walks to the front.
+16.900	1.063	02.mp3	Fuuka jumps up.

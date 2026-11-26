@@ -1,4 +1,4 @@
 #scene LS_Event_Main_190_320_C
-1.170	8.522	00.mp3	You sit on a long bench with Akihiko, Ryoji and Junpei, bags at your feet, while other students wait around you. A teacher walks past.
+3.000	3.324	00.mp3	You sit on a bench with Akihiko, Ryoji and Junpei.
 11.000	2.663	01.mp3	Yukari, Fuuka and Aigis walk up to the bench.
 21.670	2.655	02.mp3	Yukari smiles, and the three girls walk away.

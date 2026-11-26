@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_240_C
-1.000	3.125	00.mp3	Mitsuru, Yukari and Fuuka walk along a forest path.
-7.670	7.504	01.mp3	Yukari and Mitsuru look down; Mitsuru folds her arms. Fuuka turns and walks on, and the others follow her further up the path.
-15.330	4.996	02.mp3	Mitsuru takes out her phone, looks at it and answers. She holds the phone out between them.
-25.000	2.603	03.mp3	Yukari pulls out her own phone and makes a call.
+1.000	2.023	00.mp3	Mitsuru, Yukari and Fuuka walk.
+7.670	4.062	01.mp3	Yukari and Mitsuru look down. Fuuka walks on, and the others follow.
+15.330	2.259	02.mp3	Mitsuru answers her phone and holds it out.
+25.000	1.256	03.mp3	Yukari makes a call.

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_170_140_C",
- "title": "Ken confronts Shinjiro",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "A back alley between brick buildings. Ken stands alone, head bowed, holding a long spear with its point to the ground. Shinjiro walks up the alley toward him and stops a few steps away, hands at his hips."
-  },
-  {
-   "at": 17.83,
-   "text": "Ken swings his spear up and points its blade at Shinjiro. Shinjiro does not move."
-  }
- ]
-}
+{"movie": "LS_Event_Main_170_140_C", "title": "Ken confronts Shinjiro", "cues": [{"at": 0.0, "text": "A back alley. Ken stands alone with a spear. Shinjiro walks up to him."}, {"at": 17.83, "text": "Ken aims."}]}

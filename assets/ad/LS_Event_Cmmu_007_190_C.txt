@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_007_190_C
-0.000	3.866	00.mp3	The school rooftop. You stand with Aigis, who is gazing out at the view.
+0.000	0.768	00.mp3	Rooftop.
+1.170	1.469	01.mp3	Aigis gazes at the view.

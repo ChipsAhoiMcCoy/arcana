@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_050_C
-0.000	10.728	00.mp3	In the home economics room, Bebe sits at a sewing machine behind a heap of fabric scraps, looking downcast; you sit at a machine across from him. He stands up behind his table.
+1.830	1.007	00.mp3	Bebe stands up.

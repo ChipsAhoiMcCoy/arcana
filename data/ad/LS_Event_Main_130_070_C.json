@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_130_070_C",
- "title": "Ikutsuki's twelve Shadows",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "In the command room on the dorm's fourth floor, you sit around the low table with Akihiko, Yukari, Mitsuru, Fuuka and Junpei; Mitsuru sits with her arms folded. Ikutsuki comes in through the door and walks over to stand before you all."
-  },
-  {
-   "at": 5.4,
-   "text": "Ikutsuki takes a seat with the group."
-  },
-  {
-   "at": 16.35,
-   "text": "Mitsuru's face falls, and she says nothing. Yukari turns to look at her."
-  }
- ]
-}
+{"movie": "LS_Event_Main_130_070_C", "title": "Ikutsuki's twelve Shadows", "cues": [{"at": 0, "text": "Ikutsuki comes in."}, {"at": 5.4, "text": "Ikutsuki sits with the group."}, {"at": 17.0, "text": "Mitsuru's face falls."}]}

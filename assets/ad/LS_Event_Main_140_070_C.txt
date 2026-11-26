@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_070_C
-0.050	4.286	00.mp3	Outside Port Island Station, Junpei sits by himself on a low step.
-5.450	5.245	01.mp3	Junpei is on his feet, a hand on his hip. Two students walk up and stop nearby, chatting.
-9.200	3.743	02.mp3	The two students walk on and leave. Junpei stays behind alone.
+0.050	0.703	00.mp3	Junpei.
+5.450	1.251	01.mp3	Two students walk up.
+9.200	2.480	02.mp3	The students leave. Junpei stays alone.

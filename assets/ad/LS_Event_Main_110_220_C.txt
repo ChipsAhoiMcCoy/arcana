@@ -1,2 +1,2 @@
 #scene LS_Event_Main_110_220_C
-0.100	5.880	00.mp3	In the command room, you, Yukari and Junpei run in to Mitsuru and Akihiko at the consoles.
+0.100	1.727	00.mp3	Mitsuru and Akihiko wait.

@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_046_C
-0.000	5.534	00.mp3	Standing in the Tartarus entrance hall, you take something small from your pocket and look down at it.
+0.000	1.218	00.mp3	You take something out.

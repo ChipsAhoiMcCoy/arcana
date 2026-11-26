@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_540_001_C
-0.000	6.273	00.mp3	Mitsuru leads you, Yukari and Akihiko along a high wall, and the four of you come to a stop together.
+0.000	3.561	00.mp3	Mitsuru leads the party along a high wall, and all four stop.

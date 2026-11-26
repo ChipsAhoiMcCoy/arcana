@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_010_C",
- "title": "Bebe: the sewing club",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You step into the home economics room, a room of sewing machines on long tables with dress forms along the walls. A boy sits at one of the machines, bent over his sewing."
-  },
-  {
-   "at": 17.83,
-   "text": "Bebe gets up from the machine and turns to face you, a folding fan in his hand."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_010_C", "title": "Bebe: the sewing club", "cues": [{"at": 0.0, "text": "Home economics room."}, {"at": 17.83, "text": "Bebe stands."}]}

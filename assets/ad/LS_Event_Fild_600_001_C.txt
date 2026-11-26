@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_600_001_C
-0.000	7.486	00.mp3	In the dorm, you and Yukari run onto a stair landing. A heavy crash shakes the building, and you both stop short and brace.
+0.000	1.683	00.mp3	A crash shakes you and Yukari.

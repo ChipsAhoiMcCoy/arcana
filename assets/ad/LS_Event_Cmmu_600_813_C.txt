@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_813_C
-0.000	7.001	00.mp3	You sit at the dorm's dining table with Yukari and Fuuka, studying. Fuuka has a borrowed notebook open in front of her.
+0.000	0.734	00.mp3	You study.

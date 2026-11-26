@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_055_C",
- "title": "Kazushi can't stand",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "By the shoe lockers, Kazushi crouches on the floor, wincing, his bag beside him. You walk up to him."
-  },
-  {
-   "at": 8.6,
-   "text": "You walk around to Kazushi, shift your bag onto your shoulder and bend toward him. He grabs hold of you and pulls himself to his feet, wincing."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_055_C", "title": "Kazushi can't stand", "cues": [{"at": 0.0, "text": "Kazushi crouches, wincing."}, {"at": 8.6, "text": "You bend toward Kazushi. He grabs hold of you and pulls himself to his feet, wincing."}]}

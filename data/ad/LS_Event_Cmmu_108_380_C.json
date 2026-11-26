@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_108_380_C",
- "title": "Keisuke at the strip mall",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Iwatodai Strip Mall, in front of a Japanese sweets shop. You and Keisuke walk up together and stop to talk."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_108_380_C", "title": "Keisuke at the strip mall", "cues": [{"at": 0.0, "text": "You meet Keisuke."}]}

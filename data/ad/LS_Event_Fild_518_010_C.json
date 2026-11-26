@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Fild_518_010_C", "title": "The healing clock", "cues": [{"at": 0.00, "text": "You lay a hand on a tall grandfather clock."}, {"at": 2.33, "text": "Its pendulum swings, and sparkles swirl up around you."}]}
+{"movie": "LS_Event_Fild_518_010_C", "title": "The healing clock", "cues": [
+{"at": 0.00, "text": "You touch a grandfather clock."},
+{"at": 2.33, "text": "Its pendulum swings, and sparkles swirl up around you."}
+]}

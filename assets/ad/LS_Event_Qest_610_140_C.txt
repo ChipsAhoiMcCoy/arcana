@@ -1,4 +1,4 @@
 #scene LS_Event_Qest_610_140_C
-0.000	5.433	00.mp3	You and Elizabeth walk into the courtyard in front of Gekkoukan High. Two schoolgirls stand nearby.
+0.000	1.459	00.mp3	You and Elizabeth walk in.
 2.330	3.226	01.mp3	The two schoolgirls stare at Elizabeth, then walk off past her.
-10.200	4.161	02.mp3	Elizabeth steps around behind you and stands close at your back, half hidden.
+10.200	1.551	02.mp3	Elizabeth hides behind you.

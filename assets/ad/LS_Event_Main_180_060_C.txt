@@ -1,5 +1,5 @@
 #scene LS_Event_Main_180_060_C
-0.100	9.460	00.mp3	The dorm lounge. You sit with Yukari, Junpei, Fuuka and Mitsuru, Koromaru among you; Mitsuru sits with her arms folded. Aigis stands nearby.
-7.700	4.343	01.mp3	Fuuka gets to her feet. Koromaru stands up and turns toward the front door.
-11.450	3.763	02.mp3	Koromaru runs to the front door as it opens, and Ken walks in.
-15.150	6.414	03.mp3	Everyone gets up and gathers around Ken, who keeps his head lowered. Fuuka presses her hands together at her chest.
+0.100	0.729	00.mp3	The lounge.
+7.700	1.464	01.mp3	Koromaru turns to the door.
+11.450	2.536	02.mp3	Koromaru runs to the door; Ken enters.
+15.150	1.627	03.mp3	Everyone gathers around Ken.

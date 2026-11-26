@@ -1,4 +1,4 @@
 #scene LS_Event_Main_100_150_C
-0.000	7.241	00.mp3	The dorm lounge. Mitsuru sits on the sofa reading a book. Akihiko, a bandage on his brow, walks up behind her.
+0.000	1.370	00.mp3	Akihiko comes up.
 5.720	2.488	01.mp3	Akihiko walks off toward the front door.
-9.170	3.983	02.mp3	The door shuts behind him. Mitsuru closes her eyes, disappointed.
+9.170	1.078	02.mp3	Mitsuru looks sad.

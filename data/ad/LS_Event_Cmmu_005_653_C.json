@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_653_C",
- "title": "Christmas Eve with Mitsuru",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Fountain Square at Paulownia Mall, hung with Christmas decorations. You and Mitsuru walk across the square side by side."
-  },
-  {
-   "at": 10.67,
-   "text": "Later, you and Mitsuru sit side by side on a bench beside the fountain to rest after your walk."
-  },
-  {
-   "at": 13.67,
-   "text": "Mitsuru takes out a gift and holds it out to you, and you take it from her hands."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_653_C", "title": "Christmas Eve with Mitsuru", "cues": [{"at": 0.0, "text": "You and Mitsuru walk across the decorated fountain square."}, {"at": 9.8, "text": "You both sit down."}, {"at": 13.67, "text": "Mitsuru gives you a gift."}]}

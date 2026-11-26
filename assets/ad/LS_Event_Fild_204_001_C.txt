@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_204_001_C
-0.000	7.925	00.mp3	You come in through the dorm's front door with your bag over your shoulder. Mitsuru walks across the lounge to meet you and stands with a hand on her hip.
+0.000	2.190	00.mp3	You come in. Mitsuru walks over to you.

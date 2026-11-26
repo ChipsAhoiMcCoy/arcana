@@ -3,28 +3,20 @@
  "title": "Jin stays behind",
  "cues": [
   {
-   "at": 0.0,
-   "text": "Jin is down on one knee beside his briefcase, beaten. The team stands around him."
-  },
-  {
-   "at": 7.9,
-   "text": "Shadows rise out of the floor all around you: hunched shapes with round eyes, clawing out on huge hands. Everyone takes a fighting stance."
+   "at": 7.67,
+   "text": "Shadows rise around you."
   },
   {
    "at": 13.9,
-   "text": "Mitsuru turns and runs for the way up. Ken runs after her, and Koromaru follows. Junpei, Yukari and Fuuka run after them. Aigis dashes off, and Akihiko runs after her."
+   "text": "Everyone runs off."
   },
   {
    "at": 29.5,
-   "text": "You are the last one left. You look at Jin a moment longer, then turn and run after the others, while the Shadows crawl in on him from every side."
+   "text": "You look at Jin a moment longer, then run after the others as the Shadows crawl in on him."
   },
   {
-   "at": 41.1,
-   "text": "Jin crouches with his hand on the handle of his briefcase."
-  },
-  {
-   "at": 43.45,
-   "text": "Further up, in a corridor, the rest of you stop running as a blast sounds from below."
+   "at": 41.0,
+   "text": "Jin grips his briefcase. A blast sounds below."
   }
  ]
 }

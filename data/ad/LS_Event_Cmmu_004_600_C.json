@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_004_600_C",
- "title": "A martial arts film with Akihiko",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Akihiko are at the cinema."
-  },
-  {
-   "at": 1.17,
-   "text": "You take your seats among the audience and watch the film together, Akihiko with his arms folded."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_004_600_C", "title": "A martial arts film with Akihiko", "cues": [{"at": 1.17, "text": "You and Akihiko watch the film."}]}

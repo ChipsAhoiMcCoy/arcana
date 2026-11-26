@@ -1,4 +1,4 @@
 #scene LS_Event_Main_200_030_C
-0.000	9.994	00.mp3	The command room on the dorm's fourth floor. Fuuka's Persona looms over the room with Fuuka inside it, and you run in with the others and Koromaru to gather around her.
-20.170	2.160	01.mp3	Junpei turns and runs out of the room.
-24.000	3.076	02.mp3	The door shuts behind him. The others turn to look at you.
+0.000	1.329	00.mp3	You gather around Fuuka.
+20.170	1.218	01.mp3	Junpei runs out.
+24.000	1.174	02.mp3	The others turn to you.

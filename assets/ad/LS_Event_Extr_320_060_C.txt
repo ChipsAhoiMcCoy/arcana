@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_320_060_C
-0.030	5.608	00.mp3	In the classroom, Junpei sits at his desk with Ryoji standing beside it. You walk over to them.
+0.030	2.136	00.mp3	You walk over to Junpei and Ryoji.

@@ -1,3 +1,2 @@
 #scene LS_Event_Extr_410_070_C
-0.000	4.357	00.mp3	The Shadow is gone. You and Yukari stand facing each other in the corridor.
-5.570	3.071	01.mp3	Mitsuru and Akihiko run up and stop beside you.
+1.050	1.074	00.mp3	The Shadow is gone.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_102_520_C
-0.000	7.188	00.mp3	In the student council room, Hidetoshi stands and speaks to the members seated at the table. You sit among them, with Mitsuru.
+0.000	2.540	00.mp3	Hidetoshi addresses the council; you listen.

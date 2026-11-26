@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_116_060_C",
- "title": "Soggy noodles at Hagakure",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Hagakure Ramen. You sit at the counter beside Nozomi, bowls of ramen in front of you both. A man who has just come in takes a seat further along the counter."
-  },
-  {
-   "at": 9.17,
-   "text": "A little later, Nozomi sits slumped at the counter, looking wrung out."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_116_060_C", "title": "Soggy noodles at Hagakure", "cues": [{"at": 0.0, "text": "Hagakure Ramen."}, {"at": 4.72, "text": "A man sits further along the counter."}, {"at": 9.17, "text": "She slumps."}]}

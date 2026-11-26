@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_101_030_C",
- "title": "Kenji is sick of it all",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "At Hagakure Ramen, you eat at the counter. Kenji sits around the corner of the counter from you, slumped over his bowl without a word."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_101_030_C", "title": "Kenji is sick of it all", "cues": [{"at": 1.53, "text": "At Hagakure Ramen, Kenji slumps over his bowl."}]}

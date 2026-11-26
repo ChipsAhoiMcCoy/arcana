@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_117_010_C
-0.000	6.277	00.mp3	Naganaki Shrine. You sit on a bench beside a thin young man, who sits with his legs crossed and looks at you.
+0.000	0.641	00.mp3	Shrine.

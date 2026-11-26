@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_280_C
-0.000	2.872	00.mp3	Further along the beach, a woman stands on her own.
+0.000	0.649	00.mp3	A woman.
 2.000	3.019	01.mp3	Junpei walks up to her. You and Akihiko follow.
-28.000	6.560	02.mp3	You turn and run off down the beach, and Akihiko runs after you. Junpei stares, then bolts after you both.
+28.000	0.841	02.mp3	You run off.

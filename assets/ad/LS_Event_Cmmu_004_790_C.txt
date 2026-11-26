@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_004_790_C
-1.170	6.913	00.mp3	The footage shows Akihiko alone in his dorm room, scowling as he throws punches beside a hanging punching bag.
-3.670	5.754	01.mp3	He stops, turns away and walks over to his desk, where he leans over something lying open and reads.
-11.500	7.525	02.mp3	He turns from the desk, steps out into the middle of the room and faces the empty space with a smile, as if someone were standing there.
+1.170	1.409	00.mp3	Akihiko punches.
+3.670	3.328	01.mp3	He stops, walks to his desk and reads something lying open.
+11.500	2.803	02.mp3	He steps into the room and smiles at empty space.

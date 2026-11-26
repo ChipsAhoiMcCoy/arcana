@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_006_040_C
-0.000	11.168	00.mp3	You wait outside a shop in Paulownia Mall. Fuuka comes back over to you, holding her school bag in front of her with both hands, looking downcast, and you scratch the back of your head as she talks.
+0.000	0.976	00.mp3	Outside a shop.
+5.050	1.294	01.mp3	Fuuka looks downcast.

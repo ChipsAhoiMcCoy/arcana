@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_008_740_C
-0.200	6.921	00.mp3	The dorm kitchen. Ken stands at the counter with his coffee things laid out, steam rising beside him, while you watch.
+1.000	0.977	00.mp3	The dorm kitchen.
 4.000	4.958	01.mp3	Afterwards, you and Ken sit together, each with a cup of the coffee he brewed, and drink.

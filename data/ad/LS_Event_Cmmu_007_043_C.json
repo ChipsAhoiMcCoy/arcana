@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_007_043_C",
- "title": "Searching the station",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Port Island Station. You and Aigis make your way across the plaza among the passers-by, looking around; you scratch the back of your head as Aigis moves on ahead, searching."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_007_043_C", "title": "Searching the station", "cues": [{"at": 0.0, "text": "Port Island Station. You and Aigis cross the plaza; Aigis searches ahead."}]}

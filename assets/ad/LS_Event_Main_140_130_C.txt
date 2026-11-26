@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_130_C
-0.030	8.657	00.mp3	In the paved square outside the school, you walk out with Yukari, Fuuka and Akihiko, bags in hand. Junpei skips ahead of you all and stops.
-12.800	3.127	01.mp3	Natsuki runs up to the group. You and Fuuka turn to her.
-20.500	4.446	02.mp3	Fuuka walks over to Natsuki, and the two of them walk off together across the square.
-27.830	6.481	03.mp3	Ikutsuki, the chairman, walks across the square toward you all, a young boy at his side. Everyone turns to them.
+0.030	1.185	00.mp3	Junpei skips ahead.
+12.800	1.051	01.mp3	Natsuki arrives.
+20.500	2.972	02.mp3	Fuuka and Natsuki walk off together across the square.
+27.830	1.303	03.mp3	Ikutsuki approaches.

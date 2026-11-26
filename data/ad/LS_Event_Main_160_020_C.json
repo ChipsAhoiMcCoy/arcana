@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_160_020_C", "title": "Mitsuru at the door", "cues": [
-  {"at": 0.00, "text": "You sit on the edge of your bed in your dorm room, looking at your phone."},
-  {"at": 6.40, "text": "You put your phone away and open your door. Mitsuru stands in the hallway outside."}
-]}
+{"movie": "LS_Event_Main_160_020_C", "title": "Mitsuru at the door", "cues": [{"at": 7.5, "text": "Mitsuru stands outside."}]}

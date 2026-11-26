@@ -1,5 +1,4 @@
 #scene LS_Event_Main_110_260_C
-0.000	14.481	00.mp3	You, Yukari and Junpei walk on toward a coffin standing at the far end of the car. Beside it a Shadow appears: a spindly thing on many thin legs, its face hidden behind a boxy mask. All three of you take fighting stances.
-3.530	4.229	01.mp3	The Shadow turns and scuttles away down the car, out through the door at its end.
-13.170	3.644	02.mp3	Junpei runs off after it, through the door and into the next car.
-17.490	6.486	03.mp3	Two more of the masked Shadows have risen up behind you. You and Yukari spin round to face them and raise your guard.
+0.000	1.718	00.mp3	A Shadow appears by the coffin.
+3.530	1.594	01.mp3	The Shadow scuttles out the door.
+18.530	0.994	02.mp3	Two more Shadows.

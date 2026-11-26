@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_100_300_C",
- "title": "Orpheus fades",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "On the rooftop, your Persona Orpheus hangs in the air above you: a tall, slender, machine-like figure with a lyre on its back. It breaks into glittering shards and is gone."
-  },
-  {
-   "at": 5.2,
-   "text": "Yukari sits on the ground a few steps from you."
-  },
-  {
-   "at": 11.2,
-   "text": "Two Shadows crawl across the roof toward you, masks set in heaps of clawing arms. You set yourself to face them."
-  }
- ]
-}
+{"movie": "LS_Event_Main_100_300_C", "title": "Orpheus fades", "cues": [{"at": 0.1, "text": "Orpheus hangs above you, then breaks into shards."}, {"at": 5.2, "text": "Yukari sits on the ground a few steps from you."}, {"at": 12.87, "text": "Shadows approach."}]}

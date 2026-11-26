@@ -1,5 +1,4 @@
 #scene LS_Event_Cmmu_108_095_C
-0.000	5.169	00.mp3	Port Island Station, among the crowd. Keisuke stands facing you, a bag in his hand.
-9.000	6.505	01.mp3	Keisuke has turned to leave when an old woman nearby collapses, coughing. He runs to her side, and you follow.
-21.170	8.607	02.mp3	An old man sitting on a bench nearby slumps off it onto his hands and knees. Keisuke runs to him, dropping his bag on the ground, and you follow.
-29.800	2.944	03.mp3	Keisuke runs off, and you kneel beside the old man.
+11.330	1.300	00.mp3	An old woman collapsed.
+21.170	2.523	01.mp3	An old man slumps. Keisuke rushes over.
+29.800	0.680	02.mp3	You kneel.

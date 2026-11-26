@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_010_730_C
-0.170	6.047	00.mp3	The dorm kitchen. You and Shinjiro work side by side at the counter, frying in a pan of hot oil.
-3.170	8.555	01.mp3	Later, you and Shinjiro sit side by side at the counter, eating from bowls with chopsticks. Shinjiro glances over at you and smiles.
+1.330	0.962	00.mp3	You cook together.

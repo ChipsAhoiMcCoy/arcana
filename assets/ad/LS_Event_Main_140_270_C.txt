@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_270_C
-0.000	5.555	00.mp3	Further along the beach, two young women are a little way off, one sitting, the other standing beside her.
+0.000	0.923	00.mp3	Two young women.
 6.670	3.389	01.mp3	Akihiko strides over to them. You and Junpei follow.
-41.200	3.615	02.mp3	The two women are gone. The three of you are left standing on the sand.
+39.500	1.971	02.mp3	The women are gone. You three remain.

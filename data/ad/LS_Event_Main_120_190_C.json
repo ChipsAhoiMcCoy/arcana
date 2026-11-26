@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Main_120_190_C", "title": "Waiting for word", "cues": [
-  {"at": 0.00, "text": "The entrance hall of Tartarus. Mitsuru's motorcycle stands on the floor with a boxy radio set and an antenna fixed to its back. Mitsuru bends over the radio, working its controls, while Yukari stands beside the bike."},
-  {"at": 6.67, "text": "Mitsuru bends over the radio again."}
-]}
+{"movie": "LS_Event_Main_120_190_C", "title": "Waiting for word", "cues": [{"at": 0.0, "text": "Tartarus entrance hall."}, {"at": 6.67, "text": "Mitsuru works the radio."}]}

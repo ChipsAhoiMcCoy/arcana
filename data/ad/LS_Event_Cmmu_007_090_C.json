@@ -3,16 +3,12 @@
  "title": "Aigis's confession",
  "cues": [
   {
-   "at": 0.0,
-   "text": "The school rooftop. You and Aigis stand side by side at the railing, gazing out at the view."
-  },
-  {
    "at": 15.5,
-   "text": "Aigis brings her hands up to her chest."
+   "text": "Aigis brings her hands to her chest."
   },
   {
    "at": 33.33,
-   "text": "Aigis hurries away, leaving you alone on the rooftop."
+   "text": "Aigis hurries away."
   }
  ]
 }

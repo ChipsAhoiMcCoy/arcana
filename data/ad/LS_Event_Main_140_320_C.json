@@ -1,8 +1,1 @@
-{"movie": "LS_Event_Main_140_320_C", "title": "Found in the woods", "cues": [
-  {"at": 0.30, "text": "You walk along a dirt path in the woods and stop. The girl from the pier stands among the trees ahead, watching you."},
-  {"at": 6.60, "text": "You step closer. She turns and walks up to you."},
-  {"at": 15.10, "text": "She steps in and throws her arms around you, holding you tight. Junpei and Akihiko come running up and stop short, staring."},
-  {"at": 22.05, "text": "Yukari and Fuuka hurry up the path toward you."},
-  {"at": 33.40, "text": "Mitsuru stands with the others. Ikutsuki, the chairman, walks up to the group."},
-  {"at": 38.40, "text": "The girl lets go of you and steps back."}
-]}
+{"movie": "LS_Event_Main_140_320_C", "title": "Found in the woods", "cues": [{"at": 0.3, "text": "The girl from the pier stands ahead, watching you."}, {"at": 6.6, "text": "You step closer. She turns and walks up to you."}, {"at": 15.1, "text": "She hugs you tight. Junpei and Akihiko run up and stop short."}, {"at": 22.05, "text": "Two more run up."}, {"at": 33.4, "text": "Ikutsuki joins the group."}, {"at": 38.4, "text": "She lets go."}]}

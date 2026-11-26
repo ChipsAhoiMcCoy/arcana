@@ -1,7 +1,6 @@
 #scene LS_Event_Cmmu_103_030_C
-0.030	5.341	00.mp3	You come into Bookworms. Bunkichi and Mitsuko are searching the shop, peering around the floor.
-12.600	2.819	01.mp3	You join in, and the three of you go over the whole shop.
-19.250	6.175	02.mp3	The shop door opens and a young foreign man walks in. He comes up to Bunkichi and holds out a wallet.
+0.030	1.142	00.mp3	You enter Bookworms.
+12.600	2.348	01.mp3	You join in; the three of you search the shop.
+19.250	1.005	02.mp3	A man enters.
 33.600	1.308	03.mp3	Bebe walks out of the shop.
-39.670	3.445	04.mp3	Bunkichi bends low over the open wallet and digs through it.
-52.500	3.571	05.mp3	Bunkichi shuffles up to you, bowing over the wallet in his hands.
+52.500	1.613	04.mp3	Bunkichi shuffles up to you.

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_510_C",
- "title": "Practice with Kazushi",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The school athletic field. Runners race past along the track while you stand at its edge with Kazushi, the track team advisor watching from farther back. Kazushi pumps a fist after the runners."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_510_C", "title": "Practice with Kazushi", "cues": [{"at": 0.0, "text": "Kazushi cheers the runners."}]}

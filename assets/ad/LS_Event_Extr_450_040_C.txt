@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_040_C
-0.030	15.007	00.mp3	Wakatsu, the set-meal restaurant in the Iwatodai Strip Mall. You sit alone at a table before a steaming set meal: rice, miso soup and side dishes on a tray. Chopsticks in hand, you dig in. Two customers chat at a table behind you.
+0.030	0.806	00.mp3	Wakatsu.

@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_208_001_C
-0.000	7.621	00.mp3	The dorm's upstairs hallway, a long carpet runner between the room doors and the staircase. You walk along it, hands in your pockets.
+0.000	1.791	00.mp3	You walk along the upstairs hallway.

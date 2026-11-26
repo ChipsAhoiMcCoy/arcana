@@ -1,14 +1,12 @@
 #scene LS_Event_Main_190_295_C
-0.100	5.950	00.mp3	You and the other three stand in the water beside a large rock. Beyond it, the girls are searching the bath.
-14.830	9.104	01.mp3	Yukari and Fuuka stand in the open water past the rock, facing the four of you caught in plain view. You all freeze in surprise, and the girls stare back.
-22.670	6.273	02.mp3	You lead the others through the water toward the rock, and the four of you end up standing in a row against it, stock-still.
-35.830	9.184	03.mp3	You lead the others a few steps across the water into the steam, and the four of you hold still. Fuuka wades up to the rock alone and peers into the steam toward you.
-51.000	10.061	04.mp3	You break from cover and wade toward the exit, the other three behind you. Just ahead, Mitsuru and Aigis stand in the water with their backs to you, and the four of you stop dead.
-56.300	2.015	05.mp3	Mitsuru and Aigis turn round and see you.
-63.970	2.377	06.mp3	All four of you dash through the water for the exit.
-70.300	2.015	07.mp3	Mitsuru and Aigis turn round and see you.
-79.370	10.244	08.mp3	You scoop Junpei's rubber duck out of the water and hurl it far across the bath. It drops into the water near Yukari and Fuuka with a splash, and Yukari grabs Fuuka's arm.
-85.000	2.560	09.mp3	Mitsuru and Aigis walk over toward the splash.
-96.500	2.586	10.mp3	The four of you flinch and drop low in the water.
-104.830	3.016	11.mp3	Startled, the four of you flinch and shrink low in the water.
-111.330	2.891	12.mp3	You lead the way, and the four of you creep toward the exit.
+0.100	1.568	00.mp3	You four stand beside a rock.
+14.830	2.522	01.mp3	Yukari and Fuuka see you four. You freeze.
+22.670	1.344	02.mp3	You hide against the rock.
+35.830	4.415	03.mp3	You lead the others into the steam. Fuuka wades up to the rock, peering toward you.
+51.000	2.596	04.mp3	Ahead, Mitsuru and Aigis stand with backs turned.
+63.970	1.765	05.mp3	All four of you dash for the exit.
+79.370	2.446	06.mp3	You hurl Junpei's rubber duck across the bath.
+85.000	2.560	07.mp3	Mitsuru and Aigis walk over toward the splash.
+96.500	0.854	08.mp3	You duck low.
+104.830	0.944	09.mp3	You shrink low.
+111.330	1.394	10.mp3	You creep toward the exit.

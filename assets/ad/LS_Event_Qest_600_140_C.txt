@@ -1,5 +1,6 @@
 #scene LS_Event_Qest_600_140_C
-0.030	7.597	00.mp3	The Velvet Room. The five Persona cards you chose lie face up on the table before Igor; Elizabeth stands beside his chair.
-0.600	12.392	01.mp3	Igor passes a gloved hand over the cards and energy bursts up from each one. He raises them upright, grinning behind them, then flicks them up into the air above his chair. They hang in a ring and pulse.
-15.800	7.284	02.mp3	Streams of energy burst from the cards and rush at you as you sit in your chair; they pierce your head and scatter into tiny shards.
-19.150	4.098	03.mp3	The new Persona takes shape before you, then shrinks back into a single card.
+0.030	3.740	00.mp3	Five Persona cards lie before Igor, Elizabeth beside him.
+4.000	5.371	01.mp3	Igor passes a hand over the cards; energy bursts from each and they hang in a ring, pulsing.
+15.800	2.352	02.mp3	Energy rushes at you and pierces your head.
+19.300	1.327	03.mp3	A new Persona forms.
+21.170	1.572	04.mp3	It shrinks into a single card.

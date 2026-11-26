@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_004_735_C",
- "title": "Meal prep with Akihiko",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You stand with Akihiko in the dorm kitchen, the ingredients laid out by the cutting board."
-  },
-  {
-   "at": 3.67,
-   "text": "Time passes while the two of you boil everything and portion it out. Afterwards the counter is cleared, and Akihiko stands beside you with his arms crossed."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_004_735_C", "title": "Meal prep with Akihiko", "cues": [{"at": 1.36, "text": "Cooking with Akihiko."}, {"at": 3.7, "text": "Akihiko stands beside you, arms crossed."}]}

@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_190_120_C",
- "title": "The team regroups",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "In the dorm lounge, you sit on the sofas with Akihiko, Yukari, Junpei, Fuuka, Ken and Koromaru. Akihiko sits in an armchair with his arms folded."
-  },
-  {
-   "at": 21.55,
-   "text": "The meeting breaks up. Yukari gets up and walks off, and Fuuka goes after her."
-  },
-  {
-   "at": 25.85,
-   "text": "Yukari stops and turns around. Fuuka catches up and hands her something."
-  }
- ]
-}
+{"movie": "LS_Event_Main_190_120_C", "title": "The team regroups", "cues": [{"at": 0.05, "text": "Dorm lounge."}, {"at": 21.55, "text": "Yukari leaves; Fuuka follows."}, {"at": 25.85, "text": "Fuuka hands Yukari something."}]}

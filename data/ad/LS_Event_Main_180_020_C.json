@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_180_020_C",
- "title": "Mitsuru calls a meeting",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Your classroom. You and Junpei sit at your desks, Yukari standing beside you. Mitsuru walks in and comes over to Yukari."
-  },
-  {
-   "at": 7.67,
-   "text": "Yukari lowers her eyes and touches her hair. Mitsuru turns and walks out of the classroom."
-  }
- ]
-}
+{"movie": "LS_Event_Main_180_020_C", "title": "Mitsuru calls a meeting", "cues": [{"at": 0.03, "text": "Mitsuru walks into your classroom and over to Yukari."}, {"at": 7.7, "text": "Yukari lowers her eyes. Mitsuru turns and walks out."}]}

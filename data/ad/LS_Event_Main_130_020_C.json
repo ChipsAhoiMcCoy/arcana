@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_130_020_C",
- "title": "Fuuka joins the team",
- "cues": [
-  {
-   "at": 0.55,
-   "text": "In the dorm's command room, everyone sits around the low table: you, Yukari and Junpei on stools, Akihiko, Mitsuru and Fuuka on the sofa, and Chairman Ikutsuki in an armchair. Akihiko and Mitsuru sit with their arms folded."
-  },
-  {
-   "at": 4.0,
-   "text": "Fuuka, who sprang to her feet with a hand at her chest when the chairman spoke to her, sits back down on the edge of the sofa."
-  }
- ]
-}
+{"movie": "LS_Event_Main_130_020_C", "title": "Fuuka joins the team", "cues": [{"at": 4.0, "text": "Fuuka sits down."}]}

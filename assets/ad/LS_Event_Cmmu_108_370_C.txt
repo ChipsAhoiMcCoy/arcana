@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_108_370_C
-0.000	6.167	00.mp3	A café in Paulownia Mall. You and Keisuke sit across a table from each other, among other customers.
+0.000	0.695	00.mp3	A café.

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_115_510_C",
- "title": "Another race",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The takoyaki stand at the Iwatodai Strip Mall. You and Mamoru sit side by side in front of it, each holding a tray of takoyaki."
-  },
-  {
-   "at": 1.5,
-   "text": "You start eating right away, lifting a takoyaki to your mouth."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_115_510_C", "title": "Another race", "cues": [{"at": 0.0, "text": "At the stand."}, {"at": 1.5, "text": "You start eating."}]}

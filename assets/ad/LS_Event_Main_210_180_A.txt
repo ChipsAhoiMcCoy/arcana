@@ -1,7 +1,7 @@
 #scene LS_Event_Main_210_180_A
-0.600	14.604	00.mp3	The top of Tartarus: a wide, round platform ringed by tall pillars, each crowned with a bird statue. You walk out onto it with the whole team, Koromaru among you; everyone looks around and up, Junpei shading his eyes with a hand.
-12.100	3.349	01.mp3	Feathers peel away from the bird statues and swirl upward.
+0.600	7.692	00.mp3	The top of Tartarus, a round platform ringed by pillars with bird statues. You walk onto it with the team; everyone looks up.
+12.100	2.694	01.mp3	Feathers peel from the statues and swirl upward.
 27.900	7.778	02.mp3	Streams of feathers rise from every statue, higher and higher, and converge on a huge full moon, knotting together at its centre.
-44.900	4.093	03.mp3	Koromaru crouches low beside Ken, and you stare upward with the others.
+44.900	1.213	03.mp3	Everyone stares up.
 58.850	6.652	04.mp3	In front of the moon the feathers churn into a tangled mass, and something bursts out of it, spreading great feathered wings.
-69.300	13.458	05.mp3	A slender figure with several pairs of wings spread wide grips a long blade. Its face is a mask with hollow eyes and a wide, fixed smile. It hovers high above you and the team, who stand small among the pillars.
+69.300	7.655	05.mp3	A slender figure with many wings grips a long blade. Its mask has hollow eyes and a fixed smile. It hovers high above you.

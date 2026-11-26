@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_315_001_C
-0.000	5.897	00.mp3	The school's main lobby. You walk across it, hands in your pockets, toward the bulletin board, and stop.
+0.000	3.099	00.mp3	The school lobby. You walk to the bulletin board and stop.

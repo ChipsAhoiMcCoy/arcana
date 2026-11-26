@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_106_320_C
-0.000	6.255	00.mp3	Iwatodai Strip Mall, among passing shoppers. You walk along with Yuko, then she stops and turns to you.
+0.000	1.148	00.mp3	Yuko turns to you.

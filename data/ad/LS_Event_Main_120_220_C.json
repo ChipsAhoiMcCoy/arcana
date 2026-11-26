@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_120_220_C",
- "title": "The full moon",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Still in Tartarus, Junpei runs up to a huge window in the wall and stops dead, staring out of it. Akihiko, Fuuka and you walk up behind him."
-  },
-  {
-   "at": 18.35,
-   "text": "Akihiko breaks into a run. Fuuka and you run after him."
-  },
-  {
-   "at": 22.7,
-   "text": "Junpei turns and runs after the rest of you."
-  }
- ]
-}
+{"movie": "LS_Event_Main_120_220_C", "title": "The full moon", "cues": [{"at": 0.0, "text": "Junpei stares."}, {"at": 18.35, "text": "Akihiko runs; you follow."}, {"at": 22.7, "text": "Junpei runs after you."}]}

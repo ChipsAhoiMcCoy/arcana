@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_101_090_C
-0.000	5.298	00.mp3	At Port Island Station, you and Kenji walk side by side across the plaza and stop.
-5.270	3.295	01.mp3	A little way off, Ms. Kanou stands talking with a man.
-13.000	10.032	02.mp3	Kenji breaks into tears. He turns and runs off across the plaza and stops by a wall, rubbing at his eyes; you follow and find him standing alone, facing away.
+0.000	1.253	00.mp3	You and Kenji stop.
+3.600	1.366	01.mp3	Ms. Kanou, with a man.
+13.050	6.532	02.mp3	Kenji breaks into tears and runs off across the plaza. You follow and find him by a wall, facing away.

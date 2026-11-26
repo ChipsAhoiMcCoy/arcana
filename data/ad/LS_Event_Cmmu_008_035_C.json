@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_008_035_C",
- "title": "Ken: outside the dorm",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You stand with Ken at the foot of the dorm's front steps. Ken clasps his hands in front of him and now and then looks down as he talks."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_008_035_C", "title": "Ken: outside the dorm", "cues": [{"at": 0.0, "text": "With Ken."}]}

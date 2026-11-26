@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_117_090_C
-0.000	3.411	00.mp3	Naganaki Shrine. You sit on a bench with Akinari again.
+0.000	0.714	00.mp3	The shrine.
+1.220	1.312	01.mp3	You sit with Akinari.

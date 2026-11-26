@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Extr_460_048_C",
- "title": "Shinjiro at Be Blue V",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Paulownia Mall, inside the shop Be Blue V, beside its big sign. You stand with your bag over your shoulder; Shinjiro faces you, hands in his coat pockets, and soon rubs the back of his head."
-  },
-  {
-   "at": 5.17,
-   "text": "Shinjiro turns and walks off for the treatment, leaving you waiting by the sign."
-  },
-  {
-   "at": 9.5,
-   "text": "Later, Shinjiro walks back to you."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_460_048_C", "title": "Shinjiro at Be Blue V", "cues": [{"at": 0.03, "text": "Be Blue V."}, {"at": 5.17, "text": "Shinjiro walks off for his treatment, leaving you waiting."}, {"at": 9.5, "text": "Later, Shinjiro walks back to you."}]}

@@ -1,4 +1,4 @@
 #scene LS_Event_Main_190_150_B
-0.050	3.797	00.mp3	On the edge of her bed, Yukari leans in close to the laptop's screen.
-6.200	17.030	01.mp3	Yukari closes her eyes. Her Persona, Io, appears: a girl bound in chains, seated on a huge horned skull. It changes into Isis: a tall figure with a mask-like face and curving horns, an orb held high above its head, and vast wings spread wide.
-22.050	6.094	02.mp3	Back on the bed, Yukari sits with her eyes closed as a small orb of drifting specks sinks into her chest.
+0.050	0.764	00.mp3	Laptop.
+6.200	1.912	01.mp3	Her Persona Io becomes Isis.
+22.050	2.441	02.mp3	An orb of specks sinks into Yukari's chest.

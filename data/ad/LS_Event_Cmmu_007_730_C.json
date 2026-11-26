@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_007_730_C",
- "title": "Aigis at the planters again",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The dorm rooftop. You and Aigis kneel side by side at the vegetable planters, tending them."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_007_730_C", "title": "Aigis at the planters again", "cues": [{"at": 0.19, "text": "You garden."}]}

@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_220_020_C", "title": "Aigis at your door", "cues": [
-{"at": 0.10, "text": "Your room in the dorm. You sit on your bed, head down."},
-{"at": 4.20, "text": "You get up, cross the room and open the door. Aigis stands in the hallway outside."},
-{"at": 18.20, "text": "Aigis wipes her eyes with her gloved hand, then lowers it."}
-]}
+{"movie": "LS_Event_Main_220_020_C", "title": "Aigis at your door", "cues": [{"at": 0.1, "text": "You sit, head down."}, {"at": 4.2, "text": "You get up and open the door. Aigis stands outside."}, {"at": 18.2, "text": "Aigis wipes her eyes."}]}

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_160_130_C",
- "title": "A message in class",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "In class, Aigis sits at the desk beside yours. Your phone beeps, and you take it out and open a new message."
-  }
- ]
-}
+{"movie": "LS_Event_Main_160_130_C", "title": "A message in class", "cues": [{"at": 0.05, "text": "In class, you open a message on your phone."}]}

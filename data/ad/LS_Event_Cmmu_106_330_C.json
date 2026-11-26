@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_106_330_C",
- "title": "Yuko and the crane game",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Paulownia Mall. You come out of the arcade with Yuko and stop on the walkway beside a crane game."
-  },
-  {
-   "at": 4.83,
-   "text": "Yuko turns and steps up to the crane game, and you stand beside her as she looks over the prizes."
-  },
-  {
-   "at": 18.0,
-   "text": "Yuko plays again and again, nudging the prize along, until it drops."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_106_330_C", "title": "Yuko and the crane game", "cues": [{"at": 0.0, "text": "At the crane game."}, {"at": 4.83, "text": "Yuko steps up to it."}, {"at": 17.7, "text": "Yuko plays again and again until the prize drops."}]}

@@ -1,6 +1,1 @@
-{"movie": "LS_Event_Main_110_260_C", "title": "A Shadow in the car", "cues": [
-{"at": 0.00, "text": "You, Yukari and Junpei walk on toward a coffin standing at the far end of the car. Beside it a Shadow appears: a spindly thing on many thin legs, its face hidden behind a boxy mask. All three of you take fighting stances."},
-{"at": 3.53, "text": "The Shadow turns and scuttles away down the car, out through the door at its end."},
-{"at": 13.17, "text": "Junpei runs off after it, through the door and into the next car."},
-{"at": 17.49, "text": "Two more of the masked Shadows have risen up behind you. You and Yukari spin round to face them and raise your guard."}
-]}
+{"movie": "LS_Event_Main_110_260_C", "title": "A Shadow in the car", "cues": [{"at": 0.0, "text": "A Shadow appears by the coffin."}, {"at": 3.53, "text": "The Shadow scuttles out the door."}, {"at": 18.53, "text": "Two more Shadows."}]}

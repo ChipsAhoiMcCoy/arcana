@@ -4,23 +4,23 @@
  "cues": [
   {
    "at": 2.55,
-   "text": "On the Kirijo family's private beach, you stand by a parasol with Junpei and Akihiko. Yukari, Fuuka, Mitsuru and Aigis walk over to join you."
+   "text": "The girls walk over to you, Junpei and Akihiko."
   },
   {
    "at": 13.7,
-   "text": "Junpei runs off into the sea, and Aigis dashes in after him with a splash. Yukari laughs and heads down to the water with Aigis."
+   "text": "Junpei runs into the sea."
   },
   {
    "at": 23.1,
-   "text": "Fuuka and Mitsuru follow them into the water. Later, you and Akihiko sit on beach loungers under a parasol, Akihiko with his arms folded and legs crossed, and Ikutsuki walks over to you."
+   "text": "Later, you and Akihiko sit on loungers; Ikutsuki walks over."
   },
   {
-   "at": 35.55,
-   "text": "Out in the shallows, Aigis aims her arm at Junpei and a jet of water blasts from her fingertips straight into him. Yukari grins and drops into a fighting stance, and so do you."
+   "at": 34.4,
+   "text": "Aigis blasts water at Junpei."
   },
   {
    "at": 46.4,
-   "text": "Akihiko and you rush in too. Junpei ends up sprawled face down in the shallows, everyone standing over him."
+   "text": "Junpei falls."
   }
  ]
 }

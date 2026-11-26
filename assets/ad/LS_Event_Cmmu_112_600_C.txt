@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_112_600_C
-0.000	4.852	00.mp3	The cinema at Port Island Station. You and Bebe stand by the concession counter.
-1.000	9.489	01.mp3	You and Bebe sit side by side in the theater among the rest of the audience, watching the movie. Afterwards, you stand together by the concession counter again.
+0.000	0.692	00.mp3	The cinema.
+1.000	1.503	01.mp3	You and Bebe watch the movie.
+6.330	2.033	02.mp3	Afterwards, you stand by the counter.

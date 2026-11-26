@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_112_080_C
-0.000	7.693	00.mp3	In the home economics room, you and Bebe sew at machines facing each other, a heap of cloth piled beside Bebe's machine.
-3.500	5.705	01.mp3	Some time later, the two of you sit back from your machines, and Bebe fans himself with a folding fan.
+0.000	0.833	00.mp3	Sewing room.
+3.500	0.876	01.mp3	Bebe fans.

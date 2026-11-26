@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_040_C",
- "title": "Practice without Kazushi",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the athletic field, you and Yuko stand with the advisor as the runners sprint in off the track and line up together. Kazushi is not among them."
-  },
-  {
-   "at": 13.53,
-   "text": "The advisor has already walked off, and now the other members leave too, until only you and Yuko are left."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_040_C", "title": "Practice without Kazushi", "cues": [{"at": 0.0, "text": "On the field, you, Yuko and the advisor watch runners line up. Kazushi is not among them."}, {"at": 13.58, "text": "Only you and Yuko remain."}]}

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_735_C",
- "title": "Tea with Mitsuru",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The dorm lounge. You sit beside Mitsuru on the sofa, cups of tea and a basket of snacks on the table in front of you. She sits with her arms folded; you lean forward, elbows on your knees."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_735_C", "title": "Tea with Mitsuru", "cues": [{"at": 1.35, "text": "Tea with Mitsuru."}]}

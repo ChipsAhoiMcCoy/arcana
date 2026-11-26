@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_790_C",
- "title": "Camera footage: Fuuka",
- "cues": [
-  {
-   "at": 1.33,
-   "text": "Camera footage plays: Fuuka alone in her room at the dorm, trying on a halter-top bikini and looking herself over."
-  },
-  {
-   "at": 6.0,
-   "text": "Fuuka turns and walks over to her table, and comes back with a small pad."
-  },
-  {
-   "at": 15.67,
-   "text": "Fuuka wraps the pad around her waist like a belt and switches it on. It starts to buzz, and she doubles over, clutching her middle and squirming."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_790_C", "title": "Camera footage: Fuuka", "cues": [{"at": 1.33, "text": "Bikini fitting."}, {"at": 6.0, "text": "Fuuka fetches a small pad from her table, wraps it around her waist and switches it on."}]}

@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_009_035_C
-0.030	8.714	00.mp3	At Naganaki Shrine, you walk up alone to the woman who knew Koromaru. She stands beside bouquets of flowers laid at the foot of a stone post.
-9.370	4.098	01.mp3	You start as Koromaru trots up and stands beside you, wagging his tail.
-15.670	3.466	02.mp3	She walks away down the path. Koromaru sits down beside you.
+0.030	1.242	00.mp3	You walk up to the woman.
+9.370	2.582	01.mp3	Koromaru trots up beside you, tail wagging.
+15.670	2.595	02.mp3	She walks away. Koromaru sits beside you.

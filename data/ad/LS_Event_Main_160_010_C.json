@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_160_010_C", "title": "Pharos and the flowers of poison", "cues": [
-  {"at": 0.00, "text": "You lie asleep in bed in your dorm room."},
-  {"at": 2.83, "text": "You open your eyes and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands beside your bed."},
-  {"at": 12.83, "text": "Pharos smiles, then breaks apart into drifting specks and is gone."}
-]}
+{"movie": "LS_Event_Main_160_010_C", "title": "Pharos and the flowers of poison", "cues": [{"at": 0.0, "text": "You sleep in your dorm room."}, {"at": 2.83, "text": "Pharos watches you."}, {"at": 12.83, "text": "Pharos smiles, then dissolves into specks."}]}

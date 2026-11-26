@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_010_C",
- "title": "Fuuka's first bento",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You sit with Fuuka in the open-air corridor behind the school building, a bento box she has made between you."
-  },
-  {
-   "at": 4.67,
-   "text": "You eat a mouthful from the bento, your face tightens in pain, and you hunch forward, elbows on your knees."
-  },
-  {
-   "at": 11.0,
-   "text": "Fuuka jumps up and runs off. She comes back with water, you drink it down, and she sits beside you again, her head lowered."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_010_C", "title": "Fuuka's first bento", "cues": [{"at": 0.0, "text": "You sit with Fuuka."}, {"at": 4.67, "text": "You wince, hunching."}, {"at": 11.0, "text": "Fuuka runs off, returns with water, and you drink."}]}

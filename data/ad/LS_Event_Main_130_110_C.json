@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_130_110_C", "title": "Pharos warns of the next full moon", "cues": [
-  {"at": 0.05, "text": "In your dorm room, you lie asleep in bed."},
-  {"at": 2.90, "text": "You open your eyes and push yourself up on one elbow. Pharos, the boy in striped pyjamas, stands beside your bed."},
-  {"at": 8.70, "text": "Pharos breaks apart into flecks and is gone."}
-]}
+{"movie": "LS_Event_Main_130_110_C", "title": "Pharos warns of the next full moon", "cues": [{"at": 0.05, "text": "You lie asleep in your dorm room."}, {"at": 2.9, "text": "Pharos stands by your bed."}, {"at": 8.7, "text": "Pharos breaks apart and is gone."}]}

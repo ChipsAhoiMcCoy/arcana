@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_740_C",
- "title": "Fuuka at the planters: recovered",
- "cues": [
-  {
-   "at": 0.2,
-   "text": "The dorm rooftop. You and Fuuka crouch side by side at the vegetable planters, looking over the plants, now growing well again."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_740_C", "title": "Fuuka at the planters: recovered", "cues": [{"at": 1.67, "text": "You crouch."}]}

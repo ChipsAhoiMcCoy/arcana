@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_360_C
-0.050	10.231	00.mp3	Paulownia Mall, by the fountain, where people pass by and a couple sits on a bench. You and Yukari walk up side by side, her bag in hand, and stop to face each other.
+0.050	3.116	00.mp3	You and Yukari stop by the fountain, facing each other.

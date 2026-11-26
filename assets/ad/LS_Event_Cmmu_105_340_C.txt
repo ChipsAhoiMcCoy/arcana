@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_105_340_C
-0.000	7.810	00.mp3	A café in Paulownia Mall. You sit at a table across from Kazushi, who is in his track suit, among the café's other customers.
+2.420	1.384	00.mp3	At a café with Kazushi.

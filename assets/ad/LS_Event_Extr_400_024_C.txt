@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_400_024_C
-0.050	5.974	00.mp3	Outside Iwatodai Station, you walk out alone onto a plaza where puddles of blood mark the paving.
-10.700	1.241	01.mp3	You break into a run.
+0.050	1.787	00.mp3	Blood marks the station plaza.
+10.700	0.644	01.mp3	You run.

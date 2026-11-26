@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_103_070_C",
- "title": "Mitsuko's happy tears",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "You come into Bookworms. Mitsuko stands with her head bowed and her hands clasped, in tears, wiping her eyes, and Bunkichi looks up, startled, as you arrive."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_103_070_C", "title": "Mitsuko's happy tears", "cues": [{"at": 0.03, "text": "Mitsuko stands crying in Bookworms."}]}

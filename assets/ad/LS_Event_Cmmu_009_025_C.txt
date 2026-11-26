@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_009_025_C
-0.030	8.246	00.mp3	At Naganaki Shrine, a boy clings to the top of the jungle gym while a dog growls up at him. You, Koromaru and the girl run up.
-7.000	6.935	01.mp3	Koromaru steps up close to the angry dog and faces it down beside the jungle gym, while you and the girl hang back.
-13.330	4.084	02.mp3	The dog backs away and runs off. The girl runs over to Koromaru.
-21.400	4.894	03.mp3	The boy is down from the jungle gym now, standing with you, the girl and Koromaru.
-49.330	8.067	04.mp3	Later, you and Koromaru stand by a post of the shrine gate. Bouquets of flowers lie at its foot, and Koromaru walks over to them.
+0.030	1.429	00.mp3	A dog growls at a boy.
+7.000	3.266	01.mp3	Koromaru faces down the angry dog while you hang back.
+13.330	2.825	02.mp3	The dog runs off. The girl runs to Koromaru.
+22.330	1.031	03.mp3	The boy is down.
+49.330	1.704	04.mp3	Koromaru walks to the flowers.

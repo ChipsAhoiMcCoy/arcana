@@ -1,5 +1,3 @@
 #scene LS_Event_Main_190_080_B
-1.850	12.598	00.mp3	You come to chained to a tall wooden cross, arms stretched out along its beam and your feet off the ground. Yukari, Junpei, Fuuka, Akihiko, Mitsuru and Ken hang chained to crosses all around you.
-14.500	7.161	01.mp3	Below the crosses stand Ikutsuki, Aigis, and Mitsuru's father, Takeharu Kirijo, a man with a patch over one eye.
-20.050	3.481	02.mp3	Aigis seizes Takeharu from behind and holds him fast.
-28.050	3.171	03.mp3	Ikutsuki draws a pistol and levels it at Takeharu.
+1.850	1.413	00.mp3	You hang chained to a cross.
+13.000	1.954	01.mp3	Ikutsuki, Aigis and Takeharu.

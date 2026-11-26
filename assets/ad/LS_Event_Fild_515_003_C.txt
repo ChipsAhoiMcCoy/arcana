@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_515_003_C
-0.000	10.598	00.mp3	In Tartarus, a treasure chest sits on a draped pedestal. A giant hand reaches in from the side, the chest springs open, and the hand pulls away, leaving the lid open.
+0.000	5.503	00.mp3	In Tartarus, a giant hand opens a treasure chest and pulls away, leaving the lid open.

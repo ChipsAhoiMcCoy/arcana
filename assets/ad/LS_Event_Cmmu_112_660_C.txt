@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_660_C
-0.000	6.111	00.mp3	The school rooftop. You sit alone on a curved stone bench, your bag beside you, reading a letter from Bebe.
+0.000	0.768	00.mp3	Rooftop.

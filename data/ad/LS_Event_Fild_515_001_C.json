@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Fild_515_001_C",
- "title": "The golden hand",
- "cues": [
-  {
-   "at": 0.2,
-   "text": "In Tartarus, a giant hand with a mask for a face creeps along on its fingertips."
-  },
-  {
-   "at": 7.17,
-   "text": "You and your teammates stand ready, weapons out. The masked hand rears up nearby, turns this way and that, then swoops off."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_515_001_C", "title": "The golden hand", "cues": [{"at": 0.2, "text": "In Tartarus, a giant hand with a mask for a face creeps along on its fingertips."}, {"at": 7.17, "text": "You and your team stand ready. The masked hand rears up, turns, then swoops off."}]}

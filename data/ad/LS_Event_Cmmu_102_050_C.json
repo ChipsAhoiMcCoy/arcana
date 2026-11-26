@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_102_050_C",
- "title": "The council walks out on Hidetoshi",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You walk into the student council room. Hidetoshi sits at the table with his arms folded, scowling, while a boy and a girl from the council stand a few steps away, facing him."
-  },
-  {
-   "at": 4.9,
-   "text": "The two of them walk out, and the door shuts behind them. You go over to Hidetoshi."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_102_050_C", "title": "The council walks out on Hidetoshi", "cues": [{"at": 0.0, "text": "Hidetoshi sits scowling, arms folded."}, {"at": 4.9, "text": "The two council members leave. You go over to Hidetoshi."}]}

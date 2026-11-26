@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_900_020_C",
- "title": "Into the Velvet Room",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "A narrow back alley between brick walls. You push open the door to the Velvet Room, a door no one else can see, and step through into a long hall."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_900_020_C", "title": "Into the Velvet Room", "cues": [{"at": 0.0, "text": "You open the Velvet Room door and step in."}]}

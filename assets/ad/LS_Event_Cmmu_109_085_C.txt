@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_085_C
-0.000	7.741	00.mp3	In the school's main lobby, with students passing through, Chihiro walks a little ahead of you, head down, then stops and turns to face you.
+0.000	2.525	00.mp3	School lobby. Chihiro stops and turns to you.

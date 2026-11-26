@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_116_020_C
-0.030	7.005	00.mp3	Iwatodai Strip Mall, ground floor. You and Nozomi step out of Umiushi, the beef bowl shop, and stop to talk.
-10.670	8.789	01.mp3	Nozomi slides backward across the floor in a moonwalk, one hand raised to his brow, all the way to Umiushi's door, and gives a happy little hop.
+0.030	1.482	00.mp3	You and Nozomi step out.
+10.670	2.651	01.mp3	Nozomi moonwalks backward, then hops happily.

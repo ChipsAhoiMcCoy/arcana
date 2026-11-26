@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Fild_518_039_C",
- "title": "A frightened Shadow",
- "cues": [
-  {
-   "at": 0.2,
-   "text": "You come into a hall, sword in hand. Ahead, a Shadow, a mass of clawed arms around a mask, prowls toward you."
-  },
-  {
-   "at": 1.17,
-   "text": "It searches about and spots you, then turns and flees, and stops to cower in place."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_518_039_C", "title": "A frightened Shadow", "cues": [{"at": 1.17, "text": "A masked Shadow searches about, spots you, then flees and cowers."}]}

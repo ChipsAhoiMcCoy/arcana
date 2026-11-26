@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_320_C
-0.050	8.040	00.mp3	You and Yukari step out of the door of Mandragora, the karaoke bar, and stop on the landing outside. Yukari has her bag in hand.
+0.050	0.970	00.mp3	Outside the bar.

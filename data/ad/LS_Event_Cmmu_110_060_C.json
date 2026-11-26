@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_110_060_C",
- "title": "Maiko decides to run away",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Naganaki Shrine. Maiko sits beside you on a bench, head bowed, her hands pressed between her knees."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_110_060_C", "title": "Maiko decides to run away", "cues": [{"at": 0.0, "text": "The shrine."}, {"at": 2.72, "text": "Maiko, head bowed."}]}

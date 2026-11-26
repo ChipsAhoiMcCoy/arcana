@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_005_653_C
-0.000	7.016	00.mp3	Fountain Square at Paulownia Mall, hung with Christmas decorations. You and Mitsuru walk across the square side by side.
-10.670	5.659	01.mp3	Later, you and Mitsuru sit side by side on a bench beside the fountain to rest after your walk.
-13.670	4.079	02.mp3	Mitsuru takes out a gift and holds it out to you, and you take it from her hands.
+0.000	3.369	00.mp3	You and Mitsuru walk across the decorated fountain square.
+9.800	1.159	01.mp3	You both sit down.
+13.670	1.365	02.mp3	Mitsuru gives you a gift.

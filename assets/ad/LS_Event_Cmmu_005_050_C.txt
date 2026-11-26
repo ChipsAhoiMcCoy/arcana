@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_050_C
-0.000	4.695	00.mp3	Coming out of the film, Mitsuru walks a few steps ahead of you, then turns back to face you.
+0.000	2.732	00.mp3	Leaving the film, Mitsuru turns back to face you.

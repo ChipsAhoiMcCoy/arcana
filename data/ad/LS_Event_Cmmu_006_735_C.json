@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_735_C",
- "title": "Fuuka at the planters: first time",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The dorm rooftop. You and Fuuka kneel side by side at the vegetable planters."
-  },
-  {
-   "at": 6.67,
-   "text": "Later, you both stand by the planters, and Fuuka turns to you, her hands at her chest."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_735_C", "title": "Fuuka at the planters: first time", "cues": [{"at": 6.67, "text": "Fuuka turns."}]}

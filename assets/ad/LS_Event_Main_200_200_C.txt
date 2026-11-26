@@ -1,2 +1,2 @@
 #scene LS_Event_Main_200_200_C
-0.040	5.456	00.mp3	A back alley. Ken stands alone with his back to the street. Akihiko walks up behind him.
+0.040	2.489	00.mp3	A back alley. Akihiko approaches Ken.

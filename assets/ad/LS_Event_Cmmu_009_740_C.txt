@@ -1,4 +1,3 @@
 #scene LS_Event_Cmmu_009_740_C
-0.170	6.247	00.mp3	In the dorm lounge, you sit brushing Koromaru's coat. Fuuka sits on the sofa nearby, watching him.
-11.330	5.123	01.mp3	Koromaru sits up on the sofa beside you; you hold out a hand and he rests a paw on it.
-13.830	4.640	02.mp3	Later, Koromaru trots up to you on the sofa and drops something small at your feet.
+11.330	1.673	00.mp3	Koromaru lays a paw on you.
+13.830	3.069	01.mp3	Koromaru trots up and drops something small at your feet.

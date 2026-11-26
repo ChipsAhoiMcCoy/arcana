@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_101_340_C
-0.000	5.556	00.mp3	Paulownia Mall, outside the arcade beside a crane game. Kenji steps over to stand with you.
+0.000	1.128	00.mp3	Kenji joins you.

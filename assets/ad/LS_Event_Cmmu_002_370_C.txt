@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_370_C
-0.050	10.699	00.mp3	Be Blue V, the accessory shop, its shelves and counters full of charms, stones and trinkets, with a few other shoppers browsing. You and Yukari stand among the displays.
+0.050	0.810	00.mp3	Be Blue V.

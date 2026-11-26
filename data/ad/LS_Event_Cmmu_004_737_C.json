@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_004_737_C",
- "title": "Liver stir-fry with Akihiko",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You stand with Akihiko in the dorm kitchen, the ingredients laid out by the cutting board."
-  },
-  {
-   "at": 3.67,
-   "text": "Time passes while the two of you cook; then the finished stir-fry sits on plates on the counter, and Akihiko folds his arms."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_004_737_C", "title": "Liver stir-fry with Akihiko", "cues": [{"at": 3.67, "text": "Cooking done, Akihiko folds his arms."}]}

@@ -1,4 +1,4 @@
 #scene LS_Event_Qest_610_155_C
-0.030	5.081	00.mp3	Your dorm room. You and Elizabeth stand just inside the door, and she looks around the room.
-7.330	3.095	01.mp3	Later, you and Elizabeth sit side by side on your bed.
-11.330	2.580	02.mp3	Elizabeth takes your hand and holds it in hers.
+0.030	1.956	00.mp3	Elizabeth looks around your dorm room.
+7.330	1.159	01.mp3	You both sit down.
+12.000	0.928	02.mp3	Hand in hand.

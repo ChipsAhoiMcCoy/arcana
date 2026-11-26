@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_060_C
-0.030	10.528	00.mp3	You come into Bookworms. Bunkichi and Mitsuko are silent, both looking downcast; Mitsuko stands with her head bowed and her hands clasped, then raises a hand to her face.
+0.030	2.151	00.mp3	Bunkichi and Mitsuko stand downcast.

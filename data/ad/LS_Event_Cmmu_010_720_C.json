@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_010_720_C",
- "title": "A break from the harvest",
- "cues": [
-  {
-   "at": 0.17,
-   "text": "The dorm rooftop garden, the vegetable beds ready for harvest. You and Shinjiro stand beside them, Shinjiro with a hand on his hip."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_010_720_C", "title": "A break from the harvest", "cues": [{"at": 1.2, "text": "Rooftop."}]}

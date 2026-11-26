@@ -1,7 +1,7 @@
 #scene LS_Event_Main_140_230_C
-0.000	6.645	00.mp3	On the beach, Yukari stands alone at the water's edge with her back to you. You walk up behind her, hands in your pockets.
-38.500	2.733	01.mp3	Yukari walks over and stops close in front of you.
-44.700	5.194	02.mp3	You step in beside her. Yukari puts her arms around you and holds on, her eyes closed.
-47.500	6.712	03.mp3	Yukari starts, and the two of you break apart and turn away from each other. You turn toward the voice as Junpei walks up.
-54.130	2.528	04.mp3	You turn toward the voice. Junpei walks up.
-65.800	5.201	05.mp3	Junpei turns and heads back. Yukari follows him, and you walk after them, then stop.
+0.000	1.583	00.mp3	You walk up behind Yukari.
+38.500	1.426	01.mp3	Yukari walks up to you.
+44.700	1.171	02.mp3	Yukari hugs you.
+47.500	2.520	03.mp3	You and Yukari break apart and turn away.
+54.130	1.133	04.mp3	Junpei walks up.
+65.800	4.220	05.mp3	Junpei heads back. Yukari follows, and you walk after them, then stop.

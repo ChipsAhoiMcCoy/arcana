@@ -4,11 +4,11 @@
  "cues": [
   {
    "at": 1.1,
-   "text": "In the lobby of the cinema at Port Island Station, Keisuke meets you by the snack counter. Then the two of you sit side by side among the audience as the film begins."
+   "text": "Cinema lobby. Keisuke meets you, and you take your seats."
   },
   {
-   "at": 8.0,
-   "text": "After the film, you and Keisuke stand by the snack counter again."
+   "at": 6.7,
+   "text": "After the film, snack counter."
   }
  ]
 }

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_105_510_C
-0.000	12.127	00.mp3	The school athletic field. Runners race past along the track while you stand at its edge with Kazushi, the track team advisor watching from farther back. Kazushi pumps a fist after the runners.
+0.000	1.531	00.mp3	Kazushi cheers the runners.

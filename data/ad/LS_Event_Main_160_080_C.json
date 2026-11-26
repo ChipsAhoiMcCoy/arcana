@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_160_080_C",
- "title": "Junpei and the girl on the bench",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "The paved plaza outside Port Island Station, among tall stone columns. Junpei strolls along on his own."
-  },
-  {
-   "at": 6.4,
-   "text": "On a bench by a flower bed, a girl in a long, frilly dress sits drawing on a sketchboard. Junpei walks over and stops beside her."
-  },
-  {
-   "at": 19.9,
-   "text": "Junpei walks off. The girl goes on drawing, then lifts her head from the sketchboard."
-  }
- ]
-}
+{"movie": "LS_Event_Main_160_080_C", "title": "Junpei and the girl on the bench", "cues": [{"at": 0.05, "text": "Junpei strolls along the plaza."}, {"at": 6.4, "text": "A girl sits drawing on a bench. Junpei stops beside her."}, {"at": 19.9, "text": "Junpei walks off. The girl lifts her head."}]}

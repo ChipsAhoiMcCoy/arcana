@@ -1,2 +1,2 @@
 #scene LS_Event_Main_160_130_C
-0.050	6.271	00.mp3	In class, Aigis sits at the desk beside yours. Your phone beeps, and you take it out and open a new message.
+0.050	2.296	00.mp3	In class, you open a message on your phone.

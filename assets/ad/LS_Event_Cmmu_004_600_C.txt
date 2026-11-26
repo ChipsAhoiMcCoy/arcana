@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_004_600_C
-0.000	1.992	00.mp3	You and Akihiko are at the cinema.
-1.170	5.657	01.mp3	You take your seats among the audience and watch the film together, Akihiko with his arms folded.
+1.170	1.957	00.mp3	You and Akihiko watch the film.

@@ -1,4 +1,4 @@
 #scene LS_Event_Main_200_190_C
-0.040	6.219	00.mp3	Yukari's room in the dorm. She sits on the edge of her bed, looking at her phone, when someone knocks on the door.
+0.040	1.034	00.mp3	Yukari's room.
 3.400	3.189	01.mp3	Yukari opens the door, and Mitsuru steps into the room.
-13.550	6.399	02.mp3	Later, Mitsuru and Yukari sit side by side on the edge of Yukari's bed, Mitsuru with her arms folded.
+13.550	2.519	02.mp3	Mitsuru and Yukari sit side by side.

@@ -1,4 +1,3 @@
 #scene LS_Event_Main_230_040_C
-0.200	13.428	00.mp3	The graduation ceremony, in the school auditorium. You sit facing the stage with Junpei beside you and Yukari in the row behind. On the stage, a teacher stands at the podium; Mitsuru waits off to one side.
-1.700	5.580	01.mp3	The teacher bows, steps away from the podium and walks off, and Mitsuru crosses to take his place.
-10.550	3.996	02.mp3	Her head lowered, Mitsuru steps away from the podium and walks off the stage.
+1.700	3.145	00.mp3	The teacher bows and walks off; Mitsuru takes his place.
+10.550	2.270	01.mp3	Head lowered, Mitsuru walks off the stage.

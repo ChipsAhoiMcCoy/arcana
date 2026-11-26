@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_140_090_C",
- "title": "Pharos at your bedside",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You lie asleep in your bed in your dorm room, under a checked blanket."
-  },
-  {
-   "at": 2.87,
-   "text": "You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed, his hands behind his back."
-  },
-  {
-   "at": 11.0,
-   "text": "Pharos breaks apart into flecks like ash that scatter and fade, and he is gone."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_090_C", "title": "Pharos at your bedside", "cues": [{"at": 0.0, "text": "You lie asleep in your bed."}, {"at": 2.87, "text": "You wake. Pharos is there."}, {"at": 11.0, "text": "Pharos scatters like ash and is gone."}]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_033_C
-0.030	8.599	00.mp3	Outside Iwatodai Station, you stand on the plaza with a bag over your shoulder. A few people sit and stand by the station wall behind you.
+0.030	2.652	00.mp3	You stand outside Iwatodai Station with a bag.

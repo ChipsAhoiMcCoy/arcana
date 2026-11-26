@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_360_010_C
-0.000	5.204	00.mp3	You sit at the computer desk in the dorm lounge, chin in hand, then type away at the keyboard.
+0.000	0.677	00.mp3	You type.

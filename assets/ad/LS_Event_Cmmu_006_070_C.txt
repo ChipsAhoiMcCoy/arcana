@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_006_070_C
-0.000	8.471	00.mp3	You and Fuuka stand outside the bookstore in the Iwatodai strip mall, school bags in hand. Fuuka looks downcast, holding her bag in front of her.
-25.500	1.813	01.mp3	Fuuka presses a hand to her chest.
+0.000	1.294	00.mp3	Fuuka looks downcast.

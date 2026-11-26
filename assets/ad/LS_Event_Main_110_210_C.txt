@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_210_C
-0.100	5.542	00.mp3	In the dorm's command room, Mitsuru sits at a low table, working a boxy scanner with an antenna.
-3.050	8.799	01.mp3	The door opens and Akihiko walks in and stands by the consoles, one hand on his hip. Mitsuru sits back from the scanner and folds her arms.
+0.100	1.643	00.mp3	Mitsuru works a boxy scanner.
+3.000	1.340	01.mp3	Akihiko walks in.

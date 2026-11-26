@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_102_045_C
-0.000	9.190	00.mp3	In a school hallway, Hidetoshi stands face to face with another student beside a door. You watch from a few steps away, and two girls stop nearby to look on.
-11.370	4.336	01.mp3	The student punches Hidetoshi in the stomach, and he doubles over against the wall.
-13.900	6.917	02.mp3	The student walks off past you, the two girls move on, and Hidetoshi straightens up and folds his arms as you go up to him.
+0.000	0.903	00.mp3	School hallway.
+11.370	0.602	01.mp3	Punch.
+13.900	4.699	02.mp3	The student walks off. Hidetoshi straightens, folds his arms as you approach.

@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_600_580_C
-0.000	9.823	00.mp3	The summer festival at Naganaki Shrine, crowded with people and stalls. You walk along the stalls to a mask stand, where Mitsuru and Aigis stand looking at the masks.
-15.400	3.771	01.mp3	Mitsuru turns and moves off along the stalls, and Aigis follows her.
+0.000	0.822	00.mp3	The festival.
+2.050	1.740	01.mp3	Mitsuru and Aigis look at masks.
+15.400	3.771	02.mp3	Mitsuru turns and moves off along the stalls, and Aigis follows her.

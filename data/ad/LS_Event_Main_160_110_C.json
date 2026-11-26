@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Main_160_110_C",
- "title": "Aigis in uniform",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "The dorm's lounge. You come in through the front door with your school bag. Junpei, Yukari and Ken sit on the sofas, and Koromaru turns and trots over to you."
-  },
-  {
-   "at": 7.25,
-   "text": "Fuuka comes over with Aigis beside her, Aigis wearing a school uniform like the girls': blazer and skirt. They stop in front of you, Aigis with her hands folded in front of her and Fuuka smiling with a hand at her chest."
-  }
- ]
-}
+{"movie": "LS_Event_Main_160_110_C", "title": "Aigis in uniform", "cues": [{"at": 0.05, "text": "Dorm lounge."}, {"at": 7.25, "text": "Aigis wears a school uniform."}]}

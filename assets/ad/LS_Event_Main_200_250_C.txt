@@ -1,12 +1,13 @@
 #scene LS_Event_Main_200_250_C
-0.170	8.570	00.mp3	Your room in the dorm. Ryoji stands by the window, eyes closed, as you come in through the door. He opens his eyes and turns to face you.
-8.700	2.007	01.mp3	You sit down beside each other on the bed.
-17.400	4.160	02.mp3	Ryoji smiles, gets up from the bed and goes to stand by the window.
-23.400	4.488	03.mp3	You stay seated a moment with your head bowed, then get up and go to stand in front of him.
+0.170	4.323	00.mp3	Your room. Ryoji stands by the window, eyes closed, then turns to you.
+7.300	1.243	01.mp3	You both sit on the bed.
+17.400	2.139	02.mp3	Ryoji smiles, goes to the window.
+23.400	2.957	03.mp3	You sit a moment, head bowed, then get up and face him.
 29.900	7.409	04.mp3	Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple, and the scene fades away.
-49.200	15.451	05.mp3	Ryoji gets up, walks to the middle of the room and turns to face you. A burst rises from his chest and a swirling column swallows him. When it clears, a tall masked figure hangs in the air where he stood, huge blade-like wings spread at its back.
-66.400	4.156	06.mp3	In an instant the figure is gone, and Ryoji stands there again, smiling.
+49.200	8.007	05.mp3	Ryoji walks to the room's middle. A swirling column swallows him. A tall masked figure with huge blade-like wings hangs there.
+66.400	3.401	06.mp3	The figure vanishes, and Ryoji stands there again, smiling.
 72.200	4.053	07.mp3	You sit a moment with your head bowed, then get up and walk over to Ryoji.
 80.050	7.409	08.mp3	Ryoji nods and closes his eyes. You lower your head, then raise your Evoker to your own temple, and the scene fades away.
-98.200	4.326	09.mp3	The masked figure bursts apart in an instant, and Ryoji stands there again.
-112.750	5.192	10.mp3	Ryoji walks over to where you sit on the bed, holds out a small music box, and you take it.
+98.200	3.481	09.mp3	The masked figure bursts apart; Ryoji stands there again.
+112.750	1.065	10.mp3	A music box.
+114.500	0.798	11.mp3	You take it.

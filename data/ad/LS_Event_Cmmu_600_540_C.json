@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_600_540_C",
- "title": "Track practice",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the school practice field, you sprint down the track with the other members of the track team. Yuko stands under a tent beside the track with two others, a teacher seated near them, watching the runners."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_600_540_C", "title": "Track practice", "cues": [{"at": 0, "text": "The track."}]}

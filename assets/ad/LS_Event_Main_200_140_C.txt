@@ -1,2 +1,2 @@
 #scene LS_Event_Main_200_140_C
-0.050	11.005	00.mp3	In the dorm's command room, among monitors and consoles, Fuuka sits inside the great dome of her Persona, Juno, with Mitsuru standing beside it. Yukari comes in through the door.
+0.050	2.505	00.mp3	Fuuka sits in Juno. Yukari enters.

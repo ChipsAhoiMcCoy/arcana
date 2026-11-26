@@ -1,2 +1,2 @@
 #scene LS_Event_Main_190_130_B
-0.050	4.393	00.mp3	Alone in her room, Yukari sits on the edge of her bed with a laptop on her knees.
+1.330	1.455	00.mp3	Yukari has a laptop.

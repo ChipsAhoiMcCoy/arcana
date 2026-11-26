@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_009_043_C
-0.030	6.189	00.mp3	Inside the police station, you stand before Officer Kurosawa with Koromaru and a stray brown dog.
-4.170	5.266	01.mp3	Kurosawa walks off to the back of the office to make a phone call, then comes back to the counter.
+4.170	2.430	00.mp3	Kurosawa goes to phone, then comes back.

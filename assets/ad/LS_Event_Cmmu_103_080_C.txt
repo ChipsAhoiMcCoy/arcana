@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_080_C
-0.030	7.902	00.mp3	You come into Bookworms. Bunkichi leans forward eagerly to greet you, while Mitsuko stands beside him with her hands folded in front of her.
+0.030	2.390	00.mp3	In Bookworms, Bunkichi greets you eagerly.

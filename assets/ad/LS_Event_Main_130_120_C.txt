@@ -1,3 +1,3 @@
 #scene LS_Event_Main_130_120_C
-0.050	16.505	00.mp3	In the command room, you stand in a ring with Ikutsuki, Junpei, Yukari, Akihiko and Mitsuru around Fuuka. Her Persona towers over her, a huge figure in a gown whose wide skirt closes around Fuuka like a glass dome, with Fuuka standing inside it.
-6.700	5.632	01.mp3	Fuuka's Persona bursts apart into sparks and is gone, and Fuuka stands in the middle of the room again.
+0.050	1.717	00.mp3	Fuuka's Persona towers over her.
+6.700	2.256	01.mp3	Her Persona bursts apart into sparks.

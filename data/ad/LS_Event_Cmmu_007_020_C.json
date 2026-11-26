@@ -1,10 +1,1 @@
-{
-  "movie": "LS_Event_Cmmu_007_020_C",
-  "title": "The view from the roof",
-  "cues": [
-    {
-      "at": 0.0,
-      "text": "The school rooftop. Aigis walks over to the railing, and you join her there."
-    }
-  ]
-}
+{"movie": "LS_Event_Cmmu_007_020_C", "title": "The view from the roof", "cues": [{"at": 0.0, "text": "Rooftop. You join Aigis at the railing."}]}

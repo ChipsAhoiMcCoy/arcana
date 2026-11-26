@@ -1,3 +1,3 @@
 #scene LS_Event_Main_160_200_C
-0.000	6.499	00.mp3	On a tiled rooftop, Junpei stumbles forward with his hands tied behind his back and falls flat on his face.
-4.500	4.906	01.mp3	Chidori walks up and stands over him. Junpei struggles up onto his knees to face her.
+0.000	1.790	00.mp3	Hands tied, Junpei falls.
+4.500	1.239	01.mp3	Chidori approaches.

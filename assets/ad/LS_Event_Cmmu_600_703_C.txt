@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_703_C
-0.170	8.107	00.mp3	On the dorm rooftop, you, Mitsuru, Yukari, Junpei and Fuuka stand around a small garden bed, with gardening tools set beside it.
+0.170	0.768	00.mp3	Rooftop.

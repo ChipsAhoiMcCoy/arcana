@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_005_030_C",
- "title": "Mitsuru tries takoyaki",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "At Iwatodai Strip Mall, you stand with Mitsuru in front of a takoyaki stand, where a vendor is at work."
-  },
-  {
-   "at": 4.85,
-   "text": "Mitsuru walks up to the stand to order, and you follow her."
-  },
-  {
-   "at": 23.1,
-   "text": "Later, you sit side by side on a low ledge, a tray of takoyaki on Mitsuru's lap, and she takes her first bite, eyes closing as she chews."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_005_030_C", "title": "Mitsuru tries takoyaki", "cues": [{"at": 4.85, "text": "At a takoyaki stand, Mitsuru walks up to order, and you follow her."}, {"at": 23.1, "text": "Later, you sit beside Mitsuru, who takes her first bite."}]}

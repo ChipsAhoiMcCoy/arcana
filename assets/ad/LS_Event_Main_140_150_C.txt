@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_150_C
-0.000	13.162	00.mp3	Mitsuru leads you, Yukari, Fuuka, Junpei and Akihiko into the large entrance hall of her family's vacation home. You all stop in a line behind her. Yukari, Fuuka and Junpei stare around, wide-eyed.
-5.330	3.536	01.mp3	A door opens and two maids walk up and stand before Mitsuru.
-14.000	6.891	02.mp3	Another door opens. The maids step aside, and a tall man in a suit, a patch over one eye, walks up to Mitsuru.
-19.670	5.395	03.mp3	The man walks off past the maids, along your line and out of sight. You all turn to watch him go.
+0.000	2.683	00.mp3	Mitsuru leads you all into her family's entrance hall.
+5.330	2.244	01.mp3	Two maids walk up and stand before Mitsuru.
+14.000	2.322	02.mp3	A man with an eye patch approaches Mitsuru.
+19.670	2.825	03.mp3	The man walks off, out of sight. You all watch him go.

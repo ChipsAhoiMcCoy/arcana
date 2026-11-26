@@ -1,4 +1,4 @@
 #scene LS_Event_Main_130_090_C
-0.050	10.622	00.mp3	In Hagakure, the ramen shop at the Iwatodai strip mall, Shinjiro sits alone at the counter eating from a bowl. Akihiko walks in and sits down one stool away from him.
-11.850	4.148	01.mp3	The server sets a steaming bowl in front of Akihiko, and he starts to eat.
-25.700	9.145	02.mp3	Shinjiro puts down his bowl, gets up from his stool and, hands in his coat pockets, walks out behind Akihiko, leaving the empty bowl on the counter.
+0.050	2.579	00.mp3	Akihiko joins Shinjiro at the counter.
+11.850	2.975	01.mp3	The server sets a bowl before Akihiko; he eats.
+25.700	3.559	02.mp3	Shinjiro puts down his bowl and walks out behind Akihiko.

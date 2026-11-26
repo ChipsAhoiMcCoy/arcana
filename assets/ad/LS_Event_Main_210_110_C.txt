@@ -1,2 +1,2 @@
 #scene LS_Event_Main_210_110_C
-0.000	5.395	00.mp3	In a room at school, you sit facing a teacher across a desk, an open file in front of her.
+1.330	1.144	00.mp3	You face a teacher.

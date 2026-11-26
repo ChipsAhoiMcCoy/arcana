@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_390_C
-0.050	7.955	00.mp3	You and Yukari step out of a manga café and stop beside a drinks vending machine by its door. Yukari takes out her phone and checks it.
+0.050	2.325	00.mp3	Yukari checks her phone outside the cafe.

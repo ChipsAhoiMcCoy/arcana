@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_360_C",
- "title": "Bebe and the arcade",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Paulownia Mall, outside the arcade beside a claw machine. You and Bebe stop together, and he smiles, his fan held to his chest."
-  },
-  {
-   "at": 8.33,
-   "text": "Bebe turns and walks off, back toward the arcade, leaving you with a bead of sweat on your brow."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_360_C", "title": "Bebe and the arcade", "cues": [{"at": 0.0, "text": "Outside the arcade."}, {"at": 8.33, "text": "Bebe walks off toward the arcade."}]}

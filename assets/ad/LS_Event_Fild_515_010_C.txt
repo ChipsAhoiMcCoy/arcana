@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_515_010_C
-0.000	8.252	00.mp3	In a Tartarus corridor, a tall figure in a tattered cloak, wreathed in flame, a long-barrelled gun in each hand, comes walking toward you.
+0.000	3.539	00.mp3	A tall, flaming figure with a gun in each hand walks toward you.

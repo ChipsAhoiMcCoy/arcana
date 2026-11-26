@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_025_C
-0.000	11.541	00.mp3	In the Iwatodai Strip Mall, you and Bebe step out of Azuki Arai, the Japanese sweets shop, past the mascot figure by its door, and stop to talk. Bebe carries his school briefcase.
+0.000	0.886	00.mp3	Azuki Arai.

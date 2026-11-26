@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_140_160_C",
- "title": "Arriving at the beach",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On a beach lined with palm trees, you, Junpei and Akihiko walk out onto the sand in swimsuits and stop. Junpei carries a swim ring under one arm; Akihiko stands with a hand on his hip."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_160_C", "title": "Arriving at the beach", "cues": [{"at": 0.0, "text": "On a beach, you, Junpei and Akihiko walk onto the sand in swimsuits. Junpei carries a swim ring."}]}

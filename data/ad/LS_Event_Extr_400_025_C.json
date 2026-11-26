@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Extr_400_025_C",
- "title": "The Shadow on the bridge",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "On the Moonlight Bridge, a giant Shadow crouches beside a stopped truck, its huge mouth gaping with rows of teeth. Takaya stands facing it. You run up and stop a few steps behind him."
-  },
-  {
-   "at": 3.1,
-   "text": "You drop into a fighting stance, facing the Shadow."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_400_025_C", "title": "The Shadow on the bridge", "cues": [{"at": 0.0, "text": "A giant Shadow."}, {"at": 3.05, "text": "You brace."}]}

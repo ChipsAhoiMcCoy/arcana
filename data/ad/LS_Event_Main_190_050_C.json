@@ -1,14 +1,4 @@
-{
- "movie": "LS_Event_Main_190_050_C",
- "title": "The Dark Hour returns",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "The lounge. Two upright coffins now stand where Mitsuru's father's two aides stood. Mitsuru's father sits in an armchair by the table; everyone around it stares at the coffins, Koromaru growls on the sofa, and Junpei jumps to his feet."
-  },
-  {
-   "at": 13.5,
-   "text": "Mitsuru's father rises from his armchair."
-  }
- ]
-}
+{"movie": "LS_Event_Main_190_050_C", "title": "The Dark Hour returns", "cues": [
+{"at": 0.10, "text": "Two coffins stand in the lounge."},
+{"at": 13.50, "text": "Her father stands."}
+]}

@@ -1,5 +1,1 @@
-{"movie": "LS_Event_Main_200_240_C", "title": "Ryoji asks for an answer", "cues": [
-{"at": 1.70, "text": "The dorm lounge. Ryoji sits on a sofa with the others; you, Mitsuru and Aigis stand nearby."},
-{"at": 6.55, "text": "Ryoji gets up and walks a few steps away from the group, then turns back toward Fuuka."},
-{"at": 16.20, "text": "Ryoji walks out of the lounge as the others watch him go. Then everyone turns to you."}
-]}
+{"movie": "LS_Event_Main_200_240_C", "title": "Ryoji asks for an answer", "cues": [{"at": 1.7, "text": "Ryoji sits with the others."}, {"at": 16.2, "text": "Ryoji walks out of the lounge. Everyone turns to you."}]}

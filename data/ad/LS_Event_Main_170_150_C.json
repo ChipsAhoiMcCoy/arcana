@@ -1,6 +1,1 @@
-{"movie": "LS_Event_Main_170_150_C", "title": "Mitsuru reveals the truth", "cues": [
-{"at": 0.00, "text": "You come into the dorm's command room with Yukari, Junpei, Mitsuru, Fuuka, Aigis and Koromaru."},
-{"at": 12.33, "text": "Fuuka nods and stands still. Her Persona rises around her, a towering figure that closes her inside its skirt, and she begins her search."},
-{"at": 24.17, "text": "Mitsuru turns and runs out of the room. A door shuts behind her."},
-{"at": 29.47, "text": "Fuuka's Persona is gone. You all run out after Mitsuru."}
-]}
+{"movie": "LS_Event_Main_170_150_C", "title": "Mitsuru reveals the truth", "cues": [{"at": 0.0, "text": "Command room."}, {"at": 12.33, "text": "Fuuka's Persona rises; she searches."}]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_009_047_C
-0.030	8.027	00.mp3	At Naganaki Shrine, Koromaru walks a few steps ahead of you and stops by a stone pillar where bouquets of flowers lie, looking downcast.
+0.030	1.724	00.mp3	Koromaru stops by flowers.

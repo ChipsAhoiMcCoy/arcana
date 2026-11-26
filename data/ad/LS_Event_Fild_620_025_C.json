@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Fild_620_025_C",
- "title": "Touching the hidden gate",
- "cues": [
-  {
-   "at": 0.1,
-   "text": "A giant clock face, its gears showing, stands upright in a heavy stone frame, much like the Great Clock. You walk up to it."
-  },
-  {
-   "at": 4.17,
-   "text": "You reach out a hand to the clock face, and everything fades away."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_620_025_C", "title": "Touching the hidden gate", "cues": [{"at": 0.1, "text": "You approach a giant clock in a stone frame."}, {"at": 4.17, "text": "You touch the clock face, and everything fades away."}]}

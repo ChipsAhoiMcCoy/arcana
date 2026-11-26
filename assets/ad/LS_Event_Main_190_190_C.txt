@@ -1,6 +1,4 @@
 #scene LS_Event_Main_190_190_C
-0.000	4.980	00.mp3	The school rooftop. Mitsuru stands alone at the fence, and Yukari walks up behind her.
-16.170	4.507	01.mp3	The rooftop door opens and Ryoji strolls out toward Mitsuru, smiling.
-25.830	3.930	02.mp3	Mitsuru starts toward the door, then stops and turns back to Yukari.
-29.500	3.609	03.mp3	Mitsuru walks out through the door. Yukari turns to watch her go.
-34.300	5.432	04.mp3	Yukari scowls, turns to Ryoji and marches up to him. As he talks, she kicks him.
+0.000	1.278	00.mp3	Mitsuru stands alone.
+25.830	2.631	01.mp3	Mitsuru starts toward the door, then turns back.
+29.500	2.486	02.mp3	Mitsuru leaves. Yukari watches her go.

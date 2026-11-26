@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_112_350_C",
- "title": "A samurai movie with Bebe",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The plaza at Port Island Station, outside the cinema. You and Bebe walk out past the movie posters, and Bebe stops and turns to you."
-  },
-  {
-   "at": 3.83,
-   "text": "Bebe hugs his folded fan to his chest and looks down."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_112_350_C", "title": "A samurai movie with Bebe", "cues": [{"at": 0.0, "text": "Outside the cinema, Bebe stops."}, {"at": 3.83, "text": "Bebe hugs his fan."}]}

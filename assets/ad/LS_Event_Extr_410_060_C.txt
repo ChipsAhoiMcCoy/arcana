@@ -1,5 +1,5 @@
 #scene LS_Event_Extr_410_060_C
-0.000	5.319	00.mp3	Inside Tartarus, you stand alone in a corridor. You turn around: no one else is there.
+0.000	2.730	00.mp3	In Tartarus, you turn around; no one is there.
 6.170	4.873	01.mp3	Elsewhere on the floor, Yukari stands alone, then walks slowly forward, looking around.
-17.330	4.178	02.mp3	A Shadow with clawed hands creeps up behind Yukari and lunges at her.
-21.670	5.832	03.mp3	You break into a run through the corridors. You reach Yukari and plant yourself between her and the Shadow.
+17.330	3.025	02.mp3	A clawed Shadow creeps up behind Yukari and lunges.
+21.670	1.552	03.mp3	You run and shield Yukari.

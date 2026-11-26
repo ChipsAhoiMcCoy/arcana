@@ -1,9 +1,9 @@
 #scene LS_Event_Main_170_160_B
-0.000	7.017	00.mp3	In the alley, Ken still points his spear at Shinjiro. Shinjiro stands his ground, making no move to defend himself.
-9.830	7.351	01.mp3	Takaya, shirtless, his long hair held back by a band, walks up the alley toward them, a revolver tucked into his belt.
-15.500	2.623	02.mp3	Takaya draws the revolver and aims it at Ken.
-18.830	4.214	03.mp3	Shinjiro rushes forward and plants himself in front of Ken, facing the gun.
-32.330	4.898	04.mp3	Takaya fires. The bullet strikes Shinjiro; he staggers and drops to one knee.
-37.570	3.808	05.mp3	Takaya walks over to the kneeling Shinjiro and kicks him to the ground.
-46.830	2.354	06.mp3	Takaya kicks Shinjiro again where he lies.
-52.330	3.994	07.mp3	Ken lowers his head and closes his eyes, his spear hanging at his side.
+0.000	0.858	00.mp3	Ken threatens.
+8.500	0.965	01.mp3	Takaya comes.
+15.500	1.286	02.mp3	Takaya aims at Ken.
+18.830	0.804	03.mp3	He blocks.
+32.330	0.662	04.mp3	A shot.
+34.900	1.695	05.mp3	Shinjiro drops to one knee.
+41.330	1.693	06.mp3	Takaya kicks Shinjiro down.
+52.330	1.161	07.mp3	Ken bows his head.

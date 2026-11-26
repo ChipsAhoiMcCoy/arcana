@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_210_275_C",
- "title": "You're back",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "The school entranceway. You walk up to Aigis, and the others come running up from behind you and crowd around you both, Koromaru first among them."
-  }
- ]
-}
+{"movie": "LS_Event_Main_210_275_C", "title": "You're back", "cues": [{"at": 0.05, "text": "You reach Aigis, and the others crowd around."}]}

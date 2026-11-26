@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_008_013_C",
- "title": "Ken: ramen at Hagakure",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Ken walk into Hagakure Ramen. Ken looks around the shop at the customers."
-  },
-  {
-   "at": 5.7,
-   "text": "You and Ken sit side by side at the counter."
-  },
-  {
-   "at": 31.9,
-   "text": "Afterwards, you and Ken get up and head for the door of the shop. Ken slows to a stop by the counter and stays behind, his head lowered."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_008_013_C", "title": "Ken: ramen at Hagakure", "cues": [{"at": 0.0, "text": "Hagakure Ramen."}, {"at": 3.0, "text": "Ken looks around."}, {"at": 4.33, "text": "You and Ken sit down."}, {"at": 30.67, "text": "You head out. Ken stops, head lowered."}]}

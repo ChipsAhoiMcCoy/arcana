@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_109_657_C",
- "title": "Late on Christmas Eve",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In Paulownia Mall's Fountain Square, you sit close beside Chihiro on a bench by the fountain, your bags set down beside you, as people walk past across the square."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_109_657_C", "title": "Late on Christmas Eve", "cues": [{"at": 0.0, "text": "Fountain Square."}]}

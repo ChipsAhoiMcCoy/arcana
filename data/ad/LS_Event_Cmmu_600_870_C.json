@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_600_870_C",
- "title": "The whole team walks Koromaru",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "The playground at Naganaki Shrine, where the whole team has come along on Koromaru's walk. Yukari and Mitsuru sit side by side on a bench, talking quietly, Mitsuru with her arms folded. Nearby, Fuuka is climbing the jungle gym, with Junpei calling directions from below. Ken and Akihiko stand by the slide."
-  },
-  {
-   "at": 11.0,
-   "text": "Aigis crouches in front of Koromaru with a hand held out, and Koromaru rears up and rests his front paws on top of her head. You stand watching."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_600_870_C", "title": "The whole team walks Koromaru", "cues": [{"at": 0, "text": "The playground."}]}

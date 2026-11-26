@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_009_735_C
-0.170	5.347	00.mp3	In the dorm lounge, you sit on the sofa brushing Koromaru, who lies stretched out beside you.
-6.670	4.640	01.mp3	Later, Koromaru trots up to you on the sofa and drops something small at your feet.
+1.170	1.197	00.mp3	You brush Koromaru.
+6.670	3.572	01.mp3	Later, Koromaru trots up and drops something small at your feet.

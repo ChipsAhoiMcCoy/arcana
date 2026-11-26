@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_320_C",
- "title": "Fuuka: a sweet tooth",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Fuuka step out of a sweets shop and stop in front of its window to talk."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_320_C", "title": "Fuuka: a sweet tooth", "cues": [{"at": 0.0, "text": "Outside a sweets shop."}]}

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_100_215_C",
- "title": "Junpei's invitation",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "In the classroom, you sit at your desk as Junpei walks up to you."
-  }
- ]
-}
+{"movie": "LS_Event_Main_100_215_C", "title": "Junpei's invitation", "cues": [{"at": 0.05, "text": "Junpei approaches you."}]}

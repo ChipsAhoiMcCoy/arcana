@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Main_200_190_C",
- "title": "Mitsuru visits Yukari",
- "cues": [
-  {
-   "at": 0.04,
-   "text": "Yukari's room in the dorm. She sits on the edge of her bed, looking at her phone, when someone knocks on the door."
-  },
-  {
-   "at": 3.4,
-   "text": "Yukari opens the door, and Mitsuru steps into the room."
-  },
-  {
-   "at": 13.55,
-   "text": "Later, Mitsuru and Yukari sit side by side on the edge of Yukari's bed, Mitsuru with her arms folded."
-  }
- ]
-}
+{"movie": "LS_Event_Main_200_190_C", "title": "Mitsuru visits Yukari", "cues": [{"at": 0.04, "text": "Yukari's room."}, {"at": 3.4, "text": "Yukari opens the door, and Mitsuru steps into the room."}, {"at": 13.55, "text": "Mitsuru and Yukari sit side by side."}]}

@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Fild_515_003_C",
- "title": "The golden hand takes a chest",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "In Tartarus, a treasure chest sits on a draped pedestal. A giant hand reaches in from the side, the chest springs open, and the hand pulls away, leaving the lid open."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_515_003_C", "title": "The golden hand takes a chest", "cues": [{"at": 0.0, "text": "In Tartarus, a giant hand opens a treasure chest and pulls away, leaving the lid open."}]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_112_320_C", "title": "Takoyaki with Bebe", "cues": [{"at": 0.00, "text": "Iwatodai Strip Mall. You walk through the shops beside Bebe, and he turns to you."}, {"at": 3.00, "text": "Bebe hurries over to a takoyaki stand called Octopia, and you follow him."}]}
+{
+ "movie": "LS_Event_Cmmu_112_320_C",
+ "title": "Takoyaki with Bebe",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Strip mall. Bebe turns to you."
+  },
+  {
+   "at": 3.0,
+   "text": "Bebe leads you to Octopia."
+  }
+ ]
+}

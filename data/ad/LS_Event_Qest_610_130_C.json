@@ -4,23 +4,27 @@
  "cues": [
   {
    "at": 0.03,
-   "text": "Elizabeth walks into the shrine grounds ahead of you."
+   "text": "Elizabeth enters the shrine."
   },
   {
    "at": 3.0,
-   "text": "Elizabeth steps up to the offering box and pours coins into it from her hand in a stream that goes on and on. You press a hand to your forehead."
+   "text": "Elizabeth pours endless coins into the offering box. You hold your forehead."
   },
   {
    "at": 23.83,
-   "text": "Later, you and Elizabeth cross the grounds toward a corner with playground equipment. Elizabeth climbs the slide and rides it down with her arms spread, landing at the bottom."
+   "text": "A playground."
+  },
+  {
+   "at": 26.0,
+   "text": "Elizabeth rides the slide."
   },
   {
    "at": 37.33,
-   "text": "Later, Elizabeth stands deep inside the jungle gym, boxed in by its bars, while you watch from outside. Elizabeth walks along a low horizontal bar, arms stretched out for balance, as you look on."
+   "text": "Later, Elizabeth stands in the jungle gym, then walks a low bar, arms out."
   },
   {
    "at": 46.33,
-   "text": "Later, you and Elizabeth sit together on a bench."
+   "text": "You both sit on a bench."
   }
  ]
 }

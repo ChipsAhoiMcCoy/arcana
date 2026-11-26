@@ -4,11 +4,11 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "Iwatodai Strip Mall. You and Maiko sit side by side on a bench near the takoyaki stand, a takoyaki tray on the bench between you."
+   "text": "Takoyaki."
   },
   {
-   "at": 4.7,
-   "text": "Maiko hops down from the bench and stands facing you."
+   "at": 3.4,
+   "text": "Maiko hops down."
   }
  ]
 }

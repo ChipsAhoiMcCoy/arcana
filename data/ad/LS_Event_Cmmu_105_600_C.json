@@ -1,18 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_105_600_C",
- "title": "A war movie with Kazushi",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "The cinema lobby at Port Island Station. You stand with Kazushi by the snack counter, his hands on his hips."
-  },
-  {
-   "at": 1.17,
-   "text": "You and Kazushi sit side by side in the theater among the rest of the audience, watching the movie."
-  },
-  {
-   "at": 8.67,
-   "text": "After the movie, you stand with Kazushi by the snack counter again."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_105_600_C", "title": "A war movie with Kazushi", "cues": [{"at": 1.17, "text": "You and Kazushi watch the movie, side by side."}, {"at": 7.53, "text": "Afterward, back in the lobby."}]}

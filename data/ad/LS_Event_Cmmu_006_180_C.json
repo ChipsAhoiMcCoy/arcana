@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_006_180_C",
- "title": "Fuuka at the ramen shop",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You sit beside Fuuka at the counter of Hagakure, the ramen shop. Fuuka sits upright with her hands in her lap, gazing up at the menu boards on the wall. Another customer sits at the far end of the counter."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_006_180_C", "title": "Fuuka at the ramen shop", "cues": [{"at": 0.03, "text": "You sit beside Fuuka at Hagakure."}]}
