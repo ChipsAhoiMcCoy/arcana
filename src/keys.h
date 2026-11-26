@@ -32,7 +32,6 @@ bool reserved(uint32_t vk, int mods);     // the game's own (walking, act, back,
 // A Shift "go back" binding that follows a plain one (Shift+Comma after Comma): left off the Mod keys page, always
 // Shift with its plain key's key. After both are bound.
 void shift_back(const char* back_name, const char* plain_name);
-int back_of(int i);                       // binding i's Shift back, or -1
 int plain_of(uint32_t vk, int mods);      // the plain binding whose back is on this key, or -1
 // Moves binding i (and its back) to the key and saves; bindings already there take the keys it left (`moved`:
 // the listed ones that moved). NeedsNoShift: i has a back, so its key takes no Shift. BackKey: another pair's back.

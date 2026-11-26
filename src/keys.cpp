@@ -383,7 +383,6 @@ Rebind reset_binding(int i, std::vector<int>& moved) {
   return rebind(i, b.def_vk, b.def_mods, moved);
 }
 
-int back_of(int i) { return valid(i) ? g_bindings[(size_t)i].back : -1; }
 int plain_of(uint32_t vk, int mods) {
   for (auto& b : g_bindings) if (b.vk == vk && b.mods == mods && b.plain >= 0) return b.plain;
   return -1;

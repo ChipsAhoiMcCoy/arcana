@@ -197,7 +197,6 @@ static int declared_cue(void* page, bool any = false) {
   });
   return v;
 }
-static bool declares_voice(void* page, bool any = false) { return declared_cue(page, any) != 0; }
 
 // A field chatter line (MsgAssist) is hushed only when its voice speaks the whole line (core::voices_whole_line). A
 // reaction voice (type 3, a voice_singleword grunt or laugh) says none of it: on the Overhead Bridge (field 302,
