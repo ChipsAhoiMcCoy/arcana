@@ -1,0 +1,2 @@
+#scene LS_Btl_MixRaidA
+0.400	3.397	00.mp3	Orpheus and Apsaras dance around you in rings of music.

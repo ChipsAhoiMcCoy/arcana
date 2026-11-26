@@ -223,3 +223,48 @@ TEST_CASE("ad: a description in its last second outlives the movie's end") {
   CHECK(r.states[0] == State::Done);
   CHECK(r.played[0] == doctest::Approx(2.0));
 }
+
+TEST_CASE("ad: a scene played over queues its cues: one due while the narrator speaks waits and plays after") {
+  Schedule s;
+  s.load({{1.0, 3.0}, {2.0, 1.0}, {2.5, 1.0}});
+  Clock c{true, false, 1.0}; c.queue = true;
+  auto a = s.step(c, {});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 0);
+  for (double t = 1.5; t <= 3.5; t += 0.5) { c.time = t; CHECK(s.step(c, {true, false}).empty()); }
+  c.time = 4.0;   // cue 0 ends 1.5 s after cue 1 came due: cue 1 plays, not missed
+  a = s.step(c, {false, true});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 1);
+  CHECK(s.state(2) == State::Pending);
+  c.time = 5.0;
+  a = s.step(c, {false, true});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 2);
+}
+
+TEST_CASE("ad: a scene played over: a cue due while the narrator is paused for a line waits for it") {
+  Schedule s;
+  s.load({{1.0, 1.0}});
+  Clock c{true, true, 1.0}; c.queue = true;   // paused: a voice line plays
+  CHECK(s.step(c, {}).empty());
+  for (double t = 1.5; t <= 4.0; t += 0.5) { c.time = t; CHECK(s.step(c, {}).empty()); }
+  c.paused = false;
+  c.time = 4.1;
+  auto a = s.step(c, {});
+  REQUIRE(a.size() == 1);
+  CHECK(a[0].cue == 0);
+}
+
+TEST_CASE("ad: play_out: the scene ends and its description is said to its end; the rest are dropped") {
+  Schedule s;
+  s.load({{1.0, 5.0}, {2.0, 1.0}}, true);
+  s.step({true, false, 1.0}, {});
+  s.step({true, false, 1.5}, {true, false});
+  auto a = s.step({false, false, 0}, {true, false});   // the scene is gone, 4.5 s of the description left
+  CHECK(a.empty());
+  CHECK(s.playing() == 0);
+  a = s.step({false, false, 0}, {false, true});
+  CHECK(s.state(0) == State::Done);
+  CHECK(s.playing() == -1);
+}

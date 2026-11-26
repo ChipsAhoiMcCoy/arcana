@@ -1,0 +1,3 @@
+#scene LS_Btl_Theurgia_MitsuruB
+6.300	1.920	00.mp3	Mitsuru leaps among purple chains.
+9.100	2.079	01.mp3	A glowing sphere bursts over the enemy.

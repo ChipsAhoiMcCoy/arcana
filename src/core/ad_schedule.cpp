@@ -14,8 +14,9 @@ const char* state_name(State s) {
   return "?";
 }
 
-void Schedule::load(std::vector<Cue> cues) {
+void Schedule::load(std::vector<Cue> cues, bool play_out) {
   cues_ = std::move(cues);
+  play_out_ = play_out;
   reset();
 }
 
@@ -57,7 +58,7 @@ std::vector<Action> Schedule::step(const Clock& c, const Voice& v) {
   if (!c.playing) {   // the movie ended, was skipped, or is not up yet
     if (cur_ >= 0 && v.ended) { state_[cur_] = State::Done; cur_ = -1; }
     // a description in its last second finishes (a movie that ends a moment early, a skip at the very end)
-    if (cur_ >= 0 && v.active && start_ + cues_[cur_].dur - last_ <= kFinish) { if (paused_) { out.push_back({Act::Resume, cur_}); paused_ = false; } return out; }
+    if (cur_ >= 0 && v.active && (play_out_ || start_ + cues_[cur_].dur - last_ <= kFinish)) { if (paused_) { out.push_back({Act::Resume, cur_}); paused_ = false; } return out; }
     cut(out, "the movie stopped");
     return out;
   }
@@ -85,6 +86,9 @@ std::vector<Action> Schedule::step(const Clock& c, const Voice& v) {
     if (c.paused && !paused_) { out.push_back({Act::Pause, cur_}); paused_ = true; }
     else if (!c.paused && paused_) { out.push_back({Act::Resume, cur_}); paused_ = false; }
   }
+  if (c.queue)   // played over: whatever has come due waits its turn, whatever holds it up
+    for (size_t i = 0; i < cues_.size(); ++i)
+      if (state_[i] == State::Pending && cues_[i].at <= c.time) waited_[i] = true;
   if (c.paused || c.held) return out;
   if (c.talk) {   // a line is spoken: what comes due waits for its end
     for (size_t i = 0; i < cues_.size(); ++i)

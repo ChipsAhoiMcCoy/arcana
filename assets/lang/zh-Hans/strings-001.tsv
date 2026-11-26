@@ -519,7 +519,7 @@ What is on screen in the animated story movies is described between the lines of
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	在台词之间描述用游戏 3D 引擎演出的剧情场景中的画面。不重复描述：已听过的描述不再朗读，所以反复出现的场景，例如打工或吃饭，只在第一次描述。
 Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.	3D 场景的描述由谁朗读：旁白语音，或你的读屏软件。
 The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.	3D 剧情场景的旁白语速加快百分之 25、50 或 75，音调不变。关闭时为正常语速。动画影片保持正常语速：它们的描述是按台词间隔安排的。
-In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions are fitted between the lines while it plays. Animated movies never wait: their descriptions are timed between the lines.	在 3D 剧情场景中，每段描述都会像消息窗口一样暂停场景，等你按 Enter。关闭时，描述会在场景播放中穿插在台词之间。动画影片从不等待：它们的描述是按台词间隔安排的。
+In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines.	在3D剧情场景中，每条描述都会像消息窗口一样暂停场景并等待Enter。关闭时，描述会像动画影片中一样在场景进行时同步播放，角色说话时旁白会暂停。动画影片和神通法从不等待：其描述已安排在台词之间。
 How loud the narrator of movies and scenes is.	动画和场景旁白的音量。
 Lists the mod's keys, to change them.	列出模组的按键，以便更改。
 Read all keys	读出所有按键

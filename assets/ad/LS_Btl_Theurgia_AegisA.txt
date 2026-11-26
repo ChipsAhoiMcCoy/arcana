@@ -1,0 +1,3 @@
+#scene LS_Btl_Theurgia_AegisA
+0.400	2.429	00.mp3	Aigis's eye glows red, and she leaps high.
+3.400	2.465	01.mp3	Charged with blue light, she lands in a burst.

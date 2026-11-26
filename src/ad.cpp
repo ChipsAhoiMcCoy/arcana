@@ -10,9 +10,9 @@
 // core::ad::Schedule decides what plays when (pauses, seeks, a skip); here its actions reach the mixer's
 // narrator, and the movie's own volume (Mana SetVolume) dips under a description. Every cue's end is logged
 // ("ad: <key> cue N done|cut ... played P of T s") and kept for /ad/status: the in-game tests read those.
-// With DescriptionWait on, each description in a 3D scene is a box like a message window: it pauses the scene and waits
-// for Enter (see "the description box" below). The animated movies' descriptions are timed to fit between their lines
-// and never stop the movie.
+// A 3D scene's descriptions are played over it as it moves (see "Played over" in tick). With DescriptionWait on, each is
+// a box like a message window instead: it pauses the scene and waits for Enter (see "the description box" below). The
+// animated movies' descriptions, and a Theurgy's, are timed to fit between their lines and never stop them.
 // A 3D scene's description once heard (its box closed by Enter or Auto, or its narration played to its end) is
 // recorded in seen-descriptions.txt beside the settings (core/heard_cues); with SceneDescription on "suppress repeated
 // descriptions" a scene is loaded without the ones heard. Movies are not recorded.
@@ -125,6 +125,20 @@ bool is_battle_key(const std::string& k) {
   for (const std::string& b : battle_keys()) if (b == k) return true;
   return false;
 }
+// A Theurgy's scene: LS_Btl_Theurgia_<member><A|B> (a member's, Takaya's) or LS_Btl_MixRaid<letter> (the hero's), one
+// per row of DT_BtlTheurgiaSeqList (the skill's id), played by BP_BtlTheurgiaController with a _Sound sub-sequence of
+// its own beside it (no description). It runs on its own, like a movie: no line holds it.
+bool is_theurgy_key(std::string_view k) {
+  if (k.ends_with("_Astrea")) k.remove_suffix(7);
+  return (k.starts_with("LS_Btl_Theurgia_") || k.starts_with("LS_Btl_MixRaid")) && !k.ends_with("_Sound");
+}
+// A battle sequence's key: its name. Episode Aigis has scenes of its own under the base game's names (its
+// LS_Btl_MixRaidA is /Game/Astrea/Battle/Theurgia/PC12/, the base game's /Game/Xrd777/.../Pc01/): those get "_Astrea".
+std::string battle_seq_key(UObject* seq) {
+  std::string k = name_of(seq);
+  if (path_name(seq).starts_with("/Game/Astrea/")) k += "_Astrea";
+  return k;
+}
 UObject* playing_event(UObject** actor, bool* battle = nullptr) {
   if (battle) *battle = false;
   for (UObject* a : watch::all(event_actor_id())) {
@@ -137,7 +151,9 @@ UObject* playing_event(UObject** actor, bool* battle = nullptr) {
     UObject* p = get<UObject*>(a, "SequencePlayer");
     if (!p || !is_live(p)) continue;
     UObject* seq = get<UObject*>(p, "Sequence");
-    if (!seq || !is_live(seq) || !is_battle_key(name_of(seq))) continue;
+    if (!seq || !is_live(seq)) continue;
+    // a Theurgy's is followed whether described or not (/ad/clock times it for capture)
+    if (const std::string k = battle_seq_key(seq); !is_battle_key(k) && !is_theurgy_key(k)) continue;
     if (call_ret<bool>(p, "IsPlaying") || call_ret<bool>(p, "IsPaused")) {
       if (actor) *actor = a;
       if (battle) *battle = true;
@@ -519,7 +535,8 @@ Clock clock() {
     // Link levels name their actor after another scene (009_055's is LS_Event_Cmmu_009_053_C, the _600s' a _610) or
     // with a _2 (the _717/_737 hangouts), and their descriptions never played.
     UObject* seq = get<UObject*>(ev, "Sequence");
-    c.movie = seq && is_live(seq) ? name_of(seq) : name_of(actor);
+    c.movie = seq && is_live(seq) ? (battle ? battle_seq_key(seq) : name_of(seq)) : name_of(actor);
+    c.theurgy = battle && is_theurgy_key(c.movie);
     c.time = event_seconds(ev);
     return c;
   }
@@ -555,12 +572,15 @@ void tick() {
   bool once = g_once;
   int speed = g_speed;
   if (playing && !c.event) { mode = settings::get(settings::AudioDescription); once = false; speed = 0; }
-  if (playing && c.event) {
+  if (playing && c.event && !c.theurgy) {
     const int scene = settings::get(settings::SceneDescription);
     mode = scene == settings::SceneOff ? settings::DescOff : settings::get(settings::SceneVoice);
     once = scene == settings::SceneOnce;
     speed = mode == settings::DescAudio ? settings::get(settings::SceneSpeed) : 0;
   }
+  // A Theurgy is described like a movie (the user's call, 2026-11-26): the movies' setting, its timing kept, not
+  // recorded as heard.
+  if (playing && c.theurgy) { mode = settings::get(settings::AudioDescription); once = false; speed = 0; }
   // The narrator speaks English only: in another language the descriptions are read by the screen reader, translated
   // (the user's call, 2026-11-23: no generated voices).
   if (mode == settings::DescAudio && !core::lang::english()) { mode = settings::DescReader; speed = 0; }
@@ -580,9 +600,10 @@ void tick() {
     g_mode = mode;
     g_once = once;
     g_speed = speed;
-    auto s = load_scene(g_key, mode == settings::DescAudio, c.event, once, settings::scene_speed_factor(speed));
+    auto s = load_scene(g_key, mode == settings::DescAudio, c.event && !c.theurgy, once, settings::scene_speed_factor(speed));
     g_scene = s;
-    g_sched.load(s ? s->cues : std::vector<sched::Cue>{});
+    // a 3D scene's description is said to its end when the scene ends under it (a battle goes on, the next scene loads)
+    g_sched.load(s ? s->cues : std::vector<sched::Cue>{}, c.event);
     g_runs.assign(g_sched.size(), Run{});
     g_seen.assign(g_sched.size(), sched::State::Pending);
     g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
@@ -610,21 +631,34 @@ void tick() {
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
   // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
   sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
-  // only 3D scenes wait: an animated movie's descriptions are timed to fit its gaps (the user's call, 2026-11-18)
-  const bool wait = c.event && settings::on(settings::DescriptionWait);
+  // Only 3D scenes can wait (a box, setting DescriptionWait, off by default since 2026-11-26): an animated movie's
+  // descriptions are timed to fit its gaps (the user's call, 2026-11-18), and so are a Theurgy's.
+  const bool scene3d = c.event && !c.theurgy;
+  const bool wait = scene3d && settings::on(settings::DescriptionWait);
+  // Played over (the default, the user's call 2026-11-26: "like the animated cutscenes"): the scene never stops for a
+  // description. It plays as the scene moves; one that comes due while another is said waits its turn (Clock::queue);
+  // the narrator pauses while a character's voice line plays and goes on after it (the line itself never waits), and
+  // while the game's skip prompt holds the scene. The scene's own hold at a line waiting for Enter is not a pause: the
+  // description goes on over it, as the player listens.
+  const bool over = scene3d && !wait;
   sched::Clock sc{playing, c.paused, c.time, c.fast};
   // A 3D scene's description waits while someone talks: under the game's Auto the scene runs on through its lines
   // (without it, it pauses at each line until the player goes on), and its descriptions began over the voice
   // (2026-11-20, 100_040 in a player's log). A movie's lines are in its own sound: its cues are timed between them.
-  if (c.event) {
+  if (scene3d) {
     const msg::Current w = msg::current();
     sc.talk = (w.open && w.blocking) || voice::playing();
     // A battle's script shows a line as it plays a scene, and ends the scene soon after the line's window closes
     // (BTL_CUTSCENE_PLAY, MSG, WAIT, END): a description waiting for the window to close would never come. Once the
     // line's voice has ended the window only waits for the player, as a held page does: the description comes then,
-    // over it (open_box: one press goes on from both).
-    if (g_battle && w.open && w.blocking && w.voice_done && !voice::playing()) sc.talk = false;
+    // over it (open_box: one press goes on from both). Played over, any scene's voiced line that has ended leaves
+    // such a gap. An unvoiced line is read by the screen reader: its window stays a line spoken.
+    if ((g_battle || over) && w.open && w.blocking && w.voice_done && !voice::playing()) sc.talk = false;
     if (c.time <= g_opening) sc.talk = true;   // its opening (music, fade in) has not played yet: see scene_opening
+    if (over) {
+      sc.queue = true;
+      sc.paused = voice::playing() || event_skip::prompt();
+    }
   }
   if (g_box >= 0) {
     // A battle scene ended under its box (its script ended it: the line's window closed under Auto): the description
@@ -689,7 +723,7 @@ void tick() {
     }
   }
   for (const sched::Action& a : g_sched.step(sc, v)) {
-    if (a.act == sched::Act::Play && wait) msg::remember_line(s->texts[a.cue]);
+    if (a.act == sched::Act::Play && scene3d) msg::remember_line(s->texts[a.cue]);   // in the log (B)
     if (reader) {   // nothing of ours sounds: nothing to pause or stop
       if (a.act == sched::Act::Play) {
         if (wait) open_box(a.cue);
@@ -757,9 +791,9 @@ void register_routes() {
     return dev::on_game([] {
       Clock c = clock();
       if (!c.playing) return std::string("playing=0\n");
-      return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}{}\n", c.paused ? 1 : 0,
+      return std::format("playing=1 paused={} {}={} time={:.3f} frame={} track={}{}{}\n", c.paused ? 1 : 0,
                          c.event ? "scene" : "movie", c.movie, c.time, c.frame, c.audio_track,
-                         c.fast ? " fast=1" : "");
+                         c.fast ? " fast=1" : "", c.theurgy ? " theurgy=1" : "");
     });
   }, "the story movie or scene clock (audio description): movie or scene, time s, frame, pause, voice track");
   // /ad/box: the description box up (its cue) or -1: the dev flows press Enter on it as on a message page.

@@ -18,7 +18,10 @@ struct Cue { double at = 0; double dur = 0; };
 // talk: someone is talking in the scene (a dialogue window is up, or a voice line plays). No cue starts over it: one
 // that comes due meanwhile waits for the line to end and is not counted late for the wait. Under the game's Auto a
 // scene runs on through its lines (without Auto it pauses at each until the player goes on).
-struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; bool held = false; bool talk = false; };
+// queue: a 3D scene played over (no box). Its pace is the player's (it waits at each line for Enter) and its
+// descriptions were written for no gap in particular, so a cue that comes due while the narrator still speaks, or while
+// it is paused, waits its turn and plays after, in order, however late; none is missed.
+struct Clock { bool playing = false; bool paused = false; double time = 0; bool fast = false; bool held = false; bool talk = false; bool queue = false; };
 // The narrator, as the mixer reports it: a clip is sounding (or held by a pause), or it reached its end.
 struct Voice { bool active = false; bool ended = false; };
 
@@ -41,7 +44,9 @@ class Schedule {
   // When the movie stops, a description with no more than this left plays out instead of being cut.
   static constexpr double kFinish = 1.0;
 
-  void load(std::vector<Cue> cues);   // a new movie: every cue Pending
+  // A new movie: every cue Pending. play_out: when the source stops (a 3D scene ends, a battle's scene is over), the
+  // cue playing is said to its end instead of being cut; the cues not yet begun are dropped.
+  void load(std::vector<Cue> cues, bool play_out = false);
   void reset();                       // the same movie from the start again
   std::vector<Action> step(const Clock& c, const Voice& v);
 
@@ -58,6 +63,7 @@ class Schedule {
   std::vector<std::string> reason_;
   std::vector<bool> waited_;   // the cue came due while someone talked: it plays after the line, however late
   int cur_ = -1;
+  bool play_out_ = false;
   bool paused_ = false;
   bool started_ = false;
   double last_ = 0;

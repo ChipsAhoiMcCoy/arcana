@@ -1,0 +1,3 @@
+#scene LS_Btl_MixRaidC
+0.400	1.572	00.mp3	King Frost towers over you.
+2.300	1.971	01.mp3	Black Frost spins above the scepter.

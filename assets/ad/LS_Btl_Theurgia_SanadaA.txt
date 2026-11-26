@@ -1,0 +1,2 @@
+#scene LS_Btl_Theurgia_SanadaA
+2.200	1.895	00.mp3	Akihiko lands a lightning punch.

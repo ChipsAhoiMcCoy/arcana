@@ -1,0 +1,3 @@
+#scene LS_Btl_Theurgia_KoromaruB
+0.400	2.090	00.mp3	Koromaru bounds out beside Cerberus.
+2.700	1.429	01.mp3	They stand side by side.

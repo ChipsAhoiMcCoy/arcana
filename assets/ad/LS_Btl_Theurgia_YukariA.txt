@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_YukariA
+6.450	3.031	00.mp3	Green wind whirls around Yukari and her Persona.
+9.700	2.141	01.mp3	She fires from above in a green blast.
+12.300	1.185	02.mp3	The enemy crumbles.

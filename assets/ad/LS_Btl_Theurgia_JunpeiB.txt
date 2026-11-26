@@ -1,0 +1,3 @@
+#scene LS_Btl_Theurgia_JunpeiB
+7.700	1.498	00.mp3	Fire engulfs the enemy.
+10.660	1.174	01.mp3	Chidori heals him.

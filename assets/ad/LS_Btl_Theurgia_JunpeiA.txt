@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_JunpeiA
+0.300	1.039	00.mp3	Junpei grins.
+4.450	1.831	01.mp3	His Persona slashes the enemy.
+6.500	3.582	02.mp3	Junpei raises his sword and brings it down in a golden blast.

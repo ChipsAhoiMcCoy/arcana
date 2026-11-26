@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_AmadaA
+3.350	2.222	00.mp3	Ken's Persona conjures golden spears.
+5.800	2.532	01.mp3	They rain down on the enemy in a storm of light.
+8.650	3.151	02.mp3	Light explodes behind Ken. Golden feathers drift down.

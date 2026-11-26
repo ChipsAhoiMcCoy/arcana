@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_AragakiA
+7.850	1.959	00.mp3	Shinjiro wipes blood from his eye.
+10.150	1.880	01.mp3	He leaps and swings his hammer down.
+12.350	1.546	02.mp3	The enemy bursts into dust.

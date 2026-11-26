@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_AegisB
+6.200	3.081	00.mp3	Missiles streak in. Aigis rakes the enemy with gunfire.
+9.550	2.933	01.mp3	Joined to her Persona, she dives, trailing flames.
+12.800	1.449	02.mp3	The enemy blows apart.

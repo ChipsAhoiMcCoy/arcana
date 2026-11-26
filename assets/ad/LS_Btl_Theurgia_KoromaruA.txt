@@ -1,0 +1,6 @@
+#scene LS_Btl_Theurgia_KoromaruA
+0.300	2.133	00.mp3	Koromaru grips a knife in his jaws.
+2.850	2.300	01.mp3	Three-headed Cerberus charges beside him.
+5.700	1.305	02.mp3	They tear through the enemy.
+7.400	1.911	03.mp3	A pink blast engulfs the enemy.
+9.650	1.042	04.mp3	Koromaru lands.

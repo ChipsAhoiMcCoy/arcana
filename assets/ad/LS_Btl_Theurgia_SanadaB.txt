@@ -1,0 +1,4 @@
+#scene LS_Btl_Theurgia_SanadaB
+4.350	2.615	00.mp3	Akihiko rushes in, punching through the enemy.
+7.200	2.104	01.mp3	Glaring, he throws a lightning haymaker.
+9.850	1.159	02.mp3	He holds his guard.

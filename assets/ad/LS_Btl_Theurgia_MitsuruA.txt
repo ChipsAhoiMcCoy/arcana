@@ -1,0 +1,5 @@
+#scene LS_Btl_Theurgia_MitsuruA
+3.300	2.183	00.mp3	Mitsuru slashes the enemy with her rapier.
+5.700	1.589	01.mp3	Her Persona traps it in ice.
+7.500	1.497	02.mp3	Mitsuru sits on the ice, calm.
+9.200	2.268	03.mp3	She snaps her fingers. The ice shatters.
