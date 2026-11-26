@@ -10,6 +10,7 @@
 //    (the roaming Shadows) with the enemy manager's holders (shadow::enemy_holders).
 #include "poi_internal.h"
 #include "bmdfile.h"
+#include "dat.h"
 #include "core/poi_text.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
@@ -122,8 +123,8 @@ static std::string missing_name(UObject* controller) {
         no = data ? *(int32_t*)(data + 0x68) : 0;
       }) || no <= 0)
     return {};
-  static const int asset_id = watch::want("DisappearDataAsset");
-  UObject* d = watch::get(asset_id);
+  static const int asset_id = watch::want("DisappearDataAsset", true);
+  UObject* d = dat::find(asset_id, "DisappearDataAsset");
   if (!d) return {};
   auto* map = (TArray<uint8_t>*)((uint8_t*)d + 0x30);
   const int32_t* fl = nullptr;
