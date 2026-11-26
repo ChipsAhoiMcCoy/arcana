@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	소나 소리의 크기.
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	타르타로스에서: 주변 섀도의 시야가 당신에게 가장 가까운 가장자리에서 지글거리는 소리를 내고, 그 가장자리가 가까워질수록 커집니다. 시야 안에 들어가면 섀도가 알아챕니다. 둔탁한 웅웅거림은 벽만 없으면 섀도에게 보일 위치라는 뜻입니다.
 How far from the edge of a Shadow's sight you start to hear it.	섀도 시야의 가장자리에서 얼마나 떨어진 곳부터 소리가 들리는지.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	타르타로스에서: 가장 가까운 섀도의 일정한 으르렁거림, 등을 돌렸을 때는 둔탁하게 흔들림, 섀도가 당신을 놓쳤을 때의 음, 공격이 닿을 때의 울림, 그리고 가까운 섀도가 당신을 보고 있는지.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	자유롭게 걷는 동안 카메라는 북쪽을 향한 채 고정되고, 게임과 모드의 모든 소리가 위에서 내려다보듯 당신을 기준으로 들립니다: 북쪽이 앞, 동쪽이 오른쪽. 위를 누르면 북쪽으로 걷습니다. 오른쪽 스틱으로 방향을 탐색합니다. 끄면 카메라가 예전처럼 회전합니다.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	탑다운 탐색에서, 벨벳 룸으로 가는 뒷골목처럼 게임이 방향을 돌리는 이동으로 당신을 어떤 방에 들여보낼 때, 그 방의 북쪽을 돌려서 들어온 방향이 계속 위가 되고 아래로 가면 다시 나가게 합니다. 끄면 어디서나 지도의 북쪽이 북쪽입니다.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	모드 소리의 배치 방식. 스테레오: 음량과 시간 차로 좌우를 표현하고, 뒤에 있는 것은 더 어둡게. 3D: 헤드폰용 머리 모델을 거쳐 위아래도 표현. 단순: 좌우만.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	타르타로스에서: 공격할 때 어느 방향이든 공격이 닿는 섀도 쪽으로 몸을 돌립니다. 닿는 섀도가 없으면 부술 수 있는 오브젝트 쪽으로 돌립니다. 공격 범위는 그대로입니다.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	타르타로스에서: 거둬들이는 자가 나타나기 전까지 한 층에 두 배 오래 머물 수 있습니다. 층에 있을 때 켜면 남은 시간이 두 배가 되고, 끄면 절반이 됩니다.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	타르타로스 밖에서: Shift나 RT를 누르지 않아도 움직일 때 항상 대시합니다. 그때 Shift나 RT를 누르고 있으면 달리고, Alt는 여전히 걷기입니다. 관심 지점으로 걸어갈 때도 대시합니다.
@@ -610,15 +608,10 @@ Sonar on	소나 켜짐
 Sonar off	소나 꺼짐
 Shadow alerts	섀도 경보
 Shadow sight range	섀도 시야 범위
-Top-down exploration	탑다운 탐색
 Keep your heading through passages	통로를 지나도 방향 유지
 Strike assist	공격 보조
 Always dash	항상 대시
 Relaxed Reaper rate	거둬들이는 자 출현 완화
-Placement	배치
-stereo	스테레오
-3D for headphones	헤드폰용 3D
-plain left and right	단순 좌우
 Lower pitch behind you	뒤쪽 소리 음 낮추기
 Points of interest range	관심 지점 범위
 Master	마스터
@@ -810,8 +803,6 @@ picks	개 선택
 Inherits	계승
 not chosen	선택 안 함
 Fusing.	합체 중.
-Tab skips the animation.	Tab으로 애니메이션을 건너뜁니다.
-The Menu button skips the animation.	Menu 버튼으로 애니메이션을 건너뜁니다.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	위아래 방향키 이동, 스페이스로 스킬 선택 또는 해제, Escape 돌아가기.
 Up and down move, A takes a skill or puts it back, B back.	위아래 이동, A로 스킬 선택 또는 해제, B 돌아가기.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	스페이스 합체, Tab과 Shift Tab 섹션 이동, Q와 E 결과와 재료 페이지 넘기기, F 스킬과 상성, Escape 돌아가기.

@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Wie laut die Klänge des
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	Im Tartarus: Das Sichtfeld jedes nahen Schattens zischt von seinem Rand, der dir am nächsten ist, lauter, je näher dieser Rand kommt. Trittst du hinein, bemerkt dich der Schatten. Ein gedämpftes Summen heißt, ein Schatten würde dich sehen, wenn keine Wand im Weg wäre.
 How far from the edge of a Shadow's sight you start to hear it.	Wie weit vom Rand des Sichtfelds eines Schattens entfernt du es zu hören beginnst.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	Im Tartarus: das stetige Knurren des nächsten Schattens, gedämpft und wabernd, wenn er dir den Rücken zukehrt, der Ton, wenn einer dich verliert, das Klingen, wenn dein Schlag reicht, und ob ein naher Schatten dich ansieht.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Während du frei gehst, bleibt die Kamera nach Norden gerichtet und jeder Klang, des Spiels und der Mod, ist von dir aus wie von oben zu hören: Norden vorn, Osten rechts von dir. Hoch geht nach Norden. Der rechte Stick tastet eine Richtung ab. Aus: Die Kamera dreht sich wie zuvor.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	Wo dich das Spiel in der Draufsicht mit einem Sprung, der dich dreht, in einen Raum bringt, etwa von der Gasse in den Velvet Room, wird der Norden dieses Raums so gedreht, dass der Weg, auf dem du hereinkamst, oben bleibt und runter wieder hinausführt. Aus: Norden ist überall der Norden der Karte.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Wie die Klänge der Mod platziert werden. Stereo: links und rechts über Lautstärke und Zeitversatz, Dinge hinter dir dumpfer. 3D: über ein Kopfmodell für Kopfhörer, auch oben und unten. Einfach: nur links und rechts.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	Im Tartarus: Wenn du angreifst, drehst du dich zu dem Schatten, den dein Schlag erreichen kann, auf jeder Seite, oder, wenn kein Schatten in Reichweite ist, zu einem zerbrechlichen Objekt. Deine Reichweite bleibt gleich.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	Im Tartarus: Du kannst doppelt so lange auf einer Ebene bleiben, bevor der Reaper kommt. Auf einer Ebene verdoppelt sich die verbleibende Zeit, oder halbiert sich, wenn du es ausschaltest.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Außerhalb des Tartarus: Du sprintest, sobald du dich bewegst, ohne Shift oder RT zu halten. Shift oder RT halten lässt dich dann laufen, und Alt geht weiterhin. Auch der Weg zu einem Ort von Interesse wird gesprintet.
@@ -610,15 +608,10 @@ Sonar on	Sonar an
 Sonar off	Sonar aus
 Shadow alerts	Schattenwarnungen
 Shadow sight range	Reichweite der Schattensicht
-Top-down exploration	Erkunden in der Draufsicht
 Keep your heading through passages	Richtung in Durchgängen beibehalten
 Strike assist	Schlaghilfe
 Always dash	Immer sprinten
 Relaxed Reaper rate	Gemächlicherer Reaper
-Placement	Platzierung
-stereo	Stereo
-3D for headphones	3D für Kopfhörer
-plain left and right	einfach links und rechts
 Lower pitch behind you	Tiefer hinter dir
 Points of interest range	Reichweite der Orte von Interesse
 Master	Gesamt
@@ -810,8 +803,6 @@ picks	Auswahlen
 Inherits	Erbt
 not chosen	nicht gewählt
 Fusing.	Fusion läuft.
-Tab skips the animation.	Tab überspringt die Animation.
-The Menu button skips the animation.	Die Menütaste überspringt die Animation.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Pfeiltasten hoch und runter bewegen, Leertaste nimmt einen Skill oder legt ihn zurück, Escape zurück.
 Up and down move, A takes a skill or puts it back, B back.	Hoch und runter bewegen, A nimmt einen Skill oder legt ihn zurück, B zurück.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Leertaste fusioniert, Tab und Shift Tab springen zwischen Abschnitten, Q und E blättern durch das Ergebnis und seine Materialien, F Skills und Affinitäten, Escape zurück.

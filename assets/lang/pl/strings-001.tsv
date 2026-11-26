@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Jak głośne są dźwię
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	W Tartarusie: pole widzenia każdego pobliskiego Cienia skwierczy od krawędzi najbliższej tobie, tym głośniej, im ta krawędź jest bliżej. Wejdź w nie, a Cień cię zauważy. Stłumiony szum oznacza, że Cień by cię zobaczył, gdyby nie zasłaniała go ściana.
 How far from the edge of a Shadow's sight you start to hear it.	Jak daleko od krawędzi pola widzenia Cienia zaczynasz je słyszeć.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	W Tartarusie: miarowy warkot najbliższego Cienia, stłumiony i falujący, gdy stoi do ciebie plecami, ton, gdy któryś cię zgubi, dzwonek, gdy twój cios sięgnie, oraz to, czy bliski Cień jest zwrócony do ciebie.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Gdy chodzisz swobodnie, kamera stale patrzy na północ, a każdy dźwięk, gry i moda, słyszysz jak z góry: północ z przodu, wschód po prawej. Góra prowadzi na północ. Prawa gałka przeszukuje kierunek. Po wyłączeniu kamera obraca się jak dawniej.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	W eksploracji z góry, gdy gra przenosi cię do pomieszczenia skokiem, który cię obraca, jak w zaułku prowadzącym do Aksamitnego Pokoju, północ tego pomieszczenia zostaje obrócona tak, by droga wejścia pozostała u góry, a dół prowadził z powrotem. Po wyłączeniu północ wszędzie jest północą mapy.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Jak rozmieszczane są dźwięki moda. Stereo: lewo i prawo przez głośność i opóźnienie, dźwięki za tobą ciemniejsze. 3D: przez model głowy dla słuchawek, także powyżej i poniżej. Proste: tylko lewo i prawo.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	W Tartarusie: gdy atakujesz, obracasz się w stronę Cienia, którego sięga twój cios, z dowolnej strony, a gdy żaden Cień nie jest w zasięgu, w stronę obiektu do rozbicia. Twój zasięg się nie zmienia.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	W Tartarusie: możesz zostać na piętrze dwa razy dłużej, zanim przyjdzie Żniwiarz. Na piętrze pozostały czas się podwaja albo, gdy to wyłączysz, zmniejsza o połowę.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Poza Tartarusem: biegniesz sprintem, gdy tylko się ruszasz, bez trzymania Shift ani RT. Trzymanie Shift lub RT daje wtedy zwykły bieg, a Alt nadal daje chód. Droga do punktu zainteresowania też odbywa się sprintem.
@@ -610,15 +608,10 @@ Sonar on	Sonar włączony
 Sonar off	Sonar wyłączony
 Shadow alerts	Ostrzeżenia o Cieniach
 Shadow sight range	Zasięg pola widzenia Cieni
-Top-down exploration	Eksploracja z góry
 Keep your heading through passages	Zachowaj kierunek w przejściach
 Strike assist	Wspomaganie ciosu
 Always dash	Zawsze sprint
 Relaxed Reaper rate	Wolniejsze przybycie Żniwiarza
-Placement	Rozmieszczenie
-stereo	stereo
-3D for headphones	3D dla słuchawek
-plain left and right	proste lewo i prawo
 Lower pitch behind you	Niższy ton za tobą
 Points of interest range	Zasięg punktów zainteresowania
 Master	Główna
@@ -810,8 +803,6 @@ picks	wyborów
 Inherits	Dziedziczy
 not chosen	nie wybrano
 Fusing.	Fuzja w toku.
-Tab skips the animation.	Tab pomija animację.
-The Menu button skips the animation.	Przycisk Menu pomija animację.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Strzałki w górę i w dół poruszają, Spacja bierze umiejętność lub ją odkłada, Escape wraca.
 Up and down move, A takes a skill or puts it back, B back.	Góra i dół poruszają, A bierze umiejętność lub ją odkłada, B wraca.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Spacja łączy, Tab i Shift Tab przeskakują między sekcjami, Q i E przeglądają wynik i jego materiały, F umiejętności i odporności, Escape wraca.

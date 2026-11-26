@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	O volume dos sons do son
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	No Tártaro: a visão de cada Sombra próxima chia a partir da borda mais perto de você, mais alto conforme essa borda se aproxima. Entre nela e a Sombra nota você. Um zumbido abafado significa que uma Sombra veria você se uma parede não estivesse no caminho.
 How far from the edge of a Shadow's sight you start to hear it.	A que distância da borda da visão de uma Sombra você começa a ouvi-la.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	No Tártaro: o rosnado constante da Sombra mais próxima, abafado e oscilante quando ela está de costas para você, a nota quando uma perde você, o toque quando seu golpe vai alcançar, e se uma Sombra próxima está virada para você.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Enquanto você anda livremente, a câmera fica voltada para o norte e todo som, do jogo e do mod, é ouvido a partir de você como se visto de cima: norte à frente, leste à sua direita. Para cima anda para o norte. O analógico direito sonda uma direção. Desativado, a câmera gira como antes.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	Na exploração vista de cima, onde o jogo leva você para uma sala com um salto que vira você, como o beco dos fundos que leva à Sala de Veludo, o norte dessa sala é girado para que o caminho por onde você entrou fique para cima, e para baixo leva de volta para fora. Desativado, o norte é o norte do mapa em todo lugar.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Como os sons do mod são posicionados. Estéreo: esquerda e direita por volume e atraso, coisas atrás de você mais abafadas. 3D: por um modelo de cabeça para fones de ouvido, também acima e abaixo. Simples: apenas esquerda e direita.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	No Tártaro: quando você ataca, você se vira para a Sombra que seu golpe consegue alcançar, de qualquer lado, ou, sem nenhuma Sombra ao alcance, para um objeto quebrável. Seu alcance continua o mesmo.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	No Tártaro: você pode ficar num andar o dobro do tempo antes de o Ceifador aparecer. Num andar, o tempo restante dobra, ou cai pela metade quando você desativa isto.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Fora do Tártaro: você corre sempre que se move, sem segurar Shift ou RT. Segurar Shift ou RT então faz você correr normalmente, e Alt ainda anda. A caminhada até um ponto de interesse também corre.
@@ -610,15 +608,10 @@ Sonar on	Sonar ativado
 Sonar off	Sonar desativado
 Shadow alerts	Alertas de Sombras
 Shadow sight range	Alcance da visão das Sombras
-Top-down exploration	Exploração vista de cima
 Keep your heading through passages	Manter a direção ao passar por passagens
 Strike assist	Assistência de golpe
 Always dash	Sempre correr
 Relaxed Reaper rate	Ceifador mais lento
-Placement	Posicionamento
-stereo	estéreo
-3D for headphones	3D para fones de ouvido
-plain left and right	simples, esquerda e direita
 Lower pitch behind you	Mais grave atrás de você
 Points of interest range	Alcance dos pontos de interesse
 Master	Geral
@@ -810,8 +803,6 @@ picks	escolhas
 Inherits	Herda
 not chosen	não escolhida
 Fusing.	Fundindo.
-Tab skips the animation.	Tab pula a animação.
-The Menu button skips the animation.	O botão Menu pula a animação.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Setas para cima e para baixo movem, Espaço pega uma habilidade ou a devolve, Esc volta.
 Up and down move, A takes a skill or puts it back, B back.	Cima e baixo movem, A pega uma habilidade ou a devolve, B volta.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Espaço funde, Tab e Shift Tab pulam entre seções, Q e E percorrem o resultado e seus materiais, F habilidades e afinidades, Esc volta.

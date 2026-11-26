@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Громкость зв�
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	В Тартаре: поле зрения каждой ближней Тени шипит со своего края, ближайшего к вам, тем громче, чем ближе этот край. Шагните в него, и Тень вас заметит. Приглушённый гул означает, что Тень увидела бы вас, если бы ей не мешала стена.
 How far from the edge of a Shadow's sight you start to hear it.	С какого расстояния от края поля зрения Тени вы начинаете его слышать.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	В Тартаре: ровное рычание ближайшей Тени, приглушённое и дрожащее, когда она стоит к вам спиной, звук, когда Тень теряет вас, звон, когда ваш удар достанет, и смотрит ли на вас ближняя Тень.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Пока вы свободно ходите, камера всё время смотрит на север, и каждый звук, игры и мода, слышен от вас как бы сверху: север впереди, восток справа. Вверх ведёт на север. Правый стик просматривает направление. Если выключено, камера поворачивается как раньше.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	При исследовании с видом сверху, если игра переносит вас в комнату переходом, который вас разворачивает, например в переулок к Бархатной комнате, север этой комнаты поворачивается так, чтобы путь, которым вы вошли, оставался вверху, а вниз вёл обратно. Если выключено, север везде совпадает с севером карты.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Как располагаются звуки мода. Стерео: слева и справа по громкости и задержке, то, что сзади, звучит глуше. 3D: через модель головы для наушников, также сверху и снизу. Простой: только слева и справа.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	В Тартаре: при атаке вы поворачиваетесь к Тени, до которой достаёт ваш удар, с любой стороны, а если ни одной Тени нет в досягаемости, к разрушаемому предмету. Дальность удара не меняется.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	В Тартаре: на этаже можно оставаться вдвое дольше, прежде чем придёт Жнец. На этаже оставшееся время удваивается, а при выключении сокращается вдвое.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Вне Тартара: вы бежите при любом движении, не удерживая Shift или RT. Удержание Shift или RT тогда даёт обычный бег, а Alt по-прежнему переключает на шаг. Путь к точке интереса тоже проходится бегом.
@@ -610,15 +608,10 @@ Sonar on	Сонар включён
 Sonar off	Сонар выключен
 Shadow alerts	Сигналы Теней
 Shadow sight range	Дальность поля зрения Теней
-Top-down exploration	Исследование с видом сверху
 Keep your heading through passages	Сохранять направление в проходах
 Strike assist	Помощь при ударе
 Always dash	Всегда бегом
 Relaxed Reaper rate	Жнец приходит реже
-Placement	Расположение
-stereo	стерео
-3D for headphones	3D для наушников
-plain left and right	просто слева и справа
 Lower pitch behind you	Ниже тон позади вас
 Points of interest range	Дальность точек интереса
 Master	Общая
@@ -810,8 +803,6 @@ picks	возможных
 Inherits	Наследует
 not chosen	не выбрано
 Fusing.	Слияние.
-Tab skips the animation.	Tab пропускает анимацию.
-The Menu button skips the animation.	Кнопка Menu пропускает анимацию.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Стрелки вверх и вниз перемещают, Пробел берёт навык или возвращает его, Esc возвращает назад.
 Up and down move, A takes a skill or puts it back, B back.	Вверх и вниз перемещают, A берёт навык или возвращает его, B возвращает назад.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Пробел проводит слияние, Tab и Shift Tab переходят между разделами, Q и E листают результат и материалы, F показывает навыки и предрасположенности, Esc возвращает назад.

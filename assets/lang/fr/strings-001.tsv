@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Le volume des sons du so
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	Dans le Tartare : le champ de vision de chaque Ombre proche grésille depuis son bord le plus proche de vous, plus fort à mesure que ce bord se rapproche. Entrez-y et l'Ombre vous remarque. Un bourdonnement étouffé signifie qu'une Ombre vous verrait si un mur ne lui bouchait pas la vue.
 How far from the edge of a Shadow's sight you start to hear it.	À quelle distance du bord du champ de vision d'une Ombre vous commencez à l'entendre.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	Dans le Tartare : le grondement continu de l'Ombre la plus proche, étouffé et vacillant quand elle vous tourne le dos, la note quand l'une d'elles vous perd, le tintement quand votre coup peut l'atteindre, et si une Ombre proche vous fait face.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Quand vous marchez librement, la caméra reste orientée au nord et chaque son, ceux du jeu comme ceux du mod, s'entend depuis vous comme vu d'en haut : le nord devant, l'est à votre droite. Haut marche vers le nord. Le stick droit balaie une direction. Désactivé, la caméra tourne comme avant.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	En exploration vue de dessus, quand le jeu vous fait entrer dans une pièce par un saut qui vous fait pivoter, comme la ruelle qui mène à la Chambre de velours, le nord de cette pièce est tourné pour que le chemin par lequel vous êtes entré reste en haut, et bas ramène dehors. Désactivé, le nord est partout le nord de la carte.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Comment les sons du mod sont placés. Stéréo : gauche et droite par le volume et le décalage, les choses derrière vous plus sourdes. 3D : par un modèle de tête pour casque, aussi au-dessus et en dessous. Simple : gauche et droite seulement.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	Dans le Tartare : quand vous attaquez, vous vous tournez vers l'Ombre que votre coup peut atteindre, de n'importe quel côté, ou, sans Ombre à portée, vers un objet destructible. Votre portée reste la même.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	Dans le Tartare : vous pouvez rester deux fois plus longtemps sur un étage avant l'arrivée de la Faucheuse. Sur un étage, le temps restant double, ou diminue de moitié quand vous le désactivez.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Hors du Tartare : vous courez dès que vous bougez, sans maintenir Maj ou RT. Maintenir Maj ou RT fait alors trotter, et Alt fait toujours marcher. La marche vers un point d'intérêt court aussi.
@@ -610,15 +608,10 @@ Sonar on	Sonar activé
 Sonar off	Sonar désactivé
 Shadow alerts	Alertes des Ombres
 Shadow sight range	Portée de la vision des Ombres
-Top-down exploration	Exploration vue de dessus
 Keep your heading through passages	Garder votre cap dans les passages
 Strike assist	Frappe assistée
 Always dash	Toujours courir
 Relaxed Reaper rate	Faucheuse moins pressée
-Placement	Placement
-stereo	stéréo
-3D for headphones	3D pour casque
-plain left and right	simple gauche et droite
 Lower pitch behind you	Plus grave derrière vous
 Points of interest range	Portée des points d'intérêt
 Master	Général
@@ -810,8 +803,6 @@ picks	choix
 Inherits	Transmet
 not chosen	non choisie
 Fusing.	Fusion en cours.
-Tab skips the animation.	Tab passe l'animation.
-The Menu button skips the animation.	Le bouton Menu passe l'animation.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Flèches haut et bas pour se déplacer, Espace prend une compétence ou la remet, Échap retour.
 Up and down move, A takes a skill or puts it back, B back.	Haut et bas pour se déplacer, A prend une compétence ou la remet, B retour.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Espace fusionne, Tab et Maj Tab sautent d'une section à l'autre, Q et E parcourent le résultat et ses matériaux, F compétences et affinités, Échap retour.

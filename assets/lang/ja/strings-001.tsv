@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	ソナーの音の大き
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	タルタロスで、近くのシャドウの視界が、あなたに一番近い縁からジジッと鳴ります。縁が近づくほど大きくなります。視界に踏み込むとシャドウに気づかれます。こもったうなりは、壁がなければシャドウに見られている場所であることを示します。
 How far from the edge of a Shadow's sight you start to hear it.	シャドウの視界の縁からどれだけ離れた所で聞こえ始めるか。
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	タルタロスで、一番近いシャドウの低いうなり声。背中を向けているときはこもって揺れます。見失われたときの音、攻撃が届くときの響き、近くのシャドウがこちらを向いているかどうかも伝えます。
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	自由に歩いている間、カメラは北を向いたままになり、ゲームとMODのすべての音が上から見ているように聞こえます。前が北、右が東です。上で北へ歩きます。右スティックで方向を探ります。オフにすると、カメラはこれまで通り回ります。
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	見下ろし探索で、ゲームが向きの変わる移動で部屋に入れる場所（ベルベットルームへの路地裏など）では、入ってきた方向が上になるよう部屋の北を回します。下で外へ戻れます。オフにすると、どこでも北はマップの北です。
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	MODの音の配置方法。ステレオ：音量と時間差で左右、後ろの音はこもります。3D：ヘッドホン向けの頭部モデルを通し、上下も表現します。シンプル：左右のみ。
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	タルタロスで、攻撃すると、どの方向でも攻撃が届くシャドウの方を向きます。届くシャドウがいなければ、壊せるオブジェクトの方を向きます。攻撃の届く範囲は変わりません。
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	タルタロスで、刈り取るものが現れるまで同じフロアに2倍長くいられます。フロアにいる間にオンにすると残り時間が2倍に、オフにすると半分になります。
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	タルタロスの外で、移動すると常にダッシュします。ShiftやRTを押し続ける必要はありません。そのときShiftやRTを押し続けると走り、Altではこれまで通り歩きます。注目地点への自動歩行もダッシュになります。
@@ -610,15 +608,10 @@ Sonar on	ソナーオン
 Sonar off	ソナーオフ
 Shadow alerts	シャドウの警告音
 Shadow sight range	シャドウの視界の範囲
-Top-down exploration	見下ろし探索
 Keep your heading through passages	通路で向きを保つ
 Strike assist	攻撃アシスト
 Always dash	常にダッシュ
 Relaxed Reaper rate	刈り取るものの出現を遅く
-Placement	配置
-stereo	ステレオ
-3D for headphones	ヘッドホン向け3D
-plain left and right	シンプルな左右
 Lower pitch behind you	後ろの音を低くする
 Points of interest range	注目地点の範囲
 Master	全体
@@ -810,8 +803,6 @@ picks	枠
 Inherits	継承
 not chosen	未選択
 Fusing.	合体中。
-Tab skips the animation.	Tabでアニメーションをスキップします。
-The Menu button skips the animation.	メニューボタンでアニメーションをスキップします。
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	上下の矢印キーで移動、スペースでスキルを選ぶか戻す、Escで戻ります。
 Up and down move, A takes a skill or puts it back, B back.	上下で移動、Aでスキルを選ぶか戻す、Bで戻ります。
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	スペースで合体、TabとShift+Tabで区切りを移動、QとEで結果と素材のページを切り替え、Fでスキルと相性、Escで戻ります。

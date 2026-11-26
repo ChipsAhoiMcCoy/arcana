@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	声呐的声音有多大
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	在塔尔塔罗斯中：附近每个暗影的视野会从离你最近的边缘发出嘶嘶声，边缘越近越响。踏进视野，暗影就会发现你。闷闷的嗡鸣声表示若不是有墙挡着，暗影就会看见你。
 How far from the edge of a Shadow's sight you start to hear it.	离暗影视野边缘多远时开始听到它。
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	在塔尔塔罗斯中：最近的暗影持续发出的低吼，背对你时声音沉闷且颤动；暗影跟丢你时的提示音；你的攻击能打到时的铃声；以及附近的暗影是否面对着你。
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	自由行走时，镜头始终朝北，所有声音，无论是游戏的还是模组的，都像从上方以你为中心来听：北方在前，东方在右。按上向北走。右摇杆扫描一个方向。关闭时，镜头像以前一样转动。
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	在俯视探索中，当游戏通过会让你转向的跳转把你移进某个房间时，例如通往天鹅绒房间的后巷，该房间的北方会被转动，让你走进来的方向保持朝上，按下则走回去。关闭时，所有地方的北方都是地图的北方。
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	模组声音的定位方式。立体声：靠音量和时间差区分左右，身后的声音更暗。3D：通过头部模型为耳机定位，也能分辨上下。简单：只分左右。
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	在塔尔塔罗斯中：攻击时，你会转身面向攻击能打到的暗影，任何方向都可以；附近没有暗影时，则面向可破坏的物体。你的攻击距离不变。
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	在塔尔塔罗斯中：你能在一层停留的时间延长一倍，猎杀者才会出现。在楼层中开启时剩余时间加倍，关闭时减半。
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	塔尔塔罗斯以外：只要移动就会冲刺，不必按住 Shift 或 RT。此时按住 Shift 或 RT 则为跑步，Alt 仍是步行。走向兴趣点时也会冲刺。
@@ -610,15 +608,10 @@ Sonar on	声呐开启
 Sonar off	声呐关闭
 Shadow alerts	暗影警报
 Shadow sight range	暗影视野范围
-Top-down exploration	俯视探索
 Keep your heading through passages	穿过通道时保持方向
 Strike assist	攻击辅助
 Always dash	始终冲刺
 Relaxed Reaper rate	放缓猎杀者出现
-Placement	声音定位
-stereo	立体声
-3D for headphones	耳机 3D
-plain left and right	简单左右
 Lower pitch behind you	身后音调更低
 Points of interest range	兴趣点范围
 Master	总音量
@@ -810,8 +803,6 @@ picks	个
 Inherits	继承
 not chosen	未选择
 Fusing.	合体中。
-Tab skips the animation.	Tab 跳过动画。
-The Menu button skips the animation.	Menu 键跳过动画。
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	上下方向键移动，空格键选取或放回技能，Esc 返回。
 Up and down move, A takes a skill or puts it back, B back.	上下移动，A 选取或放回技能，B 返回。
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	空格键合体，Tab 和 Shift Tab 在各部分间跳转，Q 和 E 翻看结果和素材，F 技能和属性，Esc 返回。

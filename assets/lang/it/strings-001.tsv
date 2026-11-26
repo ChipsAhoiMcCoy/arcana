@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Quanto sono forti i suon
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	Nel Tartaro: lo sguardo di ogni Ombra vicina sfrigola dal bordo più vicino a te, più forte man mano che quel bordo si avvicina. Entraci e l'Ombra ti nota. Un ronzio attutito significa che un'Ombra ti vedrebbe se un muro non fosse in mezzo.
 How far from the edge of a Shadow's sight you start to hear it.	A che distanza dal bordo dello sguardo di un'Ombra inizi a sentirlo.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	Nel Tartaro: il ringhio costante dell'Ombra più vicina, attutito e tremolante quando ti dà le spalle, la nota quando una ti perde, lo squillo quando il tuo colpo la raggiunge, e se un'Ombra vicina è rivolta verso di te.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Mentre cammini liberamente, la telecamera resta rivolta a nord e ogni suono, del gioco e della mod, si sente da te come dall'alto: il nord davanti, l'est alla tua destra. Su cammina verso nord. La levetta destra esplora una direzione. Disattivato, la telecamera ruota come prima.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	Nell'esplorazione dall'alto, dove il gioco ti porta in una stanza con un salto che ti fa girare, come il vicolo verso la Stanza di Velluto, il nord di quella stanza viene ruotato così che la direzione da cui sei entrato resti in alto, e giù riporta fuori. Disattivato, il nord è ovunque il nord della mappa.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Come vengono posizionati i suoni della mod. Stereo: sinistra e destra per volume e tempo, ciò che è dietro di te più cupo. 3D: attraverso un modello della testa per le cuffie, anche sopra e sotto. Semplice: solo sinistra e destra.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	Nel Tartaro: quando attacchi, ti giri verso l'Ombra che il tuo colpo può raggiungere, da qualsiasi lato, o, se nessuna Ombra è a portata, verso un oggetto distruttibile. La tua portata resta la stessa.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	Nel Tartaro: puoi restare su un piano il doppio del tempo prima che arrivi il Mietitore. Su un piano, il tempo rimasto raddoppia, o si dimezza quando lo disattivi.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Fuori dal Tartaro: scatti ogni volta che ti muovi, senza tenere premuto Shift o RT. Tenendo premuto Shift o RT allora corri, e Alt cammina ancora. Anche la camminata verso un punto d'interesse è uno scatto.
@@ -610,15 +608,10 @@ Sonar on	Sonar attivo
 Sonar off	Sonar disattivato
 Shadow alerts	Allarmi delle Ombre
 Shadow sight range	Portata dello sguardo delle Ombre
-Top-down exploration	Esplorazione dall'alto
 Keep your heading through passages	Mantieni la direzione nei passaggi
 Strike assist	Assistenza al colpo
 Always dash	Scatta sempre
 Relaxed Reaper rate	Mietitore più lento
-Placement	Posizionamento
-stereo	stereo
-3D for headphones	3D per le cuffie
-plain left and right	solo sinistra e destra
 Lower pitch behind you	Più grave dietro di te
 Points of interest range	Portata dei punti d'interesse
 Master	Generale
@@ -810,8 +803,6 @@ picks	scelte
 Inherits	Eredita
 not chosen	non scelta
 Fusing.	Fusione in corso.
-Tab skips the animation.	Tab salta l'animazione.
-The Menu button skips the animation.	Il tasto Menu salta l'animazione.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Frecce su e giù si muovono, Spazio prende un'abilità o la rimette, Esc indietro.
 Up and down move, A takes a skill or puts it back, B back.	Su e giù si muovono, A prende un'abilità o la rimette, B indietro.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Spazio fonde, Tab e Shift Tab saltano tra le sezioni, Q ed E scorrono il risultato e i suoi materiali, F abilità e affinità, Esc indietro.

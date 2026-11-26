@@ -508,9 +508,7 @@ How loud the sonar's sounds are. Changing it plays one.	Sonar seslerinin ne kada
 In Tartarus: each nearby Shadow's sight sizzles from its edge nearest you, louder as that edge comes closer. Step into it and the Shadow notices you. A muffled hum means a Shadow would see you if a wall were not in its way.	Tartarus'ta: yakındaki her Gölgenin görüş alanı sana en yakın kenarından cızırdar; o kenar yaklaştıkça ses yükselir. İçine adım atarsan Gölge seni fark eder. Boğuk bir uğultu, araya bir duvar girmeseydi bir Gölgenin seni göreceği anlamına gelir.
 How far from the edge of a Shadow's sight you start to hear it.	Bir Gölgenin görüş alanının kenarına ne kadar uzaktan onu duymaya başladığın.
 In Tartarus: the nearest Shadow's steady snarl, muffled and wobbling when its back is to you, the note when one loses you, the ring when your strike will reach, and whether a close Shadow faces you.	Tartarus'ta: en yakın Gölgenin sürekli hırlaması, sırtı sana dönükken boğuk ve titrek; biri seni kaybettiğinde çalan nota, darben ulaşacakken çalan zil ve yakındaki bir Gölgenin sana bakıp bakmadığı.
-While you walk freely, the camera stays facing north and every sound, the game's and the mod's, is heard from you as if from above: north ahead, east to your right. Up walks north. The right stick scans a direction. Off, the camera turns as before.	Serbestçe yürürken kamera kuzeye bakar ve oyunun da modun da her sesi sana yukarıdan duyuluyormuş gibi gelir: kuzey önde, doğu sağında. Yukarı kuzeye yürür. Sağ çubuk bir yönü tarar. Kapalıyken kamera eskisi gibi döner.
 In top-down exploration, where the game moves you into a room by a jump that turns you, such as the back alley to the Velvet Room, that room's north is turned so the way you walked in stays up, and down leads back out. Off, north is the map's north everywhere.	Yukarıdan görünümlü keşifte, oyunun seni döndüren bir geçişle bir odaya soktuğu yerlerde, örneğin Kadife Oda'ya giden arka sokak gibi, o odanın kuzeyi girdiğin yön yukarıda kalacak şekilde döndürülür ve aşağı seni dışarı çıkarır. Kapalıyken kuzey her yerde haritanın kuzeyidir.
-How the mod's sounds are placed. Stereo: left and right by level and timing, things behind you darker. 3D: through a head model for headphones, also above and below. Plain: left and right only.	Modun seslerinin nasıl konumlandığı. Stereo: ses düzeyi ve zamanlamayla sol ve sağ, arkandaki şeyler daha koyu. 3D: kulaklık için bir kafa modeliyle, yukarı ve aşağı da. Sade: yalnızca sol ve sağ.
 In Tartarus: when you attack, you turn to face the Shadow your strike can reach, on any side, or with no Shadow in reach, a breakable object. Your reach stays the same.	Tartarus'ta: saldırdığında, hangi yanda olursa olsun darbenin ulaşabileceği Gölgeye, menzilde Gölge yoksa kırılabilir bir nesneye dönersin. Menzilin aynı kalır.
 In Tartarus: you can stay on a floor twice as long before the Reaper comes. On a floor, the time left doubles, or halves when you turn it off.	Tartarus'ta: Ölüm Meleği gelmeden önce bir katta iki kat uzun kalabilirsin. Bir kattayken kalan süre iki katına çıkar, kapattığında ise yarıya iner.
 Outside Tartarus: you dash whenever you move, without holding Shift or RT. Holding Shift or RT then runs, and Alt still walks. The walk to a point of interest dashes too.	Tartarus dışında: Shift ya da RT'yi basılı tutmadan, her hareket ettiğinde koşarsın. O zaman Shift ya da RT'yi basılı tutmak normal koşturur, Alt hâlâ yürütür. Bir ilgi noktasına yürüyüş de koşarak olur.
@@ -610,15 +608,10 @@ Sonar on	Sonar açık
 Sonar off	Sonar kapalı
 Shadow alerts	Gölge uyarıları
 Shadow sight range	Gölge görüşü menzili
-Top-down exploration	Yukarıdan görünümlü keşif
 Keep your heading through passages	Geçitlerde yönünü koru
 Strike assist	Darbe yardımı
 Always dash	Her zaman koş
 Relaxed Reaper rate	Gevşek Ölüm Meleği hızı
-Placement	Konumlandırma
-stereo	stereo
-3D for headphones	kulaklık için 3D
-plain left and right	sade sol ve sağ
 Lower pitch behind you	Arkandakiler daha pes
 Points of interest range	İlgi noktaları menzili
 Master	Ana ses
@@ -810,8 +803,6 @@ picks	seçim
 Inherits	Aktarılanlar
 not chosen	seçilmedi
 Fusing.	Birleştiriliyor.
-Tab skips the animation.	Tab animasyonu geçer.
-The Menu button skips the animation.	Menu düğmesi animasyonu geçer.
 Up and down arrows move, Space takes a skill or puts it back, Escape back.	Yukarı ve aşağı ok tuşları gezer, Boşluk bir yeteneği alır ya da geri koyar, Escape geri.
 Up and down move, A takes a skill or puts it back, B back.	Yukarı ve aşağı gezer, A bir yeteneği alır ya da geri koyar, B geri.
 Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.	Boşluk birleştirir, Tab ve Shift Tab bölümler arasında atlar, Q ve E sonuç ve malzemeleri arasında sayfa çevirir, F yetenekler ve yatkınlıklar, Escape geri.
