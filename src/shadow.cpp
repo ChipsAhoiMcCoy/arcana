@@ -641,6 +641,36 @@ void install() {
     hooks::attach((void**)&g_appear_cmd, (void*)&appear_hook, "DUNGEON_REAPER_APPEAR_TIME");
   if ((g_continue_cmd = (flow::Command)flow::command("DUNGEON_REAPER_CONTINUE_APPEAR_TIME")))
     hooks::attach((void**)&g_continue_cmd, (void*)&continue_hook, "DUNGEON_REAPER_CONTINUE_APPEAR_TIME");
+  // Dev: the hero put `d` cm from a Shadow's middle (deg: where from, clockwise from its front; 180 is behind it),
+  // facing it, to measure where a swing connects against where the ring says it would.
+  dev::route("/shadows/at", [](const dev::Request& r, int&) {
+    const int obj = (int)dev::arg_int(r, "obj", -1);
+    const float d = (float)dev::arg_num(r, "d", 300), deg = (float)dev::arg_num(r, "deg", 180), turn = (float)dev::arg_num(r, "turn", 0);
+    return dev::on_game([=] {
+      UObject* a = ue::object_at(obj);
+      UObject* hero = world::player();
+      if (!a || !hero) return std::string("no Shadow or no hero\n");
+      const FVector at = world::actor_location(a);
+      const float way = (yaw_of(a) + deg) * kPi / 180.0f;
+      FVector to{at.x + std::cos(way) * d, at.y + std::sin(way) * d, at.z}, on;
+      if (!world::project_to_nav(to, 300.0f, on)) return std::string("no navmesh there\n");
+      to = FVector{to.x, to.y, on.z + 95.0f};
+      Params tp(find_function(class_of(hero), "K2_TeleportTo"));
+      tp.set<FVector>("DestLocation", to);
+      tp.set<FRotator>("DestRotation", FRotator{0.0f, std::atan2(at.y - to.y, at.x - to.x) * 180.0f / kPi + turn, 0.0f});
+      call(hero, tp);
+      FVector me;
+      world::player_location(me);
+      bool known = false;
+      const bool reach = in_reach(a, at, me, known);
+      Box b{};
+      float rr, hh;
+      body_of(a, rr, hh);
+      const bool plain = strike_box(dungeon_comp(), b) && box_holds(b, at, rr, hh);
+      return std::format("hero ({:.0f}, {:.0f}, {:.0f}) {:.0f} cm from #{} ({:.0f} flat), reach={} facing-only reach={} box centre ({:.0f}, {:.0f}, {:.0f}) yaw {:.0f}\n", me.x, me.y, me.z,
+                         std::hypot(flat(at, me), at.z - me.z), obj, flat(at, me), reach, plain, b.center.x, b.center.y, b.center.z, b.yaw);
+    });
+  }, "?obj=N&d=cm&deg=180&turn=0 put the hero d cm from a Shadow, facing it (turn: degrees off it) (dev: the strike's reach)");
   dev::route("/shadows", [](const dev::Request&, int&) {
     return dev::on_game([] {
       FVector me;
