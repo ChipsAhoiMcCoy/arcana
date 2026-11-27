@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.7.0
 
 ### Menus
 - Items and skills for the whole party (Bead Chain, Media and the like) can be used from the camp's Item and Skill menus. After choosing one, the mod read the member list ("Colton") as if you picked one member, and Enter did nothing. It now says "all allies" with each member's HP and SP, Enter uses it, and the new HP is read once it lands.
@@ -13,13 +13,13 @@
 - A member's Stats page: RT and LT now jump between its sections, as on every Persona page. They opened the game's Persona status (silently: the page already reads it) and Theurgy list (only once someone knew one). The page gains a Theurgy section with each Theurgy the member knows, its effect, and what fills their gauge. The keyboard's X (Persona status) now says "Persona status" as it opens and "Stats" as it closes.
 - "What other players did today" (N / View in town) closes with Escape, C and B (Circle) as well as N / View: the cancel often did nothing before.
 - Its activities are grouped under their kind: "Daily life, 74 percent" is said as you enter the group, and each activity under it is counted within it ("2 of 5"), as the Shadow analysis page is.
-
 - At a low frame rate (a slow computer, or a busy one) the camp menu could ignore the arrow keys, and other menus could step their cursor twice: the mod ran several times in one of the game's frames and miscounted them. It now runs once a frame.
 - Selling (and buying in the shops that ask how many outside Aohige Pharmacy): "How many?" now says the total as you change the count ("2, 360 yen"), as the screen shows it. Only the pharmacy's purchases said it before.
 - The bulletin board in Fountain Square (Paulownia Mall) opens the Missing Persons list: it is now read as the camp's is (each case with its number, name, status and profile; F1 for the keys). It was silent, and until you found C to close it nothing else in the field answered.
 - The police station's Sell Item: Q and E now say which category is up ("Sell Item, Armor, No items"), in the game's words; two empty categories in a row were silent before. A purchase or a sale no longer says "Shop" again before the next prompt.
 - After a fusion accident (the Velvet Room's fusion goes wrong and makes another Persona), the new Persona's page is read ("Chi You, Tower, level 86", then its stats, skills and affinities, Space to go on): it was silent. When its Social Link then levels it up, "Level up!" and the new level are said from the top of the page, with no stat line cut off before them.
 - The calendar in your dorm room (check it on the wall) is read as the camp's Calendar is: each day with its weekday, plans, holidays and moon, moving by day, week and month, and the part-time jobs. It was silent before.
+- A request's details (the review key on the Request list) no longer add the task as the message file has it, with a hole where the item's name goes ("Show Elizabeth an."): the task the screen shows, with its item, is already read.
 
 ### Field
 - Where am I no longer says a Tartarus objective ("Find a valuable treasure chest") after you've left Tartarus. Objectives were kept until the objective panel showed empty, so a place where it never came up kept the last floor's. They now belong to the place they were shown in and are forgotten when you go somewhere else.
@@ -42,8 +42,6 @@
 - Walking to a breakable object in Tartarus stops as soon as your strike would break it, turned to face it: the strike-reach ring sounds, and Ctrl breaks it. The walk used to head for its middle, and where they stand in a ring the others blocked you and it said "Stuck, stopping".
 - Strike assist also aims at breakable objects: with no Shadow in reach, a swing turns you to the nearest breakable object your strike would reach on any side, and the ring sounds for it from any side, as for a Shadow. Its help line in the mod settings says so.
 - Where am I (Slash) no longer says an objective the game has stopped showing: "Return to the dorm" from your first school day was still said days later.
-- "Shift available" is said after a 1 More once the wheel shows Shift: the first 1 More of a battle used to say only "1 More!", as the Shift button was still sliding in.
-- The party key (Shift+Apostrophe) ends with the navigator outside the party and her SP ("Fuuka, navigator, SP 248 of 299"), which pays for her support in Tartarus (Jamming, Sylphid Aura); the game shows it beside her menu.
 - After the 1/31 scene with Jin, "Event: Jin" no longer stays in the list: the spot left there only turns you back ("There's no time to look back."). Only the spot that starts a story scene is listed as its event.
 - The desk in your room is listed as "Desk, Computer": the online game (Innocent Sin Online) is played at it, and only checking it told you so.
 - Walk and use (Shift+Period) turns you to the thing once you stand still, then presses: arriving on someone's prompt while still sliding (Elizabeth in the back alley), you could end up facing away, the prompt gone and the press lost.
@@ -75,6 +73,8 @@
 - Analyze in battle: F1 (both triggers + Menu) also names Full Analysis (N, the pad's View) once the page shows it.
 - Full Analysis in battle says what it found when it ends ("Weak to Ice. Nulls Strike. Drains Light. The rest normal"): the icons lit up in silence.
 - "1 More!" is said when a weakness hit defeats its target too (the game shows its 1 MORE and you act again); it was only said after a Down.
+- "Shift available" is said after a 1 More once the wheel shows Shift: the first 1 More of a battle used to say only "1 More!", as the Shift button was still sliding in.
+- The party key (Shift+Apostrophe) ends with the navigator outside the party and her SP ("Fuuka, navigator, SP 248 of 299"), which pays for her support in Tartarus (Jamming, Sylphid Aura); the game shows it beside her menu.
 - Giving a new skill up when all eight slots are full ("Forget Repel Wind?", yes) no longer says "Learned Repel Wind".
 - Learning a skill after a battle with all eight slots full: F1 now says how to give the new skill up (up from the top row to the new skill, then Space or A, which asks "Forget ...?"). It said Escape goes back, and Escape does nothing there.
 - A skill or attack that hits the same unit several times no longer reads every hit: at its last hit, each unit it hit gets one line with what it came to ("Makoto 147 damage in all"; a single hit, "Makoto 26 damage"). Strength's Mobius Rondo, six hits on each of four members, was 24 lines in a row; it is now four. Damage is said as the hit lands: it waited for the next turn, a second or two after the blow you heard.
