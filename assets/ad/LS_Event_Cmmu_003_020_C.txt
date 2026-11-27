@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_003_020_C
-0.050	2.028	00.mp3	Junpei arrives hugging a watermelon.
+0.050	6.163	00.mp3	Outside a burger shop on a busy street. Junpei walks up to you hugging a big watermelon in both arms.

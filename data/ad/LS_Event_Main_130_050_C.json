@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_130_050_C", "title": "The chairman is coming", "cues": [{"at": 0.45, "text": "Mitsuru comes in and walks over to you."}, {"at": 6.6, "text": "Mitsuru nods and walks out of the classroom."}]}
+{"movie": "LS_Event_Main_130_050_C", "title": "The chairman is coming", "cues": [
+  {"at": 0.45, "text": "In your classroom, you sit at your desk with Junpei and Yukari standing beside it. Mitsuru comes in through the classroom door and walks between the desks to you."},
+  {"at": 6.60, "text": "Mitsuru nods, turns and walks back between the desks and out of the classroom."}
+]}

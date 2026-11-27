@@ -1,7 +1,8 @@
 #scene LS_Event_Cmmu_004_030_C
-0.000	1.540	00.mp3	You and Akihiko cook.
-15.670	7.996	01.mp3	Time passes while you and Akihiko cook. When it ends, three tall stacks of steaming pancakes stand on plates along the counter.
-32.670	2.605	02.mp3	Everyone gathers around the pancakes at the table.
-42.170	5.388	03.mp3	Everyone eats together. When the plates are empty, Ken comes over to you and Akihiko.
-52.500	3.248	04.mp3	Ken walks off, leaving you and Akihiko by the table.
-71.500	1.338	05.mp3	Akihiko winces.
+0.000	6.780	00.mp3	You and Akihiko meet in the dorm's kitchen. Akihiko has brought a plastic shopping bag of groceries.
+15.670	10.021	01.mp3	Time passes while you and Akihiko cook; the clatter of the pan carries on. When it ends, three tall stacks of steaming pancakes stand on plates along the counter.
+28.670	2.494	02.mp3	Yukari and Fuuka walk over to the kitchen.
+32.670	10.000	03.mp3	Later, everyone gathers at the dining table around the pancakes: Yukari, Junpei, Mitsuru, Fuuka, Ken, Aigis and Koromaru, with you and Akihiko.
+42.170	5.388	04.mp3	Everyone eats together. When the plates are empty, Ken comes over to you and Akihiko.
+52.500	6.935	05.mp3	Ken turns and walks off, leaving you and Akihiko standing by the table, Akihiko with his hands on his hips.
+71.500	2.387	06.mp3	Akihiko breaks off and winces in pain.

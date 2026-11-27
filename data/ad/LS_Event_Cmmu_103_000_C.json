@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_103_000_C", "title": "The old couple at the used-book store", "cues": [{"at": 0.03, "text": "You enter a used-book store."}]}
+{
+ "movie": "LS_Event_Cmmu_103_000_C",
+ "title": "The old couple at the used-book store",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "You walk into a small used-book store in the Iwatodai strip mall. A stooped elderly man and an elderly woman with her hands folded in front of her, talking with each other, turn to look at you as you come up to them."
+  }
+ ]
+}

@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_190_100_C", "title": "Mitsuru's father", "cues": [{"at": 2.55, "text": "Mitsuru kneels beside her father, who lies still."}, {"at": 8.8, "text": "Mitsuru bows low."}]}
+{"movie": "LS_Event_Main_190_100_C", "title": "Mitsuru's father", "cues": [
+  {"at": 2.55, "text": "Free of the crosses, you and the others turn around. Behind you, Mitsuru kneels beside her father, who lies still on his back."},
+  {"at": 8.80, "text": "Mitsuru bows low over her father's body."}
+]}

@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_103_100_C
-0.030	2.291	00.mp3	You enter Bookworms. Bunkichi dozes.
-23.770	2.617	01.mp3	Bunkichi holds out a persimmon. You take it.
+0.030	7.776	00.mp3	You come into Bookworms. Bunkichi is dozing in his chair, eyes closed, murmuring in his sleep, while Mitsuko stands beside him.
+3.400	3.403	01.mp3	Bunkichi's eyes snap open and he straightens up in his chair.
+23.770	4.921	02.mp3	Bunkichi leans forward from his chair and holds out a single persimmon, and you take it.

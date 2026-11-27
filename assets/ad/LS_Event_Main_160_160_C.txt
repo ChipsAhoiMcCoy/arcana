@@ -1,5 +1,5 @@
 #scene LS_Event_Main_160_160_C
-0.000	1.079	00.mp3	A girl sketches.
-20.670	1.224	01.mp3	Chidori stands up.
-27.500	2.645	02.mp3	Chidori walks off past Junpei, who watches.
-31.500	1.431	03.mp3	Junpei pumps his fist.
+0.000	9.683	00.mp3	In the square by Port Island Station, a girl sits on a bench drawing in a sketchbook. Junpei walks up to her, his bag over his shoulder, and stops beside the bench.
+20.670	7.167	01.mp3	Junpei rubs the back of his head. Chidori smiles, closes her sketchbook and gets up from the bench, holding it against her.
+27.500	3.504	02.mp3	Chidori walks off past Junpei. He turns to watch her go.
+31.500	2.391	03.mp3	Alone, Junpei pumps his fist, grinning.

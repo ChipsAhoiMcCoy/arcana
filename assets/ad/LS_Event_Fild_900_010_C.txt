@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_010_C
-0.000	5.291	00.mp3	Elizabeth, the Velvet Room attendant, steps out with a large book and gestures; you walk in.
+0.000	9.303	00.mp3	Elizabeth, the Velvet Room attendant, steps out of its door holding a large book. She stands aside and gestures to the door, and you walk in with her behind you.

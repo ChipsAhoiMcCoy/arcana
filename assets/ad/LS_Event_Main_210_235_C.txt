@@ -1,2 +1,2 @@
 #scene LS_Event_Main_210_235_C
-0.100	1.244	00.mp3	Iwatodai Strip Mall.
+0.100	5.366	00.mp3	The Iwatodai Strip Mall. People stand about in the street, and a man runs in to join them.

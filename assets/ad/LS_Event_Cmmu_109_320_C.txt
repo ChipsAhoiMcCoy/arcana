@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_320_C
-0.000	1.444	00.mp3	Chihiro walks up to you.
+0.000	6.633	00.mp3	In Fountain Square in Paulownia Mall, beside the fountain, with people passing by, Chihiro walks up to meet you.

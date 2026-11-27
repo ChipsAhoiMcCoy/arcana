@@ -1,4 +1,4 @@
 #scene LS_Event_Fild_517_002_C
-0.170	1.781	00.mp3	Your party reaches a sealed door.
-2.600	0.996	01.mp3	A ring swirls.
-4.300	2.683	02.mp3	The ring vanishes, shards scattering around you.
+0.170	3.986	00.mp3	You and your party walk up to a sealed door at the top of a flight of steps.
+2.600	2.401	01.mp3	A ring of energy swirls across the doorway.
+4.300	4.912	02.mp3	The ring shrinks away to nothing, and shards burst out and scatter across the floor around you.

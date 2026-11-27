@@ -1,3 +1,3 @@
 #scene LS_Event_Main_140_200_C
-0.000	1.080	00.mp3	Vacation home.
-7.500	2.825	01.mp3	Takeharu lifts a hand; a projector starts up.
+0.000	14.523	00.mp3	In a sitting room of the vacation home, everyone sits on sofas around a low table: you, Yukari and Mitsuru on one side, Junpei, Fuuka and Akihiko on the other. Facing you all sits the man with the eyepatch, his arms folded.
+7.500	7.378	01.mp3	Takeharu unfolds his arms and lifts a hand. A switch clicks and a projector starts up. Everyone turns to look at it.

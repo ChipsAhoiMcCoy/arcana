@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_600_823_C", "title": "Studying with Akihiko and Mitsuru", "cues": [{"at": 0.03, "text": "Dorm lounge."}, {"at": 2.72, "text": "You study together."}]}
+{
+ "movie": "LS_Event_Cmmu_600_823_C",
+ "title": "Studying with Akihiko and Mitsuru",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm lounge. You sit at the dining table, studying with Akihiko and Mitsuru across from you, books and notebooks open in front of everyone."
+  }
+ ]
+}

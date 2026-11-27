@@ -1,1 +1,30 @@
-{"movie": "LS_Event_Main_200_230_B", "title": "Aigis returns to the dorm", "cues": [{"at": 0.04, "text": "The lounge."}, {"at": 22.55, "text": "Aigis stands."}, {"at": 44.2, "text": "Palladion floats in empty space."}, {"at": 51.7, "text": "Athena, with a lance and huge shield, replaces Palladion."}, {"at": 59.8, "text": "Everyone sits around Aigis again."}]}
+{
+ "movie": "LS_Event_Main_200_230_B",
+ "title": "Aigis returns to the dorm",
+ "cues": [
+  {
+   "at": 0.04,
+   "text": "The dorm lounge. Aigis is back, sitting with everyone on the sofas around the table."
+  },
+  {
+   "at": 22.55,
+   "text": "Aigis springs up from her seat."
+  },
+  {
+   "at": 39.85,
+   "text": "Aigis sits back down with a small smile."
+  },
+  {
+   "at": 44.2,
+   "text": "Aigis closes her eyes. Her Persona, Palladion, floats in empty space, a helmeted figure in flowing robes with small shards drifting around it."
+  },
+  {
+   "at": 51.7,
+   "text": "Palladion is gone. In its place stands Athena, a helmeted woman holding a long lance and a huge round shield, a wide hoop circling her."
+  },
+  {
+   "at": 59.8,
+   "text": "The lounge again, everyone seated around Aigis as before."
+  }
+ ]
+}

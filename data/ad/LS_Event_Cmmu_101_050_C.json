@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_101_050_C", "title": "Kenji talks about Emiri", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_101_050_C",
+ "title": "Kenji talks about Emiri",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Wilduck Burger, you and Kenji sit facing each other across a table with trays of burgers and drinks, Kenji leaning back with his arms folded."
+  }
+ ]
+}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_120_140_C", "title": "Splitting up to find the gym key", "cues": [{"at": 0.0, "text": "At school."}, {"at": 14.83, "text": "Junpei hangs his head."}]}
+{
+ "movie": "LS_Event_Main_120_140_C",
+ "title": "Splitting up to find the gym key",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Inside the school, among rows of tall lockers, the five of you stand in a loose circle: Junpei and Akihiko, hands on their hips, face Mitsuru, you and Yukari."
+  },
+  {
+   "at": 14.83,
+   "text": "Junpei's shoulders slump and he hangs his head."
+  }
+ ]
+}

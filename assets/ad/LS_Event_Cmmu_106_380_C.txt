@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_106_380_C
-0.170	0.806	00.mp3	Wakatsu.
-1.330	1.163	01.mp3	You sit with Yuko.
+0.170	8.169	00.mp3	Wakatsu, the set-meal restaurant, among other diners. You and Yuko sit across from each other at a table by the window, over your meals.

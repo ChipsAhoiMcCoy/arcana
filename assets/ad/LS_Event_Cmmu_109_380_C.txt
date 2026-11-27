@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_109_380_C
-0.000	0.745	00.mp3	A café.
-2.720	1.464	01.mp3	Chihiro looks downcast.
+0.000	5.229	00.mp3	At a café in Paulownia Mall, you sit across a table from Chihiro. She looks downcast.

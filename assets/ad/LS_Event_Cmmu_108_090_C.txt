@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_108_090_C
-1.100	1.467	00.mp3	Keisuke walks over to you.
+1.100	9.084	00.mp3	In the art room, Keisuke gets up from his stool at an easel and walks over to you. You, Fuuka and the other club members are painting at easels around the room.

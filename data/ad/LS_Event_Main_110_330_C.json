@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_110_330_C", "title": "The report", "cues": [{"at": 0.0, "text": "Dorm command room."}, {"at": 9.17, "text": "Ikutsuki winces."}]}
+{"movie": "LS_Event_Main_110_330_C", "title": "The report", "cues": [
+{"at": 0.00, "text": "Meanwhile, in the dorm's command room, Akihiko sits at the console with his arms folded. The chairman, Ikutsuki, stands beside him facing the big monitors."},
+{"at": 9.17, "text": "Ikutsuki doubles over, rubbing his legs."}
+]}

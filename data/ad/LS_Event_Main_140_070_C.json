@@ -1,18 +1,5 @@
-{
- "movie": "LS_Event_Main_140_070_C",
- "title": "Junpei alone at the station",
- "cues": [
-  {
-   "at": 0.05,
-   "text": "Junpei."
-  },
-  {
-   "at": 5.45,
-   "text": "Two students walk up."
-  },
-  {
-   "at": 9.2,
-   "text": "The students leave. Junpei stays alone."
-  }
- ]
-}
+{"movie": "LS_Event_Main_140_070_C", "title": "Junpei alone at the station", "cues": [
+ {"at": 0.05, "text": "Outside Port Island Station, Junpei sits by himself on a low step."},
+ {"at": 5.45, "text": "Junpei is on his feet, a hand on his hip. Two students walk up and stop nearby, chatting."},
+ {"at": 9.20, "text": "The two students walk on and leave. Junpei stays behind alone."}
+]}

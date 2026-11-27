@@ -1,4 +1,4 @@
 #scene LS_Event_Main_100_210_B
-0.050	7.805	00.mp3	In a room with a clock face, a long-nosed old man sits at a table, a young woman beside him with a book. You sit across from them.
-16.450	1.646	01.mp3	A paper appears on the table.
-23.750	2.001	02.mp3	A small light drifts down beside you.
+0.050	18.149	00.mp3	A room of tall, ornate walls with a large clock face set into them, its hands turning. A long-nosed old man sits in a high-backed armchair at a round table, hands folded under his chin; a young woman stands beside him holding a large book. You sit in a chair across the table from them.
+16.450	4.839	01.mp3	A small sphere forms above the table and fades, leaving a sheet of paper lying on it.
+23.750	3.466	02.mp3	A small light drifts down from above and circles beside you.

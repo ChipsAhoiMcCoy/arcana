@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_009_740_C", "title": "Koromaru's hidden gifts", "cues": [{"at": 11.33, "text": "Koromaru lays a paw on you."}, {"at": 13.83, "text": "Koromaru trots up and drops something small at your feet."}]}
+{
+ "movie": "LS_Event_Cmmu_009_740_C",
+ "title": "Koromaru's hidden gifts",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "In the dorm lounge, you sit brushing Koromaru's coat. Fuuka sits on the sofa nearby, watching him."
+  },
+  {
+   "at": 11.33,
+   "text": "Koromaru sits up on the sofa beside you; you hold out a hand and he rests a paw on it."
+  },
+  {
+   "at": 13.83,
+   "text": "Later, Koromaru trots up to you on the sofa and drops something small at your feet."
+  }
+ ]
+}

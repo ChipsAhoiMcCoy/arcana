@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_116_040_C", "title": "An emergency at Wakatsu", "cues": [{"at": 0.0, "text": "Wakatsu."}, {"at": 5.17, "text": "With Nozomi."}, {"at": 9.17, "text": "Nozomi clutches his stomach, then sits back, drained."}]}
+{
+ "movie": "LS_Event_Cmmu_116_040_C",
+ "title": "An emergency at Wakatsu",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Wakatsu, the set-meal restaurant. You and Nozomi sit together at a table among the other diners."
+  },
+  {
+   "at": 9.17,
+   "text": "Nozomi clutches his stomach with both hands. Then he is back in his seat, slumped and drained."
+  }
+ ]
+}

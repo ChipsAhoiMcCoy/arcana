@@ -1,2 +1,3 @@
 #scene LS_Event_Main_210_140_C
-0.000	1.426	00.mp3	Jin stands alone ahead.
+0.000	10.715	00.mp3	Inside Tartarus, the team runs onto a wide floor and stops short. Jin stands alone ahead of you, a metal briefcase in his hand. Everyone takes a fighting stance.
+12.330	3.814	01.mp3	Jin sets himself in a fighting stance, his briefcase at his side.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Extr_450_010_C", "title": "Alone at the arcade", "cues": [{"at": 0.17, "text": "Mall arcade."}]}
+{
+ "movie": "LS_Event_Extr_450_010_C",
+ "title": "Alone at the arcade",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The arcade in Paulownia Mall, a row of game cabinets. You sit at one, hands on the controls, playing. Another player sits at a machine nearby."
+  }
+ ]
+}

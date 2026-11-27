@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_020_C
-0.000	2.251	00.mp3	You open the Velvet Room door and step in.
+0.000	8.468	00.mp3	A narrow back alley between brick walls. You push open the door to the Velvet Room, a door no one else can see, and step through into a long hall.

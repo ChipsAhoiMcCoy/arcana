@@ -3,8 +3,12 @@
  "title": "Ken's first coffee",
  "cues": [
   {
-   "at": 5.0,
-   "text": "You and Ken clean up."
+   "at": 0.0,
+   "text": "The dorm's dining table. You and Ken, both in aprons, sit at the table over cups of coffee Ken has just brewed."
+  },
+  {
+   "at": 6.4,
+   "text": "Later, you and Ken stand together in the kitchen by the sink, cleaning up."
   }
  ]
 }

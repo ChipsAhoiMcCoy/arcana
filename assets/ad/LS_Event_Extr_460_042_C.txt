@@ -1,4 +1,4 @@
 #scene LS_Event_Extr_460_042_C
-0.030	0.810	00.mp3	Be Blue V.
-4.500	3.556	01.mp3	Junpei walks off for the treatment, leaving you waiting by the sign.
+0.030	9.420	00.mp3	Paulownia Mall, inside the shop Be Blue V, beside its big sign. You stand with your hands in your pockets; Junpei stands facing you, a hand on his hip.
+4.500	4.241	01.mp3	Junpei turns and walks off for the treatment, leaving you waiting by the sign.
 8.830	1.843	02.mp3	Later, Junpei walks back to you.

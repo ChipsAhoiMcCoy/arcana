@@ -1,4 +1,3 @@
 #scene LS_Event_Extr_320_010_C
-0.030	0.929	00.mp3	The school gate.
-2.770	1.157	01.mp3	A friend joins you.
-4.500	1.163	02.mp3	You walk on together.
+0.030	6.255	00.mp3	The school gate. Bag over your shoulder, hands in your pockets, you walk in, and a friend comes over to join you.
+4.500	2.195	01.mp3	The two of you walk on into school together.

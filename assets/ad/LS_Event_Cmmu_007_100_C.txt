@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_007_100_C
-0.000	4.626	00.mp3	In Aigis's room, you face Aigis amid shell casings and ammunition boxes.
-12.330	1.642	01.mp3	Aigis hands you a charred screw.
-28.000	2.440	02.mp3	You step closer; Aigis touches her cheek.
+0.000	12.345	00.mp3	Aigis's room in the dorm, with a large reclining machine chair beside her and ammunition boxes stacked against the wall. You stand facing Aigis. Spent shell casings lie scattered across the floor.
+12.330	3.332	01.mp3	Aigis holds out a small charred screw, and you take it from her.
+28.000	4.095	02.mp3	You step closer to Aigis. She glances down and lifts a hand to her cheek.
 36.700	2.624	03.mp3	You step up to Aigis and gently take her hand.

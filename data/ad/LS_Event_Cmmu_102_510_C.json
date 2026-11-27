@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_102_510_C", "title": "Time with Hidetoshi", "cues": [{"at": 0.0, "text": "In the council room, you talk with Hidetoshi."}]}
+{
+ "movie": "LS_Event_Cmmu_102_510_C",
+ "title": "Time with Hidetoshi",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the student council room, you stand talking with Hidetoshi, gesturing as you speak while he listens with his arms folded."
+  }
+ ]
+}

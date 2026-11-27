@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Extr_450_040_C",
- "title": "A set meal at Wakatsu",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "Wakatsu."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_450_040_C", "title": "A set meal at Wakatsu", "cues": [{"at": 0.03, "text": "Wakatsu, the set-meal restaurant in the Iwatodai Strip Mall. You sit alone at a table before a steaming set meal: rice, miso soup and side dishes on a tray. Chopsticks in hand, you dig in. Two customers chat at a table behind you."}]}

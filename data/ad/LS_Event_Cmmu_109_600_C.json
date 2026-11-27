@@ -3,8 +3,12 @@
  "title": "At the cinema with Chihiro",
  "cues": [
   {
+   "at": 0.0,
+   "text": "At the cinema at Port Island Station, you stand with Chihiro by the snack counter."
+  },
+  {
    "at": 1.0,
-   "text": "At the cinema, you and Chihiro sit among the audience."
+   "text": "You and Chihiro sit side by side among the audience in the theatre as the films play."
   }
  ]
 }

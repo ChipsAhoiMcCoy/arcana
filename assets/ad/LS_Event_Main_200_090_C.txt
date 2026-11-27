@@ -1,2 +1,5 @@
 #scene LS_Event_Main_200_090_C
-0.550	1.639	00.mp3	Junpei walks in on the others.
+0.550	8.939	00.mp3	At the dining table on the dorm's first floor, the others wait, some seated and some standing, with a sketchbook lying on the table. Junpei walks in.
+9.700	3.701	01.mp3	Yukari opens the sketchbook on the table and turns its pages.
+14.700	5.330	02.mp3	The open page shows a pencil sketch of Junpei in his cap, his chin resting on his hand.
+17.000	8.721	03.mp3	Junpei sits down at the table, bends over the sketchbook and bows his head low over it. After a while he stands back up and wipes his eyes with his arm.

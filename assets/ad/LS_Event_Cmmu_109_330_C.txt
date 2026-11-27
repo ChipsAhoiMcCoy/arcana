@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_330_C
-0.000	1.224	00.mp3	Chihiro walks up.
+0.000	4.112	00.mp3	In Iwatodai Strip Mall, Chihiro walks up to you where you have been waiting.

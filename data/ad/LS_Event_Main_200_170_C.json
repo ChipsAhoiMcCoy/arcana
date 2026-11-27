@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_200_170_C", "title": "Ryoji's choice", "cues": [{"at": 47.85, "text": "Ryoji stands, walks slowly past your seat and out the door. Koromaru watches him go."}]}
+{"movie": "LS_Event_Main_200_170_C", "title": "Ryoji's choice", "cues": [
+{"at": 0.04, "text": "The command room on the dorm's fourth floor. Everyone sits on the sofas and chairs around the long table, Ryoji among them, with Koromaru sitting on the floor."},
+{"at": 20.50, "text": "Junpei jumps up from his seat. Yukari, on her feet since Ryoji's apology, sinks back into hers."},
+{"at": 47.85, "text": "Ryoji stands up, turns away from the table and walks slowly across the room, past your seat, and out through the door. Koromaru gets up and watches him go."}
+]}

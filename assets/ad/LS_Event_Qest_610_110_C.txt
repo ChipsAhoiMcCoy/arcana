@@ -1,7 +1,7 @@
 #scene LS_Event_Qest_610_110_C
 0.050	4.236	00.mp3	Paulownia Mall. You and Elizabeth walk up to the fountain in the middle of the square.
 10.900	3.773	01.mp3	Elizabeth flings handful after handful of coins into the fountain.
-20.700	4.839	02.mp3	Elizabeth walks off, and you follow to a police box with an officer behind its window.
+20.700	8.118	02.mp3	Elizabeth turns and walks off, and you follow her to a police box with an officer behind its window and a board of wanted posters beside it.
 33.670	4.048	03.mp3	Elizabeth leads you on to the padded doors of a club behind a rope line.
-44.170	2.322	04.mp3	Elizabeth dances before the closed doors.
-60.670	4.198	05.mp3	Elizabeth walks off to another fountain, then a third, and hurries back to you.
+44.170	6.311	04.mp3	Elizabeth turns back to you, then dances in front of the closed doors, flinging her arms out in wide poses.
+60.670	7.210	05.mp3	Elizabeth walks off to another fountain, leaving you where you stand. She runs off to look at the third, then hurries back to you.

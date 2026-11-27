@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_003_600_C
-0.050	0.608	00.mp3	Lobby.
-2.900	1.611	01.mp3	You and Junpei watch the film.
-7.050	0.978	02.mp3	Back in the lobby.
+0.050	4.509	00.mp3	The lobby of the Screen Shot cinema. You and Junpei stand at the snack counter.
+2.900	5.465	01.mp3	Inside the theater, you and Junpei sit side by side in a packed audience, watching the film.
+8.200	3.840	02.mp3	Afterward, you and Junpei stand back in the lobby by the snack counter.

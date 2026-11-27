@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_110_050_C
-0.030	0.963	00.mp3	Maiko cries.
-2.000	1.059	01.mp3	You sit on a bench.
+0.030	11.289	00.mp3	Naganaki Shrine, by the jungle gym in its playground. Maiko stands with her backpack on, crying and rubbing her eyes with both hands. You stand beside her, your bag over your shoulder.
+2.000	5.215	01.mp3	You sit down together on a bench. Maiko hunches forward, hands on her knees, head bowed.

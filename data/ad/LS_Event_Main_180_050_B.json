@@ -1,1 +1,38 @@
-{"movie": "LS_Event_Main_180_050_B", "title": "Ken's resolve", "cues": [{"at": 1.25, "text": "Ken stands alone. Akihiko walks up."}, {"at": 11.9, "text": "Akihiko turns his back and walks off."}, {"at": 18.55, "text": "Ken cries into his hands."}, {"at": 21.9, "text": "He looks up."}, {"at": 25.4, "text": "Ken's Persona Nemesis hovers, then changes into a new Persona, Kala-Nemi: two caged spheres on long jointed legs."}, {"at": 37.35, "text": "Motes sink into Ken's chest."}, {"at": 40.75, "text": "Ken smiles."}]}
+{
+ "movie": "LS_Event_Main_180_050_B",
+ "title": "Ken's resolve",
+ "cues": [
+  {
+   "at": 1.25,
+   "text": "A back alley with a stairway and an oil drum. Ken stands alone. Akihiko walks up and stops a few steps from him."
+  },
+  {
+   "at": 11.9,
+   "text": "Akihiko turns his back on Ken and walks off, leaving him alone."
+  },
+  {
+   "at": 18.55,
+   "text": "Ken covers his face with his hands and cries."
+  },
+  {
+   "at": 21.9,
+   "text": "He lowers his hands and looks up, his face set."
+  },
+  {
+   "at": 23.53,
+   "text": "Ken closes his eyes."
+  },
+  {
+   "at": 25.4,
+   "text": "Ken's Persona, Nemesis, hovers: a slender, armoured figure with a blade rising from its head. It changes into a new Persona, Kala-Nemi: two caged spheres joined at the middle, standing on long, jointed legs."
+  },
+  {
+   "at": 37.35,
+   "text": "Back in the alley, Ken stands with his eyes closed as small motes gather at his chest and sink into him."
+  },
+  {
+   "at": 40.75,
+   "text": "Ken smiles."
+  }
+ ]
+}

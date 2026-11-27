@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_320_050_C", "title": "Yukari and Ryoji at the gate", "cues": [{"at": 11.7, "text": "Yukari walks off. Ryoji reaches after her."}]}
+{
+ "movie": "LS_Event_Extr_320_050_C",
+ "title": "Yukari and Ryoji at the gate",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "At the school gate, Yukari catches up with you and walks beside you."
+  },
+  {
+   "at": 5.67,
+   "text": "Ryoji walks up behind Yukari and joins you both."
+  },
+  {
+   "at": 11.7,
+   "text": "Yukari's face falls. She turns away from Ryoji without an answer and walks off past you. Ryoji reaches a hand out after her."
+  }
+ ]
+}

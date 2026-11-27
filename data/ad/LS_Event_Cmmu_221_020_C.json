@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_221_020_C", "title": "Trouble on the rooftop", "cues": [{"at": 0.0, "text": "On the school rooftop, you and Ryoji walk up to three male students who are waiting for him."}, {"at": 25.0, "text": "The students leave. Ryoji looks downcast."}]}
+{
+ "movie": "LS_Event_Cmmu_221_020_C",
+ "title": "Trouble on the rooftop",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the school rooftop, you and Ryoji walk up to three male students who are waiting for him."
+  },
+  {
+   "at": 25.0,
+   "text": "The three students leave the rooftop. Ryoji turns to you, looking downcast."
+  }
+ ]
+}

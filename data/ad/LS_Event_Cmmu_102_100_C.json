@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_102_100_C", "title": "The lighter", "cues": [{"at": 11.87, "text": "Hidetoshi holds out a lighter."}, {"at": 14.2, "text": "He hands it over."}]}
+{
+ "movie": "LS_Event_Cmmu_102_100_C",
+ "title": "The lighter",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the student council room, Hidetoshi stands before the seated members, Mitsuru among them, finishing a talk. After the meeting, Hidetoshi comes over to you."
+  },
+  {
+   "at": 10.69,
+   "text": "Hidetoshi holds out a lighter on his open palm."
+  },
+  {
+   "at": 14.3,
+   "text": "He hands you the lighter, then folds his arms."
+  }
+ ]
+}

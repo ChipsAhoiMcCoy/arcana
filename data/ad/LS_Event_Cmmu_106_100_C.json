@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_106_100_C", "title": "Alone with Yuko", "cues": [{"at": 0.0, "text": "Yuko's bedroom."}, {"at": 10.0, "text": "You take a letter."}]}
+{
+ "movie": "LS_Event_Cmmu_106_100_C",
+ "title": "Alone with Yuko",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Yuko's bedroom. You sit side by side with Yuko on the edge of her bed, the two of you alone."
+  },
+  {
+   "at": 8.67,
+   "text": "Yuko holds out a letter, and you take it from her. As she goes on, she looks down at her lap and fidgets, a hand going to her chest."
+  }
+ ]
+}

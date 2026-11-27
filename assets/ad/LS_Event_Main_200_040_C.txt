@@ -1,6 +1,6 @@
 #scene LS_Event_Main_200_040_C
-0.050	4.159	00.mp3	Chidori stands on the steps, back turned. Junpei runs up behind her.
-6.550	2.626	01.mp3	Chidori turns around to face Junpei, scowling.
-11.550	0.704	02.mp3	Hatchet.
-14.850	2.238	03.mp3	You and the others run up behind Junpei.
+0.050	5.931	00.mp3	At the foot of Tartarus, Chidori stands on the steps with her back turned. Junpei runs up behind her.
+6.550	2.685	01.mp3	Chidori turns around to face Junpei, scowling.
+11.550	7.191	02.mp3	Chidori whirls and flings a hatchet on a long chain at Junpei. It lashes past him, and she draws it back into her hand.
+14.850	4.024	03.mp3	You and the others run up behind Junpei and take your battle stances.
 18.200	2.056	04.mp3	Chidori puts an Evoker to her head.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_320_C", "title": "Hanging out with Chihiro", "cues": [{"at": 0.0, "text": "Chihiro walks up to you."}]}
+{
+ "movie": "LS_Event_Cmmu_109_320_C",
+ "title": "Hanging out with Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Fountain Square in Paulownia Mall, beside the fountain, with people passing by, Chihiro walks up to meet you."
+  }
+ ]
+}

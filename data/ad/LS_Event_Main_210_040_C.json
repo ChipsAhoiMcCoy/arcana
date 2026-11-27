@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_210_040_C", "title": "Back to class", "cues": [{"at": 0.03, "text": "Yukari gets up and walks out."}, {"at": 4.55, "text": "You take out your phone and check it."}]}
+{"movie": "LS_Event_Main_210_040_C", "title": "Back to class", "cues": [
+{"at": 0.03, "text": "Your classroom. You sit at your desk near Aigis as Yukari gets up and walks out the door."},
+{"at": 4.55, "text": "You take out your phone and check it."}
+]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_010_715_C
-1.680	1.018	00.mp3	Gardening together.
+0.170	5.620	00.mp3	The dorm rooftop. You and Shinjiro crouch side by side by a planter box, working the soil.

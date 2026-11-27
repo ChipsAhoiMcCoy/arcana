@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_007_065_C
-0.000	0.918	00.mp3	At the station.
-24.000	3.023	01.mp3	Kiyoshi walks off up the steps. Aigis looks sad.
+0.000	4.612	00.mp3	Iwatodai Station. You and Aigis come up behind a boy walking through the crowd.
+24.000	6.358	01.mp3	Kiyoshi turns his back on Aigis and walks off up the station steps. Aigis watches him go, her face sad.

@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_106_070_C
-0.000	1.209	00.mp3	You walk to the children.
-8.400	2.636	01.mp3	The children run off. Yuko watches them go.
+0.000	4.917	00.mp3	On the school's sports field, you and Yuko walk over to the children, who are waiting for you.
+8.400	3.511	01.mp3	The children run off across the field. Yuko watches them go.

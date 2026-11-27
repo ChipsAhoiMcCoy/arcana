@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_650_020_C
-0.000	1.793	00.mp3	A teacher comes over, lecturing.
+0.000	14.390	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher with a huge set square over his shoulder walks in, working through sums aloud, and comes over to you. As he lectures, a sweat drop forms on your brow.

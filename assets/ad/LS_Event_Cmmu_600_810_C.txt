@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_810_C
-0.000	0.706	00.mp3	Studying.
+0.000	9.547	00.mp3	You sit at the dorm's dining table with Yukari and Junpei, studying. Junpei slouches with his cheek propped on his hand while Yukari writes in her notebook.

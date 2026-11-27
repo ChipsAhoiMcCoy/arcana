@@ -1,3 +1,3 @@
 #scene LS_Event_Main_200_110_C
-0.000	1.269	00.mp3	Mitsuru sits alone.
-2.030	2.552	01.mp3	She gets up, takes out her phone and makes a call.
+0.550	2.602	00.mp3	Mitsuru sits alone on a sofa, arms folded.
+2.050	2.552	01.mp3	She gets up, takes out her phone and makes a call.

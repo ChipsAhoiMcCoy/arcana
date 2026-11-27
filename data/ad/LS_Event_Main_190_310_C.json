@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_190_310_C", "title": "Caught", "cues": [{"at": 1.83, "text": "Yukari and Fuuka curl away."}, {"at": 7.33, "text": "Mitsuru squares up and lifts a hand."}]}
+{
+ "movie": "LS_Event_Main_190_310_C",
+ "title": "Caught",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the bath, the four of you stand face to face with Yukari, Fuuka, Mitsuru and Aigis, a few steps of water between you."
+  },
+  {
+   "at": 1.83,
+   "text": "Yukari and Fuuka shut their eyes tight and curl away, clutching their towels."
+  },
+  {
+   "at": 7.33,
+   "text": "Mitsuru squares up and lifts a hand toward the four of you."
+  }
+ ]
+}

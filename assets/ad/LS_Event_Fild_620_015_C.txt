@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_620_015_C
-0.070	1.074	00.mp3	You open the door.
+0.070	4.027	00.mp3	You reach out to open the door, your party behind you with weapons ready.

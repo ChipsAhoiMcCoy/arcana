@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_110_073_C
-0.030	0.966	00.mp3	Fountain Square.
+0.030	3.797	00.mp3	Fountain Square in Paulownia Mall. You stand with Maiko's parents.

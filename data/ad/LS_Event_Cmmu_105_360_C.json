@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_360_C", "title": "A present for his nephew", "cues": [{"at": 0.0, "text": "Strip mall."}]}
+{
+ "movie": "LS_Event_Cmmu_105_360_C",
+ "title": "A present for his nephew",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Strip Mall, with shoppers passing by. Kazushi stands facing you, one hand on his hip, looking troubled."
+  }
+ ]
+}

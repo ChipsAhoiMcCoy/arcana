@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_600_845_C", "title": "Everyone studies together", "cues": [{"at": 0.03, "text": "Everyone studies."}, {"at": 29.86, "text": "Everyone sweats nervously."}]}
+{
+ "movie": "LS_Event_Cmmu_600_845_C",
+ "title": "Everyone studies together",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm lounge. The whole team has gathered around the dining table to study: you, Mitsuru, Yukari, Junpei, Fuuka, Akihiko, Aigis and Ken, with Koromaru sitting nearby."
+  },
+  {
+   "at": 29.83,
+   "text": "Everyone at the table breaks into a nervous sweat."
+  }
+ ]
+}

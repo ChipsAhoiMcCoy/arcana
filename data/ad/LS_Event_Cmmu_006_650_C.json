@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_650_C", "title": "Fuuka: ready to go", "cues": [{"at": 0.0, "text": "Fuuka walks over."}]}
+{
+ "movie": "LS_Event_Cmmu_006_650_C",
+ "title": "Fuuka: ready to go",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You are sitting at your desk in the classroom when Fuuka walks over to you, holding her bag in front of her with both hands."
+  }
+ ]
+}

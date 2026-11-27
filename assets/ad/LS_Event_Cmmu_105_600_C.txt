@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_105_600_C
-1.170	2.740	00.mp3	You and Kazushi watch the movie, side by side.
-7.530	1.645	01.mp3	Afterward, back in the lobby.
+0.000	6.580	00.mp3	The cinema lobby at Port Island Station. You stand with Kazushi by the snack counter, his hands on his hips.
+1.170	5.666	01.mp3	You and Kazushi sit side by side in the theater among the rest of the audience, watching the movie.
+8.670	3.835	02.mp3	After the movie, you stand with Kazushi by the snack counter again.

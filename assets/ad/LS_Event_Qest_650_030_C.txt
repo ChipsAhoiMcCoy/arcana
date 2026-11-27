@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_650_030_C
-0.000	1.262	00.mp3	A teacher comes over.
+0.000	9.310	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher in a lab coat walks in, reading a label aloud, and comes over to you.

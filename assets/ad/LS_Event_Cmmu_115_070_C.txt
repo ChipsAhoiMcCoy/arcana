@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_115_070_C
-0.000	0.929	00.mp3	Shrine bench.
+0.000	8.769	00.mp3	Naganaki Shrine. You and Mamoru sit side by side on a bench, a bag on the seat between you. Mamoru hunches forward, elbows on his knees.
 14.330	1.366	01.mp3	Mamoru gets to his feet.
 20.330	1.169	02.mp3	Mamoru runs off.

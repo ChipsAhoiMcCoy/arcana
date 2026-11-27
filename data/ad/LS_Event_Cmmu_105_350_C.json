@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_350_C", "title": "After the scuffle", "cues": [{"at": 0.0, "text": "You stop with Kazushi."}]}
+{
+ "movie": "LS_Event_Cmmu_105_350_C",
+ "title": "After the scuffle",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside the arcade by a crane game. You and Kazushi walk up and stop side by side, Kazushi scowling, hands on his hips."
+  }
+ ]
+}

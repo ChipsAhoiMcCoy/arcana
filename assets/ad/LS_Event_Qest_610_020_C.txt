@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_020_C
-0.050	1.247	00.mp3	You approach Elizabeth.
+0.050	6.338	00.mp3	Elizabeth waits by the door to the Velvet Room in Paulownia Mall, a thick book under her arm. You walk up to her.

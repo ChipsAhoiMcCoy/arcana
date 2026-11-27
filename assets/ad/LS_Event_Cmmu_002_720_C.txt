@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_720_C
-0.000	1.180	00.mp3	You sit with Yukari.
+0.000	7.033	00.mp3	In the dorm lounge, you and Yukari sit side by side in front of the TV, the series' last DVD ready to play.

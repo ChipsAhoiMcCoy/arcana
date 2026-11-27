@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_007_600_C", "title": "Aigis at the movies", "cues": [{"at": 0.0, "text": "Theater lobby."}, {"at": 1.83, "text": "You sit beside Aigis among the audience and watch the film."}]}
+{
+ "movie": "LS_Event_Cmmu_007_600_C",
+ "title": "Aigis at the movies",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the lobby of the movie theater at Port Island Station, you stand with Aigis by the snack counter."
+  },
+  {
+   "at": 1.83,
+   "text": "You sit beside Aigis among the audience and watch the film."
+  }
+ ]
+}

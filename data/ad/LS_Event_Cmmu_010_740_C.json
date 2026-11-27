@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_010_740_C", "title": "Tempura bowls", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_010_740_C",
+ "title": "Tempura bowls",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm kitchen. You and Shinjiro stand together at the counter, an open cardboard box beside the sink."
+  },
+  {
+   "at": 8.33,
+   "text": "Later, you and Shinjiro sit side by side at the counter in the lounge, eating tempura bowls with chopsticks. Shinjiro smiles."
+  }
+ ]
+}

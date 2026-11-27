@@ -1,6 +1,6 @@
 #scene LS_Event_Main_120_260_C
-0.050	3.251	00.mp3	Fuuka stands with the Evoker; Natsuki kneels beside her.
-4.350	0.897	01.mp3	You walk over.
+0.050	9.456	00.mp3	The Shadows are gone. In the entrance hall, Fuuka stands with the Evoker clasped in her hands and Natsuki on her knees beside her, as her Persona fades away.
+4.350	1.864	01.mp3	You and the others walk over to them.
 7.700	1.682	02.mp3	Fuuka turns around to Natsuki.
-11.520	1.076	03.mp3	Fuuka collapses.
-22.700	1.132	04.mp3	Natsuki cries.
+11.520	6.936	03.mp3	Fuuka's eyes close and she collapses to the floor. You and Akihiko kneel beside her, and Natsuki crawls to her side.
+22.700	4.850	04.mp3	Natsuki kneels beside Fuuka, sitting back on her heels with her head bowed, crying.

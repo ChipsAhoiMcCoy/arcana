@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_004_050_C", "title": "Akihiko's hand wraps", "cues": [{"at": 5.83, "text": "Kurosawa walks up, speaks to an officer, who leaves."}, {"at": 37.67, "text": "Akihiko steps back up and hands you his hand wraps."}]}
+{
+ "movie": "LS_Event_Cmmu_004_050_C",
+ "title": "Akihiko's hand wraps",
+ "cues": [
+  {
+   "at": 5.83,
+   "text": "Kurosawa walks up to you and Akihiko with another police officer. He has a quick word with the officer, who nods and moves off."
+  },
+  {
+   "at": 37.67,
+   "text": "Akihiko, who turned aside for a moment, steps back up to you and hands you a pair of his hand wraps."
+  }
+ ]
+}

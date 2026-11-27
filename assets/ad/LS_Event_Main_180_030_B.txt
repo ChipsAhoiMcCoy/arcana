@@ -1,7 +1,7 @@
 #scene LS_Event_Main_180_030_B
-0.050	7.524	00.mp3	An empty funeral hall. Flowers and Shinjiro's portrait line the stage. Akihiko walks down the aisle and stops at the altar.
-16.020	1.175	01.mp3	Akihiko kneels.
-23.200	1.155	02.mp3	He rises slowly.
-28.500	9.621	03.mp3	Akihiko's Persona, Polydeuces, appears: a towering giant with flowing hair. It changes into Caesar, a crowned, hooded figure with a sword and orb.
-45.300	1.963	04.mp3	Akihiko turns from the portrait.
-49.300	1.363	05.mp3	He nods, walks away.
+0.300	12.348	00.mp3	An empty funeral hall. Rows of seats face a stage banked with flowers, Shinjiro's framed portrait at its centre between two vases. Akihiko walks down the aisle alone and stops before the altar.
+16.020	6.077	01.mp3	Akihiko drops to his knees at the foot of the altar and buries his face in his arms against the flowers.
+23.200	2.808	02.mp3	He lifts his head and slowly gets back to his feet.
+28.600	17.770	03.mp3	Akihiko's Persona, Polydeuces, appears: a towering, muscled giant with long flowing hair and a padded vest, one armoured arm raised. It changes into a new Persona, Caesar: a crowned, hooded figure in a long cape, a sword raised in one hand and an orb in the other.
+45.300	4.348	04.mp3	Akihiko stands alone before the portrait again, then turns his back on it.
+49.300	1.698	05.mp3	He nods once and walks away.

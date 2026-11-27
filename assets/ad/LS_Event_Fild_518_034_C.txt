@@ -1,4 +1,4 @@
 #scene LS_Event_Fild_518_034_C
-0.250	2.568	00.mp3	You walk up to a tall clock rising from a seal.
-10.570	1.024	01.mp3	You read a booklet.
+0.250	14.101	00.mp3	You stand in a hall of tall pillars, your teammates behind you with weapons ready. A tall clock with a swinging pendulum rises from a round seal in the floor, and a small object lies near it. You walk up to the clock and look up at it.
+10.570	3.140	01.mp3	You turn aside and read through a small booklet in your hand.
 14.000	3.307	02.mp3	You lay a hand on the clock. Its hands turn and it chimes.

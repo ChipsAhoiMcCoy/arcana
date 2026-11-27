@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_600_827_C", "title": "The seniors cannot concentrate", "cues": [{"at": 1.17, "text": "Studying together."}]}
+{
+ "movie": "LS_Event_Cmmu_600_827_C",
+ "title": "The seniors cannot concentrate",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm lounge. You sit at the dining table, studying with Mitsuru and Akihiko. Mitsuru presses a hand to her brow, then sits with her arms folded, not writing."
+  }
+ ]
+}

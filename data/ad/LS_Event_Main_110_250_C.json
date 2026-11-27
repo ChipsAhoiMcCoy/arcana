@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_110_250_C", "title": "Inside the monorail", "cues": [{"at": 0.0, "text": "A coffin stands on a seat."}, {"at": 2.0, "text": "The car's doors slide shut."}, {"at": 5.3, "text": "Junpei shoves at a door; it will not budge."}]}
+{"movie": "LS_Event_Main_110_250_C", "title": "Inside the monorail", "cues": [
+{"at": 0.00, "text": "Inside the stopped monorail, you, Yukari and Junpei walk down the aisle. A coffin stands on one of the seats, where a passenger would sit."},
+{"at": 2.00, "text": "Behind you, the car's doors slide shut."},
+{"at": 5.30, "text": "The doors on the other side slam shut too. Junpei runs to the nearest one and shoves at it with both hands; it does not budge."}
+]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_410_010_C", "title": "Mitsuru calls a meeting", "cues": [{"at": 0, "text": "In class, Mitsuru walks over to you."}, {"at": 5.67, "text": "Mitsuru walks out."}]}
+{
+ "movie": "LS_Event_Extr_410_010_C",
+ "title": "Mitsuru calls a meeting",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Your classroom. You sit at your desk; Junpei sits turned round in the seat in front of you and Yukari sits on the next desk. The door opens and Mitsuru walks in and comes over to you."
+  },
+  {
+   "at": 5.67,
+   "text": "Mitsuru turns and walks out of the classroom."
+  }
+ ]
+}

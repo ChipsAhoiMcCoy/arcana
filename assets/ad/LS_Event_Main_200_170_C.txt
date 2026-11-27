@@ -1,2 +1,4 @@
 #scene LS_Event_Main_200_170_C
-47.850	5.553	00.mp3	Ryoji stands, walks slowly past your seat and out the door. Koromaru watches him go.
+0.040	9.713	00.mp3	The command room on the dorm's fourth floor. Everyone sits on the sofas and chairs around the long table, Ryoji among them, with Koromaru sitting on the floor.
+20.500	6.266	01.mp3	Junpei jumps up from his seat. Yukari, on her feet since Ryoji's apology, sinks back into hers.
+47.850	9.595	02.mp3	Ryoji stands up, turns away from the table and walks slowly across the room, past your seat, and out through the door. Koromaru gets up and watches him go.

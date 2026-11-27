@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Qest_600_120_C", "title": "Fusing three Personas", "cues": [{"at": 0.03, "text": "The Velvet Room. Igor passes a hand over the three cards on the table."}, {"at": 5.6, "text": "Energy bursts from each card. He flicks them into the air, and they hang in a triangle."}, {"at": 13.0, "text": "Energy streams from the cards and pierces your head."}, {"at": 20.95, "text": "The new Persona takes shape, then shrinks into a card."}]}
+{
+ "movie": "LS_Event_Qest_600_120_C",
+ "title": "Fusing three Personas",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The Velvet Room. The three Persona cards you chose lie face up on the table before Igor; Elizabeth stands beside his chair."
+  },
+  {
+   "at": 0.6,
+   "text": "Igor passes a gloved hand over the cards and energy bursts up from each one. He raises them upright, grinning behind them, then flicks them up into the air above his chair. They hang in a triangle and pulse."
+  },
+  {
+   "at": 14.6,
+   "text": "Streams of energy burst from the cards and rush at you as you sit in your chair; they pierce your head and scatter into tiny shards."
+  },
+  {
+   "at": 18.9,
+   "text": "The new Persona takes shape before you, then shrinks back into a single card."
+  }
+ ]
+}

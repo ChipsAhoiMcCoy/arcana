@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_110_070_C
-2.000	3.295	00.mp3	Maiko walks off, leaving you alone by the jungle gym.
-7.330	1.555	01.mp3	A man and woman hurry over.
+2.000	5.811	00.mp3	Maiko walks off past you and out of the playground, leaving you alone by the jungle gym at the shrine.
+7.330	6.416	01.mp3	A man in a suit and glasses and a woman come running across the playground, stop, then hurry over to you.

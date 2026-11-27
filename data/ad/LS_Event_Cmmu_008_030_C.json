@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_008_030_C", "title": "Ken: a gift for Mitsuru", "cues": [{"at": 0.03, "text": "The back alley behind Port Island Station. You walk in with Ken, past rough-looking young people who stare at him."}, {"at": 24.0, "text": "Ken walks deeper into the alley, and you follow to the door of Shot-Bar Que Sera Sera, where he turns to you."}, {"at": 39.7, "text": "Back outside, Ken smiles."}, {"at": 47.2, "text": "Ken heads off; you follow. He stops, face falling."}]}
+{
+ "movie": "LS_Event_Cmmu_008_030_C",
+ "title": "Ken: a gift for Mitsuru",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The back alley behind Port Island Station. You walk in with Ken, past a group of rough-looking young people hanging around by the wall. The young people turn and stare at Ken."
+  },
+  {
+   "at": 24.0,
+   "text": "Ken walks on past them, deeper into the alley, and you follow him to a doorway under a sign reading Shot-Bar Que Sera Sera, where Ken stops and turns to you."
+  },
+  {
+   "at": 39.7,
+   "text": "Some time later, you and Ken are back in the alley, and Ken is smiling."
+  },
+  {
+   "at": 47.2,
+   "text": "Ken heads off down the alley, and you follow. He stops and looks back, his face falling."
+  }
+ ]
+}

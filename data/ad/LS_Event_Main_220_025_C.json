@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_220_025_C", "title": "Mitsuru's graduation speech", "cues": [{"at": 0.1, "text": "Graduation."}, {"at": 2.7, "text": "The class representative leaves; Mitsuru crosses to the podium."}]}
+{"movie": "LS_Event_Main_220_025_C", "title": "Mitsuru's graduation speech", "cues": [
+{"at": 0.10, "text": "The graduation ceremony, in the school auditorium. On the stage, a girl stands at the podium; Mitsuru waits off to one side."},
+{"at": 2.70, "text": "The class representative walks off the stage, and Mitsuru crosses to the podium."}
+]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_200_C", "title": "Mitsuru's motorcycle", "cues": [{"at": 1.36, "text": "Mitsuru checks her motorcycle."}, {"at": 6.4, "text": "Mitsuru holds out a key. You step forward and take it."}]}
+{
+ "movie": "LS_Event_Cmmu_005_200_C",
+ "title": "Mitsuru's motorcycle",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In front of the dorm, Mitsuru bends over her motorcycle, checking it over, then straightens with a hand on her hip."
+  },
+  {
+   "at": 6.4,
+   "text": "Mitsuru holds out a key. You step forward and take it."
+  }
+ ]
+}

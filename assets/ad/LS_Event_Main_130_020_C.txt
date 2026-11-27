@@ -1,2 +1,3 @@
 #scene LS_Event_Main_130_020_C
-4.000	1.125	00.mp3	Fuuka sits down.
+0.550	14.800	00.mp3	In the dorm's command room, everyone sits around the low table: you, Yukari and Junpei on stools, Akihiko, Mitsuru and Fuuka on the sofa, and Chairman Ikutsuki in an armchair. Akihiko and Mitsuru sit with their arms folded.
+4.000	6.878	01.mp3	Fuuka, who sprang to her feet with a hand at her chest when the chairman spoke to her, sits back down on the edge of the sofa.

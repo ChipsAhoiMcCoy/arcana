@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_600_835_C
-0.030	0.886	00.mp3	Dorm lounge.
-23.670	1.934	01.mp3	Koromaru trots back and stands up.
+0.030	5.279	00.mp3	The dorm lounge. You sit at the table, studying with Ken, with Koromaru sitting beside him.
+8.830	2.708	01.mp3	Koromaru holds a can of Mad Bull in his mouth.
+23.670	6.956	02.mp3	Koromaru is no longer beside the table. Then he trots back in and rises up on his hind legs, tail wagging.

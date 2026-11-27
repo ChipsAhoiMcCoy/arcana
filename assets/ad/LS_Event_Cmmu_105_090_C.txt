@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_105_090_C
-0.000	3.681	00.mp3	You run in with Kazushi to the advisor's tent, where Yuko stands.
-10.100	2.660	01.mp3	The other runners leave you and Kazushi with Yuko.
+0.000	10.827	00.mp3	On the athletic field, you run down the track with Kazushi and the other runners and come in to a tent where the track team advisor sits on a folding chair, with Yuko standing beside him.
+10.100	4.413	01.mp3	The other runners walk off, leaving you and Kazushi with Yuko and the advisor.

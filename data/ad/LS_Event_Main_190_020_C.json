@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_190_020_C", "title": "Takeharu's thanks", "cues": [{"at": 8.0, "text": "A man with an eyepatch walks in."}, {"at": 17.17, "text": "Takeharu steps before Yukari, arms folded, and speaks."}]}
+{
+ "movie": "LS_Event_Main_190_020_C",
+ "title": "Takeharu's thanks",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The dorm lounge. Big platters of sushi cover the low table. You, Yukari, Fuuka and Akihiko sit on the sofas around it; Mitsuru, Junpei and Ken stand nearby, and Koromaru sits at the end of the table."
+  },
+  {
+   "at": 8.0,
+   "text": "The front door opens. A man in a suit with a patch over one eye walks in, followed by a man and a woman in suits, who stand back by the windows. You and the others get up and go to meet him."
+  },
+  {
+   "at": 17.17,
+   "text": "Takeharu nods to all of you, then steps across to stand in front of Yukari, who clasps her hands behind her back. He folds his arms as he speaks to her."
+  }
+ ]
+}

@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_006_010_C
-0.000	0.991	00.mp3	You sit with Fuuka.
-4.670	1.081	01.mp3	You wince, hunching.
-11.000	2.743	02.mp3	Fuuka runs off, returns with water, and you drink.
+0.000	6.099	00.mp3	You sit with Fuuka in the open-air corridor behind the school building, a bento box she has made between you.
+4.670	6.130	01.mp3	You eat a mouthful from the bento, your face tightens in pain, and you hunch forward, elbows on your knees.
+11.000	6.835	02.mp3	Fuuka jumps up and runs off. She comes back with water, you drink it down, and she sits beside you again, her head lowered.

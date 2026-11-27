@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_170_130_C", "title": "Akihiko goes looking", "cues": [{"at": 0.0, "text": "The team gathers around Fuuka."}, {"at": 14.33, "text": "Akihiko runs off."}]}
+{"movie": "LS_Event_Main_170_130_C", "title": "Akihiko goes looking", "cues": [
+{"at": 0.00, "text": "The battle won, the team gathers in front of the station around Fuuka."},
+{"at": 14.33, "text": "Akihiko turns his back on the group and runs off down the street. Yukari turns to watch him go."}
+]}

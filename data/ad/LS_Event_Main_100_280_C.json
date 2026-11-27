@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_280_C", "title": "The rooftop", "cues": [{"at": 0.05, "text": "Yukari shuts and locks the rooftop door."}, {"at": 4.75, "text": "Thud; Yukari startles."}]}
+{
+ "movie": "LS_Event_Main_100_280_C",
+ "title": "The rooftop",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Out on the dorm's rooftop, Yukari pushes the door shut behind you both and locks it."
+  },
+  {
+   "at": 4.75,
+   "text": "A heavy thud sounds nearby. Yukari startles and raises her guard, and you turn toward the noise."
+  }
+ ]
+}

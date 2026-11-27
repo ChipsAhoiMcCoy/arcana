@@ -1,6 +1,4 @@
 #scene LS_Event_Cmmu_106_045_C
-0.000	2.016	00.mp3	You and Yuko lead three children out.
-3.170	1.041	01.mp3	They run on ahead.
-8.550	3.317	02.mp3	The children race off down the field while you and Yuko watch.
-37.300	0.920	03.mp3	Now you're alone.
-40.630	1.434	04.mp3	Yuko fiddles with her hair.
+0.000	7.289	00.mp3	You and Yuko lead three children, a boy and two girls, onto the school's sports field. They run on ahead, looking all around.
+8.550	3.317	01.mp3	The children race off down the field while you and Yuko watch.
+37.300	5.544	02.mp3	Later, you and Yuko stand by the tent on your own, the children gone. Yuko fiddles with her hair.

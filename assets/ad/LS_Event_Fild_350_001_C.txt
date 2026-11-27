@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_350_001_C
-0.000	9.288	00.mp3	Fountain Square in Paulownia Mall: a round plaza ringed by shopfronts and an arcade, a fountain at its centre, people strolling. You walk in and stop.
+0.000	12.471	00.mp3	Paulownia Mall's Fountain Square: a round plaza with a fountain at its centre, ringed by shopfronts and an arcade, people strolling past and sitting at the fountain's edge. You walk in a few steps and stop.

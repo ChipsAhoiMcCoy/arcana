@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_102_040_C
-0.000	2.598	00.mp3	Mitsuru faces the council. You sit among them.
+0.000	5.521	00.mp3	In the student council room, Mitsuru stands before the members seated at the table. You sit among them.

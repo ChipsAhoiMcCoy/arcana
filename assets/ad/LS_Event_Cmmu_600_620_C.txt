@@ -1,5 +1,7 @@
 #scene LS_Event_Cmmu_600_620_C
-0.000	0.751	00.mp3	Clearing up.
-18.330	1.480	01.mp3	Junpei and Aigis join.
-73.000	1.344	02.mp3	Yuko joins the group.
-108.330	3.644	03.mp3	Chihiro leaves. Only Kenji, Kazushi and Aigis stay.
+0.000	7.139	00.mp3	In a classroom still full of culture festival displays, you stand with Kenji, Kazushi and Yukari, ready to clear it out.
+18.330	2.297	01.mp3	Junpei and Aigis walk over to the group.
+73.000	2.804	02.mp3	Yuko comes into the room and walks over to the group.
+85.670	3.502	03.mp3	Chihiro hurries in, looking flustered, and comes over to you.
+89.700	1.781	04.mp3	Yuko and Yukari both frown.
+108.330	9.537	05.mp3	Chihiro turns and hurries out. Yukari and Junpei have gone off across the room and Yuko has left too: only Kenji, Kazushi and Aigis stay with you.

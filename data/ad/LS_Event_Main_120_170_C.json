@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Main_120_170_C",
- "title": "Teams for Tartarus",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You and Yukari join the others."
-  }
- ]
-}
+{"movie": "LS_Event_Main_120_170_C", "title": "Teams for Tartarus", "cues": [{"at": 0.00, "text": "In the main hallway on the first floor, you and Yukari walk up to Mitsuru, Akihiko and Junpei, who are waiting there."}]}

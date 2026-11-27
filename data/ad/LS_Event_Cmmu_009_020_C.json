@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_009_020_C", "title": "A call for help", "cues": [{"at": 0.03, "text": "Outside the dorm, you sit on the steps, Koromaru beside you."}, {"at": 8.0, "text": "A girl runs up."}, {"at": 14.83, "text": "She runs off; you follow."}]}
+{
+ "movie": "LS_Event_Cmmu_009_020_C",
+ "title": "A call for help",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, you sit on the front steps, Koromaru sitting on the ground beside you."
+  },
+  {
+   "at": 8.0,
+   "text": "A little girl in a floral shirt runs up to you, out of breath, and you get up from the steps."
+  },
+  {
+   "at": 14.83,
+   "text": "She runs off, and you and Koromaru run after her."
+  }
+ ]
+}

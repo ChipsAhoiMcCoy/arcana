@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_008_720_C", "title": "Movie night with Ken: hard-boiled", "cues": [{"at": 14.5, "text": "Ken yawns and falls asleep."}]}
+{
+ "movie": "LS_Event_Cmmu_008_720_C",
+ "title": "Movie night with Ken: hard-boiled",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm lounge. You and Ken sit in front of the TV as the last detective movie ends, Ken leaning forward, his eyes on the screen."
+  },
+  {
+   "at": 14.5,
+   "text": "Ken yawns behind his hand and rubs his eyes; his eyes drift shut, then snap open."
+  },
+  {
+   "at": 16.5,
+   "text": "A little later, Ken sits beside you fast asleep, his eyes closed."
+  }
+ ]
+}

@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Main_150_010_C", "title": "Shinjiro and the three strangers", "cues": [{"at": 0.05, "text": "Shinjiro sits hunched."}, {"at": 2.7, "text": "Three strangers walk up to Shinjiro."}, {"at": 8.7, "text": "The couple hurries off down the alley."}, {"at": 19.65, "text": "Shinjiro catches them."}, {"at": 36.35, "text": "The three turn and walk away, leaving Shinjiro standing alone."}]}
+{
+ "movie": "LS_Event_Main_150_010_C",
+ "title": "Shinjiro and the three strangers",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In a back alley, Shinjiro sits hunched on a flight of stairs, a hand pressed to his chest. A young couple stands nearby."
+  },
+  {
+   "at": 2.7,
+   "text": "A young man with long hair and a bare, tattooed chest walks up, followed by a boy with glasses carrying a metal case and a girl in a long, frilled dress."
+  },
+  {
+   "at": 8.7,
+   "text": "The couple hurries off down the alley."
+  },
+  {
+   "at": 19.65,
+   "text": "The boy with glasses tosses the capsules to Shinjiro, who catches them."
+  },
+  {
+   "at": 36.35,
+   "text": "The three turn and walk away, leaving Shinjiro standing alone."
+  }
+ ]
+}

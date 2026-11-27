@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_140_040_C", "title": "The truth about the experiment", "cues": [{"at": 20.55, "text": "Yukari slowly sits back down."}]}
+{
+ "movie": "LS_Event_Main_140_040_C",
+ "title": "The truth about the experiment",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The meeting in the dorm's command room goes on. Everyone is still seated around the low table."
+  },
+  {
+   "at": 9.02,
+   "text": "Yukari jumps to her feet and faces Mitsuru, who sits with her arms folded, looking down."
+  },
+  {
+   "at": 20.55,
+   "text": "Yukari slowly sits back down."
+  }
+ ]
+}

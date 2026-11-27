@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Extr_400_080_C", "title": "Takaya in the back alley", "cues": [{"at": 0.0, "text": "A man in a suit waits. You walk up to him."}, {"at": 4.53, "text": "You walk past him, deeper into the alley, to where Takaya waits beside some bins."}, {"at": 32.7, "text": "Takaya walks past you and away."}]}
+{
+ "movie": "LS_Event_Extr_400_080_C",
+ "title": "Takaya in the back alley",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In a back alley, a man in a suit stands waiting. You walk up to him."
+  },
+  {
+   "at": 4.53,
+   "text": "You walk past him, deeper into the alley, to where Takaya waits beside some bins."
+  },
+  {
+   "at": 14.0,
+   "text": "Takaya draws a revolver from his belt and turns it over in his hand as he talks, then tucks it back into his belt."
+  },
+  {
+   "at": 32.7,
+   "text": "Takaya walks past you and away, the revolver tucked back in his belt."
+  }
+ ]
+}

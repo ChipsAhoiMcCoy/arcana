@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_140_330_C", "title": "Aigis joins SEES", "cues": [{"at": 4.3, "text": "The girl from the pier joins the circle, plainly a machine."}]}
+{
+ "movie": "LS_Event_Main_140_330_C",
+ "title": "Aigis joins SEES",
+ "cues": [
+  {
+   "at": 0.55,
+   "text": "In a lounge at the house, everyone stands in a loose circle with Ikutsuki, the chairman."
+  },
+  {
+   "at": 4.3,
+   "text": "The girl from the pier walks in and joins the circle. The dress is gone: her body is plainly a machine's, with jointed limbs and armoured plating, under a girl's face and short hair."
+  }
+ ]
+}

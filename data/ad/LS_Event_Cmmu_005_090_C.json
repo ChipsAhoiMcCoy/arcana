@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_090_C", "title": "Mitsuru's feelings", "cues": [{"at": 0.0, "text": "Mitsuru stops at the railing and faces you."}, {"at": 38.5, "text": "You hold Mitsuru in your arms. She smiles."}]}
+{
+ "movie": "LS_Event_Cmmu_005_090_C",
+ "title": "Mitsuru's feelings",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Mitsuru walks ahead of you to the railing of the school rooftop, with no one else around, and stops. When she faces you, she keeps her head lowered and her eyes turned aside."
+  },
+  {
+   "at": 38.5,
+   "text": "Mitsuru stands with a hand on her hip. You step close to her and hold her in your arms. She starts in surprise, then smiles."
+  }
+ ]
+}

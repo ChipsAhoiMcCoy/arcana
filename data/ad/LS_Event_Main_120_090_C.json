@@ -1,1 +1,50 @@
-{"movie": "LS_Event_Main_120_090_C", "title": "Behind the station", "cues": [{"at": 0.0, "text": "A back alley behind the station, with rough-looking teenagers in small groups. You, Yukari and Junpei walk in, and the nearest ones turn to look."}, {"at": 13.33, "text": "Two men block you."}, {"at": 32.8, "text": "A punk punches Junpei in the stomach."}, {"at": 36.53, "text": "Yukari kneels by Junpei. The punk calls out."}, {"at": 46.2, "text": "A young man punches him."}, {"at": 52.2, "text": "The punks back away and hurry off. Junpei turns to the young man."}, {"at": 62.8, "text": "Shinjiro turns back toward Yukari."}, {"at": 91.83, "text": "Shinjiro walks away down the alley."}]}
+{
+ "movie": "LS_Event_Main_120_090_C",
+ "title": "Behind the station",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A back alley behind Port Island Station, with bins along a wall and a flight of concrete steps. Rough-looking teenagers hang around in small groups. You, Yukari and Junpei walk in among them, and the nearest ones turn to look."
+  },
+  {
+   "at": 13.33,
+   "text": "Two young men, one in a tracksuit, one in a T-shirt, walk over from the steps and plant themselves in front of you."
+  },
+  {
+   "at": 32.8,
+   "text": "The one in the T-shirt drives a fist into Junpei's stomach. Junpei doubles over and sinks into a crouch."
+  },
+  {
+   "at": 36.53,
+   "text": "Yukari drops to her knees beside Junpei. The one in the tracksuit points at them and calls to the others."
+  },
+  {
+   "at": 43.53,
+   "text": "A tall young man in a long coat and a beanie has walked up behind the punks and stands facing them."
+  },
+  {
+   "at": 46.2,
+   "text": "The punk squares up to him, but the young man hits him first. The punk staggers back and drops to one knee."
+  },
+  {
+   "at": 52.2,
+   "text": "The punk and his friend back away and hurry off. Yukari gets up, and Junpei slowly straightens and turns to the young man."
+  },
+  {
+   "at": 62.8,
+   "text": "Shinjiro, who had turned away to leave, stops and turns back toward Yukari."
+  },
+  {
+   "at": 81.58,
+   "text": "Junpei pulls off his cap and bows to Shinjiro."
+  },
+  {
+   "at": 88.0,
+   "text": "Yukari bows to him."
+  },
+  {
+   "at": 91.83,
+   "text": "Shinjiro turns his back, hands in his pockets, and walks away down the alley."
+  }
+ ]
+}

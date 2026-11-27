@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_116_090_C
-0.030	0.995	00.mp3	Nozomi stands.
-2.670	1.428	01.mp3	Two men approach Nozomi.
-12.670	2.929	02.mp3	Nozomi walks off past you. The two men follow him.
+0.030	5.708	00.mp3	Paulownia Mall, Fountain Square. Nozomi sits on a bench and gets up, smiling, when he sees you.
+2.670	9.307	01.mp3	Two men walk up, a young man in a knit cap and a man in sunglasses, and Nozomi steps toward them. You turn to face them: one is a young man you have seen before.
+12.670	4.737	02.mp3	Nozomi walks off past you, leaving you behind. The two men follow after him.

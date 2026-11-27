@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_112_360_C
-0.000	1.140	00.mp3	Outside the arcade.
-8.330	1.692	01.mp3	Bebe walks off toward the arcade.
+0.000	7.862	00.mp3	Paulownia Mall, outside the arcade beside a claw machine. You and Bebe stop together, and he smiles, his fan held to his chest.
+8.330	5.178	01.mp3	Bebe turns and walks off, back toward the arcade, leaving you with a bead of sweat on your brow.

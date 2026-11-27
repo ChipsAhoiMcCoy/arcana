@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_210_260_B", "title": "Among the stars", "cues": [{"at": 0.3, "text": "Endless stars on every side. Far off, the team stands together on nothing, Koromaru with them. You are not among them."}, {"at": 22.7, "text": "Everyone startles."}]}
+{
+ "movie": "LS_Event_Main_210_260_B",
+ "title": "Among the stars",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "A haze clears to endless stars on every side. Far off, the team stands together on nothing, Koromaru with them. You are not among them."
+  },
+  {
+   "at": 22.7,
+   "text": "They spread out into a loose ring, looking all around, and everyone starts at once."
+  }
+ ]
+}

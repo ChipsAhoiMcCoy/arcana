@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_116_105_C", "title": "Gourmet King II", "cues": [{"at": 15.67, "text": "Nozomi hands you his Gourmet License."}]}
+{
+ "movie": "LS_Event_Cmmu_116_105_C",
+ "title": "Gourmet King II",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Hagakure Ramen. You and Nozomi sit side by side at the counter, ramen in front of you. Nozomi sits hunched, his head bowed."
+  },
+  {
+   "at": 15.67,
+   "text": "Nozomi rubs his face with his hand, then leans over and holds out his Gourmet License to you, and you take it."
+  }
+ ]
+}

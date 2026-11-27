@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_105_000_C", "title": "The track team at practice", "cues": [{"at": 0, "text": "You watch runners sprint along the track."}]}
+{
+ "movie": "LS_Event_Cmmu_105_000_C",
+ "title": "The track team at practice",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school athletic field. You stand at the edge of the track, near a tent with a water jug on its table, while a boy sprints past along the track and two more runners follow behind him."
+  }
+ ]
+}

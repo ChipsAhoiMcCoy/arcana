@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_110_660_C", "title": "Maiko's father", "cues": [{"at": 2.53, "text": "Maiko's father talks with you."}, {"at": 13.0, "text": "Maiko's father spins around and runs off."}]}
+{
+ "movie": "LS_Event_Cmmu_110_660_C",
+ "title": "Maiko's father",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Strip Mall, by the takoyaki stand. Maiko's father stands talking with you."
+  },
+  {
+   "at": 13.0,
+   "text": "Maiko's father spins around and runs off."
+  }
+ ]
+}

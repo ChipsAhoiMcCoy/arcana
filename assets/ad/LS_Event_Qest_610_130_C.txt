@@ -1,7 +1,6 @@
 #scene LS_Event_Qest_610_130_C
-0.030	1.492	00.mp3	Elizabeth enters the shrine.
-3.000	4.452	01.mp3	Elizabeth pours endless coins into the offering box. You hold your forehead.
-23.830	0.857	02.mp3	A playground.
-26.000	1.472	03.mp3	Elizabeth rides the slide.
-37.330	4.479	04.mp3	Later, Elizabeth stands in the jungle gym, then walks a low bar, arms out.
-46.330	1.261	05.mp3	You both sit on a bench.
+0.030	2.541	00.mp3	Elizabeth walks into the shrine grounds ahead of you.
+3.000	8.073	01.mp3	Elizabeth steps up to the offering box and pours coins into it from her hand in a stream that goes on and on. You press a hand to your forehead.
+23.830	10.163	02.mp3	Later, you and Elizabeth cross the grounds toward a corner with playground equipment. Elizabeth climbs the slide and rides it down with her arms spread, landing at the bottom.
+37.330	12.648	03.mp3	Later, Elizabeth stands deep inside the jungle gym, boxed in by its bars, while you watch from outside. Elizabeth walks along a low horizontal bar, arms stretched out for balance, as you look on.
+46.330	2.668	04.mp3	Later, you and Elizabeth sit together on a bench.

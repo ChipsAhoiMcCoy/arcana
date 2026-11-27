@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_030_C
-0.000	1.915	00.mp3	You walk with Fuuka, who turns to you.
+0.000	9.035	00.mp3	You walk home through the Iwatodai strip mall with Fuuka, school bags in hand. She stops and turns to you, holding her bag in front of her with both hands.

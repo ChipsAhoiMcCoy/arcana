@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_008_730_C
-1.000	3.717	00.mp3	Ken brews coffee in the kitchen; later you sit and drink it together.
+1.000	11.721	00.mp3	The dorm kitchen. Ken stands at the counter brewing coffee while you watch from behind him. Then the two of you sit at the long dining table over cups of his coffee, and Ken sips with his eyes closed.

@@ -1,1 +1,38 @@
-{"movie": "LS_Event_Main_180_090_B", "title": "Natsuki's goodbye and Juno", "cues": [{"at": 0.1, "text": "The rooftop."}, {"at": 10.9, "text": "Natsuki turns away, looking out."}, {"at": 29.22, "text": "Natsuki leaves; Fuuka is alone."}, {"at": 35.9, "text": "Fuuka checks her phone."}, {"at": 44.2, "text": "Fuuka closes her eyes."}, {"at": 46.5, "text": "Fuuka's Persona, Lucia, rises from a glassy dome. It changes into a new Persona, Juno, which crosses its arms over its face, then spreads them wide."}, {"at": 59.45, "text": "A small orb sinks into Fuuka's hands."}, {"at": 63.45, "text": "You walk over to Fuuka."}]}
+{
+ "movie": "LS_Event_Main_180_090_B",
+ "title": "Natsuki's goodbye and Juno",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The school rooftop. Fuuka and Natsuki stand facing each other."
+  },
+  {
+   "at": 10.9,
+   "text": "Natsuki turns away and looks out through the fence."
+  },
+  {
+   "at": 29.22,
+   "text": "Natsuki walks past Fuuka to the door and leaves. The door closes behind her, and Fuuka is alone."
+  },
+  {
+   "at": 35.9,
+   "text": "Fuuka takes out her phone and reads a message."
+  },
+  {
+   "at": 44.2,
+   "text": "Fuuka clasps her hands at her chest and closes her eyes."
+  },
+  {
+   "at": 46.5,
+   "text": "Fuuka's Persona, Lucia, appears: a masked woman with long flowing hair, arms spread wide, rising from a glassy dome. It changes into a new Persona, Juno: its mask covered in eyes, great wings set with rows of ringed discs spreading from its shoulders. Juno crosses its arms over its face, then spreads them wide."
+  },
+  {
+   "at": 59.45,
+   "text": "Back on the rooftop, a small orb rests in Fuuka's cupped hands and sinks into them. Her eyes stay closed."
+  },
+  {
+   "at": 63.45,
+   "text": "The rooftop door opens. You come out with Yukari, Junpei and Aigis and walk over to Fuuka."
+  }
+ ]
+}

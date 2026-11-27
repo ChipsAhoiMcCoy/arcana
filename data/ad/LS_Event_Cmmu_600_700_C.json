@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_600_700_C", "title": "Mitsuru's dorm tour", "cues": [{"at": 0.0, "text": "Your four teammates wait in the lounge."}, {"at": 41.67, "text": "Mitsuru leads you upstairs to a quiet area."}]}
+{
+ "movie": "LS_Event_Cmmu_600_700_C",
+ "title": "Mitsuru's dorm tour",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You come into the dorm lounge with your bag. Mitsuru, Yukari, Junpei and Fuuka stand waiting for you."
+  },
+  {
+   "at": 36.0,
+   "text": "Junpei folds his arms. Yukari steps forward, folds her arms and glares at him."
+  },
+  {
+   "at": 41.67,
+   "text": "Mitsuru leads you all upstairs, to a quiet area with low tables and chairs, vending machines and a bookshelf at the back."
+  }
+ ]
+}

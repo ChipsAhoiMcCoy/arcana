@@ -1,4 +1,4 @@
 #scene LS_Event_Main_120_050_C
-0.000	1.413	00.mp3	In your dorm room, you sleep.
-2.870	1.123	01.mp3	A boy watches you.
-8.200	1.694	02.mp3	The boy dissolves into specks.
+0.000	3.585	00.mp3	In your dorm room. You lie asleep in bed, the covers pulled up.
+2.870	7.348	01.mp3	You open your eyes and push yourself up on one arm. A boy in striped pyjamas stands at the foot of your bed, watching you.
+8.200	3.570	02.mp3	The boy breaks apart into a cloud of drifting specks and is gone.

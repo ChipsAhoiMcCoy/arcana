@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Fild_518_034_C", "title": "The Great Clock", "cues": [{"at": 0.25, "text": "You walk up to a tall clock rising from a seal."}, {"at": 10.57, "text": "You read a booklet."}, {"at": 14.0, "text": "You lay a hand on the clock. Its hands turn and it chimes."}]}
+{
+ "movie": "LS_Event_Fild_518_034_C",
+ "title": "The Great Clock",
+ "cues": [
+  {
+   "at": 0.25,
+   "text": "You stand in a hall of tall pillars, your teammates behind you with weapons ready. A tall clock with a swinging pendulum rises from a round seal in the floor, and a small object lies near it. You walk up to the clock and look up at it."
+  },
+  {
+   "at": 10.57,
+   "text": "You turn aside and read through a small booklet in your hand."
+  },
+  {
+   "at": 14.0,
+   "text": "You lay a hand on the clock. Its hands turn and it chimes."
+  }
+ ]
+}

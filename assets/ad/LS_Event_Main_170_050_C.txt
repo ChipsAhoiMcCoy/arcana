@@ -1,3 +1,3 @@
 #scene LS_Event_Main_170_050_C
-0.000	0.730	00.mp3	Hospital.
-9.000	1.217	01.mp3	The flowers revive.
+0.000	8.874	00.mp3	Chidori's hospital room. Chidori sits up in bed, and Junpei sits on a stool beside her. On the bedside table stands a vase of sunflowers.
+9.000	10.151	01.mp3	Chidori reaches a hand toward the drooping sunflowers. Sparks of light swirl around the vase, and the flowers lift their heads, fresh again. Junpei jumps to his feet.

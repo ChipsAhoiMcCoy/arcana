@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_720_C", "title": "Mitsuru and the empress dowager", "cues": [{"at": 2.53, "text": "You and Mitsuru read together."}, {"at": 6.36, "text": "Arms folded."}]}
+{
+ "movie": "LS_Event_Cmmu_005_720_C",
+ "title": "Mitsuru and the empress dowager",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The lounge of the dorm. You and Mitsuru sit on separate benches across a low table, each reading a book."
+  },
+  {
+   "at": 6.83,
+   "text": "Later, the books are set aside; Mitsuru sits with her arms folded."
+  }
+ ]
+}

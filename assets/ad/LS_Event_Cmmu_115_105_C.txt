@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_115_105_C
-0.030	0.722	00.mp3	Station.
-1.330	1.341	01.mp3	Mamoru holds out a key.
+0.030	5.275	00.mp3	Iwatodai Station. Mamoru stands facing you, a sports bag on the ground at his feet.
+1.330	2.255	01.mp3	Mamoru holds out a key, and you take it.

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_130_180_C
-0.300	6.876	00.mp3	You walk the empty street. Three strangers watch from a railing above: a shirtless man, a boy in glasses, a girl.
+0.300	13.635	00.mp3	Outside the hotel, you walk along the empty street, hands in your pockets. From a railing high above, three strangers watch you go: a shirtless young man with long hair, a boy in glasses and a girl in a long frilled dress.

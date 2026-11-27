@@ -1,1 +1,42 @@
-{"movie": "LS_Event_Cmmu_004_015_C", "title": "Akihiko and the gang", "cues": [{"at": 0.0, "text": "Men crowd girls"}, {"at": 7.67, "text": "Akihiko walks over. You follow."}, {"at": 14.84, "text": "Girls run off."}, {"at": 20.5, "text": "Akihiko dodges a punch."}, {"at": 31.33, "text": "Police officers question you both."}, {"at": 36.0, "text": "Another policeman joins them."}, {"at": 54.67, "text": "Officer Kurosawa walks off."}, {"at": 61.0, "text": "Akihiko runs off ahead."}, {"at": 67.5, "text": "Akihiko runs off. You follow."}]}
+{
+ "movie": "LS_Event_Cmmu_004_015_C",
+ "title": "Akihiko and the gang",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In a back street of the Iwatodai strip mall, four men crowd around the two girls from before. You and Akihiko walk up a little way off and stop to watch."
+  },
+  {
+   "at": 7.67,
+   "text": "Akihiko frowns and walks straight over to the group, and you follow him."
+  },
+  {
+   "at": 14.84,
+   "text": "The men turn on Akihiko, and the two girls run off."
+  },
+  {
+   "at": 20.5,
+   "text": "One of the men swings a fist at Akihiko. Akihiko slips it without effort. The biggest of them, a hard-faced man, steps up beside him."
+  },
+  {
+   "at": 31.33,
+   "text": "Later, you and Akihiko stand outside a row of shops in the strip mall with two police officers. Akihiko looks troubled."
+  },
+  {
+   "at": 36.0,
+   "text": "Another policeman walks over to the group. The other two officers nod and walk away."
+  },
+  {
+   "at": 54.67,
+   "text": "Officer Kurosawa turns and walks off down the street."
+  },
+  {
+   "at": 61.0,
+   "text": "Akihiko runs off ahead."
+  },
+  {
+   "at": 67.5,
+   "text": "Akihiko sets off at a run, and you run after him."
+  }
+ ]
+}

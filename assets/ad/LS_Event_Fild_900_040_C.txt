@@ -1,3 +1,2 @@
 #scene LS_Event_Fild_900_040_C
-0.030	1.558	00.mp3	Elizabeth stands by the door.
-2.360	0.894	01.mp3	You approach her.
+0.000	5.312	00.mp3	Elizabeth stands beside the Velvet Room door, a large book in her arms. You walk up to her.

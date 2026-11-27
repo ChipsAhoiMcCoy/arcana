@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_009_040_C
-0.030	1.302	00.mp3	Woman pets Koromaru.
-8.050	1.392	01.mp3	You and Koromaru eat.
+0.030	7.215	00.mp3	Outside the dorm, you sit on the front steps with Koromaru beside you. The woman walks up to you both, bends down and pets him.
+8.030	6.056	01.mp3	You sit on the steps with a tray of takoyaki beside you, while Koromaru eats from his own tray on the ground.
 9.770	2.347	02.mp3	A dog walks up and stops a short way off.
-17.120	1.141	03.mp3	The dog joins him.
+17.100	5.335	03.mp3	Koromaru sits back from his tray, and the other dog comes over, lies down and eats from it.

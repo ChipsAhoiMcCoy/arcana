@@ -1,5 +1,5 @@
 #scene LS_Event_Main_100_130_C
-0.030	1.322	00.mp3	Classroom, after school.
-6.360	1.426	01.mp3	Yukari walks up to you.
-20.470	1.070	02.mp3	Junpei stares.
-25.960	2.435	03.mp3	Yukari turns and walks out of the classroom.
+0.000	7.466	00.mp3	Your classroom, as the bell rings at the end of the day. You are at your desk; a boy walks over to you with a grin, and you stand up.
+8.600	1.823	01.mp3	Yukari walks up to the two of you.
+20.470	2.026	02.mp3	Junpei stares at her, open-mouthed.
+25.930	4.340	03.mp3	Yukari turns on her heel and walks off between the desks and out of the classroom.

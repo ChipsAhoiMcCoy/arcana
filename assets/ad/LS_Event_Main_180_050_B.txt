@@ -1,8 +1,9 @@
 #scene LS_Event_Main_180_050_B
-1.250	2.672	00.mp3	Ken stands alone. Akihiko walks up.
-11.900	2.278	01.mp3	Akihiko turns his back and walks off.
-18.550	1.497	02.mp3	Ken cries into his hands.
-21.900	0.801	03.mp3	He looks up.
-25.400	8.071	04.mp3	Ken's Persona Nemesis hovers, then changes into a new Persona, Kala-Nemi: two caged spheres on long jointed legs.
-37.350	1.620	05.mp3	Motes sink into Ken's chest.
-40.750	0.889	06.mp3	Ken smiles.
+1.250	7.101	00.mp3	A back alley with a stairway and an oil drum. Ken stands alone. Akihiko walks up and stops a few steps from him.
+11.900	3.815	01.mp3	Akihiko turns his back on Ken and walks off, leaving him alone.
+18.550	2.370	02.mp3	Ken covers his face with his hands and cries.
+21.900	2.580	03.mp3	He lowers his hands and looks up, his face set.
+23.530	1.303	04.mp3	Ken closes his eyes.
+25.400	14.256	05.mp3	Ken's Persona, Nemesis, hovers: a slender, armoured figure with a blade rising from its head. It changes into a new Persona, Kala-Nemi: two caged spheres joined at the middle, standing on long, jointed legs.
+37.350	5.987	06.mp3	Back in the alley, Ken stands with his eyes closed as small motes gather at his chest and sink into him.
+40.750	0.889	07.mp3	Ken smiles.

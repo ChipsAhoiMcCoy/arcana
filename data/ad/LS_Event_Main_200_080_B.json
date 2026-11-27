@@ -4,31 +4,35 @@
  "cues": [
   {
    "at": 2.05,
-   "text": "Junpei lays Chidori down, faces Takaya."
+   "text": "Junpei lays Chidori down on the paving and bows over her. Junpei gets to his feet and turns toward Takaya. Chidori lies still on the ground behind him."
   },
   {
    "at": 9.7,
-   "text": "Junpei fires."
+   "text": "Junpei puts his Evoker to his head and fires."
   },
   {
    "at": 11.25,
-   "text": "Junpei's Persona meets Chidori's, Medea; the two merge into a new Persona, a slender masked figure with jagged wings."
+   "text": "Junpei's Persona hovers face to face with Chidori's Persona, Medea, a figure with blade-like wings, and the two draw together and merge into one new Persona: a slender masked figure with great jagged wings spread wide."
   },
   {
    "at": 27.65,
-   "text": "Jin takes the blast for Takaya."
+   "text": "The Persona hurls a blast of fire up the steps. Jin runs in front of Takaya and takes it."
   },
   {
    "at": 30.4,
-   "text": "Jin goes down."
+   "text": "Jin drops to one knee. Junpei sinks to his hands and knees beside Chidori."
   },
   {
    "at": 35.85,
-   "text": "Jin throws a grenade. Thick smoke rolls over the steps and everyone below."
+   "text": "Jin pulls the pin from a grenade and throws it. Thick smoke rolls over the steps and everyone below them."
+  },
+  {
+   "at": 45.02,
+   "text": "Yukari runs to Junpei, kneels and holds him back as the rest of you gather around."
   },
   {
    "at": 49.35,
-   "text": "Junpei stands with head bowed, then kneels beside Chidori."
+   "text": "Junpei pushes himself up and stands with his head bowed, then turns to Chidori. He kneels beside her."
   }
  ]
 }

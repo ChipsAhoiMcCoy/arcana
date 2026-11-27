@@ -1,1 +1,6 @@
-{"movie": "LS_Event_Main_190_330_C", "title": "The silent treatment", "cues": [{"at": 1.17, "text": "On a bench."}, {"at": 12.0, "text": "Yukari, Fuuka and Aigis stop before you."}, {"at": 16.67, "text": "The three girls look at you silently. Yukari turns and walks away, and Fuuka and Aigis follow."}, {"at": 28.03, "text": "You straighten up. Mitsuru walks past with her eyes closed and keeps going."}]}
+{"movie": "LS_Event_Main_190_330_C", "title": "The silent treatment", "cues": [
+{"at": 1.17, "text": "You sit on a long bench with Akihiko, Ryoji and Junpei, bags at your feet, while other students wait around you. A teacher walks past."},
+{"at": 12.00, "text": "Yukari, Fuuka and Aigis walk up and stop in front of the bench."},
+{"at": 16.67, "text": "The three girls look at the four of you without a word. Then Yukari turns and walks away, and Fuuka and Aigis follow her."},
+{"at": 28.03, "text": "You and the others straighten up on the bench. Mitsuru walks past with her eyes closed, never looking at you, and keeps going."}
+]}

@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_190_290_C", "title": "The boys in the hot spring", "cues": [{"at": 0.0, "text": "Hot spring."}, {"at": 14.53, "text": "A door slides open."}, {"at": 19.2, "text": "Yukari, Fuuka and Mitsuru enter in towels."}]}
+{
+ "movie": "LS_Event_Main_190_290_C",
+ "title": "The boys in the hot spring",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The inn's open-air hot spring. You sit in the steaming water with Junpei, Akihiko and Ryoji."
+  },
+  {
+   "at": 14.53,
+   "text": "A door slides open somewhere beyond the steam. Junpei, Akihiko and Ryoji start."
+  },
+  {
+   "at": 19.2,
+   "text": "Yukari, Fuuka and Mitsuru walk out onto the far side of the bath, wrapped in towels, with Aigis beside them. You and the others stand up in the water and stare."
+  },
+  {
+   "at": 32.33,
+   "text": "Junpei lunges at Ryoji, splashing through the water, and clamps a hand over his mouth."
+  }
+ ]
+}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_120_030_C", "title": "Rumours in class", "cues": []}
+{
+ "movie": "LS_Event_Main_120_030_C",
+ "title": "Rumours in class",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In your classroom. You sit at your desk; Junpei stands beside it, glancing over at two classmates gossiping a few desks away."
+  },
+  {
+   "at": 6.2,
+   "text": "Yukari walks over between the desks to join you and Junpei, and Junpei folds his arms."
+  }
+ ]
+}

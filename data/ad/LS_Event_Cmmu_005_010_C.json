@@ -3,8 +3,12 @@
  "title": "Mitsuru tries ramen",
  "cues": [
   {
-   "at": 10.0,
-   "text": "Mitsuru starts on her ramen, and you eat beside her."
+   "at": 0.0,
+   "text": "At the counter of Hagakure Ramen, you sit on a stool beside Mitsuru. The shop's owner works behind the counter."
+  },
+  {
+   "at": 10.2,
+   "text": "Mitsuru starts on her bowl of ramen, and you eat beside her."
   }
  ]
 }

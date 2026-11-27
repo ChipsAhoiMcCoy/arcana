@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_520_C", "title": "Fuuka: in her room", "cues": [{"at": 0.0, "text": "Fuuka's room."}]}
+{
+ "movie": "LS_Event_Cmmu_006_520_C",
+ "title": "Fuuka: in her room",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You sit side by side with Fuuka on the edge of her bed in her room at the dorm, a little apart, her hands folded in her lap."
+  }
+ ]
+}

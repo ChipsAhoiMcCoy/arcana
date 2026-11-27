@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_110_270_C", "title": "Shadows block the way", "cues": [{"at": 3.73, "text": "Shadows drop behind Yukari; she turns."}, {"at": 7.03, "text": "Another Shadow rises."}]}
+{"movie": "LS_Event_Main_110_270_C", "title": "Shadows block the way", "cues": [
+{"at": 3.73, "text": "Two of the masked Shadows drop into the car behind Yukari. She spins round and takes a fighting stance beside you."},
+{"at": 7.03, "text": "A third Shadow, of another kind, rises out of the floor in front of her."}
+]}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_010_910_C", "title": "Shinjiro in Tartarus", "cues": [{"at": 0.03, "text": "Shinjiro walks over."}]}
+{
+ "movie": "LS_Event_Cmmu_010_910_C",
+ "title": "Shinjiro in Tartarus",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Tartarus's entrance hall. The team waits in a loose group: Mitsuru, Akihiko, Yukari, Junpei, Fuuka, Aigis, Ken, and Koromaru sitting at Ken's feet. Shinjiro walks over to you."
+  }
+ ]
+}

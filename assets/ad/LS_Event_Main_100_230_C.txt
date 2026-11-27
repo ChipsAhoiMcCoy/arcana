@@ -1,3 +1,4 @@
 #scene LS_Event_Main_100_230_C
-0.050	2.253	00.mp3	Ikutsuki joins Yukari and Mitsuru.
-8.400	2.726	01.mp3	Yukari looks troubled. Mitsuru answers a call.
+0.050	11.209	00.mp3	The dorm's command room: control consoles and wall screens. Yukari sits in a swivel chair at a console, Mitsuru stands beside her, and Ikutsuki, the chairman, walks over to join them.
+8.400	6.414	01.mp3	Yukari looks down, troubled. A console chimes with an incoming call, and Mitsuru turns to answer it.
+13.800	1.766	02.mp3	Yukari springs up from her chair.

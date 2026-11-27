@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Fild_518_031_C", "title": "A rare Shadow runs off", "cues": [{"at": 0.05, "text": "A hand-shaped Shadow with a mask balances on its fingertips. It turns, starts, and scurries away."}]}
+{
+ "movie": "LS_Event_Fild_518_031_C",
+ "title": "A rare Shadow runs off",
+ "cues": [
+  {
+   "at": 0.2,
+   "text": "Ahead stands a Shadow shaped like a hand with a mask, balanced on its fingertips. It turns around."
+  },
+  {
+   "at": 3.33,
+   "text": "It starts, as if it has noticed something, then scurries away out of sight."
+  }
+ ]
+}

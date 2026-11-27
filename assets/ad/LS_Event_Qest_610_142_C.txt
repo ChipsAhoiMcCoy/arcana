@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_142_C
-1.670	2.087	00.mp3	Elizabeth stands at the teacher's podium.
+1.670	5.165	00.mp3	Elizabeth walks to the front of the classroom and stands at the teacher's podium, facing the room.

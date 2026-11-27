@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_350_013_C
-3.900	1.050	00.mp3	He hands you a cup.
+3.900	3.470	00.mp3	Mr. Edogawa brews something up and hands you a steaming cup.

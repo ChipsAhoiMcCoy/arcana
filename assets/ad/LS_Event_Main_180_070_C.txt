@@ -1,4 +1,4 @@
 #scene LS_Event_Main_180_070_C
-0.300	1.301	00.mp3	You lie asleep in bed.
-2.900	1.466	01.mp3	Pharos stands by your bed.
-12.900	1.895	02.mp3	Pharos breaks apart and is gone.
+0.300	2.219	00.mp3	Your dorm room. You lie asleep in bed.
+2.900	6.795	01.mp3	You prop yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed by the window.
+12.900	3.012	02.mp3	Pharos breaks apart into drifting flecks and is gone.

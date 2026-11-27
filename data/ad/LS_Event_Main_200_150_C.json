@@ -1,7 +1,26 @@
-{"movie": "LS_Event_Main_200_150_C", "title": "Ryoji the Appriser", "cues": [
-{"at": 0.04, "text": "Aigis kneels."},
-{"at": 3.05, "text": "You kneel."},
-{"at": 10.65, "text": "Ryoji walks up and stops near you all."},
-{"at": 36.35, "text": "You get to your feet."},
-{"at": 41.35, "text": "Ryoji falls."}
-]}
+{
+ "movie": "LS_Event_Main_200_150_C",
+ "title": "Ryoji the Appriser",
+ "cues": [
+  {
+   "at": 0.04,
+   "text": "On the Moonlight Bridge, Aigis kneels on the road, smoke rising from her body. Koromaru reaches her first, barking, and the rest of you run up behind him."
+  },
+  {
+   "at": 3.05,
+   "text": "You kneel beside Aigis, Yukari crouching at her other side, while the others gather around. Aigis lifts her hands toward you."
+  },
+  {
+   "at": 10.65,
+   "text": "Ryoji walks up the road from beside a parked car and stops a short way from the group. Everyone turns to look at him."
+  },
+  {
+   "at": 36.35,
+   "text": "The others stare at you, then turn back to Ryoji as you get to your feet."
+  },
+  {
+   "at": 41.35,
+   "text": "Ryoji crumples to the road. You go to him and crouch at his side."
+  }
+ ]
+}

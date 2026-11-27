@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_116_070_C
-12.000	1.316	00.mp3	Nozomi stalks away.
+0.000	5.367	00.mp3	Wilduck Burger. You sit at a table with Nozomi, each of you with a tray of burgers and drinks.
+12.000	3.928	01.mp3	Nozomi pushes back his chair, gets up and stalks away from the table.

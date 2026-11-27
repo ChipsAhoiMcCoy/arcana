@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_310_B
-0.000	1.353	00.mp3	You stand in the front car.
-7.330	1.103	01.mp3	You run to the cab.
+0.000	7.315	00.mp3	After the battle, you, Yukari and Junpei stand in the front car beside the window, the track still rushing past outside.
+7.330	3.704	01.mp3	You nod, then run for the door to the driver's cab at the front of the car.

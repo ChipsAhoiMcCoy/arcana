@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_109_060_C
-0.000	0.997	00.mp3	Bookworms bookstore.
-3.000	1.371	01.mp3	Chihiro stands with you.
+0.000	4.652	00.mp3	Inside Bookworms, the used bookstore, Chihiro stands with you among the shelves.

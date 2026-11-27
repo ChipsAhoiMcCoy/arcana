@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_006_570_C", "title": "Fuuka: the summer festival", "cues": [{"at": 0.0, "text": "A summer festival; you stand with Fuuka, both in yukatas."}, {"at": 12.5, "text": "You and Fuuka cross the crowd to a takoyaki stall, where a woman works the grill."}, {"at": 25.6, "text": "Fuuka bites a takoyaki."}, {"at": 43.77, "text": "At the lucky-draw stall, you draw a ticket."}]}
+{
+ "movie": "LS_Event_Cmmu_006_570_C",
+ "title": "Fuuka: the summer festival",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The summer festival at Naganaki Shrine: food stalls line the grounds and people stroll past in yukatas. You stand beside Fuuka, who is wearing a yukata too."
+  },
+  {
+   "at": 12.5,
+   "text": "You and Fuuka make your way through the crowd to a takoyaki stall, where a woman works behind the grill."
+  },
+  {
+   "at": 25.6,
+   "text": "Standing off to one side with the takoyaki, Fuuka lifts one to her mouth and takes a bite."
+  },
+  {
+   "at": 43.77,
+   "text": "At the lucky-draw stall, you reach into the box and draw a ticket while Fuuka watches."
+  }
+ ]
+}

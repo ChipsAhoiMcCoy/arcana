@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_002_090_C
-0.000	2.691	00.mp3	Yukari stands at the rooftop railing. You walk up.
-23.500	2.090	01.mp3	Yukari cries. You hold each other.
-33.830	1.953	02.mp3	Yukari breaks away and runs off.
-45.970	2.241	03.mp3	Yukari runs off. A door closes.
+0.000	5.112	00.mp3	On the school rooftop, Yukari stands at the railing with her back to you. You walk up behind her.
+23.500	4.712	01.mp3	Yukari is in tears. You walk over to her, and the two of you hold each other close.
+33.830	4.201	02.mp3	Yukari breaks away from you and runs off. A door closes behind her.
+45.970	4.002	03.mp3	Yukari runs off across the rooftop. A door closes behind her.

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_112_080_C", "title": "Bebe: hard at work", "cues": [{"at": 0.0, "text": "Sewing room."}, {"at": 3.5, "text": "Bebe fans."}]}
+{
+ "movie": "LS_Event_Cmmu_112_080_C",
+ "title": "Bebe: hard at work",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the home economics room, you and Bebe sew at machines facing each other, a heap of cloth piled beside Bebe's machine."
+  },
+  {
+   "at": 3.5,
+   "text": "Some time later, the two of you sit back from your machines, and Bebe fans himself with a folding fan."
+  }
+ ]
+}

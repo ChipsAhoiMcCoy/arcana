@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_340_030_C
-0.170	0.839	00.mp3	School hallway.
+0.170	6.137	00.mp3	A school hallway. Students crowd in front of the exam results posted on the wall, and you head over to them.

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_120_160_C", "title": "Finding the gym key", "cues": [{"at": 0, "text": "The office."}, {"at": 2.17, "text": "Yukari points at a key."}]}
+{
+ "movie": "LS_Event_Main_120_160_C",
+ "title": "Finding the gym key",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the faculty office, you and Yukari stand before a key cabinet on the wall. Yukari peers at the tags on the hanging keys, a finger to her chin."
+  },
+  {
+   "at": 2.17,
+   "text": "Yukari points at one of the keys, and you point at it too."
+  }
+ ]
+}

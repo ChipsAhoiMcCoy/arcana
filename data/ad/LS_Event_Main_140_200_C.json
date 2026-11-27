@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_140_200_C", "title": "Takeharu explains the research", "cues": [{"at": 0.0, "text": "Vacation home."}, {"at": 7.5, "text": "Takeharu lifts a hand; a projector starts up."}]}
+{
+ "movie": "LS_Event_Main_140_200_C",
+ "title": "Takeharu explains the research",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In a sitting room of the vacation home, everyone sits on sofas around a low table: you, Yukari and Mitsuru on one side, Junpei, Fuuka and Akihiko on the other. Facing you all sits the man with the eyepatch, his arms folded."
+  },
+  {
+   "at": 7.5,
+   "text": "Takeharu unfolds his arms and lifts a hand. A switch clicks and a projector starts up. Everyone turns to look at it."
+  }
+ ]
+}

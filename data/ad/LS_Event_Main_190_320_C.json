@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_190_320_C", "title": "Keeping the secret", "cues": [{"at": 3.0, "text": "You sit on a bench with Akihiko, Ryoji and Junpei."}, {"at": 11.0, "text": "Yukari, Fuuka and Aigis walk up to the bench."}, {"at": 21.67, "text": "Yukari smiles, and the three girls walk away."}]}
+{"movie": "LS_Event_Main_190_320_C", "title": "Keeping the secret", "cues": [
+{"at": 1.17, "text": "You sit on a long bench with Akihiko, Ryoji and Junpei, bags at your feet, while other students wait around you. A teacher walks past."},
+{"at": 11.00, "text": "Yukari, Fuuka and Aigis walk up to the bench."},
+{"at": 21.67, "text": "Yukari smiles, and the three girls walk away."}
+]}

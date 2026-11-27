@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_120_035_C", "title": "Summer uniform", "cues": [{"at": 0.0, "text": "Your room."}, {"at": 4.0, "text": "You check your phone."}]}
+{"movie": "LS_Event_Main_120_035_C", "title": "Summer uniform", "cues": [
+  {"at": 0.00, "text": "In your dorm room, you stand dressed in the short-sleeved summer uniform and push a hand through your hair."},
+  {"at": 2.83, "text": "You flip open your phone and look at the screen, then close it again."}
+]}

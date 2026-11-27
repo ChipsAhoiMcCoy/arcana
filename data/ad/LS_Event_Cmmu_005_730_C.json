@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_730_C", "title": "Spiced tea with Mitsuru", "cues": [{"at": 2.67, "text": "Later, on the sofa, Mitsuru sips the tea you blended."}]}
+{
+ "movie": "LS_Event_Cmmu_005_730_C",
+ "title": "Spiced tea with Mitsuru",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm kitchen. You and Mitsuru stand at the counter, a teapot and two cups on saucers set out by the sink."
+  },
+  {
+   "at": 2.67,
+   "text": "Later, you sit with Mitsuru on the lounge sofa, a plate of karume-yaki on the low table. She sips the tea you blended, eyes closed, while you lean forward with your hands clasped."
+  }
+ ]
+}

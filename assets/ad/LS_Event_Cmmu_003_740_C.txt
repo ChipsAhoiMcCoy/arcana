@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_003_740_C
-2.200	0.776	00.mp3	You garden.
+0.200	5.769	00.mp3	The dorm rooftop. You and Junpei kneel side by side at the vegetable planters, working the soil.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_610_143_C", "title": "Elizabeth and the plaster bust", "cues": [{"at": 1.7, "text": "Elizabeth beside a bust."}]}
+{
+ "movie": "LS_Event_Qest_610_143_C",
+ "title": "Elizabeth and the plaster bust",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Elizabeth stands beside a plaster bust of a man's head and shoulders, set on a stand, with you on her other side. As she speaks, a sweat drop forms on your brow."
+  }
+ ]
+}

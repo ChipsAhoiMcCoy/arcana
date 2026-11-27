@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_160_120_C", "title": "Aigis joins the class", "cues": [{"at": 0.05, "text": "Classroom."}, {"at": 9.35, "text": "Aigis sits beside you."}]}
+{"movie": "LS_Event_Main_160_120_C", "title": "Aigis joins the class", "cues": [
+  {"at": 0.05, "text": "Your classroom. Aigis, in her school uniform, stands at the front beside the teacher while the class sits at their desks."},
+  {"at": 9.35, "text": "Aigis walks between the desks and sits down at the desk beside yours."},
+  {"at": 11.05, "text": "Yukari jumps to her feet, scowling."}
+]}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_050_C
-1.170	1.256	00.mp3	You sit with Chihiro.
+0.000	13.834	00.mp3	You sit with Chihiro on a bench in the quiet open-air corridor behind the school building, beside an iron fence and a flower bed. She keeps her knees together and her hands in her lap, head lowered, while you lean forward with your elbows on your knees.

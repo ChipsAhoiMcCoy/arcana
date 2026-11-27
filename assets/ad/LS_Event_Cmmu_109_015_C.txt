@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_015_C
-0.030	1.752	00.mp3	You and Chihiro reach a building.
+0.000	11.423	00.mp3	You walk up to the front steps of an old brick building, your bag over your shoulder, with Chihiro trailing a few steps behind. She stops a little way off, holding her bag in front of her with both hands.

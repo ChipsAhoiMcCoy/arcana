@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_009_055_C
-0.030	1.342	00.mp3	Koromaru runs ahead.
-12.500	1.706	01.mp3	Koromaru stops at a statue.
-15.200	1.689	02.mp3	You crouch beside a small collar.
-25.330	2.448	03.mp3	You take the collar; Koromaru turns away.
+0.030	5.941	00.mp3	At Naganaki Shrine, Koromaru runs ahead of you up the path, turning back again and again to look at you.
+14.000	9.198	01.mp3	Further into the shrine grounds, Koromaru trots ahead of you to a stone guardian-dog statue and stops, facing you, then lowers his nose to the ground.
+17.400	4.896	02.mp3	You crouch down in front of Koromaru. A small collar lies on the stones at his feet.
+24.700	4.313	03.mp3	You pick up the collar. Koromaru turns away toward the shrine and lifts his head.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_190_C
-1.000	3.197	00.mp3	You and Mitsuru sit facing each other, her arms crossed.
+1.000	13.519	00.mp3	You and Mitsuru sit down facing each other on ornate sofas in her room at the dorm, a teapot, cups, a vase of flowers and a basket of snacks on the low table between you. Mitsuru sits with her legs and arms crossed.

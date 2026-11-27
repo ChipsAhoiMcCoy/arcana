@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_103_005_C
-1.000	1.290	00.mp3	You work the claw machine.
-5.670	3.712	01.mp3	You watch the claw drop. It rises empty, and your shoulders slump.
+0.000	6.290	00.mp3	The arcade in Paulownia Mall. You stand at a claw machine stacked with boxed figures and work its controls.
+5.670	6.038	01.mp3	You step back with your hands in your pockets and watch the claw drop. It rises empty, and your shoulders slump.

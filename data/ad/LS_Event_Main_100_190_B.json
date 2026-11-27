@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_100_190_B", "title": "The man among the coffins", "cues": [{"at": 0.0, "text": "Tall coffins fill the alley."}, {"at": 2.33, "text": "He gets up and walks out among the coffins, looking around."}, {"at": 8.5, "text": "Thick drops fall, pooling around his shoes."}, {"at": 14.67, "text": "He kneels."}]}
+{
+ "movie": "LS_Event_Main_100_190_B",
+ "title": "The man among the coffins",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The same alley, now silent. Where the young people stood, tall coffins stand upright. The man still sits alone on the steps."
+  },
+  {
+   "at": 2.33,
+   "text": "He gets up and walks out among the coffins, looking around."
+  },
+  {
+   "at": 8.5,
+   "text": "Drops of something thick fall and spread into a pool on the ground around his shoes."
+  },
+  {
+   "at": 14.67,
+   "text": "He drops to his knees, clutching his head."
+  }
+ ]
+}

@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_002_190_C",
- "title": "A friend to lean on",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "You walk up behind Yukari."
-  },
-  {
-   "at": 24.67,
-   "text": "Yukari runs off. A door closes."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_002_190_C", "title": "A friend to lean on", "cues": [{"at": 0.0, "text": "On the school rooftop, Yukari stands at the railing with her back to you. You walk up behind her."}, {"at": 24.67, "text": "Yukari runs off across the rooftop. A door closes behind her."}]}

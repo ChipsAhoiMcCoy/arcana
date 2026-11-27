@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Extr_450_065_C", "title": "The Big Eater Challenge", "cues": [{"at": 9.5, "text": "You wince."}, {"at": 14.0, "text": "You wince."}, {"at": 17.05, "text": "You slump over the tray."}]}
+{
+ "movie": "LS_Event_Extr_450_065_C",
+ "title": "The Big Eater Challenge",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Wilduck Burger. You sit at a table before a tray piled high with burgers, eating one held in both hands."
+  },
+  {
+   "at": 9.5,
+   "text": "You sit hunched over the tray, wincing."
+  },
+  {
+   "at": 14.0,
+   "text": "You sit hunched over the tray, wincing."
+  },
+  {
+   "at": 18.5,
+   "text": "You sit slumped over the tray of unfinished burgers, head bowed."
+  }
+ ]
+}

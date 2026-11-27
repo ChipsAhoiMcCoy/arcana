@@ -1,6 +1,6 @@
 #scene LS_Event_Main_100_225_C
 0.050	6.226	00.mp3	In your dorm room, still in your school uniform, you sit down on the edge of the bed, shoulders slumped, head bowed.
-8.050	3.675	01.mp3	You fall back across the bed, an arm over your forehead, and stare up.
-13.000	3.027	02.mp3	You raise a hand; sparks glitter round your fingers and fade.
+8.050	5.249	01.mp3	You fall back across the bed, an arm over your forehead, then let it drop and stare at the ceiling.
+14.400	5.817	02.mp3	You raise one hand toward the ceiling. A few tiny sparks of light glitter around your fingers and fade.
 16.400	4.712	03.mp3	Your arm falls to the bed and your eyes close. You fall asleep on top of the covers.
-25.200	3.991	04.mp3	Clock faces swirl over you as you sleep, until the hands meet at midnight.
+25.200	6.140	04.mp3	Clock faces and the numbers eleven fifty-nine swirl over you as you sleep, until the hands meet at midnight.

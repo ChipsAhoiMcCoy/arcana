@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_710_C
-1.330	1.512	00.mp3	You and Aigis read together.
+0.170	3.721	00.mp3	The dorm lounge. You and Aigis sit together, each reading a book.

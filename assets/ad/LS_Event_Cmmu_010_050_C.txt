@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_010_050_C
-0.000	1.028	00.mp3	Mitsuru enters.
+0.000	6.831	00.mp3	Shinjiro's room. You stand at his desk, a sheet of paper lying on it, when the door opens and Mitsuru walks in.

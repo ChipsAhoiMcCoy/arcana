@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Main_120_260_C", "title": "Fuuka collapses", "cues": [{"at": 0.05, "text": "Fuuka stands with the Evoker; Natsuki kneels beside her."}, {"at": 4.35, "text": "You walk over."}, {"at": 7.7, "text": "Fuuka turns around to Natsuki."}, {"at": 11.52, "text": "Fuuka collapses."}, {"at": 22.7, "text": "Natsuki cries."}]}
+{
+ "movie": "LS_Event_Main_120_260_C",
+ "title": "Fuuka collapses",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The Shadows are gone. In the entrance hall, Fuuka stands with the Evoker clasped in her hands and Natsuki on her knees beside her, as her Persona fades away."
+  },
+  {
+   "at": 4.35,
+   "text": "You and the others walk over to them."
+  },
+  {
+   "at": 7.7,
+   "text": "Fuuka turns around to Natsuki."
+  },
+  {
+   "at": 11.52,
+   "text": "Fuuka's eyes close and she collapses to the floor. You and Akihiko kneel beside her, and Natsuki crawls to her side."
+  },
+  {
+   "at": 22.7,
+   "text": "Natsuki kneels beside Fuuka, sitting back on her heels with her head bowed, crying."
+  }
+ ]
+}

@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_150_020_C", "title": "Aigis in your room", "cues": [{"at": 1.4, "text": "Aigis stands over you in bed."}, {"at": 10.05, "text": "Sitting up, you watch Aigis open the door. Yukari stands in the hall."}, {"at": 38.2, "text": "Aigis presses a hand to her chest."}, {"at": 43.03, "text": "Yukari walks away."}]}
+{
+ "movie": "LS_Event_Main_150_020_C",
+ "title": "Aigis in your room",
+ "cues": [
+  {
+   "at": 1.4,
+   "text": "In your dorm room, you lie in bed. Aigis stands beside it, looking down at you."
+  },
+  {
+   "at": 10.05,
+   "text": "Sitting up in bed, you watch Aigis walk to the door and open it. Yukari stands in the hall outside."
+  },
+  {
+   "at": 19.7,
+   "text": "You get out of bed and join them at the door."
+  },
+  {
+   "at": 38.2,
+   "text": "Aigis stands with a hand pressed to her chest. Yukari turns and walks off down the hall."
+  }
+ ]
+}

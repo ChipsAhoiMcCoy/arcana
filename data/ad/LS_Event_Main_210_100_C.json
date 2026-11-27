@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_210_100_C", "title": "Chidori remembers flowers", "cues": [{"at": 0.0, "text": "Hospital."}, {"at": 5.4, "text": "You, Junpei and Mitsuru enter her room."}, {"at": 51.2, "text": "You and Mitsuru leave."}]}
+{
+ "movie": "LS_Event_Main_210_100_C",
+ "title": "Chidori remembers flowers",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A hospital corridor, outside the closed door of a patient's room."
+  },
+  {
+   "at": 5.4,
+   "text": "Inside the room, Chidori sits up in bed. A doctor in a lab coat stands at her bedside, by a vase of sunflowers. Junpei, Mitsuru and you walk in and stop at the foot of the bed."
+  },
+  {
+   "at": 51.2,
+   "text": "You and Mitsuru leave Junpei at Chidori's bedside and walk over to the closed door."
+  }
+ ]
+}

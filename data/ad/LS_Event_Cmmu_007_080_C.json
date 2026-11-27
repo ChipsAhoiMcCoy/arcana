@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_007_080_C", "title": "Aigis on the rooftop", "cues": [{"at": 0, "text": "The rooftop."}, {"at": 3.0, "text": "Aigis faces you."}]}
+{
+ "movie": "LS_Event_Cmmu_007_080_C",
+ "title": "Aigis on the rooftop",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school rooftop. You walk out across it with Aigis."
+  },
+  {
+   "at": 3.0,
+   "text": "Aigis, who walked ahead to the railing, turns around to face you, her face sad. As she talks she now and then lays a hand on her chest."
+  }
+ ]
+}

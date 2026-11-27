@@ -1,10 +1,3 @@
-{
- "movie": "LS_Event_Main_130_010_C",
- "title": "A message in class",
- "cues": [
-  {
-   "at": 0.6,
-   "text": "You sit at your desk, taking out your phone."
-  }
- ]
-}
+{"movie": "LS_Event_Main_130_010_C", "title": "A message in class", "cues": [
+{"at": 0.60, "text": "You sit at your desk in the classroom, your bag on the desk, and take out your phone."}
+]}

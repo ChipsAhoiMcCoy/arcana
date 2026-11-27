@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_010_C
-0.170	0.846	00.mp3	Mall arcade.
+0.170	8.999	00.mp3	The arcade in Paulownia Mall, a row of game cabinets. You sit at one, hands on the controls, playing. Another player sits at a machine nearby.

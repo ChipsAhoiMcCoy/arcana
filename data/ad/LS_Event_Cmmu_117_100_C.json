@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_117_100_C", "title": "The finished story", "cues": [{"at": 13.5, "text": "Akinari hands you a notebook, then stands."}, {"at": 20.67, "text": "Akinari smiles. In a flash he breaks into sparks and is gone. You rise with a start, your face falling."}]}
+{
+ "movie": "LS_Event_Cmmu_117_100_C",
+ "title": "The finished story",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You sit beside Akinari on a bench, and he smiles at you."
+  },
+  {
+   "at": 13.5,
+   "text": "Akinari hands you a worn notebook. Then he gets to his feet and turns a little away from you."
+  },
+  {
+   "at": 20.67,
+   "text": "Akinari smiles at you. In a flash of light he breaks into drifting sparks until he is gone. You get up with a start and look to where he stood, your face falling."
+  }
+ ]
+}

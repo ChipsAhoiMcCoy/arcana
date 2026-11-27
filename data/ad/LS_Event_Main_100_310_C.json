@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_310_C", "title": "You collapse", "cues": [{"at": 0, "text": "You collapse."}, {"at": 2.97, "text": "Yukari kneels beside you."}]}
+{
+ "movie": "LS_Event_Main_100_310_C",
+ "title": "You collapse",
+ "cues": [
+  {
+   "at": 1.2,
+   "text": "You stagger and fall face down on the roof."
+  },
+  {
+   "at": 2.97,
+   "text": "Yukari pushes herself up off the floor, hurries over to you and kneels at your side, her hands on your back."
+  }
+ ]
+}

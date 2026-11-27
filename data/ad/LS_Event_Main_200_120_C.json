@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_200_120_C", "title": "Aigis confronts Ryoji", "cues": [{"at": 0.05, "text": "Aigis strides up behind Ryoji on the bridge."}, {"at": 5.2, "text": "Ryoji turns to face her."}]}
+{
+ "movie": "LS_Event_Main_200_120_C",
+ "title": "Aigis confronts Ryoji",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "Ryoji stands alone on a bridge among stopped cars and trucks, his back turned. Aigis strides up behind him."
+  },
+  {
+   "at": 5.2,
+   "text": "Ryoji turns around to face her."
+  },
+  {
+   "at": 17.02,
+   "text": "Ryoji lifts a hand to his head. Aigis drops into a fighting stance, feet planted wide, arms held out."
+  }
+ ]
+}

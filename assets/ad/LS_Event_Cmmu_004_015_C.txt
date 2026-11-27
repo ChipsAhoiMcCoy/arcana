@@ -1,10 +1,10 @@
 #scene LS_Event_Cmmu_004_015_C
-0.000	1.009	00.mp3	Men crowd girls
-7.670	2.246	01.mp3	Akihiko walks over. You follow.
-14.840	0.990	02.mp3	Girls run off.
-20.500	1.637	03.mp3	Akihiko dodges a punch.
-31.330	1.955	04.mp3	Police officers question you both.
-36.000	1.590	05.mp3	Another policeman joins them.
-54.670	1.736	06.mp3	Officer Kurosawa walks off.
+0.000	9.123	00.mp3	In a back street of the Iwatodai strip mall, four men crowd around the two girls from before. You and Akihiko walk up a little way off and stop to watch.
+7.670	3.966	01.mp3	Akihiko frowns and walks straight over to the group, and you follow him.
+14.840	3.102	02.mp3	The men turn on Akihiko, and the two girls run off.
+20.500	9.095	03.mp3	One of the men swings a fist at Akihiko. Akihiko slips it without effort. The biggest of them, a hard-faced man, steps up beside him.
+31.330	7.577	04.mp3	Later, you and Akihiko stand outside a row of shops in the strip mall with two police officers. Akihiko looks troubled.
+36.000	4.716	05.mp3	Another policeman walks over to the group. The other two officers nod and walk away.
+54.670	2.983	06.mp3	Officer Kurosawa turns and walks off down the street.
 61.000	1.644	07.mp3	Akihiko runs off ahead.
-67.500	2.094	08.mp3	Akihiko runs off. You follow.
+67.500	3.063	08.mp3	Akihiko sets off at a run, and you run after him.

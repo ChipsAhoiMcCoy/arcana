@@ -1,4 +1,5 @@
 #scene LS_Event_Cmmu_010_600_C
-2.000	2.983	00.mp3	You and Shinjiro take your seats; the film begins.
-7.000	2.174	01.mp3	The film ends; Shinjiro looks sad.
-11.670	4.302	02.mp3	Shinjiro tugs his cap down, turns and walks away, leaving you behind.
+0.000	8.440	00.mp3	You and Shinjiro stand at the snack counter in the movie theater lobby, other customers waiting beside you. Shinjiro rubs the back of his head.
+2.000	6.199	01.mp3	You and Shinjiro take your seats among the audience, Shinjiro with his arms folded, and the film begins.
+7.000	6.721	02.mp3	The film ends. Back at the snack counter, Shinjiro stands beside you, his head low, his face drawn and sad.
+11.670	4.302	03.mp3	Shinjiro tugs his cap down, turns and walks away, leaving you behind.

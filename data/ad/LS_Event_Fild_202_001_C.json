@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_202_001_C", "title": "Mitsuru in the lounge", "cues": [{"at": 0.0, "text": "Mitsuru walks over to meet you."}]}
+{
+ "movie": "LS_Event_Fild_202_001_C",
+ "title": "Mitsuru in the lounge",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You come in through the dorm's front door with your bag over your shoulder. Mitsuru walks across the lounge to meet you and stops, a hand on her hip."
+  }
+ ]
+}

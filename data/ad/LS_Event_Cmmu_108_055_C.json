@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_108_055_C", "title": "Art club: an offer to study abroad", "cues": [{"at": 0.0, "text": "Lobby."}, {"at": 12.83, "text": "Keisuke runs off with the girl."}, {"at": 18.0, "text": "The advisor leaves you and Fuuka by the door."}]}
+{
+ "movie": "LS_Event_Cmmu_108_055_C",
+ "title": "Art club: an offer to study abroad",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school lobby, you and Fuuka wait outside the faculty office while the advisor talks with Keisuke inside."
+  },
+  {
+   "at": 5.79,
+   "text": "A girl comes running up behind you and Fuuka, and Fuuka holds a hand to her chest. The faculty office door opens, and Keisuke comes out with the advisor, a woman with short hair."
+  },
+  {
+   "at": 12.83,
+   "text": "Keisuke runs off with the student."
+  },
+  {
+   "at": 18.0,
+   "text": "The advisor walks away down the hall, leaving you and Fuuka by the office door."
+  }
+ ]
+}

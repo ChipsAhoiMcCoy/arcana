@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_001_C
-0.000	1.753	00.mp3	You step through the Velvet Room door.
+0.000	6.321	00.mp3	Tartarus entrance hall. You push open the door to the Velvet Room, a door no one else can see, and step through.

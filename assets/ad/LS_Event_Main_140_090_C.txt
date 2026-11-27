@@ -1,4 +1,4 @@
 #scene LS_Event_Main_140_090_C
-0.000	1.366	00.mp3	You lie asleep in your bed.
-2.870	1.523	01.mp3	You wake. Pharos is there.
-11.000	2.099	02.mp3	Pharos scatters like ash and is gone.
+0.000	3.489	00.mp3	You lie asleep in your bed in your dorm room, under a checked blanket.
+2.870	8.369	01.mp3	You wake and push yourself up on one arm. Pharos, the boy in striped pyjamas, stands at the foot of your bed, his hands behind his back.
+11.000	4.494	02.mp3	Pharos breaks apart into flecks like ash that scatter and fade, and he is gone.

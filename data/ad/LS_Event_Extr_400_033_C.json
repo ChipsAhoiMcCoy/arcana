@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Extr_400_033_C", "title": "Takaya meets Koromaru", "cues": [{"at": 0.0, "text": "He growls."}, {"at": 4.03, "text": "Takaya."}, {"at": 8.17, "text": "Takaya walks off. You lower your guard."}, {"at": 15.2, "text": "You follow Takaya, Koromaru with you."}]}
+{
+ "movie": "LS_Event_Extr_400_033_C",
+ "title": "Takaya meets Koromaru",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk Koromaru into Naganaki Shrine. He stops short and growls at someone ahead."
+  },
+  {
+   "at": 4.03,
+   "text": "Takaya steps out toward you. You take a fighting stance, Koromaru bristling beside you."
+  },
+  {
+   "at": 8.17,
+   "text": "Takaya turns his back and walks off up the shrine path. You lower your guard, and Koromaru turns and looks up at you."
+  },
+  {
+   "at": 15.2,
+   "text": "You set off after Takaya, Koromaru following."
+  }
+ ]
+}

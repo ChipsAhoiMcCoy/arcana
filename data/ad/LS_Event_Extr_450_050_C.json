@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Extr_450_050_C", "title": "Ramen at Hagakure", "cues": []}
+{
+ "movie": "LS_Event_Extr_450_050_C",
+ "title": "Ramen at Hagakure",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Hagakure Ramen in the Iwatodai Strip Mall. You sit at the counter, bent over a steaming bowl, eating your noodles with chopsticks. Two customers talk at a table behind you."
+  }
+ ]
+}

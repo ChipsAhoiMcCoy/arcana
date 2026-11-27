@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_330_020_C
-0.030	0.759	00.mp3	Classroom.
+0.030	8.147	00.mp3	A lesson in your classroom. You sit at your desk among the class, Junpei and Yukari nearby, and the teacher stands at the front by the blackboard.

@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_109_097_C", "title": "Chihiro's confession", "cues": [{"at": 34.4, "text": "Chihiro runs off."}]}
+{
+ "movie": "LS_Event_Cmmu_109_097_C",
+ "title": "Chihiro's confession",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the school rooftop, Chihiro turns around with a smile as you walk up to her."
+  },
+  {
+   "at": 13.0,
+   "text": "Chihiro lowers her eyes and presses a hand to her chest."
+  },
+  {
+   "at": 34.4,
+   "text": "Chihiro runs off across the rooftop."
+  }
+ ]
+}

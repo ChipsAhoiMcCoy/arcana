@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_000_C
-0.030	1.544	00.mp3	You enter a used-book store.
+0.030	12.174	00.mp3	You walk into a small used-book store in the Iwatodai strip mall. A stooped elderly man and an elderly woman with her hands folded in front of her, talking with each other, turn to look at you as you come up to them.

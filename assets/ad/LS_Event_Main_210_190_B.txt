@@ -1,3 +1,3 @@
 #scene LS_Event_Main_210_190_B
-0.300	3.539	00.mp3	A winged figure hovers before you and the team, blade at its side.
-16.050	1.102	01.mp3	Aigis braces.
+0.300	11.312	00.mp3	The winged figure from the moon hovers before you and the team, its long blade at its side. Everyone stands facing it, Junpei, Ken, Yukari and Koromaru already braced to fight.
+16.050	4.490	01.mp3	Aigis raises her arms into a fighting stance, and you take yours beside her.

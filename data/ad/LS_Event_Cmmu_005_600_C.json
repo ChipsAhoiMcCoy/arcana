@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_005_600_C", "title": "Movies with Mitsuru", "cues": [{"at": 0.05, "text": "Lobby."}, {"at": 2.85, "text": "You and Mitsuru watch the film."}, {"at": 6.35, "text": "Back in the lobby, facing her."}]}
+{
+ "movie": "LS_Event_Cmmu_005_600_C",
+ "title": "Movies with Mitsuru",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In the cinema lobby, you and Mitsuru stand together by the snack counter."
+  },
+  {
+   "at": 2.85,
+   "text": "In the screening room, you and Mitsuru sit side by side among the audience, watching the film."
+  },
+  {
+   "at": 6.35,
+   "text": "Afterwards, you and Mitsuru stand facing each other by the snack counter in the lobby."
+  }
+ ]
+}

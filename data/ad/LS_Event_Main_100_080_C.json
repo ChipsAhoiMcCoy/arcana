@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_080_C", "title": "Yukari at the door", "cues": [{"at": 0.03, "text": "You fix your hair at the sink. Someone knocks."}, {"at": 5.17, "text": "You open the door. Yukari stands outside."}]}
+{
+ "movie": "LS_Event_Main_100_080_C",
+ "title": "Yukari at the door",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "In your dorm room, you stand at a small sink, fixing your hair. Someone knocks at the door."
+  },
+  {
+   "at": 5.17,
+   "text": "You cross to the door and open it. Yukari stands outside, her school bag in one hand."
+  }
+ ]
+}

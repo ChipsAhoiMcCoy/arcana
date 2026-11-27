@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_120_070_C", "title": "Yukari's meeting", "cues": [{"at": 0.0, "text": "Lounge."}, {"at": 18.17, "text": "Junpei springs up."}]}
+{
+ "movie": "LS_Event_Main_120_070_C",
+ "title": "Yukari's meeting",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the dorm lounge, you and Junpei sit in armchairs, Junpei lounging back with an arm along the armrest. Yukari stands facing you both, hands clasped behind her back, ready to begin."
+  },
+  {
+   "at": 16.83,
+   "text": "Junpei springs up out of his armchair."
+  }
+ ]
+}

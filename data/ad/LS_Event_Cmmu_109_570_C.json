@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_109_570_C", "title": "The summer festival with Chihiro", "cues": [{"at": 1.17, "text": "At the festival, you stand with Chihiro."}, {"at": 8.5, "text": "You and Chihiro go to a takoyaki stall."}, {"at": 24.77, "text": "You walk on to a mask stall."}, {"at": 38.93, "text": "At the lucky-draw stall, you draw a ticket."}]}
+{
+ "movie": "LS_Event_Cmmu_109_570_C",
+ "title": "The summer festival with Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At the summer festival at Naganaki Shrine, you stand with Chihiro among the crowds and the food stalls, a woman in a yukata standing nearby. Chihiro clasps her hands in front of her as she talks."
+  },
+  {
+   "at": 8.5,
+   "text": "You and Chihiro make your way through the crowd to a takoyaki stall, where a woman stands behind the counter."
+  },
+  {
+   "at": 24.77,
+   "text": "You walk on together with the takoyaki to a stall hung with masks."
+  },
+  {
+   "at": 38.93,
+   "text": "At the lucky-draw stall, you reach in and draw a ticket while Chihiro watches."
+  }
+ ]
+}

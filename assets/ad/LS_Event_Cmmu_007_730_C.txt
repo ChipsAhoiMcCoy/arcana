@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_730_C
-0.190	0.776	00.mp3	You garden.
+0.170	5.364	00.mp3	The dorm rooftop. You and Aigis kneel side by side at the vegetable planters, tending them.

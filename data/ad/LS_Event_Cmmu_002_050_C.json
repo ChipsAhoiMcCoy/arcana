@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_002_050_C",
- "title": "The stolen wallet",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Wilduck Burger."
-  },
-  {
-   "at": 6.33,
-   "text": "Yukari runs off."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_002_050_C", "title": "The stolen wallet", "cues": [{"at": 0.0, "text": "You and Yukari walk up to the front of Wilduck Burger with your school bags. Yukari turns to face you."}, {"at": 6.33, "text": "Yukari runs off down the street, leaving you standing alone outside the burger shop."}]}

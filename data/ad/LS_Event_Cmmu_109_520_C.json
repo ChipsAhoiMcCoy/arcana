@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_520_C", "title": "Alone at Chihiro's home", "cues": [{"at": 0.0, "text": "Chihiro's home."}]}
+{
+ "movie": "LS_Event_Cmmu_109_520_C",
+ "title": "Alone at Chihiro's home",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Chihiro's home, in a room with a desk and bookshelves, you and Chihiro are alone together, sitting on floor cushions across a low table from each other. She kneels with her hands folded in her lap."
+  }
+ ]
+}

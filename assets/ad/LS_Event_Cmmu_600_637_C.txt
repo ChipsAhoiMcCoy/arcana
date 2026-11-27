@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_600_637_C
-0.000	2.729	00.mp3	You, in staff uniform, walk over to Kenji.
-31.500	1.894	01.mp3	Kenji goes inside, leaving you.
+0.000	9.221	00.mp3	Outside Wilduck Burger in the strip mall. You, in the restaurant's staff uniform and cap, walk over to Kenji, who stands by a bench with his school bag.
+15.500	3.499	01.mp3	A woman walks up behind Kenji, and he spins round to face her.
+31.500	4.709	02.mp3	Kenji goes in through the restaurant door, leaving you outside with Ms. Toriumi.

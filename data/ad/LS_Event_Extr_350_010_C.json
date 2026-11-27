@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_350_010_C", "title": "The nurse's strange medicine", "cues": [{"at": 1.2, "text": "You hold a steaming cup."}, {"at": 9.7, "text": "You drink it down in one go."}]}
+{
+ "movie": "LS_Event_Extr_350_010_C",
+ "title": "The nurse's strange medicine",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The nurse's office. The school nurse leans in toward you."
+  },
+  {
+   "at": 1.2,
+   "text": "After a moment, you are holding a steaming cup of his brew."
+  },
+  {
+   "at": 9.7,
+   "text": "You raise the steaming cup and drink it down in one go, your face screwing up."
+  }
+ ]
+}

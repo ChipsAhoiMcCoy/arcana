@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_117_080_C", "title": "No more medicine", "cues": [{"at": 0.0, "text": "Akinari."}]}
+{
+ "movie": "LS_Event_Cmmu_117_080_C",
+ "title": "No more medicine",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You sit beside Akinari on a bench; he clutches his chest, gasping for breath, his face tight with pain."
+  }
+ ]
+}

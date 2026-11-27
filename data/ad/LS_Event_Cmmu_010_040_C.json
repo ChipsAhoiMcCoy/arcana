@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_010_040_C", "title": "Mitsuru on the old days", "cues": [{"at": 3.67, "text": "Akihiko charges."}]}
+{
+ "movie": "LS_Event_Cmmu_010_040_C",
+ "title": "Mitsuru on the old days",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The student council room. Mitsuru sits on a folding chair beside a long table, arms folded, facing you."
+  },
+  {
+   "at": 3.67,
+   "text": "A still picture fills the screen while she talks: a younger Akihiko, a bandage across his nose, shouts as he charges forward; behind him a younger Mitsuru points ahead and Shinjiro holds a long weapon, a Shadow looming behind them in a street."
+  },
+  {
+   "at": 17.0,
+   "text": "Another still picture: the three of them younger, standing together in front of a staircase, Shinjiro with a hand in his pocket, Akihiko in the middle, Mitsuru with her arms folded."
+  },
+  {
+   "at": 25.83,
+   "text": "Mitsuru gets up from her chair and stands facing you."
+  }
+ ]
+}

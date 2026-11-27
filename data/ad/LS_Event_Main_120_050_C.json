@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_120_050_C", "title": "The boy returns", "cues": [{"at": 0.0, "text": "In your dorm room, you sleep."}, {"at": 2.87, "text": "A boy watches you."}, {"at": 8.2, "text": "The boy dissolves into specks."}]}
+{
+ "movie": "LS_Event_Main_120_050_C",
+ "title": "The boy returns",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In your dorm room. You lie asleep in bed, the covers pulled up."
+  },
+  {
+   "at": 2.87,
+   "text": "You open your eyes and push yourself up on one arm. A boy in striped pyjamas stands at the foot of your bed, watching you."
+  },
+  {
+   "at": 8.2,
+   "text": "The boy breaks apart into a cloud of drifting specks and is gone."
+  }
+ ]
+}

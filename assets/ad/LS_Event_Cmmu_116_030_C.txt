@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_116_030_C
-0.000	1.003	00.mp3	Hagakure Ramen.
-8.330	3.478	01.mp3	A steaming bowl of Tan-Tan Noodles sits before you. You eat.
+0.000	8.758	00.mp3	Hagakure Ramen. You and Nozomi sit side by side at the counter, empty ramen bowls already in front of him. The owner works behind the counter.
+8.330	6.187	01.mp3	A steaming bowl of Tan-Tan Noodles now sits in front of you. You lift a mouthful with your chopsticks and eat.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_650_050_C", "title": "Ms. Toriumi's lecture", "cues": [{"at": 0.0, "text": "You wait in the office."}]}
+{
+ "movie": "LS_Event_Qest_650_050_C",
+ "title": "Ms. Toriumi's lecture",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, grumbling to herself, and comes over to you; as she talks on, a drop of sweat runs down your head."
+  }
+ ]
+}

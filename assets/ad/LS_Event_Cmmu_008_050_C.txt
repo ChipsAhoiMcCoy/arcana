@@ -1,8 +1,8 @@
 #scene LS_Event_Cmmu_008_050_C
-0.030	0.945	00.mp3	Dorm rooftop.
-13.670	1.867	01.mp3	Ken lunges at you with his broom.
-21.170	1.280	02.mp3	Your blow catches Ken.
-32.000	2.221	03.mp3	Ken's hit lands; you drop to one knee.
-37.500	1.247	04.mp3	Yukari steps out.
-43.100	8.244	05.mp3	Yukari goes back downstairs, and Koromaru, Junpei and Akihiko follow, leaving you alone with Ken. He lays his broom down.
-58.000	1.135	06.mp3	Ken hands you a key.
+0.030	8.564	00.mp3	The dorm rooftop. Ken faces you holding a broom, and you hold a toy bat, while Akihiko, Junpei and Koromaru stand by to watch.
+13.670	8.801	01.mp3	Ken lunges at you with his broom and the match begins. Soon he is down on one knee, leaning on the broom and panting, while you stand ready with your bat.
+21.170	5.620	02.mp3	Ken charges in again, and your blow catches him. He drops to one knee again, leaning on his broom.
+28.440	10.071	03.mp3	At the sound of Yukari's voice you turn toward the door. In that moment Ken dashes in and lands a clean hit: you drop to one knee, holding your head, your bat on the ground.
+37.500	3.241	04.mp3	Yukari walks out onto the roof and stops beside the others.
+43.100	10.698	05.mp3	Yukari heads back downstairs, and Koromaru, Junpei and Akihiko follow her, leaving you alone on the roof with Ken. Ken crouches and lays his broom down on the ground.
+58.000	2.929	06.mp3	Ken steps up to you and gives you a small silver key.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_005_070_C
-0.000	0.861	00.mp3	Burger shop.
+0.000	7.097	00.mp3	Back at Wilduck Burger, you share a table of burgers and drinks with Mitsuru, other customers waiting at the counter behind.

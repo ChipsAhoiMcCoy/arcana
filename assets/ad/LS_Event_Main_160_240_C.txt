@@ -1,6 +1,8 @@
 #scene LS_Event_Main_160_240_C
-0.000	1.813	00.mp3	Junpei kneels, hands tied.
-10.830	0.863	01.mp3	You run out.
-15.670	1.672	02.mp3	Chidori raises an Evoker.
-23.670	1.649	03.mp3	Akihiko takes the Evoker.
-30.330	2.668	04.mp3	Aigis holds Chidori fast as everyone gathers.
+0.000	7.211	00.mp3	On the dorm's rooftop, Junpei kneels on the tiles, his hands still tied behind his back. Chidori stands over him.
+10.830	6.491	01.mp3	The rooftop door bangs open and you and the others run out, Koromaru with you, and stop short at the sight of them.
+15.670	7.122	02.mp3	Chidori turns to face you all, raises an Evoker and presses it to her head. Everyone drops into a fighting stance.
+20.330	5.753	03.mp3	Junpei lunges from his knees and throws himself against Chidori. They crash to the ground together.
+23.670	6.805	04.mp3	Akihiko darts over, snatches up the Evoker from beside Chidori and steps back with it. She stays on the ground.
+26.330	3.576	05.mp3	Ikutsuki, the chairman, comes running out through the rooftop door.
+30.330	6.493	06.mp3	Aigis walks over to Chidori and pulls her to her feet, holding her arms fast, and everyone gathers around them.

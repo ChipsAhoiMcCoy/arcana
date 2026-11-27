@@ -1,6 +1,6 @@
 #scene LS_Event_Qest_600_210_C
-0.030	3.240	00.mp3	In the Velvet Room, your Persona cards lie before Igor.
-4.500	6.695	01.mp3	Igor passes a hand over the cards and energy bursts from each. He flicks them into the air, where they hang and pulse.
-15.950	4.855	02.mp3	Something goes wrong. You jerk in your chair and topple over backward as the cards scatter.
-25.100	2.219	03.mp3	Elizabeth closes her eyes and looks away.
-30.900	1.304	04.mp3	The Persona takes shape.
+0.030	7.152	00.mp3	The Velvet Room. The Persona cards you chose lie face up on the table before Igor; Elizabeth stands beside his chair.
+0.600	12.540	01.mp3	Igor passes a gloved hand over the cards and energy bursts up from each one. He raises them upright, grinning behind them, then flicks them up into the air above his chair. They hang side by side and pulse.
+15.950	7.051	02.mp3	Something goes wrong. You jerk in your chair, arms flung out, and topple over backward as the cards scatter through the air.
+25.100	8.249	03.mp3	Beside Igor, who sits grimacing with his gloved hands pressed together, Elizabeth closes her eyes, tugs at the brim of her hat and looks away.
+30.900	4.098	04.mp3	The new Persona takes shape before you, then shrinks back into a single card.

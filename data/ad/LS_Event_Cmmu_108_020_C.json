@@ -1,5 +1,10 @@
 {
  "movie": "LS_Event_Cmmu_108_020_C",
  "title": "Art club: drawing session",
- "cues": []
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The art room. You sit at an easel among the club members, drawing; Fuuka works at an easel nearby, and Keisuke stands among you with his hands on his hips."
+  }
+ ]
 }

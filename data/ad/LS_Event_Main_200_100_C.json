@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_200_100_C", "title": "Ryoji leaves the dorm", "cues": [{"at": 3.2, "text": "You enter the lounge. Ryoji walks past you and out the door. Aigis walks in."}, {"at": 26.55, "text": "The others leave you alone with Aigis."}, {"at": 35.72, "text": "Aigis walks down a hallway and stops, hand on her chest."}]}
+{
+ "movie": "LS_Event_Main_200_100_C",
+ "title": "Ryoji leaves the dorm",
+ "cues": [
+  {
+   "at": 0.25,
+   "text": "You walk into the dorm lounge with your bag on your shoulder. Akihiko, Yukari, Fuuka and Koromaru are sitting around the low table, and Junpei stands with Ryoji."
+  },
+  {
+   "at": 3.2,
+   "text": "Ryoji walks past you and out the front door. A moment later, Aigis walks into the lounge."
+  },
+  {
+   "at": 26.55,
+   "text": "The others get up and head off, leaving you alone in the lounge with Aigis. She stands with her hands clasped at her chest as she talks."
+  },
+  {
+   "at": 35.7,
+   "text": "Aigis turns and walks out of the lounge. Then she walks alone down a dorm hallway, stops, and lays a hand on her chest."
+  }
+ ]
+}

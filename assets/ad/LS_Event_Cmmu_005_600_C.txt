@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_005_600_C
-0.050	0.608	00.mp3	Lobby.
-2.850	1.623	01.mp3	You and Mitsuru watch the film.
-6.350	1.604	02.mp3	Back in the lobby, facing her.
+0.050	4.045	00.mp3	In the cinema lobby, you and Mitsuru stand together by the snack counter.
+2.850	5.300	01.mp3	In the screening room, you and Mitsuru sit side by side among the audience, watching the film.
+6.350	4.888	02.mp3	Afterwards, you and Mitsuru stand facing each other by the snack counter in the lobby.

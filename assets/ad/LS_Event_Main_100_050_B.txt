@@ -1,6 +1,6 @@
 #scene LS_Event_Main_100_050_B
-0.030	1.736	00.mp3	The boy hugs the signed contract.
+0.030	7.046	00.mp3	The boy in striped pyjamas takes the signed contract, reads it and hugs it to his chest, then holds it up beside his head.
 12.070	7.046	01.mp3	The boy stretches one arm out toward you, then breaks apart into flecks and is gone. You stand alone by the front desk.
-23.170	2.550	02.mp3	Yukari, with a gun at her thigh, glares at you.
-28.170	3.156	03.mp3	Yukari edges toward you, hand creeping to her gun.
-32.170	2.862	04.mp3	Mitsuru stands behind Yukari, who draws her gun.
+23.170	9.026	02.mp3	Yukari, a girl about your age, stands at the foot of the stairs, frowning at you, braced as if for a fight. A gun hangs in a holster on her thigh.
+28.170	4.149	03.mp3	Yukari edges toward you, her hand creeping down to the gun at her thigh.
+32.170	10.298	04.mp3	Behind Yukari, Mitsuru, a young woman with long hair, stands in the hallway with one hand on her hip. Yukari draws the gun from her thigh and holds it down at her side.

@@ -1,3 +1,3 @@
 #scene LS_Event_Main_150_110_C
-0.000	3.341	00.mp3	In the command room, Ikutsuki answers a call at the console.
-15.000	1.251	01.mp3	Ikutsuki ponders.
+0.000	6.546	00.mp3	In the dorm's command room, Ikutsuki sits alone at the console. A call comes in; he gets up and answers it.
+15.000	6.217	01.mp3	The call ends. Ikutsuki stands by the console with one arm folded, a hand raised to his chin.

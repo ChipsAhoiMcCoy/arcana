@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_217_001_C
-0.030	1.325	00.mp3	Yukari faces you.
+0.030	2.619	00.mp3	The dorm lounge. Yukari stands facing you.
 2.330	2.759	01.mp3	Yukari turns and walks away across the lounge.

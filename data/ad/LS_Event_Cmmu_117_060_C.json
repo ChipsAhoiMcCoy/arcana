@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_117_060_C", "title": "The pink alligator", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_117_060_C",
+ "title": "The pink alligator",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Naganaki Shrine. You sit with Akinari again on a bench, his legs crossed."
+  }
+ ]
+}

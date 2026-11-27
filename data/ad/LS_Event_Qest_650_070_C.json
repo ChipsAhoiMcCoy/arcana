@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_650_070_C", "title": "Mrs. Terauchi on mahjong", "cues": [{"at": 0.0, "text": "A teacher walks up, muttering."}, {"at": 2.35, "text": "You sweat."}]}
+{
+ "movie": "LS_Event_Qest_650_070_C",
+ "title": "Mrs. Terauchi on mahjong",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, talking to herself, and comes over to you; as she talks on, a drop of sweat runs down your head."
+  }
+ ]
+}

@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_109_360_C
-0.000	0.745	00.mp3	A café.
-2.500	1.170	01.mp3	You face Chihiro.
+0.000	3.859	00.mp3	At a café in Paulownia Mall, you sit across a table from Chihiro.

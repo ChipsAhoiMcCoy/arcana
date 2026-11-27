@@ -1,2 +1,3 @@
 #scene LS_Event_Main_160_150_C
-0.000	2.259	00.mp3	Shinjiro steps out toward Akihiko.
+0.000	14.512	00.mp3	Outside Hagakure, the ramen shop in the back street, you stand with Akihiko, who has an attaché case in his hand. The shop door opens and Shinjiro steps out, walks a few paces toward Akihiko and stops, a hand on his hip.
+17.130	3.192	01.mp3	Shinjiro tugs the brim of his cap down over his eyes.

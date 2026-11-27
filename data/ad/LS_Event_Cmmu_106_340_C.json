@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_106_340_C", "title": "Dinner with Yuko", "cues": [{"at": 0.0, "text": "Wakatsu."}]}
+{
+ "movie": "LS_Event_Cmmu_106_340_C",
+ "title": "Dinner with Yuko",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Wakatsu, the set-meal restaurant. You sit across a table from Yuko by the window, set meals in front of you both."
+  }
+ ]
+}

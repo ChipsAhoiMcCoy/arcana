@@ -1,3 +1,3 @@
 #scene LS_Event_Main_120_020_C
-0.000	2.273	00.mp3	Yukari walks alone along a colonnade.
-15.670	2.560	01.mp3	The girls walk off. Yukari watches them go.
+0.000	9.666	00.mp3	On the school grounds after practice, Yukari walks alone along a brick colonnade. Further down it, two girls in school uniform stand by the arches, chatting.
+15.670	7.860	01.mp3	The two girls turn and walk off together down the colonnade. Yukari stays where she is, watches them go, then puts a hand on her hip.

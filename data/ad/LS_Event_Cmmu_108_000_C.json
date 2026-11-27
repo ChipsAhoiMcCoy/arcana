@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_108_000_C", "title": "Art club: a day at the club", "cues": [{"at": 1.0, "text": "The art room."}]}
+{
+ "movie": "LS_Event_Cmmu_108_000_C",
+ "title": "Art club: a day at the club",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You sit on a stool at an easel among the art club members in the art room; the others paint at their own easels around you."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_070_C
-0.030	2.037	00.mp3	Mitsuko stands crying in Bookworms.
+0.030	9.505	00.mp3	You come into Bookworms. Mitsuko stands with her head bowed and her hands clasped, in tears, wiping her eyes, and Bunkichi looks up, startled, as you arrive.

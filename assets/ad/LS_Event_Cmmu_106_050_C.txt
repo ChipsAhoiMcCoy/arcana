@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_106_050_C
-0.000	1.015	00.mp3	Sports field.
-21.600	1.575	01.mp3	Yuko strides to the boys.
+0.000	6.957	00.mp3	On the school's sports field, laid out with cones, you and Yuko watch the children run. A girl sprints over to Yuko.
+21.600	2.799	01.mp3	Yuko strides over to the boys, and you follow her.
 30.700	1.906	02.mp3	The two boys run back off together.

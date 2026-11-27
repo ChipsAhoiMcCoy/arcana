@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_003_010_C
-1.060	1.453	00.mp3	In the arcade with Junpei.
+0.050	7.954	00.mp3	The arcade. You and Junpei stand among the game cabinets, school bags over your shoulders, while other students sit playing at the machines.

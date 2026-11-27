@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_600_847_C", "title": "Mitsuru finds the study session", "cues": [{"at": 0.03, "text": "Dorm lounge."}, {"at": 6.0, "text": "Ken sits down."}, {"at": 19.33, "text": "Mitsuru sits down."}]}
+{
+ "movie": "LS_Event_Cmmu_600_847_C",
+ "title": "Mitsuru finds the study session",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm lounge. You study around the dining table with Yukari, Junpei, Fuuka, Akihiko and Ken, with Koromaru sitting by Ken. Mitsuru is not with you."
+  },
+  {
+   "at": 6.0,
+   "text": "Ken, already on his feet, sits back down. Mitsuru stands a few steps from the table, watching the group."
+  },
+  {
+   "at": 19.33,
+   "text": "Later, Mitsuru sits at the table with everyone, studying."
+  }
+ ]
+}

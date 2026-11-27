@@ -1,3 +1,3 @@
 #scene LS_Event_Fild_620_010_C
-2.500	1.844	00.mp3	Junpei and Mitsuru run up to you.
-8.830	1.109	01.mp3	Yukari glares.
+2.500	5.128	00.mp3	In a hallway of the love hotel, Junpei and Mitsuru come running up to you and Yukari.
+8.830	2.742	01.mp3	Yukari glares, and Mitsuru looks taken aback.

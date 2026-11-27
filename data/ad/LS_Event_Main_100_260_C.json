@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_260_C", "title": "The back door", "cues": [{"at": 0.05, "text": "You and Yukari run to the back door."}, {"at": 8.1, "text": "Something pounds the back door twice. Yukari flinches."}]}
+{
+ "movie": "LS_Event_Main_100_260_C",
+ "title": "The back door",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "You and Yukari run through the dorm's dining room, past the long counter, and down a short hall to the back door."
+  },
+  {
+   "at": 8.1,
+   "text": "Something pounds against the back door from outside, twice. Yukari flinches back from it, a hand pressed to her chest."
+  }
+ ]
+}

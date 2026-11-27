@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_007_055_C", "title": "Mii-chan comes home", "cues": [{"at": 0.0, "text": "The fountain."}, {"at": 5.36, "text": "The lady has gone."}]}
+{
+ "movie": "LS_Event_Cmmu_007_055_C",
+ "title": "Mii-chan comes home",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, Fountain Square. An old lady sits on a bench by the fountain with her cat beside her on the bench. You and Aigis stand in front of her, having brought the cat back."
+  },
+  {
+   "at": 6.5,
+   "text": "The old lady has gone home with her cat. You and Aigis stand alone in the square, Aigis holding her bag at her side."
+  }
+ ]
+}

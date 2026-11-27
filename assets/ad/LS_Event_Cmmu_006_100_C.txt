@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_006_100_C
-0.000	0.865	00.mp3	Fuuka's room.
-16.000	2.235	01.mp3	Fuuka holds out headphones; you take them.
+0.000	6.641	00.mp3	You sit on a cushion by a low table in Fuuka's room at the dorm. Fuuka kneels facing you, fidgeting with her hands.
+16.000	2.831	01.mp3	Fuuka holds out a pair of headphones, and you take them.
+23.500	3.416	02.mp3	Fuuka now kneels close beside you, a hand pressed to her chest.

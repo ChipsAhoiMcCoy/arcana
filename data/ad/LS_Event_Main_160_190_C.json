@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_160_190_C", "title": "Searching Paulownia Mall", "cues": [{"at": 0.0, "text": "You circle Fuuka."}]}
+{
+ "movie": "LS_Event_Main_160_190_C",
+ "title": "Searching Paulownia Mall",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the plaza of Paulownia Mall, you and the others stand in a ring around Fuuka, enclosed again inside the wide skirt of her Persona, whose arms spread wide above her. Koromaru stands at the edge of the group."
+  }
+ ]
+}

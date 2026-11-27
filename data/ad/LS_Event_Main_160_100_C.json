@@ -1,1 +1,6 @@
-{"movie": "LS_Event_Main_160_100_C", "title": "Junpei meets Chidori", "cues": [{"at": 0.05, "text": "Junpei approaches the girl."}, {"at": 5.55, "text": "The girl gets up and walks past Junpei, sketchboard to her chest. Blood drips from her hand."}, {"at": 19.55, "text": "The girl turns away."}, {"at": 24.05, "text": "Chidori nods and walks away."}]}
+{"movie": "LS_Event_Main_160_100_C", "title": "Junpei meets Chidori", "cues": [
+  {"at": 0.05, "text": "The plaza outside Port Island Station. Junpei walks up to the bench where the girl in the long, frilly dress sits drawing."},
+  {"at": 5.55, "text": "Junpei scratches his head. The girl gets up from the bench, holding her sketchboard to her chest, and walks a few steps past him. A drop of blood falls from her hand onto the paving."},
+  {"at": 19.55, "text": "The girl turns her back on Junpei and walks a few steps away, then stops."},
+  {"at": 24.05, "text": "Chidori nods and walks away."}
+]}

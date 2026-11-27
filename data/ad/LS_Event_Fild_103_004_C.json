@@ -1,4 +1,1 @@
-{"movie": "LS_Event_Fild_103_004_C", "title": "The claw machine", "cues": [
-{"at": 1.00, "text": "The arcade. You work a claw machine."},
-{"at": 5.67, "text": "You step back, hands in your pockets, and watch the claw. It closes on a box and lifts it, and you look pleased."}
-]}
+{"movie": "LS_Event_Fild_103_004_C", "title": "The claw machine", "cues": [{"at": 1.0, "text": "The arcade in Paulownia Mall. You stand at a claw machine stacked with boxed prizes and work its controls."}, {"at": 5.67, "text": "You step back, hands in your pockets, and watch the claw. It closes on a box and lifts it, and you look pleased."}]}

@@ -1,3 +1,4 @@
 #scene LS_Event_Fild_216_001_C
-0.050	2.006	00.mp3	You enter. Junpei hurries over.
-3.330	1.687	01.mp3	Ikutsuki walks up to you two.
+0.050	6.391	00.mp3	You come in through the dorm's front door. Junpei hurries over to you; the chairman, Ikutsuki, is in the lounge.
+3.330	4.599	01.mp3	Ikutsuki walks up to the two of you and folds his arms, and Junpei turns to him.
+6.530	1.635	02.mp3	Ikutsuki gives you something.

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_150_100_C
-0.000	1.245	00.mp3	A winged tank awaits.
+0.000	10.932	00.mp3	The team runs into a rock-walled cavern and stops short. Ahead sits an old tank with a pair of great metal wings rising behind its turret. You all take your fighting stances.

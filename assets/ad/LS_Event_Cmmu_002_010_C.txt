@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_010_C
-0.000	1.214	00.mp3	Yukari faces you.
+0.000	5.506	00.mp3	On the school rooftop, Yukari stands at the railing with her back to you. She turns around to face you.

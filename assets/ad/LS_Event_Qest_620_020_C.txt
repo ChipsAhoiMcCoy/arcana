@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_620_020_C
-0.200	2.025	00.mp3	Entering the dorm, you answer your phone.
+0.200	5.516	00.mp3	You walk in through the dorm's front door. Your phone beeps; you take it out, look at the screen and answer.

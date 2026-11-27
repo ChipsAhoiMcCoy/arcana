@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_717_C", "title": "Reading with Fuuka: the recommendation", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_006_717_C",
+ "title": "Reading with Fuuka: the recommendation",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm lounge. You and Fuuka sit facing each other across a low table, each reading a volume of her science fiction series."
+  }
+ ]
+}

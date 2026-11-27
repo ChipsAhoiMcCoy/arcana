@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_600_637_C", "title": "Kenji late for the internship", "cues": [{"at": 0.0, "text": "You, in staff uniform, walk over to Kenji."}, {"at": 31.5, "text": "Kenji goes inside, leaving you."}]}
+{
+ "movie": "LS_Event_Cmmu_600_637_C",
+ "title": "Kenji late for the internship",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Outside Wilduck Burger in the strip mall. You, in the restaurant's staff uniform and cap, walk over to Kenji, who stands by a bench with his school bag."
+  },
+  {
+   "at": 15.5,
+   "text": "A woman walks up behind Kenji, and he spins round to face her."
+  },
+  {
+   "at": 31.5,
+   "text": "Kenji goes in through the restaurant door, leaving you outside with Ms. Toriumi."
+  }
+ ]
+}

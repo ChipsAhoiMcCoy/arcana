@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_140_150_C", "title": "The Kirijo vacation home", "cues": [{"at": 0.0, "text": "Mitsuru leads you all into her family's entrance hall."}, {"at": 5.33, "text": "Two maids walk up and stand before Mitsuru."}, {"at": 14.0, "text": "A man with an eye patch approaches Mitsuru."}, {"at": 19.67, "text": "The man walks off, out of sight. You all watch him go."}]}
+{
+ "movie": "LS_Event_Main_140_150_C",
+ "title": "The Kirijo vacation home",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Mitsuru leads you, Yukari, Fuuka, Junpei and Akihiko into the large entrance hall of her family's vacation home. You all stop in a line behind her. Yukari, Fuuka and Junpei stare around, wide-eyed."
+  },
+  {
+   "at": 5.33,
+   "text": "A door opens and two maids walk up and stand before Mitsuru."
+  },
+  {
+   "at": 14.0,
+   "text": "Another door opens. The maids step aside, and a tall man in a suit, a patch over one eye, walks up to Mitsuru."
+  },
+  {
+   "at": 19.67,
+   "text": "The man walks off past the maids, along your line and out of sight. You all turn to watch him go."
+  }
+ ]
+}

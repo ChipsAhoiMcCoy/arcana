@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_106_660_C
-0.200	1.389	00.mp3	You stop and face Yuko.
+0.170	6.683	00.mp3	The school's main lobby, by the shoe lockers. You walk along with Yuko, bags in hand, and stop to face each other.

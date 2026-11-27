@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_600_835_C", "title": "Homework with Ken and Koromaru", "cues": [{"at": 0.03, "text": "Dorm lounge."}, {"at": 23.67, "text": "Koromaru trots back and stands up."}]}
+{
+ "movie": "LS_Event_Cmmu_600_835_C",
+ "title": "Homework with Ken and Koromaru",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm lounge. You sit at the table, studying with Ken, with Koromaru sitting beside him."
+  },
+  {
+   "at": 8.83,
+   "text": "Koromaru holds a can of Mad Bull in his mouth."
+  },
+  {
+   "at": 23.67,
+   "text": "Koromaru is no longer beside the table. Then he trots back in and rises up on his hind legs, tail wagging."
+  }
+ ]
+}

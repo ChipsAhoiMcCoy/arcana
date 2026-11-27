@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_102_000_C
-0.000	1.361	00.mp3	You enter the council room.
+0.000	5.569	00.mp3	You step into the student council room. Mitsuru sits at a long table with several council members.

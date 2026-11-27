@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_400_060_C
-0.000	1.546	00.mp3	Jin walks up to Takaya.
+0.000	8.269	00.mp3	Takaya stands at a railing looking out over the city, a suspension bridge and Tartarus under a huge moon. Jin walks up behind him.

@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_221_020_C
 0.000	5.053	00.mp3	On the school rooftop, you and Ryoji walk up to three male students who are waiting for him.
-25.000	2.672	01.mp3	The students leave. Ryoji looks downcast.
+25.000	4.489	01.mp3	The three students leave the rooftop. Ryoji turns to you, looking downcast.

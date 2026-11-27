@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_160_160_C", "title": "Junpei and Chidori", "cues": [{"at": 0.0, "text": "A girl sketches."}, {"at": 20.67, "text": "Chidori stands up."}, {"at": 27.5, "text": "Chidori walks off past Junpei, who watches."}, {"at": 31.5, "text": "Junpei pumps his fist."}]}
+{
+ "movie": "LS_Event_Main_160_160_C",
+ "title": "Junpei and Chidori",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the square by Port Island Station, a girl sits on a bench drawing in a sketchbook. Junpei walks up to her, his bag over his shoulder, and stops beside the bench."
+  },
+  {
+   "at": 20.67,
+   "text": "Junpei rubs the back of his head. Chidori smiles, closes her sketchbook and gets up from the bench, holding it against her."
+  },
+  {
+   "at": 27.5,
+   "text": "Chidori walks off past Junpei. He turns to watch her go."
+  },
+  {
+   "at": 31.5,
+   "text": "Alone, Junpei pumps his fist, grinning."
+  }
+ ]
+}

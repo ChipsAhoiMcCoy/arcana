@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_060_C", "title": "Fuuka wants to learn more", "cues": [{"at": 0.0, "text": "Rooftop bench."}]}
+{
+ "movie": "LS_Event_Cmmu_006_060_C",
+ "title": "Fuuka wants to learn more",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You sit beside Fuuka on a bench on the school rooftop. She keeps her hands folded in her lap; you lean forward, elbows on your knees."
+  }
+ ]
+}

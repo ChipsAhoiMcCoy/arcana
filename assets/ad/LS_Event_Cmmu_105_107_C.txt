@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_105_107_C
-1.900	1.636	00.mp3	Kazushi hands you sports tape.
+0.000	10.822	00.mp3	Wakatsu, the set-meal restaurant. You sit across a table from Kazushi, set meals in front of you both, a few other diners around you. Kazushi looks downcast and lets out a sigh.
+1.900	3.109	01.mp3	Kazushi holds out a roll of sports tape, and you take it.

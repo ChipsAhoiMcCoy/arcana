@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_101_090_C", "title": "Emiri leaves", "cues": [{"at": 0.0, "text": "You and Kenji stop."}, {"at": 3.6, "text": "Ms. Kanou, with a man."}, {"at": 13.05, "text": "Kenji breaks into tears and runs off across the plaza. You follow and find him by a wall, facing away."}]}
+{
+ "movie": "LS_Event_Cmmu_101_090_C",
+ "title": "Emiri leaves",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Port Island Station, you and Kenji walk side by side across the plaza and stop."
+  },
+  {
+   "at": 5.27,
+   "text": "A little way off, Ms. Kanou stands talking with a man."
+  },
+  {
+   "at": 13.0,
+   "text": "Kenji breaks into tears. He turns and runs off across the plaza and stops by a wall, rubbing at his eyes; you follow and find him standing alone, facing away."
+  }
+ ]
+}

@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_400_055_C", "title": "Takaya's last offer", "cues": [{"at": 0.03, "text": "Takaya waits by steps and turns to you."}, {"at": 11.03, "text": "A monster looms over two."}, {"at": 31.2, "text": "Takaya walks away, revolver in his belt. You stand alone."}]}
+{
+ "movie": "LS_Event_Extr_400_055_C",
+ "title": "Takaya's last offer",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Takaya waits by some steps in a deserted street. He turns as you walk up to him."
+  },
+  {
+   "at": 9.86,
+   "text": "A still image: a monstrous creature with a gaping, tooth-lined maw rears over a long-haired girl and a boy, who braces in front of it."
+  },
+  {
+   "at": 31.2,
+   "text": "Takaya turns his back on you and walks away, a revolver tucked in his belt. You are left standing alone."
+  }
+ ]
+}

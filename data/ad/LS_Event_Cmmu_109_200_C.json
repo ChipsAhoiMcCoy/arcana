@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_109_200_C", "title": "Chihiro's gift", "cues": [{"at": 1.0, "text": "Chihiro thanks you."}, {"at": 12.2, "text": "Chihiro hands you a manga book."}, {"at": 19.0, "text": "Two students enter."}, {"at": 30.55, "text": "Chihiro goes to them; you walk away."}]}
+{
+ "movie": "LS_Event_Cmmu_109_200_C",
+ "title": "Chihiro's gift",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the student council room, Chihiro stands with you, her hands clasped in front of her; as she thanks you, you rub the back of your head."
+  },
+  {
+   "at": 12.2,
+   "text": "Chihiro holds out a book of manga to you, and you take it."
+  },
+  {
+   "at": 19.0,
+   "text": "The door opens, and a boy and a girl, both students, come in and walk up to Chihiro."
+  },
+  {
+   "at": 31.83,
+   "text": "Chihiro holds an open hand out toward the two students and steps over to them, and you turn and walk away, hands in your pockets."
+  }
+ ]
+}

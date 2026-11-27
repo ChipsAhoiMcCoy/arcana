@@ -1,3 +1,2 @@
 #scene LS_Event_Main_130_100_C
-0.050	0.860	00.mp3	Command room.
-2.000	1.360	01.mp3	Yukari rubs her head.
+0.050	11.156	00.mp3	In the command room, Fuuka stands at the bank of consoles and monitors. Yukari stands beside her, alone with her, hands behind her back, and rubs the back of her head as she starts to ask.

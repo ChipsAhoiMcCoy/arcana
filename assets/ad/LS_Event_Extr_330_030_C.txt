@@ -1,3 +1,3 @@
 #scene LS_Event_Extr_330_030_C
-0.030	0.759	00.mp3	Classroom.
-3.630	0.869	01.mp3	Junpei looks.
+0.030	7.683	00.mp3	A lesson in your classroom. You sit at your desk, Junpei at the desk beside you and Yukari nearby, while the teacher talks at the front.
+3.630	3.498	01.mp3	Junpei, a bead of sweat on his brow, turns his head toward you.

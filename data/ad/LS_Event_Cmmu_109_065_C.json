@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_065_C", "title": "What money can buy", "cues": [{"at": 0.0, "text": "Bookstore."}]}
+{
+ "movie": "LS_Event_Cmmu_109_065_C",
+ "title": "What money can buy",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Iwatodai Strip Mall, outside the bookstore, Chihiro stands with you. Nearby, a young woman and a middle-aged man sit together on a bench outside the burger shop."
+  }
+ ]
+}

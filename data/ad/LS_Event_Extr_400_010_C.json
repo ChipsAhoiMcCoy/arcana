@@ -4,11 +4,11 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "You walk in."
+   "text": "The dorm lounge. You come in to find Ikutsuki sitting on the sofas with Junpei and Yukari."
   },
   {
    "at": 21.0,
-   "text": "Akihiko, Fuuka and Mitsuru join the group."
+   "text": "Akihiko, Fuuka and Mitsuru come over to the sofas and join the group."
   }
  ]
 }

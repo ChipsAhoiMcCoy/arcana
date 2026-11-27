@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.05,
-   "text": "You stand up."
+   "text": "In your dorm room, you sit on the edge of your bed, then get to your feet."
   },
   {
    "at": 3.75,
-   "text": "Yukari steps in."
+   "text": "The door opens and Yukari steps in. You walk over to meet her."
   },
   {
    "at": 9.3,
-   "text": "Yukari holds out a short sword; you take it."
+   "text": "Yukari holds out a short sword, and you take it."
   }
  ]
 }

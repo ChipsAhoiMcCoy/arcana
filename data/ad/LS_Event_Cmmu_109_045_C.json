@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_109_045_C", "title": "A stranger approaches Chihiro", "cues": [{"at": 0, "text": "Chihiro turns back to you, smiling."}, {"at": 3.83, "text": "She hurries to a shop; later a young man stops before her."}, {"at": 17.5, "text": "You confront him."}, {"at": 20.5, "text": "The man turns and walks off past you."}, {"at": 37.17, "text": "Chihiro runs off past you."}]}
+{
+ "movie": "LS_Event_Cmmu_109_045_C",
+ "title": "A stranger approaches Chihiro",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In Paulownia Mall's Fountain Square, Chihiro walks a few steps ahead of you, then turns back to you, smiling."
+  },
+  {
+   "at": 3.83,
+   "text": "She hurries off across the square toward a shop while you wait by a bench. Later, as she stands alone outside the shop, a young man in a jacket walks up and stops in front of her."
+  },
+  {
+   "at": 16.47,
+   "text": "You walk over to them and face the man."
+  },
+  {
+   "at": 20.5,
+   "text": "The man turns and walks off past you."
+  },
+  {
+   "at": 37.17,
+   "text": "Chihiro, a hand raised to her mouth, runs off past you across the square."
+  }
+ ]
+}

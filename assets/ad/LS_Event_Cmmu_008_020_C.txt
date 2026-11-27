@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_008_020_C
-1.380	1.850	00.mp3	Ken peeks out his door, troubled.
+0.170	5.799	00.mp3	In the dorm hallway, Ken opens the door of his room a crack and peeks out at you from behind it, troubled.

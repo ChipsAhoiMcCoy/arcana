@@ -1,1 +1,6 @@
-{"movie": "LS_Event_Cmmu_004_010_C", "title": "Akihiko's fans", "cues": [{"at": 1.35, "text": "You and Akihiko wait outside."}, {"at": 5.67, "text": "Two girls hurry to Akihiko."}, {"at": 10.67, "text": "Passersby stare at Akihiko."}, {"at": 15.17, "text": "Akihiko runs off and you follow him to a quieter spot."}]}
+{"movie": "LS_Event_Cmmu_004_010_C", "title": "Akihiko's fans", "cues": [
+{"at": 0.00, "text": "Outside Iwatodai Station, you and Akihiko stand at the foot of a wide flight of steps, people passing around you. Akihiko faces you with a hand on his hip."},
+{"at": 5.67, "text": "Two girls hurry over and stop right in front of Akihiko."},
+{"at": 10.67, "text": "Akihiko stands with his arms folded. A man and a woman passing by stop and look over at him."},
+{"at": 15.17, "text": "Akihiko turns and breaks into a run, and you run after him. He stops in a quieter spot beside some roadworks fenced off with traffic cones, turns back to you and looks down."}
+]}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_380_C", "title": "Japanese sweets with Bebe", "cues": [{"at": 0, "text": "You meet Bebe."}]}
+{
+ "movie": "LS_Event_Cmmu_112_380_C",
+ "title": "Japanese sweets with Bebe",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Strip Mall, outside a Japanese sweets shop. You and Bebe walk up to each other, and he smiles. While he puzzles over the azuki, he holds his folded fan to his chin."
+  }
+ ]
+}

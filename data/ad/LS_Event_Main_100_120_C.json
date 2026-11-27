@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_100_120_C", "title": "The opening ceremony", "cues": []}
+{
+ "movie": "LS_Event_Main_100_120_C",
+ "title": "The opening ceremony",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The school auditorium, during the opening ceremony: a man speaks from a podium on the stage. You sit among the students, facing the stage. In the row behind you, a classmate leans forward to whisper."
+  }
+ ]
+}

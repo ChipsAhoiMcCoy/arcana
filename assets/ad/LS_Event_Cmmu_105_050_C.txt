@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_105_050_C
-0.000	1.248	00.mp3	You run past Yuko.
+0.000	11.210	00.mp3	On the athletic field, Yuko stands by the track as you run past her ahead of the other runners. Kazushi is not among them. Afterwards you stand beside Yuko as the others run past.

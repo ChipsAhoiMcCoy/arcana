@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_600_610_C
-0.000	0.681	00.mp3	Classroom.
+0.000	6.396	00.mp3	In your classroom, you sit at your desk with Yukari, Junpei and Aigis nearby. A teacher stands at the front.

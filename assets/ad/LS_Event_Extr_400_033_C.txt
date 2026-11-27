@@ -1,5 +1,5 @@
 #scene LS_Event_Extr_400_033_C
-0.000	0.810	00.mp3	He growls.
-4.030	0.676	01.mp3	Takaya.
-8.170	2.221	02.mp3	Takaya walks off. You lower your guard.
-15.200	2.233	03.mp3	You follow Takaya, Koromaru with you.
+0.000	5.153	00.mp3	You walk Koromaru into Naganaki Shrine. He stops short and growls at someone ahead.
+4.030	5.215	01.mp3	Takaya steps out toward you. You take a fighting stance, Koromaru bristling beside you.
+8.170	6.519	02.mp3	Takaya turns his back and walks off up the shrine path. You lower your guard, and Koromaru turns and looks up at you.
+15.200	2.762	03.mp3	You set off after Takaya, Koromaru following.

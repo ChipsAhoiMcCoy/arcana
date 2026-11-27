@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_210_080_C", "title": "Mitsuru calls you away", "cues": [{"at": 0.1, "text": "Your classroom. Mitsuru walks in and comes over to you."}, {"at": 8.85, "text": "You get up and follow Mitsuru out of the classroom, leaving Junpei and Yukari behind."}]}
+{"movie": "LS_Event_Main_210_080_C", "title": "Mitsuru calls you away", "cues": [
+{"at": 0.10, "text": "Your classroom. You sit at your desk with Junpei, Yukari standing nearby, as the door opens and Mitsuru walks in and comes over to you."},
+{"at": 8.85, "text": "You get up and follow Mitsuru out of the classroom, leaving Junpei and Yukari behind."}
+]}

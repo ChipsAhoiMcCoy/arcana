@@ -1,26 +1,9 @@
-{
- "movie": "LS_Event_Main_160_240_C",
- "title": "Chidori captured",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Junpei kneels, hands tied."
-  },
-  {
-   "at": 10.83,
-   "text": "You run out."
-  },
-  {
-   "at": 15.67,
-   "text": "Chidori raises an Evoker."
-  },
-  {
-   "at": 23.67,
-   "text": "Akihiko takes the Evoker."
-  },
-  {
-   "at": 30.33,
-   "text": "Aigis holds Chidori fast as everyone gathers."
-  }
- ]
-}
+{"movie": "LS_Event_Main_160_240_C", "title": "Chidori captured", "cues": [
+{"at": 0.00, "text": "On the dorm's rooftop, Junpei kneels on the tiles, his hands still tied behind his back. Chidori stands over him."},
+{"at": 10.83, "text": "The rooftop door bangs open and you and the others run out, Koromaru with you, and stop short at the sight of them."},
+{"at": 15.67, "text": "Chidori turns to face you all, raises an Evoker and presses it to her head. Everyone drops into a fighting stance."},
+{"at": 20.33, "text": "Junpei lunges from his knees and throws himself against Chidori. They crash to the ground together."},
+{"at": 23.67, "text": "Akihiko darts over, snatches up the Evoker from beside Chidori and steps back with it. She stays on the ground."},
+{"at": 26.33, "text": "Ikutsuki, the chairman, comes running out through the rooftop door."},
+{"at": 30.33, "text": "Aigis walks over to Chidori and pulls her to her feet, holding her arms fast, and everyone gathers around them."}
+]}

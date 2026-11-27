@@ -1,1 +1,7 @@
-{"movie": "LS_Event_Main_160_040_C", "title": "The girl on the bench", "cues": [{"at": 1.33, "text": "Junpei checks his phone."}, {"at": 8.0, "text": "Junpei walks over to a girl drawing on a bench."}, {"at": 17.33, "text": "Junpei walks off, leaving her."}]}
+{"movie": "LS_Event_Main_160_040_C", "title": "The girl on the bench", "cues": [
+  {"at": 0.00, "text": "Junpei, on his own, walks across a paved square lined with stone columns and flower beds."},
+  {"at": 1.33, "text": "He stops, checks his phone, then puts it away and stands with a hand on his hip."},
+  {"at": 6.33, "text": "Nearby, a girl in a long, frilly dress sits on a bench by a flower bed, drawing on a board propped in her lap."},
+  {"at": 8.00, "text": "Junpei walks over and stands right in front of her, looking from her to the board."},
+  {"at": 17.33, "text": "Junpei walks off across the square, leaving her drawing on the bench."}
+]}

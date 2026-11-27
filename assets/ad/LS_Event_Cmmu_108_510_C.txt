@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_108_510_C
-0.000	0.735	00.mp3	Art room.
+0.000	4.306	00.mp3	In the art room, you sit with Keisuke while the other club members work around you.

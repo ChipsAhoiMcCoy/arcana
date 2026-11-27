@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_106_330_C
-0.000	1.028	00.mp3	At the crane game.
-4.830	1.358	01.mp3	Yuko steps up to it.
-17.700	2.965	02.mp3	Yuko plays again and again until the prize drops.
+0.000	5.258	00.mp3	Paulownia Mall. You come out of the arcade with Yuko and stop on the walkway beside a crane game.
+4.830	5.207	01.mp3	Yuko turns and steps up to the crane game, and you stand beside her as she looks over the prizes.
+18.000	4.177	02.mp3	Yuko plays again and again, nudging the prize along, until it drops.

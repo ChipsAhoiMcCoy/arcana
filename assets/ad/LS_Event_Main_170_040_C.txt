@@ -1,3 +1,4 @@
 #scene LS_Event_Main_170_040_C
-13.170	1.724	00.mp3	Akihiko punches Shinjiro.
-25.870	2.937	01.mp3	Shinjiro walks off, leaving Akihiko alone.
+0.000	9.029	00.mp3	Outside the hospital, a paved courtyard lined with columns and benches. Shinjiro walks away, and Akihiko runs up behind him and stops.
+13.170	4.883	01.mp3	Akihiko raises his fists and punches Shinjiro, who staggers and bends forward.
+25.870	4.495	02.mp3	Shinjiro walks off across the courtyard, leaving Akihiko standing alone.

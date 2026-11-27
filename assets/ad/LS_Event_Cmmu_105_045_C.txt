@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_105_045_C
-0.000	3.091	00.mp3	Kazushi, looking glum, walks toward you along the street.
+0.000	7.728	00.mp3	Students stream past as you walk along, bag in hand. Kazushi, carrying his own bag and looking glum, comes walking toward you.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Fild_900_035_C", "title": "Out of the Velvet Room with Elizabeth", "cues": [{"at": 0.0, "text": "A door opens. Elizabeth steps out with a large book; you follow."}]}
+{
+ "movie": "LS_Event_Fild_900_035_C",
+ "title": "Out of the Velvet Room with Elizabeth",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A door opens at the end of the Velvet Room hall. Elizabeth steps out first, a large book in her hand, and you follow her out."
+  }
+ ]
+}

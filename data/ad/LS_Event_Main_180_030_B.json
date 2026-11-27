@@ -1,1 +1,30 @@
-{"movie": "LS_Event_Main_180_030_B", "title": "Akihiko at Shinjiro's altar", "cues": [{"at": 0.05, "text": "An empty funeral hall. Flowers and Shinjiro's portrait line the stage. Akihiko walks down the aisle and stops at the altar."}, {"at": 16.02, "text": "Akihiko kneels."}, {"at": 23.2, "text": "He rises slowly."}, {"at": 28.5, "text": "Akihiko's Persona, Polydeuces, appears: a towering giant with flowing hair. It changes into Caesar, a crowned, hooded figure with a sword and orb."}, {"at": 45.3, "text": "Akihiko turns from the portrait."}, {"at": 49.3, "text": "He nods, walks away."}]}
+{
+ "movie": "LS_Event_Main_180_030_B",
+ "title": "Akihiko at Shinjiro's altar",
+ "cues": [
+  {
+   "at": 0.3,
+   "text": "An empty funeral hall. Rows of seats face a stage banked with flowers, Shinjiro's framed portrait at its centre between two vases. Akihiko walks down the aisle alone and stops before the altar."
+  },
+  {
+   "at": 16.02,
+   "text": "Akihiko drops to his knees at the foot of the altar and buries his face in his arms against the flowers."
+  },
+  {
+   "at": 23.2,
+   "text": "He lifts his head and slowly gets back to his feet."
+  },
+  {
+   "at": 28.6,
+   "text": "Akihiko's Persona, Polydeuces, appears: a towering, muscled giant with long flowing hair and a padded vest, one armoured arm raised. It changes into a new Persona, Caesar: a crowned, hooded figure in a long cape, a sword raised in one hand and an orb in the other."
+  },
+  {
+   "at": 45.3,
+   "text": "Akihiko stands alone before the portrait again, then turns his back on it."
+  },
+  {
+   "at": 49.3,
+   "text": "He nods once and walks away."
+  }
+ ]
+}

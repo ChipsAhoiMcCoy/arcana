@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_005_650_C", "title": "Mitsuru comes for you", "cues": [{"at": 0.05, "text": "Mitsuru stops beside your desk."}]}
+{
+ "movie": "LS_Event_Cmmu_005_650_C",
+ "title": "Mitsuru comes for you",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In your classroom, you sit at your desk. Mitsuru walks in, her bag in hand, and stops a few steps from you, her head lowered and her eyes turned aside."
+  }
+ ]
+}

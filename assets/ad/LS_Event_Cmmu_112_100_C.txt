@@ -1,5 +1,6 @@
 #scene LS_Event_Cmmu_112_100_C
-0.000	1.385	00.mp3	Home economics room.
-6.500	1.619	01.mp3	Bebe shows the finished kimono.
-12.330	2.064	02.mp3	Bebe turns his back and stands silent.
-15.670	2.568	03.mp3	He holds out a small cloth pouch, and you take it.
+0.000	7.631	00.mp3	In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you.
+8.000	5.134	01.mp3	Bebe stands beside a dress form wearing the finished kimono, a patchwork of many fabrics.
+12.330	2.361	02.mp3	Bebe turns his back to you and stands silent.
+15.670	5.980	03.mp3	He walks over to where you sit, reaches into his pocket and holds out a small cloth pouch, and you take it.
+25.400	3.214	04.mp3	Bebe clutches his fan to his chest and wipes at his eyes.

@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_110_060_C
-0.000	0.714	00.mp3	The shrine.
-2.720	1.325	01.mp3	Maiko, head bowed.
+0.000	5.992	00.mp3	Naganaki Shrine. Maiko sits beside you on a bench, head bowed, her hands pressed between her knees.

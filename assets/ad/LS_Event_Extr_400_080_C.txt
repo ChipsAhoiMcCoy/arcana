@@ -1,4 +1,5 @@
 #scene LS_Event_Extr_400_080_C
-0.000	2.432	00.mp3	A man in a suit waits. You walk up to him.
+0.000	3.814	00.mp3	In a back alley, a man in a suit stands waiting. You walk up to him.
 4.530	4.565	01.mp3	You walk past him, deeper into the alley, to where Takaya waits beside some bins.
-32.700	1.863	02.mp3	Takaya walks past you and away.
+14.000	6.583	02.mp3	Takaya draws a revolver from his belt and turns it over in his hand as he talks, then tucks it back into his belt.
+32.700	4.115	03.mp3	Takaya walks past you and away, the revolver tucked back in his belt.

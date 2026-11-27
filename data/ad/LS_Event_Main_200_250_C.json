@@ -4,19 +4,19 @@
  "cues": [
   {
    "at": 0.17,
-   "text": "Your room. Ryoji stands by the window, eyes closed, then turns to you."
+   "text": "Your room in the dorm. Ryoji stands by the window, eyes closed, as you come in through the door. He opens his eyes and turns to face you."
   },
   {
-   "at": 7.3,
-   "text": "You both sit on the bed."
+   "at": 8.7,
+   "text": "You sit down beside each other on the bed."
   },
   {
    "at": 17.4,
-   "text": "Ryoji smiles, goes to the window."
+   "text": "Ryoji smiles, gets up from the bed and goes to stand by the window."
   },
   {
    "at": 23.4,
-   "text": "You sit a moment, head bowed, then get up and face him."
+   "text": "You stay seated a moment with your head bowed, then get up and go to stand in front of him."
   },
   {
    "at": 29.9,
@@ -24,11 +24,11 @@
   },
   {
    "at": 49.2,
-   "text": "Ryoji walks to the room's middle. A swirling column swallows him. A tall masked figure with huge blade-like wings hangs there."
+   "text": "Ryoji gets up, walks to the middle of the room and turns to face you. A burst rises from his chest and a swirling column swallows him. When it clears, a tall masked figure hangs in the air where he stood, huge blade-like wings spread at its back."
   },
   {
    "at": 66.4,
-   "text": "The figure vanishes, and Ryoji stands there again, smiling."
+   "text": "In an instant the figure is gone, and Ryoji stands there again, smiling."
   },
   {
    "at": 72.2,
@@ -40,15 +40,11 @@
   },
   {
    "at": 98.2,
-   "text": "The masked figure bursts apart; Ryoji stands there again."
+   "text": "The masked figure bursts apart in an instant, and Ryoji stands there again."
   },
   {
    "at": 112.75,
-   "text": "A music box."
-  },
-  {
-   "at": 114.5,
-   "text": "You take it."
+   "text": "Ryoji walks over to where you sit on the bed, holds out a small music box, and you take it."
   }
  ]
 }

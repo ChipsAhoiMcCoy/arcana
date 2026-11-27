@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_055_C", "title": "Bebe: his uncle", "cues": [{"at": 0.0, "text": "Wakatsu."}, {"at": 3.17, "text": "Bebe looks downcast."}]}
+{
+ "movie": "LS_Event_Cmmu_112_055_C",
+ "title": "Bebe: his uncle",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Bebe sit across from each other at Wakatsu, the set-meal restaurant, set meals in front of you, with other diners eating nearby. Bebe holds his chopsticks over his food and keeps his eyes down, looking downcast."
+  }
+ ]
+}

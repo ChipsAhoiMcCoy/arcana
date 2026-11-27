@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_221_015_C
-0.000	0.836	00.mp3	Music room.
+0.000	6.649	00.mp3	In the music room, you and Ryoji stand beside a stack of boxes you carried in, Ryoji with a hand on his hip.
 10.670	3.820	01.mp3	Ryoji turns and walks over to the grand piano. You follow him.
 24.000	2.705	02.mp3	Ryoji sits down at the grand piano and plays.
-43.830	1.038	03.mp3	You check your phone.
+43.830	3.762	03.mp3	You take out your phone and look at it while Ryoji sits at the piano.

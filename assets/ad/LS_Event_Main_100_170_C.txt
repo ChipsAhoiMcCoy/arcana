@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_170_C
-0.000	1.284	00.mp3	Ikutsuki walks in.
+0.000	11.884	00.mp3	A room in the dorm full of monitors and a large control console. Mitsuru and Yukari sit at the console. The big screen above it shows you, asleep in your bed. Ikutsuki walks in behind them.

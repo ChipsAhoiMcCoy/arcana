@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_005_090_C
-0.000	2.318	00.mp3	Mitsuru stops at the railing and faces you.
-38.500	2.421	01.mp3	You hold Mitsuru in your arms. She smiles.
+0.000	9.907	00.mp3	Mitsuru walks ahead of you to the railing of the school rooftop, with no one else around, and stops. When she faces you, she keeps her head lowered and her eyes turned aside.
+38.500	7.367	01.mp3	Mitsuru stands with a hand on her hip. You step close to her and hold her in your arms. She starts in surprise, then smiles.

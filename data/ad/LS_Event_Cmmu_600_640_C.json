@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_600_640_C", "title": "Ryoji visits Wilduck Burger", "cues": [{"at": 2.53, "text": "You are at work in Wilduck Burger. Ryoji walks up to you."}, {"at": 16.03, "text": "Kenji stops at Ryoji."}, {"at": 27.03, "text": "You three sit in a booth."}, {"at": 44.2, "text": "Kenji hurries off."}]}
+{
+ "movie": "LS_Event_Cmmu_600_640_C",
+ "title": "Ryoji visits Wilduck Burger",
+ "cues": [
+  {
+   "at": 2.5,
+   "text": "You are at work in Wilduck Burger. Ryoji walks up to you with his school bag."
+  },
+  {
+   "at": 16.0,
+   "text": "Kenji, in the same staff uniform as you, walks over and stops short at the sight of Ryoji."
+  },
+  {
+   "at": 27.0,
+   "text": "The three of you sit down together in a booth, at a table spread with trays of burgers, fries and drinks. Kenji sits with his arms crossed."
+  },
+  {
+   "at": 44.17,
+   "text": "Kenji hurries off back to work, leaving you and Ryoji at the table with the food."
+  }
+ ]
+}

@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_200_180_B", "title": "The group argues over Ryoji", "cues": [{"at": 0.04, "text": "The dorm lounge."}, {"at": 22.0, "text": "Junpei stands, glaring at everyone."}]}
+{
+ "movie": "LS_Event_Main_200_180_B",
+ "title": "The group argues over Ryoji",
+ "cues": [
+  {
+   "at": 0.04,
+   "text": "The dorm lounge. You sit down on the sofas with the others, Koromaru among you."
+  },
+  {
+   "at": 22.0,
+   "text": "Junpei is on his feet, hands on his hips, glaring at everyone."
+  },
+  {
+   "at": 29.35,
+   "text": "Yukari jumps to her feet and turns to face Junpei."
+  }
+ ]
+}

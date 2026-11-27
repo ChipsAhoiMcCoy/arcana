@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_100_C", "title": "The school entrance", "cues": [{"at": 0.03, "text": "At the school entrance, Yukari turns to face you."}, {"at": 7.53, "text": "Yukari walks off, leaving you."}]}
+{
+ "movie": "LS_Event_Main_100_100_C",
+ "title": "The school entrance",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "At the school's entrance, among rows of shoe lockers, Yukari walks a few steps ahead of you, then turns to face you."
+  },
+  {
+   "at": 7.53,
+   "text": "Yukari turns and walks off, leaving you by the shoe lockers."
+  }
+ ]
+}

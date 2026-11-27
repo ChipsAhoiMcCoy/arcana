@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_107_002_C
-0.200	2.528	00.mp3	The girl from the pier runs farther up the path.
+0.200	4.595	00.mp3	As you come near, the girl from the pier runs on, farther up the path through the woods.

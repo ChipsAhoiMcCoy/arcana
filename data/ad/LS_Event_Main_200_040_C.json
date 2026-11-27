@@ -1,1 +1,7 @@
-{"movie": "LS_Event_Main_200_040_C", "title": "Chidori at Tartarus", "cues": [{"at": 0.05, "text": "Chidori stands on the steps, back turned. Junpei runs up behind her."}, {"at": 6.55, "text": "Chidori turns around to face Junpei, scowling."}, {"at": 11.55, "text": "Hatchet."}, {"at": 14.85, "text": "You and the others run up behind Junpei."}, {"at": 18.2, "text": "Chidori puts an Evoker to her head."}]}
+{"movie": "LS_Event_Main_200_040_C", "title": "Chidori at Tartarus", "cues": [
+{"at": 0.05, "text": "At the foot of Tartarus, Chidori stands on the steps with her back turned. Junpei runs up behind her."},
+{"at": 6.55, "text": "Chidori turns around to face Junpei, scowling."},
+{"at": 11.55, "text": "Chidori whirls and flings a hatchet on a long chain at Junpei. It lashes past him, and she draws it back into her hand."},
+{"at": 14.85, "text": "You and the others run up behind Junpei and take your battle stances."},
+{"at": 18.20, "text": "Chidori puts an Evoker to her head."}
+]}

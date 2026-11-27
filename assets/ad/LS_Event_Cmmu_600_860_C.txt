@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_600_860_C
-0.170	2.200	00.mp3	Naganaki Shrine. A friend approaches.
-2.670	1.779	01.mp3	Koromaru wanders off to play.
+0.170	4.447	00.mp3	Naganaki Shrine. You are walking Koromaru when someone you know comes up to you.
+2.670	2.836	01.mp3	Koromaru wanders off to play while the two of you talk.
+5.000	4.606	02.mp3	Koromaru comes running back down the shrine steps and sits beside you, panting.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_117_040_C
-0.000	0.714	00.mp3	The shrine.
+0.000	6.382	00.mp3	Naganaki Shrine. You sit beside Akinari on a bench; he sits with his legs crossed and smiles at you.

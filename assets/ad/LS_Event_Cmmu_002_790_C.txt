@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_002_790_C
-1.170	1.659	00.mp3	Yukari, in maid uniform.
-12.330	3.452	01.mp3	Yukari goes out, then comes back in with Fuuka following her.
-24.070	2.439	02.mp3	Yukari takes hold of Fuuka, who startles.
+1.170	15.025	00.mp3	Footage from a camera high in a corner of Yukari's dorm room: her bed, her desk, shelves of bags and magazines. Yukari stands alone in the middle of the room in a maid's uniform: a black dress, a white frilled apron and a frilled headband.
+12.330	7.561	01.mp3	Yukari crosses to the door and goes out. A moment later she comes back in with Fuuka following her, and they stop in the middle of the room.
+24.070	4.368	02.mp3	Yukari steps behind Fuuka and takes hold of her. Fuuka starts in surprise.

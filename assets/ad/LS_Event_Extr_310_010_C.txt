@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_310_010_C
-0.030	1.672	00.mp3	In your room, you check your phone.
+0.030	6.740	00.mp3	Your room in the dorm. You stand by the small sink, hands in your pockets, then turn, flip open your phone and check it.

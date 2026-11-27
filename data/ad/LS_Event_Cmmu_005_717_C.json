@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_717_C", "title": "Reading with Mitsuru, second night", "cues": [{"at": 5.3, "text": "Mitsuru closes her book."}]}
+{
+ "movie": "LS_Event_Cmmu_005_717_C",
+ "title": "Reading with Mitsuru, second night",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm lounge. You and Mitsuru sit on benches on either side of a low table, each reading a book."
+  },
+  {
+   "at": 6.6,
+   "text": "Later, Mitsuru has closed her book and laid it on the table; she sits with her arms folded."
+  }
+ ]
+}

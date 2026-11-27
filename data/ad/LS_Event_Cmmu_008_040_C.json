@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_008_040_C", "title": "Ken: a match on the roof", "cues": [{"at": 1.33, "text": "Ken holds a broom."}, {"at": 7.7, "text": "Ken hands you a toy bat. He grips his broom like a spear."}, {"at": 16.5, "text": "You spar. Ken ends up sitting against the wall."}]}
+{
+ "movie": "LS_Event_Cmmu_008_040_C",
+ "title": "Ken: a match on the roof",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The dorm rooftop, beside the garden beds. Ken stands facing you, holding a long broom upright."
+  },
+  {
+   "at": 7.7,
+   "text": "Ken holds out a toy plastic bat, and you take it. He grips his broom like a spear."
+  },
+  {
+   "at": 16.5,
+   "text": "Ken charges at you, and the two of you spar. When it is over, Ken sits on the ground against a wall, legs stretched out, his broom fallen beside him and the toy bat lying on the floor, while you stand over him."
+  }
+ ]
+}

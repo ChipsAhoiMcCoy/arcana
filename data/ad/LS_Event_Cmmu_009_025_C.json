@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_009_025_C", "title": "The angry dog", "cues": [{"at": 0.03, "text": "A dog growls at a boy."}, {"at": 7.0, "text": "Koromaru faces down the angry dog while you hang back."}, {"at": 13.33, "text": "The dog runs off. The girl runs to Koromaru."}, {"at": 22.33, "text": "The boy is down."}, {"at": 49.33, "text": "Koromaru walks to the flowers."}]}
+{
+ "movie": "LS_Event_Cmmu_009_025_C",
+ "title": "The angry dog",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "At Naganaki Shrine, a boy clings to the top of the jungle gym while a dog growls up at him. You, Koromaru and the girl run up."
+  },
+  {
+   "at": 7.0,
+   "text": "Koromaru steps up close to the angry dog and faces it down beside the jungle gym, while you and the girl hang back."
+  },
+  {
+   "at": 13.33,
+   "text": "The dog backs away and runs off. The girl runs over to Koromaru."
+  },
+  {
+   "at": 21.4,
+   "text": "The boy is down from the jungle gym now, standing with you, the girl and Koromaru."
+  },
+  {
+   "at": 49.33,
+   "text": "Later, you and Koromaru stand by a post of the shrine gate. Bouquets of flowers lie at its foot, and Koromaru walks over to them."
+  }
+ ]
+}

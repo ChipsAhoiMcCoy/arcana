@@ -1,1 +1,4 @@
-{"movie": "LS_Event_Main_200_220_C", "title": "Yukari brings news of Aigis", "cues": [{"at": 0.04, "text": "In your room, someone knocks."}, {"at": 11.0, "text": "Yukari stands outside."}]}
+{"movie": "LS_Event_Main_200_220_C", "title": "Yukari brings news of Aigis", "cues": [
+{"at": 0.04, "text": "You stand in your room at the dorm, hands in your pockets, when someone knocks on the door."},
+{"at": 9.70, "text": "You open your door. Yukari stands outside."}
+]}

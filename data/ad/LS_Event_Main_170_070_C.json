@@ -4,15 +4,19 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "You come in."
+   "text": "The dorm's front door. You come in with your bag over your shoulder."
   },
   {
    "at": 4.0,
-   "text": "The team is gathered."
+   "text": "In the lounge, the others sit on the sofas around the low table: Junpei, Yukari, Fuuka, Ken, Akihiko, Mitsuru and Shinjiro, with Aigis and Koromaru at the back of the room. You walk over and stand beside them, bag still over your shoulder."
+  },
+  {
+   "at": 21.5,
+   "text": "Junpei has sprung up from the sofa and stands grinning, hands on his hips."
   },
   {
    "at": 30.83,
-   "text": "Ken walks out."
+   "text": "Ken gets up and walks out of the lounge."
   }
  ]
 }

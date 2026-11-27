@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_100_240_C", "title": "Akihiko returns", "cues": [{"at": 0.05, "text": "Dorm lobby."}, {"at": 3.05, "text": "Yukari kneels beside him."}, {"at": 15.05, "text": "Yukari runs off."}]}
+{
+ "movie": "LS_Event_Main_100_240_C",
+ "title": "Akihiko returns",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "The dorm's front lobby. Akihiko staggers in through the front door, holding one arm, and slumps to the floor against the wall. Mitsuru and Yukari come running, Ikutsuki close behind."
+  },
+  {
+   "at": 3.05,
+   "text": "Yukari runs to Akihiko and kneels beside him."
+  },
+  {
+   "at": 8.25,
+   "text": "A heavy crash shakes the building. Everyone startles; Ikutsuki whirls around, and Yukari jumps to her feet."
+  },
+  {
+   "at": 15.05,
+   "text": "Yukari runs off toward the stairs."
+  }
+ ]
+}

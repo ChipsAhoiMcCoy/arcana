@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_900_035_C
-0.000	3.905	00.mp3	A door opens. Elizabeth steps out with a large book; you follow.
+0.000	7.535	00.mp3	A door opens at the end of the Velvet Room hall. Elizabeth steps out first, a large book in her hand, and you follow her out.

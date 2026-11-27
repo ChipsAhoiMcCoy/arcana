@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_007_047_C
-0.000	4.844	00.mp3	Naganaki Shrine. You search near the steps, then stand as Aigis walks back to you.
+0.000	8.271	00.mp3	Naganaki Shrine. You crouch near the steps, searching the ground, then stand and turn as Aigis walks back over to you from across the grounds.

@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_106_570_C
-0.000	0.698	00.mp3	Festival.
+0.000	9.651	00.mp3	The summer festival at Naganaki Shrine: the grounds are crowded and lined with stalls. You and Yuko stand together, watching someone in a yukata go by.
 8.670	3.708	01.mp3	You and Yuko make your way through the crowd to a takoyaki stall.
 37.600	3.465	02.mp3	At the lucky-draw stall, you reach into the box and draw a ticket.
-44.270	3.143	03.mp3	Yuko cheers at your prize. Later, she checks her phone.
+44.270	5.023	03.mp3	Yuko cheers at your prize. A little later, she flips open her phone and checks the time.

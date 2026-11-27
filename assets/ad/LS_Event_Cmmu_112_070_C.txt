@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_112_070_C
-0.000	1.007	00.mp3	Bebe stands up.
+0.000	8.721	00.mp3	In the home economics room, you sew at your machine. Bebe, at the machine facing yours across a heap of fabric scraps, stands up to talk to you.

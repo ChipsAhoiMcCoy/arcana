@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_650_C
-0.000	1.116	00.mp3	Fuuka walks over.
+0.000	6.345	00.mp3	You are sitting at your desk in the classroom when Fuuka walks over to you, holding her bag in front of her with both hands.

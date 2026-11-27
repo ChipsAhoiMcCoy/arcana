@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_210_001_C
-0.000	1.206	00.mp3	A box by your door.
+0.000	6.260	00.mp3	The dorm's upstairs hallway. You stand at the door of your room. A cardboard box sits on the floor beside it.

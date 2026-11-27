@@ -4,15 +4,15 @@
  "cues": [
   {
    "at": 0.0,
-   "text": "You and Akihiko rush in."
+   "text": "You and Akihiko come running in through the door of the dorm and pull up, out of breath."
   },
   {
    "at": 6.67,
-   "text": "Akihiko reads the label."
+   "text": "Akihiko notices a large parcel in the lounge, walks over to it and reads the label."
   },
   {
    "at": 17.0,
-   "text": "The dorm gathers around."
+   "text": "Later, the dorm is gathered in the lounge around the open parcel on the table, Yukari, Junpei, Mitsuru and Fuuka among them. Akihiko sits in an armchair with his arms folded."
   },
   {
    "at": 21.67,
@@ -20,7 +20,7 @@
   },
   {
    "at": 44.33,
-   "text": "Akihiko looks down."
+   "text": "Akihiko looks down into the box with a start, then his face falls."
   }
  ]
 }

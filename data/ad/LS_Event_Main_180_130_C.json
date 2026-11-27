@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_180_130_C", "title": "The final Shadow found", "cues": [{"at": 0.1, "text": "Command room, Dark Hour: Fuuka searches."}]}
+{
+ "movie": "LS_Event_Main_180_130_C",
+ "title": "The final Shadow found",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The command room at the top of the dorm, during the Dark Hour. You, Akihiko, Mitsuru, Junpei, Yukari, Ken and the chairman sit around the low table; Aigis stands beside the sofas with Koromaru at her feet. Behind them Fuuka sits inside her Persona, a great sphere topped by a figure with outstretched arms, searching."
+  }
+ ]
+}

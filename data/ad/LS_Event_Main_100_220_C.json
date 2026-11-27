@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_100_220_C", "title": "Paulownia Mall with Junpei", "cues": [{"at": 0.05, "text": "You walk into the plaza."}, {"at": 8.7, "text": "Junpei hurries to a crane game."}]}
+{
+ "movie": "LS_Event_Main_100_220_C",
+ "title": "Paulownia Mall with Junpei",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "A paved plaza around a fountain, ringed by shopfronts and an arcade, with people passing through. You and Junpei walk in, school bags in hand."
+  },
+  {
+   "at": 8.7,
+   "text": "Junpei spots a crane game outside the arcade and hurries over to it, grinning."
+  }
+ ]
+}

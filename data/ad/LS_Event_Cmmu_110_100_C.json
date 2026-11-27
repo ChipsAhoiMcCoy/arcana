@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_110_100_C", "title": "Maiko's goodbye", "cues": [{"at": 2.67, "text": "You and Maiko sit."}, {"at": 12.33, "text": "Maiko takes your hand and gives you a bead ring."}]}
+{
+ "movie": "LS_Event_Cmmu_110_100_C",
+ "title": "Maiko's goodbye",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Naganaki Shrine. Maiko stands by the jungle gym, beaming up at you."
+  },
+  {
+   "at": 2.67,
+   "text": "Later, you and Maiko sit side by side on top of the jungle gym, Maiko catching her breath."
+  },
+  {
+   "at": 12.33,
+   "text": "Maiko takes your hand and gives you a ring she made from beads."
+  }
+ ]
+}

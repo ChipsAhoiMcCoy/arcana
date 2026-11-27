@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Fild_203_001_C", "title": "Mitsuru and Junpei in the lounge", "cues": [{"at": 0.0, "text": "The dorm lounge. You come in and Mitsuru meets you."}, {"at": 3.35, "text": "Junpei joins you and Mitsuru."}]}
+{
+ "movie": "LS_Event_Fild_203_001_C",
+ "title": "Mitsuru and Junpei in the lounge",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The dorm lounge. You come in through the front door, and Mitsuru walks over to meet you."
+  },
+  {
+   "at": 3.35,
+   "text": "Junpei walks over to join you and Mitsuru."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_110_C
-0.030	5.930	00.mp3	Faculty office. A woman in a suit stands with her back to you, then turns and walks over with a folder.
+0.030	8.803	00.mp3	In the faculty office, between desks piled with papers, a woman in a suit stands with her back to you. She turns and walks over, a folder in her hand.

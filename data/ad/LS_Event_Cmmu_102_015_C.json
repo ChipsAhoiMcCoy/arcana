@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_102_015_C", "title": "Signing up at the faculty office", "cues": [{"at": 0.0, "text": "You approach a seated teacher."}, {"at": 4.7, "text": "Toriumi studies a form."}, {"at": 7.4, "text": "You sign the form."}]}
+{
+ "movie": "LS_Event_Cmmu_102_015_C",
+ "title": "Signing up at the faculty office",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You walk into the faculty office and up to a woman teacher sitting at her desk."
+  },
+  {
+   "at": 4.7,
+   "text": "Ms. Toriumi picks up a form from her desk and looks it over."
+  },
+  {
+   "at": 7.4,
+   "text": "You read through the form and sign it."
+  }
+ ]
+}

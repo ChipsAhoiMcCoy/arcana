@@ -1,5 +1,5 @@
 #scene LS_Event_Main_210_090_C
-0.000	0.681	00.mp3	Classroom.
-7.000	1.595	01.mp3	Mitsuru answers a phone call.
-11.100	1.087	02.mp3	Junpei steps in.
-18.600	1.739	03.mp3	Junpei runs from the classroom.
+0.000	3.753	00.mp3	A classroom. You stand facing Mitsuru, who has a hand on her hip.
+8.100	3.095	01.mp3	Mitsuru breaks off, takes out her phone and answers a call.
+12.600	7.181	02.mp3	Junpei is standing just inside the room. He steps closer, and Mitsuru turns to him, startled; you turn around too.
+18.600	2.730	03.mp3	Junpei turns away and runs out of the classroom.

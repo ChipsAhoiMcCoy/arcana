@@ -1,2 +1,3 @@
 #scene LS_Event_Cmmu_010_010_C
-21.330	4.712	00.mp3	You walk off down the alley. Shinjiro stays by the stairs, looking at the envelope.
+0.030	8.265	00.mp3	The back alley behind Port Island Station. Shinjiro sits on a crate by a stairway. You hold out an envelope, and he gets up and takes it.
+21.330	6.122	01.mp3	You walk off down the alley. Shinjiro stays standing by the stairs, looking down at the envelope in his hand.

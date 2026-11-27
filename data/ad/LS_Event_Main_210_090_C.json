@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_210_090_C", "title": "Chidori wakes", "cues": [{"at": 0.0, "text": "Classroom."}, {"at": 7.0, "text": "Mitsuru answers a phone call."}, {"at": 11.1, "text": "Junpei steps in."}, {"at": 18.6, "text": "Junpei runs from the classroom."}]}
+{
+ "movie": "LS_Event_Main_210_090_C",
+ "title": "Chidori wakes",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A classroom. You stand facing Mitsuru, who has a hand on her hip."
+  },
+  {
+   "at": 8.1,
+   "text": "Mitsuru breaks off, takes out her phone and answers a call."
+  },
+  {
+   "at": 12.6,
+   "text": "Junpei is standing just inside the room. He steps closer, and Mitsuru turns to him, startled; you turn around too."
+  },
+  {
+   "at": 18.6,
+   "text": "Junpei turns away and runs out of the classroom."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_006_720_C
-1.050	1.108	00.mp3	You and Fuuka read.
+0.170	6.004	00.mp3	The lounge of the dorm. You and Fuuka sit reading together, both deep in the last volumes of the series.

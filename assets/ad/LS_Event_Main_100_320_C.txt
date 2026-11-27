@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_320_C
-0.100	2.704	00.mp3	You sit across from Igor, Elizabeth at his side.
+0.100	9.112	00.mp3	The Velvet Room. You sit across a round table from Igor, who rests his chin on his folded hands; Elizabeth stands at his side, holding a large book.

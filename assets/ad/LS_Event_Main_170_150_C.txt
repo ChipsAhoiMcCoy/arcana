@@ -1,3 +1,5 @@
 #scene LS_Event_Main_170_150_C
-0.000	0.860	00.mp3	Command room.
-12.330	2.250	01.mp3	Fuuka's Persona rises; she searches.
+0.000	6.065	00.mp3	You come into the dorm's command room with Yukari, Junpei, Mitsuru, Fuuka, Aigis and Koromaru.
+12.330	8.621	01.mp3	Fuuka nods and stands still. Her Persona rises around her, a towering figure that closes her inside its skirt, and she begins her search.
+24.170	3.776	02.mp3	Mitsuru turns and runs out of the room. A door shuts behind her.
+29.470	3.225	03.mp3	Fuuka's Persona is gone. You all run out after Mitsuru.

@@ -1,9 +1,12 @@
 #scene LS_Event_Main_120_090_C
-0.000	9.104	00.mp3	A back alley behind the station, with rough-looking teenagers in small groups. You, Yukari and Junpei walk in, and the nearest ones turn to look.
-13.330	1.031	01.mp3	Two men block you.
-32.800	2.031	02.mp3	A punk punches Junpei in the stomach.
-36.530	2.935	03.mp3	Yukari kneels by Junpei. The punk calls out.
-46.200	1.341	04.mp3	A young man punches him.
-52.200	3.743	05.mp3	The punks back away and hurry off. Junpei turns to the young man.
-62.800	2.062	06.mp3	Shinjiro turns back toward Yukari.
-91.830	1.926	07.mp3	Shinjiro walks away down the alley.
+0.000	14.142	00.mp3	A back alley behind Port Island Station, with bins along a wall and a flight of concrete steps. Rough-looking teenagers hang around in small groups. You, Yukari and Junpei walk in among them, and the nearest ones turn to look.
+13.330	6.169	01.mp3	Two young men, one in a tracksuit, one in a T-shirt, walk over from the steps and plant themselves in front of you.
+32.800	6.295	02.mp3	The one in the T-shirt drives a fist into Junpei's stomach. Junpei doubles over and sinks into a crouch.
+36.530	6.027	03.mp3	Yukari drops to her knees beside Junpei. The one in the tracksuit points at them and calls to the others.
+43.530	5.547	04.mp3	A tall young man in a long coat and a beanie has walked up behind the punks and stands facing them.
+46.200	6.028	05.mp3	The punk squares up to him, but the young man hits him first. The punk staggers back and drops to one knee.
+52.200	7.284	06.mp3	The punk and his friend back away and hurry off. Yukari gets up, and Junpei slowly straightens and turns to the young man.
+62.800	4.626	07.mp3	Shinjiro, who had turned away to leave, stops and turns back toward Yukari.
+81.580	2.710	08.mp3	Junpei pulls off his cap and bows to Shinjiro.
+88.000	1.316	09.mp3	Yukari bows to him.
+91.830	4.323	10.mp3	Shinjiro turns his back, hands in his pockets, and walks away down the alley.

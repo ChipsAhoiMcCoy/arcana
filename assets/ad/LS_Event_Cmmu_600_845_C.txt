@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_600_845_C
-0.030	0.995	00.mp3	Everyone studies.
-29.860	1.496	01.mp3	Everyone sweats nervously.
+0.030	11.700	00.mp3	The dorm lounge. The whole team has gathered around the dining table to study: you, Mitsuru, Yukari, Junpei, Fuuka, Akihiko, Aigis and Ken, with Koromaru sitting nearby.
+29.830	2.682	01.mp3	Everyone at the table breaks into a nervous sweat.

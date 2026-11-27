@@ -1,3 +1,4 @@
 #scene LS_Event_Main_200_240_C
-1.700	1.703	00.mp3	Ryoji sits with the others.
-16.200	3.055	01.mp3	Ryoji walks out of the lounge. Everyone turns to you.
+1.700	5.961	00.mp3	The dorm lounge. Ryoji sits on a sofa with the others; you, Mitsuru and Aigis stand nearby.
+6.550	4.915	01.mp3	Ryoji gets up and walks a few steps away from the group, then turns back toward Fuuka.
+16.200	4.818	02.mp3	Ryoji walks out of the lounge as the others watch him go. Then everyone turns to you.

@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_006_510_C
-0.000	0.768	00.mp3	Rooftop.
-2.670	1.074	01.mp3	You sit with Fuuka.
+0.000	5.498	00.mp3	You and Fuuka sit side by side on a curved bench on the school rooftop, your bags at your feet.

@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_520_018_C
-8.030	1.252	00.mp3	You offer the fragment.
+6.830	4.523	00.mp3	Standing before the sealed chest, you hold out a small fragment in your open hand.

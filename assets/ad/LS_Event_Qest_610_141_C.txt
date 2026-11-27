@@ -1,2 +1,2 @@
 #scene LS_Event_Qest_610_141_C
-2.030	1.161	00.mp3	Elizabeth steps up.
+2.000	4.587	00.mp3	Elizabeth steps up to the school store's counter, leaving you a few paces behind.

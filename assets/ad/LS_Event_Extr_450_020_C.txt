@@ -1,2 +1,2 @@
 #scene LS_Event_Extr_450_020_C
-0.030	2.167	00.mp3	At a coffee shop, you sit alone and sip.
+0.030	12.865	00.mp3	Chagall Café, a coffee shop in Paulownia Mall, with customers at its tables and a waiter passing between them. You sit alone at a table, your bag beside you, lift your cup and sip, then set it back on its saucer.

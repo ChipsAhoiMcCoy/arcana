@@ -1,2 +1,2 @@
 #scene LS_Event_Main_120_110_C
-0.000	1.304	00.mp3	You all face Mitsuru.
+0.000	9.216	00.mp3	After school, in the student council room. You, Yukari, Junpei and Akihiko stand in a loose circle among the folding chairs, facing Mitsuru.

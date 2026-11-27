@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_080_C
-0.030	2.348	00.mp3	You fix your hair at the sink. Someone knocks.
-5.170	2.604	01.mp3	You open the door. Yukari stands outside.
+0.030	4.862	00.mp3	In your dorm room, you stand at a small sink, fixing your hair. Someone knocks at the door.
+5.170	5.024	01.mp3	You cross to the door and open it. Yukari stands outside, her school bag in one hand.

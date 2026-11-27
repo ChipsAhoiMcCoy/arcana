@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_005_740_C", "title": "Karume-yaki with Mitsuru", "cues": [{"at": 1.17, "text": "You and Mitsuru cook together."}, {"at": 6.67, "text": "On the sofa."}]}
+{
+ "movie": "LS_Event_Cmmu_005_740_C",
+ "title": "Karume-yaki with Mitsuru",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm kitchen. You stand at the counter with Mitsuru, ready to cook together."
+  },
+  {
+   "at": 6.67,
+   "text": "Later, you and Mitsuru sit side by side on the lounge sofa, still in your aprons, cups of tea and a plate of the karume-yaki you made on the low table in front of you. Mitsuru sits with her arms folded."
+  }
+ ]
+}

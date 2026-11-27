@@ -1,5 +1,5 @@
 #scene LS_Event_Main_150_020_C
-1.400	1.606	00.mp3	Aigis stands over you in bed.
-10.050	3.817	01.mp3	Sitting up, you watch Aigis open the door. Yukari stands in the hall.
-38.200	1.865	02.mp3	Aigis presses a hand to her chest.
-43.030	1.266	03.mp3	Yukari walks away.
+1.400	4.519	00.mp3	In your dorm room, you lie in bed. Aigis stands beside it, looking down at you.
+10.050	5.778	01.mp3	Sitting up in bed, you watch Aigis walk to the door and open it. Yukari stands in the hall outside.
+19.700	2.067	02.mp3	You get out of bed and join them at the door.
+38.200	4.938	03.mp3	Aigis stands with a hand pressed to her chest. Yukari turns and walks off down the hall.

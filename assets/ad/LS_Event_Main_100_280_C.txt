@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_280_C
-0.050	2.403	00.mp3	Yukari shuts and locks the rooftop door.
-4.750	1.484	01.mp3	Thud; Yukari startles.
+0.050	4.748	00.mp3	Out on the dorm's rooftop, Yukari pushes the door shut behind you both and locks it.
+4.750	5.782	01.mp3	A heavy thud sounds nearby. Yukari startles and raises her guard, and you turn toward the noise.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_003_040_C
-0.030	1.251	00.mp3	You and Junpei stop.
+0.050	5.120	00.mp3	Outside a burger shop. You and Junpei walk along the street with your school bags and stop.

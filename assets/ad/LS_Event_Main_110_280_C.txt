@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_280_C
-0.000	1.253	00.mp3	Junpei, Shadows.
-3.170	1.164	01.mp3	You join Junpei.
+0.000	6.627	00.mp3	You and Yukari run into the next car. Junpei stands in a fighting stance with three Shadows closing in on him.
+3.170	3.002	01.mp3	You nod to Yukari, and the two of you run to join him.

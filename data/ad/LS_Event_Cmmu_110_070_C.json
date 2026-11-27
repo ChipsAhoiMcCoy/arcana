@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_110_070_C", "title": "Maiko's parents", "cues": [{"at": 2.0, "text": "Maiko walks off, leaving you alone by the jungle gym."}, {"at": 7.33, "text": "A man and woman hurry over."}]}
+{
+ "movie": "LS_Event_Cmmu_110_070_C",
+ "title": "Maiko's parents",
+ "cues": [
+  {
+   "at": 2.0,
+   "text": "Maiko walks off past you and out of the playground, leaving you alone by the jungle gym at the shrine."
+  },
+  {
+   "at": 7.33,
+   "text": "A man in a suit and glasses and a woman come running across the playground, stop, then hurry over to you."
+  }
+ ]
+}

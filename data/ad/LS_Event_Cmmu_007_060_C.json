@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_007_060_C", "title": "The old lady's grandson", "cues": [{"at": 0.0, "text": "Iwatodai Strip Mall."}, {"at": 7.85, "text": "Kiyoshi walks off past you. The old lady stays put, hands clasped."}, {"at": 14.5, "text": "Aigis sets off after him; you follow."}]}
+{
+ "movie": "LS_Event_Cmmu_007_060_C",
+ "title": "The old lady's grandson",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Iwatodai Strip Mall. You and Aigis come upon the old lady talking with a smirking student."
+  },
+  {
+   "at": 7.85,
+   "text": "Kiyoshi walks off past you, and the old lady stays where she is, hands clasped. Aigis turns to look after Kiyoshi."
+  },
+  {
+   "at": 14.5,
+   "text": "Aigis sets off after him, and you follow."
+  }
+ ]
+}

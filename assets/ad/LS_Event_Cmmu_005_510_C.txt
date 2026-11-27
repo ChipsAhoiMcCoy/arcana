@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_005_510_C
-0.050	0.813	00.mp3	Burger shop.
-2.670	1.031	01.mp3	You sit together.
+0.050	9.189	00.mp3	In the burger shop at the Iwatodai strip mall, you and Mitsuru sit together at a table, a few other customers seated nearby and a clerk behind the counter.

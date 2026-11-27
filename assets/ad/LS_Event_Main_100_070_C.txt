@@ -1,3 +1,3 @@
 #scene LS_Event_Main_100_070_C
 0.030	5.732	00.mp3	Yukari leads you up the stairs and along a hallway on the second floor, to the door at its far end.
-16.000	3.363	01.mp3	Yukari walks back past you, then stops and turns to you.
+16.000	5.859	01.mp3	Yukari walks back past you down the hall while you step over to your door; then she stops and turns back to you.

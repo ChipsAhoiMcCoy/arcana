@@ -1,4 +1,6 @@
 #scene LS_Event_Cmmu_003_025_C
-21.350	2.881	00.mp3	Koromaru trots onto the mat, over the watermelon.
-33.550	1.598	01.mp3	Akihiko joins the group.
-48.400	2.789	02.mp3	Akihiko smashes the watermelon with his fist.
+0.050	10.017	00.mp3	The dorm rooftop. A watermelon sits on a mat with a baseball bat lying beside it. You and Junpei stand by the mat; Ken and Koromaru stand across from you.
+21.350	3.688	01.mp3	Koromaru trots onto the mat and plants himself over the watermelon.
+33.550	3.966	02.mp3	Akihiko steps out through the rooftop door and comes over to the group.
+49.850	10.302	03.mp3	Akihiko raises his fists and walks up to the watermelon. Akihiko drops to one knee and smashes the watermelon with his fist. Chunks of it scatter across the mat.
+59.200	2.705	04.mp3	Later, you and Junpei are alone on the rooftop.

@@ -1,3 +1,3 @@
 #scene LS_Event_Qest_610_120_C
-0.200	5.031	00.mp3	Elizabeth climbs the down escalator, slipping back, then runs to the top beside you.
-13.670	3.516	01.mp3	Elizabeth leads you to a fenced-off hole ringed with sandbags.
+0.200	15.081	00.mp3	At Iwatodai Station, you watch from the foot of an escalator as Elizabeth climbs up the down escalator, slipping back with every step. She falls to her hands and knees, then scrambles up, breaks into a run and reaches the top, where she stops beside you.
+13.670	4.286	01.mp3	Elizabeth leads you to a fenced-off hole in the ground, ringed with sandbags.

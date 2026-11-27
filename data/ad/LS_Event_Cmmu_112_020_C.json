@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_112_020_C", "title": "Bebe: sewing together", "cues": [{"at": 0.0, "text": "Sewing."}]}
+{
+ "movie": "LS_Event_Cmmu_112_020_C",
+ "title": "Bebe: sewing together",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you."
+  }
+ ]
+}

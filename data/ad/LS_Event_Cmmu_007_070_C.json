@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_007_070_C", "title": "Mii-chan's owner says goodbye", "cues": [{"at": 0.0, "text": "An old woman approaches."}, {"at": 13.5, "text": "The woman bows."}, {"at": 21.5, "text": "Aigis turns to you, serious."}]}
+{
+ "movie": "LS_Event_Cmmu_007_070_C",
+ "title": "Mii-chan's owner says goodbye",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Fountain Square in Paulownia Mall. You are walking with Aigis when an old woman comes toward you."
+  },
+  {
+   "at": 13.5,
+   "text": "The old woman bows to you both and turns to walk away."
+  },
+  {
+   "at": 21.5,
+   "text": "The old woman leaves. Aigis turns to you, her face serious."
+  }
+ ]
+}

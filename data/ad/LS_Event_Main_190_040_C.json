@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Main_190_040_C", "title": "Almost midnight", "cues": [{"at": 0.1, "text": "Everyone sits at the table."}, {"at": 9.4, "text": "Koromaru steps over to Junpei."}, {"at": 19.4, "text": "A clock appears."}]}
+{
+ "movie": "LS_Event_Main_190_040_C",
+ "title": "Almost midnight",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "The lounge. Everyone sits around the table among half-empty sushi platters, Mitsuru's father with them in an armchair and his aides standing by the windows. Mitsuru sits with her arms folded, and Koromaru sits on the floor at the end of the table near Junpei."
+  },
+  {
+   "at": 9.4,
+   "text": "Koromaru gets up and steps over toward Junpei, looking at him."
+  },
+  {
+   "at": 19.4,
+   "text": "A clock face appears over the room, its hands at one minute to midnight."
+  }
+ ]
+}

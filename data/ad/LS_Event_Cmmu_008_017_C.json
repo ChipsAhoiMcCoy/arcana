@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_008_017_C", "title": "Ken: a classmate outside the dorm", "cues": [{"at": 0.0, "text": "With Ken."}, {"at": 11.4, "text": "The mother walks off, the boy hurrying after; Ken watches them."}]}
+{
+ "movie": "LS_Event_Cmmu_008_017_C",
+ "title": "Ken: a classmate outside the dorm",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You and Ken walk up the street to the dorm. A boy and his mother come toward you."
+  },
+  {
+   "at": 11.4,
+   "text": "The mother walks off past you, and the boy hurries after her. Ken stays at your side, looking after them."
+  }
+ ]
+}

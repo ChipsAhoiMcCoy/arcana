@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_100_290_C", "title": "The command room watches", "cues": [{"at": 0.1, "text": "Everyone stands stunned."}]}
+{
+ "movie": "LS_Event_Main_100_290_C",
+ "title": "The command room watches",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "In the dorm's command room, Mitsuru, Akihiko and Ikutsuki stand by the consoles, stunned."
+  }
+ ]
+}

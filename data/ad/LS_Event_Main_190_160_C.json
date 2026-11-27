@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_190_160_C", "title": "Igor's reminder", "cues": [{"at": 0.1, "text": "You sit before Igor and Elizabeth."}, {"at": 5.4, "text": "Igor conjures your contract."}]}
+{
+ "movie": "LS_Event_Main_190_160_C",
+ "title": "Igor's reminder",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "In the Velvet Room, you sit across the table from Igor, with Elizabeth standing at his side."
+  },
+  {
+   "at": 5.4,
+   "text": "A small sphere forms on the table under Igor's hands and turns into a sheet of paper: the contract you signed."
+  }
+ ]
+}

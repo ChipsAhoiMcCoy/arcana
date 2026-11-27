@@ -1,1 +1,3 @@
-{"movie": "LS_Event_Main_140_010_C", "title": "A text in the classroom", "cues": [{"at": 0.6, "text": "You and Yukari sit in an empty classroom. Your phone buzzes."}]}
+{"movie": "LS_Event_Main_140_010_C", "title": "A text in the classroom", "cues": [
+ {"at": 0.60, "text": "An empty classroom. You sit at your desk, and Yukari sits at the desk beside yours. Your phone buzzes, and you take it out."}
+]}

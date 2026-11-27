@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_112_030_C
-0.000	0.592	00.mp3	Sewing.
-3.170	0.847	01.mp3	Bebe stands.
+0.000	7.631	00.mp3	In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you.
+4.400	6.181	01.mp3	Bebe gets up and stands at his machine, a folded fan in his hand, tapping it against his chin as he thinks.

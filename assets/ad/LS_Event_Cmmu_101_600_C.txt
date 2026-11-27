@@ -1,3 +1,4 @@
 #scene LS_Event_Cmmu_101_600_C
-1.000	2.145	00.mp3	You and Kenji sit watching the film.
-6.330	0.978	01.mp3	Back in the lobby.
+0.000	5.769	00.mp3	The lobby of the movie theater at Port Island Station. You and Kenji stand by the snack counter.
+1.000	7.217	01.mp3	In the screening room, you and Kenji sit side by side among the audience, watching the film, Kenji with his arms folded.
+7.670	6.077	02.mp3	Afterwards, you and Kenji stand back by the snack counter in the lobby, Kenji rubbing the back of his head.

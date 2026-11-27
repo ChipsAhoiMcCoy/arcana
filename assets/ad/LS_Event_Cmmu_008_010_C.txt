@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_008_010_C
-1.330	1.328	00.mp3	Ken peeks from his door.
+0.030	6.161	00.mp3	In the dorm hallway, Ken opens the door of his room a little and peeks out at you, staying half hidden behind it.
 7.170	1.281	01.mp3	Ken's stomach growls.

@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Main_150_090_C", "title": "Strega", "cues": [{"at": 0.0, "text": "You walk in."}, {"at": 8.5, "text": "Two men walk out toward you."}, {"at": 26.67, "text": "Takaya walks away. Jin follows, grinning."}, {"at": 33.0, "text": "A gate slams shut; Akihiko runs to it."}]}
+{
+ "movie": "LS_Event_Main_150_090_C",
+ "title": "Strega",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In an abandoned military base deep underground, you and the team walk in among concrete walls and steel girders and spread out to look around."
+  },
+  {
+   "at": 7.24,
+   "text": "At the voice behind you, everyone spins around and drops into a fighting stance."
+  },
+  {
+   "at": 8.5,
+   "text": "Two young men walk out from the back of the room toward you: a shirtless one with long hair, and one in glasses carrying a metal case."
+  },
+  {
+   "at": 26.67,
+   "text": "Takaya turns his back on you and walks away. Jin follows him, grinning back over his shoulder."
+  },
+  {
+   "at": 33.0,
+   "text": "A gate slams shut between you and them. Akihiko runs to it, too late, as Jin strolls off on the other side."
+  }
+ ]
+}

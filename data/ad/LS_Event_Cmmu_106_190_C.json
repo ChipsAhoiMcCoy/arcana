@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_106_190_C", "title": "Yuko's future", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_106_190_C",
+ "title": "Yuko's future",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "A café in Paulownia Mall. You sit across a small table from Yuko, cups of coffee between you, with a few other customers around you."
+  }
+ ]
+}

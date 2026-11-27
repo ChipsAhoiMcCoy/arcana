@@ -1,3 +1,3 @@
 #scene LS_Event_Main_110_270_C
-3.730	2.482	00.mp3	Shadows drop behind Yukari; she turns.
-7.030	1.357	01.mp3	Another Shadow rises.
+3.730	6.915	00.mp3	Two of the masked Shadows drop into the car behind Yukari. She spins round and takes a fighting stance beside you.
+7.030	3.781	01.mp3	A third Shadow, of another kind, rises out of the floor in front of her.

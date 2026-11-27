@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Main_210_237_C", "title": "Port Island Station", "cues": [{"at": 0.1, "text": "Plaza."}, {"at": 2.67, "text": "Officer Kurosawa stands there."}]}
+{
+ "movie": "LS_Event_Main_210_237_C",
+ "title": "Port Island Station",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "Port Island Station. People stand about the plaza outside, Officer Kurosawa among them; a woman near him holds her hands clasped at her chest."
+  }
+ ]
+}

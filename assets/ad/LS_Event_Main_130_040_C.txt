@@ -1,4 +1,4 @@
 #scene LS_Event_Main_130_040_C
-0.050	1.687	00.mp3	In your dorm, you lie asleep.
-2.900	1.414	01.mp3	A boy stands beside you.
+0.050	2.174	00.mp3	In your dorm room, you lie asleep in bed.
+2.900	6.408	01.mp3	You open your eyes and push yourself up on one elbow. The boy in striped pyjamas stands beside your bed.
 12.050	2.522	02.mp3	Pharos breaks apart into flecks and is gone.

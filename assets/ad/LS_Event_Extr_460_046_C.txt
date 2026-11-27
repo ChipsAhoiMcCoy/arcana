@@ -1,3 +1,4 @@
 #scene LS_Event_Extr_460_046_C
-2.670	2.955	00.mp3	Koromaru trots off for treatment, leaving you waiting.
-7.500	1.963	01.mp3	Later, Koromaru trots back to you.
+0.030	7.854	00.mp3	Paulownia Mall, inside the shop Be Blue V, by its counter. You stand with your hands in your pockets; Koromaru stands facing you.
+2.670	4.415	01.mp3	Koromaru turns and trots off for the treatment, leaving you waiting by the sign.
+7.500	1.963	02.mp3	Later, Koromaru trots back to you.

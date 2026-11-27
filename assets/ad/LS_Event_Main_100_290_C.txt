@@ -1,2 +1,2 @@
 #scene LS_Event_Main_100_290_C
-0.100	1.275	00.mp3	Everyone stands stunned.
+0.100	5.882	00.mp3	In the dorm's command room, Mitsuru, Akihiko and Ikutsuki stand by the consoles, stunned.

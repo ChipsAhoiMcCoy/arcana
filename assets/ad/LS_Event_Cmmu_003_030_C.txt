@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_003_030_C
-0.050	1.222	00.mp3	Port Island Station.
-3.050	2.638	01.mp3	Junpei walks into the flower shop. You follow.
-16.050	3.840	02.mp3	Junpei hurries away from the shop. You follow him across the plaza.
-28.900	1.059	03.mp3	You sit on a bench.
-39.500	2.690	04.mp3	Junpei gets up and walks off. You stay seated.
+0.050	7.452	00.mp3	Port Island Station. You and Junpei walk up together with your school bags and stop near a flower shop at the foot of a staircase.
+3.050	5.839	01.mp3	Junpei walks over to the flower shop and you follow him. A woman in an apron stands among the flowers.
+16.050	6.179	02.mp3	Junpei spins around and hurries away from the shop. You turn and follow him out across the station plaza.
+30.400	3.576	03.mp3	You and Junpei sit side by side on a bench in the plaza.
+39.500	4.199	04.mp3	Junpei gets up and walks off across the plaza. You stay sitting on the bench.

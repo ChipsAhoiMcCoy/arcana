@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_101_080_C", "title": "Kenji's secret is out", "cues": [{"at": 0.0, "text": "Kenji waits."}]}
+{
+ "movie": "LS_Event_Cmmu_101_080_C",
+ "title": "Kenji's secret is out",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Naganaki Shrine, Kenji waits for you, looking miserable, one hand clutching the strap of his bag."
+  }
+ ]
+}

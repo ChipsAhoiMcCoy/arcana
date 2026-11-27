@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_009_020_C
-0.030	3.325	00.mp3	Outside the dorm, you sit on the steps, Koromaru beside you.
-8.000	1.074	01.mp3	A girl runs up.
-14.830	1.410	02.mp3	She runs off; you follow.
+0.030	4.845	00.mp3	Outside the dorm, you sit on the front steps, Koromaru sitting on the ground beside you.
+8.000	4.839	01.mp3	A little girl in a floral shirt runs up to you, out of breath, and you get up from the steps.
+14.830	2.891	02.mp3	She runs off, and you and Koromaru run after her.

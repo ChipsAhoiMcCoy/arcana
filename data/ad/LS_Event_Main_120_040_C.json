@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_120_040_C", "title": "Junpei's ghost story", "cues": [{"at": 0.0, "text": "At the dining table, you sit with Mitsuru and Akihiko. Junpei grins."}, {"at": 9.5, "text": "The lights go out. Junpei holds up a flashlight."}, {"at": 15.9, "text": "The flashlight clicks off, the lights return, and everyone stares blankly at Junpei."}, {"at": 24.83, "text": "Yukari leans."}]}
+{
+ "movie": "LS_Event_Main_120_040_C",
+ "title": "Junpei's ghost story",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At the dorm's dining table, Mitsuru, Akihiko and you sit; Akihiko has his arms folded. Yukari and Junpei stand at the table, Junpei grinning."
+  },
+  {
+   "at": 9.5,
+   "text": "The room's lights go out. In the dark, Junpei switches on a flashlight and holds it in front of his chest, pointed up so it lights his face from below."
+  },
+  {
+   "at": 15.9,
+   "text": "When the story is over, the flashlight clicks off and the room's lights come back on. Junpei stands with his hands on his hips, and everyone around the table stares back at him blankly."
+  },
+  {
+   "at": 24.83,
+   "text": "Yukari plants both hands on the table and leans across it at Junpei, scowling."
+  }
+ ]
+}

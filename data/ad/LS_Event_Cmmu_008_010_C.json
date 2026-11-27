@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_008_010_C", "title": "Ken: checking on him", "cues": [{"at": 1.33, "text": "Ken peeks from his door."}, {"at": 7.17, "text": "Ken's stomach growls."}]}
+{
+ "movie": "LS_Event_Cmmu_008_010_C",
+ "title": "Ken: checking on him",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "In the dorm hallway, Ken opens the door of his room a little and peeks out at you, staying half hidden behind it."
+  },
+  {
+   "at": 7.17,
+   "text": "Ken's stomach growls."
+  }
+ ]
+}

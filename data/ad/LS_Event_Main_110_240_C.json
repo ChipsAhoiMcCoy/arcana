@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_110_240_C", "title": "At the stopped monorail", "cues": [{"at": 0.1, "text": "You stand on the tracks beside a stopped monorail."}, {"at": 10.4, "text": "Yukari climbs a ladder, then looks down. Junpei stays with you."}]}
+{
+ "movie": "LS_Event_Main_110_240_C",
+ "title": "At the stopped monorail",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "You, Yukari and Junpei stand on the tracks beside a stopped monorail."
+  },
+  {
+   "at": 10.4,
+   "text": "Yukari turns to a ladder on the monorail's side and starts to climb; partway up she stops and looks down. Junpei stays at the bottom with you."
+  }
+ ]
+}

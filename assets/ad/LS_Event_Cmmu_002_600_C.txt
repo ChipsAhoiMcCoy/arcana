@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_002_600_C
-0.000	0.886	00.mp3	Theater lobby.
-1.900	2.715	01.mp3	You and Yukari watch the film, side by side.
-7.500	1.744	02.mp3	Afterwards, in the lobby again.
+0.050	5.805	00.mp3	The movie theater lobby. You and Yukari stand by the snack counter, Yukari with her bag in hand.
+3.050	5.368	01.mp3	In the screening room, you and Yukari sit side by side among the audience, watching the film.
+8.850	3.989	02.mp3	Afterwards, you and Yukari stand at the snack counter in the lobby again.

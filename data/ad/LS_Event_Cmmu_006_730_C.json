@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_006_730_C", "title": "Fuuka at the planters", "cues": [{"at": 1.17, "text": "Rooftop."}]}
+{
+ "movie": "LS_Event_Cmmu_006_730_C",
+ "title": "Fuuka at the planters",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm rooftop. You and Fuuka crouch side by side at the vegetable planters, working quietly."
+  }
+ ]
+}

@@ -1,2 +1,2 @@
 #scene LS_Event_Main_140_160_C
-0.000	6.314	00.mp3	On a beach, you, Junpei and Akihiko walk onto the sand in swimsuits. Junpei carries a swim ring.
+0.000	12.263	00.mp3	On a beach lined with palm trees, you, Junpei and Akihiko walk out onto the sand in swimsuits and stop. Junpei carries a swim ring under one arm; Akihiko stands with a hand on his hip.

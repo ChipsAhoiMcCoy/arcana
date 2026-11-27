@@ -1,3 +1,2 @@
 #scene LS_Event_Cmmu_002_710_C
-0.170	0.665	00.mp3	Lounge.
-1.200	2.149	01.mp3	You and Yukari watch a DVD.
+0.170	5.809	00.mp3	In the dorm lounge, you and Yukari sit side by side in front of the TV, watching a DVD.

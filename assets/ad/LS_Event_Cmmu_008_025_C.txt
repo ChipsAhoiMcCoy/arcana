@@ -1,3 +1,3 @@
 #scene LS_Event_Cmmu_008_025_C
-0.030	4.301	00.mp3	You follow Ken into his room. He turns back to face you, looking sheepish.
-28.100	2.468	01.mp3	You walk out, leaving Ken alone by his bed.
+0.030	11.129	00.mp3	You follow Ken into his room in the dorm: a desk with a small cage on it, a bed, a ball on the floor. He crosses to the foot of the bed, then turns back to face you, looking sheepish.
+28.100	6.337	01.mp3	You turn and walk out of Ken's room, leaving him standing alone by his bed, and the door closes behind you.

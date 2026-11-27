@@ -1,3 +1,4 @@
 #scene LS_Event_Main_190_310_C
-1.830	1.684	00.mp3	Yukari and Fuuka curl away.
-7.330	1.885	01.mp3	Mitsuru squares up and lifts a hand.
+0.000	7.081	00.mp3	In the bath, the four of you stand face to face with Yukari, Fuuka, Mitsuru and Aigis, a few steps of water between you.
+1.830	4.149	01.mp3	Yukari and Fuuka shut their eyes tight and curl away, clutching their towels.
+7.330	3.071	02.mp3	Mitsuru squares up and lifts a hand toward the four of you.

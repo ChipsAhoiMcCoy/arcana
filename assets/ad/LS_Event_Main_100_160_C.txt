@@ -1,4 +1,4 @@
 #scene LS_Event_Main_100_160_C
-0.170	1.101	00.mp3	You enter the lounge.
-4.000	1.472	01.mp3	You set down your bag and sit.
+0.170	6.482	00.mp3	You come into the dorm lounge with your bag. Yukari sits on a sofa across from a man with glasses and long hair.
+4.000	2.207	01.mp3	You set down your bag and sit facing them.
 18.170	3.277	02.mp3	Ikutsuki has risen; he turns and walks out of the lounge.

@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_106_035_C
-0.000	0.990	00.mp3	Girls approach.
+0.000	6.110	00.mp3	Paulownia Mall. You stand chatting with Yuko outside the shops. Two girls from school walk over to her.
 12.400	1.744	01.mp3	The two girls walk off past you.
-21.330	1.183	02.mp3	You and Yuko sit.
+21.400	3.808	02.mp3	You and Yuko sit down side by side on a bench by the fountain.
 33.200	1.631	03.mp3	Yuko gets up and walks off.

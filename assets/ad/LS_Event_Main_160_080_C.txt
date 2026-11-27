@@ -1,4 +1,4 @@
 #scene LS_Event_Main_160_080_C
-0.050	1.864	00.mp3	Junpei strolls along the plaza.
-6.400	3.493	01.mp3	A girl sits drawing on a bench. Junpei stops beside her.
-19.900	2.369	02.mp3	Junpei walks off. The girl lifts her head.
+0.050	6.900	00.mp3	The paved plaza outside Port Island Station, among tall stone columns. Junpei strolls along on his own.
+6.400	7.910	01.mp3	On a bench by a flower bed, a girl in a long, frilly dress sits drawing on a sketchboard. Junpei walks over and stops beside her.
+19.900	4.688	02.mp3	Junpei walks off. The girl goes on drawing, then lifts her head from the sketchboard.

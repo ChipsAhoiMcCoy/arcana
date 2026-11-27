@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_518_030_C
-0.000	0.898	00.mp3	You all stop.
+0.000	4.178	00.mp3	You run forward with your party, weapons drawn, and all of you pull up together.

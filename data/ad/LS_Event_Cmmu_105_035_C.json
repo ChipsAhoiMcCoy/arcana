@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_105_035_C", "title": "Kazushi's secret", "cues": [{"at": 0.0, "text": "Kazushi."}, {"at": 4.7, "text": "The teammates leave, and you're alone with Kazushi."}]}
+{
+ "movie": "LS_Event_Cmmu_105_035_C",
+ "title": "Kazushi's secret",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "The nurse's office. Kazushi sits hunched forward on a chair, elbows on his knees and head hanging, while two teammates stand over him. You stand nearby."
+  },
+  {
+   "at": 4.7,
+   "text": "The two teammates walk out, and the door closes behind them, leaving you alone with Kazushi."
+  }
+ ]
+}

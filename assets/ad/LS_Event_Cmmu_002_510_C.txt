@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_002_510_C
-0.050	0.745	00.mp3	A café.
+0.050	4.671	00.mp3	A café. You and Yukari sit across a small table from each other, talking.

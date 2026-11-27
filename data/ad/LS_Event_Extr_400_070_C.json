@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Extr_400_070_C", "title": "A suspicious man", "cues": [{"at": 1.7, "text": "A man in a suit approaches you."}, {"at": 9.2, "text": "The man walks off to a staircase."}]}
+{
+ "movie": "LS_Event_Extr_400_070_C",
+ "title": "A suspicious man",
+ "cues": [
+  {
+   "at": 1.7,
+   "text": "In a crowded nightclub, a man in a suit walks up to you."
+  },
+  {
+   "at": 9.2,
+   "text": "The man walks off across the plaza and waits by a staircase."
+  }
+ ]
+}

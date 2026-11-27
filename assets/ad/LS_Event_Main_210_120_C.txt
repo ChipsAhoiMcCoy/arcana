@@ -1,4 +1,4 @@
 #scene LS_Event_Main_210_120_C
-0.000	1.807	00.mp3	Aigis stands at the rooftop fence.
-5.600	1.880	01.mp3	Aigis turns; you walk up to her.
-17.830	2.803	02.mp3	Aigis turns back, hands clasped; you rub your head.
+0.000	5.900	00.mp3	You walk out onto the school roof, hands in your pockets. Aigis stands alone at the fence with her back to you.
+5.600	3.536	01.mp3	Aigis turns around to face you, and you walk up to her by the fence.
+17.830	5.009	02.mp3	Aigis turns back to face you and clasps her hands at her chest, while you rub the back of your head.

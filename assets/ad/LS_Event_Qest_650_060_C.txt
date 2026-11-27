@@ -1,3 +1,2 @@
 #scene LS_Event_Qest_650_060_C
-0.030	1.293	00.mp3	You wait in the office.
-2.360	1.243	01.mp3	A teacher approaches.
+0.000	8.033	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, talking to himself, and comes over to you.

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_106_370_C", "title": "Celebrating with Yuko", "cues": [{"at": 0.0, "text": "You leave Mandragora."}]}
+{
+ "movie": "LS_Event_Cmmu_106_370_C",
+ "title": "Celebrating with Yuko",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Paulownia Mall, outside the karaoke bar Mandragora. You and Yuko step out of its door together, Yuko with her bag on her shoulder."
+  }
+ ]
+}

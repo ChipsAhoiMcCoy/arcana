@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_007_030_C", "title": "Koromaru's old friends", "cues": [{"at": 2.17, "text": "Animals block your path."}, {"at": 20.67, "text": "The two dogs and the cat turn and run off."}, {"at": 36.83, "text": "Aigis turns and walks away, leaving you alone at the station."}]}
+{
+ "movie": "LS_Event_Cmmu_007_030_C",
+ "title": "Koromaru's old friends",
+ "cues": [
+  {
+   "at": 2.17,
+   "text": "You and Aigis come down the steps outside Iwatodai Station when two dogs, one of them a black Shiba Inu, and a brown cat run up and plant themselves in your way."
+  },
+  {
+   "at": 16.67,
+   "text": "Aigis steps toward the animals, and the black Shiba Inu lunges and bites her hand."
+  },
+  {
+   "at": 20.67,
+   "text": "The two dogs and the cat turn and run off."
+  },
+  {
+   "at": 36.83,
+   "text": "Aigis turns and walks away, leaving you alone at the station."
+  }
+ ]
+}

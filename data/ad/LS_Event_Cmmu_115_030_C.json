@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Cmmu_115_030_C", "title": "Four siblings", "cues": [{"at": 0.03, "text": "Beef bowl shop."}, {"at": 1.38, "text": "Later, you and Mamoru leave the shop and stop to talk."}, {"at": 17.0, "text": "Mamoru turns and runs off."}]}
+{
+ "movie": "LS_Event_Cmmu_115_030_C",
+ "title": "Four siblings",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "The Iwatodai Strip Mall, outside the beef bowl shop. You and Mamoru stand at its door, about to eat together."
+  },
+  {
+   "at": 1.33,
+   "text": "Later, done eating, the two of you walk out of the shop and stop to talk."
+  },
+  {
+   "at": 17.0,
+   "text": "Mamoru turns and runs off."
+  }
+ ]
+}

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Qest_650_020_C", "title": "Mr. Miyahara's equation", "cues": [{"at": 0.0, "text": "A teacher comes over, lecturing."}]}
+{
+ "movie": "LS_Event_Qest_650_020_C",
+ "title": "Mr. Miyahara's equation",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You stand waiting in the faculty office, among desks stacked with papers. A teacher with a huge set square over his shoulder walks in, working through sums aloud, and comes over to you. As he lectures, a sweat drop forms on your brow."
+  }
+ ]
+}

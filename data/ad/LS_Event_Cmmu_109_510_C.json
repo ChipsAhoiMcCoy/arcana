@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_109_510_C", "title": "Talking in the library", "cues": [{"at": 0.0, "text": "Library."}]}
+{
+ "movie": "LS_Event_Cmmu_109_510_C",
+ "title": "Talking in the library",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the school library, you sit at a long table with Chihiro, notebooks and papers spread out in front of you. She smiles at you."
+  }
+ ]
+}

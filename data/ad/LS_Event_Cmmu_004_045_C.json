@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_004_045_C", "title": "Miki's medal", "cues": [{"at": 0.0, "text": "Akihiko leads you into his room, trophies crowding the shelves."}, {"at": 7.67, "text": "You sit down; Akihiko stays standing."}, {"at": 19.33, "text": "Akihiko turns away, walks across the room and starts searching."}, {"at": 27.0, "text": "You walk to his desk, where the parcel's medal lies. Akihiko stands beside you."}, {"at": 42.67, "text": "He hands you the medal; you hang it around his neck."}]}
+{
+ "movie": "LS_Event_Cmmu_004_045_C",
+ "title": "Miki's medal",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Akihiko leads you into his room in the dorm. Trophies crowd the shelves, and a punching bag and a speed bag hang among the furniture."
+  },
+  {
+   "at": 7.67,
+   "text": "You sit down, and Akihiko stays standing across from you."
+  },
+  {
+   "at": 19.33,
+   "text": "Akihiko turns away, walks across the room and starts searching."
+  },
+  {
+   "at": 27.0,
+   "text": "You get up and walk over to his desk, where the medal from his parents' parcel lies on its ribbon. Akihiko comes over and stands beside you."
+  },
+  {
+   "at": 42.67,
+   "text": "Akihiko picks the medal up from his desk and hands it to you. You hang it around his neck, and he looks down at it in surprise."
+  }
+ ]
+}

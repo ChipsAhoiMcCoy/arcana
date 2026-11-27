@@ -1,4 +1,4 @@
 #scene LS_Event_Main_100_300_C
-0.100	2.723	00.mp3	Orpheus hangs above you, then breaks into shards.
+0.100	10.594	00.mp3	On the rooftop, your Persona Orpheus hangs in the air above you: a tall, slender, machine-like figure with a lyre on its back. It breaks into glittering shards and is gone.
 5.200	2.480	01.mp3	Yukari sits on the ground a few steps from you.
-12.870	0.998	02.mp3	Shadows approach.
+11.200	6.719	02.mp3	Two Shadows crawl across the roof toward you, masks set in heaps of clawing arms. You set yourself to face them.

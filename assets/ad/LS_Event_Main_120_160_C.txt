@@ -1,3 +1,3 @@
 #scene LS_Event_Main_120_160_C
-0.000	0.784	00.mp3	The office.
-2.170	1.393	01.mp3	Yukari points at a key.
+0.000	8.995	00.mp3	In the faculty office, you and Yukari stand before a key cabinet on the wall. Yukari peers at the tags on the hanging keys, a finger to her chin.
+2.170	3.150	01.mp3	Yukari points at one of the keys, and you point at it too.

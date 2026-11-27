@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Fild_103_005_C",
- "title": "The claw machine: a miss",
- "cues": [
-  {
-   "at": 1.0,
-   "text": "You work the claw machine."
-  },
-  {
-   "at": 5.67,
-   "text": "You watch the claw drop. It rises empty, and your shoulders slump."
-  }
- ]
-}
+{"movie": "LS_Event_Fild_103_005_C", "title": "The claw machine: a miss", "cues": [{"at": 0.0, "text": "The arcade in Paulownia Mall. You stand at a claw machine stacked with boxed figures and work its controls."}, {"at": 5.67, "text": "You step back with your hands in your pockets and watch the claw drop. It rises empty, and your shoulders slump."}]}

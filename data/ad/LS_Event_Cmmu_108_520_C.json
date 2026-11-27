@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_108_520_C", "title": "The art club without Keisuke", "cues": [{"at": 1.1, "text": "Art room."}]}
+{
+ "movie": "LS_Event_Cmmu_108_520_C",
+ "title": "The art club without Keisuke",
+ "cues": [
+  {
+   "at": 1.1,
+   "text": "In the art room, you sit painting at an easel among Fuuka and the other club members, who chat as they work."
+  }
+ ]
+}

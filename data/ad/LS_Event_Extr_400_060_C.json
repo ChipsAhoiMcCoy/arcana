@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Extr_400_060_C", "title": "Jin's reason", "cues": [{"at": 0.0, "text": "Jin walks up to Takaya."}]}
+{
+ "movie": "LS_Event_Extr_400_060_C",
+ "title": "Jin's reason",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Takaya stands at a railing looking out over the city, a suspension bridge and Tartarus under a huge moon. Jin walks up behind him."
+  }
+ ]
+}

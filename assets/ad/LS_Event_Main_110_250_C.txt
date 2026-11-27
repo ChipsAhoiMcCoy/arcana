@@ -1,4 +1,4 @@
 #scene LS_Event_Main_110_250_C
-0.000	1.486	00.mp3	A coffin stands on a seat.
-2.000	1.528	01.mp3	The car's doors slide shut.
-5.300	2.281	02.mp3	Junpei shoves at a door; it will not budge.
+0.000	8.455	00.mp3	Inside the stopped monorail, you, Yukari and Junpei walk down the aisle. A coffin stands on one of the seats, where a passenger would sit.
+2.000	2.298	01.mp3	Behind you, the car's doors slide shut.
+5.300	7.682	02.mp3	The doors on the other side slam shut too. Junpei runs to the nearest one and shoves at it with both hands; it does not budge.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_109_390_C
-0.000	1.611	00.mp3	Chihiro turns, smiling.
+0.000	8.041	00.mp3	In Paulownia Mall's Fountain Square, you and Chihiro walk out of the arcade past its claw machine and stop. She turns to you, smiling.

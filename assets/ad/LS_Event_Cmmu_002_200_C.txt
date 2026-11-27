@@ -1,6 +1,6 @@
 #scene LS_Event_Cmmu_002_200_C
-1.200	1.930	00.mp3	A small boy runs up beside you.
-7.300	1.620	01.mp3	Yukari approaches the boy.
+1.200	6.060	00.mp3	In Paulownia Mall's fountain square, a small boy runs up near you and Yukari and stops, on his own.
+7.300	4.209	01.mp3	Yukari walks over to the boy, and he turns and wanders a few steps away.
 12.670	4.543	02.mp3	The boy and his mother walk off across the square together. Yukari watches them go.
-26.830	1.731	03.mp3	You and Yukari sit together.
-35.000	2.418	04.mp3	Yukari places her phone strap in your hand.
+26.830	3.101	03.mp3	Later, you and Yukari sit side by side on a bench.
+35.000	5.115	04.mp3	Yukari holds out her phone strap, a little charm hanging from it, and places it in your hand.

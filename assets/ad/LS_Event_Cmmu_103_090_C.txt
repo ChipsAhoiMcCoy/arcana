@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_103_090_C
-0.030	2.133	00.mp3	In Bookworms, Bunkichi writes a letter.
+0.030	5.056	00.mp3	You come into Bookworms. Bunkichi is writing on a sheet of paper while Mitsuko looks on.

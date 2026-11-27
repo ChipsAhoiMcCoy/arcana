@@ -1,5 +1,4 @@
 #scene LS_Event_Cmmu_008_013_C
-0.000	1.003	00.mp3	Hagakure Ramen.
-3.000	1.024	01.mp3	Ken looks around.
-4.330	1.293	02.mp3	You and Ken sit down.
-30.670	2.199	03.mp3	You head out. Ken stops, head lowered.
+0.000	4.798	00.mp3	You and Ken walk into Hagakure Ramen. Ken looks around the shop at the customers.
+5.700	2.616	01.mp3	You and Ken sit side by side at the counter.
+31.900	8.083	02.mp3	Afterwards, you and Ken get up and head for the door of the shop. Ken slows to a stop by the counter and stays behind, his head lowered.

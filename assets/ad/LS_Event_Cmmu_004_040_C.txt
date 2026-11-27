@@ -1,4 +1,5 @@
 #scene LS_Event_Cmmu_004_040_C
-0.000	1.952	00.mp3	You and Akihiko stand worn out.
-10.330	2.325	01.mp3	A gang of about ten men surrounds you both.
-31.000	5.431	02.mp3	You fight beside Akihiko. Soon every man lies beaten, and Akihiko walks over.
+0.000	4.974	00.mp3	You stand with Akihiko at Naganaki Shrine, worn out after training alongside him.
+10.330	5.008	01.mp3	A gang of about ten men walks up and spreads out around you both, led by the men from before.
+28.170	5.472	02.mp3	You step up beside Akihiko and raise your fists. Akihiko looks at you in surprise.
+31.000	8.255	03.mp3	The gang rushes you, and a fight breaks out. Soon every one of them is beaten, slumped on the ground around you, and Akihiko walks over to you.

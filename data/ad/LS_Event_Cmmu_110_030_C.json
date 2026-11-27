@@ -3,16 +3,16 @@
  "title": "Stripey",
  "cues": [
   {
-   "at": 1.33,
-   "text": "A thin young man walks up to you."
+   "at": 1.4,
+   "text": "At Naganaki Shrine, Maiko and you stand by a climbing frame. A thin young man in a striped suit walks up to you, one hand gripping his other arm."
   },
   {
-   "at": 9.67,
-   "text": "Maiko runs off."
+   "at": 9.7,
+   "text": "Maiko huffs and runs a few steps away from him."
   },
   {
-   "at": 17.67,
-   "text": "Maiko runs back."
+   "at": 17.7,
+   "text": "Maiko comes running back and stops beside the young man."
   },
   {
    "at": 23.0,

@@ -1,1 +1,10 @@
-{"movie": "LS_Event_Cmmu_007_715_C", "title": "Reading with Aigis", "cues": []}
+{
+ "movie": "LS_Event_Cmmu_007_715_C",
+ "title": "Reading with Aigis",
+ "cues": [
+  {
+   "at": 0.17,
+   "text": "The dorm lounge. You and Aigis sit side by side on a bench; you hold a book open, and Aigis rests hers on her lap."
+  }
+ ]
+}

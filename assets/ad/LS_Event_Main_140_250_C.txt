@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_250_C
-0.000	2.013	00.mp3	You, Junpei and Akihiko arrive.
-7.700	1.367	01.mp3	Junpei opens a letter.
-25.330	1.334	02.mp3	Akihiko walks off.
+0.000	5.031	00.mp3	Among palm trees near the beach, you, Junpei and Akihiko walk up in swimsuits.
+7.700	4.855	01.mp3	Junpei pulls out a letter and opens it. You and Akihiko step closer to look.
+25.330	1.810	02.mp3	Akihiko turns and walks off.
 29.670	2.709	03.mp3	Junpei turns from you and stomps off after him.

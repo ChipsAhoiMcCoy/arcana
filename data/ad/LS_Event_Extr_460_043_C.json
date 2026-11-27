@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_460_043_C", "title": "Akihiko at Be Blue V", "cues": [{"at": 0.03, "text": "Be Blue V."}, {"at": 4.5, "text": "Akihiko walks off for the treatment, leaving you waiting."}, {"at": 8.83, "text": "Later, Akihiko walks back to you."}]}
+{
+ "movie": "LS_Event_Extr_460_043_C",
+ "title": "Akihiko at Be Blue V",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Paulownia Mall, inside the shop Be Blue V, by its counter. You stand with your hands in your pockets; Akihiko stands facing you."
+  },
+  {
+   "at": 4.5,
+   "text": "Akihiko turns and walks off for the treatment, leaving you waiting by the sign."
+  },
+  {
+   "at": 8.83,
+   "text": "Later, Akihiko walks back to you."
+  }
+ ]
+}

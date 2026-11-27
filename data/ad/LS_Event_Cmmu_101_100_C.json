@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_101_100_C", "title": "A symbol of friendship", "cues": [{"at": 1.17, "text": "At Hagakure Ramen, you and Kenji sit at the counter."}, {"at": 30.0, "text": "Kenji turns back and hands you a handmade choker."}]}
+{
+ "movie": "LS_Event_Cmmu_101_100_C",
+ "title": "A symbol of friendship",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Back at Hagakure Ramen, you and Kenji sit side by side at the counter."
+  },
+  {
+   "at": 30.0,
+   "text": "Kenji turns away from you for a moment, then turns back and holds out a handmade choker, and you take it."
+  }
+ ]
+}

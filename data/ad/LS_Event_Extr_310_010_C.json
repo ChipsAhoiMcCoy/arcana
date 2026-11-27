@@ -1,10 +1,1 @@
-{
- "movie": "LS_Event_Extr_310_010_C",
- "title": "Morning in your room",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "In your room, you check your phone."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_310_010_C", "title": "Morning in your room", "cues": [{"at": 0.03, "text": "Your room in the dorm. You stand by the small sink, hands in your pockets, then turn, flip open your phone and check it."}]}

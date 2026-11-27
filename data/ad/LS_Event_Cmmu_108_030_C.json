@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_108_030_C", "title": "Art club: Keisuke a finalist", "cues": [{"at": 0.0, "text": "Art room."}, {"at": 1.0, "text": "A teacher walks in."}, {"at": 5.17, "text": "The club gathers to listen."}]}
+{
+ "movie": "LS_Event_Cmmu_108_030_C",
+ "title": "Art club: Keisuke a finalist",
+ "cues": [
+  {
+   "at": 1.0,
+   "text": "In the art room, the club sits painting at easels, you and Fuuka among them, when a teacher, the club advisor, walks in among them."
+  },
+  {
+   "at": 5.17,
+   "text": "The club members get up and gather to listen."
+  }
+ ]
+}

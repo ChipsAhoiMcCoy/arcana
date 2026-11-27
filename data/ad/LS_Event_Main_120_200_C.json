@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Main_120_200_C", "title": "You wake alone", "cues": [{"at": 0.0, "text": "You lie face down on a rippled floor in a strange hall, alone. Slowly you push up into a crouch."}, {"at": 8.93, "text": "You get to your feet and look around."}, {"at": 14.27, "text": "A haze becomes a boy in pyjamas."}, {"at": 21.77, "text": "The boy fades into haze. You stand alone."}]}
+{
+ "movie": "LS_Event_Main_120_200_C",
+ "title": "You wake alone",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "You lie face down on a rippled floor in a wide, strange hall whose walls twist in ridges. No one else is there. Slowly you push yourself up into a crouch, one hand on the floor."
+  },
+  {
+   "at": 8.93,
+   "text": "You get to your feet and look around."
+  },
+  {
+   "at": 14.27,
+   "text": "A few steps from you a haze gathers and takes the shape of a boy in striped pyjamas. He stands facing you, hands behind his back."
+  },
+  {
+   "at": 21.77,
+   "text": "The boy dissolves back into haze and is gone. You stand alone again."
+  }
+ ]
+}

@@ -1,14 +1,4 @@
-{
- "movie": "LS_Event_Main_110_280_C",
- "title": "Junpei surrounded",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Junpei, Shadows."
-  },
-  {
-   "at": 3.17,
-   "text": "You join Junpei."
-  }
- ]
-}
+{"movie": "LS_Event_Main_110_280_C", "title": "Junpei surrounded", "cues": [
+{"at": 0.00, "text": "You and Yukari run into the next car. Junpei stands in a fighting stance with three Shadows closing in on him."},
+{"at": 3.17, "text": "You nod to Yukari, and the two of you run to join him."}
+]}

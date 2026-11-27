@@ -1,1 +1,5 @@
-{"movie": "LS_Event_Main_170_010_C", "title": "Chidori in hospital", "cues": [{"at": 0.0, "text": "A hospital room."}, {"at": 14.37, "text": "Chidori doubles over, face in her arms."}]}
+{"movie": "LS_Event_Main_170_010_C", "title": "Chidori in hospital", "cues": [
+{"at": 0.0, "text": "A hospital room. Chidori sits up in bed with a sketchbook open on her lap. Mitsuru sits on a stool beside the bed with her arms crossed, and Akihiko stands by the window."},
+{"at": 7.33, "text": "Junpei hurries in and stops beside the bed. Yukari comes in after him."},
+{"at": 14.37, "text": "Chidori lets go of the sketchbook and doubles over in the bed, burying her face in her arms."}
+]}

@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_101_015_C", "title": "Ramen with Kenji", "cues": [{"at": 0.83, "text": "Ramen with Kenji."}, {"at": 14.0, "text": "You trade numbers."}]}
+{
+ "movie": "LS_Event_Cmmu_101_015_C",
+ "title": "Ramen with Kenji",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "At Hagakure Ramen, you and Kenji sit side by side at the counter over bowls of ramen. Kenji tips his bowl up and drinks down the soup."
+  },
+  {
+   "at": 14.0,
+   "text": "You and Kenji take out your phones and trade numbers."
+  }
+ ]
+}

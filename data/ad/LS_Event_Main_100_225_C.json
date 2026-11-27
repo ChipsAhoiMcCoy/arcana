@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Main_100_225_C", "title": "Worn out in your room", "cues": [{"at": 0.05, "text": "In your dorm room, still in your school uniform, you sit down on the edge of the bed, shoulders slumped, head bowed."}, {"at": 8.05, "text": "You fall back across the bed, an arm over your forehead, and stare up."}, {"at": 13.0, "text": "You raise a hand; sparks glitter round your fingers and fade."}, {"at": 16.4, "text": "Your arm falls to the bed and your eyes close. You fall asleep on top of the covers."}, {"at": 25.2, "text": "Clock faces swirl over you as you sleep, until the hands meet at midnight."}]}
+{
+ "movie": "LS_Event_Main_100_225_C",
+ "title": "Worn out in your room",
+ "cues": [
+  {
+   "at": 0.05,
+   "text": "In your dorm room, still in your school uniform, you sit down on the edge of the bed, shoulders slumped, head bowed."
+  },
+  {
+   "at": 8.05,
+   "text": "You fall back across the bed, an arm over your forehead, then let it drop and stare at the ceiling."
+  },
+  {
+   "at": 14.4,
+   "text": "You raise one hand toward the ceiling. A few tiny sparks of light glitter around your fingers and fade."
+  },
+  {
+   "at": 16.4,
+   "text": "Your arm falls to the bed and your eyes close. You fall asleep on top of the covers."
+  },
+  {
+   "at": 25.2,
+   "text": "Clock faces and the numbers eleven fifty-nine swirl over you as you sleep, until the hands meet at midnight."
+  }
+ ]
+}

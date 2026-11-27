@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_006_570_C
-0.000	3.282	00.mp3	A summer festival; you stand with Fuuka, both in yukatas.
-12.500	4.281	01.mp3	You and Fuuka cross the crowd to a takoyaki stall, where a woman works the grill.
-25.600	1.580	02.mp3	Fuuka bites a takoyaki.
-43.770	2.286	03.mp3	At the lucky-draw stall, you draw a ticket.
+0.000	9.993	00.mp3	The summer festival at Naganaki Shrine: food stalls line the grounds and people stroll past in yukatas. You stand beside Fuuka, who is wearing a yukata too.
+12.500	5.627	01.mp3	You and Fuuka make your way through the crowd to a takoyaki stall, where a woman works behind the grill.
+25.600	5.191	02.mp3	Standing off to one side with the takoyaki, Fuuka lifts one to her mouth and takes a bite.
+43.770	4.610	03.mp3	At the lucky-draw stall, you reach into the box and draw a ticket while Fuuka watches.

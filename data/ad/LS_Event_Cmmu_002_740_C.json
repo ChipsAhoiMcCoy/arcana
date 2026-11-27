@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Cmmu_002_740_C",
- "title": "Cooking with Yukari",
- "cues": [
-  {
-   "at": 0.0,
-   "text": "Dorm kitchen."
-  },
-  {
-   "at": 5.7,
-   "text": "Later, dinner."
-  }
- ]
-}
+{"movie": "LS_Event_Cmmu_002_740_C", "title": "Cooking with Yukari", "cues": [{"at": 0.0, "text": "In the dorm kitchen, you and Yukari stand by the counter, ready to cook."}, {"at": 5.7, "text": "Later, you and Yukari sit across from each other at the dining table, the meal eaten."}]}

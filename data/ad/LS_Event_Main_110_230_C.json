@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_110_230_C", "title": "Mitsuru arrives at the station", "cues": [{"at": 0.1, "text": "You wait with Yukari and Junpei."}, {"at": 7.1, "text": "Mitsuru rides up on a motorcycle, removes her helmet."}]}
+{
+ "movie": "LS_Event_Main_110_230_C",
+ "title": "Mitsuru arrives at the station",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "In front of the station, at the foot of its steps, you wait with Yukari and Junpei. Junpei stands with his arms folded."
+  },
+  {
+   "at": 7.1,
+   "text": "Mitsuru rides up on a motorcycle and the three of you start back in surprise. She stops beside you and, still astride the bike, pulls off her helmet."
+  }
+ ]
+}

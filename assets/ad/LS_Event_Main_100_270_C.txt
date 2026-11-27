@@ -1,5 +1,5 @@
 #scene LS_Event_Main_100_270_C
-0.050	1.679	00.mp3	You and Yukari run upstairs.
-2.650	1.010	01.mp3	You both brace.
-5.750	1.737	02.mp3	Yukari leads you up to a door.
-9.050	1.264	03.mp3	You follow Yukari.
+0.050	4.583	00.mp3	You and Yukari run up the dorm's carpeted staircase and stop on a landing.
+2.650	4.005	01.mp3	You and Yukari both drop into a fighting stance, watching the stairs.
+5.750	6.776	02.mp3	Yukari leads you on up the stairs to the top floor, past chairs stacked on tables, to a door under an exit sign.
+9.050	2.335	03.mp3	Yukari runs through the door, and you follow.

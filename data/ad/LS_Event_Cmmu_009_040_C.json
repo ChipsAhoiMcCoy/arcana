@@ -1,1 +1,22 @@
-{"movie": "LS_Event_Cmmu_009_040_C", "title": "Takoyaki", "cues": [{"at": 0.03, "text": "Woman pets Koromaru."}, {"at": 8.05, "text": "You and Koromaru eat."}, {"at": 9.77, "text": "A dog walks up and stops a short way off."}, {"at": 17.12, "text": "The dog joins him."}]}
+{
+ "movie": "LS_Event_Cmmu_009_040_C",
+ "title": "Takoyaki",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Outside the dorm, you sit on the front steps with Koromaru beside you. The woman walks up to you both, bends down and pets him."
+  },
+  {
+   "at": 8.03,
+   "text": "You sit on the steps with a tray of takoyaki beside you, while Koromaru eats from his own tray on the ground."
+  },
+  {
+   "at": 9.77,
+   "text": "A dog walks up and stops a short way off."
+  },
+  {
+   "at": 17.1,
+   "text": "Koromaru sits back from his tray, and the other dog comes over, lies down and eats from it."
+  }
+ ]
+}

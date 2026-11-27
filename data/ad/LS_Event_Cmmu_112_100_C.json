@@ -1,1 +1,26 @@
-{"movie": "LS_Event_Cmmu_112_100_C", "title": "Bebe: a parting gift", "cues": [{"at": 0.0, "text": "Home economics room."}, {"at": 6.5, "text": "Bebe shows the finished kimono."}, {"at": 12.33, "text": "Bebe turns his back and stands silent."}, {"at": 15.67, "text": "He holds out a small cloth pouch, and you take it."}]}
+{
+ "movie": "LS_Event_Cmmu_112_100_C",
+ "title": "Bebe: a parting gift",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "In the home economics room, you and Bebe sew at machines facing each other, a big heap of fabric scraps piled between you."
+  },
+  {
+   "at": 8.0,
+   "text": "Bebe stands beside a dress form wearing the finished kimono, a patchwork of many fabrics."
+  },
+  {
+   "at": 12.33,
+   "text": "Bebe turns his back to you and stands silent."
+  },
+  {
+   "at": 15.67,
+   "text": "He walks over to where you sit, reaches into his pocket and holds out a small cloth pouch, and you take it."
+  },
+  {
+   "at": 25.4,
+   "text": "Bebe clutches his fan to his chest and wipes at his eyes."
+  }
+ ]
+}

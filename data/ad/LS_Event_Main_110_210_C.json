@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Main_110_210_C", "title": "Mitsuru's scan", "cues": [{"at": 0.1, "text": "Mitsuru works a boxy scanner."}, {"at": 3.0, "text": "Akihiko walks in."}]}
+{
+ "movie": "LS_Event_Main_110_210_C",
+ "title": "Mitsuru's scan",
+ "cues": [
+  {
+   "at": 0.1,
+   "text": "In the dorm's command room, Mitsuru sits at a low table, working a boxy scanner with an antenna."
+  },
+  {
+   "at": 3.05,
+   "text": "The door opens and Akihiko walks in and stands by the consoles, one hand on his hip. Mitsuru sits back from the scanner and folds her arms."
+  }
+ ]
+}

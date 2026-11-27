@@ -1,3 +1,2 @@
 #scene LS_Event_Qest_650_070_C
-0.000	1.556	00.mp3	A teacher walks up, muttering.
-2.350	0.725	01.mp3	You sweat.
+0.000	11.552	00.mp3	You stand waiting in the faculty office, among desks stacked with papers. A teacher walks in, talking to herself, and comes over to you; as she talks on, a drop of sweat runs down your head.

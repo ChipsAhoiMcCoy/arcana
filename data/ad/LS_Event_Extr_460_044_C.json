@@ -1,1 +1,18 @@
-{"movie": "LS_Event_Extr_460_044_C", "title": "Mitsuru at Be Blue V", "cues": [{"at": 0.03, "text": "Be Blue V."}, {"at": 4.5, "text": "Mitsuru walks off, leaving you waiting."}, {"at": 8.83, "text": "Later, Mitsuru walks back to you."}]}
+{
+ "movie": "LS_Event_Extr_460_044_C",
+ "title": "Mitsuru at Be Blue V",
+ "cues": [
+  {
+   "at": 0.03,
+   "text": "Inside Be Blue V, the shop in Paulownia Mall, by the big sign on its wall. A bag over your shoulder and a hand in your pocket, you stand facing Mitsuru, who rests a hand on her hip."
+  },
+  {
+   "at": 4.5,
+   "text": "Mitsuru turns and walks off for the treatment, leaving you waiting by the sign."
+  },
+  {
+   "at": 8.83,
+   "text": "Later, Mitsuru walks back to you."
+  }
+ ]
+}

@@ -1,1 +1,30 @@
-{"movie": "LS_Event_Main_170_020_C", "title": "Junpei talks to Chidori", "cues": [{"at": 3.2, "text": "Junpei enters."}, {"at": 10.8, "text": "Junpei takes off his cap and bows low to Mitsuru."}, {"at": 17.8, "text": "Fuuka gets up and steps aside. Junpei walks around the bed and sits beside Chidori."}, {"at": 33.13, "text": "Fuuka runs out."}, {"at": 45.1, "text": "Junpei walks out of the room."}]}
+{
+ "movie": "LS_Event_Main_170_020_C",
+ "title": "Junpei talks to Chidori",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "Chidori's hospital room. Chidori sits up in bed. Mitsuru sits on a chair at one side of the bed with her arms crossed, Akihiko standing beside her, and Fuuka sits on a stool by the window on the other side."
+  },
+  {
+   "at": 3.17,
+   "text": "Junpei comes in."
+  },
+  {
+   "at": 10.77,
+   "text": "Junpei pulls off his cap and bows low to Mitsuru, then straightens and puts the cap back on."
+  },
+  {
+   "at": 17.77,
+   "text": "Fuuka gets up from the stool by the window and steps aside. Junpei walks around the bed and sits down on the stool, beside Chidori."
+  },
+  {
+   "at": 33.1,
+   "text": "Fuuka runs out of the room. Junpei leans over the bed and takes hold of Chidori's arm."
+  },
+  {
+   "at": 45.1,
+   "text": "Junpei walks out of the room."
+  }
+ ]
+}

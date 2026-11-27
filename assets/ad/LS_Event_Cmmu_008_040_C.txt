@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_008_040_C
-1.330	1.143	00.mp3	Ken holds a broom.
-7.700	3.333	01.mp3	Ken hands you a toy bat. He grips his broom like a spear.
-16.500	2.476	02.mp3	You spar. Ken ends up sitting against the wall.
+0.030	5.919	00.mp3	The dorm rooftop, beside the garden beds. Ken stands facing you, holding a long broom upright.
+7.700	4.980	01.mp3	Ken holds out a toy plastic bat, and you take it. He grips his broom like a spear.
+16.500	12.371	02.mp3	Ken charges at you, and the two of you spar. When it is over, Ken sits on the ground against a wall, legs stretched out, his broom fallen beside him and the toy bat lying on the floor, while you stand over him.

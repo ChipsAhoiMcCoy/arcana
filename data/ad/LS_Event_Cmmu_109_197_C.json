@@ -1,1 +1,14 @@
-{"movie": "LS_Event_Cmmu_109_197_C", "title": "Chihiro's first step", "cues": [{"at": 0.0, "text": "Rooftop."}, {"at": 8.83, "text": "Chihiro turns and hurries off past you."}]}
+{
+ "movie": "LS_Event_Cmmu_109_197_C",
+ "title": "Chihiro's first step",
+ "cues": [
+  {
+   "at": 0.0,
+   "text": "On the school rooftop, Chihiro stands facing you, smiling."
+  },
+  {
+   "at": 8.83,
+   "text": "Chihiro turns and hurries off past you."
+  }
+ ]
+}

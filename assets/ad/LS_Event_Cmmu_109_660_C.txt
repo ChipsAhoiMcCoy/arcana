@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_109_660_C
-0.000	0.813	00.mp3	In the lobby.
+0.000	6.910	00.mp3	In the school's main lobby, you stand with Chihiro by a wall of posted flyers. She is looking away from you, frowning.
 15.500	2.796	01.mp3	Chihiro turns and runs off across the lobby.
-25.700	3.205	02.mp3	Chihiro walks a few steps away, then turns back to you.
+25.700	4.394	02.mp3	Chihiro turns and walks a few steps away, then stops and turns back to you.
 31.500	1.742	03.mp3	Chihiro turns and walks away.

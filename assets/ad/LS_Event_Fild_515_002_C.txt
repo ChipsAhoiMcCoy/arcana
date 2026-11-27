@@ -1,2 +1,2 @@
 #scene LS_Event_Fild_515_002_C
-0.370	5.993	00.mp3	A masked Shadow shaped like a hand scuttles across the floor, flips in the air, and vanishes in smoke.
+0.370	11.280	00.mp3	In a Tartarus room, a masked Shadow shaped like a hand scuttles across the floor on its fingertips, stands upright, flips upside down in the air, lands, and vanishes in a burst of smoke.

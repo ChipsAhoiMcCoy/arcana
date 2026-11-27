@@ -1,5 +1,5 @@
 #scene LS_Event_Cmmu_109_653_C
-0.030	3.900	00.mp3	In Fountain Square at Christmas, you and Chihiro walk among shoppers.
-11.350	2.172	01.mp3	You and Chihiro stop by the fountain.
-16.690	1.510	02.mp3	Chihiro hands you a gift.
-23.200	1.530	03.mp3	Chihiro steps in close.
+0.000	8.724	00.mp3	In Paulownia Mall's Fountain Square, decorated for Christmas, you and Chihiro walk in side by side among the shoppers, both carrying your bags.
+11.330	4.153	01.mp3	You and Chihiro walk on to look around, and stop together by the fountain.
+16.670	3.609	02.mp3	Chihiro holds out a small handmade gift to you, and you take it.
+23.200	4.544	03.mp3	Chihiro steps in close to your side and stands there, her hands clasped on her bag.

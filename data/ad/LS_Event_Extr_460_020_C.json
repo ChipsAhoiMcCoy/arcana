@@ -1,14 +1,1 @@
-{
- "movie": "LS_Event_Extr_460_020_C",
- "title": "Shift at Be Blue V",
- "cues": [
-  {
-   "at": 0.03,
-   "text": "At Be Blue V."
-  },
-  {
-   "at": 3.17,
-   "text": "Your coworker talks."
-  }
- ]
-}
+{"movie": "LS_Event_Extr_460_020_C", "title": "Shift at Be Blue V", "cues": [{"at": 0.03, "text": "Be Blue V, the healing and accessory shop in Paulownia Mall. In a store shirt, you work behind the counter with a coworker, a young woman in a dress, while customers browse the shelves."}, {"at": 3.17, "text": "At the end of the shift, your coworker turns to you and talks with you."}]}

@@ -1,4 +1,4 @@
 #scene LS_Event_Cmmu_103_020_C
-0.030	2.388	00.mp3	Bookworms. Bunkichi and Mitsuko smile.
-15.000	0.892	01.mp3	Melon bread.
-21.550	2.966	02.mp3	Mitsuko's face falls; then Bunkichi's smile fades.
+0.030	5.281	00.mp3	You come back to Bookworms. Bunkichi smiles when he sees you, with Mitsuko beside him.
+15.550	2.628	01.mp3	Mitsuko hands you two pieces of melon bread.
+21.550	5.579	02.mp3	Mitsuko's face falls and she lowers her eyes. A moment later, Bunkichi's smile fades too.

@@ -1,5 +1,5 @@
 #scene LS_Event_Main_140_020_C
-0.050	0.860	00.mp3	Command room.
-13.950	1.592	01.mp3	Yukari stands, glaring.
+0.050	15.433	00.mp3	The command room at the dorm. Everyone sits around the low table: you, Mitsuru and Akihiko on the sofa, Yukari, Fuuka and Junpei on stools facing you, and the chairman in an armchair. Mitsuru and Akihiko both have their arms folded.
+13.950	2.685	01.mp3	Yukari gets to her feet, glaring at Mitsuru.
 18.650	1.510	02.mp3	Yukari sits back down.
-23.300	2.259	03.mp3	Yukari, Fuuka, Junpei startle.
+23.300	2.460	03.mp3	Yukari, Fuuka and Junpei start in shock.

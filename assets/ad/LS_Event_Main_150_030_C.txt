@@ -1,4 +1,4 @@
 #scene LS_Event_Main_150_030_C
-0.050	3.944	00.mp3	In an alley, three people walk up to Shinjiro, who sits on the stairs.
-8.750	1.904	01.mp3	The boy tosses Shinjiro the pills.
-18.400	2.355	02.mp3	Shinjiro stands and walks past the three.
+0.800	11.827	00.mp3	In a back alley, Shinjiro sits on a flight of stairs. A long-haired young man with tattooed arms, a boy with glasses carrying a metal case and a girl in a long, frilled dress walk up to him.
+8.750	4.076	01.mp3	The boy with glasses tosses the pills to Shinjiro, who catches them.
+18.400	2.762	02.mp3	Shinjiro, on his feet now, walks past the three.

@@ -1,2 +1,2 @@
 #scene LS_Event_Cmmu_116_510_C
-0.030	1.311	00.mp3	You sit beside Nozomi.
+0.000	5.035	00.mp3	Hagakure Ramen. You sit at the counter beside Nozomi, bowls of ramen in front of you.
