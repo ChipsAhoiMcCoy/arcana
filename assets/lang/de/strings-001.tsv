@@ -519,7 +519,6 @@ What is on screen in the animated story movies is described between the lines of
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Was in den Story-Szenen der 3D-Engine des Spiels zu sehen ist, wird zwischen den Zeilen beschrieben. Wiederholte Beschreibungen unterdrücken: Eine Beschreibung, die du schon gehört hast, wird nicht noch einmal gelesen, also wird eine wiederkehrende Szene, eine Schicht im Nebenjob oder ein Essen, nur beim ersten Mal beschrieben.
 Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.	Wer die Beschreibungen der 3D-Szenen liest: eine Erzählerstimme oder dein Screenreader.
 The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.	Der Erzähler der 3D-Story-Szenen liest 25, 50 oder 75 Prozent schneller, in derselben Tonhöhe. Aus: in normalem Tempo. Die animierten Filme behalten das normale Tempo: Ihre Beschreibungen sind zwischen die Zeilen getaktet.
-In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines.	In 3D-Story-Szenen pausiert jede Beschreibung die Szene wie ein Nachrichtenfenster und wartet auf Enter. Aus: Beschreibungen laufen über die Szene, während sie weiterläuft, wie in den animierten Filmen, und der Erzähler pausiert, während eine Figur spricht. Animierte Filme und Theurgien warten nie: Ihre Beschreibungen sind zwischen die Zeilen getaktet.
 How loud the narrator of movies and scenes is.	Wie laut der Erzähler von Filmen und Szenen ist.
 Lists the mod's keys, to change them.	Nennt die Tasten der Mod, um sie zu ändern.
 Read all keys	Alle Tasten vorlesen
@@ -629,7 +628,6 @@ Faster narrator in 3D scenes	Schnellerer Erzähler in 3D-Szenen
 50 percent	50 Prozent
 75 percent	75 Prozent
 suppress repeated descriptions	wiederholte Beschreibungen unterdrücken
-Descriptions wait for Enter	Beschreibungen warten auf Enter
 narrator's voice	Erzählerstimme
 screen reader	Screenreader
 say Next	Weiter sagen

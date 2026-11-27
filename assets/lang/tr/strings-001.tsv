@@ -519,7 +519,6 @@ What is on screen in the animated story movies is described between the lines of
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	Oyunun 3D motorunda oynanan hikâye sahnelerinde ekranda olanlar satırların arasında betimlenir. Tekrarlanan betimlemeleri bastır: daha önce duyduğun bir betimleme yeniden okunmaz, böylece geri gelen bir sahne, bir iş vardiyası ya da bir yemek, yalnızca ilk seferinde betimlenir.
 Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.	3D sahnelerin betimlemelerini kimin okuduğu: bir anlatıcının sesi ya da ekran okuyucun.
 The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.	3D hikâye sahnelerinin anlatıcısı aynı ses perdesinde yüzde 25, 50 ya da 75 daha hızlı okur. Kapalıyken normal hızındadır. Animasyonlu videolar normal hızda kalır: betimlemeleri satırların arasına zamanlanmıştır.
-In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines.	3D hikâye sahnelerinde her açıklama sahneyi bir mesaj penceresi gibi duraklatır ve Enter'ı bekler. Kapalıyken açıklamalar, animasyonlu filmlerdeki gibi sahne akarken üzerine okunur ve bir karakter konuşurken anlatıcı duraklar. Animasyonlu filmler ve Teürji'ler asla beklemez: açıklamaları repliklerin arasına yerleştirilmiştir.
 How loud the narrator of movies and scenes is.	Videoların ve sahnelerin anlatıcısının ne kadar yüksek olduğu.
 Lists the mod's keys, to change them.	Modun tuşlarını değiştirmek için listeler.
 Read all keys	Tüm tuşları oku
@@ -629,7 +628,6 @@ Faster narrator in 3D scenes	3D sahnelerde daha hızlı anlatıcı
 50 percent	yüzde 50
 75 percent	yüzde 75
 suppress repeated descriptions	tekrarlanan betimlemeleri bastır
-Descriptions wait for Enter	Betimlemeler Enter'ı bekler
 narrator's voice	anlatıcının sesi
 screen reader	ekran okuyucu
 say Next	Sonraki de

@@ -519,7 +519,6 @@ What is on screen in the animated story movies is described between the lines of
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	To, co widać na ekranie w scenach fabularnych odgrywanych w silniku 3D gry, jest opisywane między kwestiami. Pomijanie powtórzonych opisów: już usłyszany opis nie jest czytany ponownie, więc scena, która wraca, zmiana w pracy albo posiłek, jest opisana tylko za pierwszym razem.
 Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.	Kto czyta opisy scen 3D: głos narratora czy twój czytnik ekranu.
 The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.	Narrator scen fabularnych 3D czyta o 25, 50 lub 75 procent szybciej, tym samym tonem głosu. Po wyłączeniu w normalnym tempie. Filmy animowane zachowują normalne tempo: ich opisy są zgrane z przerwami między kwestiami.
-In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines.	W scenach fabularnych 3D każdy opis wstrzymuje scenę jak okno wiadomości i czeka na Enter. Wyłączone: opisy są odtwarzane w trakcie sceny, jak w filmach animowanych, a narrator milknie, gdy mówi postać. Filmy animowane i Teurgie nigdy nie czekają: ich opisy są dopasowane między kwestie.
 How loud the narrator of movies and scenes is.	Jak głośny jest narrator filmów i scen.
 Lists the mod's keys, to change them.	Wymienia klawisze moda, aby je zmienić.
 Read all keys	Odczytaj wszystkie klawisze
@@ -629,7 +628,6 @@ Faster narrator in 3D scenes	Szybszy narrator w scenach 3D
 50 percent	50 procent
 75 percent	75 procent
 suppress repeated descriptions	pomijaj powtórzone opisy
-Descriptions wait for Enter	Opisy czekają na Enter
 narrator's voice	głos narratora
 screen reader	czytnik ekranu
 say Next	mów Dalej

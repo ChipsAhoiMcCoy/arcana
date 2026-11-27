@@ -519,7 +519,6 @@ What is on screen in the animated story movies is described between the lines of
 What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only.	ゲームの3Dで再生されるストーリーシーンで、画面の様子をセリフの合間に解説します。繰り返しの解説を省く：一度聞いた解説は読まないので、アルバイトや食事のように繰り返されるシーンは初回だけ解説されます。
 Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader.	3Dシーンの解説を読む声：ナレーターの声か、スクリーンリーダーか。
 The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines.	3Dストーリーシーンのナレーターを25、50、75パーセント速く読ませます。声の高さは同じです。オフなら通常の速さです。アニメのムービーは通常の速さのままです。解説がセリフの合間に合わせてあるためです。
-In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines.	3Dのストーリーシーンでは、各説明がメッセージウィンドウのようにシーンを一時停止し、Enterを待ちます。オフにすると、アニメムービーと同じように説明はシーンの進行に重ねて流れ、キャラクターが話している間はナレーターが一時停止します。アニメムービーとテウルギアは待ちません。説明はセリフの合間に合わせてあります。
 How loud the narrator of movies and scenes is.	ムービーとシーンのナレーターの音量。
 Lists the mod's keys, to change them.	MODのキーの一覧。変更できます。
 Read all keys	すべてのキーを読み上げる
@@ -629,7 +628,6 @@ Faster narrator in 3D scenes	3Dシーンのナレーターを速く
 50 percent	50パーセント
 75 percent	75パーセント
 suppress repeated descriptions	繰り返しの解説を省く
-Descriptions wait for Enter	解説でEnterを待つ
 narrator's voice	ナレーターの声
 screen reader	スクリーンリーダー
 say Next	「次へ」と言う

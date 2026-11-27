@@ -492,7 +492,6 @@ inline constexpr Tr kHelpAudioDescription{"What is on screen in the animated sto
 inline constexpr Tr kHelpSceneDescription{"What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only."};
 inline constexpr Tr kHelpSceneVoice{"Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader."};
 inline constexpr Tr kHelpSceneSpeed{"The narrator of 3D story scenes reads 25, 50 or 75 percent faster, at the same pitch. Off, at its normal speed. The animated movies keep the normal speed: their descriptions are timed between the lines."};
-inline constexpr Tr kHelpDescriptionWait{"In 3D story scenes, each description pauses the scene like a message window and waits for Enter. Off, descriptions play over the scene as it moves, as in the animated movies, and the narrator pauses while a character speaks. Animated movies and Theurgies never wait: their descriptions are timed between the lines."};
 inline constexpr Tr kHelpDescriptionVolume{"How loud the narrator of movies and scenes is."};
 inline constexpr Tr kHelpModKeys{"Lists the mod's keys, to change them."};
 // The Mod keys page (settings.cpp): a row per key, what it does then its key.
@@ -593,7 +592,6 @@ inline constexpr Tr kFaster25{"25 percent"};
 inline constexpr Tr kFaster50{"50 percent"};
 inline constexpr Tr kFaster75{"75 percent"};
 inline constexpr Tr kSceneOnce{"suppress repeated descriptions"};
-inline constexpr Tr kSetDescriptionWait{"Descriptions wait for Enter"};
 inline constexpr Tr kDescAudio{"narrator's voice"};
 inline constexpr Tr kDescReader{"screen reader"};
 inline constexpr Tr kSetDescriptionVolume{"Audio description"};

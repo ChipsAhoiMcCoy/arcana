@@ -130,10 +130,6 @@ static const Def kDefs[Count] = {
   // the narrator of 3D scenes reads faster, its pitch kept (core/time_stretch, ad.cpp); movies keep their timing
   {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kFaster25, strings::kFaster50, strings::kFaster75}},
-  // a 3D scene's description pauses it, like a message window, until Enter (A) (ad.cpp); off: said over it as it plays.
-  // Movies and Theurgies never wait. Off by default since 2026-11-26 (the user's call): saved as description_box, so the
-  // description_wait=1 every file saved while it was on by default is left behind.
-  {"description_box", strings::kSetDescriptionWait, CatDescription, strings::kHelpDescriptionWait, Unit::Toggle, {0, 1}, 0},
   {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
   {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales

@@ -8,7 +8,7 @@ enum Id { TurnedRooms, AlwaysDash, PoiRange, FloorOnly, WallTones, WallRange, Sh
           Sonar, SonarScope, SonarRange, SonarExits, SonarDoors, SonarPeople, SonarShops, SonarThings, SonarEvents, SonarFragments,
           MasterVolume, SonarVolume, WallVolume, SoundVolume, DescriptionVolume,
           BehindPitch,
-          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, SceneSpeed, DescriptionWait,
+          VoicedLines, VoiceEndSound, Subtitles, AudioDescription, SceneDescription, SceneVoice, SceneSpeed,
           TriggerDelay, EntryHints, MenuSpeed, Language, Count };
 int get(Id id);   // the value: 0/1, meters, percent, milliseconds or a choice's index
 inline bool on(Id id) { return get(id) != 0; }

@@ -10,9 +10,9 @@
 // core::ad::Schedule decides what plays when (pauses, seeks, a skip); here its actions reach the mixer's
 // narrator, and the movie's own volume (Mana SetVolume) dips under a description. Every cue's end is logged
 // ("ad: <key> cue N done|cut ... played P of T s") and kept for /ad/status: the in-game tests read those.
-// A 3D scene's descriptions are played over it as it moves (see "Played over" in tick). With DescriptionWait on, each is
-// a box like a message window instead: it pauses the scene and waits for Enter (see "the description box" below). The
-// animated movies' descriptions, and a Theurgy's, are timed to fit between their lines and never stop them.
+// Each description in a story scene played in the engine is a box like a message window: it pauses the scene and waits
+// for Enter (see "the description box" below). What moves on its own is never stopped: the animated movies' descriptions
+// and a Theurgy's are timed to fit between their lines, and a battle's own scene is played over (see tick).
 // A 3D scene's description once heard (its box closed by Enter or Auto, or its narration played to its end) is
 // recorded in seen-descriptions.txt beside the settings (core/heard_cues); with SceneDescription on "suppress repeated
 // descriptions" a scene is loaded without the ones heard. Movies are not recorded.
@@ -422,7 +422,7 @@ void stop_all() {
   g_voice_id = -1;
 }
 
-// ---- the description box (setting DescriptionWait; 3D scenes only) ----
+// ---- the description box (story scenes in the engine) ----
 // A description pauses its scene (the SequencePlayer's Pause: what the game's own holds at a message do) and waits like a message window: the description (the narrator or the
 // screen reader), then the cue a page that waits gets ("Next" or the VoiceEndSound sound), and Enter, Space or A goes on with the sound a message
 // window's page turn makes (cue 9 of exe+0x1286af0, heard as the player pressed through a conversation) and
@@ -602,8 +602,8 @@ void tick() {
     g_speed = speed;
     auto s = load_scene(g_key, mode == settings::DescAudio, c.event && !c.theurgy, once, settings::scene_speed_factor(speed));
     g_scene = s;
-    // a 3D scene's description is said to its end when the scene ends under it (a battle goes on, the next scene loads)
-    g_sched.load(s ? s->cues : std::vector<sched::Cue>{}, c.event);
+    // a battle scene's description is said to its end when the scene ends under it (the fight goes on)
+    g_sched.load(s ? s->cues : std::vector<sched::Cue>{}, c.battle);
     g_runs.assign(g_sched.size(), Run{});
     g_seen.assign(g_sched.size(), sched::State::Pending);
     g_base_volume = m ? call_ret<float>(m, "GetVolume", 1.0f) : 1.0f;
@@ -631,16 +631,14 @@ void tick() {
   if (ours && g_cur >= 0) { g_runs[g_cur].played = n.played; g_runs[g_cur].total = n.total; }
   // The screen reader takes a description whole and queues it: it is done as soon as it is handed over.
   sched::Voice v = reader ? sched::Voice{false, g_sched.playing() >= 0} : sched::Voice{ours && n.active, ours && n.ended};
-  // Only 3D scenes can wait (a box, setting DescriptionWait, off by default since 2026-11-26): an animated movie's
-  // descriptions are timed to fit its gaps (the user's call, 2026-11-18), and so are a Theurgy's.
+  // A story scene in the engine always waits: each description is a box until Enter (the user's call, 2026-11-26: "should
+  // not even be optional"). What moves on its own is never held (the same day): an animated movie's descriptions are timed
+  // to fit its gaps (2026-11-18), a Theurgy's too, and a battle's own scene (a boss's entrance or fall, a first summon)
+  // is played over: the description plays as the scene moves; one that comes due while another is said waits its turn
+  // (Clock::queue); the narrator pauses while a character's voice line plays and goes on after it.
   const bool scene3d = c.event && !c.theurgy;
-  const bool wait = scene3d && settings::on(settings::DescriptionWait);
-  // Played over (the default, the user's call 2026-11-26: "like the animated cutscenes"): the scene never stops for a
-  // description. It plays as the scene moves; one that comes due while another is said waits its turn (Clock::queue);
-  // the narrator pauses while a character's voice line plays and goes on after it (the line itself never waits), and
-  // while the game's skip prompt holds the scene. The scene's own hold at a line waiting for Enter is not a pause: the
-  // description goes on over it, as the player listens.
-  const bool over = scene3d && !wait;
+  const bool wait = scene3d && !c.battle;
+  const bool over = scene3d && c.battle;
   sched::Clock sc{playing, c.paused, c.time, c.fast};
   // A 3D scene's description waits while someone talks: under the game's Auto the scene runs on through its lines
   // (without it, it pauses at each line until the player goes on), and its descriptions began over the voice
