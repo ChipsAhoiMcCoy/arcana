@@ -1,2 +1,3 @@
 #scene LS_BtlEvent716_000
-0.100	4.110	00.mp3	In a hall of Tartarus, Chidori stands alone in white, facing you.
+#wait
+0.100	34.823	00.mp3	In a green hall of Tartarus, between tall pillars, two carved horned heads on the wall behind her, Chidori stands alone and very still, like a porcelain doll, her face blank. Her long red hair is laced with white ribbons, braided at the sides and crowned by a frilly white headdress pierced with a silver dagger-shaped pin. Her long white dress falls in tiers of ruffles and lace, with long sleeves and a high frilled collar, down to chunky white platform boots. A smear of blood streaks the floor beside her. You face her across the hall, your sword lowered at your side.

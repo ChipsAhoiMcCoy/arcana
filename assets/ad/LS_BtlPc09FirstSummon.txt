@@ -1,2 +1,3 @@
 #scene LS_BtlPc09FirstSummon
-0.100	4.951	00.mp3	Koromaru crouches low, his Evoker on his harness, and closes his eyes to summon.
+#wait
+0.100	21.351	00.mp3	Koromaru, a white Shiba with red eyes, drops into a low crouch, forelegs stretched out in front of him and tail curled high, like a dog bowing to play. His Evoker rides in the little winged harness on his back, a red scarf at his neck. He lowers his head and closes his eyes, gathering himself, as blue sparks rise around him and he calls Cerberus.

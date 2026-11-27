@@ -1,3 +1,1 @@
-{"movie": "LS_BtlPc04FirstSummon", "title": "Akihiko's first summon", "cues": [
-{"at": 0.1, "text": "Akihiko raises his Evoker to his temple, gaze hard, then closes his eyes."}
-]}
+{"movie": "LS_BtlPc04FirstSummon", "title": "Akihiko's first summon", "wait": true, "cues": [{"at": 0.1, "text": "Akihiko stands square to the fight and lifts his Evoker to his temple with a gloved fist, his jaw set, his grey eyes hard. Then his eyes fall shut and he goes perfectly still, and blue sparks begin to drift up around him as he readies to call Polydeuces."}]}

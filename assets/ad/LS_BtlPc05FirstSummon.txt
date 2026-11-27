@@ -1,2 +1,3 @@
 #scene LS_BtlPc05FirstSummon
-0.100	6.336	00.mp3	Mitsuru, chin lifted, raises her Evoker to her temple and closes her eyes with a calm, faint smile.
+#wait
+0.100	21.099	00.mp3	Mitsuru stands tall and sets her Evoker to her temple, her other arm folded across her waist, her long red hair falling over one shoulder. Chin lifted, she closes her eyes with a calm, faint smile, the composure of someone who has done this a hundred times, then opens them, cold and certain, as blue sparks rise and she calls Penthesilea.

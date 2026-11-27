@@ -1,2 +1,3 @@
 #scene LS_BtlEvent702_300
-1.000	4.382	00.mp3	Fuuka stares at her open palms in wonder. Natsuki crouches beside her.
+#wait
+1.000	18.671	00.mp3	Inside the glowing dome of her Persona's skirt, Fuuka lowers her clasped hands and stares at her open palms in wonder, lips parted. She wears a white cardigan over a teal turtleneck and a dark skirt, her short teal hair framing her face. Beside her, Natsuki still crouches, clutching her head in both hands.

@@ -1,3 +1,1 @@
-{"movie": "LS_BtlPc08FirstSummon", "title": "Ken's first summon", "cues": [
-{"at": 0.1, "text": "Ken presses his Evoker to his forehead, eyes squeezed shut, then opens them, steady and determined."}
-]}
+{"movie": "LS_BtlPc08FirstSummon", "title": "Ken's first summon", "wait": true, "cues": [{"at": 0.1, "text": "Ken, small beside the others, holds his Evoker upright in both hands before his face, its muzzle pressed to his forehead. His eyes squeeze shut and his teeth show in a strained grin as blue light gathers on him. Then he opens his eyes, steady and determined, and calls Nemesis."}]}

@@ -1,2 +1,3 @@
 #scene LS_BtlPc10FirstSummon
-0.100	5.070	00.mp3	Shinjiro lifts his Evoker to his temple, eyes closed, with a grim, tight smile.
+#wait
+0.100	12.410	00.mp3	Shinjiro stands hunched and lifts his Evoker to his temple. He bows his head, eyes closed, and his mouth twists into a grim, tight smile as blue sparks rise around him, ready to call Castor.

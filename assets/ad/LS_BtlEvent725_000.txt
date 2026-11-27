@@ -1,2 +1,3 @@
 #scene LS_BtlEvent725_000
-0.100	4.814	00.mp3	Before a giant clock face, Elizabeth stands, book in hand, cards floating about her.
+#wait
+0.100	34.396	00.mp3	Before a giant clock face, its centre cut away into a glowing keyhole set with small dials and gears, Elizabeth stands with a thick book in one gloved hand, cards drifting in the air around her. She is slender and pale, a short silver bob under a small blue cap, bright yellow eyes, a sleeveless high-collared dark blue dress buttoned down its front with round brass buttons like targets, blue gauntlets on her forearms and tall glossy blue boots. She waits perfectly composed: elegant, faintly uncanny, and terrifyingly strong. You face her alone, your sword lowered at your side.

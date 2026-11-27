@@ -1,3 +1,1 @@
-{"movie": "LS_BtlPc05FirstSummon", "title": "Mitsuru's first summon", "cues": [
-{"at": 0.1, "text": "Mitsuru, chin lifted, raises her Evoker to her temple and closes her eyes with a calm, faint smile."}
-]}
+{"movie": "LS_BtlPc05FirstSummon", "title": "Mitsuru's first summon", "wait": true, "cues": [{"at": 0.1, "text": "Mitsuru stands tall and sets her Evoker to her temple, her other arm folded across her waist, her long red hair falling over one shoulder. Chin lifted, she closes her eyes with a calm, faint smile, the composure of someone who has done this a hundred times, then opens them, cold and certain, as blue sparks rise and she calls Penthesilea."}]}

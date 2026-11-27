@@ -1,3 +1,1 @@
-{"movie": "LS_BtlPc10FirstSummon", "title": "Shinjiro's first summon", "cues": [
-{"at": 0.1, "text": "Shinjiro lifts his Evoker to his temple, eyes closed, with a grim, tight smile."}
-]}
+{"movie": "LS_BtlPc10FirstSummon", "title": "Shinjiro's first summon", "wait": true, "cues": [{"at": 0.1, "text": "Shinjiro stands hunched and lifts his Evoker to his temple. He bows his head, eyes closed, and his mouth twists into a grim, tight smile as blue sparks rise around him, ready to call Castor."}]}

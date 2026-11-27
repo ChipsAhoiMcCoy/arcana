@@ -1,2 +1,3 @@
 #scene LS_BtlEvent735_115
-0.100	4.663	00.mp3	Yukari remembers, in grey: the dorm roof, then herself fallen before the queen.
+#wait
+0.100	20.757	00.mp3	Yukari remembers, in grey: herself sitting slumped on the dorm roof under a huge moon, you standing over her as masked Shadows crawl closer across the floor. Then herself lying on the floor of a grand hall below a giant queen and a giant king Shadow, a great clock above the staircase behind them, another girl fallen at the foot of the stairs.

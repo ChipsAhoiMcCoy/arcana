@@ -1,3 +1,3 @@
-{"movie": "LS_BtlEvent735_320", "title": "Yukari's awakening (the cartridge)", "cues": [
-{"at": 0.1, "text": "Yukari loads a glowing red cartridge into her Evoker and raises it."}
+{"movie": "LS_BtlEvent735_320", "title": "Yukari's awakening (the cartridge)", "wait": true, "cues": [
+{"at": 0.10, "text": "Yukari lifts her Evoker before her face, her quiver of arrows on her back, a red bow at her collar. Eyes narrowed, she snaps the Evoker open and pushes a glowing red cartridge inside with her bare fingers, sparks scattering, then closes it and raises it again beside her face, her eyes set."}
 ]}

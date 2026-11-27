@@ -1,3 +1,1 @@
-{"movie": "LS_BtlEvent705_800", "title": "The tank splits in two", "cues": [
-{"at": 1.00, "text": "Light bursts from the tank. The winged turret flies free; the hull rears upright."}
-]}
+{"movie": "LS_BtlEvent705_800", "title": "The tank splits in two", "wait": true, "cues": [{"at": 1.0, "text": "A column of light bursts up through the tank, and it comes apart. The winged turret lifts off and flies free: the little steel knight with its cross-visored helm, metal-feathered wings and gold halo of rays, the long gun now hanging beneath it. Left behind, the hull rears up on its hind tracks and stands upright like a body, its front tracks raised like arms, a square yellow face with a wide, blocky grin on its front. You stand between the two halves, sword drawn, Aigis at your side."}]}

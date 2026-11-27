@@ -1,3 +1,3 @@
-{"movie": "LS_BtlEvent718_630", "title": "Takaya", "cues": [
-{"at": 0.1, "text": "Takaya puts his revolver to his temple and fires."}
+{"movie": "LS_BtlEvent718_630", "title": "Takaya", "wait": true, "cues": [
+{"at": 0.10, "text": "Takaya stands bare-chested, gaunt and ribby, his long silver hair held back by a thin circlet, purple tattoos snaking down both arms. He flings his arms wide with an easy smile, then brings his revolver up and sets it to his own temple. He pulls the trigger, and a burst of purple light streams from his head."}
 ]}

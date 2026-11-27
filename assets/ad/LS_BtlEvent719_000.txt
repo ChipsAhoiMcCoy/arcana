@@ -1,2 +1,3 @@
 #scene LS_BtlEvent719_000
-0.100	4.753	00.mp3	On the bridge crouches the Shadow, a fanged beast. Shinjiro and Takaya face it.
+#wait
+0.100	33.744	00.mp3	On the empty roadway of the bridge, smeared with blood, crouches the Shadow: a squat green beast that is nearly all mouth, its jaws gaping wide on rows of long yellow fangs around a red tongue, a fat drop of drool hanging from its upper lip. A ring of round orange eyes crowns its head, swords and knives stand stuck in its back like pins in a cushion, and it squats on four clawed feet. Shinjiro faces it, his axe over his shoulder; beside him stands the shirtless Takaya, his long hair down his back, a red cloth at his hip.

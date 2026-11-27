@@ -14,6 +14,9 @@ namespace sched = core::ad;
 struct Scene {
   std::string key;
   std::string file;   // the movie's path under CriData/Stream ("#file" line)
+  // "#wait" line: a battle scene whose descriptions wait for Enter like a story scene's (a boss's entrance, a big reveal,
+  // a first summon: the user's call, 2026-11-26); the rest of a battle's scenes are played over
+  bool wait = false;
   std::vector<sched::Cue> cues;
   std::vector<std::string> files, texts;
   std::vector<std::string> heard_ids;   // a 3D scene's: each cue's core::HeardCues id (empty for a movie)

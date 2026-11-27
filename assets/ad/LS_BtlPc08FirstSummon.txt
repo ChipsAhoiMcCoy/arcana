@@ -1,2 +1,3 @@
 #scene LS_BtlPc08FirstSummon
-0.100	6.044	00.mp3	Ken presses his Evoker to his forehead, eyes squeezed shut, then opens them, steady and determined.
+#wait
+0.100	17.374	00.mp3	Ken, small beside the others, holds his Evoker upright in both hands before his face, its muzzle pressed to his forehead. His eyes squeeze shut and his teeth show in a strained grin as blue light gathers on him. Then he opens his eyes, steady and determined, and calls Nemesis.

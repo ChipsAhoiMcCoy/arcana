@@ -1,2 +1,3 @@
 #scene LS_BtlEvent710_000
-0.100	7.314	00.mp3	High above, among tumbling stone blocks, a golden orb hangs in a web of ghostly figures. You stand below, alone.
+#wait
+0.100	35.492	00.mp3	High above, among great tumbling blocks of dark blue stone, hangs Nyx: a huge glowing golden egg, split down one side by a stepped zigzag seam. It is cradled in a vast web of torn, ghostly white sheets spreading out on every side like a ruined flower, and from their ends reach dozens of thin, bony arms, skeletal clawed hands grasping in every direction. There is no face and no mask, only the shimmering core and its withered hands, silent and enormous, less a creature than the end of everything. You stand alone on the ground below it, your sword in hand, looking up.

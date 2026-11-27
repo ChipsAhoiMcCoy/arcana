@@ -349,6 +349,7 @@ std::shared_ptr<Scene> load_scene(const std::string& key, bool decode, bool scen
   s->key = key;
   char line[2048];
   while (fgets(line, sizeof line, f)) {
+    if (strncmp(line, "#wait", 5) == 0) { s->wait = true; continue; }
     if (strncmp(line, "#file ", 6) == 0) {
       s->file = line + 6;
       while (!s->file.empty() && (s->file.back() == '\n' || s->file.back() == '\r')) s->file.pop_back();
@@ -486,7 +487,10 @@ void open_box(int cue) {
   // the game, so one press closes both, as one press turns a page.
   const msg::Current w = msg::current();
   g_box_over_msg = g_battle && w.open && w.blocking;
-  input::set_swallow_prompt(g_box_over_msg ? 0 : a_mask());
+  // A battle scene has no fast-forward: Tab (the pad's Menu) opened the battle's command menu behind the held scene
+  // (seen live, 2026-11-26, 701_000). The box is modal there: those keys are kept from the game while it is up.
+  static const uint16_t start = input::button_mask("start");
+  input::set_swallow_prompt((g_box_over_msg ? 0 : a_mask()) | (g_battle ? start : 0));
   hold_source(true);   // no opening sound: a dialogue window opens without one (the user's call, 2026-11-20)
 }
 
@@ -637,8 +641,10 @@ void tick() {
   // is played over: the description plays as the scene moves; one that comes due while another is said waits its turn
   // (Clock::queue); the narrator pauses while a character's voice line plays and goes on after it.
   const bool scene3d = c.event && !c.theurgy;
-  const bool wait = scene3d && !c.battle;
-  const bool over = scene3d && c.battle;
+  // A battle scene marked "#wait" (Scene::wait) is held like a story scene: a boss's entrance, a big reveal, a first
+  // summon, posed moments whose look the description sells in full (the user's call, 2026-11-26).
+  const bool wait = scene3d && (!c.battle || s->wait);
+  const bool over = scene3d && !wait;
   sched::Clock sc{playing, c.paused, c.time, c.fast};
   // A 3D scene's description waits while someone talks: under the game's Auto the scene runs on through its lines
   // (without it, it pauses at each line until the player goes on), and its descriptions began over the voice
@@ -766,6 +772,7 @@ void tick() {
 
 void register_routes() {
   keys::set_prompt([](uint32_t vk, bool repeat) {
+    if (g_box >= 0 && g_battle && vk == VK_TAB) return true;   // no battle menu behind a held battle scene (open_box)
     if (g_box < 0 || (vk != VK_RETURN && vk != VK_SPACE)) return false;
     if (!repeat) g_box_go = true;
     // over a battle line's waiting window the press goes on to it too (open_box), while that window is still up (a

@@ -1,3 +1,3 @@
-{"movie": "LS_BtlEvent717_000", "title": "Jin", "cues": [
-{"at": 0.1, "text": "In a hall of Tartarus, Jin stands alone, grenade and briefcase in hand, facing you."}
+{"movie": "LS_BtlEvent717_000", "title": "Jin", "wait": true, "cues": [
+{"at": 0.1, "text": "In a pale hall of Tartarus, its walls carved with great rings and its floor striped black and white, Jin turns on you, his face hard behind orange-tinted glasses, jaw-length dark blue hair over one eye. He is zipped into a bright green jacket with a tall collar, crossed by black straps. He weighs a grenade in his raised hand, then drops into a wide crouch, his metal attache case in the other, ready to throw. You face him, your sword lowered at your side."}
 ]}

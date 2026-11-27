@@ -1,2 +1,3 @@
 #scene LS_BtlEvent703_000
-0.100	4.784	00.mp3	The Shadow sits on a great throne, a headless woman rising from its robed body.
+#wait
+0.100	43.320	00.mp3	The Shadow sits enthroned before red curtains, a grotesque mock pontiff. Its body is enormously round, wrapped in a red capelet, and a small blue mask with a gaping mouth peers from a black hood at its chest. From the throne behind it rises a naked, headless woman of white porcelain, her breasts huge and round, one hand resting on the blue face below as if in blessing; where her head should be grows a golden branch, forked like a many-armed cross. A red banner of crossed keys hangs before the throne, which stands not on feet but on women's legs in black fishnets and red heels. Two white crosses flank it, one marked with a red rose. You stand before it, sword lowered. Pompous and obscene, it makes a holy seat of flesh.

@@ -1,1 +1,3 @@
-{"movie": "LS_BtlEvent708_000", "title": "The Hanged Man", "cues": [{"at": 0.1, "text": "Over the Moonlight Bridge, a giant hangs upside down. Before glowing statues, you and Aigis struggle to stand."}]}
+{"movie": "LS_BtlEvent708_000", "title": "The Hanged Man", "wait": true, "cues": [
+{"at": 0.10, "text": "Over the Moonlight Bridge a giant hangs before the full moon: a massive grey-green brute slung face down beneath a steel girder, his arms stretched straight out to either side so that he hangs as a cross, cuffed at wrists and ankles, heavy black boots dangling. Over his head sits a lavender-grey mask of a sleeping face, worn upside down, eyes shut. Chains run up from the girder to brass beams sprouting ragged sky-blue wings. On the roadway below stand three stone statues of veiled women, glowing blue, and between them you and Aigis are bent double, straining to stand. Helpless and enormous, he hangs over you."}
+]}

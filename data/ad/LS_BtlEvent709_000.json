@@ -1,1 +1,3 @@
-{"movie": "LS_BtlEvent709_000", "title": "Nyx Avatar", "cues": [{"at": 0.1, "text": "Atop Tartarus, the Nyx Avatar, black-winged under a tall hat, towers over your team."}]}
+{"movie": "LS_BtlEvent709_000", "title": "Nyx Avatar", "wait": true, "cues": [
+{"at": 0.1, "text": "Atop Tartarus, before the full moon, the Nyx Avatar towers over you, borne on two pairs of vast black feathered wings wider than a house, their undersides veined with glowing electric-blue cracks like lightning. At their centre is a slender, almost human body in black armour traced with the same blue veins, tapering to blade-like points where legs should be. Its face is pale and gaunt, still as a mask, hollow-eyed, set in the faintest smile, framed by spiky black hair under a tall, flat-crowned black hat banded in gold. Cold and terribly calm, it is death in a dress uniform. You stand beneath its wings, sword in hand, the whole team at your back."}
+]}

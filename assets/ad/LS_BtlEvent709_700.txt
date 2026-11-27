@@ -1,2 +1,3 @@
 #scene LS_BtlEvent709_700
-0.100	4.200	00.mp3	The Nyx Avatar wraps its wings, then throws them wide, blazing red.
+#wait
+0.100	24.347	00.mp3	The Nyx Avatar wraps its vast black wings around itself in a storm of feathers, then throws them wide before the full moon, all four of them. The blue veins are gone: the wings blaze crimson now, patterned with great glowing eyes. At their centre its slender black body stands with arms spread, the masklike face calm beneath its tall hat, its long sword gleaming. You and your friends stand small on the ground below it.

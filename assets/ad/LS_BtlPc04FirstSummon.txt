@@ -1,2 +1,3 @@
 #scene LS_BtlPc04FirstSummon
-0.100	4.946	00.mp3	Akihiko raises his Evoker to his temple, gaze hard, then closes his eyes.
+#wait
+0.100	16.168	00.mp3	Akihiko stands square to the fight and lifts his Evoker to his temple with a gloved fist, his jaw set, his grey eyes hard. Then his eyes fall shut and he goes perfectly still, and blue sparks begin to drift up around him as he readies to call Polydeuces.

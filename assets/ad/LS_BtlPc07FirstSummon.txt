@@ -1,2 +1,3 @@
 #scene LS_BtlPc07FirstSummon
-0.100	6.780	00.mp3	Aigis, her rifle arm lowered, looks straight ahead, then closes her eyes and bows her head, calm, ready to summon.
+#wait
+0.100	21.787	00.mp3	Aigis stands with her rifle arm lowered at her side, a girl built of white and gold plates, blond hair under a gold headband, round panels where her ears should be. She looks straight ahead, blue eyes unblinking. Then she closes them and bows her head a little, her other hand open, calm and serene, as blue sparks gather about her and she calls Palladion from within herself.

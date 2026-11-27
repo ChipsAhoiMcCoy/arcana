@@ -1,2 +1,3 @@
 #scene LS_BtlEvent705_000
-0.100	4.277	00.mp3	An old tank swings its gun toward you, a winged knight's helmet on its turret.
+#wait
+0.100	39.191	00.mp3	An old army tank stands in the cavern on four walking legs, each one a full caterpillar track, so its hull rides high like a beast on stilts. It is painted in mottled camouflage of sand, brown and moss green, a staring red-rimmed eye on each side of its turret. Out of the turret rises a little knight: a steel great helm cut by a black cross-shaped visor, two big wings of riveted metal feathers fanned behind it, and a gold disc of rays behind its head like a halo. The tank's long gun swings round to point straight at you. You stand facing it, sword lowered. Lopsided and earnest, it is a child's drawing of war brought to clanking life.

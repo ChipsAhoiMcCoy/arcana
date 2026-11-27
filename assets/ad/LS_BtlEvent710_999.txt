@@ -1,2 +1,3 @@
 #scene LS_BtlEvent710_999
-0.100	7.664	00.mp3	Blue light swirls at your feet. You raise one hand, calm, and a beam of light shoots up toward the orb until everything turns white.
+#wait
+0.100	20.841	00.mp3	You stand alone among jagged rock, blue light swirling up around your feet like flame. You touch your hand to your chest, then raise it high above your head, pointing up, your face calm and resigned. A beam of light shoots up from where you stand toward the vast glowing orb of Nyx above, threads of white light spreading over it like a net, until everything turns white.

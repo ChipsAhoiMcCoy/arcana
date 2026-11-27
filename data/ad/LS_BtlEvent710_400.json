@@ -1,1 +1,3 @@
-{"movie": "LS_BtlEvent710_400", "title": "Nyx", "cues": [{"at": 0.1, "text": "Hunched over your sword, you straighten as golden light rains down; rings of light whirl around you and burst, and you stand ready."}]}
+{"movie": "LS_BtlEvent710_400", "title": "Nyx", "wait": true, "cues": [
+{"at": 0.10, "text": "Hunched over your sword, one hand clutched to your chest, you can barely stand. Sparks of golden light rain down on you from above, your friends' strength reaching you. You straighten, and rings of gold and then pink light whirl around you and burst in a blaze. You stand ready again, sword low at your side."}
+]}

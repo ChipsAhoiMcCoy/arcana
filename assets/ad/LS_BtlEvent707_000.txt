@@ -1,2 +1,3 @@
 #scene LS_BtlEvent707_000
-0.100	5.101	00.mp3	At Iwatodai Station, a caged woman in white and a metal beast face you and Junpei.
+#wait
+0.100	40.880	00.mp3	In front of Iwatodai Station, two Shadows wait. Strength floats above the plaza, a tall lady in a long white gown that flares into a cone, her skin jet black, ash-blonde hair down her back, her face a smooth cobalt-blue mask with heavy-lidded eyes. One dark hand lifts a single red rose, a pink ribbon swirls over her head like a halo, and a great bouquet of roses and lilies swallows the hem of her gown inside a ring of spear-tipped iron railings: gentleness fenced in. Below her prowls Fortune, a small mechanical beast of grey and brass plates on four legs, a chain trailing behind it like a tail. You face them beside Junpei, his spiked bat raised.

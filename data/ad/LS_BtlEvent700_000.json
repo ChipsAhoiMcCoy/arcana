@@ -1,3 +1,3 @@
-{"movie": "LS_BtlEvent700_000", "title": "The roof under the full moon", "cues": [
-{"at": 0.10, "text": "Under a full moon, small Shadows crawl toward you across the dorm roof."}
+{"movie": "LS_BtlEvent700_000", "title": "The roof under the full moon", "wait": true, "cues": [
+{"at": 0.1, "text": "A huge full moon hangs swollen over the dark rooftops of the city. Below it, on the dorm roof, you stand with your sword hanging from one hand, looking back over your shoulder. Behind you the Shadows ooze up out of the floor: black puddles of tar, a blank teal-blue mask pinned to each, thin knobbly arms reaching up out of them, red-clawed fingers splayed as they drag themselves toward you. Nearer, a girl in a pink skirt is down on her knees."}
 ]}
