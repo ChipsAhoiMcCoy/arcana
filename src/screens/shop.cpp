@@ -121,13 +121,28 @@ class ShopScreen : public MenuScreen {
     if (!can) n += std::string(", ") + (st == 0x14 ? strings::kUnavailable : strings::kCannotBuy);
     return n;
   }
+  // A sale day: the daily script (MAIN_Facility) sets flag 0x20000052 on Mondays for the police station and 0x20000053
+  // on Saturdays for Aohige Pharmacy. The shop draws a SALE badge and its rows already hold the lowered prices; the
+  // sale greeting plays only on a second visit that day, so the title says it.
+  bool on_sale() {
+    UObject* o = shop();
+    if (!o) return false;
+    if (is_a(o, "FclWeaponShop")) return party::flag(0x20000052);
+    if (is_a(o, "FclItemShop")) return party::flag(0x20000053);
+    return false;
+  }
+  // The item id a member wears in a buy mode's slot (1-4), or 0.
+  static int worn_id(int who, int mode) {
+    uint8_t* u = who ? party::unit_work(who) : nullptr;
+    if (!u || mode < 1 || mode > 4) return 0;
+    int id = *(uint16_t*)(u + 0x28C + (mode - 1) * 2);
+    return id == 0x8000 ? 0 : id;
+  }
   // What the member wears in that slot now (the weapon shop's lists are for one member and one slot).
   std::string worn_now(int mode) {
     int who = member();
-    uint8_t* u = who ? party::unit_work(who) : nullptr;
-    if (!u || mode < 1 || mode > 4) return {};
-    int id = *(uint16_t*)(u + 0x28C + (mode - 1) * 2);
-    if (id == 0x8000) return {};
+    int id = worn_id(who, mode);
+    if (!id) return {};
     std::string n = items::name_of(id);
     items::Info in;
     if (!n.empty() && items::find(n, in)) n += items::stats(in);
@@ -190,7 +205,10 @@ class ShopScreen : public MenuScreen {
   // A list's second view (F: 8 a buy list's, 0x12 the fusion list's who-can-equip) is the game's too, for its keys.
   bool holds_keys() override { int st = state(); return st != 8 && st != 9 && st != 0xB && st != 0x16 && st != 0x19 && st != 0x12; }
   // The money is not said on entry (the status key reads it; the user's call, 2026-11-17).
-  std::string title() override { return antique() ? strings::kAntiqueShop.c_str() : strings::kShop.c_str(); }
+  std::string title() override {
+    std::string t = antique() ? strings::kAntiqueShop.c_str() : strings::kShop.c_str();
+    return on_sale() ? t + ", " + strings::kShopSale.c_str() : t;
+  }
   // F1: the keys of the state in front (the weapon shop's lists switch member with Q / E, the sell list category).
   std::string keys() {
     int st = state();
@@ -245,7 +263,12 @@ class ShopScreen : public MenuScreen {
       auto marks = party_marks(ids);
       for (int i = 0; ids->data && i < ids->num && i < 16; ++i) {
         int id = ids->data[i];
-        b.add_item(slot("shop.member", i), game_item(who_, i, [id, mark = marks[i]] { return party::name(id) + mark; }));
+        // What they wear in the slot the top menu chose, as the member panel shows it.
+        auto* modes = (TArray<int32_t>*)(s() + 0x2B8);
+        int top = u16(0x2C8) + u16(0x2CA);
+        int wid = worn_id(id, modes->data && top >= 0 && top < modes->num ? modes->data[top] : 0);
+        std::string wears = wid ? ", " + items::name_of(wid) : std::string();
+        b.add_item(slot("shop.member", i), game_item(who_, i, [id, mark = marks[i], wears] { return party::name(id) + mark + wears; }));
       }
       b.pop_context();
       if (int c = who_.cursor(); c >= 0) b.set_start(slot("shop.member", c));
@@ -272,8 +295,11 @@ class ShopScreen : public MenuScreen {
       }
       b.push_context(ctx);
       std::string worn = worn_now(mode);
+      int worn_item = st == 7 ? worn_id(member(), mode) : 0;
       for (int i = 0; rows->data && i < rows->num && i < 300; ++i) {
         std::string l = entry(rows->data + i * 0x28, st);
+        // The game's "E" on what the member wears now.
+        if (worn_item && *(uint16_t*)(rows->data + i * 0x28 + 4) == worn_item) l += std::string(", ") + strings::kEquipped;
         // The description, then what the member wears now.
         auto v = game_item(list_, i, [l] { return l; }, [worn] { return worn; });
         describe_with(v, [this, i] { return description(i); });

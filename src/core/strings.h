@@ -358,6 +358,7 @@ inline constexpr Tr kBondUp{"Bond deepened"};
 inline constexpr Tr kPoint{"point"};
 inline constexpr Tr kPoints{"points"};
 inline constexpr Tr kShop{"Shop"};
+inline constexpr Tr kShopSale{"sale today"};   // after the shop's name on a sale day (the game's SALE badge)
 inline constexpr Tr kBuy{"Buy"};
 inline constexpr Tr kQuit{"Quit"};
 inline constexpr Tr kEquip{"Equip"};
