@@ -282,7 +282,7 @@ Tab opens and closes it; Escape backs out of a submenu. Each entry reads with it
 
 ### Battles
 
-Each turn uses the game's own keys (F1 names those open this turn). A turn opens with whose turn it is with HP and SP, then the target with its health, buffs, debuffs and the affinities you have found ("Junpei, HP 99, SP 17. Cowardly Maya, 35%, Down, weak to Slash, Fire"); unavailable commands are named. Moving the target adds its place ("1 of 2"); targets do not wrap. Backslash repeats the summary.
+Each turn uses the game's own keys (F1 names those open this turn). A turn opens with whose turn it is with HP and SP, then the target with its health, buffs, debuffs (and Charged, Concentrating or a reflecting shield) and the affinities you have found ("Junpei, HP 99, SP 17. Cowardly Maya, 35%, Down, weak to Slash, Fire"); unavailable commands are named. Moving the target adds its place ("1 of 2"); targets do not wrap. Backslash repeats the summary.
 
 - Keys: Space attack, E skills, R items, C guard (asks first), Q analyze, W tactics, Tab rush, A and D or left and right change target, S survey (up and down go through everyone), F assist, T Theurgy when "Theurgy ready" is announced.
 - Skill lists read name and cost (a physical skill's cost in HP), "not enough" when you can't pay it now and "hits a weakness" when an enemy has a weakness you've found to its element (items and Theurgies too; on the Shift list, "can hit a weakness"). The target list adds an enemy's affinity to that element while you haven't found it ("Fire: unknown"). Space confirms, Q and E change Persona, F shows its status page. A skill or item that hits a whole side asks once ("Use Mazio Gem on all enemies? Space to confirm, Escape to cancel.").

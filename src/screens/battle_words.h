@@ -409,10 +409,15 @@ class BtlWords {
     }
     return out;
   }
-  // ", Attack up, ...": the HUD's six stat buffs and debuffs on a unit.
+  // ", attack up, ...": the HUD's six stat buffs and debuffs on a unit, then the marks the target panel draws beside
+  // them (BP_BtlTargetInfo: CheckSupport 21 charged, 22 concentrating, 19 / 20 the physical and magic repel shields,
+  // "RPL" on screen).
   std::string buffs(ue::UObject* a) {
     std::string out;
     for (int i = 0; i < 6; ++i) if (hud_buff(a, i) >= 0) out += std::string(", ") + strings::kBuffs[i];
+    static const std::pair<int, const strings::Tr*> marks[] = {
+        {21, &strings::kCharged}, {22, &strings::kConcentrating}, {19, &strings::kPhysicalShield}, {20, &strings::kMagicShield}};
+    for (auto& [type, word] : marks) if (has_support(a, type)) out += std::string(", ") + word->c_str();
     return out;
   }
   // An enemy: name, health as a share (the game shows a bar), and the affinities the player has found out.
