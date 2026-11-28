@@ -397,6 +397,9 @@ inline constexpr Tr kStatBonusFmt{"{} +{}"};
 inline constexpr Tr kStatUp{"up"};
 inline constexpr Tr kStatDown{"down"};
 inline constexpr Tr kSystemItems[] = {"Tutorial", "Config", "Dictionary", "Load Data", "Save Data", "Rewind", "Return to Title"};
+// Their help lines, drawn as images under the list as the camp root's are (kCampHelp)
+inline constexpr Tr kSystemHelp[] = {"View Tutorials", "View Game Settings", "View Dictionary", "Load a Save File", "Save Progress",
+                                     "Go back in time", "Return to the Title Screen"};
 inline constexpr Tr kTutorials{"Tutorials"};
 inline constexpr Tr kTutorialTabs[5] = {"Battle", "Dungeon", "Daily Life", "Fusion", "System"};   // drawn as pictures
 inline constexpr Tr kNoMessage{"No message"};

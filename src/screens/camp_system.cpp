@@ -43,9 +43,11 @@ class CampSystem : public MenuScreen {
     b.begin_stop("system");
     for (int i = 0; i < 7; ++i) {
       bool locked = party::flag(0x40000089 + i);
-      std::string label = strings::kSystemItems[i].c_str();
+      std::string label = strings::kSystemItems[i].c_str(), help = strings::kSystemHelp[i].c_str();
       if (locked) label += std::string(", ") + strings::kUnavailable;
-      b.add_item(slot("system", i), game_item(list_, i, [label] { return label; }));
+      auto v = game_item(list_, i, [label] { return label; }, [help] { return help; });
+      buffer_with(v, [help] { return help; });
+      b.add_item(slot("system", i), v);
     }
     if (int c = list_.cursor(); c >= 0) b.set_start(slot("system", c));
   }
