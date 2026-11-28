@@ -7,9 +7,9 @@
 //     7 and 8 the fusion's animation, 11 the result's level up, 14 status browse; +0x1E4 a pending dialog (-1 none).
 //     Rows +0x138 (count +0x140), 0xA8 each: the Persona entry at +0x18 (id +0x1A, level +0x1C), +0x8C no result;
 //     step 4's results +0x148 (row i = base + row i). Special recipes +0x188 (count +0x190), 0xC0 each: the result
-//     row at +0, materials TArray at +0xA8 (count +0xB0) of rows with +0x8D "can be had". Search results +0x178
-//     (count +0x180), 0x1F8 each: result at +0, material A's id +0xC2, B's +0x16A. The list cursor is the
-//     ListCursor at +0x84 for all four; a write is followed by the draw's exe+0x1586b50(draw, top, row) (steps 3
+//     row at +0, materials TArray at +0xA8 (count +0xB0) of rows with +0x8D set when that material is neither in
+//     the stock nor registered (the game ticks the others). Search results +0x178 (count +0x180), 0x1F8 each:
+//     result at +0, material A's id +0xC2, B's +0x16A. The list cursor is the ListCursor at +0x84 for all four; a write is followed by the draw's exe+0x1586b50(draw, top, row) (steps 3
 //     and 4) or +0x40A = 1 (12 and 13), as the game's own move does. The method list: ListCursor +0x48.
 //   UICompleteBook (+0x34: 1 list, 2 status page): rows +0x48 (count +0x50, 0xA8: +0x88 registered, +0x94 price,
 //     sort +0x124), ListCursor +0x58. UICompleteBookRegist (+0x34: 3 list, 5 status): rows +0x58 (count +0x60,
@@ -435,8 +435,8 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
         uint8_t* x = m->data + k * kRow;
         ++need;
         std::string mn = persona::name(*(uint16_t*)(x + 0x1A));
-        if (x[0x8D]) ++have;
-        else missing += (missing.empty() ? "" : ", ") + mn;   // the game strikes these through
+        if (!x[0x8D]) ++have;   // in the stock or the compendium: the game ticks it
+        else missing += (missing.empty() ? "" : ", ") + mn;
         mats += (mats.empty() ? "" : ", ") + mn;
       }
       l += std::format(", {} {}", strings::kFusionFrom, mats);
