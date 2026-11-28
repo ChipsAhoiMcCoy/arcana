@@ -302,7 +302,19 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     b.set_region(k + ".member");
     b.add_item(ui::ControlId::structural(k + ".line"), item([who] { return member_line(who); }));
     if (std::string c = member_combat(who); !c.empty()) b.add_item(ui::ControlId::structural(k + ".combat"), item([c] { return c; }));
-    if (who == 1) b.add_item(ui::ControlId::structural(k + ".social"), item([] { return stats::describe(); }));
+    // The hero's social stats as the Social Stats view (S) draws them: each rank with its level and its gauge (the
+    // points to the next rank, as the Stats up! panel says them), then the wallet.
+    if (who == 1) b.add_item(ui::ControlId::structural(k + ".social"), item([] {
+      stats::Stats s;
+      if (!stats::read(s)) return stats::describe();
+      std::string out;
+      for (int i = 0; i < 3; ++i) {
+        out += std::format("{}{} {} {}", i ? ". " : "", strings::kSocialStats[i], s.level[i], stats::rank_name(s, i));
+        if (s.next[i] > 0) out += ", " + strings::fmt(strings::kToNextRankFmt, strings::count(s.next[i], strings::kPoint, strings::kPoints));
+      }
+      if (int m = stats::money(); m >= 0) out += ". " + strings::count(m, strings::kYen);
+      return out;
+    }));
     // A Persona: its name with the member's lines, then its sections: Stats (one per line, as the status page totals
     // them: base, incense and fusion bonus), Skills, Affinities. `entry` is its FDatUnitPersonaEntry.
     auto persona_sections = [&](int pid, int lv, const uint8_t* entry, auto skill_at) {

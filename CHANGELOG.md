@@ -21,6 +21,7 @@
 
 ### Menus
 - The camp's System list reads each entry's help line, as the camp menu does: "Rewind, 6 of 7, Go back in time".
+- Your page in Stats says each social stat's level and how far it is from the next rank, as the Social Stats view's gauges show: "Academics 4 Smart, 1 point to the next rank".
 - A member's page in Stats says what the game shows beside the name: "7698 EXP to next level. Attack type Slash, attack 188, defense 186". The EXP to the next level, the weapon's attack type and the Attack and Defense totals were drawn but not read.
 - Gear says its Effect, the special effect the game shows under it: "Accessory: Life Sash, effect +30 HP", "Ballistic Vest, defense 186, effect +Reduce phys dmg (low)", stat bonuses as "Strength +1". This is read in Equip's slot list and gear lists and wherever gear is sold.
 - Equip's gear lists say the game's compare arrows: "Onimaru Kunitsuna, attack 125 down, accuracy 90 down" against what the member wears (an equal stat says nothing). Gear and items you haven't looked at yet say "new", as the game marks them.
