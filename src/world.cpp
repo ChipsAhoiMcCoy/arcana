@@ -522,6 +522,16 @@ void register_routes() {
     });
     return *out;
   }, "?obj=N navmesh path from the player to an actor");
+  dev::route("/navnear", [](const dev::Request& r, int&) {
+    // /navnear?x=&y=&z=&ext=cm[&up=cm] the navmesh point nearest a place within a box of that half-size (nothing moves)
+    FVector at{(float)dev::arg_num(r, "x", 0), (float)dev::arg_num(r, "y", 0), (float)dev::arg_num(r, "z", 0)};
+    float ext = (float)dev::arg_num(r, "ext", 300), up = (float)dev::arg_num(r, "up", -1);
+    return dev::on_game([=] {
+      FVector on;
+      if (!project_to_nav(at, ext, on, up)) return std::string("none\n");
+      return std::format("({:.0f}, {:.0f}, {:.0f}) {:.0f} cm off flat\n", on.x, on.y, on.z, std::hypot(on.x - at.x, on.y - at.y));
+    });
+  }, "?x=&y=&z=&ext=cm[&up=cm] the navmesh point nearest a place (dev)");
   dev::route("/tp", [](const dev::Request& r, int&) {
     // /tp?obj=N beside an actor (150 cm short of it, on its level) | /tp?x=&y=&z= to a place
     int obj = (int)dev::arg_int(r, "obj", -1);

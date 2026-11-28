@@ -235,6 +235,28 @@ static bool refresh_path(const FVector& me) {
   // the walk went straight at it, into the pillar the way leads round): the search widens once before giving up.
   FVector beside{};
   if (g_w.path.empty() && (world::project_to_nav(to, 300.0f, beside) || world::project_to_nav(to, 1200.0f, beside))) { g_w.path = world::find_path(start, beside); if (!g_w.path.empty()) g_w.path.push_back(to); }
+  // Farther still from any navmesh: the game left a whole stretch out. Aigis on 7/21 waits up a forest trail past the
+  // beach's navmesh, which ends in a straight line partway up the cliff path, 100 m short of her (2026-11-28); headed
+  // straight at from the sand, the walk ran into the cliff and said "Stuck". The navmesh nearest her along the way
+  // back towards the hero is where the walkable part ends: the path goes there, then on straight in.
+  if (g_w.path.empty()) {
+    const float dx = start.x - to.x, dy = start.y - to.y, d = std::hypot(dx, dy);
+    for (float s = 1500.0f; s < d; s += 1500.0f) {
+      FVector probe{to.x + dx / d * s, to.y + dy / d * s, to.z};
+      if (!world::project_to_nav(probe, 1500.0f, beside, 3000.0f)) continue;
+      bool partial = false;
+      auto p = world::find_path(start, beside, &partial);
+      if (p.empty() || partial) continue;
+      g_w.path = std::move(p);
+      g_w.path.push_back(to);
+      static FVector logged{};   // the walk plans again every second or so: said once per point
+      if (flat(logged, beside) > 500.0f)
+        log::writef("nav: {} stands off the navmesh; its nearest walkable point is ({:.0f}, {:.0f}, {:.0f}), {:.0f} m short", g_w.name,
+                    beside.x, beside.y, beside.z, flat(beside, to) / 100.0f);
+      logged = beside;
+      break;
+    }
+  }
   if (g_w.path.empty()) g_w.path.push_back(to);   // no navmesh here: head straight for it (the stuck check still guards)
   g_w.path_at = GetTickCount64();
   return true;
@@ -677,6 +699,10 @@ void tick() {
     // 2026-11-09). It used to wait and walk on: Mitsuru's "Hold on. It's not safe to continue any further" turns the
     // hero back from a blocked way, and the walk took him straight into it again, over and over.
     if (blocking) { log::write("nav: stopped, a message or a menu came up"); finish("message or menu"); stop(false); return; }
+    // So does a story scene the walk ran into: the 7/21 chase after Aigis plays a short one at each bend of the path
+    // ("the girl runs on, farther up the path"), with no message window; the walk pushed on against the scene and said
+    // "Stuck" over its description (2026-11-28).
+    if (world::scene_playing()) { log::write("nav: stopped, a story scene began"); finish("scene"); stop(false); return; }
     if (keys::movement_key_down()) { log::write("nav: stopped, a movement key is held"); stop(true); return; }   // the player took over
     if (input::pad_moving()) { log::write("nav: stopped, the controller's stick is pushed"); stop(true); return; }
     // Stairs and doors are area changes that move the hero to another part of the map in one frame; the walk ends

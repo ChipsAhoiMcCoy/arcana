@@ -354,6 +354,27 @@ std::vector<Poi> scan(float radius) {
       // 5/9's overhead bridge: of its unnamed boxes only this one leads on, into the monorail (CALL_FIELD(302, 102));
       // the others turn the party back. Listed as an exit (it was one of five "Event" boxes, 2026-11-24).
       else if (way_on) add(a, Kind::Exit, strings::kPoiIntoMonorail.c_str(), false, true);
+      // 7/21's chase after Aigis up the forest trail: the game left the trail out of its navmesh, and it winds, so
+      // neither the walk nor a straight line reaches her from the beach (2026-11-28). Each bend has a box that plays
+      // the next short scene of her running on (BP_..._001_006_Play, BF_OBJ_107_101_006's HIT_FIELD_EVENT_START), off
+      // once its stage is done (its ignore flag, EVT_AEGIS_CHASE_*, checked above): the one still on is the way on,
+      // a short walk ahead each time. Named with the objective it serves ("Go after the girl"), the game's own words.
+      // (Its _007 partner turns the hero back down the trail: left out like any unnamed box.)
+      // The flags are not "done" marks but the stage reached, one at a time (BITs 136-139, FIRST to FOURTH): a box is off
+      // only during its own stage, and any box on plays the next scene. The way on is the box of the stage after the one
+      // reached; the earlier ones, on again, stand behind the turn-back walls (stage 2's was listed 38 m back down the
+      // trail, 2026-11-28).
+      else if (bp == "BP_FldHitActor_107_101_001_006_Play_C") {
+        static const char* const kStages[] = {"FIRST", "SECOND", "THIRD", "FOURTH"};
+        int reached = 0, mine = 1;
+        for (int i = 0; i < 4; ++i) if (flag_on(std::string("EVT_AEGIS_CHASE_") + kStages[i])) reached = i + 1;
+        if (auto* f = field<FName>(a, "mIgnoreFlagName_"); f && f->index > 0)
+          for (int i = 0; i < 4; ++i) if (fname(*f) == std::string("EVT_AEGIS_CHASE_") + kStages[i]) mine = i + 1;
+        if (mine != reached + 1) continue;
+        std::string goal = objectives();
+        add(a, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), true, true);
+        if (!out.empty() && out.back().obj == WeakObj::of(a)) out.back().objective = true;
+      }
       // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
       // 2026-11-24): an exit, by the floor it leads to.
       // Only the ones on the hero's floor (the banner's): another floor's flight, above or below, cannot be walked to
@@ -426,6 +447,23 @@ std::vector<Poi> scan(float radius) {
   }
   for (UObject* a : live("FldNpcActor")) {
     if (!world::actor_visible_level(a) || get_bool(a, "bHidden")) continue;
+    // Someone the story starts a scene with when the hero walks into them: an overlap blueprint and no key-press one.
+    // The game gives them no talk icon and no script of their own, so the scenery test below took Aigis on the 7/21
+    // beach (FldNpcActor_021_810, BP_NPC_021_800_Play: the chase after Operation Babe Hunt) for scenery, and the list
+    // and the sonar never had her (a player's report, 2026-11-28). She stands 194 m off on the cape, past the list's
+    // range, and is where the story goes next: listed at any distance, on any floor, as the objective.
+    // Only four NPCs in the game are built so, all on that beach (the other three are Babe Hunt's targets).
+    const bool walk_into = get<UObject*>(a, "mOverlapBluePrint_") && !get<UObject*>(a, "mKeyPushBluePrint_");
+    if (walk_into) {
+      const size_t had = out.size();
+      add(a, Kind::Person, npc_name(a), true, true);
+      if (out.size() > had) {
+        Poi& p = out.back();
+        p.objective = true;
+        p.state = p.state.empty() ? std::string(strings::kObjectiveMark) : p.state + ", " + strings::kObjectiveMark.c_str();
+      }
+      continue;
+    }
     // A placeholder with nobody spawned in it (no child actor, no class): not a person (the dorm lounge, 2026-10-27).
     auto* kids = field<TArray<UObject*>>(a, "Children");
     if (kids && kids->num == 0 && !get<UObject*>(a, "mNpcBaseClass_") && !get<UObject*>(a, "mCharaBaseClass_")) continue;
