@@ -30,6 +30,7 @@
 #include "sonar.h"
 #include "floors.h"
 #include "event_skip.h"
+#include "emote.h"
 #include "shadow.h"
 #include "sight.h"
 #include "bmdfile.h"
@@ -69,7 +70,7 @@ static Section g_sections[] = {
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"advantage", shadow::advantage_tick, true}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"achievements", achievements::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
-  {"event_skip", event_skip::tick, true}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true}, {"updater", updater::tick},
+  {"event_skip", event_skip::tick, true}, {"emote", emote::tick}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true}, {"updater", updater::tick},
 };
 static uint64_t g_perf_ticks = 0;
 static void tick() {

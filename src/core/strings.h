@@ -816,6 +816,12 @@ inline constexpr Hint kFusingKeys{"Tab pauses the animation and offers to skip i
 // cancelled.
 inline constexpr Hint kSkipPrompt{"Paused. Tab skips, Escape resumes.", "Paused. The Menu button skips, B resumes."};
 inline constexpr Tr kSkipResumed{"Resumed."};
+// An emote mark over a character (the game's handwritten "!", "?", sweat drop ...), in the field and in story scenes:
+// "Junpei, surprised". kEmotes follows EAtlEvtHandwritingType (anger twice, sweat drop twice).
+inline constexpr Tr kEmoteFmt{"{0}, {1}"};
+inline constexpr Tr kEmoteYou{"You"};
+inline constexpr Tr kEmotes[] = {"angry", "angry", "calling out", "knocking", "surprised", "awkward", "shocked", "puzzled",
+                                 "startled", "awkward", "woof", "whimpering", "asleep", "irritated", "listening"};
 inline constexpr Hint kInheritSkill{"Up and down arrows move, Space takes a skill or puts it back, Escape back.", "Up and down move, A takes a skill or puts it back, B back."};
 inline constexpr Hint kFusionConfirmKeys{"Space fuses, Tab and Shift Tab jump between sections, Q and E page through the result and its materials, F skills and affinities, Escape back.", "A fuses, RT and LT jump between sections, LB and RB page through the result and its materials, X skills and affinities, B back."};
 // Config (System > Config, and the title screen's)
