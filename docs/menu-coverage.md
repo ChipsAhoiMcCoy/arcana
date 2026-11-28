@@ -20,9 +20,9 @@ dev game. "Live" = navigated in the running game with the game's own highlight f
 | Stats list, Tactics, orders | UCmpStatus | camp_stats | live |
 | Stats member page | CmpCharacterStatus | camp_stats_page | live |
 | Social Link list | UCmpCommu | camp_social | live |
-| Social Link page (memo, people) | CmpCommuDetails | camp_social_details | live |
+| Social Link page (memo, people) | CmpCommuDetails | camp_social_details | live (camp; a partner's Check Status, CMM_CALL_CONF_COMMUNITY, 2026-11-28) |
 | Quest: Elizabeth's requests (camp and her counter) | UIRequest | camp_quest | live |
-| Quest: Missing Persons (camp and board) | UIMissingPerson | camp_quest | live (camp) |
+| Quest: Missing Persons (camp and board) | UIMissingPerson | camp_quest | live (camp; police board 2026-11-28) |
 | Calendar (day grid, plans) | UCmpCalendar | camp_calendar | live |
 | System | UCmpSystem | camp_system | live |
 | Tutorials | AUITutorial | tutorial_list | live |
@@ -53,4 +53,10 @@ Not menus, left as readers: notices (item get, stats up, rank up, victory pages,
 area map; the contract's typing (a text field: the game has the keys, the mod echoes). The Theurgy list is not Episode Aigis only: it opens from Stats in the
 base game once a party member knows a Theurgy (gate UUICmpStatus +0x58).
 
-
+Audit 2026-11-28 (every xrd777 UI class and every flowscript menu/shop command against src): no base-game menu
+without a screen or reader. Added then: "New mail" and the unread count (the field's mail icon, AUIMailIconDraw: the
+mailbox at GlobalWork +0xC82C), the party line under Fuuka's support menu (AUIMiscSupportPartyPanel via
+OPEN/CLOSE_SUPPORT_PARTY_PANEL). Never seen created in play and referenced by no script or Blueprint:
+AUIHeroParameterStatus (BP_HeroParameterStatusDraw), AUIDialogSingle / AUIDialogDouble; watch for them
+(`/watch/born?match=HeroParameter`) if a silent screen is reported. Readers added since 11-12 and not in the table:
+net_voice, credits, get_item, stats_up, rank_up, umg_dialog.
