@@ -9,7 +9,8 @@
 //          list too). What a member wears: the unit's work +0x28C + slot * 2 (u16 item id, 0x8000 = nothing).
 //   Lists (buy, sell, trade): +0x2E8 (count +0x2F0), 0x28 each: +0 price, +4 u16 item id, +6 u16 how many you can
 //          take (0 = not now), +8 TArray<{u16 id, u16 count}> what a trade takes; cursor u16 row +0x2F8, top +0x2FA,
-//          rows shown u16 +0x2FC; a simple shop's rows also +0x1E u16 what is left of its stock. The draw actor reads
+//          rows shown u16 +0x2FC; a simple shop's rows also +0x1E u16 what is left of its stock; an antique row's +0x20
+//          bit 0 its NEW mark. The draw actor reads
 //          these every frame: written directly, with the cursor sound (the mouse path does the same). The sell list's
 //          category (Q / E): cursor u16 row +0x350, top +0x352.
 //   Antique fusion (state 0x10): the base equipment TArray<u16> ids +0x308 (count +0x310), cursor u16 row +0x318,
@@ -88,8 +89,11 @@ class ShopScreen : public MenuScreen {
     // price (the police station's Valuables, 2026-10-30).
     if (n.empty() && st == 0x14 && (id & 0xFFF) == 0) return std::format("{}, {}", strings::kSellAll, strings::count(price, strings::kYen));
     if (n.empty()) n = std::format("{} {:#x}", strings::kItem, id);
+    // The antique shop's NEW mark (fusion results and trades): bit 0 of the row's +0x20 (seen 2026-11-28: set on the
+    // rows drawn NEW, clear on the others).
     items::Info in;
     bool known = items::find(n, in);
+    if ((st == 0x11 || st == 0x13) && (e[0x20] & 1)) n += std::string(", ") + strings::kNew;
     if (st != 0x13 && st != 0x11 && price > 0) n += ", " + strings::count(price, strings::kYen);
     if (known) {
       if (int o = items::owned(in); o >= 0) n += std::format(", {} {}", o, strings::kOwned);
