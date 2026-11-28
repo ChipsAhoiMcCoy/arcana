@@ -148,6 +148,28 @@ bool fragment_spot(UObject* hit) {
   return flag.starts_with("FLD_RESOURCE_SPOT") || flag.starts_with("FLD_MOON_MILITARY_R_MEDAL");
 }
 
+// Three of the town's seventeen fragments lie at a named thing, not under a "Something Shining" hit: checking it says
+// its usual lines, then "something shining on the floor" and gives the fragment once. The hit has no off flag; its
+// script sets the spot's flag and hides the key-item mesh (BF_OBJ_101_102_111 / _121 / BF_OBJ_106_101_011). They are
+// Gekkoukan's Printing Room door (FLD_RESOURCE_SPOT03) and the sword-and-staff statue in its entrance (SPOT02), and
+// the sign at Naganaki Shrine (SPOT17). The two at school give nothing during a key-free event period
+// (FLD_EVENT_KEYFREE_NOW). Every other fragment-giving object script, Episode Aigis' included, runs behind a
+// "Something Shining" hit with its off flag (fragment_spot).
+bool hides_fragment(UObject* hit) {
+  struct Spot { const char* blueprint; const char* flag; bool keyfree_off; };
+  static const Spot kSpots[] = {
+      {"BP_FldHitActor_101_102_001_111_Play_C", "FLD_RESOURCE_SPOT03", true},
+      {"BP_FldHitActor_101_102_001_121_Play_C", "FLD_RESOURCE_SPOT02", true},
+      {"BP_FldHitActor_106_101_001_011_Play_C", "FLD_RESOURCE_SPOT17", false},
+  };
+  UObject* bp = get<UObject*>(hit, "mKeyPushBluePrint_");
+  if (!bp) return false;
+  std::string name = name_of(bp);
+  for (const Spot& s : kSpots)
+    if (name == s.blueprint) return !flag_on(s.flag) && !(s.keyfree_off && flag_on("FLD_EVENT_KEYFREE_NOW"));
+  return false;
+}
+
 // A Tartarus chest's kind. Every chest shares one hit and one name ("Treasure Chest"); the kind is on the dungeon
 // object the hit belongs to (FldDungeonObjectActor.ObjType, EDungeonObjType; its hits are m_pHitActorList). The
 // locked ones cost Twilight Fragments to open: TBoxMedal1/2/3 take 1/2/3 (the chest's script, SUB_TBOX_MEDAL).

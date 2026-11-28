@@ -24,6 +24,7 @@ std::string disp_name(ue::UObject* a);              // the name an actor carries
 Kind check_kind(ue::UObject* hit);                 // a Check-icon hit by its name's row: Shop, Door or Thing
 std::string icon_of(ue::UObject* hit);             // mCheckIcon_'s value name ("Check", "Goto", "None")
 bool fragment_spot(ue::UObject* hit);              // a Twilight Fragment lying in town
+bool hides_fragment(ue::UObject* hit);             // a named thing whose check still gives a Twilight Fragment
 std::string chest_name(const std::string& type, const std::string& game_name);   // a Tartarus chest by its kind
 const char* shadow_name(ue::UObject* actor, ue::UObject* comp);                  // a roaming Shadow by its kind
 

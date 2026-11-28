@@ -405,6 +405,12 @@ std::vector<Poi> scan(float radius) {
     // the way back (10009007-10009009, 10009012; all three seen listed on Adamah floor 255, 2026-11-11).
     else if (int idx = get<int32_t>(a, "mNameIndex_", -1); ((idx >= 10009006 && idx <= 10009009) || idx == 10009012) && !nm.empty()) add(a, Kind::Exit, nm, false, dungeon);
     else if (fragment_spot(a)) add(a, Kind::Fragment, strings::kPoiFragment.c_str());
+    // A named thing a fragment lies by (the school's sword-and-staff statue): its own name, the fragment said after it
+    // ("..., Twilight Fragment") and the fragment's sound, until it is picked up; then a plain thing again.
+    else if (!nm.empty() && hides_fragment(a)) {
+      add(a, Kind::Fragment, nm);
+      if (!out.empty() && out.back().obj == WeakObj::of(a)) out.back().state = strings::kPoiFragment.c_str();
+    }
     else if (nm.empty()) add(a, Kind::Thing, strings::kPoiThing.c_str());
     else if (auto c = chests.find(a); c != chests.end()) add(a, Kind::Thing, chest_name(c->second, nm));
     else add(a, check_kind(a), nm);
