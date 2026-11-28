@@ -2,3 +2,6 @@ deadline {}	termin {}
 Progress {}	Postęp {}
 Reward: {}	Nagroda: {}
 Difficulty {}	Poziom trudności {}
+effect {}	efekt {}
+up	w górę
+down	w dół

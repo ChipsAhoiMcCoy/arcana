@@ -2,3 +2,6 @@ deadline {}	기한 {}
 Progress {}	진행 {}
 Reward: {}	보상: {}
 Difficulty {}	난이도 {}
+effect {}	효과 {}
+up	상승
+down	하락

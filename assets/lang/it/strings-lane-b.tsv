@@ -2,3 +2,6 @@ deadline {}	scadenza {}
 Progress {}	Progresso {}
 Reward: {}	Ricompensa: {}
 Difficulty {}	Difficoltà {}
+effect {}	effetto {}
+up	in aumento
+down	in calo

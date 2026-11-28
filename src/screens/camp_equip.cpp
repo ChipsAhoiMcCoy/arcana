@@ -36,11 +36,24 @@ class CampEquip : public MenuScreen {
     int id = u ? *(uint16_t*)(u + 0x28C + sl * 2) : 0x8000;
     return id == 0x8000 ? -1 : id;
   }
-  std::string gear_line(int id) {
+  // The gear's name, stats and Effect. `against`: the gear worn in that slot, for the compare marks a gear list draws
+  // beside each stat (an arrow up or down; a dot when equal, said as nothing).
+  std::string gear_line(int id, int against = -1) {
     std::string n = items::name_of(id);
-    items::Info in;
-    if (!n.empty() && items::find(n, in)) n += items::stats(in);
-    return n;
+    items::Info in, cur;
+    if (n.empty() || !items::find(n, in)) return n;
+    std::string worn = against >= 0 ? items::name_of(against) : std::string();
+    bool cmp = !worn.empty() && items::find(worn, cur);
+    auto stat = [&](const char* word, int v, int was) {
+      if (!v) return;
+      n += std::format(", {} {}", word, v);
+      if (cmp && v != was) n += std::string(" ") + (v > was ? strings::kStatUp.c_str() : strings::kStatDown.c_str());
+    };
+    stat(strings::kAttack, in.attack, cur.attack);
+    stat(strings::kAccuracy, in.accuracy, cur.accuracy);
+    stat(strings::kDefence, in.defence, cur.defence);
+    stat(strings::kEvasion, in.evasion, cur.evasion);
+    return n + items::effect(in);
   }
  public:
   // Each list's move as FUN_141309010 makes it (draw = +0x280, the party panel = sys +0x58).
@@ -146,7 +159,9 @@ class CampEquip : public MenuScreen {
     for (int i = 0; gear && i < gear->num; ++i) {
       uint8_t* e = gear->data + i * 8;
       int id = *(int32_t*)e, n = *(int32_t*)(e + 4);
-      std::string label = gear_line(id);
+      std::string label = gear_line(id, id == w ? -1 : w);
+      // The NEW mark (FUN_1411ef120; the list's move clears it on the item left).
+      if (fn<bool (*)(uint16_t)>(0x11ef120)((uint16_t)id)) label += std::string(", ") + strings::kNew;
       if (id == w) label += std::string(", ") + strings::kEquipped;
       else label += std::format(", {} {}", n, strings::kOwned);
       // The help line from the slot's own file (items::help), not the drawn page: the game builds that page once (the

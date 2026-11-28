@@ -3,8 +3,8 @@
 //
 //   UCmpItem +0x38 state (3 list, 4 member, 6 Persona), +0x44 category, +0x40 the state's open timer, +0x3C / +0x174
 //   a whole-party item's timer and the frames it waits before Enter, +0x178 / +0x17C
-//   the NEW mark's index (the list's move), +0x188 UCmpItemSystem: +0x788 TArray<{u32 id, u8 count at +4, ...}> (0x10
-//   each), +0x768 TArray<i16> party ids, +0x778 TArray<i32> Persona stock slots, +0x28 the Persona panel.
+//   the NEW mark's index (the list's move), +0x188 UCmpItemSystem: +0x788 TArray<{u32 id, u8 count at +4, u8 NEW at
+//   +0xC}> (0x10 each), +0x768 TArray<i16> party ids, +0x778 TArray<i32> Persona stock slots, +0x28 the Persona panel.
 //   Cursors: list +0x84, member +0x48, Persona +0xC0. Every cursor here is written directly, with what the game's own
 //   move calls after it (each `set`).
 #include "screens/menu.h"
@@ -104,6 +104,8 @@ class CampItem : public MenuScreen {
         // skills, skill cards with a Persona to take them, the few always-usable items) or none left.
         uint32_t skill = 0;
         bool usable = n > 0 && ((bool (*)(void*, uint16_t, uint32_t*))(scan::exe_base() + 0x131cf50))(s, (uint16_t)id, &skill);
+        // The NEW mark drawn before the name (+0xC; the list's move clears it on the item left).
+        if (e[0xC]) name += std::string(", ") + strings::kNew;
         std::string label = std::format("{}, {}{}", name, n, usable ? "" : std::string(", ") + strings::kUnavailable);
         std::string help = items::help(id);   // its file's line, not the drawn page (built once per highlight)
         auto v = game_item(list_, i, [label] { return label; });

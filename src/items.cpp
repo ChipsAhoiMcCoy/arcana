@@ -60,6 +60,9 @@ static void load() {
       if (!rows || !ns) return;
       auto off = [&](const char* f) { return offset_of(rows.row, f); };
       int oPrice = off("Price"), oSell = off("SellPrice"), oAtk = off("attack"), oAcc = off("Accuracy"), oDef = off("Defence"), oEva = off("Evasion");
+      // gear: its add effect (skillId in some tables, SkillID in others) and stat bonuses (u16 each)
+      int oSkill = off("skillId") >= 0 ? off("skillId") : off("SkillID");
+      int oBonus[5] = {off("Strength"), off("Magic"), off("Endurance"), off("Agility"), off("Luck")};
       for (int i = 0; i < rows.num && i < ns->num; ++i) {
         std::string n = to_utf8(ns->data[i]);
         if (n.empty() || n == "Unused") continue;
@@ -76,6 +79,8 @@ static void load() {
         if (oAcc >= 0) in.accuracy = *(uint16_t*)(r + oAcc);
         if (oDef >= 0) in.defence = *(uint16_t*)(r + oDef);
         if (oEva >= 0) in.evasion = *(uint16_t*)(r + oEva);
+        if (oSkill >= 0) in.skill = *(uint16_t*)(r + oSkill);
+        for (int k = 0; k < 5; ++k) if (oBonus[k] >= 0) in.bonus[k] = *(uint16_t*)(r + oBonus[k]);
         g_cache[n] = in;
       }
     });
@@ -112,7 +117,19 @@ std::string stats(const Info& in) {
   if (in.accuracy) s += std::format(", {} {}", strings::kAccuracy, in.accuracy);
   if (in.defence) s += std::format(", {} {}", strings::kDefence, in.defence);
   if (in.evasion) s += std::format(", {} {}", strings::kEvasion, in.evasion);
-  return s;
+  return s + effect(in);
+}
+// Gear's Effect panel as the game fills it: the add effect's line (BMD_ItemAddEffectHelp, dialog = the row's skillId:
+// Life Sash's 3 is "+30 HP"), then the stat bonuses the row gives.
+std::string effect(const Info& in) {
+  std::string e;
+  if (in.skill) {
+    auto f = bmdfile::load("BMD_ItemAddEffectHelp");
+    if (f && f->ok && in.skill < f->dialogs.size() && !f->dialogs[in.skill].pages.empty()) e = bmdfile::text(f->dialogs[in.skill].pages[0]);
+  }
+  for (int k = 0; k < 5; ++k)
+    if (in.bonus[k]) e += (e.empty() ? "" : ", ") + strings::fmt(strings::kStatBonusFmt, strings::kStatNames[k].c_str(), in.bonus[k]);
+  return e.empty() ? e : ", " + strings::fmt(strings::kItemEffectFmt, e);
 }
 // The game's help line for an item: BMD_Item<category>Help, dialog = the id's index (the drink 0x4033, Nastea, is
 // BMD_ItemCommonHelp dialog 0x33, as the shops draw it; 2026-11-01). The hero's own gear names him through a token

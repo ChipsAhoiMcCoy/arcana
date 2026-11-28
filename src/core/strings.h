@@ -388,6 +388,13 @@ inline constexpr Tr kAttack{"attack"};
 inline constexpr Tr kAccuracy{"accuracy"};
 inline constexpr Tr kDefence{"defense"};
 inline constexpr Tr kEvasion{"evasion"};
+// Gear's Effect panel: its add-effect line (BMD_ItemAddEffectHelp, "+30 HP") and its stat bonuses ("Strength +1"):
+// "effect +30 HP, Strength +1"
+inline constexpr Tr kItemEffectFmt{"effect {}"};
+inline constexpr Tr kStatBonusFmt{"{} +{}"};
+// A gear list's compare marks against what the member wears: "attack 125, down"
+inline constexpr Tr kStatUp{"up"};
+inline constexpr Tr kStatDown{"down"};
 inline constexpr Tr kSystemItems[] = {"Tutorial", "Config", "Dictionary", "Load Data", "Save Data", "Rewind", "Return to Title"};
 inline constexpr Tr kTutorials{"Tutorials"};
 inline constexpr Tr kTutorialTabs[5] = {"Battle", "Dungeon", "Daily Life", "Fusion", "System"};   // drawn as pictures

@@ -2,3 +2,6 @@ deadline {}	son tarih {}
 Progress {}	İlerleme {}
 Reward: {}	Ödül: {}
 Difficulty {}	Zorluk {}
+effect {}	etki {}
+up	artar
+down	azalır
