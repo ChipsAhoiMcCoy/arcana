@@ -14,6 +14,7 @@
 - The auto-walk gets closer to anything the game's walking map doesn't reach: it walks to the end of that map nearest the target, then heads straight in, instead of heading straight in from where you stand. It also stops quietly when a story scene starts on the way, instead of pushing on and saying "Stuck" over the scene's description.
 
 ### Menus
+- The save and load lists say what each slot's icons show: the moon on that day, the difficulty, and a holiday (the date drawn in red): "Slot 9: Makoto Yuki, Tuesday, April 21st, Evening, Waning crescent moon, level 3, Peaceful difficulty, Lounge, play time 5 hours 2 minutes".
 - A missing person's profile, on the police station's bulletin board and in the camp's Missing Persons list, is read as separate sentences: "24 years old. Female. Part-time worker. Disappeared on 6/25 ...". The game writes each fact on its own line, and the lines ran together as "24 years old Female Part-time worker Disappeared".
 - The part-time job card in the Calendar reads its lines as sentences too ("Time: Night. Pay: ¥2,500+ daily. Location: Paulownia Mall"), and a description broken across lines after a hyphen or slash is read as one word ("old-school", "Confuse/Charm", not "old- school").
 - A mail arriving is announced: "New mail", once you are back exploring, while it is still unopened. The game only lights its mail icon, with no sound. The Slash key (Where am I) adds how many mails are unopened ("2 unread mails").

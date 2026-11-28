@@ -66,6 +66,7 @@ inline constexpr Tr kTitleMenu{"Title menu"};
 inline constexpr Tr kTitleItems[] = {"New Game", "Load Game", "Config", "Change Episode"};
 inline constexpr Tr kSelectDifficulty{"Select game difficulty"};
 inline constexpr Tr kDifficulties[] = {"Peaceful", "Easy", "Normal", "Hard", "Merciless"};
+inline constexpr Tr kDifficultyFmt{"{} difficulty"};   // a save slot's difficulty icon: "Peaceful difficulty"
 inline constexpr Tr kContract{"Contract."};
 inline constexpr Tr kFirstName{"First name"};
 inline constexpr Tr kLastName{"Last name"};

@@ -79,11 +79,20 @@ class SaveLoadScreen : public MenuScreen {
     if (!*(bool*)(it + offset_of(st, "bHasData"))) return head + ", " + strings::kEmpty;
     calendar::Now n;
     n.month = i32("Month"); n.day = i32("Day"); n.weekday = i32("Week"); n.valid = true;
+    n.holiday = *(bool*)(it + offset_of(st, "bHoliday"));   // the row's date drawn in the holiday colour
     // The slot's time of day is DT_SystemTextName row 121 + TimeZone (4 After School, 6 Evening, 8 Late Night;
     // measured 2026-10-27), not ECldTimeZone.
     std::string when = calendar::describe(n);
     std::string tz = gametext::system_text(121 + i32("TimeZone"));
     if (!tz.empty()) when += ", " + tz;
+    // The row's moon icon (sprite base + MoonAge, the calendar's age: 14 full; 6/8 reads 14, 6/6 12).
+    if (std::string moon = calendar::moon_phase(i32("MoonAge")); !moon.empty()) when += ", " + moon;
+    // The row's difficulty icon (sprite 121 + Diff: EBtlGameDifficulty, 0 Peaceful .. 4 Merciless; slot 9 reads 0
+    // and Config says Peaceful). Rewind's days are all this game's: no difficulty there.
+    int diff = i32("Diff");
+    std::string level_diff = std::format("{} {}", strings::kLevel, i32("PLV"));
+    if (!head.empty() && diff >= 0 && diff < (int)std::size(strings::kDifficulties))
+      level_diff += ", " + strings::fmt(strings::kDifficultyFmt, strings::kDifficulties[diff].c_str());
     // Rewind's points are all this game's: the day leads, without the player's name.
     std::string who = head.empty() ? std::string() : head + ": " + str("PlayerName") + ", ";
     // A finished game's save (bIsGoodEnd / bIsBadEnd, Episode Aigis' two): its row shows "CLEAR DATA, START A NEW
@@ -93,7 +102,7 @@ class SaveLoadScreen : public MenuScreen {
       return std::format("{}{}, {} {} {}", who, strings::kClearData, strings::kPlayTime,
                          strings::count(i32("PTimeHour"), strings::kHour, strings::kHoursAnd),
                          strings::count(i32("PTimeMin"), strings::kMinute, strings::kMinutes));
-    return std::format("{}{}, {} {}, {}, {} {} {}", who, when, strings::kLevel, i32("PLV"),
+    return std::format("{}{}, {}, {}, {} {} {}", who, when, level_diff,
                        str("LocationName"), strings::kPlayTime, strings::count(i32("PTimeHour"), strings::kHour, strings::kHoursAnd),
                        strings::count(i32("PTimeMin"), strings::kMinute, strings::kMinutes));
   }
