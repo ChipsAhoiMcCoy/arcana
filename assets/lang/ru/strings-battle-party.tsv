@@ -1,0 +1,10 @@
+in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next	в бою участник отряда в этой ячейке: имя и ОЗ, затем ОД, негативные эффекты, усиления и ослабления, каждое нажатие читает следующее
+in battle, the navigator's SP	в бою ОД навигатора
+In battle: the first party member's status, each press the next part	В бою: состояние первого участника отряда, каждое нажатие читает следующую часть
+In battle: the second party member's status, each press the next part	В бою: состояние второго участника отряда, каждое нажатие читает следующую часть
+In battle: the third party member's status, each press the next part	В бою: состояние третьего участника отряда, каждое нажатие читает следующую часть
+In battle: the fourth party member's status, each press the next part	В бою: состояние четвёртого участника отряда, каждое нажатие читает следующую часть
+In battle: the navigator's SP	В бою: ОД навигатора
+No party member in that slot	В этой ячейке нет участника отряда
+No navigator yet	Навигатора пока нет
+in battle, the part before	в бою предыдущая часть

@@ -42,6 +42,9 @@ void reset_all();
 std::string help();   // every binding: keyboard keys, or the controller's mod layer while the player is on a pad
 // The controller's mod layer (both triggers held, input.cpp): a binding's button there (XINPUT_GAMEPAD_* mask).
 void bind_pad(const char* name, uint16_t button);
+// A layer button bound twice: a binding whose `when` says true takes it before any without one (a battle's party
+// keys over the field's D-pad).
+void bind_when(const char* name, std::function<bool()> when);
 void on_pad_layer(Handler h);           // the layer opened
 void pad(uint16_t button, bool repeat, bool layer = true); // a button pressed in the layer, or 0 = the layer opened (game thread)
 // A mod menu that takes every key and button while open (the settings menu): no bindings run, the game gets nothing

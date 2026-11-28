@@ -1,0 +1,10 @@
+in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next	戦闘中、その番号のパーティメンバー：名前とHP、続けてSP、状態異常、能力変化。押すたびに次を読み上げる
+in battle, the navigator's SP	戦闘中、ナビのSP
+In battle: the first party member's status, each press the next part	戦闘中：1人目のパーティメンバーの状態。押すたびに次の項目を読み上げる
+In battle: the second party member's status, each press the next part	戦闘中：2人目のパーティメンバーの状態。押すたびに次の項目を読み上げる
+In battle: the third party member's status, each press the next part	戦闘中：3人目のパーティメンバーの状態。押すたびに次の項目を読み上げる
+In battle: the fourth party member's status, each press the next part	戦闘中：4人目のパーティメンバーの状態。押すたびに次の項目を読み上げる
+In battle: the navigator's SP	戦闘中：ナビのSP
+No party member in that slot	その枠にパーティメンバーはいません
+No navigator yet	まだナビがいません
+in battle, the part before	戦闘中、前の項目

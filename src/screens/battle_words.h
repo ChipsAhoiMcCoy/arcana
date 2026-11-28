@@ -260,6 +260,36 @@ class BtlWords {
     }
     return out;
   }
+  // What a unit is suffering, a line each with the turns it can still last: Down first. Empty for nothing.
+  std::vector<std::string> ailment_lines(ue::UObject* a) {
+    std::vector<std::string> out;
+    if (has_ailment(a, 13)) out.push_back(strings::kAilments[13].c_str());
+    for (int t = 0; t <= 11; ++t) {
+      if (!has_ailment(a, t)) continue;
+      int n = ailment_turns(a, t);
+      out.push_back(n > 0 ? std::format("{}, {} {}", strings::kAilments[t], strings::kUpTo, core::turns_text(n)) : std::string(strings::kAilments[t]));
+    }
+    return out;
+  }
+  // A unit's buffs, debuffs, charges, shields, walls and breaks, a line each with its turns left. Empty for none.
+  std::vector<std::string> effect_lines(ue::UObject* a) {
+    std::vector<std::string> out;
+    auto effect = [&](bool on, int type, const char* word) {
+      if (!on) return;
+      int n = support_turn(a, type);
+      out.push_back(n > 0 ? std::format("{}, {}", word, core::turns_text(n)) : std::string(word));
+    };
+    // The HUD's stats (hud_buff), then what the info panel draws beside them, then the rest of EBtlDataSupportTable.
+    for (int i = 0; i < 6; ++i) { int type = hud_buff(a, i); effect(type >= 0, type, strings::kBuffs[i]); }
+    effect(has_support(a, 21), 21, strings::kCharged);
+    effect(has_support(a, 22), 22, strings::kConcentrating);
+    effect(has_support(a, 19), 19, strings::kPhysicalShield);
+    effect(has_support(a, 20), 20, strings::kMagicShield);
+    for (int i = 0; i < 4; ++i) effect(has_support(a, 15 + i), 15 + i, strings::kWalls[i]);
+    for (int i = 0; i < 4; ++i) effect(has_support(a, 10 + i), 10 + i, strings::kBreaks[i]);
+    effect(has_support(a, 14), 14, strings::kAilmentsDoubled);
+    return out;
+  }
   // Everything known about a unit, one line each: what the right stick (Ctrl+Up / Down) walks through. The first line
   // is who it is; what the game hides from a sighted player about a Shadow stays hidden (its stats, HP as a number).
   std::vector<std::string> details(ue::UObject* a) {
@@ -279,32 +309,13 @@ class BtlWords {
       out.push_back(std::format("{} {}", strings::kHP, strings::of(hp, mx)));
       out.push_back(std::format("{} {}", strings::kSP, strings::of(unit_int("GetUnitSP", a), unit_int("GetUnitMaxSP", a))));
     }
-    bool any = false;
-    if (has_ailment(a, 13)) { out.push_back(strings::kAilments[13].c_str()); any = true; }
-    for (int t = 0; t <= 11; ++t) {
-      if (!has_ailment(a, t)) continue;
-      any = true;
-      int n = ailment_turns(a, t);
-      out.push_back(n > 0 ? std::format("{}, {} {}", strings::kAilments[t], strings::kUpTo, core::turns_text(n)) : std::string(strings::kAilments[t]));
-    }
-    if (!any) out.push_back(strings::kNoAilments.c_str());
+    auto ail = ailment_lines(a);
+    if (ail.empty()) out.push_back(strings::kNoAilments.c_str());
+    out.insert(out.end(), ail.begin(), ail.end());
     if (ue::call_ret<bool>(a, "IsGuard")) out.push_back(strings::kGuarding.c_str());
-    size_t before = out.size();
-    auto effect = [&](bool on, int type, const char* word) {
-      if (!on) return;
-      int n = support_turn(a, type);
-      out.push_back(n > 0 ? std::format("{}, {}", word, core::turns_text(n)) : std::string(word));
-    };
-    // The HUD's stats (hud_buff), then what the info panel draws beside them, then the rest of EBtlDataSupportTable.
-    for (int i = 0; i < 6; ++i) { int type = hud_buff(a, i); effect(type >= 0, type, strings::kBuffs[i]); }
-    effect(has_support(a, 21), 21, strings::kCharged);
-    effect(has_support(a, 22), 22, strings::kConcentrating);
-    effect(has_support(a, 19), 19, strings::kPhysicalShield);
-    effect(has_support(a, 20), 20, strings::kMagicShield);
-    for (int i = 0; i < 4; ++i) effect(has_support(a, 15 + i), 15 + i, strings::kWalls[i]);
-    for (int i = 0; i < 4; ++i) effect(has_support(a, 10 + i), 10 + i, strings::kBreaks[i]);
-    effect(has_support(a, 14), 14, strings::kAilmentsDoubled);
-    if (out.size() == before) out.push_back(strings::kNoEffects.c_str());
+    auto eff = effect_lines(a);
+    if (eff.empty()) out.push_back(strings::kNoEffects.c_str());
+    out.insert(out.end(), eff.begin(), eff.end());
     if (!panel) for (auto& l : affinity_groups(a)) out.push_back(l);
     if (panel) for (auto& l : analysis(a)) out.push_back(l);
     if (!foe) {

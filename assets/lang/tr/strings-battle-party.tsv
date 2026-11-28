@@ -1,0 +1,10 @@
+in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next	savaşta o sıradaki ekip üyesi: adı ve HP'si, sonra SP, durum rahatsızlıkları, güçlendirmeler ve zayıflatmalar, her basış bir sonrakini okur
+in battle, the navigator's SP	savaşta rehberin SP'si
+In battle: the first party member's status, each press the next part	Savaşta: birinci ekip üyesinin durumu, her basış bir sonraki bölümü okur
+In battle: the second party member's status, each press the next part	Savaşta: ikinci ekip üyesinin durumu, her basış bir sonraki bölümü okur
+In battle: the third party member's status, each press the next part	Savaşta: üçüncü ekip üyesinin durumu, her basış bir sonraki bölümü okur
+In battle: the fourth party member's status, each press the next part	Savaşta: dördüncü ekip üyesinin durumu, her basış bir sonraki bölümü okur
+In battle: the navigator's SP	Savaşta: rehberin SP'si
+No party member in that slot	O konumda ekip üyesi yok
+No navigator yet	Henüz rehber yok
+in battle, the part before	savaşta önceki bölüm

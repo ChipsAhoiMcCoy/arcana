@@ -1004,6 +1004,18 @@ inline constexpr Tr kKeyHelpWalkUse{"Walk to the selected point of interest and 
 // A number key's category ("Shadows: the nearest, again the next; Shift goes back").
 inline constexpr Tr kKeyHelpPoiCatKey{"the nearest, again the next; Shift goes back"};
 inline constexpr Tr kKeyHelpPoiCatBack{"back toward the nearest; first, the farthest"};
+// The same number keys in a battle (screens/battle_party.cpp): 1 to 4 a party slot's status, 5 the navigator's.
+inline constexpr Tr kKeyHelpBattleSlot{"in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next"};
+inline constexpr Tr kKeyHelpBattleNavigator{"in battle, the navigator's SP"};
+inline constexpr Tr kKeyHelpBattleSlotBack{"in battle, the part before"};
+// The controller's mod layer in a battle: the D-pad's four directions are the four party slots, A the navigator.
+inline constexpr Tr kKeyHelpPadBattleSlot[4] = {"In battle: the first party member's status, each press the next part",
+                                                "In battle: the second party member's status, each press the next part",
+                                                "In battle: the third party member's status, each press the next part",
+                                                "In battle: the fourth party member's status, each press the next part"};
+inline constexpr Tr kKeyHelpPadBattleNavigator{"In battle: the navigator's SP"};
+inline constexpr Tr kNoPartyMemberInSlot{"No party member in that slot"};
+inline constexpr Tr kNoNavigator{"No navigator yet"};
 inline constexpr Tr kKeyHelpPoiAgain{"The selected point of interest again: where it is now, and its sound"};
 inline constexpr Tr kKeyHelpArea{"Describe: how the place around you looks; while someone talks, how they look (press again for the place); on a Persona or a Shadow in focus, how it looks; on a Social Link, its picture"};
 // A key's name in that list: its modifiers, then the key as Windows names it (kKeyUnnamed and its code when it has

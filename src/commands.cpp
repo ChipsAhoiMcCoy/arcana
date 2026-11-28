@@ -16,6 +16,7 @@
 #include "screens/screen.h"
 #include "screens/battle.h"
 #include "screens/battle_state.h"
+#include "screens/battle_party.h"
 #include "speech.h"
 #include "topdown.h"
 #include "stats.h"
@@ -151,11 +152,23 @@ void install() {
   // 1 to 7: one category each, in the bracket keys' order (Grim Dark's per-kind review keys; a player asked,
   // 2026-11-18). Letters are mostly the game's (Q E R T F Z X C B M N H), the number row is not. Shift goes back;
   // F1 leaves the Shift binding out while both are on their own keys: the plain one's help says so.
+  // In a battle 1 to 4 are the party slots' status and 5 the navigator's (screens/battle_party.cpp; the user's
+  // design, 2026-11-28): a battle has no points of interest.
   for (int c = 0; c < 7; ++c) {
-    const std::string name = std::format("poi.cat.{}", c + 1), help = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatKey.en);
-    bind('1' + c, None, name.c_str(), help.c_str(), [c] { poi::cycle_category(c, 1); }, true);
-    const std::string back = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatBack.en);
-    bind('1' + c, Shift, (name + ".prev").c_str(), back.c_str(), [c] { poi::cycle_category(c, -1); }, true, false);
+    const std::string name = std::format("poi.cat.{}", c + 1);
+    std::string help = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatKey.en);
+    if (c < 4) help += std::format("{}{}", keys::kHelpJoin, strings::kKeyHelpBattleSlot.en);
+    if (c == 4) help += std::format("{}{}", keys::kHelpJoin, strings::kKeyHelpBattleNavigator.en);
+    bind('1' + c, None, name.c_str(), help.c_str(), [c] {
+      if (c < 5 && screens::battle_party::active()) { if (c < 4) screens::battle_party::slot(c); else screens::battle_party::navigator(); return; }
+      poi::cycle_category(c, 1);
+    }, true);
+    std::string back = std::format("{}{}{}", strings::kPoiCategory[c].en, keys::kHelpJoin, strings::kKeyHelpPoiCatBack.en);
+    if (c < 4) back += std::format("{}{}", keys::kHelpJoin, strings::kKeyHelpBattleSlotBack.en);
+    bind('1' + c, Shift, (name + ".prev").c_str(), back.c_str(), [c] {
+      if (c < 5 && screens::battle_party::active()) { if (c < 4) screens::battle_party::slot(c, -1); else screens::battle_party::navigator(); return; }
+      poi::cycle_category(c, -1);
+    }, true, false);
   }
   // Period walks to the selection, beside Comma that chooses it; Shift+Period walks and uses it (Grim Dark's
   // walk-there-and-use, Shift+Enter until 2026-11-14; the user's call). The game binds neither Comma nor Period
@@ -165,6 +178,18 @@ void install() {
   // Shift goes back: those move with their plain key and are not listed on the Mod keys page.
   keys::shift_back("poi.nearest.prev", "poi.nearest");
   for (int c = 1; c <= 7; ++c) keys::shift_back(std::format("poi.cat.{}.prev", c).c_str(), std::format("poi.cat.{}", c).c_str());
+  // A battle's party keys on the controller (controller-only, vk 0): the D-pad clockwise from up is the four slots, A
+  // the navigator; while a battle runs they take those buttons from the field's (keys::bind_when).
+  const uint16_t slot_pad[4] = {XINPUT_GAMEPAD_DPAD_UP, XINPUT_GAMEPAD_DPAD_RIGHT, XINPUT_GAMEPAD_DPAD_DOWN, XINPUT_GAMEPAD_DPAD_LEFT};
+  for (int c = 0; c < 4; ++c) {
+    const std::string name = std::format("battle.slot.{}", c + 1);
+    bind(0, None, name.c_str(), strings::kKeyHelpPadBattleSlot[c].en, [c] { screens::battle_party::slot(c); }, false, false);
+    bind_pad(name.c_str(), slot_pad[c]);
+    bind_when(name.c_str(), screens::battle_party::active);
+  }
+  bind(0, None, "battle.navigator", strings::kKeyHelpPadBattleNavigator.en, screens::battle_party::navigator, false, false);
+  bind_pad("battle.navigator", XINPUT_GAMEPAD_A);
+  bind_when("battle.navigator", screens::battle_party::active);
   // The same keys on a controller: hold both triggers, then (input.cpp keeps these buttons from the game meanwhile).
   struct PadKey { const char* name; uint16_t button; };
   const PadKey pad[] = {

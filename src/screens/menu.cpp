@@ -3,6 +3,7 @@
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/battle_details.h"
+#include "screens/battle_party.h"
 #include "core/speech_text.h"
 #include "core/look_text.h"
 #include "core/menu_step.h"
@@ -826,6 +827,7 @@ void install() {
   keys::set_menu(on_key);
   input::set_settle_check(keys_unsettled, [] { return g_dropped_keys.load(); });
   battle_details::install();
+  battle_party::install();
   dev::route("/menu", [](const dev::Request&, int&) { return dev::on_game([] { return dump(); }); }, "the bespoke menu's graph and focus");
 }
 }  // namespace menu

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Battle
+- Quick party checks in battle. The number keys 1 to 4 (outside battle they pick a kind of point of interest) are now your party's four slots: the first press says that member's name and HP, and each press of the same key after it the next part: SP, ailments, buffs and debuffs, the Theurgy gauge, then HP again. The name is only said when you switch to another slot. Shift with the key goes back a part. 5 says the navigator's SP on its own (Shift+Apostrophe still reads the whole party with her). On a controller, hold both triggers: the D-pad's up, right, down and left are the four slots, and A is the navigator.
+
 ## 0.7.0
 
 ### Menus

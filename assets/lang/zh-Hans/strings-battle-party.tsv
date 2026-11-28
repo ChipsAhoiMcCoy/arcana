@@ -1,0 +1,10 @@
+in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next	战斗中，该位置的队伍成员：姓名和 HP，然后是 SP、异常状态、增益和减益，每按一次读下一项
+in battle, the navigator's SP	战斗中，领航员的 SP
+In battle: the first party member's status, each press the next part	战斗中：第一位队伍成员的状态，每按一次读下一部分
+In battle: the second party member's status, each press the next part	战斗中：第二位队伍成员的状态，每按一次读下一部分
+In battle: the third party member's status, each press the next part	战斗中：第三位队伍成员的状态，每按一次读下一部分
+In battle: the fourth party member's status, each press the next part	战斗中：第四位队伍成员的状态，每按一次读下一部分
+In battle: the navigator's SP	战斗中：领航员的 SP
+No party member in that slot	该位置没有队伍成员
+No navigator yet	还没有领航员
+in battle, the part before	战斗中，上一项

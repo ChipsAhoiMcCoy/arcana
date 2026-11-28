@@ -21,7 +21,7 @@ namespace p3a::keys {
 // vk/mods: the key now (the player's, from the keys file); def_vk/def_mods: the mod's own.
 // plain / back: a Shift "go back" binding and the plain one it follows (shift_back): the back is not listed on the Mod
 // keys page and is always Shift with its plain key's key.
-struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; bool in_help; uint32_t def_vk; int def_mods; uint16_t pad = 0; int plain = -1, back = -1; };
+struct Binding { uint32_t vk; int mods; std::string name, help; Handler h; bool repeat; bool in_help; uint32_t def_vk; int def_mods; uint16_t pad = 0; int plain = -1, back = -1; std::function<bool()> when; };
 static std::vector<Binding> g_bindings;
 static bool g_swallowing[256];   // a bound key's down was swallowed: swallow its char and up too
 
@@ -56,6 +56,7 @@ void set_prompt(CaptureKey key) { g_prompt = std::move(key); }
 static MenuKey g_menu;
 void set_menu(MenuKey key) { g_menu = std::move(key); }
 void bind_pad(const char* name, uint16_t button) { for (auto& b : g_bindings) if (b.name == name) b.pad = button; }
+void bind_when(const char* name, std::function<bool()> when) { for (auto& b : g_bindings) if (b.name == name) b.when = std::move(when); }
 void on_pad_layer(Handler h) { g_on_layer = std::move(h); }
 void pad(uint16_t button, bool repeat, bool layer) {
   if (g_modal_pad) {   // a copy: the handler may close the menu, clearing g_modal_pad under itself
@@ -67,12 +68,17 @@ void pad(uint16_t button, bool repeat, bool layer) {
     return;
   }
   if (!button) { if (g_on_layer && !guarded([&] { g_on_layer(); })) log::write("keys: pad layer faulted"); return; }
-  for (auto& b : g_bindings) {
-    if (b.pad != button) continue;
-    if (repeat && !b.repeat) return;
-    if (!guarded([&] { b.h(); })) log::writef("keys: {} faulted", b.name);
-    return;
-  }
+  // A binding with a `when` goes first while it says true (a battle's party keys over the field's D-pad).
+  for (int pass = 0; pass < 2; ++pass)
+    for (auto& b : g_bindings) {
+      if (b.pad != button || (pass == 0) != (bool)b.when) continue;
+      bool on = true;
+      if (b.when && !guarded([&] { on = b.when(); })) on = false;
+      if (!on) continue;   // not now (a battle's own buttons outside a battle): the next binding on this button
+      if (repeat && !b.repeat) return;
+      if (!guarded([&] { b.h(); })) log::writef("keys: {} faulted", b.name);
+      return;
+    }
 }
 
 // Alt is the walk key (alt_held), not a modifier: the mod binds no Alt chord (reserved).

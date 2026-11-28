@@ -48,6 +48,7 @@ The game's own controls work as usual. The mod adds:
 - Shift+Right / Shift+Left bracket: Next / previous category, read from its nearest
 - Apostrophe: Walk to the selected point of interest (press again, or move, to stop)
 - 1 to 7: One category each: 1 Exits, 2 Doors, 3 People, 4 Shops, 5 Objects, 6 Events, 7 Shadows. The first press selects that category's nearest, each press after it the next one out, wrapping round; the category is not said ("No Shadows" when there are none near). Shift+number goes back; as the first press, the farthest. The selection and the bracket keys' category follow it
+- 1 to 5 in a battle: quick checks on your party. 1 to 4 are the party's four slots in order (1 is you). The first press of a slot's key says the member's name and HP ("Junpei, HP 180 of 212"); each press of the same key after that says the next part: SP, ailments, buffs and debuffs (with turns left, guarding, charges, shields and walls), the Theurgy gauge, then round to HP again. The name is said only when you move to another slot's key. Shift with the key goes back a part. 5 says the navigator's SP ("Fuuka, navigator, SP 248 of 248"), which pays for her support
 - Comma: Select the nearest point of interest of any category, said as the bracket keys say it with its place among all of them, without its category ("Vending Machine, 3 meters, north, 1 of 9"). Press again for the next nearest, wrapping round. It does not walk: Apostrophe or Period then goes there
 - Shift+Comma: Back through the same list, toward the nearest; as the first press, the farthest
 - Period: Walk to the selected point of interest, as Apostrophe does (press again, or move, to stop)
@@ -62,6 +63,7 @@ Hold both triggers (LT and RT) for the mod's keys. You hear a tick and, in the f
 
 - D-pad left / right: Previous / next category
 - D-pad up / down: Previous (nearer) / next (farther) point of interest
+- In a battle, the D-pad is your party instead, as 1 to 4 on the keyboard: up the first slot (you), right the second, down the third, left the fourth; each press of the same direction says the next part. A says the navigator's SP
 - A: Walk to the selected point (again, or push the left stick, to stop)
 - B: Describe the area, the person talking, the Persona or Shadow in focus, or a Social Link's picture
 - X: Repeat the message, or describe the screen
@@ -279,6 +281,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 - Keys: Space attack, E skills, R items, C guard (asks first), Q analyze, W tactics, Tab rush, A and D or left and right change target, S survey (up and down go through everyone), F assist, T Theurgy when "Theurgy ready" is announced.
 - Skill lists read name and cost (a physical skill's cost in HP); Space confirms, Q and E change Persona, F shows its status page. A skill or item that hits a whole side asks once ("Use Mazio Gem on all enemies? Space to confirm, Escape to cancel.").
 - What enemies and members acting on their own used, damage, healing and defeats ("2 Cowardly Maya defeated"); on a target you chose, the number alone ("14 damage"). An action that hits the same one several times (a skill that strikes six times, a weapon that hits twice) is said at its last hit, added up ("Makoto 147 damage in all"), not hit by hit. Every number is said as its hit lands. Your own choices are not read back.
+- Your party at any time with 1 to 4 (triggers + D-pad), the navigator's SP with 5 (triggers + A): see Keys.
 - Details of whoever is in focus (Ctrl+Down, right stick): name and level, HP, SP, ailments and buffs with turns left, guarding, affinities found, and for a party member their Persona, stats and Theurgy gauge. In Analyze also its arcana, level, maximum HP and SP, affinities, attack type, skills and drops, as far as the game shows.
 - "S.E.E.S. advantage" or "Shadow advantage" at the start; "1 More! Shift available", after which B (Shift) passes the turn; the All-Out Attack prompt once with its buttons.
 - Tactics (W): "Give an order?", each member's order, and the orders. Rush (Tab) lets the party fight alone; Tab or C (the Menu button or B) stops it.

@@ -1,0 +1,10 @@
+in battle, the party member in that slot: name and HP, then SP, ailments, buffs and debuffs, each press the next	전투 중, 그 번호 자리의 파티 동료: 이름과 HP, 이어서 SP, 상태 이상, 능력 변화. 누를 때마다 다음 항목
+in battle, the navigator's SP	전투 중, 내비게이터의 SP
+In battle: the first party member's status, each press the next part	전투 중: 첫 번째 파티 동료의 상태, 누를 때마다 다음 항목
+In battle: the second party member's status, each press the next part	전투 중: 두 번째 파티 동료의 상태, 누를 때마다 다음 항목
+In battle: the third party member's status, each press the next part	전투 중: 세 번째 파티 동료의 상태, 누를 때마다 다음 항목
+In battle: the fourth party member's status, each press the next part	전투 중: 네 번째 파티 동료의 상태, 누를 때마다 다음 항목
+In battle: the navigator's SP	전투 중: 내비게이터의 SP
+No party member in that slot	그 자리에 파티 동료가 없습니다
+No navigator yet	아직 내비게이터가 없습니다
+in battle, the part before	전투 중, 이전 항목
