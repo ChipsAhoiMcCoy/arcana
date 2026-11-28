@@ -435,17 +435,23 @@ std::vector<Poi> scan(float radius) {
     // FldHitActor_304_101_H*, rows 10003001-10003009 (rooms 201-205, 301-304).
     if (!out.empty() && out.back().obj == WeakObj::of(a) && name_of(a).rfind("FldHitActor_304_", 0) == 0) {
       int room = get<int32_t>(a, "mNameIndex_", -1) - 10003000;
-      static const char* const kNoEntry[10] = {nullptr, "FLD_HOTEL_201_CHECKED", "FLD_HOTEL_202_CHECKED", "FLD_HOTEL_203_CHECKED", nullptr, nullptr,
-                                               "FLD_HOTEL_301_BROKEN_ICON", "FLD_HOTEL_302_BROKEN_ICON", "FLD_HOTEL_303_BROKEN_ICON", nullptr};
-      static const char* const kPin[10] = {nullptr, nullptr, nullptr, nullptr, "FLD_HOTEL_2F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_GOAL_IS_BREAK_2F",
-                                           "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON",
-                                           "FLD_HOTEL_GOAL_IS_BREAK_3F"};
+      // The flags by number (DT_FldFlag: 0x20000000 + row value): their names need not be in the name pool.
+      static const int kNoEntry[10] = {0, 0x200004AE, 0x200004AF, 0x200004B0, 0, 0,   // FLD_HOTEL_201..203_CHECKED
+                                       0x2000043A, 0x20000439, 0x20000438, 0};         // FLD_HOTEL_301..303_BROKEN_ICON
+      static const int kPin[10] = {0, 0, 0, 0, 0x2000043B, 0x200004B2,               // 2F_MISS_FLOOR_ICON_ON, GOAL_IS_BREAK_2F
+                                   0x2000043C, 0x2000043C, 0x2000043C, 0x200004B3};  // 3F_MISS_FLOOR_ICON_ON, GOAL_IS_BREAK_3F
       if (room >= 1 && room <= 9) {
         Poi& p = out.back();
-        const char* mark = kNoEntry[room] && flag_on(kNoEntry[room]) ? strings::kNoEntry.c_str()
-                         : kPin[room] && flag_on(kPin[room]) ? strings::kObjectiveMarked.c_str() : nullptr;
+        const char* mark = party::flag(kNoEntry[room]) ? strings::kNoEntry.c_str()
+                         : party::flag(kPin[room]) ? strings::kObjectiveMarked.c_str() : nullptr;
         if (mark) p.state = p.state.empty() ? std::string(mark) : p.state + ", " + mark;
       }
+    }
+    // A Tartarus block's end gate, "Closed Path" (row 10009018, FldHitActor_20x_10y_H0): while the story keeps it shut
+    // the minimap crosses it out (DatMiniMapIcon_20x: the no-entry icon on that flag).
+    if (!out.empty() && out.back().obj == WeakObj::of(a) && get<int32_t>(a, "mNameIndex_", -1) == 10009018 && party::flag(0x2000063F)) {   // FLD_TAR_ENDGATE_STOP_ICON_ON
+      Poi& p = out.back();
+      p.state = p.state.empty() ? std::string(strings::kNoEntry) : p.state + ", " + strings::kNoEntry.c_str();
     }
     // A named spot that starts a full moon's boss fight (9/5's Club Escapade door, 10/4's way to the station plaza:
     // Fuuka's "Are you ready?"): it says so after its name and Events lists it too, as the objective's mark is.
