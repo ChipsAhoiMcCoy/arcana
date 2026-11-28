@@ -759,6 +759,7 @@ inline constexpr Tr kStuck{"Stuck, stopping"};
 inline constexpr Tr kStopped{"Stopped"};
 inline constexpr Tr kNotInField{"Not in the field"};
 inline constexpr Tr kObjective{"Objective"};
+inline constexpr Tr kNewObjective{"New objective"};   // the panel's "NEW" tag: an objective not seen before
 inline constexpr Tr kObjectiveMarked{"marked on the map"};
 inline constexpr Tr kNoEntry{"no entry"};   // a room the minimap crosses out (the July hotel's checked and finished rooms)   // an objective line the panel draws with the minimap's "!"
 inline constexpr Tr kNoObjective{"No objective shown yet"};

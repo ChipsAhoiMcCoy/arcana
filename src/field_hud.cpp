@@ -102,6 +102,26 @@ static std::vector<std::string> marked_objectives() {
   });
   return out;
 }
+// The panel's lines drawn with the "NEW" tag: AUIActionSuggestionDraw +0x690 holds each line's suggestion id (beside
+// the lines at +0x670), +0x6A0 the ids already seen; a line whose id is not seen yet carries the tag (measured
+// 2026-11-28: a fresh load showed NEW with ids [50] and seen []; later in the day seen was [50] and the tag gone).
+static std::vector<std::string> new_objectives() {
+  static const int id = watch::want("UIActionSuggestionDraw");
+  std::vector<std::string> out;
+  uint8_t* a = (uint8_t*)watch::get(id);
+  if (!a || !ue::known_build()) return out;
+  guarded([&] {
+    auto* lines = (TArray<FString>*)(a + 0x670);
+    auto* ids = (TArray<int32_t>*)(a + 0x690);
+    auto* seen = (TArray<int32_t>*)(a + 0x6A0);
+    int n = std::min(lines->num, ids->num);
+    if (n <= 0 || n > 16 || !lines->data || !ids->data || seen->num < 0 || seen->num > 256 || (seen->num && !seen->data)) return;
+    for (int i = 0; i < n; ++i)
+      if (std::find(seen->data, seen->data + seen->num, ids->data[i]) == seen->data + seen->num)
+        out.push_back(objective_line(to_utf8(lines->data[i])));
+  });
+  return out;
+}
 std::string objectives() {
   if (g_sub_objective.empty() || g_objective.empty()) return g_objective;
   return g_objective + ". " + g_sub_objective;
@@ -172,11 +192,11 @@ void prompt_tick() {
     // (2026-11-11). A line is said when it comes into the panel, not while it stays: with one slot for the bracketed
     // line, two of them took turns in it and were said over and over, every frame.
     std::vector<std::pair<float, std::string>> lines;
-    std::vector<std::string> marked;
+    std::vector<std::string> marked, fresh;
     bool marks_read = false;
     for (auto& t : textcap::snapshot(12)) {
       if (t.source != 0 || t.seen_frame <= field_since || !core::has_words(t.text) || t.x <= 1400 || t.y >= 420) continue;
-      if (!marks_read) { marked = marked_objectives(); marks_read = true; }
+      if (!marks_read) { marked = marked_objectives(); fresh = new_objectives(); marks_read = true; }
       std::string o = objective_line(t.text);
       // A line the panel draws with the minimap's "!" says so; one that gains the icon later is said again with it.
       if (std::find(marked.begin(), marked.end(), o) != marked.end()) o += std::string(", ") + strings::kObjectiveMarked.c_str();
@@ -187,7 +207,14 @@ void prompt_tick() {
       std::vector<std::string> now;
       for (auto& l : lines) {
         now.push_back(l.second);
-        if (std::find(g_shown.begin(), g_shown.end(), l.second) == g_shown.end()) speech::speak(std::string(strings::kObjective) + ": " + l.second, false);
+        if (std::find(g_shown.begin(), g_shown.end(), l.second) == g_shown.end()) {
+          // The panel's "NEW" tag (new_objectives) on a line the player has not seen before: "New objective: ...".
+          std::string plain = l.second;
+          const std::string tail = std::string(", ") + strings::kObjectiveMarked.c_str();
+          if (plain.size() > tail.size() && plain.compare(plain.size() - tail.size(), tail.size(), tail) == 0) plain.resize(plain.size() - tail.size());
+          bool is_new = std::find(fresh.begin(), fresh.end(), plain) != fresh.end();
+          speech::speak(std::string(is_new ? strings::kNewObjective : strings::kObjective) + ": " + l.second, false);
+        }
       }
       g_shown = now;
       g_objective = now[0];
