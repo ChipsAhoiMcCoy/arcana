@@ -6,6 +6,9 @@
 - The chase through the woods on the second day at Yakushima (7/21, "Go after the girl") can be followed. The girl wasn't listed and the sonar never played her. The game gives her no talk icon (you run into her to start the scene), so the mod took her for scenery. She's now listed under People and Events as the objective, at any distance. Each bend in the trail, where she runs farther ahead, is listed under Events as "Event: Go after the girl" until you reach it, so the auto-walk can follow the winding trail stage by stage. The game has no walking map for that trail, and before this the auto-walk said "Stuck" against the cliff.
 - The auto-walk gets closer to anything the game's walking map doesn't reach: it walks to the end of that map nearest the target, then heads straight in, instead of heading straight in from where you stand. It also stops quietly when a story scene starts on the way, instead of pushing on and saying "Stuck" over the scene's description.
 
+### Menus
+- A missing person's profile, on the police station's bulletin board and in the camp's Missing Persons list, is read as separate sentences: "24 years old. Female. Part-time worker. Disappeared on 6/25 ...". The game writes each fact on its own line, and the lines ran together as "24 years old Female Part-time worker Disappeared".
+
 ### Battle
 - Quick party checks in battle. The number keys 1 to 4 (outside battle they pick a kind of point of interest) are now your party's four slots: the first press says that member's name and HP, and each press of the same key after it the next part: SP, ailments, buffs and debuffs, the Theurgy gauge, then HP again. The name is only said when you switch to another slot. Shift with the key goes back a part. 5 says the navigator's SP on its own (Shift+Apostrophe still reads the whole party with her). On a controller, hold both triggers: the D-pad's up, right, down and left are the four slots, and A is the navigator.
 

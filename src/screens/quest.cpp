@@ -178,7 +178,8 @@ class CampQuest : public MenuScreen {
       if ((!fl || party::flag(fl[4])) && f && f->ok && no < (int)f->dialogs.size()) {
         auto& dlg = f->dialogs[no];
         if (dlg.speaker >= 0 && dlg.speaker < (int)f->speakers.size()) name = core::clean_text(f->speakers[dlg.speaker]);
-        if (!dlg.pages.empty()) profile = core::clean_text(core::bmd::plain(dlg.pages[0]));
+        // One fact a line (age, sex, job, then how they went missing): each line its own sentence.
+        if (!dlg.pages.empty()) profile = core::clean_lines(dlg.pages[0].text);
       }
       std::string label = std::format("{} {}, {}", strings::kNumber, no, name);
       if (!status.empty()) label += ", " + status;

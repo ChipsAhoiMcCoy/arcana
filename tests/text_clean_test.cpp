@@ -10,6 +10,15 @@ TEST_CASE("clean_text joins lines and drops bullets") {
   CHECK(clean_text("@") == "");
   CHECK(clean_text("Hey @ you") == "Hey you");
 }
+TEST_CASE("clean_lines ends each line as a sentence") {
+  using p3a::core::clean_lines;
+  CHECK(clean_lines("24 years old\nFemale\nPart-time worker\nDisappeared on 6/25 during a break.\n") ==
+        "24 years old. Female. Part-time worker. Disappeared on 6/25 during a break.");
+  CHECK(clean_lines("Done!\n\nNext:\nthing") == "Done! Next: thing");
+  CHECK(clean_lines("") == "");
+  CHECK(clean_lines("\xE5\xA5\xB3\xE6\x80\xA7\n\xE4\xBC\x9A\xE7\xA4\xBE\xE5\x93\xA1") ==
+        "\xE5\xA5\xB3\xE6\x80\xA7\xE3\x80\x82\xE4\xBC\x9A\xE7\xA4\xBE\xE5\x93\xA1");
+}
 TEST_CASE("clean_text keeps closing punctuation on its word") {
   CHECK(clean_text("Thanks @.") == "Thanks.");
   CHECK(clean_text("Thanks\n.") == "Thanks.");

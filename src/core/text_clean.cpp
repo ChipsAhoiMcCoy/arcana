@@ -105,6 +105,26 @@ static bool ends_sentence(const std::string& out) {
   if (j >= 3 && wide_stop(out, j - 3)) return true;
   return j >= 3 && (unsigned char)out[j - 3] == 0xE2 && (unsigned char)out[j - 2] == 0x80 && (unsigned char)out[j - 1] == 0xA6;   // U+2026
 }
+std::string clean_lines(std::string_view s) {
+  std::string out;
+  size_t lead = std::string::npos;   // where the last character written began
+  while (!s.empty()) {
+    size_t nl = s.find('\n');
+    std::string line = clean_text(s.substr(0, nl));
+    s = nl == std::string_view::npos ? std::string_view() : s.substr(nl + 1);
+    if (!has_words(line)) continue;
+    if (!out.empty()) {
+      bool wide = unspaced((unsigned char)out[lead]);
+      char last = out.back();
+      if (!ends_sentence(out) && last != ':' && last != ',' && last != ';') out += wide ? "\xE3\x80\x82" : ".";
+      if (!wide) out += ' ';
+    }
+    out += line;
+    for (size_t i = out.size(); i-- > 0;) if (((unsigned char)out[i] & 0xC0) != 0x80) { lead = i; break; }
+  }
+  return out;
+}
+
 std::string tidy_joins(std::string_view s) {
   std::string out;
   out.reserve(s.size());

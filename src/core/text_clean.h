@@ -8,6 +8,10 @@ namespace p3a::core {
 // of closing punctuation goes ("Wait ... what ?" -> "Wait... what?"; an ellipsis that opens a word keeps its space).
 // UTF-8 in and out.
 std::string clean_text(std::string_view s);
+// Game text whose lines are separate facts (a missing person's profile: "24 years old\nFemale\nPart-time worker\n
+// Disappeared on 6/25..."): each line cleaned, and a line that does not end a sentence gets a full stop before the
+// next ("24 years old. Female. Part-time worker. Disappeared on 6/25..."; 。 after Japanese or Chinese).
+std::string clean_lines(std::string_view s);
 // True if `s` holds at least one letter or digit (skip speaking pure punctuation / glyph placeholders).
 bool has_words(std::string_view s);
 
