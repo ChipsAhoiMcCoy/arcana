@@ -10,12 +10,20 @@ TEST_CASE("clean_text joins lines and drops bullets") {
   CHECK(clean_text("@") == "");
   CHECK(clean_text("Hey @ you") == "Hey you");
 }
+TEST_CASE("clean_text joins a word broken after a hyphen or slash") {
+  CHECK(clean_text("An old-\nschool sword.") == "An old-school sword.");
+  CHECK(clean_text("Inflicts Confuse/\nCharm.") == "Inflicts Confuse/Charm.");
+  CHECK(clean_text("Wait -\nwhat") == "Wait - what");      // a dash between words keeps its spaces
+  CHECK(clean_text("well- guarded") == "well- guarded");   // a written space stays
+}
 TEST_CASE("clean_lines ends each line as a sentence") {
   using p3a::core::clean_lines;
   CHECK(clean_lines("24 years old\nFemale\nPart-time worker\nDisappeared on 6/25 during a break.\n") ==
         "24 years old. Female. Part-time worker. Disappeared on 6/25 during a break.");
   CHECK(clean_lines("Done!\n\nNext:\nthing") == "Done! Next: thing");
   CHECK(clean_lines("") == "");
+  CHECK(clean_lines("Serve coffee that boosts a person's charm!\nTime: Night\nPay: 2,500+ daily\nLocation: Paulownia Mall") ==
+        "Serve coffee that boosts a person's charm! Time: Night. Pay: 2,500+ daily. Location: Paulownia Mall");
   CHECK(clean_lines("\xE5\xA5\xB3\xE6\x80\xA7\n\xE4\xBC\x9A\xE7\xA4\xBE\xE5\x93\xA1") ==
         "\xE5\xA5\xB3\xE6\x80\xA7\xE3\x80\x82\xE4\xBC\x9A\xE7\xA4\xBE\xE5\x93\xA1");
 }

@@ -8,6 +8,7 @@
 
 ### Menus
 - A missing person's profile, on the police station's bulletin board and in the camp's Missing Persons list, is read as separate sentences: "24 years old. Female. Part-time worker. Disappeared on 6/25 ...". The game writes each fact on its own line, and the lines ran together as "24 years old Female Part-time worker Disappeared".
+- The part-time job card in the Calendar reads its lines as sentences too ("Time: Night. Pay: ¥2,500+ daily. Location: Paulownia Mall"), and a description broken across lines after a hyphen or slash is read as one word ("old-school", "Confuse/Charm", not "old- school").
 
 ### Battle
 - Quick party checks in battle. The number keys 1 to 4 (outside battle they pick a kind of point of interest) are now your party's four slots: the first press says that member's name and HP, and each press of the same key after it the next part: SP, ailments, buffs and debuffs, the Theurgy gauge, then HP again. The name is only said when you switch to another slot. Shift with the key goes back a part. 5 says the navigator's SP on its own (Shift+Apostrophe still reads the whole party with her). On a controller, hold both triggers: the D-pad's up, right, down and left are the four slots, and A is the navigator.

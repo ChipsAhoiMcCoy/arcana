@@ -157,7 +157,7 @@ class CampCalendar : public MenuScreen {
     if (!lit) name += std::format(" ({})", strings::kUnavailable);
     auto f = bmdfile::load("BMD_ArbeitHelp");
     std::string info = f && f->ok && label >= 0 && label < (int)f->dialogs.size() && !f->dialogs[label].pages.empty()
-                           ? bmdfile::text(f->dialogs[label].pages[0]) : std::string();
+                           ? bmdfile::text(f->dialogs[label].pages[0], true) : std::string();   // a pitch, then Time, Pay, Location lines
     std::string out = core::position(name, sel + 1, n);
     return info.empty() ? out : out + ". " + info;
   }

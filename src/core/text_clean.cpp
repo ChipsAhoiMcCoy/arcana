@@ -1,5 +1,6 @@
 #include "core/text_clean.h"
 #include "core/strings.h"
+#include <cctype>
 #include <cstring>
 #include <vector>
 
@@ -52,7 +53,10 @@ std::string clean_text(std::string_view s) {
     if (i + 2 < s.size() && c == 0xE3 && (unsigned char)s[i + 1] == 0x80 && (unsigned char)s[i + 2] == 0x80) { i += 2; space = true; continue; }
     // a line break inside Japanese or Chinese text joins the two lines with nothing between them
     bool joined = !real_space && last_lead != std::string::npos && unspaced((unsigned char)out[last_lead]) && unspaced(c);
-    if (space && !out.empty() && !closes(s, i) && !joined) out += ' ';
+    // a line broken after a hyphen or slash inside a word ("old-\nschool", "Confuse/\nCharm") joins with no space
+    bool split = !real_space && out.size() >= 2 && (out.back() == '-' || out.back() == '/') &&
+                 ((unsigned char)out[out.size() - 2] >= 0x80 || std::isalnum((unsigned char)out[out.size() - 2]));
+    if (space && !out.empty() && !closes(s, i) && !joined && !split) out += ' ';
     space = false;
     real_space = false;
     line_start = false;

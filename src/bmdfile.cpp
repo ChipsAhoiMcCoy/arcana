@@ -44,7 +44,7 @@ const void* buffer(const char* name) {
   return nullptr;
 }
 
-std::string text(const core::bmd::Page& p) {
+std::string text(const core::bmd::Page& p, bool lines) {
   core::bmd::Page pg = p;
   std::string hero;
   for (auto it = pg.functions.rbegin(); it != pg.functions.rend(); ++it) {
@@ -52,7 +52,7 @@ std::string text(const core::bmd::Page& p) {
     if (hero.empty()) hero = party::name(1);
     pg.text.insert(it->pos, hero);
   }
-  return core::clean_text(core::bmd::plain(pg));
+  return lines ? core::clean_lines(pg.text) : core::clean_text(core::bmd::plain(pg));
 }
 
 void install() {
