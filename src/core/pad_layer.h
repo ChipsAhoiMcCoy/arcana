@@ -14,6 +14,9 @@ namespace p3a::core {
 
 // Button bits are XInput's (0x0001 .. 0x8000); the triggers are two more bits above them.
 constexpr uint32_t kPadLT = 0x10000, kPadRT = 0x20000, kPadTriggers = kPadLT | kPadRT;
+// A trigger is pressed past kTriggerPress (the game's own threshold, XINPUT_GAMEPAD_TRIGGER_THRESHOLD) and stays so
+// until it falls under kTriggerRelease.
+constexpr uint8_t kTriggerPress = 30, kTriggerRelease = 15;
 
 struct PadState {
   uint16_t buttons = 0;

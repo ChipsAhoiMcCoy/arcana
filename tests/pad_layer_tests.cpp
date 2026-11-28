@@ -202,16 +202,26 @@ TEST_CASE("pad layer: with taps claimed, the other trigger within 50 ms still op
   CHECK(p.events() == Events{{0, false}});
 }
 
-TEST_CASE("pad layer: a trigger is held past 100 and until it falls under 40") {
+TEST_CASE("pad layer: a trigger is held past the game's threshold (30) and until it falls under 15") {
   Pad p;
-  CHECK(p.poll(0, 0, 100, 0).lt == 100);    // not a press yet: the game sees the raw value
+  CHECK(p.poll(0, 0, 30, 0).lt == 30);      // not a press for the game either: it sees the raw value
+  CHECK(p.poll(5, 0, 31, 0).lt == 0);       // the game's press: held back from its first frame
   p.poll(10, 0, 255, 255);
   CHECK(p.layer.on);
-  p.poll(20, 0, 50, 50);                    // easing off: still held
+  p.poll(20, 0, 20, 20);                    // easing off: still held
   CHECK(p.layer.on);
   CHECK(p.out.count == 0);
-  p.poll(30, 0, 39, 50);
+  p.poll(30, 0, 14, 20);
   CHECK_FALSE(p.layer.on);
+}
+
+TEST_CASE("pad layer: RT travelling ahead of LT never reaches the game") {
+  Pad p;
+  for (int v : {40, 70, 100, 160}) CHECK(p.poll((uint64_t)v / 4, 0, 0, (uint8_t)v).rt == 0);   // RT on its way down, LT not yet
+  p.poll(50, 0, 120, 255);
+  CHECK(p.layer.on);
+  CHECK(p.seen.rt == 0);
+  CHECK(p.seen.lt == 0);
 }
 
 TEST_CASE("pad layer: a mod menu takes every button and the game sees nothing") {

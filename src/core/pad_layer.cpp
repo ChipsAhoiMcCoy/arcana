@@ -9,10 +9,12 @@ void PadLayer::buttons(uint32_t s, uint32_t pressed, uint64_t now, PadLayerOutpu
 }
 
 void PadLayer::filter(PadState& g, uint64_t now, const PadLayerOptions& o, PadLayerOutput& out) {
-  // A trigger counts as held past 100 of 255 and until it falls under 40 (no flicker at the threshold).
+  // A trigger counts as held where the game counts it pressed (Unreal's XInput reader: past
+  // XINPUT_GAMEPAD_TRIGGER_THRESHOLD, 30 of 255) and until it falls under 15 (no flicker at the threshold). Held from
+  // 100 until 2026-11-28: between 30 and 100 the game already had the press, so RT leading LT opened Theurgy.
   uint32_t trig = 0;
-  if (g.lt > 100 || (g.lt >= 40 && (prev & kPadLT))) trig |= kPadLT;
-  if (g.rt > 100 || (g.rt >= 40 && (prev & kPadRT))) trig |= kPadRT;
+  if (g.lt > kTriggerPress || (g.lt >= kTriggerRelease && (prev & kPadLT))) trig |= kPadLT;
+  if (g.rt > kTriggerPress || (g.rt >= kTriggerRelease && (prev & kPadRT))) trig |= kPadRT;
   uint32_t s = g.buttons | trig, pressed = s & ~prev;
   hidden &= s;   // released: no longer hidden
   bool both = (s & kPadTriggers) == kPadTriggers;
