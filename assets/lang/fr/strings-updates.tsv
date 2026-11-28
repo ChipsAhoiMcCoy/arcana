@@ -1,0 +1,24 @@
+Updates	Mises à jour
+Check at startup	Vérifier au démarrage
+Each time the game starts, asks GitHub whether a newer version of Arcana is out, and says so once per version. Nothing is downloaded until you choose to.	À chaque lancement du jeu, demande à GitHub si une version plus récente d'Arcana est sortie, et l'annonce une fois par version. Rien n'est téléchargé tant que vous ne le choisissez pas.
+This build of Arcana has no version number, so it can't check for updates.	Cette version d'Arcana n'a pas de numéro de version, elle ne peut donc pas chercher de mises à jour.
+Arcana {}. Enter checks for updates.	Arcana {}. Entrée cherche des mises à jour.
+Checking for updates.	Recherche de mises à jour.
+Arcana {}, up to date. Enter checks again.	Arcana {}, à jour. Entrée vérifie à nouveau.
+Couldn't reach GitHub to check for updates. Enter tries again.	Impossible de joindre GitHub pour chercher des mises à jour. Entrée réessaie.
+Arcana {} is available. Enter downloads it.	Arcana {} est disponible. Entrée le télécharge.
+Downloading Arcana {}, {} percent.	Téléchargement d'Arcana {}, {} pour cent.
+Unpacking Arcana {}.	Décompression d'Arcana {}.
+Arcana {} is downloaded. It installs the next time you start the game.	Arcana {} est téléchargé. Il s'installera au prochain lancement du jeu.
+The download failed: the connection was lost. Enter tries again.	Le téléchargement a échoué : la connexion a été perdue. Entrée réessaie.
+The download failed: the file didn't match its checksum. Enter tries again.	Le téléchargement a échoué : le fichier ne correspond pas à sa somme de contrôle. Entrée réessaie.
+The download failed: the game folder can't be written to. Enter tries again.	Le téléchargement a échoué : impossible d'écrire dans le dossier du jeu. Entrée réessaie.
+The download failed: the file couldn't be unpacked. Enter tries again.	Le téléchargement a échoué : le fichier n'a pas pu être décompressé. Entrée réessaie.
+What's new in {}	Nouveautés de la {}
+Enter reads the release notes.	Entrée lit les notes de version.
+This release has no notes.	Cette version n'a pas de notes.
+Downloading Arcana {}. You can keep playing.	Téléchargement d'Arcana {}. Vous pouvez continuer à jouer.
+Arcana {} is available. {settings} opens the mod's settings, where Updates downloads it.	Arcana {} est disponible. {settings} ouvre les options du mod, où Mises à jour le télécharge.
+Arcana {} is available. Both triggers and View open the mod's settings, where Updates downloads it.	Arcana {} est disponible. Les deux gâchettes et View ouvrent les options du mod, où Mises à jour le télécharge.
+Updated to Arcana {}.	Arcana mis à jour en version {}.
+The downloaded update couldn't be installed. Please install it by hand from the releases page.	La mise à jour téléchargée n'a pas pu être installée. Installez-la à la main depuis la page des versions.

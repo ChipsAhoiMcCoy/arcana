@@ -1,0 +1,24 @@
+Updates	업데이트
+Check at startup	시작할 때 확인
+Each time the game starts, asks GitHub whether a newer version of Arcana is out, and says so once per version. Nothing is downloaded until you choose to.	게임을 시작할 때마다 Arcana의 새 버전이 나왔는지 GitHub에 확인하고, 버전마다 한 번 알려 줍니다. 직접 고르기 전에는 아무것도 내려받지 않습니다.
+This build of Arcana has no version number, so it can't check for updates.	이 Arcana 빌드에는 버전 번호가 없어서 업데이트를 확인할 수 없습니다.
+Arcana {}. Enter checks for updates.	Arcana {}. Enter로 업데이트를 확인합니다.
+Checking for updates.	업데이트를 확인하는 중입니다.
+Arcana {}, up to date. Enter checks again.	Arcana {}, 최신 버전입니다. Enter로 다시 확인합니다.
+Couldn't reach GitHub to check for updates. Enter tries again.	업데이트를 확인하려고 GitHub에 연결하지 못했습니다. Enter로 다시 시도합니다.
+Arcana {} is available. Enter downloads it.	Arcana {}이(가) 나왔습니다. Enter로 내려받습니다.
+Downloading Arcana {}, {} percent.	Arcana {} 내려받는 중, {}퍼센트.
+Unpacking Arcana {}.	Arcana {} 압축을 푸는 중입니다.
+Arcana {} is downloaded. It installs the next time you start the game.	Arcana {}을(를) 내려받았습니다. 다음에 게임을 시작할 때 설치됩니다.
+The download failed: the connection was lost. Enter tries again.	내려받기에 실패했습니다. 연결이 끊어졌습니다. Enter로 다시 시도합니다.
+The download failed: the file didn't match its checksum. Enter tries again.	내려받기에 실패했습니다. 파일이 체크섬과 맞지 않습니다. Enter로 다시 시도합니다.
+The download failed: the game folder can't be written to. Enter tries again.	내려받기에 실패했습니다. 게임 폴더에 쓸 수 없습니다. Enter로 다시 시도합니다.
+The download failed: the file couldn't be unpacked. Enter tries again.	내려받기에 실패했습니다. 파일의 압축을 풀 수 없었습니다. Enter로 다시 시도합니다.
+What's new in {}	{}의 새로운 점
+Enter reads the release notes.	Enter로 릴리스 노트를 읽습니다.
+This release has no notes.	이 릴리스에는 노트가 없습니다.
+Downloading Arcana {}. You can keep playing.	Arcana {}을(를) 내려받는 중입니다. 계속 플레이해도 됩니다.
+Arcana {} is available. {settings} opens the mod's settings, where Updates downloads it.	Arcana {}이(가) 나왔습니다. {settings}로 모드 설정을 열고 업데이트에서 내려받을 수 있습니다.
+Arcana {} is available. Both triggers and View open the mod's settings, where Updates downloads it.	Arcana {}이(가) 나왔습니다. 양쪽 트리거와 View로 모드 설정을 열고 업데이트에서 내려받을 수 있습니다.
+Updated to Arcana {}.	Arcana {}(으)로 업데이트했습니다.
+The downloaded update couldn't be installed. Please install it by hand from the releases page.	내려받은 업데이트를 설치하지 못했습니다. 릴리스 페이지에서 직접 설치해 주세요.

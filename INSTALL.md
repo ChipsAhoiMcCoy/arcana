@@ -22,6 +22,8 @@ You need the Steam version of Persona 3 Reload on Windows, already installed. Th
 
 Quit the game and copy the new `dsound.dll` and `Arcana` folder over the old ones. Your settings are kept separately.
 
+From 0.8.0 on, the mod can update itself: when a newer version is out it says so as the game starts, and F2 (both triggers and View on a controller), then Updates, downloads it. It installs the next time you start the game. Updating by hand as above still works.
+
 Coming from a version named Persona 3 Access (0.2.0 or older)? Delete the old `Win64\P3RAccess` folder; the new `Arcana` folder replaces it. Your settings move over by themselves the first time the game starts.
 
 ## Uninstall

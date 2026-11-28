@@ -19,6 +19,7 @@
 #include "voice.h"
 #include "language.h"
 #include "core/lang.h"
+#include "updater.h"
 #include "walltones.h"
 #include "world.h"
 #include "screens/camp.h"
@@ -42,10 +43,10 @@ enum class Unit { Toggle, Meters, Percent, Ms, Choice };
 // ("Range" under Sonar, "Master" under Volume). The table's order is the menu's order within each category.
 // 2026-11-20 (the user asked to keep it organized as the narrator speed came in): the descriptions left Dialogue and
 // movies for a category of their own, Audio description; Dialogue keeps the game's lines.
-enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatDescription, CatControls, CatLanguage, CatCount };
+enum Category { CatExploring, CatSonar, CatVolume, CatSound, CatDialogue, CatDescription, CatControls, CatLanguage, CatUpdates, CatCount };
 static const strings::Tr kCategoryNames[CatCount] = {strings::kCatExploring, strings::kCatSonar, strings::kCatVolume,
                                                      strings::kCatSound, strings::kCatDialogue, strings::kCatDescription,
-                                                     strings::kCatControls, strings::kCatLanguage};
+                                                     strings::kCatControls, strings::kCatLanguage, strings::kCatUpdates};
 struct Def {
   const char* key; strings::Tr name;
   Category cat;        // where the menu lists it
@@ -139,6 +140,8 @@ static const Def kDefs[Count] = {
   // in itself.
   {"language", strings::kSetLanguage, CatLanguage, strings::kHelpLanguage, Unit::Choice, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 0,
    language_labels()},
+  // ask GitHub for a newer release when the game starts (updater.cpp); the Updates category's first row checks by hand
+  {"check_updates", strings::kSetCheckUpdates, CatUpdates, strings::kHelpCheckUpdates, Unit::Toggle, {0, 1}, 1},
 };
 static int g_value[Count] = {};   // load() fills it from kDefs, then the file
 
@@ -263,6 +266,20 @@ struct Menu : ui::Screen {
     for (int c = 0; c < CatCount; ++c) {
       b.begin_stop(std::format("cat{}", c));
       b.push_context(kCategoryNames[c].c_str());
+      if (c == CatUpdates) {
+        // where the updater stands, read live; Enter checks, downloads or says it again (updater.cpp)
+        auto v = std::make_shared<ui::NodeVtable>();
+        v->announcements = {ui::NodeAnnouncement([] { return updater::status_line(); }, false, k::kLabel)};
+        v->on_activate = [] { updater::activate(); };
+        b.add_item(ui::ControlId::structural("update_status"), v);
+        if (updater::has_notes()) {
+          auto n = std::make_shared<ui::NodeVtable>();
+          n->announcements = {ui::NodeAnnouncement([] { return updater::notes_title(); }, false, k::kLabel),
+                              ui::NodeAnnouncement([] { return std::string(strings::kHelpUpdateNotes); }, false, k::kTooltip)};
+          n->on_activate = [] { updater::read_notes(); };
+          b.add_item(ui::ControlId::structural("update_notes"), n);
+        }
+      }
       for (int i = 0; i < Count; ++i) {
         Id id = (Id)i;
         if (kDefs[i].cat != c) continue;

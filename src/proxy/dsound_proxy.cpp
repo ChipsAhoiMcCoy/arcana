@@ -1,8 +1,11 @@
 // dsound.dll proxy. P3R.exe imports DSOUND.dll by ordinal, it is not a KnownDLL, so a dsound.dll next to the exe
 // is loaded at process start, before any of the game's own code runs. We forward every export to
-// the system copy and load the mod: P3A_DLL (environment, the dev loop) or Arcana\arcana.dll beside the exe.
+// the system copy and load the mod: P3A_DLL (environment, the dev loop) or Arcana\arcana.dll beside the exe, after
+// installing an update the mod downloaded last session (apply_update.h).
 // The proxy itself stays loaded for the life of the process; the mod DLL can be ejected and reloaded (hot reload).
 #include <windows.h>
+
+#include "apply_update.h"
 
 static HMODULE g_real;
 static FARPROC g_fn[13];
@@ -51,6 +54,10 @@ static DWORD WINAPI load_mod(LPVOID) {
     GetModuleFileNameW(nullptr, path, MAX_PATH);
     wchar_t* slash = wcsrchr(path, L'\\');
     if (slash) slash[1] = 0;
+    // An update the mod downloaded last session goes in now, before the mod's files are in use (apply_update.h).
+    std::wstring win64(path);
+    if (!win64.empty()) win64.pop_back();
+    p3a::update_apply::run(win64);
     lstrcatW(path, L"Arcana\\arcana.dll");
   }
   if (GetFileAttributesW(path) == INVALID_FILE_ATTRIBUTES) return 0;

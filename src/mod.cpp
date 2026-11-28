@@ -7,6 +7,7 @@
 #include "input.h"
 #include "msg.h"
 #include "world.h"
+#include "updater.h"
 #include "walltones.h"
 #include "settings.h"
 #include "language.h"
@@ -68,7 +69,7 @@ static Section g_sections[] = {
   {"topdown", topdown::tick}, {"menuspeed", menuspeed::tick}, {"pause", screens::pause_tick}, {"audio", audio::tick},
   {"walltones", walltones::tick}, {"nav", nav::tick}, {"walkmode", walkmode::tick}, {"advantage", shadow::advantage_tick, true}, {"poi", poi::tick}, {"sonar", sonar::tick}, {"calendar", calendar::tick},
   {"stats", stats::tick, true}, {"achievements", achievements::tick, true}, {"social", social::tick, true}, {"party", party::tick, true},
-  {"event_skip", event_skip::tick, true}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true},
+  {"event_skip", event_skip::tick, true}, {"ad", ad::tick}, {"cutin", cutin::tick}, {"picture", picture::tick}, {"flow", flow::tick, true}, {"updater", updater::tick},
 };
 static uint64_t g_perf_ticks = 0;
 static void tick() {
@@ -132,6 +133,7 @@ void init(bool speech_ok) {
   walltones::install();
   language::install();
   settings::install();
+  updater::install();   // after settings: Check at startup
   voice::install();
   poi::install();
   sonar::install();
@@ -175,6 +177,7 @@ void shutdown() {
   if (!g_ue_up) return;
   hooks::set_tick_callback(nullptr);
   msg::save_history();   // after the last tick: the game thread no longer adds to it
+  updater::shutdown();
   topdown::shutdown();
   menuspeed::shutdown();
   walkmode::shutdown();

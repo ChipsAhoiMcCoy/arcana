@@ -465,6 +465,33 @@ inline constexpr Tr kCatLanguage{"Language"};
 inline constexpr Tr kSetLanguage{"Language of the mod"};
 inline constexpr Tr kHelpLanguage{"The language of everything the mod says itself: menus, hints and descriptions. The game's language follows the game. In any language but English, descriptions of movies and scenes are read by your screen reader: the narrator's voice speaks English only."};
 inline constexpr Tr kLangGame{"The game's language"};
+// The Updates category (updater.cpp): its first row says where the updater stands and Enter acts on it.
+inline constexpr Tr kCatUpdates{"Updates"};
+inline constexpr Tr kSetCheckUpdates{"Check at startup"};
+inline constexpr Tr kHelpCheckUpdates{"Each time the game starts, asks GitHub whether a newer version of Arcana is out, and says so once per version. Nothing is downloaded until you choose to."};
+inline constexpr Tr kUpdateDevBuild{"This build of Arcana has no version number, so it can't check for updates."};
+inline constexpr Tr kUpdateUncheckedFmt{"Arcana {}. Enter checks for updates."};
+inline constexpr Tr kUpdateChecking{"Checking for updates."};
+inline constexpr Tr kUpdateCurrentFmt{"Arcana {}, up to date. Enter checks again."};
+inline constexpr Tr kUpdateCheckFailed{"Couldn't reach GitHub to check for updates. Enter tries again."};
+inline constexpr Tr kUpdateAvailableFmt{"Arcana {} is available. Enter downloads it."};
+inline constexpr Tr kUpdateDownloadingFmt{"Downloading Arcana {}, {} percent."};
+inline constexpr Tr kUpdateUnpackingFmt{"Unpacking Arcana {}."};
+inline constexpr Tr kUpdateReadyFmt{"Arcana {} is downloaded. It installs the next time you start the game."};
+inline constexpr Tr kUpdateFailedNetwork{"The download failed: the connection was lost. Enter tries again."};
+inline constexpr Tr kUpdateFailedChecksum{"The download failed: the file didn't match its checksum. Enter tries again."};
+inline constexpr Tr kUpdateFailedWrite{"The download failed: the game folder can't be written to. Enter tries again."};
+inline constexpr Tr kUpdateFailedUnpack{"The download failed: the file couldn't be unpacked. Enter tries again."};
+inline constexpr Tr kUpdateNotesFmt{"What's new in {}"};
+inline constexpr Tr kHelpUpdateNotes{"Enter reads the release notes."};
+inline constexpr Tr kUpdateNoNotes{"This release has no notes."};
+inline constexpr Tr kUpdateDownloadStartFmt{"Downloading Arcana {}. You can keep playing."};
+// Said at startup, once per version: a newer release is out.
+inline constexpr Hint kUpdateAnnounceFmt{"Arcana {} is available. {settings} opens the mod's settings, where Updates downloads it.",
+                                         "Arcana {} is available. Both triggers and View open the mod's settings, where Updates downloads it."};
+// Said at startup after the dsound proxy installed a downloaded update (or could not).
+inline constexpr Tr kUpdateInstalledFmt{"Updated to Arcana {}."};
+inline constexpr Tr kUpdateInstallFailed{"The downloaded update couldn't be installed. Please install it by hand from the releases page."};
 inline constexpr Tr kCatSoundTest{"Sound test"};
 // What each setting does: read with its row, after the position.
 inline constexpr Tr kHelpWallTones{"A tone for each wall near you: ahead, behind, left and right. Each grows louder as the wall gets closer. They play all the time, only while you move, or not at all."};

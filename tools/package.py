@@ -3,6 +3,9 @@
     python tools/package.py [--version 0.7.0] [--nobuild] [--allow-no-license]
 
 Output: dist/arcana-<version>.zip and a .sha256 file beside it. The script never touches a game folder.
+The version is built into the mod for its updater (src/updater.cpp), which offers a GitHub release only when its zip
+asset is named arcana-<version>.zip and its tag is v<version>. --nobuild refuses a build/release made for another
+version.
 
 The same commit built in the same folder gives the same zip, byte for byte. Another folder changes arcana.dll
 slightly: MSVC derives the names of anonymous namespaces from each source file's path.
@@ -13,6 +16,7 @@ Zip layout (the player copies dsound.dll and Arcana into P3R\\Binaries\\Win64):
     README.txt, INSTALL.txt          for reading before installing
     Arcana/
       arcana.dll, prism.dll, phonon.dll
+      version.txt                    the version installed (the updater's proxy step reads it)
       assets/ad/                     audio description cue lists and clips (src/ad.cpp)
       assets/lang/<code>/            the mod's own lines in the game's other languages (src/core/lang.cpp)
       assets/audio/walltones/2/      the wall tones (src/walltones.cpp)
@@ -48,10 +52,11 @@ CUE_FILES = ("sonar/exit.wav", "sonar/object.wav", "sonar/event.wav", "sonar/fra
 FORBIDDEN = re.compile(r"\.(map|pdb|lib|exp|ilk|log|ini|obj|sav|pak|uasset|usm)$|live\d+\.dll$", re.I)
 
 
-def build():
+def build(version):
     vsdev = os.path.join(ROOT, "tools", "vsdev.cmd")
+    # the version goes into the mod (P3A_VERSION): its updater compares it with GitHub's releases
     subprocess.check_call([vsdev, "cmake", "-S", ROOT, "-B", BUILD, "-G", "Ninja", "-DCMAKE_BUILD_TYPE=Release",
-                           "-DP3A_REPRODUCIBLE=ON"])
+                           "-DP3A_REPRODUCIBLE=ON", f"-DP3A_VERSION={version}"])
     subprocess.check_call([vsdev, "cmake", "--build", BUILD, "--target", "arcana", "dsound_proxy", "p3core_tests"])
     subprocess.check_call([os.path.join(BUILD, "p3core_tests.exe")])
 
@@ -70,9 +75,11 @@ def repo(path):
         return f.read()
 
 
-def collect(allow_no_license):
+def collect(allow_no_license, version):
     """Published path -> bytes."""
     out = {"dsound.dll": open(os.path.join(BUILD, "dsound.dll"), "rb").read()}
+    # what is installed: the dsound proxy never installs a downloaded update over a newer one (src/proxy/apply_update.h)
+    out["Arcana/version.txt"] = (version + "\n").encode("ascii")
     for name in ("arcana.dll", "prism.dll", "phonon.dll"):
         out["Arcana/" + name] = open(os.path.join(BUILD, name), "rb").read()
 
@@ -115,7 +122,7 @@ def collect(allow_no_license):
 def check(files):
     """What the code loads must be there (src/proxy, src/speech.cpp, src/hrtf.cpp, src/walltones.cpp, src/ad.cpp)."""
     problems = [n for n in files if FORBIDDEN.search(n)]
-    for need in ["dsound.dll", "Arcana/arcana.dll", "Arcana/prism.dll", "Arcana/phonon.dll"] + \
+    for need in ["dsound.dll", "Arcana/arcana.dll", "Arcana/version.txt", "Arcana/prism.dll", "Arcana/phonon.dll"] + \
             [f"Arcana/assets/audio/walltones/2/{t}" for t in TONES] + [f"Arcana/assets/audio/{f}" for f in CUE_FILES]:
         if need not in files:
             problems.append("missing " + need)
@@ -143,9 +150,15 @@ def main():
     ap.add_argument("--nobuild", action="store_true", help="use the existing build/release")
     ap.add_argument("--allow-no-license", action="store_true")
     a = ap.parse_args()
+    if not re.fullmatch(r"\d+\.\d+\.\d+", a.version):
+        sys.exit("--version must be three numbers, as the updater reads them (0.8.0)")
     if not a.nobuild:
-        build()
-    files = collect(a.allow_no_license)
+        build(a.version)
+    else:
+        cache = open(os.path.join(BUILD, "CMakeCache.txt"), encoding="utf-8").read()
+        if f"P3A_VERSION:STRING={a.version}\n" not in cache:
+            sys.exit(f"build/release was not built for {a.version}: run without --nobuild")
+    files = collect(a.allow_no_license, a.version)
     check(files)
     os.makedirs(DIST, exist_ok=True)
     zpath = os.path.join(DIST, f"arcana-{a.version}.zip")

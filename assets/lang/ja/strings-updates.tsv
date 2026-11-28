@@ -1,0 +1,24 @@
+Updates	アップデート
+Check at startup	起動時に確認
+Each time the game starts, asks GitHub whether a newer version of Arcana is out, and says so once per version. Nothing is downloaded until you choose to.	ゲームを起動するたびに、Arcanaの新しいバージョンが出ているかGitHubに確認し、バージョンごとに一度だけお知らせします。選ぶまで何もダウンロードしません。
+This build of Arcana has no version number, so it can't check for updates.	このArcanaのビルドにはバージョン番号がないため、アップデートを確認できません。
+Arcana {}. Enter checks for updates.	Arcana {}。Enterでアップデートを確認します。
+Checking for updates.	アップデートを確認しています。
+Arcana {}, up to date. Enter checks again.	Arcana {}、最新です。Enterでもう一度確認します。
+Couldn't reach GitHub to check for updates. Enter tries again.	アップデートの確認でGitHubに接続できませんでした。Enterでもう一度試します。
+Arcana {} is available. Enter downloads it.	Arcana {}が公開されています。Enterでダウンロードします。
+Downloading Arcana {}, {} percent.	Arcana {}をダウンロード中、{}パーセント。
+Unpacking Arcana {}.	Arcana {}を展開しています。
+Arcana {} is downloaded. It installs the next time you start the game.	Arcana {}をダウンロードしました。次にゲームを起動したときにインストールされます。
+The download failed: the connection was lost. Enter tries again.	ダウンロードに失敗しました。接続が切れました。Enterでもう一度試します。
+The download failed: the file didn't match its checksum. Enter tries again.	ダウンロードに失敗しました。ファイルがチェックサムと一致しません。Enterでもう一度試します。
+The download failed: the game folder can't be written to. Enter tries again.	ダウンロードに失敗しました。ゲームのフォルダーに書き込めません。Enterでもう一度試します。
+The download failed: the file couldn't be unpacked. Enter tries again.	ダウンロードに失敗しました。ファイルを展開できませんでした。Enterでもう一度試します。
+What's new in {}	{}の新機能
+Enter reads the release notes.	Enterでリリースノートを読み上げます。
+This release has no notes.	このリリースにはノートがありません。
+Downloading Arcana {}. You can keep playing.	Arcana {}をダウンロードしています。そのままプレイを続けられます。
+Arcana {} is available. {settings} opens the mod's settings, where Updates downloads it.	Arcana {}が公開されています。{settings}でMODの設定を開き、「アップデート」でダウンロードできます。
+Arcana {} is available. Both triggers and View open the mod's settings, where Updates downloads it.	Arcana {}が公開されています。両トリガーとビューボタンでMODの設定を開き、「アップデート」でダウンロードできます。
+Updated to Arcana {}.	Arcana {}にアップデートしました。
+The downloaded update couldn't be installed. Please install it by hand from the releases page.	ダウンロードしたアップデートをインストールできませんでした。リリースページから手動でインストールしてください。
