@@ -372,7 +372,7 @@ std::vector<Poi> scan(float radius) {
           for (int i = 0; i < 4; ++i) if (fname(*f) == std::string("EVT_AEGIS_CHASE_") + kStages[i]) mine = i + 1;
         if (mine != reached + 1) continue;
         std::string goal = objectives();
-        add(a, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), false, true);
+        add(a, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), true, true);
         if (!out.empty() && out.back().obj == WeakObj::of(a)) out.back().objective = true;
       }
       // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
