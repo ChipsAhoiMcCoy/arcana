@@ -772,6 +772,11 @@ inline constexpr Tr kFusionNone{"No Persona can be fused."};
 inline constexpr Tr kSpecialFusion{"Special Fusion. Choose a Persona to fuse."};
 inline constexpr Tr kSpecialHave{"you have"};
 inline constexpr Tr kSpecialReady{"ready to fuse"};
+inline constexpr Tr kSpecialMissing{"missing"};   // then the materials struck out: "you have 2 of 3, missing Gurulu"
+inline constexpr Tr kNotInCompendium{"not in the compendium"};   // a fusion result the game marks "Unreg."
+inline constexpr Tr kCompendiumLocked{"locked"};     // a compendium entry locked against re-registration (F)
+inline constexpr Tr kCompendiumUnlocked{"unlocked"};
+inline constexpr Tr kCompendiumCompleteFmt{"{}% complete"};   // the compendium's registry rate
 inline constexpr Tr kCompendium{"Compendium. Select a Persona."};
 inline constexpr Tr kRegister{"Who shall you register?"};
 inline constexpr Tr kRegisterThis{"Register this Persona?"};

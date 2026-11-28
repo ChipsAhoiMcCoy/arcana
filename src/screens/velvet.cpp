@@ -28,6 +28,7 @@
 #include <algorithm>
 #include <cstring>
 #include <format>
+#include <map>
 
 namespace p3a::screens {
 using namespace ue;
@@ -81,6 +82,18 @@ class VelvetScreen : public MenuScreen {
     int id = *(uint16_t*)(row + 0x1A), level = *(uint16_t*)(row + 0x1C);
     return persona::name(id).empty() ? std::string() : persona::describe(id, level);
   }
+  // The compendium's own answers, for the book of the story running (UGlobalWork +0x4EA4 + id * 0x30, Episode Aigis
+  // +0x12970: flags bit 1 registered, 0x2000 locked): exe+0x121e950(id) 1 when registered (the fusion lists' "!" /
+  // "Unreg." icon is its absence), exe+0x121e8c0(id) 0x2001 when locked (the compendium's lock icon; F toggles it).
+  static bool registered(int id) { return ((uint64_t (*)(uint64_t))(scan::exe_base() + 0x121e950))((uint64_t)id) & 1; }
+  static bool locked(int id) { return (((uint64_t (*)(uint64_t))(scan::exe_base() + 0x121e8c0))((uint64_t)id) & 0xFFFF) == 0x2001; }
+  // The id of the hero's equipped Persona (the base lists mark it with a gem), or 0.
+  static int equipped_id() {
+    int slot = persona::equipped();
+    for (auto& o : persona::stock()) if (o.slot == slot) return o.id;
+    return 0;
+  }
+  std::map<int, bool> lock_seen_;   // a compendium entry's lock as last said: "unlocked" once after F clears it
   bool write_list(uint8_t* list, int i, bool push_draw) {
     if (!ListCursor(list).set(i)) return false;
     uintptr_t b = scan::exe_base();
@@ -387,15 +400,18 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
     int hero = persona::unit_level(1);
     auto stock = persona::stock();
     auto owned = [&stock](int id) { for (auto& o : stock) if (o.id == id) return true; return false; };
+    int worn = equipped_id();
     for (int i = 0; rows->data && i < rows->num && i < 64; ++i) {
       uint8_t* r = rows->data + i * kRow;
       std::string l = entry_line(r);
+      if (worn && *(uint16_t*)(r + 0x1A) == worn) l += std::format(", {}", strings::kEquipped);
       if (st == 4) {
         uint8_t* x = res->data && i < res->num ? res->data + i * kRow : nullptr;
         std::string out = x && !r[0x8C] ? entry_line(x) : std::string();
         l += out.empty() ? std::format(", {}", strings::kFusionImpossible) : std::format(", {} {}", strings::kFusionGives, out);
         if (!out.empty() && hero > 0 && *(uint16_t*)(x + 0x1C) > hero) l += std::format(", {}", strings::kAboveYourLevel);
         if (!out.empty() && owned(*(uint16_t*)(x + 0x1A))) l += std::format(", {}", strings::kAlreadyOwned);
+        if (!out.empty() && !registered(*(uint16_t*)(x + 0x1A))) l += std::format(", {}", strings::kNotInCompendium);
         if (i == fr && !out.empty()) walk = result_lines(x + 0x18);
       } else if (i == fr) {
         walk = persona::detail_lines(r + 0x18);
@@ -411,17 +427,21 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
     auto* rs = (TArray<uint8_t>*)(c + 0x188);
     for (int i = 0; rs->data && i < rs->num && i < 200; ++i) {
       uint8_t* r = rs->data + i * kSpecialRow;
-      std::string l = entry_line(r), mats;
+      std::string l = entry_line(r), mats, missing;
+      if (!registered(*(uint16_t*)(r + 0x1A))) l += std::format(", {}", strings::kNotInCompendium);
       auto* m = (TArray<uint8_t>*)(r + 0xA8);
       int need = 0, have = 0;
       for (int k = 0; m->data && k < m->num && k < 8; ++k) {
         uint8_t* x = m->data + k * kRow;
         ++need;
+        std::string mn = persona::name(*(uint16_t*)(x + 0x1A));
         if (x[0x8D]) ++have;
-        mats += (mats.empty() ? "" : ", ") + persona::name(*(uint16_t*)(x + 0x1A));
+        else missing += (missing.empty() ? "" : ", ") + mn;   // the game strikes these through
+        mats += (mats.empty() ? "" : ", ") + mn;
       }
       l += std::format(", {} {}", strings::kFusionFrom, mats);
       l += have == need ? std::format(", {}", strings::kSpecialReady) : std::format(", {} {}", strings::kSpecialHave, strings::of(have, need));
+      if (have > 0 && have < need && !missing.empty()) l += std::format(", {} {}", strings::kSpecialMissing, missing);
       if (i == fr) walk = persona::detail_lines(r + 0x18);
       n = i + 1;
       auto v = game_item(list_, i, [l] { return l; });
@@ -434,8 +454,10 @@ void VelvetScreen::build_lists(ui::GraphBuilder& b, int st) {
     auto* rs = (TArray<uint8_t>*)(c + 0x178);
     for (int i = 0; rs->data && i < rs->num && i < 400; ++i) {
       uint8_t* r = rs->data + i * kSearchRow;
-      std::string l = std::format("{}, {} {} {} {}", entry_line(r), strings::kFusionFrom, persona::name(*(uint16_t*)(r + 0xC2)),
-                                  strings::kFusionAnd, persona::name(*(uint16_t*)(r + 0x16A)));
+      std::string l = entry_line(r);
+      if (!registered(*(uint16_t*)(r + 0x1A))) l += std::format(", {}", strings::kNotInCompendium);
+      l += std::format(", {} {} {} {}", strings::kFusionFrom, persona::name(*(uint16_t*)(r + 0xC2)),
+                       strings::kFusionAnd, persona::name(*(uint16_t*)(r + 0x16A)));
       if (i == fr) walk = persona::detail_lines(r + 0x18);
       n = i + 1;
       auto v = game_item(list_, i, [l] { return l; });
@@ -498,7 +520,12 @@ void VelvetScreen::build_book(ui::GraphBuilder& b) {
   std::string key = std::format("velvet.book.{}.{}", rows->num, i32(bk, 0x124));
   book_list_.key = key;
   b.begin_stop(key);
-  b.push_context(strings::kCompendium.c_str());
+  // The title, then how much of the compendium is filled ("Completed 19%": UIVelvetRoomDraw +0x61C, which
+  // FUN_141590690 prints).
+  std::string title = strings::kCompendium.c_str();
+  if (auto* d = (uint8_t*)draw_.get(); d && *(int32_t*)(d + 0x61C) >= 0 && *(int32_t*)(d + 0x61C) <= 100)
+    title += " " + strings::fmt(strings::kCompendiumCompleteFmt, *(int32_t*)(d + 0x61C)) + ".";
+  b.push_context(title);
   auto stock = persona::stock();
   for (int i = 0; rows->data && i < rows->num && i < 600; ++i) {
     uint8_t* e = rows->data + i * kRow;
@@ -507,6 +534,12 @@ void VelvetScreen::build_book(ui::GraphBuilder& b) {
                             : std::format("{}, {}, {} {}", strings::kUnknownCap, social::arcana_name(persona::arcana(id)), strings::kLevel, level);   // the game's "?????"
     for (auto& o : stock) if (e[0x88] && o.id == id) { l += std::format(", {}", strings::kAlreadyOwned); break; }
     auto v = game_item(book_list_, i, [l] { return l; });
+    // The lock icon (F), said as it changes: "unlocked" once when F clears it.
+    if (e[0x88]) v->announcements.push_back(ui::NodeAnnouncement([this, id] {
+      bool on = locked(id), was = lock_seen_.count(id) && lock_seen_[id];
+      lock_seen_[id] = on;
+      return on ? std::string(strings::kCompendiumLocked) : was ? std::string(strings::kCompendiumUnlocked) : std::string();
+    }, true, ui::announcement_kinds::kValue));
     if (e[0x88]) look_persona(v, id);   // an unregistered entry is a question mark in the game too
     b.add_item(slot(key, i), v);
   }
