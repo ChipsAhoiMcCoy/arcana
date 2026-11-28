@@ -13,6 +13,8 @@
 #include "core/strings.h"
 #include "core/text_clean.h"
 #include "dat.h"
+#include "items.h"
+#include "watch.h"
 #include "party.h"
 #include "persona.h"
 #include "confirm.h"
@@ -212,6 +214,34 @@ class CampStats : public MenuScreen, private CampStatsUi {
 };
 
 // ---------------------------------------------------------------- Stats: a member's page
+// The page's lines beside the member's name: NEXT EXP (the hero's from DatPlayerLevelupDataAsset, Data[level].Exp the
+// total for the next level, less unit +0x20; the others' level is their Persona's, so its EXP to next), then the
+// weapon's ATTACK TYPE (its AttrID) and the Attack and Defense the worn weapon and armor give (unit +0x28C slots 0, 1).
+static std::string member_combat(int who) {
+  std::string out;
+  uint8_t* u = party::unit_work(who);
+  int next = -1;
+  if (who == 1 && u) {
+    static const int table_id = watch::want("DatPlayerLevelUpTable", true);
+    TableRows rows = table_rows(dat::find(table_id, "DatPlayerLevelupDataAsset"));
+    int level = *(int16_t*)(u + 0x1C), off = rows ? offset_of(rows.row, "Exp") : -1;
+    if (rows && off >= 0 && level >= 1 && level < 99 && level < rows.num)
+      next = std::max(0, (int)*(uint32_t*)(rows.at(level) + off) - (int)*(uint32_t*)(u + 0x20));
+  } else if (const uint8_t* e = party::persona_entry(who)) {
+    next = persona::exp_to_next(e);
+  }
+  if (next >= 0) out = std::format("{} {}", next, strings::kExpToNext);
+  auto worn = [u](int slot) { int id = u ? *(uint16_t*)(u + 0x28C + slot * 2) : 0x8000; return id == 0x8000 ? std::string() : items::name_of(id); };
+  items::Info w, a;
+  std::string wn = worn(0), an = worn(1);
+  bool hw = !wn.empty() && items::find(wn, w), ha = !an.empty() && items::find(an, a);
+  std::string gear;
+  if (hw && w.attr < std::size(strings::kAttrNames)) gear = std::format("{} {}", strings::kAttackType, strings::kAttrNames[w.attr].c_str());
+  if (hw && w.attack) gear += std::format("{}{} {}", gear.empty() ? "" : ", ", strings::kAttack, w.attack);
+  if (ha && a.defence) gear += std::format("{}{} {}", gear.empty() ? "" : ", ", strings::kDefence, a.defence);
+  if (!gear.empty()) out += (out.empty() ? "" : ". ") + gear;
+  return out;
+}
 // The scene CmpCharacterStatus (or CmpHeroHumanStatus) on top of the Stats UI's scene stack; the member is the party
 // list's (UUICmpStatus +0x28 ids, ListCursor +0x68, which RB / LB, Q / E, move while the page is up). A page of lines:
 // the member, their Persona's stats and each skill with its description, its affinities; the hero's social stats. In
@@ -271,6 +301,7 @@ class CampStatsPage : public MenuScreen, private CampStatsUi {
     b.begin_stop(k);
     b.set_region(k + ".member");
     b.add_item(ui::ControlId::structural(k + ".line"), item([who] { return member_line(who); }));
+    if (std::string c = member_combat(who); !c.empty()) b.add_item(ui::ControlId::structural(k + ".combat"), item([c] { return c; }));
     if (who == 1) b.add_item(ui::ControlId::structural(k + ".social"), item([] { return stats::describe(); }));
     // A Persona: its name with the member's lines, then its sections: Stats (one per line, as the status page totals
     // them: base, incense and fusion bonus), Skills, Affinities. `entry` is its FDatUnitPersonaEntry.

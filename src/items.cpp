@@ -63,6 +63,7 @@ static void load() {
       // gear: its add effect (skillId in some tables, SkillID in others) and stat bonuses (u16 each)
       int oSkill = off("skillId") >= 0 ? off("skillId") : off("SkillID");
       int oBonus[5] = {off("Strength"), off("Magic"), off("Endurance"), off("Agility"), off("Luck")};
+      int oAttr = off("AttrID");
       for (int i = 0; i < rows.num && i < ns->num; ++i) {
         std::string n = to_utf8(ns->data[i]);
         if (n.empty() || n == "Unused") continue;
@@ -81,6 +82,7 @@ static void load() {
         if (oEva >= 0) in.evasion = *(uint16_t*)(r + oEva);
         if (oSkill >= 0) in.skill = *(uint16_t*)(r + oSkill);
         for (int k = 0; k < 5; ++k) if (oBonus[k] >= 0) in.bonus[k] = *(uint16_t*)(r + oBonus[k]);
+        if (oAttr >= 0) in.attr = *(uint16_t*)(r + oAttr);
         g_cache[n] = in;
       }
     });

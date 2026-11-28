@@ -5,8 +5,9 @@
 namespace p3a::items {
 // id: the game's item id, category << 12 | index in the category's list (0x4003 = Common 3, Bead; 0x6045 = Material
 // 69, Turquoise; matched against DatAntiqueShopLineupDataAsset, 2026-10-28).
-// skill: gear's add effect (its BMD_ItemAddEffectHelp dialog, 0 none); bonus: Strength, Magic, Endurance, Agility, Luck.
-struct Info { std::string category; uint32_t price = 0, sell = 0; uint16_t attack = 0, accuracy = 0, defence = 0, evasion = 0; uint16_t skill = 0; uint16_t bonus[5] = {}; int bag = -1; int id = -1; };
+// skill: gear's add effect (its BMD_ItemAddEffectHelp dialog, 0 none); bonus: Strength, Magic, Endurance, Agility, Luck;
+// attr: a weapon's attack type (AttrID: 0 Slash, 1 Strike, 2 Pierce, ... as strings::kAttrNames; 0xFFFF none).
+struct Info { std::string category; uint32_t price = 0, sell = 0; uint16_t attack = 0, accuracy = 0, defence = 0, evasion = 0; uint16_t skill = 0; uint16_t bonus[5] = {}; uint16_t attr = 0xFFFF; int bag = -1; int id = -1; };
 bool find(const std::string& name, Info& out);   // by the item's English name (game thread; cached)
 std::string stats(const Info& in);                // ", attack 60, accuracy 95" (only the stats the item has), then effect()
 std::string effect(const Info& in);               // the Effect panel: ", effect +30 HP, Strength +1", empty for none
