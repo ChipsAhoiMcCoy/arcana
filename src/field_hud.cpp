@@ -106,6 +106,14 @@ std::string objectives() {
   if (g_sub_objective.empty() || g_objective.empty()) return g_objective;
   return g_objective + ". " + g_sub_objective;
 }
+std::string marked_objective() {
+  auto marked = marked_objectives();
+  if (!marked.empty()) return marked[0];
+  std::string o = g_objective;
+  const std::string tail = std::string(", ") + strings::kObjectiveMarked.c_str();
+  if (o.size() > tail.size() && o.compare(o.size() - tail.size(), tail.size(), tail) == 0) o.resize(o.size() - tail.size());
+  return o;
+}
 static std::string g_prompt;   // the interaction prompt label on screen now, or ""
 std::string prompt() { return g_prompt; }
 // The interaction prompt is AUIMiscCheckDraw's (2026-11-03): its task state +0x294 is 1 while it appears and 2 while

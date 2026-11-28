@@ -35,4 +35,5 @@ void arrival_tick();   // says the area when the hero arrives somewhere
 void pickup_tick();    // items picked up in the field
 void prompt_tick();    // the objectives panel and the interaction prompt
 void objectives_reset();   // forget the objective panel's lines (a save loading)
+std::string marked_objective();   // the panel's line drawn with the map's "!", else its first line, else ""
 }  // namespace p3a::poi

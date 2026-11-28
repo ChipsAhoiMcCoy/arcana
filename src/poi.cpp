@@ -372,7 +372,7 @@ std::vector<Poi> scan(float radius) {
           for (int i = 0; i < 4; ++i) if (fname(*f) == std::string("EVT_AEGIS_CHASE_") + kStages[i]) mine = i + 1;
         if (mine != reached + 1) continue;
         std::string goal = objectives();
-        add(a, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), true, true);
+        add(a, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), false, true);
         if (!out.empty() && out.back().obj == WeakObj::of(a)) out.back().objective = true;
       }
       // A staircase with no name (the 7/7 hotel's: the way to the boss on 3F was listed only in an empty area,
@@ -537,6 +537,26 @@ std::vector<Poi> scan(float radius) {
     add(a, Kind::Enemy, shadow_name(a, comp));
   }
   if (out.empty() && !beyond) for (UObject* a : triggers) add(a, Kind::Event, strings::kPoiEvent.c_str());
+  // The objective's mark with nothing listed under it: the marker itself, AFldTargetIcon (placed in the hotel of the
+  // July full moon, one per floor, and in the key-free walks' fields; the minimap draws its "!" from the marker's
+  // place), is listed under Events at any distance, named for the objective, as anything else on another floor only
+  // where a walk reaches it: from the hotel's ground floor the 3F room's mark (7/7, "Defeat the Shadow on 3F", 6 m up)
+  // was listed and the walk went under it and stuck. Below, the mark then finds it and says "objective".
+  for (const FVector& m : objective_marks()) {
+    bool held = std::any_of(out.begin(), out.end(), [&](const Poi& p) {
+      float d = std::hypot(p.loc.x - m.x, p.loc.y - m.y);
+      return (d < 300.0f || (p.kind == Kind::Exit && d < 800.0f)) && std::fabs(p.loc.z - m.z) < 250.0f;
+    });
+    if (held) continue;
+    for (UObject* t : live("FldTargetIcon")) {
+      world::FVector v{};
+      if (!world::actor_visible_level(t) || !guarded([&] { v = world::actor_location(t); })) continue;
+      if (std::hypot(v.x - m.x, v.y - m.y) > 100.0f || std::fabs(v.z - m.z) > 100.0f) continue;
+      std::string goal = marked_objective();
+      add(t, Kind::Event, goal.empty() ? std::string(strings::kPoiEvent) : std::format("{}: {}", strings::kPoiEvent, goal), false, true);
+      break;
+    }
+  }
   std::sort(out.begin(), out.end(), [](const Poi& a, const Poi& b) { return a.dist < b.dist; });
   // A door between two rooms is two exits a step apart, one on each side, each named for where it leads (the
   // monorail's cars, 1.4 m apart, 2026-10-27): only the one on the player's side, the nearer, counts.
@@ -546,12 +566,21 @@ std::vector<Poi> scan(float radius) {
   for (size_t i : core::near_sides(places)) kept.push_back(std::move(out[i]));
   // The objective's mark: the thing it stands on (within 3 m, on its floor) is where the story sends the player.
   // A sighted player sees the "!" on the minimap; the list says "objective" after its name and Events lists it.
+  // A mark inside a room with nothing under it is the room's: the door within 8 m (the 7/7 hotel's boss room, its mark
+  // 6.4 m past the Hierophant's Chamber door, where the walk to the marker stuck).
   for (const FVector& m : objective_marks()) {
     Poi* best = nullptr;
     float bd = 300.0f;
     for (Poi& p : kept) {
       float d = std::hypot(p.loc.x - m.x, p.loc.y - m.y);
       if (d < bd && std::fabs(p.loc.z - m.z) < 250.0f) { bd = d; best = &p; }
+    }
+    if (!best) {
+      bd = 800.0f;
+      for (Poi& p : kept) {
+        float d = std::hypot(p.loc.x - m.x, p.loc.y - m.y);
+        if (p.kind == Kind::Exit && d < bd && std::fabs(p.loc.z - m.z) < 250.0f) { bd = d; best = &p; }
+      }
     }
     if (!best || best->objective) continue;
     best->objective = true;
