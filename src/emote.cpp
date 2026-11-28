@@ -14,6 +14,7 @@
 #include "party.h"
 #include "poi.h"
 #include "seh.h"
+#include "settings.h"
 #include "speech.h"
 #include "ue/ue.h"
 #include "watch.h"
@@ -79,6 +80,7 @@ void tick() {
     UObject* actor = nullptr;
     if (!guarded([&] { actor = character_of(fx); }) || !actor) continue;   // not attached yet
     said.push_back(w);
+    if (!settings::on(settings::EmoteMarks)) continue;   // turned off: marked as said, never read later
     std::string name;
     guarded([&] { name = who(actor); });
     std::string word = strings::kEmotes[kind].c_str();

@@ -164,6 +164,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Voiced dialogue: not read (the voice plays alone), speaker's name only, read aloud. Unvoiced lines are always read. A voiced line is not read even if its voice is silent (voice volume at zero): choose read aloud then. A speaker is named only on the first of their lines in a row
 - When a line ends: off, say Next, page turn sound, message chime sound, cursor tick sound. The cue when a line waits for you to continue: on a voiced line when the voice finishes, on an unvoiced one after the reading (a sound plays as the reading begins on screen readers that can't report its end, such as NVDA)
 - Read subtitles: off, on. The screen reader reads the subtitles of movies and cutscenes. They are in the log (B) either way. Off by default
+- Emote marks: off, on. The marks that pop over a character's head (the exclamation mark, the sweat drop, "Zzz") are said as they appear, in story scenes and in the field ("Fuuka, awkward"). On by default
 
 **Audio description**
 

@@ -533,6 +533,7 @@ inline constexpr Tr kHelpEntryHints{"Menus say their keys after their first line
 inline constexpr Tr kHelpVoicedLines{"What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read."};
 inline constexpr Tr kHelpVoiceEndSound{"What tells you a line has finished and waits for you: the word Next, one of the game's sounds, or nothing."};
 inline constexpr Tr kHelpSubtitles{"The screen reader reads the subtitles of movies and cutscenes as they appear. They are in the log either way."};
+inline constexpr Tr kHelpEmoteMarks{"The marks that pop over a character's head (the exclamation mark, the sweat drop, \"Zzz\") are said as they appear, in story scenes and in the field: \"Fuuka, awkward\"."};
 inline constexpr Tr kHelpAudioDescription{"What is on screen in the animated story movies is described between the lines of dialogue: by a narrator's voice, or read by the screen reader."};
 inline constexpr Tr kHelpSceneDescription{"What is on screen in the story scenes played in the game's 3D engine is described between the lines. Suppress repeated descriptions: a description you have already heard is not read again, so a scene that comes back, a job shift or a meal, is described the first time only."};
 inline constexpr Tr kHelpSceneVoice{"Who reads the descriptions of 3D scenes: a narrator's voice, or your screen reader."};
@@ -628,6 +629,7 @@ inline constexpr Tr kVoicedName{"speaker's name only"};
 inline constexpr Tr kVoicedSilent{"not read, the voice plays alone"};
 inline constexpr Tr kSetVoiceEndSound{"When a line ends"};
 inline constexpr Tr kSetSubtitles{"Read subtitles"};
+inline constexpr Tr kSetEmoteMarks{"Emote marks"};
 inline constexpr Tr kSetAudioDescription{"Movies"};
 inline constexpr Tr kSetSceneDescription{"3D scenes"};
 inline constexpr Tr kSetSceneVoice{"3D scenes read by"};
