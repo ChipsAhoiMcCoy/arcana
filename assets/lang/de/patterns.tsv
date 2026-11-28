@@ -13,4 +13,6 @@ up {}	plus {}
 {} of {}	{} von {}
 {} damage in all	{} Schaden insgesamt
 {} {} damage in all	{} {} Schaden insgesamt
+{} damage, {} total	{} Schaden, insgesamt {}
+{} {} damage, {} total	{} {} Schaden, insgesamt {}
 Learned {}, in place of {}	{} erlernt, anstelle von {}

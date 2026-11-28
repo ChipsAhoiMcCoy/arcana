@@ -208,8 +208,11 @@ inline constexpr Tr kRestNormal{"The rest normal"};
 inline constexpr Tr kRestUnknown{"The rest unknown"};
 inline constexpr Tr kDamage{"damage"};
 inline constexpr Tr kHealed{"healed"};
-// What one action's repeated hits came to on a unit (its first hit was said as it landed): on the unit the player
-// chose, then on anyone else ("Makoto 147 damage in all").
+// One action's repeated hits on a unit: its last hit and what they all came to, on the unit the player chose, then on
+// anyone else ("Makoto 26 damage, 147 total").
+inline constexpr Tr kDamageThenTotalFmt{"{} damage, {} total"};
+inline constexpr Tr kNamedDamageThenTotalFmt{"{} {} damage, {} total"};
+// The same total when no hit was said on its own (damage popups off): "Makoto 147 damage in all".
 inline constexpr Tr kDamageInAllFmt{"{} damage in all"};
 inline constexpr Tr kNamedDamageInAllFmt{"{} {} damage in all"};
 inline constexpr Tr kDefeated{"defeated"};

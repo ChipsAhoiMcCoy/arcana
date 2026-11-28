@@ -380,16 +380,16 @@ class BattleScreen : public Screen {
   // HP cost, once per action (paid_: dropped once anyone else acts); a counter or anything else on them is still said.
   WeakObj paid_;
   // An action that strikes the same unit again (Strength's Mobius Rondo hits each member six times; a weapon that
-  // hits more than once): its damage is added up per unit and said at its last hit, one line per unit ("Makoto 147
-  // damage in all"; a single hit, "Makoto 26 damage"), not a line per hit (Mobius Rondo was 24 lines, 2026-11-24).
-  // Saying the first hit as it landed made one attack sound like two ("14 damage", then "59 damage in all"), and
-  // waiting for the action's end said every number a second or more after its hit (2026-11-25).
+  // hits more than once): each hit is said as its popup comes up ("Makoto 24 damage"), and the last one adds what
+  // they came to ("Makoto 26 damage, 147 total"; players asked for every number back, 2026-11-28, after a summed
+  // line per unit). A single hit is the plain line ("Makoto 26 damage").
   // Which hit is the last is the game's own call: a multi-hit animation's notifies deal the damage in portions
   // (PreAffectSkillDamagePortion, the rest with AffectSkillDamageRestPortion), and BP_BtlGuiIcon CreateDamage keeps
   // each unit with a portion shown in PotionPatamMap (added at the first portion, removed by the hit that is not one).
-  // A unit's damage is said once a popup came up on it (the hit has been shown, so the map has had its say) and it is
-  // not in the map. Anything left (no popup: the display off) goes when the action is over: another unit acts, the
-  // next banner comes up (the same unit's next action) or a wheel or list opens. A unit that falls says so instead.
+  // A hit is said once a popup came up on its unit (the hit has been shown, so the map has had its say): a portion
+  // while the unit is in the map, the last hit once it is not. Anything left (no popup: the display off) goes when the
+  // action is over, as one line ("147 damage in all"): another unit acts, the next banner comes up (the same unit's
+  // next action) or a wheel or list opens. A unit that falls says so instead.
   int icons_ = watch::want("BP_BtlGuiIcon_C", true);
   // TMap<BP_BtlCharacterBase_C*, int32>: a TSparseArray of 0x18-byte elements (key at +0), allocation bits as in
   // ue::datatable_rows (inline at +0x10, secondary at +0x20, NumBits at +0x28).
@@ -409,7 +409,8 @@ class BattleScreen : public Screen {
     }
     return false;
   }
-  struct Hits { WeakObj::Key key; std::string name; int total; int count; bool chosen; };
+  // total: every hit of this action on the unit; pending: the hits not said yet; said: how many lines were said.
+  struct Hits { WeakObj::Key key; std::string name; int total; int count; bool chosen; int pending; int said = 0; };
   std::vector<Hits> hits_;
   WeakObj hits_by_;   // the acting unit whose action landed them
   Hits* hit_on(const WeakObj::Key& k) {
@@ -417,16 +418,33 @@ class BattleScreen : public Screen {
     return nullptr;
   }
   void drop_hits(const WeakObj::Key& k) { std::erase_if(hits_, [&](const Hits& h) { return h.key == k; }); }
+  void say_damage(const Hits& h, int n) {
+    std::string one = std::format("{} {}", n, strings::kDamage);
+    speech::speak(h.chosen ? one : std::format("{} {}", h.name, one), false);
+  }
+  // The unit's last hit: the plain line for a single hit, the hit and the total after hits already said, the total
+  // alone when none was (no popups).
   void say_hit(const Hits& h) {
-    std::string one = std::format("{} {}", h.total, strings::kDamage);
-    if (h.count < 2) speech::speak(h.chosen ? one : std::format("{} {}", h.name, one), false);
+    if (h.count < 2) say_damage(h, h.total);
+    else if (h.said > 0 && h.pending > 0)
+      speech::speak(h.chosen ? strings::fmt(strings::kDamageThenTotalFmt, h.pending, h.total)
+                             : strings::fmt(strings::kNamedDamageThenTotalFmt, h.name, h.pending, h.total), false);
     else speech::speak(h.chosen ? strings::fmt(strings::kDamageInAllFmt, h.total)
                                 : strings::fmt(strings::kNamedDamageInAllFmt, h.name, h.total), false);
   }
-  // The units whose last hit has landed: said now, the rest wait for theirs.
+  // The units whose hit has been shown: a portion is said now, a last hit with its total; a popup that came before
+  // its hit's HP waits for it.
   void say_landed() {
-    std::erase_if(hits_, [&](const Hits& h) {
-      if (!popped_.count(h.key) || portion_open(h.key)) return false;
+    std::erase_if(hits_, [&](Hits& h) {
+      if (!popped_.count(h.key)) return false;
+      if (portion_open(h.key)) {
+        if (h.pending <= 0) return false;
+        popped_.erase(h.key);
+        say_damage(h, h.pending);
+        h.pending = 0;
+        ++h.said;
+        return false;
+      }
       popped_.erase(h.key);
       say_hit(h);
       return true;
@@ -496,14 +514,14 @@ class BattleScreen : public Screen {
           if (paid_cost(u, action_now, d)) {}   // the skill's own HP cost: the skill list already said it
           else if (cur.hp == 0 && cur.enemy) { drop_hits(key); if (!fled_.count(key)) defeated.push_back(cur.name); }
           else if (cur.hp == 0) { drop_hits(key); speech::speak(std::format("{} {}", cur.name, strings::kKnockedOut), false); }
-          else if (again) { again->total -= d; ++again->count; }   // said with the rest once the action is over
+          else if (again) { again->total -= d; again->pending -= d; ++again->count; }   // said once its popup is up
           else {
             // The player's own choice of this one unit: the number alone. Anything else names who it landed on (an
             // enemy's or an ally's own action, a whole side, an attack sent back at the attacker).
             bool chosen = st == 0 && action_now && commanded_.resolve() == action_now && attacked(action_now) == u;
-            if (d < 0 && st == 0 && action_now) {   // said once the action is over, with any hits after it
+            if (d < 0 && st == 0 && action_now) {   // said once its popup is up (say_landed) or the action is over
               if (!(WeakObj::of(action_now) == hits_by_)) { flush_hits(); hits_by_ = WeakObj::of(action_now); }
-              hits_.push_back({key, cur.name, -d, 1, chosen});
+              hits_.push_back({key, cur.name, -d, 1, chosen, -d});
             } else {
               std::string s = d < 0 ? std::format("{} {}", -d, strings::kDamage) : std::format("{} {}", strings::kHealed, d);
               speech::speak(chosen ? s : std::format("{} {}", cur.name, s), false);

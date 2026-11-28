@@ -17,6 +17,7 @@
 - Fuuka's support menu in Tartarus says the party's HP and SP and her own SP before her skills, as the panel beside the list shows them ("Makoto, level 40, HP 376 of 376, SP 228 of 228. ... Fuuka, navigator, SP 248 of 248. Jamming / 20 SP, 1 of 4"). Before, you had to press Shift+Apostrophe to hear them.
 
 ### Battle
+- A skill or attack that hits the same one several times reads every hit's damage again, as each hit lands, and the last hit adds what they came to: "38 damage", "57 damage", "97 damage, 192 total". Players asked to hear each number back; since the last release these hits were added up into one line per unit at the last hit ("192 damage in all"). With the game's damage numbers switched off, it is still one line at the end.
 - Quick party checks in battle. The number keys 1 to 4 (outside battle they pick a kind of point of interest) are now your party's four slots: the first press says that member's name and HP, and each press of the same key after it the next part: SP, ailments, buffs and debuffs, the Theurgy gauge, then HP again. The name is only said when you switch to another slot. Shift with the key goes back a part. 5 says the navigator's SP on its own (Shift+Apostrophe still reads the whole party with her). On a controller, hold both triggers: the D-pad's up, right, down and left are the four slots, and A is the navigator.
 
 ## 0.7.0

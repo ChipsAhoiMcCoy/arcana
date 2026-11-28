@@ -13,4 +13,6 @@ up {}	{} arttı
 {} of {}	{}, toplam {}
 {} damage in all	toplam {} hasar
 {} {} damage in all	{} toplam {} hasar
+{} damage, {} total	{} hasar, toplam {}
+{} {} damage, {} total	{} {} hasar, toplam {}
 Learned {}, in place of {}	{1} yerine {0} öğrenildi
