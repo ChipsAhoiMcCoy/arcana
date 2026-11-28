@@ -220,7 +220,7 @@ They work like any other menu: up and down choose (at either end a further press
 
 ### In the field
 
-- The area when you arrive, with the part and floor the game's banner names ("Iwatodai Dorm, Hallway, floor 2"); the objective when it changes ("Objective: Head to the faculty office").
+- The area when you arrive, with the part and floor the game's banner names ("Iwatodai Dorm, Hallway, floor 2"); the objective when it changes ("Objective: Head to the faculty office"; a step the game marks with the minimap's "!" adds "marked on the map").
 - Interaction prompts ("Check: Vending Machine", "Go to: Iwatodai Station"; prompts that already say what you do, and devices, by name alone). Over a Social Link partner, their arcana and rank ("Talk: Kenji Tomochika, Magician, rank MAX").
 - Items and money gained or spent ("Got Bead times 3, 500 yen"), and party HP or SP changing outside battle.
 - Achievements as they unlock, with their name and what they are for ("Achievement unlocked: SEES the Day. Joined the Specialized Extracurricular Execution Squad."), in your Steam language: Steam shows them only in its overlay.

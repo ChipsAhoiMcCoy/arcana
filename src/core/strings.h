@@ -749,6 +749,7 @@ inline constexpr Tr kStuck{"Stuck, stopping"};
 inline constexpr Tr kStopped{"Stopped"};
 inline constexpr Tr kNotInField{"Not in the field"};
 inline constexpr Tr kObjective{"Objective"};
+inline constexpr Tr kObjectiveMarked{"marked on the map"};   // an objective line the panel draws with the minimap's "!"
 inline constexpr Tr kNoObjective{"No objective shown yet"};
 inline constexpr Tr kNothingToReview{"No menu or message to read"};
 inline constexpr Tr kNoAreaDescription{"No description for this place:"};

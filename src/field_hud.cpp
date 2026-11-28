@@ -4,7 +4,10 @@
 //    while it is up (4 leaving, 5 gone), its label the FString at +0x9A8 ("Classroom 2-F"). The verb beside it is a
 //    sprite, so it comes from the hit actor with that name nearby (its mCheckIcon_ and mType_).
 //  - The objectives (top right, in corner brackets, then stacked lines) are drawn through AUIDrawBaseActor::DrawFont
-//    (textcap source 0), while the field's panel is up: AUIAccessInfoDraw's task state +0x294 is 3.
+//    (textcap source 0), while the field's panel is up: AUIAccessInfoDraw's task state +0x294 is 3. The panel's own
+//    actor, AUIActionSuggestionDraw (this build's layout, filled by FUN_141209f70): +0x670 its lines (TArray<FString>,
+//    the bracketed one with its brackets), +0x680 one int32 per line, 1 when the row's SuggestionFlag is on; the draw
+//    (FUN_14144c330) then puts the minimap's "!" icon before that line (4/22: "Head to the police station").
 //  - A picked-up item's line ("Revival Bead×1") is drawn at the left through FontDrawEx (textcap source 2).
 #include "hooks.h"
 #include "items.h"
@@ -74,6 +77,31 @@ static std::string verb_for(const std::string& label, WeakObj* of = nullptr) {
 // apart by its brackets and spoken once per change.
 static std::string g_objective, g_sub_objective;
 static std::vector<std::string> g_shown;   // the objective panel's lines last time it was drawn
+// A panel line as said: the bracketed objective without its U+300E / U+300F corner brackets, any other line cleaned.
+static std::string objective_line(std::string o) {
+  if (o.rfind("\xE3\x80\x8E", 0) == 0) {
+    o = o.substr(3);
+    if (o.size() >= 3 && o.compare(o.size() - 3, 3, "\xE3\x80\x8F") == 0) o.resize(o.size() - 3);
+    return o;
+  }
+  return core::clean_text(o);
+}
+// The panel's lines drawn with the "!" icon (the header's AUIActionSuggestionDraw layout), as said.
+static std::vector<std::string> marked_objectives() {
+  static const int id = watch::want("UIActionSuggestionDraw");
+  std::vector<std::string> out;
+  uint8_t* a = (uint8_t*)watch::get(id);
+  if (!a || !ue::known_build()) return out;
+  guarded([&] {
+    auto* lines = (TArray<FString>*)(a + 0x670);
+    auto* flags = (TArray<int32_t>*)(a + 0x680);
+    int n = std::min(lines->num, flags->num);
+    if (n <= 0 || n > 16 || !lines->data || !flags->data) return;
+    for (int i = 0; i < n; ++i)
+      if (flags->data[i] == 1) out.push_back(objective_line(to_utf8(lines->data[i])));
+  });
+  return out;
+}
 std::string objectives() {
   if (g_sub_objective.empty() || g_objective.empty()) return g_objective;
   return g_objective + ". " + g_sub_objective;
@@ -136,14 +164,14 @@ void prompt_tick() {
     // (2026-11-11). A line is said when it comes into the panel, not while it stays: with one slot for the bracketed
     // line, two of them took turns in it and were said over and over, every frame.
     std::vector<std::pair<float, std::string>> lines;
+    std::vector<std::string> marked;
+    bool marks_read = false;
     for (auto& t : textcap::snapshot(12)) {
       if (t.source != 0 || t.seen_frame <= field_since || !core::has_words(t.text) || t.x <= 1400 || t.y >= 420) continue;
-      std::string o = t.text;
-      // U+300E / U+300F corner brackets around an objective's own line
-      if (o.rfind("\xE3\x80\x8E", 0) == 0) {
-        o = o.substr(3);
-        if (o.size() >= 3 && o.compare(o.size() - 3, 3, "\xE3\x80\x8F") == 0) o.resize(o.size() - 3);
-      } else o = core::clean_text(o);
+      if (!marks_read) { marked = marked_objectives(); marks_read = true; }
+      std::string o = objective_line(t.text);
+      // A line the panel draws with the minimap's "!" says so; one that gains the icon later is said again with it.
+      if (std::find(marked.begin(), marked.end(), o) != marked.end()) o += std::string(", ") + strings::kObjectiveMarked.c_str();
       if (std::none_of(lines.begin(), lines.end(), [&](auto& l) { return l.second == o; })) lines.push_back({t.y, o});
     }
     if (!lines.empty()) {
