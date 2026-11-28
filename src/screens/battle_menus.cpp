@@ -69,10 +69,14 @@ class BattleSkills : public BattleList {
   Mirror& m_ = mirror("skills", [this] { UObject* l = list_.get(); return l ? get<int32_t>(l, "SelectCursor") : -1; });
   int persona() { return w_.unit_int("GetPersonaEquipID", acting_member()); }
   TArray<int32_t>* skill_ids() { UObject* l = list_.get(); return l ? field<TArray<int32_t>>(l, "SkillIDList") : nullptr; }
-  // A skill's row: its name and what it costs `who` now.
+  // A skill's row: its name and what it costs `who` now, "not enough" when the game greys it for that cost, and the
+  // WEAK badge (BtlWords::hits_weakness).
   std::string row(int id, UObject* who) {
     std::string s = w_.skill_name(id), cost = w_.skill_cost(id, who);
-    return cost.empty() ? s : s + ", " + cost;
+    if (!cost.empty()) s += ", " + cost;
+    if (w_.cannot_afford(id, who)) s += std::string(", ") + strings::kNotEnough;
+    if (w_.hits_weakness(id, who)) s += std::string(", ") + strings::kHitsWeakness;
+    return s;
   }
  public:
   BattleSkills() : BattleList(2, "BP_BtlSkillList_C", strings::kSkillKeys) {
@@ -157,6 +161,9 @@ class BattleItems : public BattleList {
       std::string s = std::format("{}, {}", to_utf8(*(FString*)(it + name)), *(int32_t*)(it + num));
       // Its help line from the item's file (FBtlItemData.ID is the full item id the command takes).
       std::string help = idp >= 0 ? items::help(*(int32_t*)(it + idp)) : std::string();
+      // The WEAK badge for the skill the item casts (BP_BtlItemList: GetItemSkillID, then ChkEnemySideWeak).
+      if (idp >= 0 && w_.hits_weakness(w_.item_skill(*(int32_t*)(it + idp)), acting_member()))
+        s += std::string(", ") + strings::kHitsWeakness;
       auto v = game_item(m_, i, [s] { return s; });
       buffer_with(v, [help] { return help; });
       b.add_item(slot("items", i), v);
@@ -186,6 +193,33 @@ class BattleTargets : public BattleList {
     if (id < 0) return {};
     UObject* mgr = battle_objects().gui.get();
     return mgr && call_ret<uint8_t>(mgr, "GetPrevState") == 3 ? items::name_of(id) : w_.skill_name(id);
+  }
+  // The element of what is being used, as the target panel takes it (BP_BtlTargetPanel SetTarget): a plain attack's
+  // from the actor (GetAttackAttr), else GetSkillAttr of the command (an item's skill through GetItemSkillID). -1 for
+  // one the panel draws no affinity for (Almighty, healing, support).
+  int command_attr() {
+    UObject* l = list_.get();
+    UObject* gui = l ? get<UObject*>(l, "BtlGui") : nullptr;
+    UObject* mgr = battle_objects().gui.get();
+    if (!gui || !mgr) return -1;
+    int prev = call_ret<uint8_t>(mgr, "GetPrevState"), attr = -1;
+    if (prev == 1) {
+      if (UObject* a = acting_member()) attr = call_ret<uint8_t>(a, "GetAttackAttr");
+    } else if (find_prop(class_of(gui), "CommandID")) {
+      int id = get<int32_t>(gui, "CommandID");
+      if (prev == 3 && id > 0) id = w_.item_skill(id);
+      if (id > 0) attr = w_.skill_attr(id);
+    }
+    return attr >= 0 && attr <= 9 && attr != 7 ? attr : -1;
+  }
+  // An enemy's line on the list, with the panel's "?" over it when the player has not found its affinity to that
+  // element: "Fire: unknown" (a known one is in the affinities the line reads).
+  std::string target_line(UObject* t) {
+    std::string s = w_.unit_line(t);
+    if (!get_bool(t, "EnemyFlag")) return s;
+    if (int attr = command_attr(); attr >= 0 && w_.known_affinity(t, attr) == 6)
+      s += std::format(", {}: {}", BtlWords::analyze_attr_name(attr), strings::kAffinityShort[6]);
+    return s;
   }
   Mirror& m_ = mirror("targets", [this] {
     UObject* l = list_.get();
@@ -245,7 +279,7 @@ class BattleTargets : public BattleList {
       WeakObj wt = WeakObj::of(list->data[i]);
       b.add_item(slot("targets", i), game_item(m_, i, [this, wt] {
         UObject* t = wt.resolve();
-        return t ? w_.unit_line(t) : std::string();
+        return t ? target_line(t) : std::string();
       }));
     }
     b.end_row();
@@ -286,6 +320,7 @@ class BattleTheurgy : public BattleList {
     for (int i = 0; i < ids->num; ++i) {
       int id = ids->data[i];
       std::string s = w_.skill_name(id);
+      if (w_.hits_weakness(id, acting_member())) s += std::string(", ") + strings::kHitsWeakness;
       auto v = game_item(m_, i, [s] { return s; });
       describe_with(v, [id] { return persona::skill_help(id); });
       b.add_item(slot("theurgy", i), v);
@@ -329,7 +364,10 @@ class BattleShift : public BattleList {
       WeakObj wt = WeakObj::of(list->data[i]);
       b.add_item(slot("shift", i), game_item(m_, i, [this, wt] {
         UObject* t = wt.resolve();
-        return t ? std::format("{}, {}", w_.unit_name(t), w_.hp_sp(t)) : std::string();
+        if (!t) return std::string();
+        std::string s = std::format("{}, {}", w_.unit_name(t), w_.hp_sp(t));
+        if (w_.member_hits_weakness(t)) s += std::string(", ") + strings::kCanHitWeakness;
+        return s;
       }));
     }
     b.end_row();

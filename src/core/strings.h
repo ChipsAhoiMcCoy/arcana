@@ -251,6 +251,10 @@ inline constexpr Tr kRushOn{"Rush"};
 inline constexpr Tr kRushOff{"Rush off"};
 // The word beside a hit's number (BP_BtlGuiDamage2 types 5 to 9), then "on" and the unit unless the player chose it.
 inline constexpr Tr kHitWords[] = {"Weak", "Critical", "Resist", "Miss", "Block"};
+// The WEAK badge on a battle list's row: an enemy has a weakness you have found to this skill or item's element; on
+// the Shift list, one of this member's skills does.
+inline constexpr Tr kHitsWeakness{"hits a weakness"};
+inline constexpr Tr kCanHitWeakness{"can hit a weakness"};
 inline constexpr Tr kPersonaStatus{"Persona status"};
 inline constexpr Tr kLearnSkill{"Learn"};
 inline constexpr Tr kNewSkill{"New skill"};

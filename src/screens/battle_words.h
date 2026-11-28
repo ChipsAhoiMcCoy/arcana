@@ -4,6 +4,7 @@
 // GetSupportTurn). One instance (btl_words) serves the battle screen (battle.cpp), the battle's lists
 // (battle_menus.cpp) and the detail buffer (battle_details.cpp).
 #include "screens/util.h"
+#include "screens/battle_state.h"
 #include "core/affinity.h"
 #include "core/battle_text.h"
 #include "core/strings.h"
@@ -90,6 +91,85 @@ class BtlWords {
   int skill_hp_cost(int id, ue::UObject* who) {
     int type = 0, v = cost_of(id, who, type);
     return type == 1 ? v : 0;
+  }
+  // The skill list greys a skill its user cannot pay for now (BP_BtlSkillList isGrayOut: BtlGui CheckSkillUseable(id,
+  // 2, CostCheckOnly)). That check, without its error sound: nothing to pay while ChkAllCostOff or the skill's
+  // GetSkillCostCheckOff; an HP cost must stay under the HP left, an SP cost at most the SP left.
+  bool cannot_afford(int id, ue::UObject* who) {
+    ue::UObject* d = db();
+    ue::UObject* core = battle_core();
+    if (!d || !who) return false;
+    if (ue::UFunction* f = core ? ue::find_function(ue::class_of(d), "ChkAllCostOff") : nullptr) {
+      ue::Params p(f);
+      p.set<ue::UObject*>("BtlCore", core);
+      ue::call(d, p);
+      if (p.ret<bool>()) return false;
+    }
+    if (ue::UFunction* f = ue::find_function(ue::class_of(d), "GetSkillCostCheckOff")) {
+      ue::Params p(f);
+      p.set<int32_t>("skillId", id);
+      ue::call(d, p);
+      if (p.ret<bool>()) return false;
+    }
+    int type = 0, v = cost_of(id, who, type);
+    if (!v) return false;
+    return type == 1 ? v >= unit_int("GetUnitHP", who) : v > unit_int("GetUnitSP", who);
+  }
+  // The WEAK badge the skill, item and Theurgy lists draw on a row: BtlDataBase ChkEnemySideWeak(GetAction,
+  // GetEnemyList, GetSkillAttr(id)), true when an enemy still standing has a weakness to the skill's element that the
+  // player has found (any weakness, for an element Analyze does not show; exe FUN_14102a8a0).
+  bool hits_weakness(int skill_id, ue::UObject* who) {
+    ue::UObject* d = db();
+    ue::UObject* core = battle_core();
+    auto* enemies = core ? ue::field<ue::TArray<ue::UObject*>>(core, "EnemyList") : nullptr;
+    ue::UFunction* f = d ? ue::find_function(ue::class_of(d), "ChkEnemySideWeak") : nullptr;
+    if (!f || !who || !enemies || skill_id <= 0) return false;
+    int attr = skill_attr(skill_id);
+    if (attr < 0) return false;
+    ue::Params p(f);
+    p.set<ue::UObject*>("Action", who);
+    p.set<ue::TArray<ue::UObject*>>("EnemyList", *enemies);   // the call copies the list: the core's stays its own
+    p.set<uint8_t>("attr", (uint8_t)attr);
+    ue::call(d, p);
+    return p.ret<bool>();
+  }
+  // A database call taking one int (`param`), returning a T: GetItemSkillID, GetSkillAttr.
+  template <typename T>
+  int id_call(const char* fn, const char* param, int id) {
+    ue::UObject* d = db();
+    ue::UFunction* f = d ? ue::find_function(ue::class_of(d), fn) : nullptr;
+    if (!f) return -1;
+    ue::Params p(f);
+    p.set<int32_t>(param, id);
+    ue::call(d, p);
+    return p.ret<T>();
+  }
+  int item_skill(int item_id) { return id_call<int32_t>("GetItemSkillID", "ItemId", item_id); }
+  int skill_attr(int skill_id) { return id_call<uint8_t>("GetSkillAttr", "skillId", skill_id); }   // EBtlDataAttr
+  // What the player knows of a unit's affinity to an attr (GatAnalizeAttr: EBtlDataAnalyze, 6 unknown), -1 without.
+  int known_affinity(ue::UObject* a, int attr) {
+    ue::UObject* d = db();
+    ue::UFunction* f = d && a ? ue::find_function(ue::class_of(d), "GatAnalizeAttr") : nullptr;
+    if (!f) return -1;
+    ue::Params p(f);
+    p.set<ue::UObject*>("Actor", a);
+    p.set<uint8_t>("attr", (uint8_t)attr);
+    ue::call(d, p);
+    return p.ret<uint8_t>();
+  }
+  // The same badge on the Shift list, for a member one of whose skills does (ChkEnemySideWeakAll; BP_BtlGuiShiftSelect
+  // sets the icon's IsWeakSkill from it).
+  bool member_hits_weakness(ue::UObject* member) {
+    ue::UObject* d = db();
+    ue::UObject* core = battle_core();
+    auto* enemies = core ? ue::field<ue::TArray<ue::UObject*>>(core, "EnemyList") : nullptr;
+    ue::UFunction* f = d ? ue::find_function(ue::class_of(d), "ChkEnemySideWeakAll") : nullptr;
+    if (!f || !member || !enemies) return false;
+    ue::Params p(f);
+    p.set<ue::UObject*>("Action", member);
+    p.set<ue::TArray<ue::UObject*>>("EnemyList", *enemies);
+    ue::call(d, p);
+    return p.ret<bool>();
   }
   int cost_of(int id, ue::UObject* who, int& type) {
     ue::UObject* d = db();
