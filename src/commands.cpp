@@ -45,6 +45,8 @@ static void where_am_i() {
   }
   std::vector<std::string> parts{date, area};
   if (int m = stats::money(); m >= 0) parts.push_back(strings::count(m, strings::kYen));
+  // Mail not yet opened: the field's mail icon (Ctrl opens it).
+  if (int u = stats::unread_mail(); u > 0) parts.push_back(strings::count(u, strings::kUnreadMailOne, strings::kUnreadMails));
   // The story objective with the line stacked under it (the field's top-right panel, the last one shown).
   std::string goal = poi::objectives();
   parts.push_back(goal.empty() ? std::string(strings::kNoObjective) : std::string(strings::kObjective) + ": " + goal);

@@ -17,6 +17,7 @@
 #include "devserver.h"
 #include "hooks.h"
 #include "screens/util.h"
+#include "party.h"
 #include "stats.h"
 #include "input.h"
 #include "log.h"
@@ -463,7 +464,9 @@ static void read_choices(Tick& tk, Seen& s, UObject* sel) {
       if (core::all_filled(ch)) {
         // Under the money panel with a price planned (the TV shop): the price and the wallet first.
         if (idx < ch.size()) {
-          std::string price = stats::price_line();
+          // Under Fuuka's support panel (Tartarus): the party's HP and SP and hers, which the panel shows beside it.
+          std::string price = stats::price_line(), support = party::support_panel_line();
+          if (!support.empty()) price = price.empty() ? support : price + ". " + support;
           say_after(price.empty() ? choice_line(ch, idx) : price + ". " + choice_line(ch, idx));
         }
         s.sel_obj = list;

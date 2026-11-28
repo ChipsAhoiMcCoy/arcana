@@ -10,6 +10,7 @@ bool read(Stats& out);
 std::string rank_name(const Stats& s, int stat);   // "Slacker"
 std::string describe();                             // "Academics Slacker, Charm Plain, Courage Timid. 3000 yen"
 int money();                                        // the wallet, or -1
+int unread_mail();                                  // mail received and not yet opened, or -1 (this build's layout)
 // A notice said this gain itself (the item notice's yen): the wallet's change by that much is not said again.
 void money_told(int amount);
 // While a script shows the money panel with a payment planned (a shop's "Buy it?"): "Price 2980 yen, you have 4800

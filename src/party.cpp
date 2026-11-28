@@ -7,6 +7,8 @@
 #include "core/strings.h"
 #include "dat.h"
 #include "devserver.h"
+#include "flow.h"
+#include "hooks.h"
 #include "log.h"
 #include "screens/screen.h"
 #include "speech.h"
@@ -182,7 +184,26 @@ void tick() {
   prev = cur;
 }
 
+// The support party panel: Fuuka's support talk in Tartarus (BF_FldSupport_Tactics SUB_FUKA_SKILL) opens it with
+// OPEN_SUPPORT_PARTY_PANEL before her skill list and closes it with CLOSE_SUPPORT_PARTY_PANEL: every member's HP and
+// SP and her own SP beside the list. The panel (AUIMiscSupportPartyPanel) is native and unreflected: the script's
+// commands say when it is up, and the choice list under it says the party (msg.cpp), as the money panel's price.
+static flow::Command g_support_open, g_support_close;
+static bool g_support = false;
+static int64_t support_open_hook(uint8_t* ctx) { g_support = true; return g_support_open(ctx); }
+static int64_t support_close_hook(uint8_t* ctx) { g_support = false; return g_support_close(ctx); }
+std::string support_panel_line() {
+  if (!g_support) return {};
+  if (screens::loading()) { g_support = false; return {}; }
+  return summary();
+}
+
 void install() {
+  struct { flow::Command* fn; void* hook; const char* name; } cmds[] = {
+      {&g_support_open, (void*)&support_open_hook, "OPEN_SUPPORT_PARTY_PANEL"},
+      {&g_support_close, (void*)&support_close_hook, "CLOSE_SUPPORT_PARTY_PANEL"}};
+  for (auto& c : cmds)
+    if ((*c.fn = (flow::Command)flow::command(c.name))) hooks::attach((void**)c.fn, c.hook, c.name);
   // Wanted before the first tick, so that tick's one sweep fills them with every other class's.
   watch::want("GlobalWork");
   watch::want("DatPlayerFirstNameTable", true);

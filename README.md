@@ -40,7 +40,7 @@ The game's own controls work as usual. The mod adds:
 - F2: Mod settings
 - F3: Sonar on or off
 - Hold Alt: Walk. The game only runs on the keyboard (a controller's stick walks when pushed gently); while you hold Alt the movement keys walk, as holding Shift dashes. Shift with Alt still dashes. With Always dash (F2, Exploring, on by default), you dash without Shift outside Tartarus, and holding Shift runs. The mod's keys work while you hold it, and the mod's walk to a point of interest dashes or runs with you
-- Slash: Where am I: date (with the moon: "full moon", or the days to the next one, as the date in the corner counts them), area, yen and current objective
+- Slash: Where am I: date (with the moon: "full moon", or the days to the next one, as the date in the corner counts them), area, yen, unread mail and current objective
 - Shift+Slash: Social stats with their ranks
 - Shift+Backslash: Social Links: each arcana with its partner and rank
 - Backslash: Repeat the current message, or describe the current screen
@@ -203,7 +203,7 @@ They work like any other menu: up and down choose (at either end a further press
 - Semicolon (triggers + B) while someone talks with their portrait up describes them as the portrait shows them now: their look, the outfit (uniform, winter coat, swimsuit, yukata, combat gear...) and how they stand. Every outfit of every character with a portrait is described.
 - Semicolon (triggers + B) on a Persona or a Shadow describes how it looks, written from the game's own 3D models: every Persona (the DLC ones too) and every Shadow, recoloured siblings and bosses included, and the people you fight. It works on the enemy or party member under the cursor in battle (a party member: their Persona), any Persona status page (a fusion's result, a level up, the camp's Persona list, Shuffle Time), the fusion and search lists, the compendium (registered entries only) and the registry list.
 - Semicolon (triggers + B) on a Social Link in the camp menu, or on its page (the link or one of its people), describes the picture the menu draws beside it: the person, or for the team the collage of faces, which grows as members join. On the old couple's page, each of them has their own.
-- Messages (Ctrl, or the morning's "I've got a text message..."): each mail as sender and title, "new" when unread; Space reads it, Escape closes. The reply choice that follows is read like any choice.
+- Messages (Ctrl, or the morning's "I've got a text message..."): each mail as sender and title, "new" when unread; Space reads it, Escape closes. The reply choice that follows is read like any choice. A mail that arrives while you explore is announced as "New mail" (the game only lights its mail icon).
 - A new day: the date, weekday, time of day and moon as the day-change screen starts ("April 7, Tuesday, Morning. Waxing gibbous moon"), and a new time of day as its screen plays. A date reached any other way (a load, a story jump) is said once you can walk.
 - Game over: "Game Over" and the poem are read whole; one press of Space or Enter (A) ends it and goes to the choices, each read with its description.
 

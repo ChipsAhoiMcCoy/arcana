@@ -11,6 +11,7 @@
 #include "party.h"
 #include "seh.h"
 #include "screens/screen.h"
+#include "screens/util.h"
 #include "speech.h"
 #include "world.h"
 #include <windows.h>
@@ -25,6 +26,7 @@ using namespace ue;
 // The stat whose points rose last, until a Stats up! panel has shown it (screens/stats_up.cpp takes it).
 static int g_last_up = -1;
 int last_up() { return g_last_up; }
+static void mail_tick(bool load);
 void up_shown() { g_last_up = -1; }
 
 
@@ -126,6 +128,7 @@ void tick() {
   int m = money();
   bool load = screens::loading();   // a save loading: take the new values silently
   if (load) { have = false; prev_money = -1; g_panel = false; }
+  mail_tick(load);
   // A money notice says its own gain (screens/get_item.cpp); the game pays on its confirm.
   bool told = g_told_money > 0 && m - prev_money == g_told_money;
   if (m >= 0 && prev_money >= 0 && m != prev_money) g_told_money = 0;
@@ -163,6 +166,38 @@ void tick() {
     }
   prev = s;
   have = true;
+}
+
+// The mailbox in the game's work area (GET_RECEIVED_MAIL_NUM, FUN_14146d110: +0xC8CC the count; a mail received,
+// FUN_14145f030: +0xC82C + 8 * i {u16 mail id, u8 flags: 1 received, 2 opened (counted by FUN_14146d330)}, at most
+// 20).
+int unread_mail() {
+  if (!ue::known_build()) return -1;
+  int n = -1;
+  guarded([&] {
+    uint8_t* g = screens::game_work();
+    if (!g) return;
+    int count = *(int32_t*)(g + 0xC8CC);
+    if (count < 0 || count > 20) return;
+    n = 0;
+    for (int i = 0; i < count; ++i) n += !(g[0xC82E + i * 8] & 2);
+  });
+  return n;
+}
+
+// A mail arriving lights the field's mail icon, nothing else (no sound, no line): said once the field is back in
+// front, while it is still unopened.
+static void mail_tick(bool load) {
+  static int prev = -1, pending = 0;
+  int n = unread_mail();
+  if (load || n < 0) { prev = -1; pending = 0; return; }
+  if (prev >= 0 && n > prev) pending += n - prev;
+  if (n < pending) pending = n;   // opened meanwhile
+  prev = n;
+  if (pending > 0 && !screens::current() && world::exploring()) {
+    speech::speak(std::string(strings::kNewMail), false);
+    pending = 0;
+  }
 }
 
 // UGlobalWorkBpLib::GWorkGetMoney -- the wallet.

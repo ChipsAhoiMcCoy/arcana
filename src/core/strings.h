@@ -149,6 +149,9 @@ inline constexpr Hint kFastTravelKeys{"Up and down arrows choose, Space goes, Ta
 inline constexpr Hint kEntranceKeys{"Up and down arrows choose, Space goes, F town info, Escape back to the map.", "Up and down choose, A goes, X town info, B back to the map."};
 inline constexpr Tr kMail{"Mail"};
 inline constexpr Tr kMailNew{"new"};
+inline constexpr Tr kNewMail{"New mail"};          // a mail arrived (the field's mail icon lit)
+inline constexpr Tr kUnreadMailOne{"unread mail"};  // the status key: "1 unread mail", "2 unread mails"
+inline constexpr Tr kUnreadMails{"unread mails"};
 inline constexpr Tr kMailEmpty{"No messages"};
 inline constexpr Hint kMailKeys{"Up and down arrows choose, Space reads, Escape closes.", "Up and down choose, A reads, B closes."};
 // An open text (FUN_141475cb0 case 5): Space replies to one that takes a reply, else goes back like cancel.
