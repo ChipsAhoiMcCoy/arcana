@@ -435,11 +435,24 @@ std::vector<Poi> scan(float radius) {
   // The stairways to the field's other floors (the Strip Mall's, Club Escapade's, Port Island Station's): each by the
   // slab at its far end, on a landing above or below the hero's floor.
   // Each is listed and heard from where it is walked into from here (floors::lead), not from the slab itself.
+  // Two stairways walked into at one place to one floor are one way from here (core::distinct_ways).
+  struct Led { floors::Way w; world::FVector at; bool led; };
+  std::vector<Led> led;
+  std::vector<core::WayLead> leads;
   for (const floors::Way& w : floors::ways()) {
+    Led l{w, {}, false};
+    world::FVector slab{};
+    l.led = floors::lead(w.box, me, l.at) && guarded([&] { slab = world::actor_location(w.box); });
+    led.push_back(l);
+    // One with no place: a floor of its own, never grouped.
+    leads.push_back(l.led ? core::WayLead{w.to, world::vec3(l.at), world::vec3(slab)} : core::WayLead{-(int)led.size(), {}, {}});
+  }
+  for (size_t i : core::distinct_ways(leads)) {
+    const floors::Way& w = led[i].w;
+    const world::FVector at = led[i].at;
     const size_t had = out.size();
     add(w.box, Kind::Way, floors::name(w), true);
-    world::FVector at{};
-    if (out.size() == had || !floors::lead(w.box, me, at)) continue;
+    if (out.size() == had || !led[i].led) continue;
     Poi& p = out.back();
     p.loc = at;
     p.dist = std::sqrt((at.x - me.x) * (at.x - me.x) + (at.y - me.y) * (at.y - me.y) + (at.z - me.z) * (at.z - me.z));

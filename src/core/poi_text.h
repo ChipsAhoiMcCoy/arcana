@@ -56,6 +56,15 @@ int part_box(const std::string& overlap_class);
 struct PartBox { int part = 0; Vec3 at; };
 inline constexpr float kWayPairCm = 600.0f;
 std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current);
+// Of the stairways on from here, the ones that are walked into at a place of their own. A stairway is placed where
+// the walk to its far slab first leaves the hero's floor; when the walk to one goes up or down another stairway first
+// (the Strip Mall's other flight up, from the landing beside this one: its floors join only through the top), both
+// are walked into at the same place to the same floor, and the sonar sounded that place twice at once (a player's
+// report, 2026-11-28). Such a group keeps the stairway whose slab is nearest the place (the flight that is there).
+// Indices into `ways`, in their order.
+struct WayLead { int to = 0; Vec3 lead; Vec3 slab; };
+inline constexpr float kSameLeadCm = 150.0f;
+std::vector<size_t> distinct_ways(const std::vector<WayLead>& ways);
 
 // A name that ends in "_<digits>" without a leading zero is, to Unreal, the name before it with a number one
 // higher: "FOO_12" is FOO with number 13. True, with both parts, when `name` is such a name.

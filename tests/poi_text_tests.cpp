@@ -67,6 +67,24 @@ TEST_CASE("ways_from: the Strip Mall's stairways, from each floor") {
   CHECK(ways_from(b, 4).empty());                               // a part no box sets (a room reached by a jump)
 }
 
+TEST_CASE("distinct_ways: the Strip Mall's 2F east landing") {
+  // Read in the game (/floors): from the foot of the east flight up, the walks to the west flight's slabs go by the
+  // east stairs, so they are walked into where the east ones are.
+  std::vector<WayLead> w = {
+    {3, {1051, 60, 409}, {940, -25, 1000}},      // up, east: the flight that is here
+    {1, {1113, -96, 170}, {1065, -150, 180}},    // down, east
+    {3, {1051, 60, 409}, {-940, -25, 1000}},     // up, west: by the east stairs
+    {1, {1111, -70, 157}, {-1050, -150, 180}},   // down, west: by the east stairs
+  };
+  CHECK(distinct_ways(w) == std::vector<size_t>{0, 1});
+  // From 1F's middle each flight is walked into at its own foot: both stay.
+  std::vector<WayLead> f1 = {{2, {1037, -24, 65}, {1255, 35, 400}}, {2, {-875, 207, 20}, {-1255, 35, 400}}};
+  CHECK(distinct_ways(f1) == std::vector<size_t>{0, 1});
+  // The same place to two floors (a landing's up and down) is two ways.
+  std::vector<WayLead> both = {{3, {0, 0, 0}, {0, 0, 500}}, {1, {0, 0, 0}, {0, 0, -500}}};
+  CHECK(distinct_ways(both) == std::vector<size_t>{0, 1});
+}
+
 TEST_CASE("stairs: the hotel's unnamed staircases") {
   int from = 0, to = 0;
   CHECK(stairs("FldHitActor_304_101_H0", from, to)); CHECK(from == 1); CHECK(to == 2);

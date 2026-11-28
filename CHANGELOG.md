@@ -4,6 +4,7 @@
 
 ### Field
 - The chase through the woods on the second day at Yakushima (7/21, "Go after the girl") can be followed. The girl wasn't listed and the sonar never played her. The game gives her no talk icon (you run into her to start the scene), so the mod took her for scenery. She's now listed under People and Events as the objective, at any distance. Each bend in the trail, where she runs farther ahead, is listed under Events as "Event: Go after the girl" until you reach it, so the auto-walk can follow the winding trail stage by stage. The game has no walking map for that trail, and before this the auto-walk said "Stuck" against the cliff.
+- The stairs sonar plays one sound per stairway you can take, not two at once. In the Iwatodai Strip Mall, from the foot of one flight, the flight on the far side of the floor is reached by going up (or down) the near one first, so it was placed on the same spot and both sounds played together, and the list had "Stairs to floor 3" twice. Now only the stairway in front of you is listed and heard there; the far one comes back once you're closer to it.
 - The auto-walk gets closer to anything the game's walking map doesn't reach: it walks to the end of that map nearest the target, then heads straight in, instead of heading straight in from where you stand. It also stops quietly when a story scene starts on the way, instead of pushing on and saying "Stuck" over the scene's description.
 
 ### Menus

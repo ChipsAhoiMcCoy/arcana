@@ -106,6 +106,21 @@ std::vector<size_t> ways_from(const std::vector<PartBox>& boxes, int current) {
   return out;
 }
 
+std::vector<size_t> distinct_ways(const std::vector<WayLead>& ways) {
+  std::vector<size_t> out;
+  for (size_t i = 0; i < ways.size(); ++i) {
+    const float mine = dist3(ways[i].slab, ways[i].lead);
+    bool beaten = false;
+    for (size_t j = 0; j < ways.size() && !beaten; ++j) {
+      if (j == i || ways[j].to != ways[i].to || dist3(ways[j].lead, ways[i].lead) > kSameLeadCm) continue;
+      const float theirs = dist3(ways[j].slab, ways[i].lead);
+      beaten = theirs < mine || (theirs == mine && j < i);
+    }
+    if (!beaten) out.push_back(i);
+  }
+  return out;
+}
+
 bool numbered_name(const std::string& flag, std::string& base, int& number) {
   size_t us = flag.find_last_of('_');
   if (us == std::string::npos || us + 1 >= flag.size() || flag.size() - us > 10 ||
