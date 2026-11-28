@@ -66,6 +66,7 @@ class ShopScreen : public MenuScreen {
   Mirror& fuse_ = mirror("shop.fuse", [this] { return state() == 0x10 ? u16(0x318) + u16(0x31A) : -1; });
   Mirror& yn_ = mirror("shop.yn", [this] { int st = state(); return yes_no(st) ? u16(yn_off(st)) : -1; });
   int qty_ = -1;
+  int compare_ = -1;   // the compare view's (member << 16 | item) last said
 
   // Write a u16 row / top pair (the lists' cursors) for index i, then the cursor sound.
   bool write_rows(int row_off, int i, int count, int shown) {
@@ -141,6 +142,40 @@ class ShopScreen : public MenuScreen {
     if (!u || mode < 1 || mode > 4) return 0;
     int id = *(uint16_t*)(u + 0x28C + (mode - 1) * 2);
     return id == 0x8000 ? 0 : id;
+  }
+  // An item's name, stats (each with "up" / "down" against `against`, the arrows the compare view draws) and Effect.
+  static std::string compared(int id, int against) {
+    std::string n = items::name_of(id);
+    items::Info in, cur;
+    if (n.empty() || !items::find(n, in)) return n;
+    std::string w = against ? items::name_of(against) : std::string();
+    bool cmp = !w.empty() && items::find(w, cur);
+    auto stat = [&](const char* word, int v, int was) {
+      if (!v) return;
+      n += std::format(", {} {}", word, v);
+      if (cmp && v != was) n += std::string(" ") + (v > was ? strings::kStatUp.c_str() : strings::kStatDown.c_str());
+    };
+    stat(strings::kAttack, in.attack, cur.attack);
+    stat(strings::kAccuracy, in.accuracy, cur.accuracy);
+    stat(strings::kDefence, in.defence, cur.defence);
+    stat(strings::kEvasion, in.evasion, cur.evasion);
+    return n + items::effect(in);
+  }
+  // The compare view (F: state 8 a buy list's, 0x12 the antique fusion list's): the row's item for one member, its
+  // stats against what that member wears in its slot, then the worn piece. The member is the shop's member cursor
+  // (+0x2E0 over the ids at +0x2D0; Q / E step it over those who can equip the item), the slot the item id's category
+  // (id >> 12: 0 weapons, 1 armor, 2 footwear, 3 accessories).
+  std::string compare_line(int who, int id) {
+    int sl = id < 0x4000 ? id >> 12 : -1;
+    int worn = sl >= 0 ? worn_id(who, sl + 1) : 0;
+    std::string l = std::format("{}: {}", party::name(who), compared(id, worn));
+    if (worn) {
+      std::string w = items::name_of(worn);
+      items::Info in;
+      if (!w.empty() && items::find(w, in)) w += items::stats(in);
+      l += std::format(". {} {}: {}", party::name(who), strings::kEquipped, w);
+    }
+    return l;
   }
   // What the member wears in that slot now (the weapon shop's lists are for one member and one slot).
   std::string worn_now(int mode) {
@@ -231,6 +266,16 @@ class ShopScreen : public MenuScreen {
   void on_enter() override { screens::set_keys([this] { return keys(); }); }
   void on_tick() override {
     int st = state();
+    // The compare view draws its panel as pictures; the keys are the game's (up / down the row, Q / E the member).
+    if (st == 8 || st == 0x12) {
+      auto* rows = (TArray<uint8_t>*)(s() + 0x2E8);
+      int i = u16(0x2F8) + u16(0x2FA), who = member();
+      int id = rows->data && i >= 0 && i < rows->num ? *(uint16_t*)(rows->data + i * 0x28 + 4) : 0;
+      int key = (who << 16) | id;
+      if (who && id && key != compare_) { compare_ = key; speech::speak(compare_line(who, id), true); }
+    } else {
+      compare_ = -1;
+    }
     if (st != 9 && st != 0x16) { qty_ = -1; return; }
     int q = u16(st == 9 ? 0x330 : 0x354);
     if (q == qty_) return;
