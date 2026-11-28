@@ -12,18 +12,28 @@
 //   (FUN_14147fc20, 2026-11-24), +0x538 a pointer to its ListCursor,
 //   +0x548 the bar, +0x728 the highlighted case, +0xB48 TArray<{u16, u16 case}> (count also at +0xB50).
 //   DisappearDataAsset +0x30: a TMap, elements of 0x30 (key at +0, the case's flags at +8).
+//   VelvetRoomQuestDataAsset (the game's common resource 0x12, FUN_1414fcee0): Data +0x30 / count +0x38, rows of
+//   0x48 indexed by the list's quest id: +0x12 EndMonth, +0x13 EndDay (the Deadline column, 0 none), +0x20 Rank (the
+//   Info view's difficulty butterflies, of 5), +0x24 Request {u8 type (0 event, 1 item, 2 Persona, 3 counter), +0x28
+//   u32 ID, +0x2C u32 Value}, +0x34 Reward {u16 item, u16 count, u32 money}, +0x44 QuestIndex (the No. column).
+//   The Info view (UIRequest state 9) shows the request at +0x300: its task and counter, reward, BMD_Quest page 0
+//   (the details, laid out with the item's name) and the difficulty.
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/camp.h"
 #include "bmdfile.h"
 #include "core/bmd.h"
+#include "core/calendar_text.h"
+#include "core/speech_text.h"
 #include "core/strings.h"
 #include "core/text_clean.h"
+#include "items.h"
 #include "msg.h"
 #include "party.h"
 #include <algorithm>
 #include <format>
 #include <map>
+#include <optional>
 
 namespace p3a::screens {
 using namespace ue;
@@ -109,6 +119,110 @@ class CampQuest : public MenuScreen {
     if (gap) { *gap = false; for (auto& fn : pg.functions) if (fn.table == 4) *gap = true; }
     return core::clean_text(core::bmd::plain(pg));
   }
+  static uint8_t* quest_row(int id) {
+    void* res = fn<void* (*)()>(0xfc85f0)();
+    UObject* a = res ? fn<UObject* (*)(void*, uint8_t)>(0x15695e0)(res, 0x12) : nullptr;
+    if (!a || !ue::is_a(a, "VelvetRoomQuestDataAsset") || id < 0 || id >= i32((uint8_t*)a, 0x38)) return nullptr;
+    uint8_t* d = *(uint8_t**)((uint8_t*)a + 0x30);
+    return d ? d + id * 0x48 : nullptr;
+  }
+  // A list row as the game draws it: the title, NEW, the status, the deadline.
+  std::string row_label(const uint8_t* e) {
+    int id = *(const uint16_t*)e, status = e[2];
+    if (status == 5) return strings::kRequestLocked.c_str();
+    std::string label = quest_title(id);
+    if (e[3]) label += std::string(", ") + strings::kNew;
+    if (status >= 0 && status < 5) label += std::string(", ") + strings::kRequestStatus[status];
+    if (uint8_t* q = quest_row(id); q && q[0x12] && q[0x13])
+      label += ", " + strings::fmt(strings::kRequestDeadlineFmt, core::date_text(q[0x12], q[0x13], -1, false, ""));
+    return label;
+  }
+  // The Info view's counter ("120/200") as the game's clear check counts it (FUN_1414feb20): an item carried
+  // (FUN_1411ef210) plus the ones party members 1..12 wear (FUN_140fca100 present, FUN_14130caf0 slots 0..4); a
+  // counter (FUN_1412296e0). An event or a Persona has none (-1).
+  static int progress(const uint8_t* q) {
+    uint32_t id = *(const uint32_t*)(q + 0x28);
+    if (q[0x24] == 3) return fn<int (*)(void*, uint32_t)>(0x12296e0)(game_work(), id);
+    if (q[0x24] != 1) return -1;
+    int n = fn<uint8_t (*)(uint16_t)>(0x11ef210)((uint16_t)id);
+    for (uint32_t m = 1; m < 0xD; ++m) {
+      if (!fn<bool (*)(uint32_t)>(0xfca100)(m)) continue;
+      for (int s = 0; s < 5; ++s)
+        if (fn<uint16_t (*)(uint16_t, int)>(0x130caf0)((uint16_t)m, s) == (uint16_t)id) ++n;
+    }
+    return n;
+  }
+  // Request Details: the page the game laid out from BMD_Quest for the Info view (dialog = the id, page 0: the details
+  // alone, the item's name filled in; its text starts as the file's, so a page of another file once at that buffer's
+  // address does not count). Until then the file's page when it has no hole, its task (page 1) cut from its end.
+  // nullopt: the game's page is still to come.
+  std::optional<std::string> details(int id) {
+    bool gap = false;
+    std::string file = quest_page(id, 0, &gap);
+    std::string head = file.substr(0, std::min<size_t>(file.size(), 8));
+    if (const void* buf = bmdfile::buffer("BMD_Quest"))
+      for (auto& pg : msg::pages_of(buf))
+        if (pg.dialog == id && pg.page == 0) {
+          std::string t = core::clean_text(pg.text);
+          if (!head.empty() && t.starts_with(head)) return t;
+        }
+    if (gap) return std::nullopt;
+    std::string task = quest_page(id, 1);
+    if (!task.empty() && file.size() > task.size() && file.ends_with(task)) {
+      file.resize(file.size() - task.size());
+      while (!file.empty() && file.back() == ' ') file.pop_back();
+    }
+    return file;
+  }
+  // The Info view's request, read in the order the game lays it out: the row, the task and its counter, the reward,
+  // the details, the difficulty. Empty while its details page is still being built.
+  std::string info_text(int& shown) {
+    uint8_t* r = info();
+    auto* list = r ? arr<uint8_t>(r, 0xD0) : nullptr;
+    int i = r ? i32(r, 0x300) : -1;
+    shown = i;
+    if (!list || i < 0 || i >= list->num) return {};
+    const uint8_t* e = list->data + i * 0xC;
+    int id = *(const uint16_t*)e;
+    std::string out = core::position(row_label(e), i + 1, list->num);
+    if (e[2] == 5) return out;
+    auto d = details(id);
+    if (!d) return {};
+    bool gap = false;
+    std::string task = quest_page(id, 1, &gap);
+    if (const void* buf = bmdfile::buffer("BMD_Quest"))
+      for (auto& pg : msg::pages_of(buf))
+        if (pg.dialog == id && pg.page == 1) {
+          std::string t = core::clean_text(pg.text);
+          if (t.starts_with(task.substr(0, std::min<size_t>(task.size(), 8)))) { task = t; gap = false; }
+        }
+    if (!gap && !task.empty()) out += ". " + task;
+    if (uint8_t* q = quest_row(id)) {
+      // the game's counter stops at the goal (203 chests opened shows 200/200)
+      if (int p = progress(q); p >= 0) {
+        int goal = (int)*(const uint32_t*)(q + 0x2C);
+        out += ". " + strings::fmt(strings::kRequestProgressFmt, strings::of(std::min(p, goal), goal));
+      }
+      int item = *(const uint16_t*)(q + 0x34), count = *(const uint16_t*)(q + 0x36);
+      uint32_t money = *(const uint32_t*)(q + 0x38);
+      std::string reward;
+      if (std::string n = item ? items::name_of(item) : std::string(); !n.empty()) reward = count > 1 ? strings::fmt(strings::kCountFmt, n, count) : n;
+      if (money) reward += (reward.empty() ? "" : ", ") + strings::count(money, strings::kYen);
+      if (!reward.empty()) out += ". " + strings::fmt(strings::kRequestRewardFmt, reward);
+      if (!d->empty()) out += ". " + *d;
+      if (q[0x20]) out += ". " + strings::fmt(strings::kRequestDifficultyFmt, strings::of(q[0x20], 5));
+    } else if (!d->empty()) {
+      out += ". " + *d;
+    }
+    return out;
+  }
+  int info_said_ = -1;
+  void on_tick() override {
+    if (tab() != 0 || !info()) { info_said_ = -1; return; }
+    int shown = -1;
+    std::string t = info_text(shown);
+    if (!t.empty() && shown != info_said_) { info_said_ = shown; say(t, true); }
+  }
  public:
   const char* id() const override { return "camp_quest"; }
   int priority() const override { return 21; }
@@ -127,8 +241,7 @@ class CampQuest : public MenuScreen {
       for (int i = 0; list && i < list->num; ++i) {
         uint8_t* e = list->data + i * 0xC;
         int id = *(uint16_t*)e, status = e[2];
-        std::string label = status == 5 ? std::string(strings::kRequestLocked) : quest_title(id);
-        if (status >= 0 && status < 5) label += std::string(", ") + strings::kRequestStatus[status];
+        std::string label = row_label(e);
         // Its details are the file's task only when that text is whole: with a hole for an item's name ("Show
         // Elizabeth an.") the review key read it after the filled one below (2026-11-24).
         auto v = game_item(reqs_, i, [label] { return label; }, [this, id, status] {

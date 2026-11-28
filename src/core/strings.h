@@ -963,6 +963,12 @@ inline constexpr Tr kNoTutorials{"There are no tutorials to display."};
 inline constexpr Tr kTacticNames[] = {"Direct Commands", "Act Freely", "Full Assault", "Conserve SP", "Heal/Support"};
 inline constexpr Tr kRequestStatus[] = {"not accepted", "accepted", "completed", "expired", "ready to report"};
 inline constexpr Tr kRequestLocked{"???"};   // a request not yet open (status 5), as the game lists it
+// A request's Deadline column and its Info view (F): "deadline July 5th", "Progress 120 of 200", "Reward: Bead x5",
+// "Difficulty 3 of 5" (the butterflies)
+inline constexpr Tr kRequestDeadlineFmt{"deadline {}"};
+inline constexpr Tr kRequestProgressFmt{"Progress {}"};
+inline constexpr Tr kRequestRewardFmt{"Reward: {}"};
+inline constexpr Tr kRequestDifficultyFmt{"Difficulty {}"};
 // Story cut-ins (cutin.cpp): the close-up a scene flashes before a line it stresses, by the game's character id and
 // picture (T_UI_CI_<PC|SC><char>_<pic>, each picture looked at; 2026-11-02).
 struct Cutin { int chara, pic; Tr text; };
