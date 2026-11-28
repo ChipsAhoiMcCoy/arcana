@@ -150,9 +150,7 @@ static DWORD WINAPI get_state_hook(DWORD user, XINPUT_STATE* st) {
       // Here, as the game first reads the press: before anything the press makes the mod or the game say.
       if (st->Gamepad.wButtons & ~g_real_buttons) speech::player_pressed(false);
       g_real_buttons = st->Gamepad.wButtons;
-      st->Gamepad.wButtons &= ~(g_swallow | g_swallow_prompt | g_end_buttons.load());
-      int sides = g_end_sticks;
-      if (((sides & 1) && st->Gamepad.sThumbLX < 0) || ((sides & 2) && st->Gamepad.sThumbLX > 0)) st->Gamepad.sThumbLX = 0;
+      st->Gamepad.wButtons &= ~(g_swallow | g_swallow_prompt);
     } else {
       g_real_buttons = 0;
     }
@@ -197,6 +195,13 @@ static DWORD WINAPI get_state_hook(DWORD user, XINPUT_STATE* st) {
     }
   }
   layer_filter(g_layer[user], st->Gamepad);
+  // A battle target list's end (block_ends) is hidden from the game only, after the layer has read the pad: hidden
+  // before it, D-pad Left on the first target never reached the layer, so slot 4's party key said nothing.
+  if (user == 0 && r == ERROR_SUCCESS) {
+    st->Gamepad.wButtons &= ~g_end_buttons.load();
+    int sides = g_end_sticks;
+    if (((sides & 1) && st->Gamepad.sThumbLX < 0) || ((sides & 2) && st->Gamepad.sThumbLX > 0)) st->Gamepad.sThumbLX = 0;
+  }
   bool open = false;
   for (auto& l : g_layer) open |= l.on;
   g_layer_open = open;
