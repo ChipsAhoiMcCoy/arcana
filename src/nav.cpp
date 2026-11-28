@@ -6,6 +6,7 @@
 #include "core/strings.h"
 #include "devserver.h"
 #include "doors.h"
+#include "floors.h"
 #include "hooks.h"
 #include "input.h"
 #include "keys.h"
@@ -735,10 +736,15 @@ void tick() {
     Box box;
     bool has_box = trigger_box(t, box);
     bool arrived = has_box ? inside(box, me, -5.0f) : flat(goal, me) < kArrive;
+    // A stairway's slab is reached once the game has moved the hero to the floor it sets (walking into it does): the
+    // box's height leeway reached through floors. The Strip Mall's east slab down to 1F hangs under the 2F walkway,
+    // and the walk "arrived" on 2F standing over it (2026-11-28).
+    const int stair_part = floors::sets(t);
+    if (stair_part) arrived = floors::part() == stair_part;
     // A box mostly inside the wall (the radiator and the mirror in the hero's room, 2026-11-14): the wall stops his
     // middle 2 to 5 cm short of it, though his body is in it. Stopped there for a moment is arriving: turned to it, the
     // game's prompt comes up (pressed still against the wall, he never turned, and the walk said "Stuck").
-    if (!arrived && has_box) {
+    if (!arrived && has_box && !stair_part) {
       float radius, half;
       hero_body(radius, half);
       FVector v{};

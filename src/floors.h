@@ -18,6 +18,7 @@ std::string name(const Way& w);   // "Stairs to floor 2"
 // A walk-through slab that sets a field part (any of them, the hero's own side's too): never a point of interest by
 // itself.
 bool slab(ue::UObject* hit);
+int sets(ue::UObject* hit);   // the part a slab sets, 0 for anything else
 // The walk from the hero (at `me`) to the thing at `at` goes up or down a stairway to another floor: its path passes
 // through a slab that sets another part than his. What "Same floor only" leaves out; height alone does not tell
 // (Paulownia Mall's upper floor is a metre above the square). Worked out once per actor and kept while the hero stays

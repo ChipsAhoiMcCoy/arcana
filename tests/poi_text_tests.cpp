@@ -71,18 +71,29 @@ TEST_CASE("distinct_ways: the Strip Mall's 2F east landing") {
   // Read in the game (/floors): from the foot of the east flight up, the walks to the west flight's slabs go by the
   // east stairs, so they are walked into where the east ones are.
   std::vector<WayLead> w = {
-    {3, {1051, 60, 409}, {940, -25, 1000}},      // up, east: the flight that is here
-    {1, {1113, -96, 170}, {1065, -150, 180}},    // down, east
-    {3, {1051, 60, 409}, {-940, -25, 1000}},     // up, west: by the east stairs
-    {1, {1111, -70, 157}, {-1050, -150, 180}},   // down, west: by the east stairs
+    {true, {1051, 60, 409}, {940, -25, 1000}},      // up, east: the flight that is here
+    {true, {1113, -96, 170}, {1065, -150, 180}},    // down, east
+    {true, {1051, 60, 409}, {-940, -25, 1000}},     // up, west: by the east stairs
+    {true, {1111, -70, 157}, {-1050, -150, 180}},   // down, west: by the east stairs
   };
   CHECK(distinct_ways(w) == std::vector<size_t>{0, 1});
   // From 1F's middle each flight is walked into at its own foot: both stay.
-  std::vector<WayLead> f1 = {{2, {1037, -24, 65}, {1255, 35, 400}}, {2, {-875, 207, 20}, {-1255, 35, 400}}};
+  std::vector<WayLead> f1 = {{true, {1073, -70, 114}, {1255, 35, 400}}, {true, {-1066, -66, 104}, {-1255, 35, 400}}};
   CHECK(distinct_ways(f1) == std::vector<size_t>{0, 1});
-  // The same place to two floors (a landing's up and down) is two ways.
-  std::vector<WayLead> both = {{3, {0, 0, 0}, {0, 0, 500}}, {1, {0, 0, 0}, {0, 0, -500}}};
-  CHECK(distinct_ways(both) == std::vector<size_t>{0, 1});
+  // One with no place is kept.
+  std::vector<WayLead> none = {{true, {0, 0, 0}, {0, 0, 500}}, {false, {0, 0, 0}, {0, 0, 0}}};
+  CHECK(distinct_ways(none) == std::vector<size_t>{0, 1});
+}
+
+TEST_CASE("distinct_ways: the Strip Mall's 2F west landing, one place to two floors") {
+  // The east flight down is walked into by the west flight up (through 3F): one place, one flight, whatever floor.
+  std::vector<WayLead> w = {
+    {true, {-1047, 64, 393}, {940, -25, 1000}},     // up, east
+    {true, {-1047, 64, 393}, {1065, -150, 180}},    // down, east: by the west flight up
+    {true, {-1068, 67, 399}, {-940, -25, 1000}},    // up, west: the flight that is here
+    {true, {-1094, -111, 149}, {-1050, -150, 180}}, // down, west
+  };
+  CHECK(distinct_ways(w) == std::vector<size_t>{2, 3});
 }
 
 TEST_CASE("stairs: the hotel's unnamed staircases") {

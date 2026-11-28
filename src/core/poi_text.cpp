@@ -111,8 +111,8 @@ std::vector<size_t> distinct_ways(const std::vector<WayLead>& ways) {
   for (size_t i = 0; i < ways.size(); ++i) {
     const float mine = dist3(ways[i].slab, ways[i].lead);
     bool beaten = false;
-    for (size_t j = 0; j < ways.size() && !beaten; ++j) {
-      if (j == i || ways[j].to != ways[i].to || dist3(ways[j].lead, ways[i].lead) > kSameLeadCm) continue;
+    for (size_t j = 0; j < ways.size() && !beaten && ways[i].placed; ++j) {
+      if (j == i || !ways[j].placed || dist3(ways[j].lead, ways[i].lead) > kSameLeadCm) continue;
       const float theirs = dist3(ways[j].slab, ways[i].lead);
       beaten = theirs < mine || (theirs == mine && j < i);
     }

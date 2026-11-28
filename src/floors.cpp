@@ -62,7 +62,8 @@ int part() {
   return o ? (int)((uint32_t (*)(uintptr_t))(scan::exe_base() + 0x11addf0))(o) : -1;
 }
 
-bool slab(UObject* hit) { return hit && core::part_box(name_of(get<UObject*>(hit, "mOverlapBluePrint_"))) != 0; }
+int sets(UObject* hit) { return hit ? core::part_box(name_of(get<UObject*>(hit, "mOverlapBluePrint_"))) : 0; }
+bool slab(UObject* hit) { return sets(hit) != 0; }
 
 // What elsewhere() worked out, kept while the hero stays in his part and on his side of the map's doors (a level
 // coming or going counts there too).
@@ -140,13 +141,36 @@ bool lead(UObject* box, const FVector& me, FVector& out) {
     bool partial = false;
     FVector to{};
     if (!guarded([&] { to = world::actor_location(box); })) return false;
-    const std::vector<FVector> path = world::find_path(world::path_start(me), to, &partial);
+    std::vector<FVector> path = world::find_path(world::path_start(me), to, &partial);
+    // A slab hung higher over its stairs than the path query looks: walked to on the walking map under it. Paulownia
+    // Mall's, up to Mandragora, is 2.5 m over the stairs' top and had no path from anywhere: its sound came from the
+    // slab overhead (2026-11-28).
+    if (FVector under{}; path.size() < 2 && world::project_to_nav(to, 100.0f, under, 300.0f))
+      path = world::find_path(world::path_start(me), under, &partial);
     if (path.size() < 2) return false;
     float foot = 0, total = 0;
     bool level = true;
     for (size_t i = 1; i < path.size(); ++i) {
       const float len = core::dist3(world::vec3(path[i - 1]), world::vec3(path[i]));
-      if (level && std::fabs(path[i].z - path[0].z) > kRiseCm) level = false;
+      if (level && std::fabs(path[i].z - path[0].z) > kRiseCm) {
+        level = false;
+        // The segment that rises can start metres before the stairs: across Paulownia Mall's square one ran 14 m
+        // from the square's middle to the stairs' top, and the stairs were placed 4.6 m to one side of them
+        // (2026-11-28). The floor under it says where the climb starts: flat, then rising, so halved to a step's
+        // length (six or so navmesh queries, not one per step).
+        auto risen = [&](float u) {
+          const FVector p{path[i - 1].x + (path[i].x - path[i - 1].x) * u, path[i - 1].y + (path[i].y - path[i - 1].y) * u,
+                          path[i - 1].z + (path[i].z - path[i - 1].z) * u};
+          FVector ground{};
+          return world::project_to_nav(p, 20.0f, ground, 200.0f) && std::fabs(ground.z - path[0].z) > kRiseCm;
+        };
+        float lo = 0.0f, hi = 1.0f;   // flat at lo, risen at hi
+        while ((hi - lo) * len > kStepCm) {
+          const float mid = (lo + hi) / 2;
+          (risen(mid) ? hi : lo) = mid;
+        }
+        foot += lo * len;
+      }
       if (level) foot += len;
       total += len;
     }
