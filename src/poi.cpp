@@ -429,6 +429,24 @@ std::vector<Poi> scan(float radius) {
       else if (bp == "BP_FldHitActor_304_111_H53_Play_C" || bp == "BP_FldHitActor_304_112_H56_Play_C" || bp == "BP_FldHitActor_304_113_H59_Play_C")
         out.back().state = strings::kMirrorReflection.c_str();
     }
+    // The hotel's room doors as its minimap marks them (DatMiniMapIcon_304_101_002 / _003, each icon shown while its
+    // flag is on): a destination pin on the rooms to search (204 and 205 on 2F, 301 to 304 on 3F) and a no-entry mark
+    // on the closed rooms 201 to 203 once checked and on 301 to 303 once their mirror is broken. The doors are
+    // FldHitActor_304_101_H*, rows 10003001-10003009 (rooms 201-205, 301-304).
+    if (!out.empty() && out.back().obj == WeakObj::of(a) && name_of(a).rfind("FldHitActor_304_", 0) == 0) {
+      int room = get<int32_t>(a, "mNameIndex_", -1) - 10003000;
+      static const char* const kNoEntry[10] = {nullptr, "FLD_HOTEL_201_CHECKED", "FLD_HOTEL_202_CHECKED", "FLD_HOTEL_203_CHECKED", nullptr, nullptr,
+                                               "FLD_HOTEL_301_BROKEN_ICON", "FLD_HOTEL_302_BROKEN_ICON", "FLD_HOTEL_303_BROKEN_ICON", nullptr};
+      static const char* const kPin[10] = {nullptr, nullptr, nullptr, nullptr, "FLD_HOTEL_2F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_GOAL_IS_BREAK_2F",
+                                           "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON", "FLD_HOTEL_3F_MISS_FLOOR_ICON_ON",
+                                           "FLD_HOTEL_GOAL_IS_BREAK_3F"};
+      if (room >= 1 && room <= 9) {
+        Poi& p = out.back();
+        const char* mark = kNoEntry[room] && flag_on(kNoEntry[room]) ? strings::kNoEntry.c_str()
+                         : kPin[room] && flag_on(kPin[room]) ? strings::kObjectiveMarked.c_str() : nullptr;
+        if (mark) p.state = p.state.empty() ? std::string(mark) : p.state + ", " + mark;
+      }
+    }
     // A named spot that starts a full moon's boss fight (9/5's Club Escapade door, 10/4's way to the station plaza:
     // Fuuka's "Are you ready?"): it says so after its name and Events lists it too, as the objective's mark is.
     if (!out.empty() && out.back().obj == WeakObj::of(a) &&
