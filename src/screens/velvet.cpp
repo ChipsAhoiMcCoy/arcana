@@ -559,9 +559,11 @@ void VelvetScreen::build_regist(ui::GraphBuilder& b) {
   regist_list_.key = key;
   b.begin_stop(key);
   b.push_context(strings::kRegister.c_str());
+  int worn = equipped_id();
   for (int i = 0; rows->data && i < rows->num && i < 64; ++i) {
     uint8_t* e = rows->data + i * kRow;
     std::string l = entry_line(e);
+    if (worn && *(uint16_t*)(e + 0x1A) == worn) l += std::format(", {}", strings::kEquipped);   // the game's gem
     if (e[0x8A]) l += std::string(", ") + strings::kMarked;
     auto v = game_item(regist_list_, i, [l] { return l; });
     look_persona(v, *(uint16_t*)(e + 0x1A));
