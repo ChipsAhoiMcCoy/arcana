@@ -10,8 +10,7 @@ void PadLayer::buttons(uint32_t s, uint32_t pressed, uint64_t now, PadLayerOutpu
 
 void PadLayer::filter(PadState& g, uint64_t now, const PadLayerOptions& o, PadLayerOutput& out) {
   // A trigger counts as held where the game counts it pressed (Unreal's XInput reader: past
-  // XINPUT_GAMEPAD_TRIGGER_THRESHOLD, 30 of 255) and until it falls under 15 (no flicker at the threshold). Held from
-  // 100 until 2026-11-28: between 30 and 100 the game already had the press, so RT leading LT opened Theurgy.
+  // XINPUT_GAMEPAD_TRIGGER_THRESHOLD, 30 of 255) and until it falls under 15 (no flicker at the threshold).
   uint32_t trig = 0;
   if (g.lt > kTriggerPress || (g.lt >= kTriggerRelease && (prev & kPadLT))) trig |= kPadLT;
   if (g.rt > kTriggerPress || (g.rt >= kTriggerRelease && (prev & kPadRT))) trig |= kPadRT;
@@ -24,51 +23,31 @@ void PadLayer::filter(PadState& g, uint64_t now, const PadLayerOptions& o, PadLa
     // With modal_layer (the contract's on-screen keyboard) both triggers still open the layer, so its keys (F1's
     // hints) work there; its buttons are marked as the layer's.
     if (o.modal_layer && both && !on) out.add(0, false);
-    on = both; pend = 0;
+    on = both;
     hidden |= s;
     buttons(s, pressed, now, out);
     prev = s;
     g = PadState{};
     return;
   }
-  const uint64_t grace = o.grace_ms;
-  if (both && !on) { on = true; pend = 0; out.add(0, false); }
+  if (both && !on) { on = true; out.add(0, false); }
   else if (!both && on) on = false;
   if (on) {
     hidden |= s;
     buttons(s, pressed, now, out);
   } else {
     held = 0;
-    // One trigger alone: held back for a moment in case the other follows.
-    if (uint32_t t = pressed & kPadTriggers & ~hidden; t && !(s & kPadTriggers & ~t)) { pend = t; pend_at = now; }
-    // A claimed lone trigger is taken once the other has had a moment to follow (the layer): the tap fires on the
-    // press, not the release (an analog trigger takes a while to travel back), and the trigger stays hidden from the
-    // game until let go.
-    constexpr uint64_t kTapWindow = 50;
-    if (o.claim_taps && pend && now - pend_at >= (grace < kTapWindow ? grace : kTapWindow)) {
-      out.tap = pend == kPadLT ? -1 : 1;
-      hidden |= pend;
-      pend = 0;
+    // A claimed lone trigger is the caller's tap on its press (an analog trigger takes a while to travel back), hidden
+    // from the game until let go. A lone trigger is never held back otherwise: the game has it at once (the user's
+    // call, 2026-11-28: the trigger delay cost every trigger press more than a stray one ever did).
+    if (uint32_t t = pressed & kPadTriggers & ~hidden; o.claim_taps && t && !(s & kPadTriggers & ~t)) {
+      out.tap = t == kPadLT ? -1 : 1;
+      hidden |= t;
     }
-    if (pend && !(s & pend)) {   // let go within the grace: the game gets a short press after all
-      if (now - pend_at < grace) {
-        if (o.claim_taps) out.tap = pend == kPadLT ? -1 : 1;   // the caller's tap instead
-        else { replay = pend; replay_until = now + 80; }
-      }
-      pend = 0;
-    }
-    if (pend && now - pend_at >= grace) pend = 0;
   }
   prev = s;
-  uint32_t hide = hidden | pend;
-  g.buttons &= ~(uint16_t)(hide & 0xFFFF);
-  if (hide & kPadLT) g.lt = 0;
-  if (hide & kPadRT) g.rt = 0;
-  if (replay && now < replay_until) {
-    if (replay & kPadLT) g.lt = 255;
-    if (replay & kPadRT) g.rt = 255;
-  } else {
-    replay = 0;
-  }
+  g.buttons &= ~(uint16_t)(hidden & 0xFFFF);
+  if (hidden & kPadLT) g.lt = 0;
+  if (hidden & kPadRT) g.rt = 0;
 }
 }  // namespace p3a::core

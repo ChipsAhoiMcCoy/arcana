@@ -316,8 +316,7 @@ void pad_button(uint16_t b) {
 }
 void pad_tick(bool on) {
   static bool swallowing = false;
-  // A trigger press jumps a page's sections (input.cpp: fired once the other trigger has had the trigger delay to follow for the
-  // mod layer; the game does not see it).
+  // A trigger press jumps a page's sections (input.cpp: fired on a lone trigger's press; the game does not see it).
   bool taps = on && sections() && !triggers_are_game();
   input::claim_trigger_taps(taps);
   if (!on) {

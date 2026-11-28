@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Ka�
 The Shadow sounds and the controller layer's tick.	Dźwięki Cieni i tyknięcie warstwy kontrolera.
 How loud the wall tones are.	Jak głośne są tony ścian.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	Z jakiej odległości ściana zaczyna brzmieć. Krótsza zostawia tony tylko dla bliskich ścian.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Jak długo jeden spust czeka na drugi, zanim zostanie uznany za zwykłe naciśnięcie w grze. Dłuższy czas ułatwia otwarcie warstwy kontrolera moda.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Menu otwierają się, zamykają i zmieniają szybciej, więc wcześniej przyjmują twoje klawisze. Dźwięki menu gry nadal grają. W walce tylko koło poleceń i listy podczas otwierania, nigdy akcja. Nie dotyczy scen fabularnych ani rozmów.
 Menus say their keys after their first line. Off, F1 still reads them.	Menu podają swoje klawisze po pierwszym wierszu. Po wyłączeniu F1 nadal je odczytuje.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Co czytnik ekranu robi z kwestią, którą gra wypowiada głosem: milczy, podaje tylko, kto mówi, albo czyta ją na głos. Kwestie bez głosu są zawsze czytane.
@@ -608,7 +607,6 @@ Shadow sounds	Dźwięki Cieni
 Wall tone range	Zasięg tonów ścian
 continuous	ciągle
 only while moving	tylko w ruchu
-Trigger delay	Opóźnienie spustów
 Menu key hints on entry	Podpowiedzi klawiszy przy wejściu do menu
 Menu animation speed	Szybkość animacji menu
 4 times	4 razy
@@ -643,7 +641,6 @@ meters	metr|metry|metrów
 meter	metr
 less than 1 meter	mniej niż 1 metr
 percent	procent
-milliseconds	milisekund
 Up and down arrows choose, Space confirms, Escape back.	Strzałki w górę i w dół wybierają, Spacja zatwierdza, Escape wraca.
 Up and down choose, A confirms, B back.	Góra i dół wybierają, A zatwierdza, B wraca.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Strzałki w górę i w dół wybierają, Q i E zmieniają karty, Spacja otwiera, Escape wraca.

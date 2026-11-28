@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Jed
 The Shadow sounds and the controller layer's tick.	Die Schattenklänge und das Ticken der Controller-Ebene.
 How loud the wall tones are.	Wie laut die Wandtöne sind.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	Ab welcher Entfernung eine Wand zu klingen beginnt. Kürzer behält die Töne für nahe Wände.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Wie lange ein Trigger auf den anderen wartet, bevor er als Druck des Spiels selbst zählt. Länger macht die Controller-Ebene der Mod leichter zu öffnen.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Menüs öffnen, schließen und wechseln schneller, sodass sie deine Tasten früher annehmen. Die Menüklänge des Spiels spielen weiterhin. Im Kampf nur das Befehlsrad und die Listen, während sie sich öffnen, nie eine Aktion. Nicht in Story-Szenen oder Gesprächen.
 Menus say their keys after their first line. Off, F1 still reads them.	Menüs nennen ihre Tasten nach ihrer ersten Zeile. Aus: F1 liest sie weiterhin.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Was der Screenreader mit einer vom Spiel vertonten Zeile macht: still bleiben, nur sagen, wer spricht, oder sie vorlesen. Unvertonte Zeilen werden immer gelesen.
@@ -608,7 +607,6 @@ Shadow sounds	Schattenklänge
 Wall tone range	Reichweite der Wandtöne
 continuous	ständig
 only while moving	nur in Bewegung
-Trigger delay	Trigger-Verzögerung
 Menu key hints on entry	Tastenhinweise beim Öffnen von Menüs
 Menu animation speed	Tempo der Menüanimationen
 4 times	4-fach
@@ -643,7 +641,6 @@ meters	Meter
 meter	Meter
 less than 1 meter	weniger als 1 Meter
 percent	Prozent
-milliseconds	Millisekunden
 Up and down arrows choose, Space confirms, Escape back.	Pfeiltasten hoch und runter wählen, Leertaste bestätigt, Escape zurück.
 Up and down choose, A confirms, B back.	Hoch und runter wählen, A bestätigt, B zurück.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Pfeiltasten hoch und runter wählen, Q und E wechseln den Reiter, Leertaste öffnet, Escape zurück.

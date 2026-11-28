@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	В�
 The Shadow sounds and the controller layer's tick.	Звуки Теней и щелчок слоя управления на контроллере.
 How loud the wall tones are.	Громкость тонов стен.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	С какого расстояния стена начинает звучать. Меньшее значение оставляет тоны только для близких стен.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Сколько один триггер ждёт другой, прежде чем нажатие засчитывается игре. Больше — слой управления мода на контроллере открывается легче.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Меню открываются, закрываются и сменяются быстрее, поэтому раньше принимают ваши нажатия. Звуки меню игры по-прежнему звучат. В бою — только колесо команд и списки, пока они открываются, но не действия. Не действует в сюжетных сценах и разговорах.
 Menus say their keys after their first line. Off, F1 still reads them.	Меню называют свои клавиши после первой строки. Если выключено, F1 всё равно читает их.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Что программа экранного доступа делает со строкой, которую озвучивает игра: молчит, называет только говорящего или читает её вслух. Неозвученные строки читаются всегда.
@@ -608,7 +607,6 @@ Shadow sounds	Звуки Теней
 Wall tone range	Дальность тонов стен
 continuous	постоянно
 only while moving	только в движении
-Trigger delay	Задержка триггера
 Menu key hints on entry	Подсказки клавиш при входе в меню
 Menu animation speed	Скорость анимации меню
 4 times	в 4 раза
@@ -643,7 +641,6 @@ meters	метр|метра|метров
 meter	метр
 less than 1 meter	меньше 1 метра
 percent	процент|процента|процентов
-milliseconds	миллисекунд
 Up and down arrows choose, Space confirms, Escape back.	Стрелки вверх и вниз выбирают, Пробел подтверждает, Esc возвращает назад.
 Up and down choose, A confirms, B back.	Вверх и вниз выбирают, A подтверждает, B возвращает назад.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Стрелки вверх и вниз выбирают, Q и E переключают вкладки, Пробел открывает, Esc возвращает назад.

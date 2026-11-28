@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	MOD
 The Shadow sounds and the controller layer's tick.	シャドウの音と、コントローラーレイヤーのカチッという音。
 How loud the wall tones are.	壁の音の大きさ。
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	壁の音が鳴り始める距離。短くすると、近くの壁だけが鳴ります。
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	片方のトリガーを押してから、もう片方を待つ時間。これを過ぎるとゲームへの普通の入力になります。長くするとMODのコントローラーレイヤーを開きやすくなります。
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	メニューの開閉や切り替えが速くなり、早く操作を受け付けます。ゲームのメニュー音はそのまま鳴ります。バトルではコマンドとリストが開く間だけで、行動は速くなりません。ストーリーシーンと会話では無効です。
 Menus say their keys after their first line. Off, F1 still reads them.	メニューを開いたとき、最初の一行の後にキーを伝えます。オフでもF1で読み上げられます。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	ボイス付きのセリフをスクリーンリーダーでどうするか：読まない、話し手の名前だけ読む、読み上げる。ボイスのないセリフは常に読み上げます。
@@ -608,7 +607,6 @@ Shadow sounds	シャドウの音
 Wall tone range	壁の音の範囲
 continuous	常に
 only while moving	移動中のみ
-Trigger delay	トリガーの待ち時間
 Menu key hints on entry	メニューを開いたときのキー案内
 Menu animation speed	メニューのアニメーション速度
 4 times	4倍
@@ -643,7 +641,6 @@ meters	メートル
 meter	メートル
 less than 1 meter	1メートル未満
 percent	パーセント
-milliseconds	ミリ秒
 Up and down arrows choose, Space confirms, Escape back.	上下の矢印キーで選択、スペースで決定、Escで戻ります。
 Up and down choose, A confirms, B back.	上下で選択、Aで決定、Bで戻ります。
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	上下の矢印キーで選択、QとEでタブ切り替え、スペースで開く、Escで戻ります。

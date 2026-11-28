@@ -1,4 +1,4 @@
-// The controller's mod layer: both triggers open it, a lone trigger is held back, a tap is replayed or claimed,
+// The controller's mod layer: both triggers open it, a lone trigger is the game's at once (or a menu's tap),
 // a held button repeats, and a mod menu takes the whole controller.
 #include "doctest.h"
 #include <cstdint>
@@ -107,35 +107,21 @@ TEST_CASE("pad layer: one trigger still held when the layer closes stays hidden 
   p.poll(500, 0, 255, 0);
   CHECK(p.seen.lt == 0);
   p.poll(510, 0, 0, 0);
-  p.poll(520, 0, 255, 0);          // a new press: held back first, then the game's
-  CHECK(p.seen.lt == 0);
-  CHECK(p.poll(670, 0, 255, 0).lt == 255);
+  CHECK(p.poll(520, 0, 255, 0).lt == 255);   // a new press: the game's at once
 }
 
-TEST_CASE("pad layer: a lone trigger reaches the game after the grace") {
+TEST_CASE("pad layer: a lone trigger is the game's at once, with no hold-back") {
   Pad p;
-  CHECK(p.poll(0, 0, 0, 255).rt == 0);
-  CHECK(p.poll(149, 0, 0, 255).rt == 0);
-  CHECK(p.poll(150, 0, 0, 255).rt == 255);
+  CHECK(p.poll(0, 0, 0, 255).rt == 255);
   CHECK(p.poll(400, 0, 0, 255).rt == 255);
+  CHECK(p.poll(410, 0, 0, 0).rt == 0);       // let go: no replay
   CHECK(p.out.count == 0);
   CHECK_FALSE(p.layer.on);
 }
 
-TEST_CASE("pad layer: the grace is the caller's; none means no hold-back") {
+TEST_CASE("pad layer: the second trigger opens the layer and hides both from then on") {
   Pad p;
-  p.opt.grace_ms = 0;
-  CHECK(p.poll(0, 0, 0, 255).rt == 255);
-  Pad q;
-  q.opt.grace_ms = 250;
-  CHECK(q.poll(0, 0, 255, 0).lt == 0);
-  CHECK(q.poll(249, 0, 255, 0).lt == 0);
-  CHECK(q.poll(250, 0, 255, 0).lt == 255);
-}
-
-TEST_CASE("pad layer: the second trigger within the grace opens the layer and the game never sees the first") {
-  Pad p;
-  CHECK(p.poll(0, 0, 0, 255).rt == 0);
+  CHECK(p.poll(0, 0, 0, 255).rt == 255);     // the first one went to the game
   p.poll(80, 0, 255, 255);
   CHECK(p.layer.on);
   CHECK(p.events() == Events{{0, false}});
@@ -143,56 +129,23 @@ TEST_CASE("pad layer: the second trigger within the grace opens the layer and th
   CHECK(p.seen.rt == 0);
 }
 
-TEST_CASE("pad layer: a tap shorter than the grace is replayed for the game") {
-  Pad p;
-  CHECK(p.poll(0, 0, 0, 255).rt == 0);
-  CHECK(p.poll(60, 0, 0, 0).rt == 255);     // let go: the game gets a full press now
-  CHECK(p.poll(100, 0, 0, 0).rt == 255);
-  CHECK(p.poll(139, 0, 0, 0).rt == 255);
-  CHECK(p.poll(140, 0, 0, 0).rt == 0);      // for 80 ms
-  CHECK(p.out.tap == 0);
-  CHECK(p.poll(60 + 1000, 0, 0, 0).rt == 0);
-}
-
-TEST_CASE("pad layer: a claimed lone trigger is a tap once the other had 50 ms to follow, and never the game's") {
+TEST_CASE("pad layer: a claimed lone trigger is a tap on its press, and never the game's") {
   Pad p;
   p.opt.claim_taps = true;
-  CHECK(p.poll(0, 0, 255, 0).lt == 0);
-  CHECK(p.out.tap == 0);
-  p.poll(49, 0, 255, 0);
-  CHECK(p.out.tap == 0);
-  p.poll(50, 0, 255, 0);
-  CHECK(p.out.tap == -1);                   // LT
+  p.poll(0, 0, 255, 0);
+  CHECK(p.out.tap == -1);                    // LT
   CHECK(p.seen.lt == 0);
-  p.poll(500, 0, 255, 0);                   // held on: one tap only, still hidden
+  p.poll(500, 0, 255, 0);                    // held on: one tap only, still hidden
   CHECK(p.out.tap == 0);
   CHECK(p.seen.lt == 0);
   p.poll(510, 0, 0, 0);
   CHECK(p.out.tap == 0);
-  CHECK(p.seen.lt == 0);                    // no replay
+  CHECK(p.seen.lt == 0);                     // no replay
+  p.poll(520, 0, 0, 255);
+  CHECK(p.out.tap == 1);                     // RT
 }
 
-TEST_CASE("pad layer: a claimed trigger let go before the 50 ms is a tap on its release") {
-  Pad p;
-  p.opt.claim_taps = true;
-  p.poll(0, 0, 0, 255);
-  CHECK(p.out.tap == 0);
-  p.poll(20, 0, 0, 0);
-  CHECK(p.out.tap == 1);                    // RT
-  CHECK(p.seen.rt == 0);
-  CHECK(p.poll(40, 0, 0, 0).rt == 0);       // not replayed for the game
-}
-
-TEST_CASE("pad layer: a claimed trigger with no grace is a tap at once") {
-  Pad p;
-  p.opt.claim_taps = true;
-  p.opt.grace_ms = 0;
-  p.poll(0, 0, 255, 0);
-  CHECK(p.out.tap == -1);
-  CHECK(p.seen.lt == 0);
-}
-
-TEST_CASE("pad layer: with taps claimed, the other trigger within 50 ms still opens the layer") {
+TEST_CASE("pad layer: with taps claimed, the other trigger still opens the layer") {
   Pad p;
   p.opt.claim_taps = true;
   p.poll(0, 0, 255, 0);
@@ -204,8 +157,10 @@ TEST_CASE("pad layer: with taps claimed, the other trigger within 50 ms still op
 
 TEST_CASE("pad layer: a trigger is held past the game's threshold (30) and until it falls under 15") {
   Pad p;
-  CHECK(p.poll(0, 0, 30, 0).lt == 30);      // not a press for the game either: it sees the raw value
-  CHECK(p.poll(5, 0, 31, 0).lt == 0);       // the game's press: held back from its first frame
+  p.poll(0, 0, 30, 30);
+  CHECK_FALSE(p.layer.on);                  // not a press for the game either
+  p.poll(5, 0, 31, 31);
+  CHECK(p.layer.on);                        // where the game counts both pressed
   p.poll(10, 0, 255, 255);
   CHECK(p.layer.on);
   p.poll(20, 0, 20, 20);                    // easing off: still held
@@ -213,15 +168,6 @@ TEST_CASE("pad layer: a trigger is held past the game's threshold (30) and until
   CHECK(p.out.count == 0);
   p.poll(30, 0, 14, 20);
   CHECK_FALSE(p.layer.on);
-}
-
-TEST_CASE("pad layer: RT travelling ahead of LT never reaches the game") {
-  Pad p;
-  for (int v : {40, 70, 100, 160}) CHECK(p.poll((uint64_t)v / 4, 0, 0, (uint8_t)v).rt == 0);   // RT on its way down, LT not yet
-  p.poll(50, 0, 120, 255);
-  CHECK(p.layer.on);
-  CHECK(p.seen.rt == 0);
-  CHECK(p.seen.lt == 0);
 }
 
 TEST_CASE("pad layer: a mod menu takes every button and the game sees nothing") {

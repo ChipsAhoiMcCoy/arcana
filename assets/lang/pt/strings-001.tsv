@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Tod
 The Shadow sounds and the controller layer's tick.	Os sons das Sombras e o tique da camada do controle.
 How loud the wall tones are.	O volume dos tons de parede.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	A que distância uma parede começa a soar. Mais curto mantém os tons para paredes próximas.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Quanto tempo um gatilho espera pelo outro antes de contar como o toque do próprio jogo. Mais longo facilita abrir a camada do controle do mod.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Os menus abrem, fecham e mudam mais rápido, então aceitam suas teclas mais cedo. Os sons de menu do jogo continuam tocando. Em batalha, só o menu de comandos e as listas ao abrir, nunca uma ação. Não em cenas da história ou conversas.
 Menus say their keys after their first line. Off, F1 still reads them.	Os menus dizem suas teclas depois da primeira linha. Desativado, F1 ainda as lê.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	O que o leitor de tela faz com uma fala que o jogo dubla: ficar em silêncio, dizer só quem fala, ou lê-la em voz alta. Falas sem voz são sempre lidas.
@@ -608,7 +607,6 @@ Shadow sounds	Sons das Sombras
 Wall tone range	Alcance dos tons de parede
 continuous	contínuo
 only while moving	só em movimento
-Trigger delay	Atraso dos gatilhos
 Menu key hints on entry	Dicas de teclas ao entrar no menu
 Menu animation speed	Velocidade das animações de menu
 4 times	4 vezes
@@ -643,7 +641,6 @@ meters	metros
 meter	metro
 less than 1 meter	menos de 1 metro
 percent	por cento
-milliseconds	milissegundos
 Up and down arrows choose, Space confirms, Escape back.	Setas para cima e para baixo escolhem, Espaço confirma, Esc volta.
 Up and down choose, A confirms, B back.	Cima e baixo escolhem, A confirma, B volta.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Setas para cima e para baixo escolhem, Q e E trocam de aba, Espaço abre, Esc volta.

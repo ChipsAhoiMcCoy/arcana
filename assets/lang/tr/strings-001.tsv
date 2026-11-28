@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Mod
 The Shadow sounds and the controller layer's tick.	Gölge sesleri ve kontrolcü katmanının tıkırtısı.
 How loud the wall tones are.	Duvar tonlarının ne kadar yüksek olduğu.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	Bir duvarın ne kadar uzaktan ses çıkarmaya başladığı. Daha kısası tonları yakındaki duvarlara bırakır.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Bir tetiğin, oyunun kendi basışı sayılmadan önce diğerini ne kadar beklediği. Daha uzunu modun kontrolcü katmanını açmayı kolaylaştırır.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Menüler daha hızlı açılır, kapanır ve değişir, böylece tuşlarını daha erken alırlar. Oyunun menü sesleri yine çalar. Savaşta yalnızca komut çarkı ve listeler açılırken, hiçbir zaman bir eylem sırasında değil. Hikâye sahnelerinde ya da konuşmalarda değil.
 Menus say their keys after their first line. Off, F1 still reads them.	Menüler ilk satırlarından sonra tuşlarını söyler. Kapalıyken F1 onları yine okur.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Oyunun seslendirdiği bir satırla ekran okuyucunun ne yaptığı: sessiz kalır, yalnızca kimin konuştuğunu söyler ya da sesli okur. Seslendirilmemiş satırlar her zaman okunur.
@@ -608,7 +607,6 @@ Shadow sounds	Gölge sesleri
 Wall tone range	Duvar tonu menzili
 continuous	sürekli
 only while moving	yalnızca hareket ederken
-Trigger delay	Tetik gecikmesi
 Menu key hints on entry	Girişte menü tuş ipuçları
 Menu animation speed	Menü animasyon hızı
 4 times	4 kat
@@ -643,7 +641,6 @@ meters	metre
 meter	metre
 less than 1 meter	1 metreden az
 percent	yüzde
-milliseconds	milisaniye
 Up and down arrows choose, Space confirms, Escape back.	Yukarı ve aşağı ok tuşları seçer, Boşluk onaylar, Escape geri.
 Up and down choose, A confirms, B back.	Yukarı ve aşağı seçer, A onaylar, B geri.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Yukarı ve aşağı ok tuşları seçer, Q ve E sekme değiştirir, Boşluk açar, Escape geri.

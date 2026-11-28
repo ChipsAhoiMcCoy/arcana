@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Tou
 The Shadow sounds and the controller layer's tick.	Les sons des Ombres et le tic de la couche manette.
 How loud the wall tones are.	Le volume des sons des murs.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	À quelle distance un mur commence à se faire entendre. Plus court garde les sons pour les murs tout proches.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Combien de temps une gâchette attend l'autre avant de compter comme une pression pour le jeu. Plus long rend la couche manette du mod plus facile à ouvrir.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Les menus s'ouvrent, se ferment et changent plus vite, et prennent donc vos touches plus tôt. Les sons des menus du jeu jouent toujours. En combat, seulement la roue de commandes et les listes à leur ouverture, jamais une action. Pas dans les scènes de l'histoire ni dans les conversations.
 Menus say their keys after their first line. Off, F1 still reads them.	Les menus disent leurs touches après leur première ligne. Désactivé, F1 les lit toujours.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Ce que fait le lecteur d'écran d'une réplique doublée par le jeu : rester silencieux, dire seulement qui parle, ou la lire à voix haute. Les répliques non doublées sont toujours lues.
@@ -608,7 +607,6 @@ Shadow sounds	Sons des Ombres
 Wall tone range	Portée des sons des murs
 continuous	en continu
 only while moving	seulement en mouvement
-Trigger delay	Délai des gâchettes
 Menu key hints on entry	Touches des menus à l'ouverture
 Menu animation speed	Vitesse des animations des menus
 4 times	4 fois
@@ -643,7 +641,6 @@ meters	mètres
 meter	mètre
 less than 1 meter	moins d'1 mètre
 percent	pour cent
-milliseconds	millisecondes
 Up and down arrows choose, Space confirms, Escape back.	Flèches haut et bas pour choisir, Espace valide, Échap retour.
 Up and down choose, A confirms, B back.	Haut et bas pour choisir, A valide, B retour.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Flèches haut et bas pour choisir, Q et E changent d'onglet, Espace ouvre, Échap retour.

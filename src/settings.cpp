@@ -35,7 +35,7 @@
 #include <vector>
 
 namespace p3a::settings {
-enum class Unit { Toggle, Meters, Percent, Ms, Choice };
+enum class Unit { Toggle, Meters, Percent, Choice };
 // The menu's categories (the user's call, 2026-11-11: one list of 27 rows had grown too long). Each is a stop of its
 // own: a short list with its own positions, its name said on landing; Tab / Shift+Tab (Page Down / Page Up, RB / LB)
 // go to the next / previous one, wrapping. A row names its category, so the table's order stays the file's.
@@ -131,7 +131,6 @@ static const Def kDefs[Count] = {
   // the narrator of 3D scenes reads faster, its pitch kept (core/time_stretch, ad.cpp); movies keep their timing
   {"scene_speed", strings::kSetSceneSpeed, CatDescription, strings::kHelpSceneSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
    {strings::kOff, strings::kFaster25, strings::kFaster50, strings::kFaster75}},
-  {"trigger_delay", strings::kSetTriggerDelay, CatControls, strings::kHelpTriggerDelay, Unit::Ms, {0, 100, 150, 250}, 150},
   {"entry_hints", strings::kSetEntryHints, CatControls, strings::kHelpEntryHints, Unit::Toggle, {0, 1}, 0},
   // the world's time runs faster while a menu is up (menuspeed.cpp): its index into menuspeed's scales
   {"menu_speed", strings::kSetMenuSpeed, CatControls, strings::kHelpMenuSpeed, Unit::Choice, {0, 1, 2, 3}, 0,
@@ -215,7 +214,7 @@ static std::string label(Id id) {
       // another language than English has no narrator: its descriptions go to the screen reader (ad.cpp)
       if (!core::lang::english() && ((id == AudioDescription && v == DescAudio) || id == SceneVoice)) return strings::kDescReader.c_str();
       return v >= 0 && v < (int)kDefs[id].labels.size() ? std::string(kDefs[id].labels[v].c_str()) : std::to_string(v);
-    default: return v ? std::format("{} {}", v, strings::kMilliseconds) : std::string(strings::kOff);
+    default: return std::to_string(v);
   }
 }
 

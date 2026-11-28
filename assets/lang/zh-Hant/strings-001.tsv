@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	模
 The Shadow sounds and the controller layer's tick.	陰影的聲音，以及控制器層的滴答聲。
 How loud the wall tones are.	牆壁音調有多大聲。
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	牆壁在多遠時開始發出聲音。越短，就只有近處的牆會發出音調。
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	一個扳機鍵要等另一個扳機鍵多久，超過後才算是遊戲本身的按鍵。越長，越容易開啟模組的控制器層。
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	選單的開啟、關閉與切換變快，能更快接受你的按鍵。遊戲的選單音效仍會播放。戰鬥中只在指令輪盤和列表開啟時加速，行動不會加速。劇情場景和對話中不適用。
 Menus say their keys after their first line. Off, F1 still reads them.	選單在第一行之後說出它的按鍵。關閉時，F1 仍可讀出。
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	遊戲有配音的台詞，螢幕閱讀器要怎麼處理：保持安靜、只說出說話者，或朗讀出來。沒有配音的台詞一定會朗讀。
@@ -608,7 +607,6 @@ Shadow sounds	陰影音效
 Wall tone range	牆壁音調範圍
 continuous	持續
 only while moving	只在移動時
-Trigger delay	扳機延遲
 Menu key hints on entry	進入選單時提示按鍵
 Menu animation speed	選單動畫速度
 4 times	4 倍
@@ -643,7 +641,6 @@ meters	公尺
 meter	公尺
 less than 1 meter	不到 1 公尺
 percent	%
-milliseconds	毫秒
 Up and down arrows choose, Space confirms, Escape back.	上下方向鍵選擇，空白鍵確認，Esc 返回。
 Up and down choose, A confirms, B back.	上下選擇，A 確認，B 返回。
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	上下方向鍵選擇，Q 和 E 切換分頁，空白鍵開啟，Esc 返回。

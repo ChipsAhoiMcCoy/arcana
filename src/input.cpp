@@ -70,10 +70,9 @@ static std::map<std::string, uint64_t> g_callers;
 static std::string module_of(void* p);
 // ---- the mod layer: both triggers held turn the controller into the mod's keys (keys::bind_pad) ----
 // While both triggers are down the game sees neither trigger nor any button (the sticks still walk); a button pressed
-// then runs its mod key, the D-pad repeating while held. A trigger pressed alone reaches the game a moment late
-// (settings::TriggerDelay, 150 ms by default), so the first trigger of a two-trigger press does nothing in the game
-// (RT dashes, LT shifts the turn in battle); a shorter tap is replayed for the game. Anything held when the layer
-// closes stays hidden until it is released. The state machine is core::PadLayer (engine-free, unit-tested); this file
+// then runs its mod key, the D-pad repeating while held. A trigger pressed alone is the game's at once, so the first
+// trigger of a two-trigger press reaches the game too (RT dashes, LT shifts the turn in battle): no delay holds it
+// back (removed 2026-11-28, the user's call). Anything held when the layer closes stays hidden until it is released. The state machine is core::PadLayer (engine-free, unit-tested); this file
 // reads the pad and the clock for it and hands its events on.
 static core::PadLayer g_layer[4];
 static std::mutex g_layer_mu;
@@ -120,7 +119,6 @@ static void layer_filter(core::PadLayer& L, XINPUT_GAMEPAD& g) {
   o.modal = g_modal || g_pad_capture;
   o.modal_layer = g_pad_capture && !g_modal;
   o.claim_taps = g_claim_taps && &L == &g_layer[0];
-  o.grace_ms = (uint64_t)settings::get(settings::TriggerDelay);
   core::PadLayerOutput out;
   L.filter(s, GetTickCount64(), o, out);
   for (int i = 0; i < out.count; ++i) layer_event(out.events[i]);

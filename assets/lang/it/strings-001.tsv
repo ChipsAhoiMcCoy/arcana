@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Ogn
 The Shadow sounds and the controller layer's tick.	I suoni delle Ombre e il tic del livello del controller.
 How loud the wall tones are.	Quanto sono forti i toni dei muri.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	A che distanza un muro inizia a suonare. Più corta tiene i toni per i muri vicini.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Quanto un grilletto aspetta l'altro prima di contare come una pressione per il gioco. Più lungo rende più facile aprire il livello del controller della mod.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	I menu si aprono, si chiudono e cambiano più in fretta, così accettano prima i tuoi tasti. I suoni dei menu del gioco suonano comunque. In battaglia, solo la ruota dei comandi e gli elenchi mentre si aprono, mai un'azione. Non nelle scene della storia o nei dialoghi.
 Menus say their keys after their first line. Off, F1 still reads them.	I menu dicono i loro tasti dopo la prima riga. Disattivato, F1 li legge comunque.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Cosa fa lo screen reader con una battuta doppiata dal gioco: restare in silenzio, dire solo chi parla, o leggerla ad alta voce. Le battute non doppiate sono sempre lette.
@@ -608,7 +607,6 @@ Shadow sounds	Suoni delle Ombre
 Wall tone range	Portata dei toni dei muri
 continuous	continui
 only while moving	solo in movimento
-Trigger delay	Ritardo dei grilletti
 Menu key hints on entry	Tasti dei menu all'ingresso
 Menu animation speed	Velocità delle animazioni dei menu
 4 times	4 volte
@@ -643,7 +641,6 @@ meters	metri
 meter	metro
 less than 1 meter	meno di 1 metro
 percent	percento
-milliseconds	millisecondi
 Up and down arrows choose, Space confirms, Escape back.	Frecce su e giù scelgono, Spazio conferma, Esc indietro.
 Up and down choose, A confirms, B back.	Su e giù scelgono, A conferma, B indietro.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Frecce su e giù scelgono, Q ed E cambiano scheda, Spazio apre, Esc indietro.

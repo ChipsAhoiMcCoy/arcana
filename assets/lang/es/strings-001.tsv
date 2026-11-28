@@ -509,7 +509,6 @@ Every sound the mod plays. The game's own sounds follow the game's settings.	Tod
 The Shadow sounds and the controller layer's tick.	Los sonidos de las Sombras y el tic de la capa del mando.
 How loud the wall tones are.	Volumen de los tonos de pared.
 How far away a wall starts to sound. Shorter keeps the tones for walls close by.	A qué distancia empieza a sonar una pared. Más corto deja los tonos para las paredes cercanas.
-How long one trigger waits for the other before it counts as the game's own press. Longer makes the mod's controller layer easier to open.	Cuánto espera un gatillo al otro antes de contar como pulsación del propio juego. Más largo facilita abrir la capa del mando del mod.
 Menus open, close and change faster, so they take your keys sooner. The game's menu sounds still play. In battle, only the command wheel and the battle's lists as they open, never an action. Not in story scenes or conversations.	Los menús se abren, se cierran y cambian más rápido, así que aceptan tus teclas antes. Los sonidos de menú del juego siguen sonando. En combate, solo el menú de comandos y las listas al abrirse, nunca una acción. No en escenas de la historia ni conversaciones.
 Menus say their keys after their first line. Off, F1 still reads them.	Los menús dicen sus teclas tras su primera línea. Desactivado, F1 sigue leyéndolas.
 What the screen reader does with a line the game voices: stay silent, say only who speaks, or read it aloud. Unvoiced lines are always read.	Qué hace el lector de pantalla con una línea con voz del juego: quedarse en silencio, decir solo quién habla o leerla en voz alta. Las líneas sin voz siempre se leen.
@@ -608,7 +607,6 @@ Shadow sounds	Sonidos de Sombras
 Wall tone range	Alcance de los tonos de pared
 continuous	continuo
 only while moving	solo al moverte
-Trigger delay	Retardo de gatillos
 Menu key hints on entry	Teclas de menú al entrar
 Menu animation speed	Velocidad de animación de menús
 4 times	4 veces
@@ -643,7 +641,6 @@ meters	metros
 meter	metro
 less than 1 meter	menos de 1 metro
 percent	por ciento
-milliseconds	milisegundos
 Up and down arrows choose, Space confirms, Escape back.	Las flechas arriba y abajo eligen, Espacio confirma, Escape vuelve.
 Up and down choose, A confirms, B back.	Arriba y abajo eligen, A confirma, B vuelve.
 Up and down arrows choose, Q and E switch tabs, Space opens, Escape back.	Las flechas arriba y abajo eligen, Q y E cambian de pestaña, Espacio abre, Escape vuelve.
