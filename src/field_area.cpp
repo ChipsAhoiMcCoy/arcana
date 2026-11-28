@@ -15,6 +15,7 @@
 #include "core/units.h"
 #include "gametext.h"
 #include "seh.h"
+#include "ue/scan.h"
 #include "speech.h"
 #include "world.h"
 #include <algorithm>
@@ -58,6 +59,15 @@ static void banner_tick() {
     if (*(int32_t*)(a + 0xA10)) floor = *(int32_t*)(a + 0xA14);
   });
   if (!core::has_words(b)) return;
+  // A place the game's name table has no row for gets its placeholder, "場所不明" ("unknown place") in every language
+  // (FUN_1411adef0's default, the UTF-16 string at exe+0x42B7538, this build's): no name, the table's alone is said
+  // (Paulownia Mall's fountain square in the Dark Hour said "Fountain Square, 場所不明", 2026-11-28).
+  static const std::string placeholder = [] {
+    std::string s;
+    if (ue::known_build()) guarded([&] { s = to_utf8((const char16_t*)(scan::exe_base() + 0x42B7538)); });
+    return s;
+  }();
+  if (!placeholder.empty() && b == placeholder) { g_banner.clear(); g_banner_floor = 0; return; }
   g_banner = b;
   g_banner_floor = floor > 0 && floor < 100 ? floor : 0;
 }
