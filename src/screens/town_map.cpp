@@ -13,6 +13,7 @@
 #include "screens/menu.h"
 #include "screens/util.h"
 #include "screens/camp.h"
+#include "bmdfile.h"
 #include "core/reading_order.h"
 #include "core/strings.h"
 #include "log.h"
@@ -70,15 +71,19 @@ class TownMapScreen : public MenuScreen {
     for (int i : order_) who_[i] = people(i);
   }
   // Who is at a destination now: the list the game builds for town info's card icons, exe+0x11d8fc0(out, destination),
-  // from the field characters' own tables, the date and the time of day. `out` is four arrays and a set, freed the
-  // way the game's caller (exe+0x14431c0) frees them: +0x00 the Social Links (0x20 each: arcana, rank, reversed, the
-  // name FString at +0x10; a maxed link has rank 10), +0x10 / +0x20 / +0x30 other characters by kind (0x18 each: the
-  // kind 1-3, the name FString at +0x8).
+  // from the field characters' own tables, the date and the time of day. `out` is five arrays, freed the way the
+  // game's caller (exe+0x14431c0) frees them: +0x00 the Social Links (0x20 each: arcana, rank, reversed, the name
+  // FString at +0x10; a maxed link has rank 10), +0x10 / +0x20 / +0x30 other characters by kind (0x18 each: the kind
+  // 1-3, the name FString at +0x8; kind 1 is a Linked Episode, the MaleQuest icon), +0x40 the requests (0x28 each:
+  // +0 0 a person with the Quest icon, 1 TargetOnly, 2 QuestHit; +0x8 an FString, +0x18 the character's name FString;
+  // FUN_1411dd8c0). The map's opening (FUN_141452a90) gives each pin its icons from the same call: a card where
+  // there is a link, "!" where there is a request, "!!" where there is a Linked Episode.
   std::string who_[kCount];
   static std::string people(int dest) {
     alignas(16) uint8_t out[0x100] = {};
     uintptr_t b = scan::exe_base();
-    std::string links, others;
+    std::string links, others, episodes, requests;
+    bool request = false;
     bool ok = guarded([&] {
       ((void* (*)(void*, int))(b + 0x11d8fc0))(out, dest);
       std::vector<social::Link> mine = social::read();
@@ -100,8 +105,17 @@ class TownMapScreen : public MenuScreen {
         for (int i = 0; a->data && i < a->num && i < 32; ++i) {
           std::string n = core::clean_text(to_utf8(*(FString*)(a->data + i * 0x18 + 8)));
           log::writef("town_map: {} other kind {} '{}'", dest, k, n);
-          if (!n.empty() && others.find(n) == std::string::npos) others += (others.empty() ? "" : ", ") + n;
+          std::string& to = k == 1 ? episodes : others;
+          if (!n.empty() && to.find(n) == std::string::npos) to += (to.empty() ? "" : ", ") + n;
         }
+      }
+      auto* q = (TArray<uint8_t>*)(out + 0x40);
+      for (int i = 0; q->data && i < q->num && i < 32; ++i) {
+        uint8_t* e = q->data + i * 0x28;
+        std::string a = to_utf8(*(FString*)(e + 8)), n = core::clean_text(to_utf8(*(FString*)(e + 0x18)));
+        log::writef("town_map: {} request kind {} '{}' '{}'", dest, e[0], a, n);
+        request = true;
+        if (!n.empty() && requests.find(n) == std::string::npos) requests += (requests.empty() ? "" : ", ") + n;
       }
       ((void (*)(void*))(b + 0xa789b0))(out + 0x40);
       for (int k = 3; k >= 1; --k) ((void (*)(void*))(b + 0x9fbee0))(out + k * 0x10);
@@ -109,8 +123,13 @@ class TownMapScreen : public MenuScreen {
     });
     if (!ok) { log::write("town_map: reading who is there faulted"); return {}; }
     std::string s;
-    if (!links.empty()) s = std::string(strings::kTownLinks) + ": " + links;
-    if (!others.empty()) s += (s.empty() ? "" : ". ") + std::string(strings::kTownOthers) + ": " + others;
+    auto add = [&s](const char* head, const std::string& names) {
+      s += (s.empty() ? "" : ". ") + std::string(head) + (names.empty() ? "" : ": " + names);
+    };
+    if (request) add(strings::kTownRequest, requests);
+    if (!links.empty()) add(strings::kTownLinks, links);
+    if (!episodes.empty()) add(strings::kIconEpisode, episodes);
+    if (!others.empty()) add(strings::kTownOthers, others);
     return s;
   }
   // F (town info): the destination's shops and places, as the game draws them (FUN_141447000). The rows are the
@@ -134,7 +153,8 @@ class TownMapScreen : public MenuScreen {
     auto open = (bool (*)(void*, void*))(scan::exe_base() + 0x120e430);
     std::string s;
     guarded([&] {
-      for (int c = 0; c < 9; ++c)
+      for (int c = 0; c < 9; ++c) {
+        std::string group;
         for (int i = 0; i < rows.num; ++i) {
           uint8_t* r = rows.at(i);
           if (*(int32_t*)(r + loc) != dest || *(int32_t*)(r + cat) != c) continue;
@@ -143,10 +163,19 @@ class TownMapScreen : public MenuScreen {
             if (to_utf8(*(FString*)(names.at(j) + name_label)) == want) n = core::clean_text(to_utf8(*(FString*)(names.at(j) + text)));
           if (n.empty()) continue;
           if (!open(dat, r)) n += std::string(" (") + strings::kUnavailable + ")";
-          s += (s.empty() ? "" : ", ") + n;
+          group += (group.empty() ? "" : ", ") + n;
         }
+        // Each category under its heading, as the game draws them ("Shops", "Food & Café").
+        if (!group.empty()) s += (s.empty() ? "" : ". ") + std::string(strings::kTownCategories[c]) + ": " + group;
+      }
     });
-    return s.empty() ? s : std::string(strings::kTownInfo) + ": " + s;
+    if (s.empty()) return s;
+    // The destination's description under its name: BMD_TownMapDetailText's message per destination
+    // (TOWNMAP_DETAIL_TEXT_0..5, in DT_TownMapParamTable's order).
+    auto f = bmdfile::load("BMD_TownMapDetailText");
+    if (f && f->ok && dest < (int)f->dialogs.size() && !f->dialogs[dest].pages.empty())
+      if (std::string d = bmdfile::text(f->dialogs[dest].pages[0]); !d.empty()) s += ". " + d;
+    return s;
   }
   // Moves the game's cursor the way its own move does (see the top): the cursor, the town info and its camera.
   bool move_to(int to) {

@@ -847,9 +847,12 @@ inline constexpr Tr kCantJoinPartyFmt{"{} can't join the party"};
 inline constexpr Tr kCantLeavePartyFmt{"{} can't leave the party"};
 inline constexpr Tr kPartyLocked{"The party can't be changed here"};   // the game allows it in the dorm, Tartarus's lobby and a few other places
 inline constexpr Tr kNavigator{"navigator"};
-inline constexpr Tr kTownInfo{"Places here"};
+// Town info's headings (sprites), by the rows' CategoryNo 0-8.
+inline constexpr Tr kTownCategories[] = {"Facilities", "Shrine", "Fortune-Telling", "Shops", "Bar", "Food & Café",
+                                         "Campus", "Entertainment", "Law Enforcement"};
 inline constexpr Tr kTownLinks{"Social Links here"};
 inline constexpr Tr kTownOthers{"Also here"};
+inline constexpr Tr kTownRequest{"Requests here"};   // the pin's "!": someone or something a request of Elizabeth's needs
 inline constexpr Tr kTheurgy{"Theurgy"};
 inline constexpr Tr kBuffs[] = {"attack up", "attack down", "defense up", "defense down", "agility up", "agility down"};
 inline constexpr Tr kCharged{"Charged"};
