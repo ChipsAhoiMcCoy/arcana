@@ -318,7 +318,29 @@ class ShuffleScreen : public MenuScreen {
     // How many cards there are is the position on each card ("1 of 4"; the player's call, 2026-10-30): only taking
     // more than one is said here.
     if (int k = ui ? get<int32_t>(ui, "EnableSelectNum") : 1; k > 1) s += std::format(". {} {}", strings::kChoose, k);
+    if (ui) if (std::string g = burst_gauge(ui); !g.empty()) s += ". " + g;
     return s;
+  }
+  // The Arcana Burst gauge under the cards, drawn natively: GetMaxNumMajorArcana slots, GetHaveMajorArcana the arcana
+  // in each in the order they were taken (-1 empty). "Arcana Burst 2 of 13: Justice, Hermit"; empty without slots.
+  static std::string burst_gauge(UObject* ui) {
+    int max = call_ret<int32_t>(ui, "GetMaxNumMajorArcana");
+    UFunction* f = max > 0 ? find_function(class_of(ui), "GetHaveMajorArcana") : nullptr;
+    if (!f) return {};
+    Params p(f);
+    call(ui, p);
+    auto* slots = p.at<TArray<int32_t>>("ReturnValue");
+    std::string names;
+    int n = 0;
+    for (int i = 0; slots && slots->data && i < slots->num; ++i) {
+      int a = slots->data[i];
+      if (a <= 0) continue;
+      ++n;
+      if (a < (int)std::size(strings::kArcana)) names += (names.empty() ? "" : ", ") + std::string(strings::kArcana[a]);
+    }
+    if (slots && slots->data) msg::game_free(slots->data);   // the game allocated the list
+    std::string s = std::format("{} {}", strings::kArcanaBurst, strings::of(n, max));
+    return names.empty() ? s : s + ": " + names;
   }
   void on_enter() override {
     UObject* ui = shuffle_ui();

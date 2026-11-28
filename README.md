@@ -294,7 +294,7 @@ Each turn uses the game's own keys (F1 names those open this turn). A turn opens
 
 ### After battles
 
-- Shuffle Time reads every card's effect as they are dealt, with its position, and says when you may take more than one ("choose 1 more"). A skill card says how many you own; a Persona card's status page is read. Arcana Burst's row reads the same ("Arcana Burst. choose 2"; C cancels the last pick).
+- Shuffle Time opens with the Arcana Burst gauge ("Arcana Burst 2 of 13: Justice, Hermit"), then reads every card's effect as they are dealt, with its position, and says when you may take more than one ("choose 1 more"). A skill card says how many you own; a Persona card's status page is read. Arcana Burst's row reads the same ("Arcana Burst. choose 2"; C cancels the last pick).
 - Persona Overstock: the new Persona ("Gain: ...") and each one you hold; Space releases the one chosen, F shows its stats (there Q and E go through them and Space releases the one shown).
 - The victory screen reads each thing as its own line you can go back over with the arrows: EXP, money, items, each level up, the hero's level-up page, and the status page of a Persona that learned a skill. Space or Enter goes on.
 
