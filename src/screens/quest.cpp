@@ -216,12 +216,16 @@ class CampQuest : public MenuScreen {
     }
     return out;
   }
+  // Built only when the shown request (+0x300) is not the one said: once said, nothing is read again until it changes;
+  // while its details page is still to come (info_text empty) it is tried again on the next frame.
   int info_said_ = -1;
   void on_tick() override {
-    if (tab() != 0 || !info()) { info_said_ = -1; return; }
+    uint8_t* r = tab() == 0 ? info() : nullptr;
+    if (!r) { info_said_ = -1; return; }
+    if (i32(r, 0x300) == info_said_) return;
     int shown = -1;
     std::string t = info_text(shown);
-    if (!t.empty() && shown != info_said_) { info_said_ = shown; say(t, true); }
+    if (!t.empty()) { info_said_ = shown; say(t, true); }
   }
  public:
   const char* id() const override { return "camp_quest"; }

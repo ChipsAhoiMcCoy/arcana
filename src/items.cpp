@@ -60,9 +60,13 @@ static void load() {
       if (!rows || !ns) return;
       auto off = [&](const char* f) { return offset_of(rows.row, f); };
       int oPrice = off("Price"), oSell = off("SellPrice"), oAtk = off("attack"), oAcc = off("Accuracy"), oDef = off("Defence"), oEva = off("Evasion");
-      // gear: its add effect (skillId in some tables, SkillID in others) and stat bonuses (u16 each)
-      int oSkill = off("skillId") >= 0 ? off("skillId") : off("SkillID");
-      int oBonus[5] = {off("Strength"), off("Magic"), off("Endurance"), off("Agility"), off("Luck")};
+      // gear only (weapons, armor, shoes, accessories: codes 0..3): its add effect (skillId in some tables, SkillID in
+      // others) and stat bonuses (u16 each). In the Common and Skillcard tables SkillID is a battle skill (what the item
+      // casts or the card teaches), not a BMD_ItemAddEffectHelp dialog.
+      bool gear = code >= 0 && code <= 3;
+      int oSkill = !gear ? -1 : off("skillId") >= 0 ? off("skillId") : off("SkillID");
+      int oBonus[5] = {-1, -1, -1, -1, -1};
+      if (gear) { oBonus[0] = off("Strength"); oBonus[1] = off("Magic"); oBonus[2] = off("Endurance"); oBonus[3] = off("Agility"); oBonus[4] = off("Luck"); }
       int oAttr = off("AttrID");
       for (int i = 0; i < rows.num && i < ns->num; ++i) {
         std::string n = to_utf8(ns->data[i]);
